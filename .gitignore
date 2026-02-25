@@ -1,0 +1,13 @@
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Dependency directories (if a build step is ever added)
+node_modules/
+
+# Build output (if a build step is ever added)
+dist/
