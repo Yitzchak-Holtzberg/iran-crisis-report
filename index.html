@@ -200,72 +200,37 @@
     .scenarios-grid { grid-template-columns:1fr !important; }
   }
 
-  /* ===== NAVIGATION MENU ===== */
-  .site-nav { position:sticky; top:0; z-index:1000; background:var(--bg-secondary); border-bottom:2px solid var(--border); box-shadow:0 2px 12px rgba(0,0,0,0.4); }
-  .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; align-items:center; overflow:hidden; }
-  .nav-brand { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-red); padding:10px 16px 10px 0; border-right:1px solid var(--border); margin-right:4px; white-space:nowrap; flex-shrink:0; }
-  .nav-links { display:flex; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
-  .nav-links::-webkit-scrollbar { display:none; }
-  .nav-links a { display:inline-block; padding:10px 14px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); text-decoration:none; white-space:nowrap; border-bottom:2px solid transparent; transition:color 0.2s,border-color 0.2s; }
-  .nav-links a:hover { color:var(--text-primary); border-bottom-color:var(--accent-orange); text-decoration:none; }
-  .nav-links a.active { color:var(--accent-red); border-bottom-color:var(--accent-red); }
-  .nav-toggle { display:none; background:none; border:none; cursor:pointer; padding:8px 0 8px 12px; color:var(--text-secondary); font-size:22px; line-height:1; flex-shrink:0; }
-  .section-header, .stats-grid { scroll-margin-top:46px; }
-  @media(max-width:768px){
-    .nav-inner { flex-wrap:wrap; padding:0; overflow:visible; }
-    .nav-brand { padding:10px 14px; border-right:none; flex:1; }
-    .nav-toggle { display:block; padding:10px 14px; }
-    .nav-links { display:none; width:100%; flex-direction:column; border-top:1px solid var(--border); }
-    .nav-links.open { display:flex; }
-    .nav-links a { padding:9px 16px; border-bottom:none; border-left:3px solid transparent; }
-    .nav-links a:hover { border-left-color:var(--accent-orange); border-bottom:none; }
-    .nav-links a.active { border-left-color:var(--accent-red); border-bottom:none; }
+  /* ===== LEFT SIDEBAR ===== */
+  .left-sidebar { position:fixed; left:0; top:0; bottom:0; width:220px; background:var(--bg-secondary); border-right:1px solid var(--border); z-index:1000; display:flex; flex-direction:column; overflow:hidden; }
+  .sb-progress { height:3px; background:rgba(255,59,59,0.12); flex-shrink:0; }
+  .sb-progress-fill { height:100%; background:var(--accent-red); width:0%; transition:width 0.12s linear; }
+  .sb-header { padding:16px 18px 14px; border-bottom:1px solid var(--border); flex-shrink:0; }
+  .sb-header .sb-brand { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-red); }
+  .sb-header .sb-subtitle { font-size:10px; color:var(--text-muted); margin-top:3px; line-height:1.4; }
+  .sb-nav { flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--border) transparent; padding:8px 0 16px; }
+  .sb-nav::-webkit-scrollbar { width:3px; }
+  .sb-nav::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+  .sb-link { display:flex; align-items:center; gap:10px; padding:9px 16px 9px 0; text-decoration:none; color:var(--text-muted); font-size:12px; border-left:3px solid transparent; transition:all 0.15s; line-height:1.35; }
+  .sb-link:hover { color:var(--text-primary); background:rgba(255,255,255,0.03); border-left-color:var(--accent-orange); text-decoration:none; }
+  .sb-link.active { color:var(--text-primary); background:rgba(255,59,59,0.07); border-left-color:var(--accent-red); }
+  .sb-link .sb-num { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); width:36px; text-align:right; flex-shrink:0; opacity:0.55; }
+  .sb-link.active .sb-num { opacity:1; color:var(--accent-red); }
+  .sb-link .sb-dot { width:6px; height:6px; border-radius:50%; border:1.5px solid var(--text-muted); flex-shrink:0; transition:all 0.15s; }
+  .sb-link.active .sb-dot { background:var(--accent-red); border-color:var(--accent-red); box-shadow:0 0 6px var(--accent-red); }
+  /* Push all page content to the right of the sidebar */
+  .masthead, .ticker-wrap, .container { margin-left:220px; }
+  .section-header, .stats-grid { scroll-margin-top:16px; }
+  /* Mobile: sidebar becomes overlay, content goes full-width */
+  .sb-toggle { display:none; position:fixed; bottom:22px; left:16px; z-index:1001; background:var(--accent-red); color:#fff; border:none; cursor:pointer; width:46px; height:46px; border-radius:50%; font-size:22px; line-height:1; box-shadow:0 3px 14px rgba(0,0,0,0.45); transition:background 0.2s; align-items:center; justify-content:center; }
+  .sb-toggle:hover { background:var(--accent-orange); }
+  .sb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; }
+  .sb-overlay.open { display:block; }
+  @media(max-width:900px){
+    .left-sidebar { transform:translateX(-100%); transition:transform 0.27s cubic-bezier(.4,0,.2,1); box-shadow:none; }
+    .left-sidebar.open { transform:translateX(0); box-shadow:4px 0 28px rgba(0,0,0,0.5); }
+    .sb-toggle { display:flex; }
+    .masthead, .ticker-wrap, .container { margin-left:0; }
   }
-
-  /* ===== METHOD 2: FLOATING SIDEBAR TOC ===== */
-  .toc-fab { position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:1100; background:var(--accent-red); color:#fff; border:none; cursor:pointer; writing-mode:vertical-rl; padding:14px 8px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; border-radius:6px 0 0 6px; box-shadow:-3px 0 16px rgba(0,0,0,0.4); transition:background 0.2s; }
-  .toc-fab:hover { background:var(--accent-orange); }
-  .toc-fab .toc-fab-icon { writing-mode:horizontal-tb; display:block; font-size:16px; margin-bottom:6px; }
-  .toc-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1099; }
-  .toc-overlay.open { display:block; }
-  .toc-drawer { position:fixed; right:0; top:0; bottom:0; width:280px; background:var(--bg-card); border-left:1px solid var(--border); z-index:1100; transform:translateX(100%); transition:transform 0.3s cubic-bezier(.4,0,.2,1); overflow-y:auto; display:flex; flex-direction:column; }
-  .toc-drawer.open { transform:translateX(0); }
-  .toc-drawer-header { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--border); flex-shrink:0; }
-  .toc-drawer-header h3 { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-red); }
-  .toc-close { background:none; border:none; color:var(--text-muted); font-size:20px; cursor:pointer; padding:0; line-height:1; }
-  .toc-close:hover { color:var(--text-primary); }
-  .toc-progress-bar { height:3px; background:rgba(255,59,59,0.15); flex-shrink:0; }
-  .toc-progress-fill { height:100%; background:var(--accent-red); transition:width 0.1s; width:0%; }
-  .toc-list { padding:12px 0; flex:1; }
-  .toc-item { display:flex; align-items:center; gap:12px; padding:10px 20px; cursor:pointer; border-left:3px solid transparent; transition:all 0.15s; text-decoration:none; color:var(--text-secondary); font-size:13px; }
-  .toc-item:hover { background:rgba(255,255,255,0.04); color:var(--text-primary); border-left-color:var(--accent-orange); text-decoration:none; }
-  .toc-item.active { color:var(--text-primary); border-left-color:var(--accent-red); background:rgba(255,59,59,0.06); }
-  .toc-item .toc-dot { width:8px; height:8px; border-radius:50%; border:2px solid var(--text-muted); flex-shrink:0; transition:all 0.15s; }
-  .toc-item.active .toc-dot { background:var(--accent-red); border-color:var(--accent-red); }
-  .toc-item .toc-num { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-muted); width:18px; flex-shrink:0; }
-  @media(max-width:400px){ .toc-drawer { width:100%; } }
-
-  /* ===== METHOD 3: TOP TABLE-OF-CONTENTS CARD ===== */
-  .toc-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; margin:32px 0 8px; overflow:hidden; }
-  .toc-card-header { display:flex; align-items:center; justify-content:space-between; padding:16px 22px; cursor:pointer; user-select:none; border-bottom:1px solid transparent; transition:border-color 0.2s; }
-  .toc-card-header.open { border-bottom-color:var(--border); }
-  .toc-card-header:hover { background:rgba(255,255,255,0.03); }
-  .toc-card-title { display:flex; align-items:center; gap:12px; }
-  .toc-card-title span { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-red); }
-  .toc-card-title .toc-count { background:rgba(255,59,59,0.15); color:var(--accent-red); font-family:'JetBrains Mono',monospace; font-size:10px; padding:2px 8px; border-radius:20px; }
-  .toc-card-chevron { color:var(--text-muted); font-size:18px; transition:transform 0.25s; }
-  .toc-card-header.open .toc-card-chevron { transform:rotate(180deg); }
-  .toc-card-body { display:none; padding:20px 22px; }
-  .toc-card-body.open { display:block; }
-  .toc-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-  @media(max-width:600px){ .toc-grid { grid-template-columns:1fr; } }
-  .toc-grid-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:8px; text-decoration:none; color:var(--text-secondary); font-size:13px; border:1px solid transparent; transition:all 0.15s; }
-  .toc-grid-item:hover { background:var(--bg-secondary); border-color:var(--border); color:var(--text-primary); text-decoration:none; }
-  .toc-grid-item .toc-icon { font-size:18px; flex-shrink:0; width:28px; text-align:center; }
-  .toc-grid-item .toc-label { flex:1; }
-  .toc-grid-item .toc-label strong { display:block; font-size:13px; color:var(--text-primary); margin-bottom:1px; }
-  .toc-grid-item .toc-label small { font-size:11px; color:var(--text-muted); }
-  .toc-grid-item .toc-arrow { color:var(--text-muted); font-size:13px; }
 
   /* Small phones */
   @media(max-width:400px){
@@ -316,25 +281,29 @@
   </div>
 </div>
 
-<nav class="site-nav" id="site-nav" aria-label="Page sections">
-  <div class="nav-inner">
-    <span class="nav-brand">&#9776; Index</span>
-    <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
-    <div class="nav-links" id="navLinks">
-      <a href="#stats">Stats</a>
-      <a href="#last-24h">Last 24H</a>
-      <a href="#theater">Theater Map</a>
-      <a href="#air-power">Air Power</a>
-      <a href="#naval">Naval</a>
-      <a href="#inside-iran">Inside Iran</a>
-      <a href="#opposition">Opposition</a>
-      <a href="#nuclear">Nuclear</a>
-      <a href="#hormuz">Hormuz</a>
-      <a href="#military">Military</a>
-      <a href="#scenarios">Scenarios</a>
-    </div>
+<!-- ===== LEFT SIDEBAR ===== -->
+<aside class="left-sidebar" id="leftSidebar" aria-label="Page navigation">
+  <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
+  <div class="sb-header">
+    <div class="sb-brand">&#9632; Iran Report</div>
+    <div class="sb-subtitle">Feb 25, 2026<br>Persian Gulf Theater</div>
   </div>
-</nav>
+  <nav class="sb-nav">
+    <a class="sb-link" href="#stats" data-section="stats"><span class="sb-num">01</span><span class="sb-dot"></span>Key Statistics</a>
+    <a class="sb-link" href="#last-24h" data-section="last-24h"><span class="sb-num">02</span><span class="sb-dot"></span>The Last 24 Hours</a>
+    <a class="sb-link" href="#theater" data-section="theater"><span class="sb-num">03</span><span class="sb-dot"></span>Theater Map</a>
+    <a class="sb-link" href="#air-power" data-section="air-power"><span class="sb-num">04</span><span class="sb-dot"></span>Air Power</a>
+    <a class="sb-link" href="#naval" data-section="naval"><span class="sb-num">05</span><span class="sb-dot"></span>Naval Forces</a>
+    <a class="sb-link" href="#inside-iran" data-section="inside-iran"><span class="sb-num">06</span><span class="sb-dot"></span>Inside Iran</a>
+    <a class="sb-link" href="#opposition" data-section="opposition"><span class="sb-num">07</span><span class="sb-dot"></span>Opposition</a>
+    <a class="sb-link" href="#nuclear" data-section="nuclear"><span class="sb-num">08</span><span class="sb-dot"></span>Nuclear Talks</a>
+    <a class="sb-link" href="#hormuz" data-section="hormuz"><span class="sb-num">09</span><span class="sb-dot"></span>Strait of Hormuz</a>
+    <a class="sb-link" href="#military" data-section="military"><span class="sb-num">10</span><span class="sb-dot"></span>Iran Military</a>
+    <a class="sb-link" href="#scenarios" data-section="scenarios"><span class="sb-num">11</span><span class="sb-dot"></span>Scenarios</a>
+  </nav>
+</aside>
+<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation">&#9776;</button>
 
 <div class="container">
 
@@ -363,32 +332,6 @@
   <div class="stat-box">
     <div class="number" style="color:var(--accent-green);">1.47M</div>
     <div class="label">Rials per<br>US Dollar</div>
-  </div>
-</div>
-
-<!-- ===== METHOD 3: TABLE-OF-CONTENTS CARD ===== -->
-<div class="toc-card">
-  <div class="toc-card-header open" id="tocCardHeader" onclick="toggleTocCard()" role="button" aria-expanded="true" aria-controls="tocCardBody">
-    <div class="toc-card-title">
-      <span>&#9776; Contents</span>
-      <span class="toc-count">11 sections</span>
-    </div>
-    <span class="toc-card-chevron">&#8964;</span>
-  </div>
-  <div class="toc-card-body open" id="tocCardBody">
-    <div class="toc-grid">
-      <a class="toc-grid-item" href="#stats"><span class="toc-icon">&#128202;</span><span class="toc-label"><strong>Key Statistics</strong><small>Casualties, forces &amp; economy</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#last-24h"><span class="toc-icon">&#128680;</span><span class="toc-label"><strong>The Last 24 Hours</strong><small>SOTU, protests, troop movements</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#theater"><span class="toc-icon">&#127758;</span><span class="toc-label"><strong>Theater of Operations</strong><small>Interactive deployment map</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#air-power"><span class="toc-icon">&#9992;</span><span class="toc-label"><strong>Air Power: The Arsenal</strong><small>150+ aircraft in the region</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#naval"><span class="toc-icon">&#9875;</span><span class="toc-label"><strong>Naval Strike Power</strong><small>25+ warships deployed</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#inside-iran"><span class="toc-icon">&#127470;&#127479;</span><span class="toc-label"><strong>Inside Iran</strong><small>Seven converging crises</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#opposition"><span class="toc-icon">&#128081;</span><span class="toc-label"><strong>Reza Pahlavi &amp; Opposition</strong><small>The exile, the roadmap, the dream</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#nuclear"><span class="toc-icon">&#9762;</span><span class="toc-label"><strong>Nuclear Negotiations</strong><small>Geneva talks — last chance?</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#hormuz"><span class="toc-icon">&#9981;</span><span class="toc-label"><strong>Strait of Hormuz</strong><small>Oil's global chokepoint</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#military"><span class="toc-icon">&#127942;</span><span class="toc-label"><strong>Iran's Military Capability</strong><small>Degraded but not destroyed</small></span><span class="toc-arrow">&#8250;</span></a>
-      <a class="toc-grid-item" href="#scenarios"><span class="toc-icon">&#9878;</span><span class="toc-label"><strong>Three Scenarios</strong><small>Deal, stalemate, or war</small></span><span class="toc-arrow">&#8250;</span></a>
-    </div>
   </div>
 </div>
 
@@ -1447,99 +1390,46 @@ document.addEventListener('DOMContentLoaded', function(){
   })();
 
   // ===== NAVIGATION: mobile toggle =====
-  function toggleNav() {
-    var links = document.getElementById('navLinks');
-    var btn = document.getElementById('navToggle');
-    var open = links.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-
-  // ===== NAVIGATION: active section highlighting on scroll =====
+  // ===== LEFT SIDEBAR: active section + progress on scroll =====
   (function() {
     var sectionIds = ['stats','last-24h','theater','air-power','naval','inside-iran','opposition','nuclear','hormuz','military','scenarios'];
-    var navLinks = document.querySelectorAll('.nav-links a');
+    var sbLinks = document.querySelectorAll('.sb-link');
     function onScroll() {
       var scrollY = window.scrollY + 60;
       var active = sectionIds[0];
       for (var i = 0; i < sectionIds.length; i++) {
         var el = document.getElementById(sectionIds[i]);
-        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
-          active = sectionIds[i];
-        }
+        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active = sectionIds[i];
       }
-      navLinks.forEach(function(a) {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + active);
+      sbLinks.forEach(function(a) {
+        a.classList.toggle('active', a.getAttribute('data-section') === active);
       });
+      var pct = (window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight)) * 100;
+      var fill = document.getElementById('sbProgressFill');
+      if (fill) fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
     }
     window.addEventListener('scroll', onScroll, {passive: true});
     onScroll();
   })();
 
-  // ===== METHOD 2: SIDEBAR TOC =====
-  var _tocOpen = false;
-  function openTocDrawer() {
-    _tocOpen = true;
-    document.getElementById('tocDrawer').classList.add('open');
-    document.getElementById('tocOverlay').classList.add('open');
-    document.getElementById('tocFab').style.display = 'none';
-    updateTocDrawer();
+  // ===== LEFT SIDEBAR: mobile toggle =====
+  function toggleSidebar() {
+    var sb = document.getElementById('leftSidebar');
+    var ov = document.getElementById('sbOverlay');
+    var open = sb.classList.toggle('open');
+    ov.classList.toggle('open', open);
   }
-  function closeTocDrawer() {
-    _tocOpen = false;
-    document.getElementById('tocDrawer').classList.remove('open');
-    document.getElementById('tocOverlay').classList.remove('open');
-    document.getElementById('tocFab').style.display = '';
+  function closeSidebar() {
+    document.getElementById('leftSidebar').classList.remove('open');
+    document.getElementById('sbOverlay').classList.remove('open');
   }
-  function updateTocDrawer() {
-    var sectionIds2 = ['stats','last-24h','theater','air-power','naval','inside-iran','opposition','nuclear','hormuz','military','scenarios'];
-    var scrollY = window.scrollY + 80;
-    var active2 = sectionIds2[0];
-    for (var i = 0; i < sectionIds2.length; i++) {
-      var el = document.getElementById(sectionIds2[i]);
-      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active2 = sectionIds2[i];
-    }
-    document.querySelectorAll('.toc-item').forEach(function(a) {
-      a.classList.toggle('active', a.getAttribute('data-section') === active2);
+  // Close sidebar when a link is clicked on mobile
+  document.querySelectorAll('.sb-link').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.innerWidth <= 900) closeSidebar();
     });
-    var pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    var fill = document.getElementById('tocProgressFill');
-    if (fill) fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
-  }
-  window.addEventListener('scroll', function() { if (_tocOpen) updateTocDrawer(); }, {passive: true});
-
-  // ===== METHOD 3: TOC CARD =====
-  function toggleTocCard() {
-    var body = document.getElementById('tocCardBody');
-    var hdr = document.getElementById('tocCardHeader');
-    var open = body.classList.toggle('open');
-    hdr.classList.toggle('open', open);
-  }
+  });
 </script>
-<!-- ===== METHOD 2: SIDEBAR TOC DRAWER ===== -->
-<button class="toc-fab" id="tocFab" onclick="openTocDrawer()" aria-label="Open table of contents">
-  <span class="toc-fab-icon">☰</span>TOC
-</button>
-<div class="toc-overlay" id="tocOverlay" onclick="closeTocDrawer()"></div>
-<aside class="toc-drawer" id="tocDrawer" aria-label="Table of contents">
-  <div class="toc-drawer-header">
-    <h3>Table of Contents</h3>
-    <button class="toc-close" onclick="closeTocDrawer()" aria-label="Close">&#10005;</button>
-  </div>
-  <div class="toc-progress-bar"><div class="toc-progress-fill" id="tocProgressFill"></div></div>
-  <nav class="toc-list">
-    <a class="toc-item" href="#stats" data-section="stats" onclick="closeTocDrawer()"><span class="toc-num">01</span><span class="toc-dot"></span>Key Statistics</a>
-    <a class="toc-item" href="#last-24h" data-section="last-24h" onclick="closeTocDrawer()"><span class="toc-num">02</span><span class="toc-dot"></span>The Last 24 Hours</a>
-    <a class="toc-item" href="#theater" data-section="theater" onclick="closeTocDrawer()"><span class="toc-num">03</span><span class="toc-dot"></span>Theater of Operations</a>
-    <a class="toc-item" href="#air-power" data-section="air-power" onclick="closeTocDrawer()"><span class="toc-num">04</span><span class="toc-dot"></span>Air Power: The Arsenal</a>
-    <a class="toc-item" href="#naval" data-section="naval" onclick="closeTocDrawer()"><span class="toc-num">05</span><span class="toc-dot"></span>Naval Strike Power</a>
-    <a class="toc-item" href="#inside-iran" data-section="inside-iran" onclick="closeTocDrawer()"><span class="toc-num">06</span><span class="toc-dot"></span>Inside Iran</a>
-    <a class="toc-item" href="#opposition" data-section="opposition" onclick="closeTocDrawer()"><span class="toc-num">07</span><span class="toc-dot"></span>Reza Pahlavi &amp; Opposition</a>
-    <a class="toc-item" href="#nuclear" data-section="nuclear" onclick="closeTocDrawer()"><span class="toc-num">08</span><span class="toc-dot"></span>Nuclear Negotiations</a>
-    <a class="toc-item" href="#hormuz" data-section="hormuz" onclick="closeTocDrawer()"><span class="toc-num">09</span><span class="toc-dot"></span>Strait of Hormuz</a>
-    <a class="toc-item" href="#military" data-section="military" onclick="closeTocDrawer()"><span class="toc-num">10</span><span class="toc-dot"></span>Iran's Military Capability</a>
-    <a class="toc-item" href="#scenarios" data-section="scenarios" onclick="closeTocDrawer()"><span class="toc-num">11</span><span class="toc-dot"></span>Three Scenarios</a>
-  </nav>
-</aside>
 
 </body>
 </html>
