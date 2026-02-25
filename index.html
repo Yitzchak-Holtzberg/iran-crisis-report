@@ -9,6 +9,7 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
   :root {
+    --scroll-margin-top: 16px;
     --bg-primary: #0a0a0f;
     --bg-secondary: #12121a;
     --bg-card: #1a1a25;
@@ -200,6 +201,56 @@
     .scenarios-grid { grid-template-columns:1fr !important; }
   }
 
+  /* ===== LEFT SIDEBAR (push-content, never overlays data) ===== */
+  .left-sidebar { position:fixed; left:0; top:0; bottom:0; width:200px; background:var(--bg-secondary); border-right:1px solid var(--border); z-index:1000; display:flex; flex-direction:column; overflow:hidden; transition:width 0.25s cubic-bezier(.4,0,.2,1); }
+  .left-sidebar.collapsed { width:36px; }
+  .sb-progress { height:3px; background:rgba(255,59,59,0.12); flex-shrink:0; }
+  .sb-progress-fill { height:100%; background:var(--accent-red); width:0%; transition:width 0.12s linear; }
+  .sb-header { padding:10px 14px; border-bottom:1px solid var(--border); flex-shrink:0; cursor:pointer; user-select:none; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+  .sb-header .sb-brand { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-red); }
+  .sb-header .sb-subtitle { font-size:10px; color:var(--text-muted); margin-top:3px; line-height:1.4; }
+  .sb-collapse-btn { background:none; border:none; color:var(--text-muted); cursor:pointer; padding:0; font-size:11px; line-height:1; flex-shrink:0; transition:color 0.15s; }
+  .sb-collapse-btn:hover { color:var(--text-primary); }
+  /* Collapsed: show only the toggle button centred in the 36 px strip */
+  .left-sidebar.collapsed .sb-progress { display:none; }
+  .left-sidebar.collapsed .sb-nav { display:none; }
+  .left-sidebar.collapsed .sb-header { height:100%; padding:0; border-bottom:none; flex-direction:column; justify-content:center; align-items:center; gap:0; }
+  .left-sidebar.collapsed .sb-header > div { display:none; }
+  .left-sidebar.collapsed .sb-collapse-btn { font-size:14px; }
+  .sb-nav { flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--border) transparent; padding:8px 0 12px; }
+  .sb-nav::-webkit-scrollbar { width:3px; }
+  .sb-nav::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+  .sb-link { display:flex; align-items:center; gap:10px; padding:9px 16px 9px 0; text-decoration:none; color:var(--text-muted); font-size:12px; border-left:3px solid transparent; transition:all 0.15s; line-height:1.35; }
+  .sb-link:hover { color:var(--text-primary); background:rgba(255,255,255,0.03); border-left-color:var(--accent-orange); text-decoration:none; }
+  .sb-link.active { color:var(--text-primary); background:rgba(255,59,59,0.07); border-left-color:var(--accent-red); }
+  .sb-link .sb-num { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); width:36px; text-align:right; flex-shrink:0; opacity:0.55; }
+  .sb-link.active .sb-num { opacity:1; color:var(--accent-red); }
+  .sb-link .sb-dot { width:6px; height:6px; border-radius:50%; border:1.5px solid var(--text-muted); flex-shrink:0; transition:all 0.15s; }
+  .sb-link.active .sb-dot { background:var(--accent-red); border-color:var(--accent-red); box-shadow:0 0 6px var(--accent-red); }
+  .section-header, .stats-grid { scroll-margin-top:var(--scroll-margin-top); }
+  /* Content pushed right by sidebar — never blocked */
+  .masthead, .ticker-wrap, .container { transition:margin-left 0.25s cubic-bezier(.4,0,.2,1); }
+  body.sb-collapsed .masthead, body.sb-collapsed .ticker-wrap, body.sb-collapsed .container { margin-left:36px; }
+  body.sb-expanded .masthead, body.sb-expanded .ticker-wrap, body.sb-expanded .container { margin-left:200px; }
+  /* Mobile: sidebar becomes full-height slide-in overlay, no margin shifts */
+  .sb-toggle { display:none; position:fixed; bottom:22px; left:16px; z-index:1001; background:var(--accent-red); color:#fff; border:none; cursor:pointer; width:46px; height:46px; border-radius:50%; font-size:22px; line-height:1; box-shadow:0 3px 14px rgba(0,0,0,0.45); transition:background 0.2s; align-items:center; justify-content:center; }
+  .sb-toggle:hover { background:var(--accent-orange); }
+  .sb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; }
+  .sb-overlay.open { display:block; }
+  @media(max-width:900px){
+    .left-sidebar { width:220px; transform:translateX(-100%); transition:transform 0.27s cubic-bezier(.4,0,.2,1); box-shadow:none; }
+    .left-sidebar.open { transform:translateX(0); box-shadow:4px 0 28px rgba(0,0,0,0.5); }
+    /* On mobile always show full panel when open, regardless of collapsed class */
+    .left-sidebar.collapsed .sb-progress { display:block; }
+    .left-sidebar.collapsed .sb-nav { display:flex; flex-direction:column; }
+    .left-sidebar.collapsed .sb-header { height:auto; padding:10px 14px; border-bottom:1px solid var(--border); flex-direction:row; justify-content:space-between; align-items:center; }
+    .left-sidebar.collapsed .sb-header > div { display:block; }
+    .sb-toggle { display:flex; }
+    /* Remove margin shifts on mobile */
+    body.sb-collapsed .masthead, body.sb-collapsed .ticker-wrap, body.sb-collapsed .container,
+    body.sb-expanded .masthead, body.sb-expanded .ticker-wrap, body.sb-expanded .container { margin-left:0; }
+  }
+
   /* Small phones */
   @media(max-width:400px){
     .masthead h1 { font-size:20px; }
@@ -212,7 +263,7 @@
   }
 </style>
 </head>
-<body>
+<body class="sb-collapsed">
 
 <header class="masthead">
   <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
@@ -261,10 +312,37 @@
   </div>
 </div>
 
+<!-- ===== LEFT SIDEBAR ===== -->
+<aside class="left-sidebar collapsed" id="leftSidebar" aria-label="Page navigation">
+  <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
+  <div class="sb-header" onclick="toggleCollapse()">
+    <div>
+      <div class="sb-brand">&#9632; Iran Report</div>
+      <div class="sb-subtitle">Feb 25, 2026<br>Persian Gulf Theater</div>
+    </div>
+    <button class="sb-collapse-btn" id="sbCollapseBtn" aria-label="Toggle navigation panel">&#9654;</button>
+  </div>
+  <nav class="sb-nav">
+    <a class="sb-link" href="#stats" data-section="stats"><span class="sb-num">01</span><span class="sb-dot"></span>Key Statistics</a>
+    <a class="sb-link" href="#last-24h" data-section="last-24h"><span class="sb-num">02</span><span class="sb-dot"></span>The Last 24 Hours</a>
+    <a class="sb-link" href="#theater" data-section="theater"><span class="sb-num">03</span><span class="sb-dot"></span>Theater Map</a>
+    <a class="sb-link" href="#air-power" data-section="air-power"><span class="sb-num">04</span><span class="sb-dot"></span>Air Power</a>
+    <a class="sb-link" href="#naval" data-section="naval"><span class="sb-num">05</span><span class="sb-dot"></span>Naval Forces</a>
+    <a class="sb-link" href="#inside-iran" data-section="inside-iran"><span class="sb-num">06</span><span class="sb-dot"></span>Inside Iran</a>
+    <a class="sb-link" href="#opposition" data-section="opposition"><span class="sb-num">07</span><span class="sb-dot"></span>Opposition</a>
+    <a class="sb-link" href="#nuclear" data-section="nuclear"><span class="sb-num">08</span><span class="sb-dot"></span>Nuclear Talks</a>
+    <a class="sb-link" href="#hormuz" data-section="hormuz"><span class="sb-num">09</span><span class="sb-dot"></span>Strait of Hormuz</a>
+    <a class="sb-link" href="#military" data-section="military"><span class="sb-num">10</span><span class="sb-dot"></span>Iran Military</a>
+    <a class="sb-link" href="#scenarios" data-section="scenarios"><span class="sb-num">11</span><span class="sb-dot"></span>Scenarios</a>
+  </nav>
+</aside>
+<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation">&#9776;</button>
+
 <div class="container">
 
 <!-- ======== TOP STATS ======== -->
-<div class="stats-grid" style="margin-top:40px;">
+<div class="stats-grid" id="stats" style="margin-top:40px;">
   <div class="stat-box">
     <div class="number" style="color:var(--accent-red);">7,015+</div>
     <div class="label">Confirmed Dead<br>(HRANA)</div>
@@ -292,7 +370,7 @@
 </div>
 
 <!-- ======== LAST 24 HOURS ======== -->
-<div class="section-header">
+<div class="section-header" id="last-24h">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#128680;</div>
   <div><h2>The Last 24 Hours</h2></div>
   <span class="severity critical" style="margin-left:auto;">Critical</span>
@@ -304,7 +382,7 @@
 </div>
 
 <!-- ======== THEATER MAP ======== -->
-<div class="section-header">
+<div class="section-header" id="theater">
   <div class="icon" style="background:rgba(74,144,217,0.15);">&#127758;</div>
   <div><h2>Theater of Operations</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Interactive force deployment map — Persian Gulf & Eastern Mediterranean</div></div>
 </div>
@@ -442,7 +520,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 <!-- ======== AIRCRAFT PROFILES ======== -->
-<div class="section-header">
+<div class="section-header" id="air-power">
   <div class="icon" style="background:rgba(0,212,255,0.15);">&#9992;</div>
   <div><h2>Air Power: The Arsenal</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">150+ aircraft surged to the region — the largest aerial deployment since the 2003 Iraq invasion</div></div>
 </div>
@@ -501,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== CARRIER STRIKE GROUPS ======== -->
-<div class="section-header">
+<div class="section-header" id="naval">
   <div class="icon" style="background:rgba(74,144,217,0.15);">&#9875;</div>
   <div><h2>Naval Strike Power</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">25+ warships deployed — over one-third of combat-ready US Navy now in the Middle East &amp; Mediterranean</div></div>
 </div>
@@ -824,7 +902,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== INSIDE IRAN ======== -->
-<div class="section-header">
+<div class="section-header" id="inside-iran">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#127470;&#127479;</div>
   <div><h2>Inside Iran: A Regime Under Siege</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Seven converging crises threatening the Islamic Republic</div></div>
   <span class="severity critical" style="margin-left:auto;">Critical</span>
@@ -1037,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== REZA PAHLAVI ======== -->
-<div class="section-header">
+<div class="section-header" id="opposition">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#128081;</div>
   <div><h2>Reza Pahlavi & the Opposition</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">The exiled prince, the transition roadmap, and the fractured dream of a free Iran</div></div>
 </div>
@@ -1127,7 +1205,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== NUCLEAR TALKS ======== -->
-<div class="section-header">
+<div class="section-header" id="nuclear">
   <div class="icon" style="background:rgba(255,140,66,0.15);">&#9762;</div>
   <div><h2>Nuclear Negotiations</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Thursday's Geneva talks may be the last diplomatic window</div></div>
 </div>
@@ -1169,7 +1247,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== STRAIT OF HORMUZ ======== -->
-<div class="section-header">
+<div class="section-header" id="hormuz">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#9981;</div>
   <div><h2>The Strait of Hormuz: Oil's Chokepoint</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">20 million barrels per day — one-fifth of global supply — passes through a 21-mile-wide strait Iran threatens to close</div></div>
 </div>
@@ -1214,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== IRAN MILITARY CAPABILITY ======== -->
-<div class="section-header">
+<div class="section-header" id="military">
   <div class="icon" style="background:rgba(255,140,66,0.15);">&#127942;</div>
   <div><h2>Iran's Remaining Military Capability</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">After the June 2025 strikes: degraded but not destroyed</div></div>
 </div>
@@ -1255,7 +1333,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== BIG PICTURE ======== -->
-<div class="section-header">
+<div class="section-header" id="scenarios">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#127758;</div>
   <div><h2>The Big Picture: Three Scenarios</h2></div>
 </div>
@@ -1366,6 +1444,57 @@ document.addEventListener('DOMContentLoaded', function(){
       document.getElementById('toggleLabel').textContent = 'Dark';
     }
   })();
+
+  // ===== NAVIGATION: mobile toggle =====
+  // ===== LEFT SIDEBAR: active section + progress on scroll =====
+  (function() {
+    var sectionIds = ['stats','last-24h','theater','air-power','naval','inside-iran','opposition','nuclear','hormuz','military','scenarios'];
+    var sbLinks = document.querySelectorAll('.sb-link');
+    function onScroll() {
+      var scrollY = window.scrollY + 60;
+      var active = sectionIds[0];
+      for (var i = 0; i < sectionIds.length; i++) {
+        var el = document.getElementById(sectionIds[i]);
+        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active = sectionIds[i];
+      }
+      sbLinks.forEach(function(a) {
+        a.classList.toggle('active', a.getAttribute('data-section') === active);
+      });
+      var pct = (window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight)) * 100;
+      var fill = document.getElementById('sbProgressFill');
+      if (fill) fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
+    }
+    window.addEventListener('scroll', onScroll, {passive: true});
+    onScroll();
+  })();
+
+  // ===== LEFT SIDEBAR: collapse toggle (desktop) =====
+  function toggleCollapse() {
+    var sb = document.getElementById('leftSidebar');
+    var btn = document.getElementById('sbCollapseBtn');
+    var collapsed = sb.classList.toggle('collapsed');
+    document.body.classList.toggle('sb-collapsed', collapsed);
+    document.body.classList.toggle('sb-expanded', !collapsed);
+    if (btn) btn.innerHTML = collapsed ? '&#9654;' : '&#9668;';
+  }
+  // ===== LEFT SIDEBAR: mobile toggle =====
+  function toggleSidebar() {
+    var sb = document.getElementById('leftSidebar');
+    var ov = document.getElementById('sbOverlay');
+    var open = sb.classList.toggle('open');
+    ov.classList.toggle('open', open);
+  }
+  function closeSidebar() {
+    document.getElementById('leftSidebar').classList.remove('open');
+    document.getElementById('sbOverlay').classList.remove('open');
+  }
+  // Close sidebar when a link is clicked on mobile
+  document.querySelectorAll('.sb-link').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.innerWidth <= 900) closeSidebar();
+    });
+  });
 </script>
+
 </body>
 </html>
