@@ -200,6 +200,28 @@
     .scenarios-grid { grid-template-columns:1fr !important; }
   }
 
+  /* ===== NAVIGATION MENU ===== */
+  .site-nav { position:sticky; top:0; z-index:1000; background:var(--bg-secondary); border-bottom:2px solid var(--border); box-shadow:0 2px 12px rgba(0,0,0,0.4); }
+  .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; align-items:center; overflow:hidden; }
+  .nav-brand { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-red); padding:10px 16px 10px 0; border-right:1px solid var(--border); margin-right:4px; white-space:nowrap; flex-shrink:0; }
+  .nav-links { display:flex; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
+  .nav-links::-webkit-scrollbar { display:none; }
+  .nav-links a { display:inline-block; padding:10px 14px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); text-decoration:none; white-space:nowrap; border-bottom:2px solid transparent; transition:color 0.2s,border-color 0.2s; }
+  .nav-links a:hover { color:var(--text-primary); border-bottom-color:var(--accent-orange); text-decoration:none; }
+  .nav-links a.active { color:var(--accent-red); border-bottom-color:var(--accent-red); }
+  .nav-toggle { display:none; background:none; border:none; cursor:pointer; padding:8px 0 8px 12px; color:var(--text-secondary); font-size:22px; line-height:1; flex-shrink:0; }
+  .section-header, .stats-grid { scroll-margin-top:46px; }
+  @media(max-width:768px){
+    .nav-inner { flex-wrap:wrap; padding:0; overflow:visible; }
+    .nav-brand { padding:10px 14px; border-right:none; flex:1; }
+    .nav-toggle { display:block; padding:10px 14px; }
+    .nav-links { display:none; width:100%; flex-direction:column; border-top:1px solid var(--border); }
+    .nav-links.open { display:flex; }
+    .nav-links a { padding:9px 16px; border-bottom:none; border-left:3px solid transparent; }
+    .nav-links a:hover { border-left-color:var(--accent-orange); border-bottom:none; }
+    .nav-links a.active { border-left-color:var(--accent-red); border-bottom:none; }
+  }
+
   /* Small phones */
   @media(max-width:400px){
     .masthead h1 { font-size:20px; }
@@ -249,10 +271,30 @@
   </div>
 </div>
 
+<nav class="site-nav" id="site-nav" aria-label="Page sections">
+  <div class="nav-inner">
+    <span class="nav-brand">&#9776; Index</span>
+    <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#stats">Stats</a>
+      <a href="#last-24h">Last 24H</a>
+      <a href="#theater">Theater Map</a>
+      <a href="#air-power">Air Power</a>
+      <a href="#naval">Naval</a>
+      <a href="#inside-iran">Inside Iran</a>
+      <a href="#opposition">Opposition</a>
+      <a href="#nuclear">Nuclear</a>
+      <a href="#hormuz">Hormuz</a>
+      <a href="#military">Military</a>
+      <a href="#scenarios">Scenarios</a>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
 
 <!-- ======== TOP STATS ======== -->
-<div class="stats-grid" style="margin-top:40px;">
+<div class="stats-grid" id="stats" style="margin-top:40px;">
   <div class="stat-box">
     <div class="number" style="color:var(--accent-red);">7,015+</div>
     <div class="label">Confirmed Dead<br>(HRANA)</div>
@@ -280,7 +322,7 @@
 </div>
 
 <!-- ======== LAST 24 HOURS ======== -->
-<div class="section-header">
+<div class="section-header" id="last-24h">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#128680;</div>
   <div><h2>The Last 24 Hours</h2></div>
   <span class="severity critical" style="margin-left:auto;">Critical</span>
@@ -292,7 +334,7 @@
 </div>
 
 <!-- ======== THEATER MAP ======== -->
-<div class="section-header">
+<div class="section-header" id="theater">
   <div class="icon" style="background:rgba(74,144,217,0.15);">&#127758;</div>
   <div><h2>Theater of Operations</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Interactive force deployment map — Persian Gulf & Eastern Mediterranean</div></div>
 </div>
@@ -430,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 <!-- ======== AIRCRAFT PROFILES ======== -->
-<div class="section-header">
+<div class="section-header" id="air-power">
   <div class="icon" style="background:rgba(0,212,255,0.15);">&#9992;</div>
   <div><h2>Air Power: The Arsenal</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">150+ aircraft surged to the region — the largest aerial deployment since the 2003 Iraq invasion</div></div>
 </div>
@@ -489,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== CARRIER STRIKE GROUPS ======== -->
-<div class="section-header">
+<div class="section-header" id="naval">
   <div class="icon" style="background:rgba(74,144,217,0.15);">&#9875;</div>
   <div><h2>Naval Strike Power</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">25+ warships deployed — over one-third of combat-ready US Navy now in the Middle East &amp; Mediterranean</div></div>
 </div>
@@ -803,7 +845,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== INSIDE IRAN ======== -->
-<div class="section-header">
+<div class="section-header" id="inside-iran">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#127470;&#127479;</div>
   <div><h2>Inside Iran: A Regime Under Siege</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Seven converging crises threatening the Islamic Republic</div></div>
   <span class="severity critical" style="margin-left:auto;">Critical</span>
@@ -1011,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== REZA PAHLAVI ======== -->
-<div class="section-header">
+<div class="section-header" id="opposition">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#128081;</div>
   <div><h2>Reza Pahlavi & the Opposition</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">The exiled prince, the transition roadmap, and the fractured dream of a free Iran</div></div>
 </div>
@@ -1101,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== NUCLEAR TALKS ======== -->
-<div class="section-header">
+<div class="section-header" id="nuclear">
   <div class="icon" style="background:rgba(255,140,66,0.15);">&#9762;</div>
   <div><h2>Nuclear Negotiations</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Thursday's Geneva talks may be the last diplomatic window</div></div>
 </div>
@@ -1143,7 +1185,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== STRAIT OF HORMUZ ======== -->
-<div class="section-header">
+<div class="section-header" id="hormuz">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#9981;</div>
   <div><h2>The Strait of Hormuz: Oil's Chokepoint</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">20 million barrels per day — one-fifth of global supply — passes through a 21-mile-wide strait Iran threatens to close</div></div>
 </div>
@@ -1188,7 +1230,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== IRAN MILITARY CAPABILITY ======== -->
-<div class="section-header">
+<div class="section-header" id="military">
   <div class="icon" style="background:rgba(255,140,66,0.15);">&#127942;</div>
   <div><h2>Iran's Remaining Military Capability</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">After the June 2025 strikes: degraded but not destroyed</div></div>
 </div>
@@ -1225,7 +1267,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <!-- ======== BIG PICTURE ======== -->
-<div class="section-header">
+<div class="section-header" id="scenarios">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#127758;</div>
   <div><h2>The Big Picture: Three Scenarios</h2></div>
 </div>
@@ -1331,6 +1373,35 @@ document.addEventListener('DOMContentLoaded', function(){
       document.getElementById('toggleIcon').textContent = '🌙';
       document.getElementById('toggleLabel').textContent = 'Dark';
     }
+  })();
+
+  // ===== NAVIGATION: mobile toggle =====
+  function toggleNav() {
+    var links = document.getElementById('navLinks');
+    var btn = document.getElementById('navToggle');
+    var open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  // ===== NAVIGATION: active section highlighting on scroll =====
+  (function() {
+    var sectionIds = ['stats','last-24h','theater','air-power','naval','inside-iran','opposition','nuclear','hormuz','military','scenarios'];
+    var navLinks = document.querySelectorAll('.nav-links a');
+    function onScroll() {
+      var scrollY = window.scrollY + 60;
+      var active = sectionIds[0];
+      for (var i = 0; i < sectionIds.length; i++) {
+        var el = document.getElementById(sectionIds[i]);
+        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+          active = sectionIds[i];
+        }
+      }
+      navLinks.forEach(function(a) {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + active);
+      });
+    }
+    window.addEventListener('scroll', onScroll, {passive: true});
+    onScroll();
   })();
 </script>
 </body>
