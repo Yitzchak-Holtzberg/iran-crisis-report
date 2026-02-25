@@ -103,6 +103,66 @@
   .crisis-card p { font-size:13px; color:var(--text-secondary); margin-bottom:8px; }
   .crisis-card .meter { display:flex; gap:3px; margin:8px 0; }
   .crisis-card .meter .seg { width:24px;height:8px;border-radius:2px;background:var(--bg-primary); }
+
+  /* ===== MOBILE RESPONSIVE ===== */
+  @media(max-width:768px){
+    .masthead { padding:36px 16px 28px; }
+    .masthead h1 { font-size:clamp(22px,6vw,36px); }
+    .masthead .dateline { font-size:10px; letter-spacing:0.5px; }
+    .masthead .label { font-size:9px; letter-spacing:2px; }
+    .container { padding:0 12px; }
+    .section-header { margin:36px 0 20px; gap:10px; }
+    .section-header .icon { width:36px; height:36px; font-size:18px; border-radius:8px; }
+    .section-header h2 { font-size:20px; }
+    .section-header div[style] { font-size:11px !important; }
+    .card { padding:18px 14px; border-radius:8px; margin-bottom:14px; }
+    .card h3 { font-size:17px; }
+    .card p { font-size:13px; }
+    .stats-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+    .stat-box { padding:14px 10px; }
+    .stat-box .number { font-size:22px; }
+    .stat-box .label { font-size:9px; letter-spacing:1px; }
+    .chart-container { padding:16px 12px; }
+    .bar-row { flex-direction:column; align-items:flex-start; gap:4px; }
+    .bar-label { width:auto; text-align:left; font-size:12px; }
+    .bar-track { width:100%; height:24px; }
+    .bar-fill { font-size:10px; padding-left:6px; }
+    .aircraft-grid { grid-template-columns:1fr; gap:14px; }
+    .aircraft-card { padding:14px; }
+    .aircraft-card img { max-width:100%; height:auto; }
+    .crisis-grid { grid-template-columns:1fr; gap:14px; }
+    .crisis-card { padding:16px; }
+    .force-table { font-size:11px; display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .force-table th, .force-table td { padding:8px 10px; white-space:nowrap; }
+    .quote-block { padding:18px 16px; }
+    .quote-block .text { font-size:13px; }
+    .quote-block::before { font-size:40px; left:10px; }
+    .callout { padding:12px 14px; font-size:13px; }
+    .timeline { padding-left:24px; }
+    .tl-dot { left:-20px; width:10px; height:10px; }
+    .tl-item .date { font-size:10px; }
+    .tl-item .content { font-size:13px; }
+    .map-container { padding:10px; border-radius:8px; }
+    #theater-map { height:350px !important; border-radius:8px !important; }
+    .map-legend { gap:8px; }
+    .map-legend-item { font-size:10px; }
+    .svg-graphic { max-width:100%; height:auto; }
+    .ticker { font-size:10px; }
+    footer { padding:24px 12px; font-size:10px; }
+    footer div[style*="grid-template-columns"] { grid-template-columns:1fr !important; gap:4px !important; }
+    .scenarios-grid { grid-template-columns:1fr !important; }
+  }
+
+  /* Small phones */
+  @media(max-width:400px){
+    .masthead h1 { font-size:20px; }
+    .stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
+    .stat-box .number { font-size:18px; }
+    .stat-box .label { font-size:8px; }
+    .section-header h2 { font-size:17px; }
+    .card { padding:14px 10px; }
+    .card h3 { font-size:15px; }
+  }
 </style>
 </head>
 <body>
@@ -891,7 +951,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <div class="card">
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+  <div class="scenarios-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
     <div class="callout blue" style="margin:0;">
       <div class="callout-title">Scenario 1: Deal</div>
       <p style="font-size:13px;color:var(--text-secondary);">Iran accepts enrichment limits in Geneva. Sanctions eased. Military stands down. <strong>Likelihood: Low.</strong> Khamenei's rhetoric makes concessions politically impossible without losing face.</p>
