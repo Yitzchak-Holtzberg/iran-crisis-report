@@ -1,0 +1,32 @@
+/* ===== DESIGN TOKENS — dark (default) & light theme overrides ===== */
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a25;
+  --accent-red: #ff3b3b;
+  --accent-orange: #ff8c42;
+  --accent-gold: #ffd700;
+  --accent-blue: #4a90d9;
+  --accent-cyan: #00d4ff;
+  --accent-green: #00c853;
+  --text-primary: #e8e8f0;
+  --text-secondary: #9898a8;
+  --text-muted: #6a6a7a;
+  --border: #2a2a3a;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f5f5f7;
+  --bg-secondary: #e8e8ed;
+  --bg-card: #ffffff;
+  --accent-red: #d92b2b;
+  --accent-orange: #e07530;
+  --accent-gold: #b8970a;
+  --accent-blue: #2a6bbf;
+  --accent-cyan: #0077aa;
+  --accent-green: #007a30;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a5a;
+  --text-muted: #7a7a8a;
+  --border: #d0d0dc;
+}

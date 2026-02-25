@@ -1,0 +1,9 @@
+/* ===== BASE RESET & GLOBAL LAYOUT ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg-primary); color:var(--text-primary); font-family:'Inter',sans-serif; line-height:1.7; overflow-x:hidden; }
+.container { max-width:1200px; margin:0 auto; padding:0 24px; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+a { color:var(--accent-cyan); text-decoration:none; }
+a:hover { text-decoration:underline; }
+footer { text-align:center; padding:40px 20px; border-top:1px solid var(--border); margin-top:60px; font-size:12px; color:var(--text-muted); }
+.svg-graphic { display:block; margin:0 auto; max-width:100%; }

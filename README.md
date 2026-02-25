@@ -8,15 +8,40 @@ An open-source intelligence briefing on the Iran crisis, compiled from 40+ inter
 
 ```
 iran-crisis-report/
-├── index.html          # Main report page
+├── index.html              # Main report page — HTML structure only
+│
 ├── assets/
 │   ├── css/
-│   │   └── style.css   # All styles (dark/light theme, responsive layout)
+│   │   ├── style.css       # Master stylesheet — @imports all modules below
+│   │   ├── variables.css   # CSS custom properties (dark & light theme tokens)
+│   │   ├── base.css        # Reset, body, container, links, footer
+│   │   ├── components.css  # Cards, callouts, stats, charts, timeline, tables, quotes
+│   │   ├── sections.css    # Masthead, ticker, aircraft, map, carriers, section headers
+│   │   └── responsive.css  # Mobile breakpoints (768px, 400px)
+│   │
 │   └── js/
-│       ├── map.js      # Interactive theater-of-operations map (Leaflet)
-│       └── theme.js    # Dark/light theme toggle with localStorage persistence
-└── README.md
+│       ├── map.js          # Theater-of-operations map rendering (Leaflet)
+│       └── theme.js        # Dark/light theme toggle + localStorage persistence
+│
+└── data/
+    ├── map-markers.js      # All map coordinates & popup text (window.MAP_MARKERS)
+    └── ticker.js           # Breaking news headlines + DOM injection (TICKER_ITEMS)
 ```
+
+## Architecture
+
+The project follows a **data ↔ logic ↔ presentation** separation:
+
+| Layer | Files | Responsibility |
+|---|---|---|
+| **Data** | `data/*.js` | Raw content — coordinates, headlines, popup text |
+| **Logic** | `assets/js/*.js` | Behaviour — map rendering, theme switching |
+| **Style** | `assets/css/*.css` | Visual design — modular CSS with clear purpose per file |
+| **Structure** | `index.html` | HTML skeleton only — no inline CSS or JS |
+
+To **update the map**, edit `data/map-markers.js` — no JS rendering knowledge needed.  
+To **update the ticker**, edit `data/ticker.js` — just update the `TICKER_ITEMS` array.  
+To **change colours or theme**, edit `assets/css/variables.css`.
 
 ## What's Inside
 
@@ -35,7 +60,7 @@ iran-crisis-report/
 
 ## Usage
 
-Open `index.html` in any modern browser. No build tools or server required — the page is entirely static and self-contained, loading Leaflet from CDN.
+Open `index.html` in any modern browser. No build tools, server, or dependencies required — the page is entirely static and loads Leaflet from CDN.
 
 ## Sources
 
@@ -43,4 +68,4 @@ All claims are linked in the footer. Primary sources include USNI Fleet Tracker,
 
 ## Contributing
 
-Pull requests are welcome for corrections, updated data, or new sections. Please cite sources for any new factual claims.
+Pull requests are welcome for corrections, updated data, or new sections. Please cite sources for any new factual claims. When adding new map markers, edit only `data/map-markers.js`. When updating headlines, edit only `data/ticker.js`.
