@@ -141,6 +141,13 @@
   .carrier-card .wing-tags { display:flex; flex-wrap:wrap; gap:5px; }
   .carrier-card .wing-tag { background:rgba(74,144,217,0.1); border:1px solid rgba(74,144,217,0.25); color:#6a9ad9; font-size:10px; font-family:'JetBrains Mono',monospace; padding:3px 8px; border-radius:4px; }
   .carrier-card .csg-diagram { display:block; width:100%; margin:0 0 14px; border-radius:6px; overflow:hidden; }
+  [data-theme="light"] .csg-diagram { filter: brightness(2.0) contrast(0.78) saturate(0.7); }
+  /* Map icon badge classes for theme-aware blocked/spinup labels */
+  .map-badge { display:inline-block; border-radius:6px; padding:4px 8px; font-family:'JetBrains Mono',monospace; font-size:9px; white-space:nowrap; text-align:center; font-weight:700; }
+  .map-badge-denied { background:rgba(10,10,20,0.88); border:1px dashed #ff3b3b; color:#ff3b3b; }
+  .map-badge-spinup { background:rgba(10,10,20,0.88); border:1px dashed #ff8c42; color:#ff8c42; }
+  [data-theme="light"] .map-badge-denied { background:rgba(255,255,255,0.93); }
+  [data-theme="light"] .map-badge-spinup { background:rgba(255,255,255,0.93); }
 
   /* ===== MOBILE RESPONSIVE ===== */
   @media(max-width:768px){
@@ -295,17 +302,30 @@
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   var map = L.map('theater-map',{zoomControl:true,scrollWheelZoom:false,attributionControl:false}).setView([28,48],4);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd'}).addTo(map);
+  var isLightNow = document.documentElement.getAttribute('data-theme')==='light';
+  var tileUrl = isLightNow
+    ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+    : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+  window._theaterTileLayer = L.tileLayer(tileUrl,{maxZoom:19,subdomains:'abcd'}).addTo(map);
+  window._theaterMap = map;
 
-  function icon(color,size){return L.divIcon({className:'',html:'<div style="width:'+size+'px;height:'+size+'px;background:'+color+';border-radius:50%;border:2px solid rgba(255,255,255,0.3);box-shadow:0 0 '+(size*2)+'px '+color+',0 0 '+(size)+'px '+color+';"></div>',iconSize:[size,size],iconAnchor:[size/2,size/2]});}
-  function shipIcon(){return L.divIcon({className:'',html:'<div style="font-size:28px;filter:drop-shadow(0 0 8px #4a90d9);">&#9875;</div>',iconSize:[28,28],iconAnchor:[14,14]});}
-  function ddgIcon(){return L.divIcon({className:'',html:'<div style="font-size:16px;filter:drop-shadow(0 0 5px #4a90d9);">&#128674;</div>',iconSize:[16,16],iconAnchor:[8,8]});}
-  function lcsIcon(){return L.divIcon({className:'',html:'<div style="font-size:14px;filter:drop-shadow(0 0 4px #6ab0ff);opacity:0.8;">&#128674;</div>',iconSize:[14,14],iconAnchor:[7,7]});}
-  function subIcon(){return L.divIcon({className:'',html:'<div style="font-size:18px;filter:drop-shadow(0 0 6px #7a5af0);">&#128011;</div>',iconSize:[18,18],iconAnchor:[9,9]});}
-  function jetIcon(){return L.divIcon({className:'',html:'<div style="font-size:22px;filter:drop-shadow(0 0 6px #00d4ff);">&#9992;</div>',iconSize:[22,22],iconAnchor:[11,11]});}
-  function nukeIcon(){return L.divIcon({className:'',html:'<div style="font-size:22px;filter:drop-shadow(0 0 8px #ff8c42);">&#9762;&#65039;</div>',iconSize:[22,22],iconAnchor:[11,11]});}
-  function blockedIcon(){return L.divIcon({className:'',html:'<div style="background:rgba(20,20,30,0.9);border:1px dashed #ff3b3b;border-radius:6px;padding:4px 8px;font-family:JetBrains Mono,monospace;font-size:9px;color:#ff3b3b;white-space:nowrap;text-align:center;"><b>ACCESS DENIED</b></div>',iconSize:[100,24],iconAnchor:[50,12]});}
-  function spinupIcon(){return L.divIcon({className:'',html:'<div style="background:rgba(20,20,30,0.9);border:1px dashed #ff8c42;border-radius:6px;padding:4px 8px;font-family:JetBrains Mono,monospace;font-size:9px;color:#ff8c42;white-space:nowrap;text-align:center;"><b>SPINNING UP</b></div>',iconSize:[90,24],iconAnchor:[45,12]});}
+  // Dot icon for protest/city markers — drop-shadow added for visibility on light tiles
+  function icon(color,size){return L.divIcon({className:'',html:'<div style="width:'+size+'px;height:'+size+'px;background:'+color+';border-radius:50%;border:2px solid rgba(255,255,255,0.5);box-shadow:0 0 '+(size*2)+'px '+color+',0 0 '+(size)+'px '+color+',0 2px 4px rgba(0,0,0,0.55);"></div>',iconSize:[size,size],iconAnchor:[size/2,size/2]});}
+  // Carrier (CVN) — anchor in solid circle
+  function shipIcon(){return L.divIcon({className:'',html:'<div style="width:34px;height:34px;background:#0d2a50;border:2.5px solid #4a90d9;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;line-height:1;box-shadow:0 0 12px rgba(74,144,217,0.55),0 2px 5px rgba(0,0,0,0.55);">&#9875;</div>',iconSize:[34,34],iconAnchor:[17,17]});}
+  // Destroyer / Cruiser — ship in solid circle
+  function ddgIcon(){return L.divIcon({className:'',html:'<div style="width:22px;height:22px;background:#0d2a50;border:2px solid #4a90d9;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;line-height:1;box-shadow:0 0 8px rgba(74,144,217,0.45),0 1px 3px rgba(0,0,0,0.5);">&#128674;</div>',iconSize:[22,22],iconAnchor:[11,11]});}
+  // LCS — smaller ship circle
+  function lcsIcon(){return L.divIcon({className:'',html:'<div style="width:18px;height:18px;background:#0a2248;border:1.5px solid #5a95cc;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;line-height:1;box-shadow:0 0 6px rgba(90,149,204,0.4),0 1px 2px rgba(0,0,0,0.5);">&#128674;</div>',iconSize:[18,18],iconAnchor:[9,9]});}
+  // Submarine — SSN badge (no whale emoji)
+  function subIcon(){return L.divIcon({className:'',html:'<div style="width:28px;height:28px;background:#160530;border:2px solid #7a5af0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:JetBrains Mono,monospace;font-size:7.5px;font-weight:700;color:#9a7af0;letter-spacing:-0.5px;box-shadow:0 0 10px rgba(122,90,240,0.5),0 2px 4px rgba(0,0,0,0.5);">SSN</div>',iconSize:[28,28],iconAnchor:[14,14]});}
+  // Air base — plane in solid circle
+  function jetIcon(){return L.divIcon({className:'',html:'<div style="width:28px;height:28px;background:#081c30;border:2px solid #00d4ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1;box-shadow:0 0 10px rgba(0,212,255,0.5),0 2px 4px rgba(0,0,0,0.5);">&#9992;</div>',iconSize:[28,28],iconAnchor:[14,14]});}
+  // Nuclear facility — radioactive in solid circle
+  function nukeIcon(){return L.divIcon({className:'',html:'<div style="width:28px;height:28px;background:#1c0800;border:2px solid #ff8c42;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1;box-shadow:0 0 10px rgba(255,140,66,0.5),0 2px 4px rgba(0,0,0,0.5);">&#9762;&#65039;</div>',iconSize:[28,28],iconAnchor:[14,14]});}
+  // Blocked / Denied — CSS-class badge (theme-aware via stylesheet)
+  function blockedIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-denied"><b>ACCESS DENIED</b></div>',iconSize:[100,24],iconAnchor:[50,12]});}
+  function spinupIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-spinup"><b>SPINNING UP</b></div>',iconSize:[90,24],iconAnchor:[45,12]});}
 
   // Iran - red highlight
   L.circle([32.5,53],{radius:700000,color:'#ff3b3b',fillColor:'#ff3b3b',fillOpacity:0.06,weight:1,dashArray:'6,4'}).addTo(map);
@@ -1294,6 +1314,14 @@ document.addEventListener('DOMContentLoaded', function(){
       document.getElementById('toggleIcon').textContent = '🌙';
       document.getElementById('toggleLabel').textContent = 'Dark';
       localStorage.setItem('theme', 'light');
+    }
+    // Swap map tile layer between dark and light CartoDB styles
+    if (window._theaterMap && window._theaterTileLayer) {
+      window._theaterMap.removeLayer(window._theaterTileLayer);
+      var newUrl = isLight
+        ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+      window._theaterTileLayer = L.tileLayer(newUrl,{maxZoom:19,subdomains:'abcd'}).addTo(window._theaterMap);
     }
   }
   (function() {
