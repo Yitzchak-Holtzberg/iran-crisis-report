@@ -9,6 +9,7 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
   :root {
+    --scroll-margin-top: 16px;
     --bg-primary: #0a0a0f;
     --bg-secondary: #12121a;
     --bg-card: #1a1a25;
@@ -219,7 +220,7 @@
   .sb-link.active .sb-dot { background:var(--accent-red); border-color:var(--accent-red); box-shadow:0 0 6px var(--accent-red); }
   /* Push all page content to the right of the sidebar */
   .masthead, .ticker-wrap, .container { margin-left:220px; }
-  .section-header, .stats-grid { scroll-margin-top:16px; }
+  .section-header, .stats-grid { scroll-margin-top:var(--scroll-margin-top); }
   /* Mobile: sidebar becomes overlay, content goes full-width */
   .sb-toggle { display:none; position:fixed; bottom:22px; left:16px; z-index:1001; background:var(--accent-red); color:#fff; border:none; cursor:pointer; width:46px; height:46px; border-radius:50%; font-size:22px; line-height:1; box-shadow:0 3px 14px rgba(0,0,0,0.45); transition:background 0.2s; align-items:center; justify-content:center; }
   .sb-toggle:hover { background:var(--accent-orange); }
