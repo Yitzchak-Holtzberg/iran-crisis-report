@@ -1,5 +1,6 @@
 /* ===== DESIGN TOKENS — dark (default) & light theme overrides ===== */
 :root {
+  --scroll-margin-top: 16px;
   --bg-primary: #0a0a0f;
   --bg-secondary: #12121a;
   --bg-card: #1a1a25;

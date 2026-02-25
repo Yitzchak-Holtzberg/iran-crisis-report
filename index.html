@@ -29,10 +29,37 @@
   <div class="ticker"></div>
 </div>
 
+<!-- ===== LEFT SIDEBAR ===== -->
+<aside class="left-sidebar collapsed" id="leftSidebar" aria-label="Page navigation">
+  <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
+  <div class="sb-header" onclick="toggleCollapse()">
+    <div>
+      <div class="sb-brand">&#9632; Iran Report</div>
+      <div class="sb-subtitle">Feb 25, 2026<br>Persian Gulf Theater</div>
+    </div>
+    <button class="sb-collapse-btn" id="sbCollapseBtn" aria-label="Toggle navigation panel">&#9654;</button>
+  </div>
+  <nav class="sb-nav">
+    <a class="sb-link" href="#stats" data-section="stats"><span class="sb-num">01</span><span class="sb-dot"></span>Key Statistics</a>
+    <a class="sb-link" href="#last-24h" data-section="last-24h"><span class="sb-num">02</span><span class="sb-dot"></span>The Last 24 Hours</a>
+    <a class="sb-link" href="#theater" data-section="theater"><span class="sb-num">03</span><span class="sb-dot"></span>Theater Map</a>
+    <a class="sb-link" href="#air-power" data-section="air-power"><span class="sb-num">04</span><span class="sb-dot"></span>Air Power</a>
+    <a class="sb-link" href="#naval" data-section="naval"><span class="sb-num">05</span><span class="sb-dot"></span>Naval Forces</a>
+    <a class="sb-link" href="#inside-iran" data-section="inside-iran"><span class="sb-num">06</span><span class="sb-dot"></span>Inside Iran</a>
+    <a class="sb-link" href="#opposition" data-section="opposition"><span class="sb-num">07</span><span class="sb-dot"></span>Opposition</a>
+    <a class="sb-link" href="#nuclear" data-section="nuclear"><span class="sb-num">08</span><span class="sb-dot"></span>Nuclear Talks</a>
+    <a class="sb-link" href="#hormuz" data-section="hormuz"><span class="sb-num">09</span><span class="sb-dot"></span>Strait of Hormuz</a>
+    <a class="sb-link" href="#military" data-section="military"><span class="sb-num">10</span><span class="sb-dot"></span>Iran Military</a>
+    <a class="sb-link" href="#scenarios" data-section="scenarios"><span class="sb-num">11</span><span class="sb-dot"></span>Scenarios</a>
+  </nav>
+</aside>
+<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation">&#9776;</button>
+
 <div class="container">
 
 <!-- ======== TOP STATS ======== -->
-<div class="stats-grid" style="margin-top:40px;">
+<div class="stats-grid" id="stats" style="margin-top:40px;">
   <div class="stat-box">
     <div class="number" style="color:var(--accent-red);">7,015+</div>
     <div class="label">Confirmed Dead<br>(HRANA)</div>
@@ -60,7 +87,7 @@
 </div>
 
 <!-- ======== LAST 24 HOURS ======== -->
-<div class="section-header">
+<div class="section-header" id="last-24h">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#128680;</div>
   <div><h2>The Last 24 Hours</h2></div>
   <span class="severity critical" style="margin-left:auto;">Critical</span>
@@ -72,7 +99,7 @@
 </div>
 
 <!-- ======== THEATER MAP ======== -->
-<div class="section-header">
+<div class="section-header" id="theater">
   <div class="icon" style="background:rgba(74,144,217,0.15);">&#127758;</div>
   <div><h2>Theater of Operations</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Interactive force deployment map — Persian Gulf & Eastern Mediterranean</div></div>
 </div>
@@ -99,7 +126,7 @@
 
 
 <!-- ======== AIRCRAFT PROFILES ======== -->
-<div class="section-header">
+<div class="section-header" id="air-power">
   <div class="icon" style="background:rgba(0,212,255,0.15);">&#9992;</div>
   <div><h2>Air Power: The Arsenal</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">150+ aircraft surged to the region — the largest aerial deployment since the 2003 Iraq invasion</div></div>
 </div>
@@ -158,7 +185,7 @@
 </div>
 
 <!-- ======== CARRIER STRIKE GROUPS ======== -->
-<div class="section-header">
+<div class="section-header" id="naval">
   <div class="icon" style="background:rgba(74,144,217,0.15);">&#9875;</div>
   <div><h2>Naval Strike Power</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">25+ warships deployed — over one-third of combat-ready US Navy now in the Middle East &amp; Mediterranean</div></div>
 </div>
@@ -481,7 +508,7 @@
 </div>
 
 <!-- ======== INSIDE IRAN ======== -->
-<div class="section-header">
+<div class="section-header" id="inside-iran">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#127470;&#127479;</div>
   <div><h2>Inside Iran: A Regime Under Siege</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Seven converging crises threatening the Islamic Republic</div></div>
   <span class="severity critical" style="margin-left:auto;">Critical</span>
@@ -694,7 +721,7 @@
 </div>
 
 <!-- ======== REZA PAHLAVI ======== -->
-<div class="section-header">
+<div class="section-header" id="opposition">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#128081;</div>
   <div><h2>Reza Pahlavi & the Opposition</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">The exiled prince, the transition roadmap, and the fractured dream of a free Iran</div></div>
 </div>
@@ -784,7 +811,7 @@
 </div>
 
 <!-- ======== NUCLEAR TALKS ======== -->
-<div class="section-header">
+<div class="section-header" id="nuclear">
   <div class="icon" style="background:rgba(255,140,66,0.15);">&#9762;</div>
   <div><h2>Nuclear Negotiations</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Thursday's Geneva talks may be the last diplomatic window</div></div>
 </div>
@@ -826,7 +853,7 @@
 </div>
 
 <!-- ======== STRAIT OF HORMUZ ======== -->
-<div class="section-header">
+<div class="section-header" id="hormuz">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#9981;</div>
   <div><h2>The Strait of Hormuz: Oil's Chokepoint</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">20 million barrels per day — one-fifth of global supply — passes through a 21-mile-wide strait Iran threatens to close</div></div>
 </div>
@@ -871,7 +898,7 @@
 </div>
 
 <!-- ======== IRAN MILITARY CAPABILITY ======== -->
-<div class="section-header">
+<div class="section-header" id="military">
   <div class="icon" style="background:rgba(255,140,66,0.15);">&#127942;</div>
   <div><h2>Iran's Remaining Military Capability</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">After the June 2025 strikes: degraded but not destroyed</div></div>
 </div>
@@ -912,7 +939,7 @@
 </div>
 
 <!-- ======== BIG PICTURE ======== -->
-<div class="section-header">
+<div class="section-header" id="scenarios">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#127758;</div>
   <div><h2>The Big Picture: Three Scenarios</h2></div>
 </div>
@@ -994,6 +1021,7 @@
 <script src="data/map-markers.js"></script>
 <script src="assets/js/map.js"></script>
 <script src="data/ticker.js"></script>
+<script src="assets/js/sidebar.js"></script>
 <script src="assets/js/theme.js"></script>
 </body>
 </html>

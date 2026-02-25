@@ -1,6 +1,8 @@
 /* ===== BASE RESET & GLOBAL LAYOUT ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--bg-primary); color:var(--text-primary); font-family:'Inter',sans-serif; line-height:1.7; overflow-x:hidden; }
+body { background:var(--bg-primary); color:var(--text-primary); font-family:'Inter',sans-serif; line-height:1.7; overflow-x:hidden; transition:padding-left 0.25s cubic-bezier(.4,0,.2,1); }
+body.sb-collapsed { padding-left:36px; }
+body.sb-expanded { padding-left:200px; }
 .container { max-width:1200px; margin:0 auto; padding:0 24px; }
 .two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 a { color:var(--accent-cyan); text-decoration:none; }
