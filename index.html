@@ -201,14 +201,20 @@
     .scenarios-grid { grid-template-columns:1fr !important; }
   }
 
-  /* ===== LEFT SIDEBAR ===== */
-  .left-sidebar { position:fixed; left:0; top:0; bottom:0; width:220px; background:var(--bg-secondary); border-right:1px solid var(--border); z-index:1000; display:flex; flex-direction:column; overflow:hidden; }
+  /* ===== LEFT SIDEBAR (collapsible floating panel) ===== */
+  .left-sidebar { position:fixed; left:0; top:50%; transform:translateY(-50%); width:200px; max-height:80vh; background:var(--bg-secondary); border:1px solid var(--border); border-left:none; border-radius:0 10px 10px 0; box-shadow:4px 4px 24px rgba(0,0,0,0.4); z-index:1000; display:flex; flex-direction:column; overflow:hidden; }
   .sb-progress { height:3px; background:rgba(255,59,59,0.12); flex-shrink:0; }
   .sb-progress-fill { height:100%; background:var(--accent-red); width:0%; transition:width 0.12s linear; }
-  .sb-header { padding:16px 18px 14px; border-bottom:1px solid var(--border); flex-shrink:0; }
+  .sb-header { padding:10px 14px; border-bottom:1px solid var(--border); flex-shrink:0; cursor:pointer; user-select:none; display:flex; align-items:center; justify-content:space-between; gap:8px; }
   .sb-header .sb-brand { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--accent-red); }
   .sb-header .sb-subtitle { font-size:10px; color:var(--text-muted); margin-top:3px; line-height:1.4; }
-  .sb-nav { flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--border) transparent; padding:8px 0 16px; }
+  .sb-collapse-btn { background:none; border:none; color:var(--text-muted); cursor:pointer; padding:0; font-size:11px; line-height:1; flex-shrink:0; transition:color 0.15s; }
+  .sb-collapse-btn:hover { color:var(--text-primary); }
+  /* Collapsed: hide nav and progress bar */
+  .left-sidebar.collapsed .sb-progress { display:none; }
+  .left-sidebar.collapsed .sb-nav { display:none; }
+  .left-sidebar.collapsed .sb-header { border-bottom:none; }
+  .sb-nav { flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--border) transparent; padding:8px 0 12px; }
   .sb-nav::-webkit-scrollbar { width:3px; }
   .sb-nav::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
   .sb-link { display:flex; align-items:center; gap:10px; padding:9px 16px 9px 0; text-decoration:none; color:var(--text-muted); font-size:12px; border-left:3px solid transparent; transition:all 0.15s; line-height:1.35; }
@@ -218,19 +224,19 @@
   .sb-link.active .sb-num { opacity:1; color:var(--accent-red); }
   .sb-link .sb-dot { width:6px; height:6px; border-radius:50%; border:1.5px solid var(--text-muted); flex-shrink:0; transition:all 0.15s; }
   .sb-link.active .sb-dot { background:var(--accent-red); border-color:var(--accent-red); box-shadow:0 0 6px var(--accent-red); }
-  /* Push all page content to the right of the sidebar */
-  .masthead, .ticker-wrap, .container { margin-left:220px; }
   .section-header, .stats-grid { scroll-margin-top:var(--scroll-margin-top); }
-  /* Mobile: sidebar becomes overlay, content goes full-width */
+  /* Mobile: sidebar becomes full-height overlay */
   .sb-toggle { display:none; position:fixed; bottom:22px; left:16px; z-index:1001; background:var(--accent-red); color:#fff; border:none; cursor:pointer; width:46px; height:46px; border-radius:50%; font-size:22px; line-height:1; box-shadow:0 3px 14px rgba(0,0,0,0.45); transition:background 0.2s; align-items:center; justify-content:center; }
   .sb-toggle:hover { background:var(--accent-orange); }
   .sb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; }
   .sb-overlay.open { display:block; }
   @media(max-width:900px){
-    .left-sidebar { transform:translateX(-100%); transition:transform 0.27s cubic-bezier(.4,0,.2,1); box-shadow:none; }
+    .left-sidebar { top:0; bottom:0; transform:translateX(-100%); transition:transform 0.27s cubic-bezier(.4,0,.2,1); max-height:none; border-radius:0; border-left:none; box-shadow:none; }
     .left-sidebar.open { transform:translateX(0); box-shadow:4px 0 28px rgba(0,0,0,0.5); }
+    .left-sidebar.collapsed .sb-nav { display:flex; flex-direction:column; }
+    .left-sidebar.collapsed .sb-progress { display:block; }
+    .left-sidebar.collapsed .sb-header { border-bottom:1px solid var(--border); }
     .sb-toggle { display:flex; }
-    .masthead, .ticker-wrap, .container { margin-left:0; }
   }
 
   /* Small phones */
@@ -283,11 +289,14 @@
 </div>
 
 <!-- ===== LEFT SIDEBAR ===== -->
-<aside class="left-sidebar" id="leftSidebar" aria-label="Page navigation">
+<aside class="left-sidebar collapsed" id="leftSidebar" aria-label="Page navigation">
   <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
-  <div class="sb-header">
-    <div class="sb-brand">&#9632; Iran Report</div>
-    <div class="sb-subtitle">Feb 25, 2026<br>Persian Gulf Theater</div>
+  <div class="sb-header" onclick="toggleCollapse()">
+    <div>
+      <div class="sb-brand">&#9632; Iran Report</div>
+      <div class="sb-subtitle">Feb 25, 2026<br>Persian Gulf Theater</div>
+    </div>
+    <button class="sb-collapse-btn" id="sbCollapseBtn" aria-label="Toggle navigation panel">&#9654;</button>
   </div>
   <nav class="sb-nav">
     <a class="sb-link" href="#stats" data-section="stats"><span class="sb-num">01</span><span class="sb-dot"></span>Key Statistics</a>
@@ -1413,6 +1422,13 @@ document.addEventListener('DOMContentLoaded', function(){
     onScroll();
   })();
 
+  // ===== LEFT SIDEBAR: collapse toggle (desktop) =====
+  function toggleCollapse() {
+    var sb = document.getElementById('leftSidebar');
+    var btn = document.getElementById('sbCollapseBtn');
+    var collapsed = sb.classList.toggle('collapsed');
+    if (btn) btn.innerHTML = collapsed ? '&#9654;' : '&#9660;';
+  }
   // ===== LEFT SIDEBAR: mobile toggle =====
   function toggleSidebar() {
     var sb = document.getElementById('leftSidebar');
