@@ -104,8 +104,27 @@
   .crisis-card .meter { display:flex; gap:3px; margin:8px 0; }
   .crisis-card .meter .seg { width:24px;height:8px;border-radius:2px;background:var(--bg-primary); }
 
+  /* ===== CARRIER CARDS ===== */
+  .carrier-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:0 0 20px; }
+  .carrier-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:24px; position:relative; }
+  .carrier-card .csg-label { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:6px; }
+  .carrier-card h3 { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin-bottom:4px; }
+  .carrier-card .hull { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent-blue); margin-bottom:14px; }
+  .carrier-card .carrier-badge { display:inline-block; position:absolute; top:16px; right:16px; border-radius:20px; font-size:10px; font-weight:700; font-family:'JetBrains Mono',monospace; padding:3px 10px; }
+  .carrier-card .stats-mini { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+  .carrier-card .stat-mini { background:var(--bg-secondary); border-radius:8px; padding:10px; text-align:center; }
+  .carrier-card .stat-mini .num { font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:700; color:var(--accent-blue); line-height:1; margin-bottom:4px; }
+  .carrier-card .stat-mini .lbl { font-size:9px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); }
+  .carrier-card .position-line { font-size:12px; color:var(--text-secondary); margin-bottom:12px; }
+  .carrier-card .wing-label { font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:7px; font-family:'JetBrains Mono',monospace; }
+  .carrier-card .wing-tags { display:flex; flex-wrap:wrap; gap:5px; }
+  .carrier-card .wing-tag { background:rgba(74,144,217,0.1); border:1px solid rgba(74,144,217,0.25); color:#6a9ad9; font-size:10px; font-family:'JetBrains Mono',monospace; padding:3px 8px; border-radius:4px; }
+  .carrier-card .csg-diagram { display:block; width:100%; margin:0 0 14px; border-radius:6px; overflow:hidden; }
+
   /* ===== MOBILE RESPONSIVE ===== */
   @media(max-width:768px){
+    .carrier-grid { grid-template-columns:1fr; }
+    .carrier-card h3 { font-size:17px; }
     .masthead { padding:36px 16px 28px; }
     .masthead h1 { font-size:clamp(22px,6vw,36px); }
     .masthead .dateline { font-size:10px; letter-spacing:0.5px; }
@@ -430,81 +449,297 @@ document.addEventListener('DOMContentLoaded', function(){
   <div><h2>Naval Strike Power</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">25+ warships deployed — over one-third of combat-ready US Navy now in the Middle East &amp; Mediterranean</div></div>
 </div>
 
-<!-- Big carrier graphic -->
-<div class="chart-container" style="padding:12px;">
-<svg viewBox="0 0 1000 280" class="svg-graphic" xmlns="http://www.w3.org/2000/svg">
+<!-- Carrier Strike Group Cards -->
+<div class="carrier-grid">
   <!-- USS Abraham Lincoln -->
-  <g transform="translate(240,120)">
-    <!-- Water -->
-    <ellipse cx="0" cy="45" rx="140" ry="15" fill="#0c1525" opacity="0.5"/>
-    <!-- Hull -->
-    <path d="M-120,20 L-130,10 L-130,-5 L130,-5 L130,10 L140,20 L145,30 L-125,30 Z" fill="#2a3a5a" stroke="#3a5a8a" stroke-width="1"/>
-    <!-- Flight deck -->
-    <path d="M-130,-5 L-140,-10 L140,-10 L150,-5 Z" fill="#3a4a6a" stroke="#4a6a9a" stroke-width="0.5"/>
-    <!-- Deck markings -->
-    <line x1="-100" y1="-8" x2="120" y2="-8" stroke="#4a6a9a" stroke-width="0.3" stroke-dasharray="10,5"/>
-    <line x1="-80" y1="-8" x2="60" y2="-8" stroke="#ffd700" stroke-width="0.3" opacity="0.4"/>
-    <!-- Island -->
-    <rect x="40" y="-25" width="30" height="15" fill="#4a5a7a" rx="2"/>
-    <rect x="45" y="-35" width="6" height="10" fill="#5a6a8a" rx="1"/>
-    <rect x="55" y="-40" width="3" height="15" fill="#6a7a9a"/>
-    <!-- Radar -->
-    <circle cx="56" cy="-43" r="4" fill="none" stroke="#00d4ff" stroke-width="0.5"><animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></circle>
-    <!-- Aircraft on deck -->
-    <g transform="translate(-80,-12) scale(0.8)"><path d="M0,0 L8,0 L6,-3 L2,-3 L1,-5 L-1,-5 L0,-3 L-4,0 L-2,-3 L-3,-3 Z" fill="#5a8aba"/></g>
-    <g transform="translate(-50,-12) scale(0.8)"><path d="M0,0 L8,0 L6,-3 L2,-3 L1,-5 L-1,-5 L0,-3 L-4,0 L-2,-3 L-3,-3 Z" fill="#5a8aba"/></g>
-    <g transform="translate(-20,-12) scale(0.8)"><path d="M0,0 L8,0 L6,-3 L2,-3 L1,-5 L-1,-5 L0,-3 L-4,0 L-2,-3 L-3,-3 Z" fill="#5a8aba"/></g>
-    <g transform="translate(10,-12) scale(0.8)"><path d="M0,0 L8,0 L6,-3 L2,-3 L1,-5 L-1,-5 L0,-3 L-4,0 L-2,-3 L-3,-3 Z" fill="#5a8aba"/></g>
-    <!-- Wake -->
-    <path d="M-125,30 Q-135,35 -145,33 Q-155,38 -170,35" fill="none" stroke="#1a3a6a" stroke-width="1" opacity="0.5"/>
-    <path d="M-125,32 Q-140,40 -160,38" fill="none" stroke="#1a3a6a" stroke-width="0.5" opacity="0.3"/>
-  </g>
-  <!-- Label -->
-  <text x="240" y="185" fill="#4a90d9" font-size="14" font-family="JetBrains Mono" font-weight="700" text-anchor="middle">USS ABRAHAM LINCOLN (CVN-72)</text>
-  <text x="240" y="200" fill="#6a8ac0" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Nimitz-class &bull; ~80 aircraft &bull; 5,600 crew &bull; Positioned 700km south of Iran</text>
-  <text x="240" y="215" fill="#4a6a8a" font-size="9" font-family="Inter" text-anchor="middle">F/A-18E/F Super Hornets &bull; EA-18G Growlers &bull; E-2D Hawkeye &bull; MH-60 Seahawk</text>
-
+  <div class="carrier-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2a6ab8,#4a8ad0);border-radius:12px 12px 0 0;"></div>
+    <span class="carrier-badge" style="background:rgba(74,144,217,0.2);border:1px solid rgba(74,144,217,0.5);color:#4a90d9;">ARABIAN SEA</span>
+    <div class="csg-label">Carrier Strike Group</div>
+    <h3>USS Abraham Lincoln</h3>
+    <div class="hull">CVN-72 &nbsp;&bull;&nbsp; Nimitz-class</div>
+    <!-- Carrier side-profile — Nimitz-class CVN-72 (blue) -->
+    <svg class="csg-diagram" viewBox="0 0 340 162" xmlns="http://www.w3.org/2000/svg" aria-label="USS Abraham Lincoln — Nimitz-class carrier profile">
+      <defs>
+        <linearGradient id="sky-cvn72" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#04101c"/>
+          <stop offset="100%" stop-color="#0b1826"/>
+        </linearGradient>
+        <linearGradient id="sea-cvn72" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#05101c"/>
+          <stop offset="100%" stop-color="#020810"/>
+        </linearGradient>
+        <linearGradient id="hull-cvn72" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#203248"/>
+          <stop offset="100%" stop-color="#14223a"/>
+        </linearGradient>
+        <linearGradient id="deck-cvn72" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1c2e4c"/>
+          <stop offset="100%" stop-color="#122040"/>
+        </linearGradient>
+      </defs>
+      <!-- Sky -->
+      <rect width="340" height="74" fill="url(#sky-cvn72)" rx="6"/>
+      <!-- Ocean -->
+      <rect y="74" width="340" height="38" fill="url(#sea-cvn72)"/>
+      <!-- Waterline -->
+      <line x1="0" y1="74" x2="340" y2="74" stroke="#0e2238" stroke-width="1.2"/>
+      <!-- Hull below waterline -->
+      <path d="M 22 74 L 320 74 Q 332 74 334 81 Q 336 88 330 93 L 28 93 Q 19 92 17 84 Q 16 78 20 75 Z" fill="#071422" stroke="#102030" stroke-width="0.5"/>
+      <!-- Hull above waterline (freeboard) -->
+      <path d="M 20 65 L 318 65 Q 330 65 333 68 Q 335 71 330 74 L 20 74 Z" fill="url(#hull-cvn72)" stroke="#2a3e5a" stroke-width="0.5"/>
+      <!-- Flight deck -->
+      <path d="M 14 56 L 318 56 Q 332 56 336 59 Q 338 62 334 65 L 14 65 Z" fill="url(#deck-cvn72)" stroke="#2e4668" stroke-width="0.7"/>
+      <!-- Deck edge highlight -->
+      <line x1="14" y1="56.5" x2="336" y2="56.5" stroke="#4a6a90" stroke-width="0.5" opacity="0.5"/>
+      <!-- Deck centerline / landing stripe -->
+      <line x1="20" y1="60.5" x2="332" y2="60.5" stroke="#243860" stroke-width="0.4" stroke-dasharray="10,8"/>
+      <!-- Island structure -->
+      <rect x="216" y="34" width="40" height="22" rx="1" fill="#162840" stroke="#2a4268" stroke-width="0.8"/>
+      <!-- Island upper level -->
+      <rect x="220" y="30" width="32" height="4" rx="1" fill="#122036" stroke="#223858" stroke-width="0.5"/>
+      <!-- Bridge windows -->
+      <rect x="220" y="39" width="5" height="3.5" rx="0.5" fill="#091828"/>
+      <rect x="228" y="39" width="5" height="3.5" rx="0.5" fill="#091828"/>
+      <rect x="236" y="39" width="5" height="3.5" rx="0.5" fill="#091828"/>
+      <rect x="244" y="39" width="5" height="3.5" rx="0.5" fill="#091828"/>
+      <rect x="220" y="45" width="5" height="3" rx="0.5" fill="#091828" opacity="0.7"/>
+      <rect x="228" y="45" width="5" height="3" rx="0.5" fill="#091828" opacity="0.7"/>
+      <!-- Mast -->
+      <line x1="236" y1="30" x2="236" y2="14" stroke="#2a4e7a" stroke-width="1.2"/>
+      <!-- Antenna spreaders -->
+      <line x1="224" y1="18" x2="248" y2="18" stroke="#2a4e7a" stroke-width="0.9"/>
+      <line x1="228" y1="15" x2="244" y2="15" stroke="#2a4e7a" stroke-width="0.7"/>
+      <!-- Radar dome -->
+      <circle cx="236" cy="14" r="3" fill="none" stroke="#4a80b0" stroke-width="0.9"/>
+      <line x1="236" y1="11" x2="236" y2="8" stroke="#3a6a98" stroke-width="0.7"/>
+      <!-- Parked aircraft on deck (F/A-18 top-view: fuselage + swept wings + stabs) -->
+      <g fill="none" stroke="#3a6898" stroke-linecap="round" opacity="0.8">
+        <line x1="50" y1="56" x2="65" y2="56" stroke-width="1.8"/>
+        <line x1="53" y1="56" x2="48" y2="52" stroke-width="1.1"/>
+        <line x1="53" y1="56" x2="48" y2="60" stroke-width="1.1"/>
+        <line x1="61" y1="56" x2="59" y2="53.5" stroke-width="0.9"/>
+        <line x1="61" y1="56" x2="59" y2="58.5" stroke-width="0.9"/>
+      </g>
+      <g fill="none" stroke="#3a6898" stroke-linecap="round" opacity="0.8">
+        <line x1="84" y1="56" x2="99" y2="56" stroke-width="1.8"/>
+        <line x1="87" y1="56" x2="82" y2="52" stroke-width="1.1"/>
+        <line x1="87" y1="56" x2="82" y2="60" stroke-width="1.1"/>
+        <line x1="95" y1="56" x2="93" y2="53.5" stroke-width="0.9"/>
+        <line x1="95" y1="56" x2="93" y2="58.5" stroke-width="0.9"/>
+      </g>
+      <g fill="none" stroke="#3a6898" stroke-linecap="round" opacity="0.8">
+        <line x1="118" y1="56" x2="133" y2="56" stroke-width="1.8"/>
+        <line x1="121" y1="56" x2="116" y2="52" stroke-width="1.1"/>
+        <line x1="121" y1="56" x2="116" y2="60" stroke-width="1.1"/>
+        <line x1="129" y1="56" x2="127" y2="53.5" stroke-width="0.9"/>
+        <line x1="129" y1="56" x2="127" y2="58.5" stroke-width="0.9"/>
+      </g>
+      <!-- Aircraft launching from bow (tilted upward) -->
+      <g fill="none" stroke="#4a80b8" stroke-linecap="round" opacity="0.55" transform="translate(326,52) rotate(-12)">
+        <line x1="0" y1="0" x2="14" y2="0" stroke-width="1.8"/>
+        <line x1="3" y1="0" x2="-2" y2="-3.5" stroke-width="1.1"/>
+        <line x1="3" y1="0" x2="-2" y2="3.5" stroke-width="1.1"/>
+        <line x1="10" y1="0" x2="8" y2="-2" stroke-width="0.9"/>
+        <line x1="10" y1="0" x2="8" y2="2" stroke-width="0.9"/>
+      </g>
+      <!-- Catapult steam trail -->
+      <path d="M 322 54 Q 328 50 332 45" stroke="#3a5e80" stroke-width="1.2" fill="none" stroke-dasharray="2,3" opacity="0.4"/>
+      <!-- Sea waves -->
+      <g stroke="#0c2038" stroke-width="0.7" fill="none" opacity="0.8">
+        <path d="M 0 80 Q 24 78 48 80 Q 72 82 96 80"/>
+        <path d="M 36 86 Q 68 84 100 86 Q 132 88 164 86"/>
+        <path d="M 170 81 Q 202 79 234 81 Q 266 83 298 81"/>
+        <path d="M 240 87 Q 270 85 300 87 Q 322 89 340 87"/>
+      </g>
+      <!-- Bow wake -->
+      <path d="M 332 75 L 340 70" stroke="#122636" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M 332 75 L 340 80" stroke="#122636" stroke-width="1" fill="none" opacity="0.5"/>
+      <!-- Caption -->
+      <text x="170" y="107" text-anchor="middle" fill="#1c3d60" font-size="7" font-family="JetBrains Mono,monospace" letter-spacing="2">NIMITZ-CLASS NUCLEAR CARRIER — CVN-72</text>
+      <!-- Range & distance info strip -->
+      <line x1="0" y1="113" x2="340" y2="113" stroke="#0e2238" stroke-width="0.8"/>
+      <rect x="0" y="113" width="340" height="49" fill="#030b18"/>
+      <!-- Distance badge -->
+      <rect x="8" y="119" width="88" height="14" rx="7" fill="rgba(74,144,217,0.12)" stroke="rgba(74,144,217,0.35)" stroke-width="0.7"/>
+      <text x="52" y="129" text-anchor="middle" fill="#4a90d9" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">700 KM · IRAN</text>
+      <!-- Divider -->
+      <line x1="106" y1="116" x2="106" y2="143" stroke="#0e2238" stroke-width="0.5"/>
+      <!-- Tomahawk range — IN RANGE -->
+      <text x="112" y="124.5" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">TOMAHAWK BGM-109</text>
+      <text x="112" y="135" fill="#40a060" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">1,600 km ✓</text>
+      <!-- Divider -->
+      <line x1="222" y1="116" x2="222" y2="143" stroke="#0e2238" stroke-width="0.5"/>
+      <!-- F/A-18 combat radius — MARGINAL -->
+      <text x="228" y="124.5" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">F/A-18E/F RADIUS</text>
+      <text x="228" y="135" fill="#c8a030" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">720 km ⚡</text>
+      <!-- Transit time row -->
+      <line x1="0" y1="145" x2="340" y2="145" stroke="#0e2238" stroke-width="0.5"/>
+      <text x="12" y="156" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">⏱ TRANSIT TO IRAN  ·  20 KTS:</text>
+      <text x="196" y="156" fill="#4a90d9" font-size="9" font-family="JetBrains Mono,monospace" font-weight="700">~19 HRS</text>
+    </svg>
+    <div class="stats-mini">
+      <div class="stat-mini"><div class="num">~80</div><div class="lbl">Aircraft</div></div>
+      <div class="stat-mini"><div class="num">5,600</div><div class="lbl">Crew</div></div>
+    </div>
+    <div class="position-line">&#128205; Positioned 700km south of Iran</div>
+    <div class="wing-label">Air Wing</div>
+    <div class="wing-tags">
+      <span class="wing-tag">F/A-18E/F Super Hornets</span>
+      <span class="wing-tag">EA-18G Growlers</span>
+      <span class="wing-tag">E-2D Hawkeye</span>
+      <span class="wing-tag">MH-60 Seahawk</span>
+    </div>
+  </div>
   <!-- USS Gerald R. Ford -->
-  <g transform="translate(740,120)">
-    <ellipse cx="0" cy="45" rx="150" ry="15" fill="#0c1525" opacity="0.5"/>
-    <path d="M-130,20 L-140,10 L-140,-5 L140,-5 L140,10 L150,20 L155,30 L-135,30 Z" fill="#2a4a6a" stroke="#3a6a9a" stroke-width="1"/>
-    <path d="M-140,-5 L-150,-10 L150,-10 L160,-5 Z" fill="#3a5a7a" stroke="#4a7aaa" stroke-width="0.5"/>
-    <line x1="-110" y1="-8" x2="130" y2="-8" stroke="#4a7aaa" stroke-width="0.3" stroke-dasharray="10,5"/>
-    <rect x="45" y="-28" width="35" height="18" fill="#4a6a8a" rx="2"/>
-    <rect x="50" y="-40" width="8" height="12" fill="#5a7a9a" rx="1"/>
-    <rect x="62" y="-45" width="4" height="17" fill="#6a8aaa"/>
-    <circle cx="64" cy="-48" r="5" fill="none" stroke="#00d4ff" stroke-width="0.5"><animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></circle>
-    <g transform="translate(-90,-12) scale(0.8)"><path d="M0,0 L8,0 L6,-3 L2,-3 L1,-5 L-1,-5 L0,-3 L-4,0 L-2,-3 L-3,-3 Z" fill="#5a9aca"/></g>
-    <g transform="translate(-55,-12) scale(0.8)"><path d="M0,0 L8,0 L6,-3 L2,-3 L1,-5 L-1,-5 L0,-3 L-4,0 L-2,-3 L-3,-3 Z" fill="#5a9aca"/></g>
-    <g transform="translate(-20,-12) scale(0.8)"><path d="M0,0 L8,0 L6,-3 L2,-3 L1,-5 L-1,-5 L0,-3 L-4,0 L-2,-3 L-3,-3 Z" fill="#5a9aca"/></g>
-    <g transform="translate(15,-12) scale(0.8)"><path d="M0,0 L8,0 L6,-3 L2,-3 L1,-5 L-1,-5 L0,-3 L-4,0 L-2,-3 L-3,-3 Z" fill="#5a9aca"/></g>
-    <!-- Status badge -->
-    <rect x="100" y="-28" width="40" height="14" fill="rgba(255,140,66,0.2)" stroke="#ff8c42" stroke-width="0.5" rx="3"/>
-    <text x="120" y="-18" fill="#ff8c42" font-size="7" font-family="JetBrains Mono" font-weight="700" text-anchor="middle">E. MED</text>
-    <path d="M-135,30 Q-145,35 -155,33 Q-165,38 -180,35" fill="none" stroke="#1a3a6a" stroke-width="1" opacity="0.5"/>
-  </g>
-  <text x="740" y="185" fill="#4a90d9" font-size="14" font-family="JetBrains Mono" font-weight="700" text-anchor="middle">USS GERALD R. FORD (CVN-78)</text>
-  <text x="740" y="200" fill="#6a8ac0" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Ford-class &bull; ~75 aircraft &bull; 4,500 crew &bull; Eastern Mediterranean (near Crete)</text>
-  <text x="740" y="215" fill="#4a6a8a" font-size="9" font-family="Inter" text-anchor="middle">F-35C Lightning II &bull; F/A-18E/F &bull; E-2D &bull; CMV-22B Osprey &bull; EMALS catapults</text>
+  <div class="carrier-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3a6a9a,#5a8aba);border-radius:12px 12px 0 0;"></div>
+    <span class="carrier-badge" style="background:rgba(255,140,66,0.2);border:1px solid rgba(255,140,66,0.5);color:#ff8c42;">E. MED</span>
+    <div class="csg-label">Carrier Strike Group</div>
+    <h3>USS Gerald R. Ford</h3>
+    <div class="hull">CVN-78 &nbsp;&bull;&nbsp; Ford-class</div>
+    <!-- Carrier side-profile — Ford-class CVN-78 (orange) -->
+    <svg class="csg-diagram" viewBox="0 0 340 162" xmlns="http://www.w3.org/2000/svg" aria-label="USS Gerald R. Ford — Ford-class carrier profile">
+      <defs>
+        <linearGradient id="sky-cvn78" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#100804"/>
+          <stop offset="100%" stop-color="#1c1208"/>
+        </linearGradient>
+        <linearGradient id="sea-cvn78" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0c0804"/>
+          <stop offset="100%" stop-color="#040402"/>
+        </linearGradient>
+        <linearGradient id="hull-cvn78" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2c1e10"/>
+          <stop offset="100%" stop-color="#1a1006"/>
+        </linearGradient>
+        <linearGradient id="deck-cvn78" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#281808"/>
+          <stop offset="100%" stop-color="#180e04"/>
+        </linearGradient>
+      </defs>
+      <!-- Sky -->
+      <rect width="340" height="74" fill="url(#sky-cvn78)" rx="6"/>
+      <!-- Ocean -->
+      <rect y="74" width="340" height="38" fill="url(#sea-cvn78)"/>
+      <!-- Waterline -->
+      <line x1="0" y1="74" x2="340" y2="74" stroke="#381808" stroke-width="1.2"/>
+      <!-- Hull below waterline -->
+      <path d="M 22 74 L 320 74 Q 332 74 334 81 Q 336 88 330 93 L 28 93 Q 19 92 17 84 Q 16 78 20 75 Z" fill="#0a0602" stroke="#1a0a04" stroke-width="0.5"/>
+      <!-- Hull above waterline (freeboard) -->
+      <path d="M 20 65 L 318 65 Q 330 65 333 68 Q 335 71 330 74 L 20 74 Z" fill="url(#hull-cvn78)" stroke="#5a3010" stroke-width="0.5"/>
+      <!-- Flight deck -->
+      <path d="M 14 56 L 318 56 Q 332 56 336 59 Q 338 62 334 65 L 14 65 Z" fill="url(#deck-cvn78)" stroke="#7a3e14" stroke-width="0.7"/>
+      <!-- Deck edge highlight -->
+      <line x1="14" y1="56.5" x2="336" y2="56.5" stroke="#c06830" stroke-width="0.5" opacity="0.5"/>
+      <!-- Deck centerline / landing stripe -->
+      <line x1="20" y1="60.5" x2="332" y2="60.5" stroke="#3a2010" stroke-width="0.4" stroke-dasharray="10,8"/>
+      <!-- Island structure (Ford-class — more compact, further aft) -->
+      <rect x="220" y="34" width="36" height="22" rx="1" fill="#221408" stroke="#7a3e14" stroke-width="0.8"/>
+      <!-- Island upper level -->
+      <rect x="224" y="30" width="28" height="4" rx="1" fill="#1c1006" stroke="#5a2e0e" stroke-width="0.5"/>
+      <!-- Bridge windows -->
+      <rect x="224" y="39" width="5" height="3.5" rx="0.5" fill="#0e0804"/>
+      <rect x="232" y="39" width="5" height="3.5" rx="0.5" fill="#0e0804"/>
+      <rect x="240" y="39" width="5" height="3.5" rx="0.5" fill="#0e0804"/>
+      <rect x="224" y="45" width="5" height="3" rx="0.5" fill="#0e0804" opacity="0.7"/>
+      <rect x="232" y="45" width="5" height="3" rx="0.5" fill="#0e0804" opacity="0.7"/>
+      <!-- Mast -->
+      <line x1="238" y1="30" x2="238" y2="14" stroke="#9a5020" stroke-width="1.2"/>
+      <!-- Antenna spreaders -->
+      <line x1="226" y1="18" x2="250" y2="18" stroke="#9a5020" stroke-width="0.9"/>
+      <line x1="230" y1="15" x2="246" y2="15" stroke="#9a5020" stroke-width="0.7"/>
+      <!-- Radar dome -->
+      <circle cx="238" cy="14" r="3" fill="none" stroke="#d07030" stroke-width="0.9"/>
+      <line x1="238" y1="11" x2="238" y2="8" stroke="#b05820" stroke-width="0.7"/>
+      <!-- Parked aircraft on deck (F-35C top-view: delta wing) -->
+      <g fill="none" stroke="#8a5018" stroke-linecap="round" opacity="0.8">
+        <line x1="50" y1="56" x2="65" y2="56" stroke-width="1.8"/>
+        <line x1="52" y1="56" x2="47" y2="52" stroke-width="1.1"/>
+        <line x1="52" y1="56" x2="47" y2="60" stroke-width="1.1"/>
+        <line x1="62" y1="56" x2="60" y2="54" stroke-width="0.9"/>
+        <line x1="62" y1="56" x2="60" y2="58" stroke-width="0.9"/>
+      </g>
+      <g fill="none" stroke="#8a5018" stroke-linecap="round" opacity="0.8">
+        <line x1="84" y1="56" x2="99" y2="56" stroke-width="1.8"/>
+        <line x1="86" y1="56" x2="81" y2="52" stroke-width="1.1"/>
+        <line x1="86" y1="56" x2="81" y2="60" stroke-width="1.1"/>
+        <line x1="96" y1="56" x2="94" y2="54" stroke-width="0.9"/>
+        <line x1="96" y1="56" x2="94" y2="58" stroke-width="0.9"/>
+      </g>
+      <g fill="none" stroke="#8a5018" stroke-linecap="round" opacity="0.8">
+        <line x1="118" y1="56" x2="133" y2="56" stroke-width="1.8"/>
+        <line x1="120" y1="56" x2="115" y2="52" stroke-width="1.1"/>
+        <line x1="120" y1="56" x2="115" y2="60" stroke-width="1.1"/>
+        <line x1="130" y1="56" x2="128" y2="54" stroke-width="0.9"/>
+        <line x1="130" y1="56" x2="128" y2="58" stroke-width="0.9"/>
+      </g>
+      <!-- Aircraft launching from bow -->
+      <g fill="none" stroke="#c07030" stroke-linecap="round" opacity="0.55" transform="translate(326,52) rotate(-12)">
+        <line x1="0" y1="0" x2="14" y2="0" stroke-width="1.8"/>
+        <line x1="3" y1="0" x2="-2" y2="-3.5" stroke-width="1.1"/>
+        <line x1="3" y1="0" x2="-2" y2="3.5" stroke-width="1.1"/>
+        <line x1="10" y1="0" x2="8" y2="-2" stroke-width="0.9"/>
+        <line x1="10" y1="0" x2="8" y2="2" stroke-width="0.9"/>
+      </g>
+      <!-- Catapult steam trail -->
+      <path d="M 322 54 Q 328 50 332 45" stroke="#9a5020" stroke-width="1.2" fill="none" stroke-dasharray="2,3" opacity="0.4"/>
+      <!-- Sea waves -->
+      <g stroke="#2a1408" stroke-width="0.7" fill="none" opacity="0.8">
+        <path d="M 0 80 Q 24 78 48 80 Q 72 82 96 80"/>
+        <path d="M 36 86 Q 68 84 100 86 Q 132 88 164 86"/>
+        <path d="M 170 81 Q 202 79 234 81 Q 266 83 298 81"/>
+        <path d="M 240 87 Q 270 85 300 87 Q 322 89 340 87"/>
+      </g>
+      <!-- Bow wake -->
+      <path d="M 332 75 L 340 70" stroke="#3a1e08" stroke-width="1" fill="none" opacity="0.5"/>
+      <path d="M 332 75 L 340 80" stroke="#3a1e08" stroke-width="1" fill="none" opacity="0.5"/>
+      <!-- Caption -->
+      <text x="170" y="107" text-anchor="middle" fill="#6a3a18" font-size="7" font-family="JetBrains Mono,monospace" letter-spacing="2">FORD-CLASS NUCLEAR CARRIER — CVN-78</text>
+      <!-- Range & distance info strip -->
+      <line x1="0" y1="113" x2="340" y2="113" stroke="#38180a" stroke-width="0.8"/>
+      <rect x="0" y="113" width="340" height="49" fill="#080402"/>
+      <!-- Distance badge -->
+      <rect x="8" y="119" width="100" height="14" rx="7" fill="rgba(220,100,30,0.12)" stroke="rgba(220,100,30,0.35)" stroke-width="0.7"/>
+      <text x="58" y="129" text-anchor="middle" fill="#e08c42" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">~2,000 KM · IRAN</text>
+      <!-- Divider -->
+      <line x1="118" y1="116" x2="118" y2="143" stroke="#38180a" stroke-width="0.5"/>
+      <!-- Tomahawk range — STANDOFF (out of range) -->
+      <text x="124" y="124.5" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">TOMAHAWK BGM-109</text>
+      <text x="124" y="135" fill="#d05030" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">1,600 km ✗</text>
+      <!-- Divider -->
+      <line x1="234" y1="116" x2="234" y2="143" stroke="#38180a" stroke-width="0.5"/>
+      <!-- F-35C combat radius — STANDOFF -->
+      <text x="240" y="124.5" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">F-35C RADIUS</text>
+      <text x="240" y="135" fill="#d05030" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">1,100 km ✗</text>
+      <!-- Transit time row -->
+      <line x1="0" y1="145" x2="340" y2="145" stroke="#38180a" stroke-width="0.5"/>
+      <text x="12" y="156" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">⏱ TRANSIT TO IRAN  ·  20 KTS:</text>
+      <text x="196" y="156" fill="#e08c42" font-size="9" font-family="JetBrains Mono,monospace" font-weight="700">~54 HRS (~2.3 DAYS)</text>
+    </svg>
+    <div class="stats-mini">
+      <div class="stat-mini"><div class="num">~75</div><div class="lbl">Aircraft</div></div>
+      <div class="stat-mini"><div class="num">4,500</div><div class="lbl">Crew</div></div>
+    </div>
+    <div class="position-line">&#128205; Eastern Mediterranean (near Crete)</div>
+    <div class="wing-label">Air Wing</div>
+    <div class="wing-tags">
+      <span class="wing-tag">F-35C Lightning II</span>
+      <span class="wing-tag">F/A-18E/F</span>
+      <span class="wing-tag">E-2D</span>
+      <span class="wing-tag">CMV-22B Osprey</span>
+      <span class="wing-tag">EMALS catapults</span>
+    </div>
+  </div>
+</div>
 
-  <!-- Escort ships between them -->
-  <text x="490" y="70" fill="#3a5a8a" font-size="9" font-family="JetBrains Mono" text-anchor="middle">+ 15 DESTROYERS &amp; CRUISERS</text>
-  <text x="490" y="83" fill="#3a5a8a" font-size="8" font-family="JetBrains Mono" text-anchor="middle">Tomahawk cruise missiles &bull; Aegis BMD &bull; SM-3 &bull; SM-6</text>
-  <text x="490" y="96" fill="#3a5a8a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">DDG-121 Petersen &bull; DDG-111 Spruance &bull; CG-53 Mobile Bay &bull; DDG-81 Churchill</text>
-  <text x="490" y="107" fill="#3a5a8a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">DDG-96 Bainbridge &bull; DDG-72 Mahan &bull; DDG-74 McFaul &bull; DDG-57 Mitscher</text>
-  <text x="490" y="118" fill="#3a5a8a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">DDG-91 Pinckney &bull; DDG-113 John Finn &bull; DDG-80 Roosevelt &bull; DDG-84 Bulkeley &bull; DDG-119 Black</text>
-  <g transform="translate(420,126)"><path d="M0,-3 L22,-3 L25,-1 L25,1 L22,3 L0,3 L-3,1 L-3,-1 Z" fill="#3a5a7a" stroke="#4a7a9a" stroke-width="0.5"/></g>
-  <g transform="translate(460,132)"><path d="M0,-3 L22,-3 L25,-1 L25,1 L22,3 L0,3 L-3,1 L-3,-1 Z" fill="#3a5a7a" stroke="#4a7a9a" stroke-width="0.5"/></g>
-  <g transform="translate(500,126)"><path d="M0,-3 L22,-3 L25,-1 L25,1 L22,3 L0,3 L-3,1 L-3,-1 Z" fill="#3a5a7a" stroke="#4a7a9a" stroke-width="0.5"/></g>
-  <g transform="translate(540,132)"><path d="M0,-3 L22,-3 L25,-1 L25,1 L22,3 L0,3 L-3,1 L-3,-1 Z" fill="#3a5a7a" stroke="#4a7a9a" stroke-width="0.5"/></g>
-
-  <!-- Plus LCS, Sub, and potential 3rd carrier -->
-  <text x="490" y="150" fill="#4a6a8a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">+ 3 LCS (Gulf) &bull; SSGN-729 Georgia (sub) &bull; CVN-77 Bush (spinning up)</text>
-
-  <!-- Total stat -->
-  <rect x="410" y="158" width="170" height="30" fill="rgba(74,144,217,0.1)" stroke="#4a90d9" stroke-width="0.5" rx="4"/>
-  <text x="495" y="178" fill="#4a90d9" font-size="11" font-family="JetBrains Mono" font-weight="700" text-anchor="middle">25+ SHIPS &bull; &gt;1/3 OF FLEET</text>
-</svg>
+<!-- Escort ships & fleet total -->
+<div class="chart-container" style="padding:20px 28px;">
+  <h4>Escort Ships &amp; Additional Forces</h4>
+  <div style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;"><strong style="color:var(--text-primary);">15+ Destroyers &amp; Cruisers</strong> — Tomahawk cruise missiles &bull; Aegis BMD &bull; SM-3 &bull; SM-6</div>
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);line-height:1.9;margin-bottom:14px;">DDG-121 Petersen &bull; DDG-111 Spruance &bull; CG-53 Mobile Bay &bull; DDG-81 Churchill &bull; DDG-96 Bainbridge &bull; DDG-72 Mahan &bull; DDG-74 McFaul &bull; DDG-57 Mitscher &bull; DDG-91 Pinckney &bull; DDG-113 John Finn &bull; DDG-80 Roosevelt &bull; DDG-84 Bulkeley &bull; DDG-119 Black</div>
+  <div style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">+ 3 LCS (Gulf) &nbsp;&bull;&nbsp; SSGN-729 Georgia (submarine) &nbsp;&bull;&nbsp; CVN-77 Bush (spinning up)</div>
+  <div style="display:inline-block;background:rgba(74,144,217,0.1);border:1px solid rgba(74,144,217,0.3);border-radius:8px;padding:10px 20px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#4a90d9;font-size:13px;">25+ SHIPS &nbsp;&bull;&nbsp; &gt;1/3 OF US FLEET</div>
 </div>
 
 <!-- Coalition table -->
