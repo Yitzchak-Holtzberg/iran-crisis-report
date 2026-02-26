@@ -47,6 +47,9 @@
   footer { padding:24px 12px; font-size:10px; }
   footer div[style*="grid-template-columns"] { grid-template-columns:1fr !important; gap:4px !important; }
   .scenarios-grid { grid-template-columns:1fr !important; }
+  .scenario-header { flex-wrap:wrap; }
+  .scenario-header h3 { flex:1 1 100%; margin-top:4px !important; }
+  .scenario-header .severity { margin-left:0 !important; }
 }
 
 
