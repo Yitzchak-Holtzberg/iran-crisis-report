@@ -238,14 +238,18 @@
   .sb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; }
   .sb-overlay.open { display:block; }
   @media(max-width:900px){
-    .left-sidebar { width:220px; transform:translateX(-100%); transition:transform 0.27s cubic-bezier(.4,0,.2,1); box-shadow:none; }
-    .left-sidebar.open { transform:translateX(0); box-shadow:4px 0 28px rgba(0,0,0,0.5); }
+    .left-sidebar { width:100%; transform:translateX(-100%); transition:transform 0.27s cubic-bezier(.4,0,.2,1); box-shadow:none; }
+    /* Override desktop 36px collapsed width so the full-screen panel is always 100% on mobile */
+    .left-sidebar.collapsed { width:100%; }
+    .left-sidebar.open { transform:translateX(0); }
     /* On mobile always show full panel when open, regardless of collapsed class */
     .left-sidebar.collapsed .sb-progress { display:block; }
     .left-sidebar.collapsed .sb-nav { display:flex; flex-direction:column; }
     .left-sidebar.collapsed .sb-header { height:auto; padding:10px 14px; border-bottom:1px solid var(--border); flex-direction:row; justify-content:space-between; align-items:center; }
     .left-sidebar.collapsed .sb-header > div { display:block; }
-    .sb-toggle { display:flex; }
+    .sb-nav .sb-link { padding:14px 20px 14px 0; font-size:14px; }
+    /* Pill-shaped toggle button with label */
+    .sb-toggle { display:flex; width:auto; padding:0 20px; border-radius:100px; font-size:16px; gap:8px; font-family:'JetBrains Mono',monospace; letter-spacing:1px; }
     /* Remove padding shifts on mobile */
     body.sb-collapsed, body.sb-expanded { padding-left:0; }
   }
@@ -336,7 +340,7 @@
   </nav>
 </aside>
 <div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
-<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation">&#9776;</button>
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
 
 <div class="container">
 
@@ -1482,10 +1486,18 @@ document.addEventListener('DOMContentLoaded', function(){
     var ov = document.getElementById('sbOverlay');
     var open = sb.classList.toggle('open');
     ov.classList.toggle('open', open);
+    var icon = document.querySelector('#sbToggle .sb-toggle-icon');
+    var label = document.querySelector('#sbToggle .sb-toggle-label');
+    if (icon) icon.textContent = open ? '\u2715' : '\u2630';
+    if (label) label.textContent = open ? 'Close' : 'Menu';
   }
   function closeSidebar() {
     document.getElementById('leftSidebar').classList.remove('open');
     document.getElementById('sbOverlay').classList.remove('open');
+    var icon = document.querySelector('#sbToggle .sb-toggle-icon');
+    var label = document.querySelector('#sbToggle .sb-toggle-label');
+    if (icon) icon.textContent = '\u2630';
+    if (label) label.textContent = 'Menu';
   }
   // Close sidebar when a link is clicked on mobile
   document.querySelectorAll('.sb-link').forEach(function(a) {
