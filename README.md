@@ -116,8 +116,9 @@ Each section below lists what it contains and what an agent should check before 
 - **Diplomatic:** Reuters, Al Jazeera, NBC News, AP for talks, statements, deadlines.
 - **Military / naval:** USNI, The War Zone, Stars & Stripes for ship movements and deployments.
 - **Protests / inside Iran:** Iran International, BBC Persian, HRANA for protest activity and crackdowns.
-- **US politics:** White House / State Dept releases, major US outlets for presidential statements.
+- **US politics:** White House / State Dept releases, major US outlets for presidential statements. **Also check Politico and CBS News national-security desk** — these break inside-source White House strategy stories (e.g. preferred strike sequencing, backchannel ultimatums) that do not appear in official releases.
 - **Intelligence / cyber:** CNBC, Axios, national-security beat reporters.
+- **Inside-source / political-strategy exclusives** *(most likely to be missed)*: **Politico** (White House deliberations, polling-driven military strategy), **CBS News** (Pentagon/NSC sourcing, Trump–Netanyahu backchannel), **Axios** (Witkoff/Kushner readouts, deal-term leaks). These outlets publish stories that have no official press-release equivalent; they require active monitoring of the reporters' own feeds (X/Twitter) in addition to the publication front pages.
 - Prepend new events at the **top** of the relevant day block; shift the previous day's block to "YESTERDAY" and drop any block older than two days.
 
 ---
@@ -168,7 +169,7 @@ Each section below lists what it contains and what an agent should check before 
 **Contains:** Pahlavi biography, key events timeline, opposition landscape overview.  
 **Check before updating:**
 - Pahlavi public statements: his official social media (X / Instagram), Washington Post, Axios.
-- US government contacts: Axios (Steve Witkoff, Jared Kushner meetings), White House readouts.
+- US government contacts: Axios and Politico (Steve Witkoff, Jared Kushner meetings and readouts), White House readouts.
 - Opposition group statements: NCRI/MEK releases, Congress of Nationalities press releases, diaspora Persian-language media (Iran International TV, Manoto).
 
 ---
@@ -209,6 +210,7 @@ Each section below lists what it contains and what an agent should check before 
 **Check before updating:**
 - Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession). Revise the percentages in both the text and the `sections/charts/scenario-likelihood-bar.html` chart to keep them consistent.
 - **Sources to consult:** CSIS, MEF, Brookings, Belfer Center, National Interest, Alma Center assessments; polling by IranWire; prediction markets (Polymarket).
+- **Also check:** Politico and CBS News for inside-source White House deliberations about strike timing, sequencing preferences (e.g. Israel-first vs. joint strike), and domestic-political calculus — these directly affect the likelihood estimates for Scenarios 2 and 4.
 
 ---
 
