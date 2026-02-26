@@ -98,6 +98,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ===== ISRAEL =====
   L.marker([32,34.8],{icon:icon('#ffd700',14)}).addTo(map).bindPopup('<b style="color:#ffd700">Israel - IDF</b><br>Highest readiness since June 2025 war<br>280,000 reservists authorized<br>IAF on full alert<br>Coordinating with US CENTCOM');
+  // F-22 Raptors at Ovda Air Base (southern Israel, ~30km north of Eilat)
+  L.marker([29.9,34.9],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Ovda Air Base, Israel</b><br><b style="color:#ff8c42">24× F-22A Raptor</b> — world\'s most advanced stealth fighter<br><b>First-ever F-22 deployment to Israeli soil</b><br>Arrived Feb 24–26 from RAF Lakenheath, UK<br>Vanguard of any Iran strike<br><em>Sources: Times of Israel, ABC News</em>');
 
   // ===== UK CYPRUS =====
   L.marker([34.6,33],{icon:icon('#00d4ff',10)}).addTo(map).bindPopup('<b style="color:#00d4ff">RAF Akrotiri, Cyprus</b><br>UK F-35B Lightning II deployed<br>Defensive posture only');
