@@ -1,0 +1,329 @@
+# Iran Crisis Report — AI Agent Update Guide
+
+This is a single-page HTML news dashboard that is **assembled by a build script** from modular section files. `index.html` is a generated file — **never edit it directly**. All content lives in the `sections/` directory; run the build to regenerate the page.
+
+---
+
+## Repository layout
+
+```
+iran-crisis-report/
+├── build.js            # Build script — assembles index.html from sections/
+├── index.html          # GENERATED — do not edit manually
+├── package.json        # npm scripts (build only)
+├── sections/           # Content source files — edit these
+│   ├── head.html       # <head>, CSS links, meta tags
+│   ├── masthead.html   # Page title, dateline, last-updated timestamp
+│   ├── ticker.html     # Breaking-news scrolling ticker
+│   ├── sidebar.html    # Left navigation sidebar
+│   ├── stats.html      # Key statistics grid (top of page)
+│   ├── last-24h.html   # Timeline of recent events
+│   ├── theater.html    # Theater map section
+│   ├── air-power.html  # Air power section
+│   ├── naval.html      # Naval forces section
+│   ├── inside-iran.html
+│   ├── opposition.html
+│   ├── nuclear.html    # Nuclear talks section
+│   ├── hormuz.html     # Strait of Hormuz section
+│   ├── military.html   # Iran military section
+│   ├── scenarios.html  # Scenarios section
+│   ├── sources.html    # Footer with source links
+│   ├── scripts.html    # Closing <script> tags
+│   └── charts/         # Inline SVG chart partials
+│       ├── rial-collapse.html
+│       ├── air-power-bar.html
+│       ├── nuclear-reconstruction-bar.html
+│       ├── retaliation-sequence-bar.html
+│       ├── scenario-likelihood-bar.html
+│       └── threat-matrix.html
+├── css/                # Stylesheets (edit for visual changes)
+│   ├── variables.css
+│   ├── base.css
+│   ├── components.css
+│   ├── sidebar.css
+│   └── responsive.css
+└── js/                 # JavaScript (map, sidebar, theme toggle)
+    ├── map.js
+    ├── sidebar.js
+    └── theme.js
+```
+
+---
+
+## Build system
+
+`build.js` reads every file listed in its `SECTIONS` array in order, concatenates them, and writes the result to `index.html`.
+
+Inside any section file, an include directive pulls in a chart partial:
+
+```html
+<!-- @include sections/charts/rial-collapse.html -->
+```
+
+Paths in `<!-- @include … -->` directives are **relative to the repository root**.
+
+### Run the build
+
+```bash
+npm run build
+# or equivalently:
+node build.js
+```
+
+Always run the build after editing any file in `sections/`. The generated `index.html` is what gets served.
+
+---
+
+## Section-by-section update reference
+
+Each section below lists what it contains and what an agent should check before updating it.
+
+### `sections/masthead.html` — Page header
+**Contains:** Page title, dateline (date), last-updated UTC timestamp.  
+**Check before updating:**
+- The current date.
+- The UTC time of the most recent content changes made in the same update pass.
+
+---
+
+### `sections/ticker.html` — Breaking-news ticker
+**Contains:** Scrolling headlines summarising the top ~15 stories. Content is listed **twice** (CSS scroll loop) — both copies must stay identical.  
+**Check before updating:**
+- All other sections for newly added events; pull the most newsworthy items into the ticker.
+- Remove stale headlines that are no longer "breaking."
+
+---
+
+### `sections/sidebar.html` — Navigation
+**Contains:** Left-panel anchor links to every section with sequential numbering.  
+**Check before updating:**
+- Only edit if a section is added, removed, or renamed. The `id` in the section file must match the `href` fragment here.
+
+---
+
+### `sections/stats.html` — Key statistics grid
+**Contains:** Six headline numbers (confirmed dead, estimated total killed, detained, US aircraft, US ships, rial/USD rate).  
+**Check before updating:**
+- **Casualties / detained:** HRANA (hrana.org), Iran International, Amnesty International, UN Human Rights.
+- **US aircraft / ships:** USNI Fleet Tracker, Pentagon / CENTCOM press releases, The War Zone, Stars & Stripes.
+- **Rial / USD exchange rate:** Google Finance "IRRUSD", Bonbast.com (unofficial free-market rate), financial news wires.
+
+---
+
+### `sections/last-24h.html` — Last 24 hours timeline
+**Contains:** Day-by-day timeline entries for the most recent two days of significant events.  
+**Check before updating:**
+- **Diplomatic:** Reuters, Al Jazeera, NBC News, AP for talks, statements, deadlines.
+- **Military / naval:** USNI, The War Zone, Stars & Stripes for ship movements and deployments.
+- **Protests / inside Iran:** Iran International, BBC Persian, HRANA for protest activity and crackdowns.
+- **US politics:** White House / State Dept releases, major US outlets for presidential statements.
+- **Intelligence / cyber:** CNBC, Axios, national-security beat reporters.
+- Prepend new events at the **top** of the relevant day block; shift the previous day's block to "YESTERDAY" and drop any block older than two days.
+
+---
+
+### `sections/theater.html` — Theater of operations map
+**Contains:** A Leaflet.js interactive map; marker positions and popup text are defined in `js/map.js`.  
+**Check before updating:**
+- Carrier and ship positions: USNI Fleet Tracker (news.usni.org), The War Zone.
+- Air base status: open-source military-tracking accounts, Pentagon statements.
+- If marker data changes, edit `js/map.js` rather than this file (this file only holds the map container HTML).
+
+---
+
+### `sections/air-power.html` — Air power section
+**Contains:** Aircraft profile cards for key US platforms; bar chart via `<!-- @include sections/charts/air-power-bar.html -->`.  
+**Check before updating:**
+- Total aircraft count and base breakdown: The War Zone, CSIS, Pentagon briefings, Washington Post national-security desk.
+- If a new aircraft type is deployed or a platform is withdrawn, add/remove a card.
+- Update the bar chart file if aircraft numbers change significantly.
+
+---
+
+### `sections/naval.html` — Naval strike power
+**Contains:** Carrier strike group cards (position, range data, air wing); escort ship list; coalition / regional posture table.  
+**Check before updating:**
+- Carrier positions: USNI Fleet Tracker, The War Zone, Stars & Stripes.
+- Ship count and new arrivals / departures: USNI, NAVCENT, open-source maritime tracking (MarineTraffic).
+- Coalition posture (UK, Israel, Saudi, Jordan, Turkey, China): Reuters, Al Jazeera, CNN, national defense ministries.
+- Update the distance/transit fields in the SVG carrier diagrams if a carrier's position changes significantly.
+
+---
+
+### `sections/inside-iran.html` — Inside Iran: seven crises
+**Contains:** Deep-dive cards on (1) The January Massacre, (2) Student Uprising, (3) Economic Collapse/rial chart, (4) Internet blackout/CIA operation, (5) Ethnic minority crackdown, (6) Water crisis, (7) Proxy network collapse; plus IRGC power struggle.  
+**Check before updating:**
+- **Casualty figures (Crisis 1):** HRANA, Iran International, Amnesty International, UN OHCHR.
+- **Student protests (Crisis 2):** Iran International, BBC Persian, Reuters; check for new university locations, new protest dates, government statements.
+- **Economic data (Crisis 3):** Rial rate via Bonbast.com; oil export data from Vortexa, Kpler, or energy-beat reporters; US Treasury sanctions announcements.
+- **Internet / cyber (Crisis 4):** NetBlocks, Freedom House, Georgia Tech Internet Outage Detection and Analysis (IODA), CNBC, US News; CIA and ODNI public statements.
+- **Ethnic crackdowns (Crisis 5):** HRANA, Amnesty, Kurdistan Human Rights Network, Baloch Activists Campaign.
+- **Water crisis (Crisis 6):** Iran environmental NGOs, UN FAO, academic hydrology papers — this section changes slowly; update only if major new data emerges.
+- **Proxy network (Crisis 7):** Reuters, Al Jazeera, Times of Israel, USNI for Hezbollah, Houthi, and PMF developments.
+- **IRGC power struggle:** National Interest, Alma Center, RAND, Israeli intelligence assessments.
+
+---
+
+### `sections/opposition.html` — Opposition & Reza Pahlavi
+**Contains:** Pahlavi biography, key events timeline, opposition landscape overview.  
+**Check before updating:**
+- Pahlavi public statements: his official social media (X / Instagram), Washington Post, Axios.
+- US government contacts: Axios (Steve Witkoff, Jared Kushner meetings), White House readouts.
+- Opposition group statements: NCRI/MEK releases, Congress of Nationalities press releases, diaspora Persian-language media (Iran International TV, Manoto).
+
+---
+
+### `sections/nuclear.html` — Nuclear negotiations
+**Contains:** Talks timeline (Muscat → Geneva rounds); deal-terms comparison table; UK-US rift card; Israeli position card; bar chart via `<!-- @include sections/charts/nuclear-reconstruction-bar.html -->`.  
+**Check before updating:**
+- **Talks outcomes:** Reuters, NBC, Al Jazeera, Axios for post-round readouts from Witkoff, Kushner, and Araghchi.
+- **Iranian statements:** Iran Foreign Ministry (@IRIForeignMin), Iran International, IRNA (official).
+- **IAEA reports:** iaea.org for quarterly safeguards reports; The Wire (IAEA watch publication).
+- **Nuclear site status / satellite imagery:** The War Zone, 38 North, Planet Labs analysis, Alma Center.
+- Update the reconstruction bar chart if enrichment or centrifuge estimates change.
+
+---
+
+### `sections/hormuz.html` — Strait of Hormuz
+**Contains:** Oil throughput data, Iranian capabilities list, price data, blockade scenario analysis.  
+**Check before updating:**
+- **Oil prices / throughput:** US EIA weekly reports (eia.gov), Bloomberg Energy, Reuters commodities.
+- **Iranian naval drills:** IRGC Navy statements, USNI, The War Zone.
+- **Goldman Sachs / analyst price forecasts:** Bloomberg, FT energy desk.
+- **Tanker incidents:** Lloyd's List, MarineTraffic, USNI, UK Maritime Trade Operations (UKMTO).
+
+---
+
+### `sections/military.html` — Iran's remaining military capability
+**Contains:** Degraded vs. still-operational capability lists; nuclear hardening update (Parchin); retaliation sequence bar chart via `<!-- @include sections/charts/retaliation-sequence-bar.html -->`; threat matrix via `<!-- @include sections/charts/threat-matrix.html -->`.  
+**Check before updating:**
+- **Satellite imagery (Parchin, Natanz, Fordow):** The War Zone, 38 North, Planet Labs, Maxar Technologies public releases.
+- **Missile inventory / drone production:** IISS Military Balance, Alma Center, Belfer Center, US DIA / DNI unclassified assessments.
+- **Chinese military assistance:** Reuters, WSJ, Bloomberg; Treasury sanctions list additions.
+- **IRGC Navy:** USNI, US 5th Fleet statements.
+
+---
+
+### `sections/scenarios.html` — Four scenarios
+**Contains:** Likelihood percentages and analysis for four outcomes: (1) Deal, (2) Strikes, (3) Revolution, (4) Frozen conflict.  
+**Check before updating:**
+- Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession). Revise the percentages in both the text and the `sections/charts/scenario-likelihood-bar.html` chart to keep them consistent.
+- **Sources to consult:** CSIS, MEF, Brookings, Belfer Center, National Interest, Alma Center assessments; polling by IranWire; prediction markets (Polymarket).
+
+---
+
+### `sections/sources.html` — Source footer
+**Contains:** Two-column grid of source hyperlinks; compiled-date line.  
+**Check before updating:**
+- Add a link for every new claim added to any section in the same update pass.
+- Update the compiled-date line to the current date.
+
+---
+
+## How to update common content
+
+### 1. Dateline and "last updated" timestamp — `sections/masthead.html`
+
+Change the date and UTC time in the `<div class="dateline">` line:
+
+```html
+<div class="dateline">February 25, 2026 &nbsp;|&nbsp; Compiled from 40+ international sources &nbsp;|&nbsp; Last updated 20:00 UTC</div>
+```
+
+### 2. Breaking-news ticker — `sections/ticker.html`
+
+Add, remove, or edit `<span>` elements inside the `.ticker` div. The ticker content is **duplicated** (listed twice) to enable a seamless CSS scroll loop — keep both copies in sync.
+
+```html
+<span>BREAKING: Your new headline here</span>
+```
+
+### 3. Key statistics — `sections/stats.html`
+
+Each `.stat-box` holds a number and a label. Update the `.number` div with the new value:
+
+```html
+<div class="number" style="color:var(--accent-red);">7,015+</div>
+<div class="label">Confirmed Dead<br>(HRANA)</div>
+```
+
+### 4. Last 24 hours timeline — `sections/last-24h.html`
+
+Timeline items follow this pattern. Add new `.tl-item` blocks at the top of the relevant day group, and push old days down or remove them as needed:
+
+```html
+<div class="tl-item">
+  <div class="tl-dot" style="border-color:var(--accent-red);"></div>
+  <div class="date">EVENT CATEGORY</div>
+  <div class="content">Description with <strong>bold highlights</strong>.</div>
+</div>
+```
+
+Severity-color convention:
+
+| CSS variable | Color | Use for |
+|---|---|---|
+| `--accent-red` | Red | Critical / combat events |
+| `--accent-orange` | Orange | High-threat / military moves |
+| `--accent-gold` | Gold | Diplomacy / negotiations |
+| `--accent-blue` | Blue | US naval / air assets |
+| `--accent-cyan` | Cyan | Intelligence / cyber |
+| `--accent-green` | Green | Economic indicators |
+| `--text-muted` | Grey | Background / low-priority |
+
+### 5. Charts — `sections/charts/*.html`
+
+Charts are inline SVGs. Update data values (coordinates, labels, text) directly in the relevant `sections/charts/` file. They are included into section files via `<!-- @include … -->` directives.
+
+### 6. Source links — `sections/sources.html`
+
+Add `<a href="…">Description</a>` entries inside the two-column grid div in the footer. Also update the compiled-date line at the bottom of the file.
+
+---
+
+## How to add a new section
+
+1. Create a new file in `sections/`, e.g. `sections/diplomacy.html`.
+2. Give the section's root element a unique `id` so the sidebar can link to it:
+   ```html
+   <div class="section-header" id="diplomacy"> … </div>
+   ```
+3. Open `build.js` and add the new filename to the `SECTIONS` array at the position where it should appear on the page:
+   ```js
+   'sections/diplomacy.html',
+   ```
+4. If you want the section in the sidebar navigation, add an `<a>` entry to `sections/sidebar.html`.
+5. Run `npm run build`.
+
+---
+
+## Styling reference
+
+CSS custom properties are defined in `css/variables.css`. Use them for colours instead of hard-coding hex values so that light/dark theme toggling works automatically. Common variables:
+
+```css
+var(--accent-red)
+var(--accent-orange)
+var(--accent-gold)
+var(--accent-blue)
+var(--accent-cyan)
+var(--accent-green)
+var(--text-primary)
+var(--text-secondary)
+var(--text-muted)
+var(--bg-card)
+var(--border-color)
+```
+
+---
+
+## Checklist for a typical daily update
+
+- [ ] Update the dateline / timestamp in `sections/masthead.html`
+- [ ] Add new headlines to both copies in `sections/ticker.html`
+- [ ] Refresh numbers in `sections/stats.html`
+- [ ] Prepend new timeline entries in `sections/last-24h.html`; shift yesterday's entries to the YESTERDAY block
+- [ ] Update any charts in `sections/charts/` that have new data
+- [ ] Add new source links to `sections/sources.html` and update the compiled-date line
+- [ ] Run `npm run build`
+- [ ] Verify `index.html` looks correct in a browser before committing
