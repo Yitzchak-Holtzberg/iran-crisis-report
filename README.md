@@ -2,6 +2,8 @@
 
 This is a single-page HTML news dashboard that is **assembled by a build script** from modular section files. `index.html` is a generated file — **never edit it directly**. All content lives in the `sections/` directory; run the build to regenerate the page.
 
+**For the most frequently changed data** (date, statistics, ticker headlines) edit only `data.json` — no HTML required.
+
 ---
 
 ## Repository layout
@@ -9,6 +11,7 @@ This is a single-page HTML news dashboard that is **assembled by a build script*
 ```
 iran-crisis-report/
 ├── build.js            # Build script — assembles index.html from sections/
+├── data.json           # ★ EDIT THIS FIRST — date, stats, ticker headlines
 ├── index.html          # GENERATED — do not edit manually
 ├── package.json        # npm scripts (build only)
 ├── sections/           # Content source files — edit these
@@ -54,13 +57,22 @@ iran-crisis-report/
 
 `build.js` reads every file listed in its `SECTIONS` array in order, concatenates them, and writes the result to `index.html`.
 
-Inside any section file, an include directive pulls in a chart partial:
+Inside any section file, three directives are processed:
 
 ```html
 <!-- @include sections/charts/rial-collapse.html -->
 ```
+Replaced with the contents of the referenced file (paths relative to the repository root).
 
-Paths in `<!-- @include … -->` directives are **relative to the repository root**.
+```html
+<!-- @ticker -->
+```
+Replaced with `<span>` elements for every headline in `data.json → ticker`, automatically **doubled** so the CSS scroll loop works seamlessly. You no longer need to keep two copies in sync.
+
+```html
+{{key}}
+```
+Replaced with the matching string value from `data.json` (e.g. `{{date}}`, `{{statConfirmedDead}}`).
 
 ### Run the build
 
@@ -70,7 +82,57 @@ npm run build
 node build.js
 ```
 
-Always run the build after editing any file in `sections/`. The generated `index.html` is what gets served.
+Always run the build after editing any file in `sections/` **or** `data.json`. The generated `index.html` is what gets served.
+
+---
+
+## data.json — quick-update config
+
+`data.json` is the single file to edit for the most common daily tasks. No HTML knowledge required.
+
+```json
+{
+  "date": "February 26, 2026",
+  "lastUpdated": "13:00 UTC",
+
+  "statConfirmedDead": "7,015+",
+  "statConfirmedDeadSource": "HRANA",
+  "statTotalKilled": "36,500",
+  "statTotalKilledSource": "Iran Intl.",
+  "statDetained": "24,669",
+  "statUsAircraft": "150+",
+  "statUsShips": "25+",
+  "statRialRate": "1.65M",
+
+  "scenarioDealPct": "15",
+  "scenarioStrikesPct": "55",
+  "scenarioRevolutionPct": "20",
+  "scenarioFrozenPct": "10",
+
+  "ticker": [
+    "HEADLINE ONE",
+    "HEADLINE TWO"
+  ]
+}
+```
+
+| Key | Where it appears | Update frequency |
+|---|---|---|
+| `date` | Masthead dateline, sources footer, scenario chart heading | Every update pass |
+| `lastUpdated` | Masthead dateline | Every update pass |
+| `statConfirmedDead` / `statConfirmedDeadSource` | Stats grid | When HRANA publishes new figures |
+| `statTotalKilled` / `statTotalKilledSource` | Stats grid | When Iran Intl. updates |
+| `statDetained` | Stats grid | When HRANA/Amnesty update |
+| `statUsAircraft` | Stats grid | After Pentagon briefings |
+| `statUsShips` | Stats grid | After USNI Fleet Tracker updates |
+| `statRialRate` | Stats grid | When Bonbast.com rate changes |
+| `scenarioDealPct` | Scenario 1 badge + bar chart | After major diplomatic development |
+| `scenarioStrikesPct` | Scenario 2 badge + bar chart | After major military development |
+| `scenarioRevolutionPct` | Scenario 3 badge + bar chart | After major protest/IRGC development |
+| `scenarioFrozenPct` | Scenario 4 badge + bar chart | After major diplomatic development |
+| `ticker` | Scrolling headline bar | Every update pass |
+
+> **Note:** `dayToday`, `dayYesterday`, and `dayTwoDaysAgo` are **automatically computed** by the build script from the `date` field — they appear as the day-group labels in the "Last 24 Hours" timeline. You never need to update them manually.
 
 ---
 
@@ -80,14 +142,13 @@ Each section below lists what it contains and what an agent should check before 
 
 ### `sections/masthead.html` — Page header
 **Contains:** Page title, dateline (date), last-updated UTC timestamp.  
-**Check before updating:**
-- The current date.
-- The UTC time of the most recent content changes made in the same update pass.
+**Update via `data.json`:** `date` and `lastUpdated` keys — no HTML editing required.
 
 ---
 
 ### `sections/ticker.html` — Breaking-news ticker
-**Contains:** Scrolling headlines summarising the top ~15 stories. Content is listed **twice** (CSS scroll loop) — both copies must stay identical.  
+**Contains:** A `<!-- @ticker -->` directive; actual headlines come from the `ticker` array in `data.json`.  
+**Update via `data.json`:** Edit the `ticker` array. The build script auto-duplicates the list for the CSS scroll loop.  
 **Check before updating:**
 - All other sections for newly added events; pull the most newsworthy items into the ticker.
 - Remove stale headlines that are no longer "breaking."
@@ -207,8 +268,9 @@ Each section below lists what it contains and what an agent should check before 
 
 ### `sections/scenarios.html` — Four scenarios
 **Contains:** Likelihood percentages and analysis for four outcomes: (1) Deal, (2) Strikes, (3) Revolution, (4) Frozen conflict.  
+**Update via `data.json`:** Change `scenarioDealPct`, `scenarioStrikesPct`, `scenarioRevolutionPct`, `scenarioFrozenPct` — the badges in this file and the bar chart are both updated automatically.  
 **Check before updating:**
-- Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession). Revise the percentages in both the text and the `sections/charts/scenario-likelihood-bar.html` chart to keep them consistent.
+- Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession).
 - **Sources to consult:** CSIS, MEF, Brookings, Belfer Center, National Interest, Alma Center assessments; polling by IranWire; prediction markets (Polymarket).
 - **Also check:** Politico and CBS News for inside-source White House deliberations about strike timing, sequencing preferences (e.g. Israel-first vs. joint strike), and domestic-political calculus — these directly affect the likelihood estimates for Scenarios 2 and 4.
 
@@ -218,35 +280,48 @@ Each section below lists what it contains and what an agent should check before 
 **Contains:** Two-column grid of source hyperlinks; compiled-date line.  
 **Check before updating:**
 - Add a link for every new claim added to any section in the same update pass.
-- Update the compiled-date line to the current date.
+- The compiled-date line updates automatically from `data.json → date`; no manual edit needed.
 
 ---
 
 ## How to update common content
 
-### 1. Dateline and "last updated" timestamp — `sections/masthead.html`
+### 1. Dateline and "last updated" timestamp
 
-Change the date and UTC time in the `<div class="dateline">` line:
+Edit **`data.json`** — no HTML required:
 
-```html
-<div class="dateline">February 25, 2026 &nbsp;|&nbsp; Compiled from 40+ international sources &nbsp;|&nbsp; Last updated 20:00 UTC</div>
+```json
+"date": "February 26, 2026",
+"lastUpdated": "13:00 UTC",
 ```
 
-### 2. Breaking-news ticker — `sections/ticker.html`
+### 2. Breaking-news ticker
 
-Add, remove, or edit `<span>` elements inside the `.ticker` div. The ticker content is **duplicated** (listed twice) to enable a seamless CSS scroll loop — keep both copies in sync.
+Edit the `"ticker"` array in **`data.json`**. Each string becomes one `<span>` in the ticker bar. The build script automatically duplicates the list for the CSS scroll loop — **no manual duplication needed**.
 
-```html
-<span>BREAKING: Your new headline here</span>
+```json
+"ticker": [
+  "BREAKING: Your new headline here",
+  "EXISTING HEADLINE TWO",
+  "..."
+]
 ```
 
-### 3. Key statistics — `sections/stats.html`
+Prepend new items at the **top** of the array so they appear first. Remove stale items that are no longer breaking.
 
-Each `.stat-box` holds a number and a label. Update the `.number` div with the new value:
+### 3. Key statistics
 
-```html
-<div class="number" style="color:var(--accent-red);">7,015+</div>
-<div class="label">Confirmed Dead<br>(HRANA)</div>
+Edit the matching keys in **`data.json`** — no HTML required:
+
+```json
+"statConfirmedDead": "7,015+",
+"statConfirmedDeadSource": "HRANA",
+"statTotalKilled": "36,500",
+"statTotalKilledSource": "Iran Intl.",
+"statDetained": "24,669",
+"statUsAircraft": "150+",
+"statUsShips": "25+",
+"statRialRate": "1.65M",
 ```
 
 ### 4. Last 24 hours timeline — `sections/last-24h.html`
@@ -277,9 +352,23 @@ Severity-color convention:
 
 Charts are inline SVGs. Update data values (coordinates, labels, text) directly in the relevant `sections/charts/` file. They are included into section files via `<!-- @include … -->` directives.
 
+**Exception — scenario likelihood chart:** `sections/charts/scenario-likelihood-bar.html` uses `{{scenarioDealPct}}`, `{{scenarioStrikesPct}}`, `{{scenarioRevolutionPct}}`, and `{{scenarioFrozenPct}}` placeholders. Update those keys in `data.json` instead of editing the chart file.
+
 ### 6. Source links — `sections/sources.html`
 
-Add `<a href="…">Description</a>` entries inside the two-column grid div in the footer. Also update the compiled-date line at the bottom of the file.
+Add `<a href="…">Description</a>` entries inside the two-column grid div in the footer. The compiled-date line updates automatically from `data.json → date`.
+
+---
+
+## Build validation
+
+If you add a `{{key}}` placeholder to any section file but forget to add the corresponding entry to `data.json`, the build script will print a warning:
+
+```
+Warning: unresolved placeholders in output — check data.json for: myNewKey
+```
+
+The build will still succeed, but the raw placeholder text (`{{myNewKey}}`) will appear in the page. Resolve the warning before committing.
 
 ---
 
@@ -321,11 +410,13 @@ var(--border-color)
 
 ## Checklist for a typical daily update
 
-- [ ] Update the dateline / timestamp in `sections/masthead.html`
-- [ ] Add new headlines to both copies in `sections/ticker.html`
-- [ ] Refresh numbers in `sections/stats.html`
-- [ ] Prepend new timeline entries in `sections/last-24h.html`; shift yesterday's entries to the YESTERDAY block
-- [ ] Update any charts in `sections/charts/` that have new data
-- [ ] Add new source links to `sections/sources.html` and update the compiled-date line
-- [ ] Run `npm run build`
+- [ ] Open `data.json` and update:
+  - [ ] `date` and `lastUpdated`
+  - [ ] `ticker` array — prepend new headlines, remove stale ones
+  - [ ] Any stat values that have changed (`statConfirmedDead`, `statRialRate`, etc.)
+  - [ ] Scenario likelihoods if there has been a major development (`scenarioDealPct`, `scenarioStrikesPct`, etc.)
+- [ ] Prepend new timeline entries in `sections/last-24h.html`; shift yesterday's entries to the YESTERDAY block (day-header labels update automatically)
+- [ ] Update any non-scenario charts in `sections/charts/` that have new data
+- [ ] Add new source links to `sections/sources.html` (compiled date updates automatically)
+- [ ] Run `npm run build` — check for any "unresolved placeholders" warnings
 - [ ] Verify `index.html` looks correct in a browser before committing
