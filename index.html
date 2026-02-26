@@ -239,297 +239,304 @@
 <div class="aircraft-grid">
   <!-- F-35 -->
   <div class="aircraft-card">
-    <!-- F-35A 3D SVG -->
-    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="F-35A Lightning II 3D illustration">
+    <!-- replaced with isometric 3D SVG -->
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="F-35A Lightning II 3D illustration">
       <defs>
-        <linearGradient id="f35bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#070c14"/><stop offset="100%" stop-color="#0e1520"/></linearGradient>
-        <linearGradient id="f35body" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stop-color="#8fa0b5"/><stop offset="40%" stop-color="#6a7a8e"/><stop offset="100%" stop-color="#22293a"/></linearGradient>
-        <linearGradient id="f35lwing" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#576876"/><stop offset="100%" stop-color="#16202c"/></linearGradient>
-        <linearGradient id="f35rwing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#475868"/><stop offset="100%" stop-color="#10181f"/></linearGradient>
-        <radialGradient id="f35glow" cx="50%" cy="62%" r="45%"><stop offset="0%" stop-color="#00d4ff" stop-opacity="0.14"/><stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/></radialGradient>
-        <filter id="f35drop"><feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.75"/></filter>
+        <linearGradient id="a35bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#070c14"/><stop offset="100%" stop-color="#0e1520"/></linearGradient>
+        <linearGradient id="a35top" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c0d0e0"/><stop offset="50%" stop-color="#7888a0"/><stop offset="100%" stop-color="#404858"/></linearGradient>
+        <linearGradient id="a35side" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#506070"/><stop offset="100%" stop-color="#1e2630"/></linearGradient>
+        <linearGradient id="a35wing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#98aac0"/><stop offset="100%" stop-color="#364858"/></linearGradient>
+        <radialGradient id="a35glow" cx="55%" cy="65%" r="45%"><stop offset="0%" stop-color="#00d4ff" stop-opacity="0.15"/><stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/></radialGradient>
+        <filter id="a35drop"><feDropShadow dx="4" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.75"/></filter>
       </defs>
-      <rect width="400" height="160" fill="url(#f35bg)" rx="8"/>
-      <rect width="400" height="160" fill="url(#f35glow)" rx="8"/>
-      <ellipse cx="202" cy="112" rx="82" ry="15" fill="rgba(0,0,0,0.48)"/>
-      <g filter="url(#f35drop)">
-        <!-- left delta wing -->
-        <polygon points="196,38 106,110 148,122 195,84" fill="url(#f35lwing)" stroke="#364554" stroke-width="0.5"/>
-        <!-- right delta wing -->
-        <polygon points="204,38 294,110 252,122 205,84" fill="url(#f35rwing)" stroke="#26354a" stroke-width="0.5"/>
-        <!-- left V-tail -->
-        <polygon points="187,96 162,122 172,126 189,102" fill="#222c3a" stroke="#364554" stroke-width="0.5"/>
-        <!-- right V-tail -->
-        <polygon points="213,96 238,122 228,126 211,102" fill="#1a2430" stroke="#364554" stroke-width="0.5"/>
-        <!-- fuselage -->
-        <polygon points="200,14 217,40 214,98 200,113 186,98 183,40" fill="url(#f35body)" stroke="#546070" stroke-width="0.5"/>
-        <!-- engine ring -->
-        <ellipse cx="200" cy="111" rx="11" ry="6" fill="#0c1018" stroke="#364554" stroke-width="1"/>
-        <ellipse cx="200" cy="112" rx="7" ry="4" fill="#d05010" opacity="0.85"/>
-        <ellipse cx="200" cy="113" rx="4" ry="2.2" fill="#ffaa30" opacity="0.75"/>
-        <!-- canopy -->
-        <ellipse cx="200" cy="41" rx="6.5" ry="12" fill="rgba(55,135,220,0.3)" stroke="#00d4ff" stroke-width="0.6"/>
+      <rect width="500" height="240" fill="url(#a35bg)" rx="8"/>
+      <rect width="500" height="240" fill="url(#a35glow)" rx="8"/>
+      <ellipse cx="260" cy="224" rx="130" ry="10" fill="rgba(0,0,0,0.5)"/>
+      <g filter="url(#a35drop)">
+        <!-- Starboard wing (upper-right, top surface first) -->
+        <path d="M 268,118 C 284,90 300,64 305,52 C 298,66 278,100 252,132 Z" fill="url(#a35wing)" stroke="#364858" stroke-width="0.8"/>
+        <!-- Port wing (lower-left) -->
+        <path d="M 236,146 C 220,172 205,200 199,212 C 207,200 227,168 252,132 Z" fill="#4a5e78" stroke="#2a3848" stroke-width="0.8"/>
+        <!-- Horizontal stabilizer stubs near tail -->
+        <path d="M 128,72 C 137,68 146,66 150,68 C 148,72 139,76 130,78 Z" fill="#283848" stroke="#364858" stroke-width="0.6"/>
+        <path d="M 112,80 C 102,86 92,90 88,92 C 90,88 100,84 110,78 Z" fill="#202838" stroke="#2a3848" stroke-width="0.6"/>
+        <!-- Single vertical tail, slightly canted -->
+        <path d="M 117,72 C 116,56 116,40 118,28 C 124,30 126,46 125,62 C 125,70 121,74 117,72 Z" fill="#404858" stroke="#506878" stroke-width="0.8"/>
+        <!-- Fuselage top face (brightest) -->
+        <path d="M 116,50 C 240,94 368,164 390,196 C 370,212 240,132 100,86 Z" fill="url(#a35top)" stroke="#6888a0" stroke-width="0.8"/>
+        <!-- Fuselage side face (port, medium shade) -->
+        <path d="M 100,86 C 240,132 370,212 390,196 C 372,218 244,148 100,102 Z" fill="url(#a35side)" stroke="#3a5060" stroke-width="0.5"/>
+        <!-- DSI intake: dark diamond below nose -->
+        <path d="M 350,176 L 361,170 L 370,178 L 360,187 Z" fill="#0a1422" stroke="#1e2a3a" stroke-width="0.8"/>
+        <!-- Engine nozzle (3 concentric ellipses) -->
+        <ellipse cx="385" cy="200" rx="20" ry="11" fill="#0c1018" stroke="#3a5060" stroke-width="1.2"/>
+        <ellipse cx="385" cy="200" rx="13" ry="7" fill="#c04010" opacity="0.9"/>
+        <ellipse cx="385" cy="200" rx="7" ry="3.5" fill="#ffcc40" opacity="0.85"/>
+        <!-- Canopy bubble -->
+        <path d="M 282,116 C 287,108 298,107 304,115 C 308,123 302,132 294,134 C 285,136 279,128 282,116 Z" fill="rgba(40,120,200,0.38)" stroke="#00d4ff" stroke-width="1.2"/>
+        <!-- Canopy reflection highlight -->
+        <path d="M 285,118 Q 293,111 301,116" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.5" stroke-linecap="round"/>
       </g>
-      <!-- spine highlight -->
-      <path d="M200,16 Q204,54 203,92" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3" stroke-linecap="round"/>
-      <!-- leading-edge accent lines -->
-      <line x1="200" y1="14" x2="108" y2="111" stroke="#00d4ff" stroke-width="0.7" opacity="0.3"/>
-      <line x1="200" y1="14" x2="292" y2="111" stroke="#00d4ff" stroke-width="0.7" opacity="0.3"/>
-      <text x="10" y="151" font-family="JetBrains Mono,monospace" font-size="9" fill="#00d4ff" opacity="0.7" letter-spacing="0.5">F-35A ◆ 5TH GEN STEALTH</text>
+      <!-- Spine highlight -->
+      <path d="M 110,70 C 222,112 348,172 388,196" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3" stroke-linecap="round"/>
+      <!-- Leading edge accent -->
+      <path d="M 252,132 C 272,108 296,72 305,52" fill="none" stroke="#00d4ff" stroke-width="0.9" opacity="0.4"/>
+      <text x="12" y="232" font-family="JetBrains Mono,monospace" font-size="10" fill="#00d4ff" opacity="0.75" letter-spacing="0.5">F-35A ◆ 5TH GEN STEALTH</text>
     </svg>
     <h5>F-35A Lightning II</h5>
     <div class="role">5th Gen Stealth Multi-Role</div>
     <div class="specs">Mach 1.6 &bull; 1,200nm range &bull; Internal weapons bay<br>GPS-guided bombs, AIM-120 AMRAAM<br><strong style="color:var(--accent-cyan);">Primary strike platform for hardened targets</strong></div>
   </div>
   <div class="aircraft-card">
-    <!-- F-22A 3D SVG -->
-    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="F-22A Raptor 3D illustration">
+    <!-- replaced with isometric 3D SVG -->
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="F-22A Raptor 3D illustration">
       <defs>
-        <linearGradient id="f22bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#080c10"/><stop offset="100%" stop-color="#10141c"/></linearGradient>
-        <linearGradient id="f22body" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#9aa8be"/><stop offset="35%" stop-color="#707d92"/><stop offset="100%" stop-color="#20283a"/></linearGradient>
-        <linearGradient id="f22lwing" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#606e82"/><stop offset="100%" stop-color="#18202e"/></linearGradient>
-        <linearGradient id="f22rwing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#505e72"/><stop offset="100%" stop-color="#121820"/></linearGradient>
-        <radialGradient id="f22glow" cx="50%" cy="60%" r="45%"><stop offset="0%" stop-color="#ffd700" stop-opacity="0.13"/><stop offset="100%" stop-color="#ffd700" stop-opacity="0"/></radialGradient>
-        <filter id="f22drop"><feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.75"/></filter>
+        <linearGradient id="a22bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#08080f"/><stop offset="100%" stop-color="#10101c"/></linearGradient>
+        <linearGradient id="a22top" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c0d0e0"/><stop offset="50%" stop-color="#7888a0"/><stop offset="100%" stop-color="#404858"/></linearGradient>
+        <linearGradient id="a22side" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#506070"/><stop offset="100%" stop-color="#1e2630"/></linearGradient>
+        <linearGradient id="a22wing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#98aac0"/><stop offset="100%" stop-color="#364858"/></linearGradient>
+        <radialGradient id="a22glow" cx="52%" cy="62%" r="45%"><stop offset="0%" stop-color="#ffd700" stop-opacity="0.14"/><stop offset="100%" stop-color="#ffd700" stop-opacity="0"/></radialGradient>
+        <filter id="a22drop"><feDropShadow dx="4" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.75"/></filter>
       </defs>
-      <rect width="400" height="160" fill="url(#f22bg)" rx="8"/>
-      <rect width="400" height="160" fill="url(#f22glow)" rx="8"/>
-      <ellipse cx="202" cy="112" rx="90" ry="15" fill="rgba(0,0,0,0.48)"/>
-      <g filter="url(#f22drop)">
-        <!-- left trapezoidal wing with chine -->
-        <polygon points="197,32 100,100 140,118 196,88" fill="url(#f22lwing)" stroke="#384858" stroke-width="0.5"/>
-        <!-- right trapezoidal wing with chine -->
-        <polygon points="203,32 300,100 260,118 204,88" fill="url(#f22rwing)" stroke="#283848" stroke-width="0.5"/>
-        <!-- left canted tail -->
-        <polygon points="185,98 158,128 170,130 188,104" fill="#1e2838" stroke="#384858" stroke-width="0.5"/>
-        <!-- right canted tail -->
-        <polygon points="215,98 242,128 230,130 212,104" fill="#18202e" stroke="#384858" stroke-width="0.5"/>
-        <!-- wide chined fuselage -->
-        <polygon points="200,13 222,36 228,55 220,100 200,115 180,100 172,55 178,36" fill="url(#f22body)" stroke="#58687a" stroke-width="0.5"/>
-        <!-- left engine nozzle -->
-        <ellipse cx="191" cy="113" rx="9" ry="5" fill="#0a1018" stroke="#384858" stroke-width="1"/>
-        <ellipse cx="191" cy="114" rx="6" ry="3.2" fill="#c04a10" opacity="0.85"/>
-        <!-- right engine nozzle -->
-        <ellipse cx="209" cy="113" rx="9" ry="5" fill="#0a1018" stroke="#384858" stroke-width="1"/>
-        <ellipse cx="209" cy="114" rx="6" ry="3.2" fill="#c04a10" opacity="0.85"/>
-        <!-- twin flame glow -->
-        <ellipse cx="191" cy="115" rx="3.5" ry="2" fill="#ffc030" opacity="0.7"/>
-        <ellipse cx="209" cy="115" rx="3.5" ry="2" fill="#ffc030" opacity="0.7"/>
-        <!-- canopy -->
-        <ellipse cx="200" cy="38" rx="7" ry="13" fill="rgba(55,135,220,0.28)" stroke="#ffd700" stroke-width="0.6"/>
+      <rect width="500" height="240" fill="url(#a22bg)" rx="8"/>
+      <rect width="500" height="240" fill="url(#a22glow)" rx="8"/>
+      <ellipse cx="262" cy="226" rx="145" ry="10" fill="rgba(0,0,0,0.5)"/>
+      <g filter="url(#a22drop)">
+        <!-- Starboard wing (broad, 110px half-span) -->
+        <path d="M 280,120 C 300,90 318,64 328,48 C 318,64 298,96 262,137 Z" fill="url(#a22wing)" stroke="#364858" stroke-width="0.8"/>
+        <!-- Port wing -->
+        <path d="M 244,154 C 226,178 208,208 196,226 C 206,212 228,180 262,137 Z" fill="#485a70" stroke="#2a3848" stroke-width="0.8"/>
+        <!-- Chine blend: starboard forward strake -->
+        <path d="M 310,108 C 316,112 320,122 318,130 C 312,126 306,116 310,108 Z" fill="#505e70" stroke="#3a4a5a" stroke-width="0.5"/>
+        <!-- Port canted vertical tail -->
+        <path d="M 114,74 C 112,58 110,40 110,26 C 116,28 118,44 118,62 C 118,70 116,76 114,74 Z" fill="#404858" stroke="#506878" stroke-width="0.8"/>
+        <!-- Starboard canted vertical tail (splays outward) -->
+        <path d="M 130,68 C 132,52 136,36 140,24 C 144,26 144,42 142,58 C 140,68 134,70 130,68 Z" fill="#3a4450" stroke="#4a5868" stroke-width="0.8"/>
+        <!-- Fuselage top face (wide chined) -->
+        <path d="M 117,48 C 242,94 370,162 390,196 C 368,218 238,138 99,88 Z" fill="url(#a22top)" stroke="#6888a0" stroke-width="0.8"/>
+        <!-- Fuselage side face (shallow 12px) -->
+        <path d="M 99,88 C 238,138 368,218 390,196 C 372,208 240,148 99,100 Z" fill="url(#a22side)" stroke="#3a5060" stroke-width="0.5"/>
+        <!-- Left engine nozzle -->
+        <ellipse cx="374" cy="200" rx="11" ry="6" fill="#0c1018" stroke="#3a5060" stroke-width="1.2"/>
+        <ellipse cx="374" cy="200" rx="7" ry="4" fill="#c04010" opacity="0.9"/>
+        <ellipse cx="374" cy="200" rx="3.5" ry="2" fill="#ffcc40" opacity="0.85"/>
+        <!-- Right engine nozzle -->
+        <ellipse cx="392" cy="206" rx="11" ry="6" fill="#0c1018" stroke="#3a5060" stroke-width="1.2"/>
+        <ellipse cx="392" cy="206" rx="7" ry="4" fill="#c04010" opacity="0.9"/>
+        <ellipse cx="392" cy="206" rx="3.5" ry="2" fill="#ffcc40" opacity="0.85"/>
+        <!-- Canopy (elongated) -->
+        <path d="M 272,114 C 276,106 290,104 298,112 C 304,120 298,132 288,134 C 278,136 270,126 272,114 Z" fill="rgba(40,120,200,0.35)" stroke="#ffd700" stroke-width="1.2"/>
+        <path d="M 275,116 Q 285,109 295,114" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.4" stroke-linecap="round"/>
       </g>
-      <!-- spine highlight -->
-      <path d="M200,15 Q205,54 204,96" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3.5" stroke-linecap="round"/>
-      <!-- leading-edge accent -->
-      <line x1="200" y1="13" x2="102" y2="101" stroke="#ffd700" stroke-width="0.7" opacity="0.28"/>
-      <line x1="200" y1="13" x2="298" y2="101" stroke="#ffd700" stroke-width="0.7" opacity="0.28"/>
-      <text x="10" y="151" font-family="JetBrains Mono,monospace" font-size="9" fill="#ffd700" opacity="0.7" letter-spacing="0.5">F-22A ◆ 5TH GEN AIR SUPERIORITY</text>
+      <path d="M 110,70 C 224,112 352,170 390,198" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M 262,137 C 284,108 310,74 328,48" fill="none" stroke="#ffd700" stroke-width="0.9" opacity="0.38"/>
+      <text x="12" y="232" font-family="JetBrains Mono,monospace" font-size="10" fill="#ffd700" opacity="0.75" letter-spacing="0.5">F-22A ◆ 5TH GEN AIR SUPERIORITY</text>
     </svg>
     <h5>F-22A Raptor</h5>
     <div class="role">5th Gen Air Superiority</div>
     <div class="specs">Mach 2.25 &bull; Supercruise capable &bull; Thrust vectoring<br>AIM-120D, AIM-9X, JDAM<br><strong style="color:var(--accent-gold);">Ensures air dominance over any contested airspace</strong></div>
   </div>
   <div class="aircraft-card">
-    <!-- F-15E 3D SVG -->
-    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="F-15E Strike Eagle 3D illustration">
+    <!-- replaced with isometric 3D SVG -->
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="F-15E Strike Eagle 3D illustration">
       <defs>
-        <linearGradient id="f15bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0d0c"/><stop offset="100%" stop-color="#111816"/></linearGradient>
-        <linearGradient id="f15body" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stop-color="#9aaa9a"/><stop offset="40%" stop-color="#708070"/><stop offset="100%" stop-color="#242e24"/></linearGradient>
-        <linearGradient id="f15lwing" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#627262"/><stop offset="100%" stop-color="#1c2820"/></linearGradient>
-        <linearGradient id="f15rwing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#526050"/><stop offset="100%" stop-color="#141e18"/></linearGradient>
-        <radialGradient id="f15glow" cx="50%" cy="60%" r="45%"><stop offset="0%" stop-color="#ff8c42" stop-opacity="0.13"/><stop offset="100%" stop-color="#ff8c42" stop-opacity="0"/></radialGradient>
-        <filter id="f15drop"><feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.75"/></filter>
+        <linearGradient id="a15bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#080c0a"/><stop offset="100%" stop-color="#10160e"/></linearGradient>
+        <linearGradient id="a15top" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c0d0e0"/><stop offset="50%" stop-color="#7888a0"/><stop offset="100%" stop-color="#404858"/></linearGradient>
+        <linearGradient id="a15side" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#506070"/><stop offset="100%" stop-color="#1e2630"/></linearGradient>
+        <linearGradient id="a15wing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#98aac0"/><stop offset="100%" stop-color="#364858"/></linearGradient>
+        <radialGradient id="a15glow" cx="52%" cy="62%" r="45%"><stop offset="0%" stop-color="#ff8c42" stop-opacity="0.14"/><stop offset="100%" stop-color="#ff8c42" stop-opacity="0"/></radialGradient>
+        <filter id="a15drop"><feDropShadow dx="4" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.75"/></filter>
       </defs>
-      <rect width="400" height="160" fill="url(#f15bg)" rx="8"/>
-      <rect width="400" height="160" fill="url(#f15glow)" rx="8"/>
-      <ellipse cx="202" cy="115" rx="85" ry="14" fill="rgba(0,0,0,0.48)"/>
-      <g filter="url(#f15drop)">
-        <!-- left swept wing + LERX -->
-        <polygon points="194,42 100,94 138,106 195,78" fill="url(#f15lwing)" stroke="#3a4a3a" stroke-width="0.5"/>
-        <!-- right swept wing + LERX -->
-        <polygon points="206,42 300,94 262,106 205,78" fill="url(#f15rwing)" stroke="#2a3a2a" stroke-width="0.5"/>
-        <!-- left horizontal stabilizer -->
-        <polygon points="185,104 152,128 165,132 187,110" fill="#1e2a1e" stroke="#3a4a3a" stroke-width="0.5"/>
-        <!-- right horizontal stabilizer -->
-        <polygon points="215,104 248,128 235,132 213,110" fill="#18221a" stroke="#3a4a3a" stroke-width="0.5"/>
-        <!-- left vertical fin (seen from above as thin sliver) -->
-        <polygon points="186,88 183,132 188,132 191,88" fill="#2a3830" stroke="#3a4a3a" stroke-width="0.4"/>
-        <!-- right vertical fin -->
-        <polygon points="214,88 217,132 212,132 209,88" fill="#222e28" stroke="#3a4a3a" stroke-width="0.4"/>
-        <!-- fuselage with conformal tanks -->
-        <polygon points="200,12 210,35 214,90 212,128 200,135 188,128 186,90 190,35" fill="url(#f15body)" stroke="#506050" stroke-width="0.5"/>
-        <!-- left engine nozzle -->
-        <ellipse cx="189" cy="130" rx="8" ry="5" fill="#0a1008" stroke="#3a4a3a" stroke-width="1"/>
-        <ellipse cx="189" cy="131" rx="5.5" ry="3.2" fill="#c04a10" opacity="0.85"/>
-        <ellipse cx="189" cy="132" rx="3" ry="1.8" fill="#ffa020" opacity="0.7"/>
-        <!-- right engine nozzle -->
-        <ellipse cx="211" cy="130" rx="8" ry="5" fill="#0a1008" stroke="#3a4a3a" stroke-width="1"/>
-        <ellipse cx="211" cy="131" rx="5.5" ry="3.2" fill="#c04a10" opacity="0.85"/>
-        <ellipse cx="211" cy="132" rx="3" ry="1.8" fill="#ffa020" opacity="0.7"/>
-        <!-- canopy -->
-        <ellipse cx="200" cy="38" rx="6" ry="14" fill="rgba(55,135,220,0.28)" stroke="#ff8c42" stroke-width="0.6"/>
+      <rect width="500" height="240" fill="url(#a15bg)" rx="8"/>
+      <rect width="500" height="240" fill="url(#a15glow)" rx="8"/>
+      <ellipse cx="258" cy="222" rx="138" ry="10" fill="rgba(0,0,0,0.5)"/>
+      <g filter="url(#a15drop)">
+        <!-- Starboard wing with LERX -->
+        <path d="M 268,118 C 288,90 306,64 315,50 C 306,66 284,100 255,132 Z" fill="url(#a15wing)" stroke="#364858" stroke-width="0.8"/>
+        <!-- LERX forward strake (starboard) -->
+        <path d="M 290,142 C 304,136 318,138 318,148 C 310,152 296,152 290,142 Z" fill="#506070" stroke="#3a4a58" stroke-width="0.5"/>
+        <!-- Port wing -->
+        <path d="M 242,146 C 224,172 206,200 195,214 C 204,202 224,170 255,132 Z" fill="#485a70" stroke="#2a3848" stroke-width="0.8"/>
+        <!-- F-15 signature: port upright vertical tail (prominent slab) -->
+        <path d="M 115,70 C 114,54 114,36 114,24 L 122,24 C 122,36 122,54 122,70 Z" fill="#404858" stroke="#506878" stroke-width="0.8"/>
+        <!-- Starboard upright vertical tail -->
+        <path d="M 128,66 C 129,50 131,34 132,22 L 140,22 C 140,34 138,50 136,66 Z" fill="#3c4454" stroke="#4a5868" stroke-width="0.8"/>
+        <!-- Narrow fuselage top face (long pointed nose) -->
+        <path d="M 114,53 C 240,96 370,162 392,194 C 374,208 244,132 102,79 Z" fill="url(#a15top)" stroke="#6888a0" stroke-width="0.8"/>
+        <!-- Fuselage side face -->
+        <path d="M 102,79 C 244,132 374,208 392,194 C 374,208 244,146 102,95 Z" fill="url(#a15side)" stroke="#3a5060" stroke-width="0.5"/>
+        <!-- Left engine nozzle -->
+        <ellipse cx="374" cy="196" rx="10" ry="5.5" fill="#0c1018" stroke="#3a5060" stroke-width="1.2"/>
+        <ellipse cx="374" cy="196" rx="6.5" ry="3.5" fill="#c04010" opacity="0.9"/>
+        <ellipse cx="374" cy="196" rx="3.5" ry="2" fill="#ffcc40" opacity="0.85"/>
+        <!-- Right engine nozzle -->
+        <ellipse cx="390" cy="202" rx="10" ry="5.5" fill="#0c1018" stroke="#3a5060" stroke-width="1.2"/>
+        <ellipse cx="390" cy="202" rx="6.5" ry="3.5" fill="#c04010" opacity="0.9"/>
+        <ellipse cx="390" cy="202" rx="3.5" ry="2" fill="#ffcc40" opacity="0.85"/>
+        <!-- Long tandem canopy -->
+        <path d="M 285,118 C 290,110 305,108 314,116 C 320,124 316,136 305,138 C 294,140 282,132 285,118 Z" fill="rgba(40,120,200,0.35)" stroke="#ff8c42" stroke-width="1.2"/>
+        <path d="M 288,120 Q 300,112 312,117" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.4" stroke-linecap="round"/>
       </g>
-      <!-- spine highlight -->
-      <path d="M200,14 Q204,58 204,108" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3" stroke-linecap="round"/>
-      <!-- leading-edge accent -->
-      <line x1="194" y1="42" x2="102" y2="95" stroke="#ff8c42" stroke-width="0.7" opacity="0.3"/>
-      <line x1="206" y1="42" x2="298" y2="95" stroke="#ff8c42" stroke-width="0.7" opacity="0.3"/>
-      <text x="10" y="151" font-family="JetBrains Mono,monospace" font-size="9" fill="#ff8c42" opacity="0.7" letter-spacing="0.5">F-15E ◆ DEEP STRIKE / INTERDICTION</text>
+      <path d="M 108,66 C 222,110 352,168 390,194" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 255,132 C 276,106 300,70 315,50" fill="none" stroke="#ff8c42" stroke-width="0.9" opacity="0.4"/>
+      <text x="12" y="232" font-family="JetBrains Mono,monospace" font-size="10" fill="#ff8c42" opacity="0.75" letter-spacing="0.5">F-15E ◆ DEEP STRIKE / INTERDICTION</text>
     </svg>
     <h5>F-15E Strike Eagle</h5>
     <div class="role">Deep Strike / Interdiction</div>
     <div class="specs">Mach 2.5 &bull; 2,400nm ferry range &bull; 23,000 lb payload<br>GBU-28 bunker busters, JASSM-ER cruise missiles<br><strong style="color:var(--accent-orange);">Key platform for deep underground facility strikes</strong></div>
   </div>
   <div class="aircraft-card">
-    <!-- F-16 3D SVG -->
-    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="F-16C Fighting Falcon 3D illustration">
+    <!-- replaced with isometric 3D SVG -->
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="F-16C Fighting Falcon 3D illustration">
       <defs>
-        <linearGradient id="f16bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#070d0a"/><stop offset="100%" stop-color="#0e1812"/></linearGradient>
-        <linearGradient id="f16body" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stop-color="#90a898"/><stop offset="40%" stop-color="#607870"/><stop offset="100%" stop-color="#1e2c22"/></linearGradient>
-        <linearGradient id="f16lwing" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#586a60"/><stop offset="100%" stop-color="#16221a"/></linearGradient>
-        <linearGradient id="f16rwing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#485a52"/><stop offset="100%" stop-color="#101c14"/></linearGradient>
-        <radialGradient id="f16glow" cx="50%" cy="60%" r="45%"><stop offset="0%" stop-color="#00c853" stop-opacity="0.13"/><stop offset="100%" stop-color="#00c853" stop-opacity="0"/></radialGradient>
-        <filter id="f16drop"><feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.75"/></filter>
+        <linearGradient id="a16bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#070c0a"/><stop offset="100%" stop-color="#0e1612"/></linearGradient>
+        <linearGradient id="a16top" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c0d0e0"/><stop offset="50%" stop-color="#7888a0"/><stop offset="100%" stop-color="#404858"/></linearGradient>
+        <linearGradient id="a16side" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#506070"/><stop offset="100%" stop-color="#1e2630"/></linearGradient>
+        <linearGradient id="a16wing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#98aac0"/><stop offset="100%" stop-color="#364858"/></linearGradient>
+        <radialGradient id="a16glow" cx="52%" cy="62%" r="45%"><stop offset="0%" stop-color="#00c853" stop-opacity="0.14"/><stop offset="100%" stop-color="#00c853" stop-opacity="0"/></radialGradient>
+        <filter id="a16drop"><feDropShadow dx="4" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.75"/></filter>
       </defs>
-      <rect width="400" height="160" fill="url(#f16bg)" rx="8"/>
-      <rect width="400" height="160" fill="url(#f16glow)" rx="8"/>
-      <ellipse cx="202" cy="112" rx="82" ry="14" fill="rgba(0,0,0,0.48)"/>
-      <g filter="url(#f16drop)">
-        <!-- blended left delta wing (smooth root join) -->
-        <polygon points="190,50 112,100 148,114 194,80" fill="url(#f16lwing)" stroke="#364840" stroke-width="0.5"/>
-        <!-- blended right delta wing -->
-        <polygon points="210,50 288,100 252,114 206,80" fill="url(#f16rwing)" stroke="#263830" stroke-width="0.5"/>
-        <!-- left small strake -->
-        <polygon points="186,76 168,110 178,114 190,82" fill="#1e2c24" stroke="#364840" stroke-width="0.4"/>
-        <!-- right small strake -->
-        <polygon points="214,76 232,110 222,114 210,82" fill="#18241e" stroke="#364840" stroke-width="0.4"/>
-        <!-- fuselage — slender with wide forward body blending into wing -->
-        <polygon points="200,14 212,38 216,80 210,108 200,118 190,108 184,80 188,38" fill="url(#f16body)" stroke="#4a6058" stroke-width="0.5"/>
-        <!-- chin intake (dark oval under nose) -->
-        <ellipse cx="200" cy="48" rx="8" ry="5" fill="#0a140e" stroke="#364840" stroke-width="0.6" opacity="0.9"/>
-        <!-- single vertical tail (sliver from top) -->
-        <polygon points="196,96 194,128 206,128 204,96" fill="#283428" stroke="#364840" stroke-width="0.4"/>
-        <!-- single engine nozzle -->
-        <ellipse cx="200" cy="116" rx="10" ry="6" fill="#0a1008" stroke="#364840" stroke-width="1"/>
-        <ellipse cx="200" cy="117" rx="6.5" ry="3.8" fill="#c04a10" opacity="0.85"/>
-        <ellipse cx="200" cy="118" rx="3.5" ry="2" fill="#ffa020" opacity="0.7"/>
-        <!-- canopy (distinctive bubble) -->
-        <ellipse cx="200" cy="35" rx="7" ry="14" fill="rgba(55,135,220,0.28)" stroke="#00c853" stroke-width="0.6"/>
+      <rect width="500" height="240" fill="url(#a16bg)" rx="8"/>
+      <rect width="500" height="240" fill="url(#a16glow)" rx="8"/>
+      <ellipse cx="258" cy="222" rx="128" ry="10" fill="rgba(0,0,0,0.5)"/>
+      <g filter="url(#a16drop)">
+        <!-- Starboard blended delta wing (smooth root join) -->
+        <path d="M 262,122 C 280,96 298,70 308,56 C 300,70 282,100 252,134 Z" fill="url(#a16wing)" stroke="#364858" stroke-width="0.8"/>
+        <!-- Port blended delta wing -->
+        <path d="M 242,146 C 224,172 208,200 196,212 C 206,200 226,170 252,134 Z" fill="#485a70" stroke="#2a3848" stroke-width="0.8"/>
+        <!-- Single upright vertical tail (taller than F-35) -->
+        <path d="M 119,72 C 118,56 118,38 120,26 C 126,28 128,46 127,62 C 126,72 122,74 119,72 Z" fill="#404858" stroke="#506878" stroke-width="0.9"/>
+        <!-- Slender fuselage top face -->
+        <path d="M 115,57 C 240,96 370,162 390,196 C 372,208 244,130 105,79 Z" fill="url(#a16top)" stroke="#6888a0" stroke-width="0.8"/>
+        <!-- Fuselage side face -->
+        <path d="M 105,79 C 244,130 372,208 390,196 C 374,210 246,142 105,93 Z" fill="url(#a16side)" stroke="#3a5060" stroke-width="0.5"/>
+        <!-- Ventral chin intake below nose -->
+        <path d="M 346,182 C 350,178 362,176 368,180 C 368,186 356,190 348,188 Z" fill="#0a1420" stroke="#1e2a3a" stroke-width="0.8"/>
+        <!-- Single engine nozzle (rx=17 ry=9) -->
+        <ellipse cx="382" cy="200" rx="17" ry="9" fill="#0c1018" stroke="#3a5060" stroke-width="1.2"/>
+        <ellipse cx="382" cy="200" rx="11" ry="6" fill="#c04010" opacity="0.9"/>
+        <ellipse cx="382" cy="200" rx="6" ry="3" fill="#ffcc40" opacity="0.85"/>
+        <!-- Large bubble canopy (prominent, bigger than others) -->
+        <path d="M 289,112 C 294,102 310,100 320,110 C 328,120 322,136 310,138 C 297,140 286,130 289,112 Z" fill="rgba(40,120,200,0.40)" stroke="#00c853" stroke-width="1.3"/>
+        <path d="M 292,114 Q 305,106 318,111" fill="none" stroke="rgba(255,255,255,0.58)" stroke-width="1.6" stroke-linecap="round"/>
       </g>
-      <!-- spine highlight -->
-      <path d="M200,16 Q204,56 204,95" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3" stroke-linecap="round"/>
-      <!-- leading-edge accent -->
-      <line x1="190" y1="50" x2="114" y2="101" stroke="#00c853" stroke-width="0.7" opacity="0.3"/>
-      <line x1="210" y1="50" x2="286" y2="101" stroke="#00c853" stroke-width="0.7" opacity="0.3"/>
-      <text x="10" y="151" font-family="JetBrains Mono,monospace" font-size="9" fill="#00c853" opacity="0.7" letter-spacing="0.5">F-16C ◆ MULTI-ROLE / SEAD</text>
+      <path d="M 112,68 C 224,110 350,168 388,196" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 252,134 C 274,108 298,72 308,56" fill="none" stroke="#00c853" stroke-width="0.9" opacity="0.4"/>
+      <text x="12" y="232" font-family="JetBrains Mono,monospace" font-size="10" fill="#00c853" opacity="0.75" letter-spacing="0.5">F-16C ◆ MULTI-ROLE / SEAD</text>
     </svg>
     <h5>F-16C/D Fighting Falcon</h5>
     <div class="role">Multi-Role Fighter</div>
     <div class="specs">Mach 2.0 &bull; 9g capable &bull; HARM anti-radar missiles<br>SEAD/DEAD suppression of enemy air defenses<br><strong style="color:var(--accent-green);">Essential for neutralizing Iranian SAM networks</strong></div>
   </div>
   <div class="aircraft-card">
-    <!-- B-2 Spirit 3D SVG -->
-    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="B-2 Spirit Stealth Bomber 3D illustration">
+    <!-- replaced with isometric 3D SVG -->
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="B-2 Spirit Stealth Bomber 3D illustration">
       <defs>
-        <linearGradient id="b2bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0b0808"/><stop offset="100%" stop-color="#160e0e"/></linearGradient>
-        <linearGradient id="b2wing" x1="30%" y1="0%" x2="70%" y2="100%"><stop offset="0%" stop-color="#5a5860"/><stop offset="40%" stop-color="#383640"/><stop offset="100%" stop-color="#181620"/></linearGradient>
-        <linearGradient id="b2center" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stop-color="#7a7880"/><stop offset="40%" stop-color="#545258"/><stop offset="100%" stop-color="#22202a"/></linearGradient>
-        <radialGradient id="b2glow" cx="50%" cy="60%" r="50%"><stop offset="0%" stop-color="#ff3b3b" stop-opacity="0.12"/><stop offset="100%" stop-color="#ff3b3b" stop-opacity="0"/></radialGradient>
-        <filter id="b2drop"><feDropShadow dx="3" dy="5" stdDeviation="6" flood-color="#000" flood-opacity="0.75"/></filter>
+        <linearGradient id="ab2bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0808"/><stop offset="100%" stop-color="#14100e"/></linearGradient>
+        <linearGradient id="ab2top" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4a5060"/><stop offset="60%" stop-color="#363c48"/><stop offset="100%" stop-color="#282e38"/></linearGradient>
+        <linearGradient id="ab2center" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#5a6070"/><stop offset="50%" stop-color="#44484e"/><stop offset="100%" stop-color="#2e3038"/></linearGradient>
+        <radialGradient id="ab2glow" cx="50%" cy="58%" r="50%"><stop offset="0%" stop-color="#ff3b3b" stop-opacity="0.12"/><stop offset="100%" stop-color="#ff3b3b" stop-opacity="0"/></radialGradient>
+        <filter id="ab2drop"><feDropShadow dx="4" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.75"/></filter>
       </defs>
-      <rect width="400" height="160" fill="url(#b2bg)" rx="8"/>
-      <rect width="400" height="160" fill="url(#b2glow)" rx="8"/>
-      <!-- wide shadow for the flying wing -->
-      <ellipse cx="200" cy="112" rx="165" ry="14" fill="rgba(0,0,0,0.45)"/>
-      <g filter="url(#b2drop)">
-        <!-- flying-wing outer left panel -->
-        <polygon points="200,44 30,100 60,120 165,96" fill="url(#b2wing)" stroke="#303038" stroke-width="0.5"/>
-        <!-- flying-wing outer right panel -->
-        <polygon points="200,44 370,100 340,120 235,96" fill="url(#b2wing)" stroke="#282830" stroke-width="0.5"/>
-        <!-- center section (thicker body, wider) -->
-        <polygon points="200,28 240,46 242,96 230,116 200,122 170,116 158,96 160,46" fill="url(#b2center)" stroke="#484650" stroke-width="0.5"/>
-        <!-- notched trailing edge sawtooth left -->
-        <polygon points="165,96 155,108 172,104 185,116 195,108" fill="#282630" stroke="#303038" stroke-width="0.3"/>
-        <!-- notched trailing edge sawtooth right -->
-        <polygon points="235,96 245,108 228,104 215,116 205,108" fill="#222028" stroke="#303038" stroke-width="0.3"/>
-        <!-- 4 engine exhaust slots embedded in center -->
-        <ellipse cx="176" cy="108" rx="7" ry="4" fill="#0e0c10" stroke="#303038" stroke-width="0.8"/>
-        <ellipse cx="176" cy="109" rx="4.5" ry="2.5" fill="#b03010" opacity="0.85"/>
-        <ellipse cx="192" cy="112" rx="7" ry="4" fill="#0e0c10" stroke="#303038" stroke-width="0.8"/>
-        <ellipse cx="192" cy="113" rx="4.5" ry="2.5" fill="#b03010" opacity="0.85"/>
-        <ellipse cx="208" cy="112" rx="7" ry="4" fill="#0e0c10" stroke="#303038" stroke-width="0.8"/>
-        <ellipse cx="208" cy="113" rx="4.5" ry="2.5" fill="#b03010" opacity="0.85"/>
-        <ellipse cx="224" cy="108" rx="7" ry="4" fill="#0e0c10" stroke="#303038" stroke-width="0.8"/>
-        <ellipse cx="224" cy="109" rx="4.5" ry="2.5" fill="#b03010" opacity="0.85"/>
-        <!-- cockpit bump -->
-        <ellipse cx="200" cy="42" rx="14" ry="8" fill="rgba(55,135,220,0.22)" stroke="#ff3b3b" stroke-width="0.6"/>
+      <rect width="500" height="240" fill="url(#ab2bg)" rx="8"/>
+      <rect width="500" height="240" fill="url(#ab2glow)" rx="8"/>
+      <ellipse cx="250" cy="220" rx="200" ry="14" fill="rgba(0,0,0,0.48)"/>
+      <g filter="url(#ab2drop)">
+        <!-- Flying wing: port outer panel (lower-left) -->
+        <path d="M 185,100 C 130,128 80,168 40,218 C 78,198 128,162 185,138 Z" fill="url(#ab2top)" stroke="#303038" stroke-width="0.6"/>
+        <!-- Flying wing: starboard outer panel (upper-right) -->
+        <path d="M 315,100 C 370,76 418,58 460,42 C 420,62 372,86 315,118 Z" fill="url(#ab2top)" stroke="#282830" stroke-width="0.6"/>
+        <!-- Center body top surface (raised hump) -->
+        <path d="M 185,100 C 210,94 235,90 250,90 C 265,90 290,94 315,100 C 315,118 300,142 285,154 C 270,162 252,164 235,162 C 218,160 200,148 185,138 Z" fill="url(#ab2center)" stroke="#484650" stroke-width="0.7"/>
+        <!-- W-shaped trailing edge detail -->
+        <path d="M 185,138 C 196,152 204,168 215,172 C 220,158 226,148 235,144" fill="none" stroke="#303038" stroke-width="1.2"/>
+        <path d="M 285,154 C 292,162 298,170 285,172 C 278,162 268,154 252,152" fill="none" stroke="#303038" stroke-width="1.2"/>
+        <!-- W trailing edge raised pattern -->
+        <path d="M 185,170 C 198,180 208,188 215,190 C 226,180 238,174 250,172 C 262,174 274,180 285,190 C 292,185 302,178 315,170" fill="none" stroke="#404048" stroke-width="1.5"/>
+        <!-- 4 engine exhaust slots embedded in center-rear -->
+        <ellipse cx="215" cy="178" rx="8" ry="4" fill="#0e0c10" stroke="#303038" stroke-width="0.8"/>
+        <ellipse cx="215" cy="178" rx="5" ry="2.5" fill="#b03010" opacity="0.85"/>
+        <ellipse cx="230" cy="183" rx="8" ry="4" fill="#0e0c10" stroke="#303038" stroke-width="0.8"/>
+        <ellipse cx="230" cy="183" rx="5" ry="2.5" fill="#b03010" opacity="0.85"/>
+        <ellipse cx="265" cy="181" rx="8" ry="4" fill="#0e0c10" stroke="#303038" stroke-width="0.8"/>
+        <ellipse cx="265" cy="181" rx="5" ry="2.5" fill="#b03010" opacity="0.85"/>
+        <ellipse cx="280" cy="176" rx="8" ry="4" fill="#0e0c10" stroke="#303038" stroke-width="0.8"/>
+        <ellipse cx="280" cy="176" rx="5" ry="2.5" fill="#b03010" opacity="0.85"/>
+        <!-- Cockpit: flat flush windshield -->
+        <path d="M 232,116 C 236,110 244,108 252,110 C 258,112 260,120 254,124 C 248,128 236,126 232,116 Z" fill="rgba(40,120,200,0.30)" stroke="#ff3b3b" stroke-width="1.0"/>
+        <path d="M 235,116 Q 244,111 252,113" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.3" stroke-linecap="round"/>
       </g>
-      <!-- center spine highlight -->
-      <path d="M200,30 Q204,60 204,96" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4" stroke-linecap="round"/>
-      <!-- leading-edge accent lines -->
-      <line x1="200" y1="28" x2="32" y2="101" stroke="#ff3b3b" stroke-width="0.7" opacity="0.28"/>
-      <line x1="200" y1="28" x2="368" y2="101" stroke="#ff3b3b" stroke-width="0.7" opacity="0.28"/>
-      <text x="10" y="151" font-family="JetBrains Mono,monospace" font-size="9" fill="#ff3b3b" opacity="0.7" letter-spacing="0.5">B-2 ◆ STEALTH STRATEGIC BOMBER</text>
+      <!-- Spine highlight -->
+      <path d="M 250,92 C 250,114 252,136 250,160" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="4" stroke-linecap="round"/>
+      <!-- Leading edge accents -->
+      <path d="M 250,90 C 330,78 400,60 460,42" fill="none" stroke="#ff3b3b" stroke-width="0.8" opacity="0.32"/>
+      <path d="M 250,90 C 170,114 100,158 40,218" fill="none" stroke="#ff3b3b" stroke-width="0.8" opacity="0.32"/>
+      <text x="12" y="232" font-family="JetBrains Mono,monospace" font-size="10" fill="#ff3b3b" opacity="0.75" letter-spacing="0.5">B-2 ◆ STEALTH STRATEGIC BOMBER</text>
     </svg>
     <h5>B-2 Spirit</h5>
     <div class="role">Stealth Strategic Bomber</div>
     <div class="specs">6,000nm range &bull; 40,000 lb payload &bull; Near-invisible<br>GBU-57 MOP (30,000 lb bunker buster)<br><strong style="color:var(--accent-red);">Only platform that can penetrate deepest Iranian bunkers</strong></div>
   </div>
   <div class="aircraft-card">
-    <!-- E-3 Sentry 3D SVG -->
-    <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="E-3 Sentry AWACS 3D illustration">
+    <!-- replaced with isometric 3D SVG -->
+    <svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;border-radius:8px;display:block;" role="img" aria-label="E-3 Sentry AWACS 3D illustration">
       <defs>
-        <linearGradient id="e3bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#070a14"/><stop offset="100%" stop-color="#0e1220"/></linearGradient>
-        <linearGradient id="e3body" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stop-color="#88a0c0"/><stop offset="40%" stop-color="#607890"/><stop offset="100%" stop-color="#202840"/></linearGradient>
-        <linearGradient id="e3lwing" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#586880"/><stop offset="100%" stop-color="#182030"/></linearGradient>
-        <linearGradient id="e3rwing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#485878"/><stop offset="100%" stop-color="#10182a"/></linearGradient>
-        <linearGradient id="e3dome" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#8898b0"/><stop offset="50%" stop-color="#5a6880"/><stop offset="100%" stop-color="#202838"/></linearGradient>
-        <radialGradient id="e3glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#4a90d9" stop-opacity="0.14"/><stop offset="100%" stop-color="#4a90d9" stop-opacity="0"/></radialGradient>
-        <filter id="e3drop"><feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#000" flood-opacity="0.75"/></filter>
+        <linearGradient id="ae3bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#070a14"/><stop offset="100%" stop-color="#0e1220"/></linearGradient>
+        <linearGradient id="ae3top" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c0d0e0"/><stop offset="50%" stop-color="#7888a0"/><stop offset="100%" stop-color="#404858"/></linearGradient>
+        <linearGradient id="ae3side" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#506070"/><stop offset="100%" stop-color="#1e2630"/></linearGradient>
+        <linearGradient id="ae3wing" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#98aac0"/><stop offset="100%" stop-color="#364858"/></linearGradient>
+        <linearGradient id="ae3dome" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#8898b0"/><stop offset="50%" stop-color="#5a6880"/><stop offset="100%" stop-color="#202838"/></linearGradient>
+        <radialGradient id="ae3glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#4a90d9" stop-opacity="0.15"/><stop offset="100%" stop-color="#4a90d9" stop-opacity="0"/></radialGradient>
+        <filter id="ae3drop"><feDropShadow dx="4" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.75"/></filter>
       </defs>
-      <rect width="400" height="160" fill="url(#e3bg)" rx="8"/>
-      <rect width="400" height="160" fill="url(#e3glow)" rx="8"/>
-      <ellipse cx="202" cy="118" rx="88" ry="14" fill="rgba(0,0,0,0.48)"/>
-      <g filter="url(#e3drop)">
-        <!-- left swept wing -->
-        <polygon points="190,70 96,100 120,112 192,82" fill="url(#e3lwing)" stroke="#384858" stroke-width="0.5"/>
-        <!-- right swept wing -->
-        <polygon points="210,70 304,100 280,112 208,82" fill="url(#e3rwing)" stroke="#283848" stroke-width="0.5"/>
-        <!-- engine 1 (far left) -->
-        <ellipse cx="118" cy="102" rx="10" ry="5" fill="#101a24" stroke="#384858" stroke-width="0.8"/>
-        <ellipse cx="118" cy="103" rx="7" ry="3.5" fill="#1a2a3a" opacity="0.9"/>
-        <!-- engine 2 (left inner) -->
-        <ellipse cx="148" cy="96" rx="10" ry="5" fill="#101a24" stroke="#384858" stroke-width="0.8"/>
-        <ellipse cx="148" cy="97" rx="7" ry="3.5" fill="#1a2a3a" opacity="0.9"/>
-        <!-- engine 3 (right inner) -->
-        <ellipse cx="252" cy="96" rx="10" ry="5" fill="#101a24" stroke="#384858" stroke-width="0.8"/>
-        <ellipse cx="252" cy="97" rx="7" ry="3.5" fill="#1a2a3a" opacity="0.9"/>
-        <!-- engine 4 (far right) -->
-        <ellipse cx="282" cy="102" rx="10" ry="5" fill="#101a24" stroke="#384858" stroke-width="0.8"/>
-        <ellipse cx="282" cy="103" rx="7" ry="3.5" fill="#1a2a3a" opacity="0.9"/>
-        <!-- fuselage (long tube) -->
-        <polygon points="200,14 212,30 215,108 210,122 200,126 190,122 185,108 188,30" fill="url(#e3body)" stroke="#506070" stroke-width="0.5"/>
-        <!-- horizontal stabilizer left -->
-        <polygon points="188,112 158,130 168,134 190,118" fill="#1e2838" stroke="#384858" stroke-width="0.4"/>
-        <!-- horizontal stabilizer right -->
-        <polygon points="212,112 242,130 232,134 210,118" fill="#18222e" stroke="#384858" stroke-width="0.4"/>
-        <!-- vertical fin (sliver) -->
-        <polygon points="196,90 194,126 206,126 204,90" fill="#2a3848" stroke="#384858" stroke-width="0.4"/>
-        <!-- rotodome strut -->
-        <rect x="198" y="28" width="4" height="18" fill="#404858" stroke="#384858" stroke-width="0.4"/>
-        <!-- rotodome (the iconic disc) -->
-        <ellipse cx="200" cy="26" rx="58" ry="11" fill="url(#e3dome)" stroke="#5a7090" stroke-width="0.8"/>
-        <ellipse cx="200" cy="26" rx="48" ry="7.5" fill="#3a4a60" stroke="#4a6080" stroke-width="0.5"/>
-        <ellipse cx="200" cy="26" rx="10" ry="3" fill="#2a3a50" stroke="#4a6080" stroke-width="0.4"/>
+      <rect width="500" height="240" fill="url(#ae3bg)" rx="8"/>
+      <rect width="500" height="240" fill="url(#ae3glow)" rx="8"/>
+      <ellipse cx="255" cy="222" rx="150" ry="12" fill="rgba(0,0,0,0.5)"/>
+      <g filter="url(#ae3drop)">
+        <!-- Starboard wing (upper-right) -->
+        <path d="M 264,128 C 282,106 300,82 320,65 C 312,80 294,108 248,136 Z" fill="url(#ae3wing)" stroke="#364858" stroke-width="0.8"/>
+        <!-- Port wing (lower-left) -->
+        <path d="M 232,144 C 212,168 194,188 176,207 C 186,196 208,170 248,136 Z" fill="#485a70" stroke="#2a3848" stroke-width="0.8"/>
+        <!-- Starboard engines on pylons (upper-right) -->
+        <ellipse cx="290" cy="90" rx="12" ry="6" fill="#101a24" stroke="#384858" stroke-width="0.8"/>
+        <ellipse cx="290" cy="90" rx="8" ry="4" fill="#1c2c3e" opacity="0.9"/>
+        <ellipse cx="290" cy="90" rx="4" ry="2" fill="#304050" opacity="0.7"/>
+        <ellipse cx="310" cy="82" rx="12" ry="6" fill="#101a24" stroke="#384858" stroke-width="0.8"/>
+        <ellipse cx="310" cy="82" rx="8" ry="4" fill="#1c2c3e" opacity="0.9"/>
+        <ellipse cx="310" cy="82" rx="4" ry="2" fill="#304050" opacity="0.7"/>
+        <!-- Port engines on pylons (lower-left) -->
+        <ellipse cx="198" cy="190" rx="12" ry="6" fill="#101a24" stroke="#384858" stroke-width="0.8"/>
+        <ellipse cx="198" cy="190" rx="8" ry="4" fill="#1c2c3e" opacity="0.9"/>
+        <ellipse cx="198" cy="190" rx="4" ry="2" fill="#304050" opacity="0.7"/>
+        <ellipse cx="218" cy="198" rx="12" ry="6" fill="#101a24" stroke="#384858" stroke-width="0.8"/>
+        <ellipse cx="218" cy="198" rx="8" ry="4" fill="#1c2c3e" opacity="0.9"/>
+        <ellipse cx="218" cy="198" rx="4" ry="2" fill="#304050" opacity="0.7"/>
+        <!-- Conventional T-tail: vertical fin -->
+        <path d="M 96,68 C 95,52 94,36 94,24 L 102,24 C 102,36 102,52 102,68 Z" fill="#404858" stroke="#506878" stroke-width="0.8"/>
+        <!-- Horizontal stabilizers at tail -->
+        <path d="M 90,38 C 82,36 74,34 70,34 C 72,38 80,40 90,42 Z" fill="#303848" stroke="#404858" stroke-width="0.6"/>
+        <path d="M 104,34 C 112,32 120,30 124,30 C 122,34 114,36 104,38 Z" fill="#303848" stroke="#404858" stroke-width="0.6"/>
+        <!-- Thick fuselage top face (Boeing 707 body) -->
+        <path d="M 98,48 C 240,96 374,160 410,198 C 390,214 248,140 82,80 Z" fill="url(#ae3top)" stroke="#6888a0" stroke-width="0.8"/>
+        <!-- Fuselage side face -->
+        <path d="M 82,80 C 248,140 390,214 410,198 C 392,214 250,154 82,96 Z" fill="url(#ae3side)" stroke="#3a5060" stroke-width="0.5"/>
+        <!-- Rotodome strut -->
+        <rect x="237" y="96" width="7" height="18" fill="#404858" stroke="#506878" stroke-width="0.5"/>
+        <!-- Rotodome disc (large flat ellipse - critical feature) -->
+        <ellipse cx="250" cy="92" rx="68" ry="13" fill="url(#ae3dome)" stroke="#5a7090" stroke-width="1.0"/>
+        <ellipse cx="250" cy="92" rx="54" ry="9" fill="#3a4a60" stroke="#4a6080" stroke-width="0.6"/>
+        <ellipse cx="250" cy="92" rx="12" ry="3.5" fill="#2a3a50" stroke="#4a6080" stroke-width="0.5"/>
+        <!-- Canopy -->
+        <path d="M 304,124 C 308,116 318,114 326,122 C 330,130 324,140 314,142 C 304,144 300,134 304,124 Z" fill="rgba(40,120,200,0.35)" stroke="#4a90d9" stroke-width="1.2"/>
+        <path d="M 307,126 Q 316,119 324,124" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.4" stroke-linecap="round"/>
       </g>
-      <!-- dome highlight -->
-      <path d="M150,23 Q200,16 250,23" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="2" stroke-linecap="round"/>
-      <!-- fuselage spine highlight -->
-      <path d="M200,16 Q204,62 204,104" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="3" stroke-linecap="round"/>
-      <!-- leading-edge accent -->
-      <line x1="190" y1="70" x2="98" y2="101" stroke="#4a90d9" stroke-width="0.7" opacity="0.3"/>
-      <line x1="210" y1="70" x2="302" y2="101" stroke="#4a90d9" stroke-width="0.7" opacity="0.3"/>
-      <text x="10" y="151" font-family="JetBrains Mono,monospace" font-size="9" fill="#4a90d9" opacity="0.7" letter-spacing="0.5">E-3 ◆ AWACS / AIRBORNE C2</text>
+      <!-- Dome highlight arc -->
+      <path d="M 186,88 Q 250,80 314,88" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- Spine highlight -->
+      <path d="M 92,66 C 224,112 356,168 408,198" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="3" stroke-linecap="round"/>
+      <!-- Leading edge accent -->
+      <path d="M 248,136 C 270,110 296,80 320,65" fill="none" stroke="#4a90d9" stroke-width="0.9" opacity="0.4"/>
+      <text x="12" y="232" font-family="JetBrains Mono,monospace" font-size="10" fill="#4a90d9" opacity="0.75" letter-spacing="0.5">E-3 ◆ AWACS / AIRBORNE C2</text>
     </svg>
     <h5>E-3 Sentry AWACS</h5>
     <div class="role">Airborne Command & Control</div>
