@@ -74,6 +74,152 @@ Always run the build after editing any file in `sections/`. The generated `index
 
 ---
 
+## Section-by-section update reference
+
+Each section below lists what it contains and what an agent should check before updating it.
+
+### `sections/masthead.html` — Page header
+**Contains:** Page title, dateline (date), last-updated UTC timestamp.  
+**Check before updating:**
+- The current date.
+- The UTC time of the most recent content changes made in the same update pass.
+
+---
+
+### `sections/ticker.html` — Breaking-news ticker
+**Contains:** Scrolling headlines summarising the top ~15 stories. Content is listed **twice** (CSS scroll loop) — both copies must stay identical.  
+**Check before updating:**
+- All other sections for newly added events; pull the most newsworthy items into the ticker.
+- Remove stale headlines that are no longer "breaking."
+
+---
+
+### `sections/sidebar.html` — Navigation
+**Contains:** Left-panel anchor links to every section with sequential numbering.  
+**Check before updating:**
+- Only edit if a section is added, removed, or renamed. The `id` in the section file must match the `href` fragment here.
+
+---
+
+### `sections/stats.html` — Key statistics grid
+**Contains:** Six headline numbers (confirmed dead, estimated total killed, detained, US aircraft, US ships, rial/USD rate).  
+**Check before updating:**
+- **Casualties / detained:** HRANA (hrana.org), Iran International, Amnesty International, UN Human Rights.
+- **US aircraft / ships:** USNI Fleet Tracker, Pentagon / CENTCOM press releases, The War Zone, Stars & Stripes.
+- **Rial / USD exchange rate:** Google Finance "IRRUSD", Bonbast.com (unofficial free-market rate), financial news wires.
+
+---
+
+### `sections/last-24h.html` — Last 24 hours timeline
+**Contains:** Day-by-day timeline entries for the most recent two days of significant events.  
+**Check before updating:**
+- **Diplomatic:** Reuters, Al Jazeera, NBC News, AP for talks, statements, deadlines.
+- **Military / naval:** USNI, The War Zone, Stars & Stripes for ship movements and deployments.
+- **Protests / inside Iran:** Iran International, BBC Persian, HRANA for protest activity and crackdowns.
+- **US politics:** White House / State Dept releases, major US outlets for presidential statements.
+- **Intelligence / cyber:** CNBC, Axios, national-security beat reporters.
+- Prepend new events at the **top** of the relevant day block; shift the previous day's block to "YESTERDAY" and drop any block older than two days.
+
+---
+
+### `sections/theater.html` — Theater of operations map
+**Contains:** A Leaflet.js interactive map; marker positions and popup text are defined in `js/map.js`.  
+**Check before updating:**
+- Carrier and ship positions: USNI Fleet Tracker (news.usni.org), The War Zone.
+- Air base status: open-source military-tracking accounts, Pentagon statements.
+- If marker data changes, edit `js/map.js` rather than this file (this file only holds the map container HTML).
+
+---
+
+### `sections/air-power.html` — Air power section
+**Contains:** Aircraft profile cards for key US platforms; bar chart via `<!-- @include sections/charts/air-power-bar.html -->`.  
+**Check before updating:**
+- Total aircraft count and base breakdown: The War Zone, CSIS, Pentagon briefings, Washington Post national-security desk.
+- If a new aircraft type is deployed or a platform is withdrawn, add/remove a card.
+- Update the bar chart file if aircraft numbers change significantly.
+
+---
+
+### `sections/naval.html` — Naval strike power
+**Contains:** Carrier strike group cards (position, range data, air wing); escort ship list; coalition / regional posture table.  
+**Check before updating:**
+- Carrier positions: USNI Fleet Tracker, The War Zone, Stars & Stripes.
+- Ship count and new arrivals / departures: USNI, NAVCENT, open-source maritime tracking (MarineTraffic).
+- Coalition posture (UK, Israel, Saudi, Jordan, Turkey, China): Reuters, Al Jazeera, CNN, national defense ministries.
+- Update the distance/transit fields in the SVG carrier diagrams if a carrier's position changes significantly.
+
+---
+
+### `sections/inside-iran.html` — Inside Iran: seven crises
+**Contains:** Deep-dive cards on (1) The January Massacre, (2) Student Uprising, (3) Economic Collapse/rial chart, (4) Internet blackout/CIA operation, (5) Ethnic minority crackdown, (6) Water crisis, (7) Proxy network collapse; plus IRGC power struggle.  
+**Check before updating:**
+- **Casualty figures (Crisis 1):** HRANA, Iran International, Amnesty International, UN OHCHR.
+- **Student protests (Crisis 2):** Iran International, BBC Persian, Reuters; check for new university locations, new protest dates, government statements.
+- **Economic data (Crisis 3):** Rial rate via Bonbast.com; oil export data from Vortexa, Kpler, or energy-beat reporters; US Treasury sanctions announcements.
+- **Internet / cyber (Crisis 4):** NetBlocks, Freedom House, Georgia Tech Internet Outage Detection and Analysis (IODA), CNBC, US News; CIA and ODNI public statements.
+- **Ethnic crackdowns (Crisis 5):** HRANA, Amnesty, Kurdistan Human Rights Network, Baloch Activists Campaign.
+- **Water crisis (Crisis 6):** Iran environmental NGOs, UN FAO, academic hydrology papers — this section changes slowly; update only if major new data emerges.
+- **Proxy network (Crisis 7):** Reuters, Al Jazeera, Times of Israel, USNI for Hezbollah, Houthi, and PMF developments.
+- **IRGC power struggle:** National Interest, Alma Center, RAND, Israeli intelligence assessments.
+
+---
+
+### `sections/opposition.html` — Opposition & Reza Pahlavi
+**Contains:** Pahlavi biography, key events timeline, opposition landscape overview.  
+**Check before updating:**
+- Pahlavi public statements: his official social media (X / Instagram), Washington Post, Axios.
+- US government contacts: Axios (Steve Witkoff, Jared Kushner meetings), White House readouts.
+- Opposition group statements: NCRI/MEK releases, Congress of Nationalities press releases, diaspora Persian-language media (Iran International TV, Manoto).
+
+---
+
+### `sections/nuclear.html` — Nuclear negotiations
+**Contains:** Talks timeline (Muscat → Geneva rounds); deal-terms comparison table; UK-US rift card; Israeli position card; bar chart via `<!-- @include sections/charts/nuclear-reconstruction-bar.html -->`.  
+**Check before updating:**
+- **Talks outcomes:** Reuters, NBC, Al Jazeera, Axios for post-round readouts from Witkoff, Kushner, and Araghchi.
+- **Iranian statements:** Iran Foreign Ministry (@IRIForeignMin), Iran International, IRNA (official).
+- **IAEA reports:** iaea.org for quarterly safeguards reports; The Wire (IAEA watch publication).
+- **Nuclear site status / satellite imagery:** The War Zone, 38 North, Planet Labs analysis, Alma Center.
+- Update the reconstruction bar chart if enrichment or centrifuge estimates change.
+
+---
+
+### `sections/hormuz.html` — Strait of Hormuz
+**Contains:** Oil throughput data, Iranian capabilities list, price data, blockade scenario analysis.  
+**Check before updating:**
+- **Oil prices / throughput:** US EIA weekly reports (eia.gov), Bloomberg Energy, Reuters commodities.
+- **Iranian naval drills:** IRGC Navy statements, USNI, The War Zone.
+- **Goldman Sachs / analyst price forecasts:** Bloomberg, FT energy desk.
+- **Tanker incidents:** Lloyd's List, MarineTraffic, USNI, UK Maritime Trade Operations (UKMTO).
+
+---
+
+### `sections/military.html` — Iran's remaining military capability
+**Contains:** Degraded vs. still-operational capability lists; nuclear hardening update (Parchin); retaliation sequence bar chart via `<!-- @include sections/charts/retaliation-sequence-bar.html -->`; threat matrix via `<!-- @include sections/charts/threat-matrix.html -->`.  
+**Check before updating:**
+- **Satellite imagery (Parchin, Natanz, Fordow):** The War Zone, 38 North, Planet Labs, Maxar Technologies public releases.
+- **Missile inventory / drone production:** IISS Military Balance, Alma Center, Belfer Center, US DIA / DNI unclassified assessments.
+- **Chinese military assistance:** Reuters, WSJ, Bloomberg; Treasury sanctions list additions.
+- **IRGC Navy:** USNI, US 5th Fleet statements.
+
+---
+
+### `sections/scenarios.html` — Four scenarios
+**Contains:** Likelihood percentages and analysis for four outcomes: (1) Deal, (2) Strikes, (3) Revolution, (4) Frozen conflict.  
+**Check before updating:**
+- Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession). Revise the percentages in both the text and the `sections/charts/scenario-likelihood-bar.html` chart to keep them consistent.
+- **Sources to consult:** CSIS, MEF, Brookings, Belfer Center, National Interest, Alma Center assessments; polling by IranWire; prediction markets (Polymarket).
+
+---
+
+### `sections/sources.html` — Source footer
+**Contains:** Two-column grid of source hyperlinks; compiled-date line.  
+**Check before updating:**
+- Add a link for every new claim added to any section in the same update pass.
+- Update the compiled-date line to the current date.
+
+---
+
 ## How to update common content
 
 ### 1. Dateline and "last updated" timestamp — `sections/masthead.html`
