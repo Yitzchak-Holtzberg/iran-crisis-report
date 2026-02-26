@@ -11,7 +11,7 @@
 /* Collapsed: show only the toggle button centred in the 36 px strip */
 .left-sidebar.collapsed .sb-progress { display:none; }
 .left-sidebar.collapsed .sb-nav { display:none; }
-.left-sidebar.collapsed .sb-header { padding:0; border-bottom:none; flex-direction:column; justify-content:center; align-items:center; gap:0; pointer-events:auto; }
+.left-sidebar.collapsed .sb-header { padding:0; border-bottom:none; flex-direction:column; justify-content:center; align-items:center; gap:0; pointer-events:auto; background:var(--bg-secondary); height:52px; clip-path:polygon(0 20%, 100% 0%, 100% 100%, 0 80%); filter:drop-shadow(2px 0 3px rgba(0,0,0,0.35)); }
 .left-sidebar.collapsed .sb-header > div { display:none; }
 .left-sidebar.collapsed .sb-collapse-btn { font-size:14px; }
 .sb-nav { flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--border) transparent; padding:8px 0 12px; }
