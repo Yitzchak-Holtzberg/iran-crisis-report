@@ -29,6 +29,8 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Int
 .stat-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:20px; text-align:center; }
 .stat-box .number { font-family:'JetBrains Mono',monospace; font-size:30px; font-weight:700; line-height:1; margin-bottom:6px; }
 .stat-box .label { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-muted); }
+.stat-box .stat-section { display:block; font-family:'JetBrains Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-muted); text-decoration:none; margin-top:8px; opacity:0.65; transition:opacity 0.2s; }
+.stat-box .stat-section:hover { opacity:1; color:var(--text-secondary); text-decoration:underline; }
 .chart-container { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:28px; margin:24px 0; }
 .chart-container h4 { font-family:'JetBrains Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); margin-bottom:20px; }
 .bar-row { display:flex; align-items:center; margin-bottom:12px; gap:12px; }
