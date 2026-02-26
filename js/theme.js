@@ -3,13 +3,13 @@ function toggleTheme() {
   var isLight = html.getAttribute('data-theme') === 'light';
   if (isLight) {
     html.removeAttribute('data-theme');
-    document.getElementById('toggleIcon').textContent = '☀️';
-    document.getElementById('toggleLabel').textContent = 'Light';
+    document.getElementById('toggleIcon').textContent = '🌙';
+    document.getElementById('toggleLabel').textContent = 'Dark';
     localStorage.setItem('theme', 'dark');
   } else {
     html.setAttribute('data-theme', 'light');
-    document.getElementById('toggleIcon').textContent = '🌙';
-    document.getElementById('toggleLabel').textContent = 'Dark';
+    document.getElementById('toggleIcon').textContent = '☀️';
+    document.getElementById('toggleLabel').textContent = 'Light';
     localStorage.setItem('theme', 'light');
   }
   // Swap map tile layer between dark and light CartoDB styles
@@ -25,7 +25,7 @@ function toggleTheme() {
   var saved = localStorage.getItem('theme');
   if (saved === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
-    document.getElementById('toggleIcon').textContent = '🌙';
-    document.getElementById('toggleLabel').textContent = 'Dark';
+    document.getElementById('toggleIcon').textContent = '☀️';
+    document.getElementById('toggleLabel').textContent = 'Light';
   }
 })();
