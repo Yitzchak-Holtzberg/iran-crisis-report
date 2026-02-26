@@ -11,6 +11,11 @@
   "statUsShips": "25+",
   "statRialRate": "1.65M",
 
+  "scenarioDealPct": "15",
+  "scenarioStrikesPct": "55",
+  "scenarioRevolutionPct": "20",
+  "scenarioFrozenPct": "10",
+
   "ticker": [
     "GENEVA ROUND 3: Talks UNDERWAY — Araghchi faces Witkoff &amp; Kushner; US demands missile talks on agenda, Iran rejects expansion",
     "POLITICO EXCLUSIVE: White House advisers believe \"politics are a lot better if Israel strikes Iran first\" — internal consensus: \"We're going to bomb them\" (Feb 25)",

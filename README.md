@@ -104,6 +104,11 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
   "statUsShips": "25+",
   "statRialRate": "1.65M",
 
+  "scenarioDealPct": "15",
+  "scenarioStrikesPct": "55",
+  "scenarioRevolutionPct": "20",
+  "scenarioFrozenPct": "10",
+
   "ticker": [
     "HEADLINE ONE",
     "HEADLINE TWO"
@@ -113,7 +118,7 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
 
 | Key | Where it appears | Update frequency |
 |---|---|---|
-| `date` | Masthead dateline | Every update pass |
+| `date` | Masthead dateline, sources footer, scenario chart heading | Every update pass |
 | `lastUpdated` | Masthead dateline | Every update pass |
 | `statConfirmedDead` / `statConfirmedDeadSource` | Stats grid | When HRANA publishes new figures |
 | `statTotalKilled` / `statTotalKilledSource` | Stats grid | When Iran Intl. updates |
@@ -121,7 +126,13 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
 | `statUsAircraft` | Stats grid | After Pentagon briefings |
 | `statUsShips` | Stats grid | After USNI Fleet Tracker updates |
 | `statRialRate` | Stats grid | When Bonbast.com rate changes |
+| `scenarioDealPct` | Scenario 1 badge + bar chart | After major diplomatic development |
+| `scenarioStrikesPct` | Scenario 2 badge + bar chart | After major military development |
+| `scenarioRevolutionPct` | Scenario 3 badge + bar chart | After major protest/IRGC development |
+| `scenarioFrozenPct` | Scenario 4 badge + bar chart | After major diplomatic development |
 | `ticker` | Scrolling headline bar | Every update pass |
+
+> **Note:** `dayToday`, `dayYesterday`, and `dayTwoDaysAgo` are **automatically computed** by the build script from the `date` field — they appear as the day-group labels in the "Last 24 Hours" timeline. You never need to update them manually.
 
 ---
 
@@ -131,14 +142,13 @@ Each section below lists what it contains and what an agent should check before 
 
 ### `sections/masthead.html` — Page header
 **Contains:** Page title, dateline (date), last-updated UTC timestamp.  
-**Check before updating:**
-- The current date.
-- The UTC time of the most recent content changes made in the same update pass.
+**Update via `data.json`:** `date` and `lastUpdated` keys — no HTML editing required.
 
 ---
 
 ### `sections/ticker.html` — Breaking-news ticker
-**Contains:** Scrolling headlines summarising the top ~15 stories. Content is listed **twice** (CSS scroll loop) — both copies must stay identical.  
+**Contains:** A `<!-- @ticker -->` directive; actual headlines come from the `ticker` array in `data.json`.  
+**Update via `data.json`:** Edit the `ticker` array. The build script auto-duplicates the list for the CSS scroll loop.  
 **Check before updating:**
 - All other sections for newly added events; pull the most newsworthy items into the ticker.
 - Remove stale headlines that are no longer "breaking."
@@ -258,8 +268,9 @@ Each section below lists what it contains and what an agent should check before 
 
 ### `sections/scenarios.html` — Four scenarios
 **Contains:** Likelihood percentages and analysis for four outcomes: (1) Deal, (2) Strikes, (3) Revolution, (4) Frozen conflict.  
+**Update via `data.json`:** Change `scenarioDealPct`, `scenarioStrikesPct`, `scenarioRevolutionPct`, `scenarioFrozenPct` — the badges in this file and the bar chart are both updated automatically.  
 **Check before updating:**
-- Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession). Revise the percentages in both the text and the `sections/charts/scenario-likelihood-bar.html` chart to keep them consistent.
+- Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession).
 - **Sources to consult:** CSIS, MEF, Brookings, Belfer Center, National Interest, Alma Center assessments; polling by IranWire; prediction markets (Polymarket).
 - **Also check:** Politico and CBS News for inside-source White House deliberations about strike timing, sequencing preferences (e.g. Israel-first vs. joint strike), and domestic-political calculus — these directly affect the likelihood estimates for Scenarios 2 and 4.
 
@@ -269,7 +280,7 @@ Each section below lists what it contains and what an agent should check before 
 **Contains:** Two-column grid of source hyperlinks; compiled-date line.  
 **Check before updating:**
 - Add a link for every new claim added to any section in the same update pass.
-- Update the compiled-date line to the current date.
+- The compiled-date line updates automatically from `data.json → date`; no manual edit needed.
 
 ---
 
@@ -341,9 +352,23 @@ Severity-color convention:
 
 Charts are inline SVGs. Update data values (coordinates, labels, text) directly in the relevant `sections/charts/` file. They are included into section files via `<!-- @include … -->` directives.
 
+**Exception — scenario likelihood chart:** `sections/charts/scenario-likelihood-bar.html` uses `{{scenarioDealPct}}`, `{{scenarioStrikesPct}}`, `{{scenarioRevolutionPct}}`, and `{{scenarioFrozenPct}}` placeholders. Update those keys in `data.json` instead of editing the chart file.
+
 ### 6. Source links — `sections/sources.html`
 
-Add `<a href="…">Description</a>` entries inside the two-column grid div in the footer. Also update the compiled-date line at the bottom of the file.
+Add `<a href="…">Description</a>` entries inside the two-column grid div in the footer. The compiled-date line updates automatically from `data.json → date`.
+
+---
+
+## Build validation
+
+If you add a `{{key}}` placeholder to any section file but forget to add the corresponding entry to `data.json`, the build script will print a warning:
+
+```
+Warning: unresolved placeholders in output — check data.json for: myNewKey
+```
+
+The build will still succeed, but the raw placeholder text (`{{myNewKey}}`) will appear in the page. Resolve the warning before committing.
 
 ---
 
@@ -389,8 +414,9 @@ var(--border-color)
   - [ ] `date` and `lastUpdated`
   - [ ] `ticker` array — prepend new headlines, remove stale ones
   - [ ] Any stat values that have changed (`statConfirmedDead`, `statRialRate`, etc.)
-- [ ] Prepend new timeline entries in `sections/last-24h.html`; shift yesterday's entries to the YESTERDAY block
-- [ ] Update any charts in `sections/charts/` that have new data
-- [ ] Add new source links to `sections/sources.html` and update the compiled-date line
-- [ ] Run `npm run build`
+  - [ ] Scenario likelihoods if there has been a major development (`scenarioDealPct`, `scenarioStrikesPct`, etc.)
+- [ ] Prepend new timeline entries in `sections/last-24h.html`; shift yesterday's entries to the YESTERDAY block (day-header labels update automatically)
+- [ ] Update any non-scenario charts in `sections/charts/` that have new data
+- [ ] Add new source links to `sections/sources.html` (compiled date updates automatically)
+- [ ] Run `npm run build` — check for any "unresolved placeholders" warnings
 - [ ] Verify `index.html` looks correct in a browser before committing
