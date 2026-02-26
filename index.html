@@ -252,6 +252,8 @@
     .sb-toggle { display:flex; width:auto; padding:0 20px; border-radius:100px; font-size:16px; gap:8px; font-family:'JetBrains Mono',monospace; letter-spacing:1px; }
     /* Remove padding shifts on mobile */
     body.sb-collapsed, body.sb-expanded { padding-left:0; }
+    /* Move theme toggle to fixed bottom-right on mobile so it doesn't overlap masthead content */
+    .theme-toggle { position:fixed; top:auto; bottom:22px; right:16px; z-index:1001; }
   }
 
   /* Small phones */
