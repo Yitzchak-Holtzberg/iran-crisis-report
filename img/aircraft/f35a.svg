@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- F-35A Lightning II – Technical 3-view line drawing, dark theme -->
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="460" viewBox="0 0 700 460">
+  <rect width="100%" height="100%" fill="#060810"/>
+
+  <!-- ============================================================ -->
+  <!-- SIDE VIEW (profile) – left half, centered at y≈230 -->
+  <!-- ============================================================ -->
+  <g stroke="#00d4ff" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Fuselage outer profile -->
+    <path d="
+      M 30,220
+      C 60,210  80,195  110,192
+      C 130,191 150,192 165,194
+      C 175,195 185,194 195,192
+      C 215,188 235,180 260,175
+      C 300,169 330,168 360,168
+      C 380,168 395,169 410,170
+      L 430,170
+      C 440,170 448,172 455,176
+      C 460,179 462,182 462,186
+      L 462,265
+      C 462,269 460,272 455,275
+      C 448,279 440,281 430,281
+      L 410,281
+      C 395,282 380,283 360,283
+      C 330,283 300,282 260,276
+      C 235,271 215,263 195,259
+      C 185,257 175,256 165,257
+      C 150,259 130,260 110,261
+      C 80,264 60,260 30,251
+      Z
+    "/>
+    <!-- Canopy -->
+    <path d="M 110,192 C 115,185 125,180 135,178 C 150,176 165,177 175,180 C 180,182 182,185 182,188 L 182,194 C 175,194 165,194 155,194 L 110,192"/>
+    <!-- DSI inlet bump below nose -->
+    <path d="M 95,240 C 100,245 110,248 120,249 C 130,249 140,248 148,246 L 148,252 C 140,255 128,256 115,255 C 102,254 92,250 88,245 Z"/>
+    <!-- Main wing (trapezoidal, mid-fuselage mounted) -->
+    <path d="M 230,175 L 120,320 L 160,320 L 260,220 Z"/>
+    <!-- Wing trailing edge detail -->
+    <line x1="120" y1="320" x2="260" y2="220" stroke-width="1"/>
+    <!-- Horizontal stabilizer (rear) -->
+    <path d="M 400,170 L 340,340 L 375,340 L 420,180 Z"/>
+    <!-- Single canted vertical tail -->
+    <path d="M 415,175 L 430,130 L 445,130 L 450,175 Z"/>
+    <!-- Engine nozzle (rectangular, single) -->
+    <rect x="455" y="200" width="18" height="50" rx="3"/>
+    <ellipse cx="464" cy="225" rx="6" ry="20"/>
+    <!-- Wing fence / LERX -->
+    <path d="M 210,175 L 200,190 L 215,190 L 225,178 Z"/>
+    <!-- Wheel well doors (detail) -->
+    <ellipse cx="200" cy="265" rx="22" ry="6"/>
+    <ellipse cx="330" cy="275" rx="12" ry="4"/>
+  </g>
+
+  <!-- Side view label -->
+  <text x="30" y="360" fill="#00d4ff" font-family="monospace" font-size="11" opacity="0.7">SIDE</text>
+  <line x1="30" y1="365" x2="490" y2="365" stroke="#00d4ff" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- ============================================================ -->
+  <!-- TOP VIEW (planform) – upper right quadrant -->
+  <!-- ============================================================ -->
+  <g stroke="#00d4ff" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(530, 20) scale(0.38)">
+    <!-- Fuselage centerline outline (top-down) -->
+    <path d="
+      M 250,10
+      C 255,10 275,20 290,50
+      C 305,80 310,110 310,140
+      L 310,380
+      C 310,400 305,420 295,430
+      L 250,450
+      L 205,430
+      C 195,420 190,400 190,380
+      L 190,140
+      C 190,110 195,80 210,50
+      C 225,20 245,10 250,10 Z
+    "/>
+    <!-- Left wing -->
+    <path d="M 200,150 L 30,320 L 60,350 L 210,260 Z"/>
+    <!-- Right wing -->
+    <path d="M 300,150 L 470,320 L 440,350 L 290,260 Z"/>
+    <!-- Left horizontal stab -->
+    <path d="M 200,370 L 80,470 L 100,490 L 215,400 Z"/>
+    <!-- Right horizontal stab -->
+    <path d="M 300,370 L 420,470 L 400,490 L 285,400 Z"/>
+    <!-- Vertical tail (top-down shows as narrow rectangle at rear) -->
+    <rect x="238" y="330" width="24" height="70" rx="3"/>
+    <!-- DSI intake lumps (top-down, one each side) -->
+    <ellipse cx="215" cy="100" rx="18" ry="28" transform="rotate(-10 215 100)"/>
+    <ellipse cx="285" cy="100" rx="18" ry="28" transform="rotate(10 285 100)"/>
+  </g>
+  <text x="530" y="200" fill="#00d4ff" font-family="monospace" font-size="11" opacity="0.7" transform="translate(0,-20)">TOP</text>
+
+  <!-- ============================================================ -->
+  <!-- FRONT VIEW – lower right -->
+  <!-- ============================================================ -->
+  <g stroke="#00d4ff" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(530, 270)">
+    <!-- Fuselage front section (oval cross-section) -->
+    <ellipse cx="85" cy="55" rx="28" ry="40"/>
+    <!-- Left wing -->
+    <path d="M 59,65 L 10,115 L 10,120 L 60,73 Z"/>
+    <!-- Right wing -->
+    <path d="M 111,65 L 160,115 L 160,120 L 110,73 Z"/>
+    <!-- Vertical tail (single, slightly canted outboard) -->
+    <path d="M 85,16 L 80,50 L 90,50 L 88,16 Z" transform="rotate(5 85 50)"/>
+    <!-- Horizontal stabs -->
+    <path d="M 60,85 L 10,95 L 10,100 L 62,90 Z"/>
+    <path d="M 110,85 L 160,95 L 160,100 L 108,90 Z"/>
+    <!-- Engine nozzle (single, center bottom) -->
+    <ellipse cx="85" cy="92" rx="16" ry="10"/>
+    <!-- DSI intake (below nose) -->
+    <path d="M 65,70 C 68,80 75,85 85,86 C 95,85 102,80 105,70"/>
+    <!-- Canopy -->
+    <ellipse cx="85" cy="18" rx="16" ry="8"/>
+  </g>
+  <text x="530" y="280" fill="#00d4ff" font-family="monospace" font-size="11" opacity="0.7">FRONT</text>
+
+  <!-- Aircraft label -->
+  <text x="30" y="420" fill="#00d4ff" font-family="monospace" font-size="13" font-weight="bold">F-35A Lightning II</text>
+  <text x="30" y="438" fill="#00d4ff" font-family="monospace" font-size="10" opacity="0.6">5th Gen Single-Engine Stealth Multi-Role</text>
+</svg>
