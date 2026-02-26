@@ -1,0 +1,9 @@
+{
+  "name": "iran-crisis-report",
+  "version": "1.0.0",
+  "description": "Iran Crisis Report — interactive news dashboard",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "private": true
+}
