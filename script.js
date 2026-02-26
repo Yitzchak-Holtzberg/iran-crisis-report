@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // ===== NAVIGATION: mobile toggle =====
   // ===== LEFT SIDEBAR: active section + progress on scroll =====
   (function() {
-    var sectionIds = ['stats','last-24h','theater','air-power','naval','inside-iran','opposition','nuclear','hormuz','military','scenarios'];
+    var sectionIds = ['stats','last-24h','theater','air-power','naval','inside-iran','opposition','opposition-landscape','nuclear','nuclear-deal-terms','hormuz','military','iran-retaliation','scenarios'];
     var sbLinks = document.querySelectorAll('.sb-link');
     function onScroll() {
       var scrollY = window.scrollY + 60;
