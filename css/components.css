@@ -41,8 +41,10 @@
 .map-badge { display:inline-block; border-radius:6px; padding:4px 8px; font-family:'JetBrains Mono',monospace; font-size:9px; white-space:nowrap; text-align:center; font-weight:700; }
 .map-badge-denied { background:rgba(10,10,20,0.88); border:1px dashed #ff3b3b; color:#ff3b3b; }
 .map-badge-spinup { background:rgba(10,10,20,0.88); border:1px dashed #ff8c42; color:#ff8c42; }
+.map-badge-deploying { background:rgba(10,10,20,0.88); border:1px dashed #4a90d9; color:#4a90d9; }
 [data-theme="light"] .map-badge-denied { background:rgba(255,255,255,0.95); border-color:#c02020; color:#c02020; }
 [data-theme="light"] .map-badge-spinup { background:rgba(255,255,255,0.95); border-color:#b85000; color:#b85000; }
+[data-theme="light"] .map-badge-deploying { background:rgba(255,255,255,0.95); border-color:#2a6ab8; color:#2a6ab8; }
 
 /* ===== MAP ICON MODERNIZATION ===== */
 

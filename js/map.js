@@ -25,27 +25,28 @@ document.addEventListener('DOMContentLoaded', function(){
   // Blocked / Denied — CSS-class badge (theme-aware via stylesheet)
   function blockedIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-denied"><b>ACCESS DENIED</b></div>',iconSize:[100,24],iconAnchor:[50,12]});}
   function spinupIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-spinup"><b>SPINNING UP</b></div>',iconSize:[90,24],iconAnchor:[45,12]});}
+  function deployingIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-deploying"><b>DEPLOYING</b></div>',iconSize:[90,24],iconAnchor:[45,12]});}
 
   // Iran - red highlight
   L.circle([32.5,53],{radius:700000,color:'#ff3b3b',fillColor:'#ff3b3b',fillOpacity:0.06,weight:1,dashArray:'6,4'}).addTo(map);
 
   // ===== ABRAHAM LINCOLN CARRIER STRIKE GROUP (Arabian Sea) =====
-  L.marker([23.5,58],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Abraham Lincoln (CVN-72)</b><br>Nimitz-class carrier &bull; CVW-9<br>~80 aircraft &bull; 5,600 crew<br><b style="color:#ff3b3b">700km from Iranian coast</b><br>F/A-18E/F, EA-18G, E-2D, MH-60');
+  L.marker([23.5,58],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Abraham Lincoln (CVN-72)</b><br>Nimitz-class carrier &bull; CVW-9<br>~80 aircraft &bull; 5,600 crew<br><b style="color:#ff3b3b">700km from Iranian coast</b><br>F-35C, F/A-18E/F, EA-18G, E-2D, MH-60');
   L.circle([23.5,58],{radius:700000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.04,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-9 strike radius (~700km)');
   // Lincoln escorts
   L.marker([24.1,57.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Frank E. Petersen Jr. (DDG-121)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort &bull; DESRON 21<br>Tomahawk &bull; Aegis BMD');
   L.marker([23.0,59.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Spruance (DDG-111)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort<br>Tomahawk &bull; Aegis BMD');
-  L.marker([22.8,57.2],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Mobile Bay (CG-53)</b><br>Ticonderoga-class cruiser<br>Lincoln CSG escort<br>SM-3 &bull; SM-6 &bull; Tomahawk &bull; Aegis BMD');
+  L.marker([22.8,57.2],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Michael Murphy (DDG-112)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort &bull; DESRON 21<br>Tomahawk &bull; Aegis BMD');
 
   // ===== GERALD R. FORD CARRIER STRIKE GROUP (Eastern Mediterranean) =====
-  L.marker([35.2,24.5],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Gerald R. Ford (CVN-78)</b><br>Ford-class &bull; World\'s largest warship<br>CVW-8 &bull; ~75 aircraft &bull; 4,500 crew<br><b style="color:#ff8c42">Souda Bay, Crete (docked Feb 24)</b><br>Transited Strait of Gibraltar Feb 20<br>F-35C, F/A-18E/F, E-2D, CMV-22B');
-  L.circle([35.2,24.5],{radius:900000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.03,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-8 strike radius (~900km with F-35C)');
+  L.marker([34.5,27.5],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Gerald R. Ford (CVN-78)</b><br>Ford-class &bull; World\'s largest warship<br>CVW-8 &bull; ~75 aircraft &bull; 4,500 crew<br><b style="color:#ff8c42">Eastern Med — departed Souda Bay Feb 26</b><br>Repositioning eastward toward strike corridor<br>F-35C, F/A-18E/F, E-2D, CMV-22B');
+  L.circle([34.5,27.5],{radius:900000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.03,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-8 strike radius (~900km with F-35C)');
   // Ford movement arrow (Med → Suez → Gulf)
-  L.polyline([[35.2,24.5],[34,28],[33,30],[31.5,32.3]],{color:'#4a90d9',weight:1.5,dashArray:'8,6',opacity:0.5}).addTo(map);
+  L.polyline([[34.5,27.5],[33.5,30],[31.5,32.3]],{color:'#4a90d9',weight:1.5,dashArray:'8,6',opacity:0.5}).addTo(map);
   // Ford escorts
-  L.marker([35.5,25.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Winston S. Churchill (DDG-81)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
-  L.marker([34.8,23.8],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Bainbridge (DDG-96)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
-  L.marker([35.8,23.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Mahan (DDG-72)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
+  L.marker([35.0,28.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Winston S. Churchill (DDG-81)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
+  L.marker([34.0,27.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Bainbridge (DDG-96)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
+  L.marker([35.2,28.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Mahan (DDG-72)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
 
   // ===== INDEPENDENT DESTROYERS (Arabian Sea / Strait of Hormuz) =====
   L.marker([26.2,56.8],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS McFaul (DDG-74)</b><br>Arleigh Burke-class destroyer<br>Strait of Hormuz patrol<br>Tomahawk &bull; Aegis BMD');
@@ -68,13 +69,13 @@ document.addEventListener('DOMContentLoaded', function(){
   // ===== SUBMARINE (location approximate/undisclosed) =====
   L.marker([21.0,59.0],{icon:subIcon()}).addTo(map).bindPopup('<b style="color:#7a5af0">USS Georgia (SSGN-729)</b><br>Ohio-class guided-missile submarine<br>154 Tomahawk cruise missiles<br><b>Location undisclosed — approximate</b><br>+ unknown number of fast-attack subs');
 
-  // ===== USS GEORGE H.W. BUSH (spinning up at Norfolk) =====
-  L.marker([36.9,-76.3],{icon:spinupIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">USS George H.W. Bush (CVN-77)</b><br>Nimitz-class carrier<br><b>Preparing for possible deployment</b><br>Completing drills off Virginia coast<br>Could reach theater in ~1 week');
+  // ===== USS GEORGE H.W. BUSH (transiting Atlantic — deployed) =====
+  L.marker([37.5,-25.0],{icon:deployingIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">USS George H.W. Bush (CVN-77)</b><br>Nimitz-class carrier &bull; CVW-7<br><b>Transiting Atlantic — DEPLOYED</b><br>Departed Norfolk late Jan; COMPTUEX complete<br>Expected in theater ~mid-March');
 
   // ===== IRANIAN CITIES — PROTEST SITES =====
-  L.marker([35.7,51.4],{icon:icon('#ff3b3b',14)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Tehran</b><br>Student protests Day 5<br>University of Tehran, Sharif, Amirkabir, Shahid Beheshti<br>Chanting: "Death to the dictator"<br>"Woman, life, freedom"');
-  L.marker([32.65,51.68],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Isfahan</b><br>Protests active &bull; Day 5<br>Nuclear facility tunnel sealing underway');
-  L.marker([36.3,59.6],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Mashhad</b><br>Student protests active &bull; Day 5');
+  L.marker([35.7,51.4],{icon:icon('#ff3b3b',14)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Tehran</b><br>Student protests Day 6<br>University of Tehran, Sharif, Amirkabir, Shahid Beheshti<br>IRGC Basij deployed to campuses<br>"Woman, life, freedom"');
+  L.marker([32.65,51.68],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Isfahan</b><br>Protests active &bull; Day 6<br>Nuclear facility tunnel sealing underway');
+  L.marker([36.3,59.6],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Mashhad</b><br>Student protests active &bull; Day 6');
   L.marker([29.6,52.5],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Shiraz</b><br>Protests reported');
   L.marker([32.3,48.7],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Ahvaz (Khuzestan)</b><br>Arab minority protests<br>Heavy military suppression');
   L.marker([35.3,46.9],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Sanandaj (Kurdistan)</b><br>Kurdish protests<br>2,000+ detained &bull; Reports of torture');
@@ -106,5 +107,5 @@ document.addEventListener('DOMContentLoaded', function(){
   L.marker([-7.32,72.42],{icon:blockedIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">Diego Garcia</b><br>Indian Ocean staging base<br><b>PM Starmer DENIED US access</b><br>Trump retaliated: withdrew Chagos deal support');
 
   // Info box
-  L.control.attribution({position:'bottomright',prefix:'<span style="color:#6a6a7a;">Sources: USNI Fleet Tracker, CSIS, WaPo, Al Jazeera, PBS, MEF | Feb 25, 2026 20:00 UTC</span>'}).addTo(map);
+  L.control.attribution({position:'bottomright',prefix:'<span style="color:#6a6a7a;">Sources: USNI Fleet Tracker, CSIS, WaPo, Al Jazeera, PBS, MEF | Feb 26, 2026 12:00 UTC</span>'}).addTo(map);
 });
