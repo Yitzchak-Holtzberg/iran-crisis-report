@@ -27,6 +27,7 @@ var TICKER_ITEMS = [
 document.addEventListener('DOMContentLoaded', function () {
   var ticker = document.querySelector('.ticker');
   if (!ticker) { return; }
+  if (ticker.children.length > 0) { return; } /* skip if ticker already populated by inline HTML */
   var doubled = TICKER_ITEMS.concat(TICKER_ITEMS);
   doubled.forEach(function (item) {
     var span = document.createElement('span');

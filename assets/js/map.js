@@ -3,6 +3,7 @@
  * This file handles rendering only        */
 
 document.addEventListener('DOMContentLoaded', function () {
+  if (window._theaterMap) { return; } /* skip if inline script already initialized the map */
   var map = L.map('theater-map', {
     zoomControl: true,
     scrollWheelZoom: false,

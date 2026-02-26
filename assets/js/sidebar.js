@@ -32,17 +32,25 @@ function toggleCollapse() {
   if (btn) { btn.innerHTML = collapsed ? '&#9654;' : '&#9668;'; }
 }
 
-/* Mobile slide-in toggle */
+/* Mobile slide-in toggle — updates ☰/✕ icon and Menu/Close label */
 function toggleSidebar() {
   var sb = document.getElementById('leftSidebar');
   var ov = document.getElementById('sbOverlay');
   var open = sb.classList.toggle('open');
   ov.classList.toggle('open', open);
+  var icon = document.querySelector('#sbToggle .sb-toggle-icon');
+  var label = document.querySelector('#sbToggle .sb-toggle-label');
+  if (icon) { icon.textContent = open ? '\u2715' : '\u2630'; }
+  if (label) { label.textContent = open ? 'Close' : 'Menu'; }
 }
 
 function closeSidebar() {
   document.getElementById('leftSidebar').classList.remove('open');
   document.getElementById('sbOverlay').classList.remove('open');
+  var icon = document.querySelector('#sbToggle .sb-toggle-icon');
+  var label = document.querySelector('#sbToggle .sb-toggle-label');
+  if (icon) { icon.textContent = '\u2630'; }
+  if (label) { label.textContent = 'Menu'; }
 }
 
 /* Close sidebar when a link is clicked on mobile */
