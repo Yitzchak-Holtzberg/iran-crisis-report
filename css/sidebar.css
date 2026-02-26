@@ -18,7 +18,7 @@
 .sb-nav::-webkit-scrollbar { width:3px; }
 .sb-nav::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 .sb-link { display:flex; align-items:center; gap:10px; padding:9px 16px 9px 0; text-decoration:none; color:var(--text-muted); font-size:12px; border-left:3px solid transparent; transition:all 0.15s; line-height:1.35; }
-.sb-link:hover { color:var(--text-primary); background:rgba(255,255,255,0.03); border-left-color:var(--accent-orange); text-decoration:none; }
+.sb-link:hover { color:var(--text-primary); background:var(--bg-card); border-left-color:var(--accent-orange); text-decoration:none; }
 .sb-link.active { color:var(--text-primary); background:rgba(255,59,59,0.07); border-left-color:var(--accent-red); }
 .sb-link .sb-num { font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--text-muted); width:36px; text-align:right; flex-shrink:0; opacity:0.55; }
 .sb-link.active .sb-num { opacity:1; color:var(--accent-red); }
