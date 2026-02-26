@@ -10,7 +10,7 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Int
 .masthead .dateline { font-size:13px; color:var(--text-muted); font-family:'JetBrains Mono',monospace; letter-spacing:1px; }
 .container { max-width:1200px; margin:0 auto; padding:0 24px; }
 .ticker-wrap { background:linear-gradient(90deg,rgba(255,59,59,0.15),rgba(255,59,59,0.05),rgba(255,59,59,0.15)); border-top:1px solid rgba(255,59,59,0.3); border-bottom:1px solid rgba(255,59,59,0.3); padding:10px 0; overflow:hidden; white-space:nowrap; }
-.ticker { display:inline-block; animation:ticker 65s linear infinite; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent-red); }
+.ticker { display:inline-block; animation:ticker 120s linear infinite; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent-red); }
 @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 .ticker span { margin-right:60px; }
 .section-header { display:flex; align-items:center; gap:16px; margin:60px 0 32px; padding-bottom:16px; border-bottom:2px solid var(--border); }
