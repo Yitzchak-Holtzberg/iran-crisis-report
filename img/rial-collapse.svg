@@ -1,0 +1,28 @@
+<svg viewBox="0 0 600 200" class="svg-graphic" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grid -->
+      <line x1="60" y1="20" x2="60" y2="170" stroke="#2a2a3a" stroke-width="0.5"/>
+      <line x1="60" y1="170" x2="580" y2="170" stroke="#2a2a3a" stroke-width="0.5"/>
+      <line x1="60" y1="130" x2="580" y2="130" stroke="#2a2a3a" stroke-width="0.3" stroke-dasharray="4,4"/>
+      <line x1="60" y1="90" x2="580" y2="90" stroke="#2a2a3a" stroke-width="0.3" stroke-dasharray="4,4"/>
+      <line x1="60" y1="50" x2="580" y2="50" stroke="#2a2a3a" stroke-width="0.3" stroke-dasharray="4,4"/>
+      <!-- Y labels -->
+      <text x="55" y="174" fill="#6a6a7a" font-size="8" font-family="JetBrains Mono" text-anchor="end">42K</text>
+      <text x="55" y="134" fill="#6a6a7a" font-size="8" font-family="JetBrains Mono" text-anchor="end">500K</text>
+      <text x="55" y="94" fill="#6a6a7a" font-size="8" font-family="JetBrains Mono" text-anchor="end">1.0M</text>
+      <text x="55" y="54" fill="#6a6a7a" font-size="8" font-family="JetBrains Mono" text-anchor="end">1.5M</text>
+      <!-- X labels -->
+      <text x="80" y="185" fill="#6a6a7a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">2018</text>
+      <text x="160" y="185" fill="#6a6a7a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">2020</text>
+      <text x="240" y="185" fill="#6a6a7a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">2022</text>
+      <text x="320" y="185" fill="#6a6a7a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">2024</text>
+      <text x="440" y="185" fill="#ff3b3b" font-size="7" font-family="JetBrains Mono" font-weight="700" text-anchor="middle">Jan 2026</text>
+      <text x="540" y="185" fill="#ff3b3b" font-size="7" font-family="JetBrains Mono" font-weight="700" text-anchor="middle">Feb 2026</text>
+      <!-- Line -->
+      <path d="M80,168 L120,165 L160,158 L200,155 L240,150 L280,148 L320,142 L360,138 L400,130 L440,90 L480,65 L540,40" fill="none" stroke="#ff3b3b" stroke-width="2"/>
+      <!-- Crisis marker -->
+      <line x1="430" y1="20" x2="430" y2="170" stroke="#ff3b3b" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.5"/>
+      <text x="432" y="30" fill="#ff3b3b" font-size="7" font-family="JetBrains Mono">Protests begin</text>
+      <!-- Dot at current -->
+      <circle cx="540" cy="40" r="5" fill="#ff3b3b"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/></circle>
+      <text x="548" y="38" fill="#ff3b3b" font-size="9" font-family="JetBrains Mono" font-weight="700">1.47M</text>
+    </svg>
