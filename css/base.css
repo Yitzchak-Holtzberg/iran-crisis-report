@@ -20,7 +20,7 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Int
 .severity.high { background:rgba(255,140,66,0.2); color:var(--accent-orange); }
 .severity.elevated { background:rgba(255,215,0,0.2); color:var(--accent-gold); }
 .card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:28px; margin-bottom:20px; }
-.card:hover { border-color:#3a3a4a; }
+.card:hover { border-color:var(--text-muted); }
 .card h3 { font-family:'Playfair Display',serif; font-size:20px; margin-bottom:12px; font-weight:700; }
 .card p { color:var(--text-secondary); font-size:14.5px; margin-bottom:12px; }
 .card .hl { color:var(--text-primary); font-weight:500; }
@@ -53,10 +53,10 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Int
 .force-table { width:100%; border-collapse:separate; border-spacing:0; margin:20px 0; font-size:13px; }
 .force-table th { background:var(--bg-secondary); padding:12px 16px; text-align:left; font-family:'JetBrains Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-muted); border-bottom:2px solid var(--border); }
 .force-table td { padding:12px 16px; border-bottom:1px solid var(--border); color:var(--text-secondary); }
-.force-table tr:hover td { background:rgba(255,255,255,0.02); }
+.force-table tr:hover td { background:var(--bg-secondary); }
 .force-table .num { font-family:'JetBrains Mono',monospace; color:var(--text-primary); font-weight:600; }
 .quote-block { background:var(--bg-secondary); border-radius:12px; padding:24px 28px; margin:20px 0; position:relative; }
-.quote-block::before { content:'\201C'; font-family:'Playfair Display',serif; font-size:64px; color:rgba(255,255,255,0.08); position:absolute; top:-5px; left:16px; line-height:1; }
+.quote-block::before { content:'\201C'; font-family:'Playfair Display',serif; font-size:64px; color:var(--quote-mark-color,rgba(255,255,255,0.08)); position:absolute; top:-5px; left:16px; line-height:1; }
 .quote-block .text { font-style:italic; font-size:15px; color:var(--text-primary); margin-bottom:8px; position:relative; }
 .quote-block .attr { font-size:12px; color:var(--text-muted); }
 a { color:var(--accent-cyan); text-decoration:none; }

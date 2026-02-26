@@ -36,3 +36,13 @@
 .theme-toggle .toggle-icon { font-size:15px; line-height:1; }
 [data-theme="light"] .masthead h1 { background:linear-gradient(135deg,#1a1a2e,#444); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 [data-theme="light"] .masthead::before { background:radial-gradient(ellipse at 50% 0%,rgba(217,43,43,0.08) 0%,transparent 60%); }
+[data-theme="light"] { --quote-mark-color: rgba(0,0,0,0.08); }
+/* Map icon light-mode overrides */
+[data-theme="light"] .map-icon-cvn { background:linear-gradient(145deg,#d8e8f8,#e4f0fc); box-shadow:0 0 12px rgba(74,144,217,0.4),0 3px 8px rgba(0,0,0,0.15); }
+[data-theme="light"] .map-icon-cvn .badge-label { color:#2a6bbf; }
+[data-theme="light"] .map-icon-ddg { background:linear-gradient(145deg,#d8e8f8,#e4f0fc); box-shadow:0 0 8px rgba(74,144,217,0.3),0 2px 5px rgba(0,0,0,0.12); }
+[data-theme="light"] .map-icon-lcs { background:linear-gradient(145deg,#daeaf6,#e4eef8); box-shadow:0 0 5px rgba(90,149,204,0.25),0 1px 3px rgba(0,0,0,0.1); }
+[data-theme="light"] .map-icon-sub { background:linear-gradient(145deg,#e8dff8,#eee8fc); box-shadow:0 0 10px rgba(122,90,240,0.3),0 2px 6px rgba(0,0,0,0.12); }
+[data-theme="light"] .map-icon-sub .badge-label { color:#6030c0; }
+[data-theme="light"] .map-icon-jet { background:linear-gradient(145deg,#d8f2f8,#e0f8fc); box-shadow:0 0 10px rgba(0,212,255,0.3),0 2px 6px rgba(0,0,0,0.12); }
+[data-theme="light"] .map-icon-nuke { background:linear-gradient(145deg,#f8e8d5,#fceed8); }
