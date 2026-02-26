@@ -1,4 +1,5 @@
 * { margin:0; padding:0; box-sizing:border-box; }
+html { overflow-x:hidden; }
 body { background:var(--bg-primary); color:var(--text-primary); font-family:'Inter',sans-serif; line-height:1.7; overflow-x:hidden; }
 .masthead { text-align:center; padding:60px 20px 40px; border-bottom:1px solid var(--border); position:relative; }
 .masthead::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(255,59,59,0.1) 0%,transparent 60%); pointer-events:none; }
