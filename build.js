@@ -5,9 +5,11 @@
  * Usage:  node build.js
  *
  * Section files in sections/ are concatenated in order.
- * Inside any section file, <!-- @include path --> directives are replaced
- * with the contents of the referenced file (paths are relative to this
- * script's directory).
+ * Inside any section file:
+ *   <!-- @include path -->   — replaced with the contents of the referenced file.
+ *   <!-- @ticker -->         — replaced with ticker items from data.json (auto-duplicated
+ *                              for the seamless CSS scroll loop).
+ *   {{key}}                  — replaced with the matching string value from data.json.
  */
 
 'use strict';
@@ -16,6 +18,9 @@ const fs   = require('fs');
 const path = require('path');
 
 const BASE_DIR = __dirname;
+
+// Load the central data file used for template substitutions.
+const DATA = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'data.json'), 'utf8'));
 
 const SECTIONS = [
   'sections/head.html',
@@ -52,9 +57,24 @@ function processIncludes(content) {
   });
 }
 
+/** Replace <!-- @ticker --> with ticker items from DATA.ticker, doubled for the CSS scroll loop. */
+function processTicker(content) {
+  if (!content.includes('<!-- @ticker -->')) return content;
+  const spans = DATA.ticker.map(t => `    <span>${t}</span>`).join('\n');
+  return content.replace(/<!-- @ticker -->/, `${spans}\n${spans}`);
+}
+
+/** Replace {{key}} placeholders with matching string values from DATA. */
+function applyData(content) {
+  return content.replace(/\{\{([^}]+)\}\}/g, (_match, key) => {
+    const val = DATA[key];
+    return val !== undefined ? val : _match;
+  });
+}
+
 const output = SECTIONS.map(file => {
   const content = fs.readFileSync(path.join(BASE_DIR, file), 'utf8');
-  return processIncludes(content);
+  return applyData(processTicker(processIncludes(content)));
 }).join('');
 
 fs.writeFileSync(path.join(BASE_DIR, 'index.html'), output);

@@ -2,6 +2,8 @@
 
 This is a single-page HTML news dashboard that is **assembled by a build script** from modular section files. `index.html` is a generated file — **never edit it directly**. All content lives in the `sections/` directory; run the build to regenerate the page.
 
+**For the most frequently changed data** (date, statistics, ticker headlines) edit only `data.json` — no HTML required.
+
 ---
 
 ## Repository layout
@@ -9,6 +11,7 @@ This is a single-page HTML news dashboard that is **assembled by a build script*
 ```
 iran-crisis-report/
 ├── build.js            # Build script — assembles index.html from sections/
+├── data.json           # ★ EDIT THIS FIRST — date, stats, ticker headlines
 ├── index.html          # GENERATED — do not edit manually
 ├── package.json        # npm scripts (build only)
 ├── sections/           # Content source files — edit these
@@ -54,13 +57,22 @@ iran-crisis-report/
 
 `build.js` reads every file listed in its `SECTIONS` array in order, concatenates them, and writes the result to `index.html`.
 
-Inside any section file, an include directive pulls in a chart partial:
+Inside any section file, three directives are processed:
 
 ```html
 <!-- @include sections/charts/rial-collapse.html -->
 ```
+Replaced with the contents of the referenced file (paths relative to the repository root).
 
-Paths in `<!-- @include … -->` directives are **relative to the repository root**.
+```html
+<!-- @ticker -->
+```
+Replaced with `<span>` elements for every headline in `data.json → ticker`, automatically **doubled** so the CSS scroll loop works seamlessly. You no longer need to keep two copies in sync.
+
+```html
+{{key}}
+```
+Replaced with the matching string value from `data.json` (e.g. `{{date}}`, `{{statConfirmedDead}}`).
 
 ### Run the build
 
@@ -70,7 +82,46 @@ npm run build
 node build.js
 ```
 
-Always run the build after editing any file in `sections/`. The generated `index.html` is what gets served.
+Always run the build after editing any file in `sections/` **or** `data.json`. The generated `index.html` is what gets served.
+
+---
+
+## data.json — quick-update config
+
+`data.json` is the single file to edit for the most common daily tasks. No HTML knowledge required.
+
+```json
+{
+  "date": "February 26, 2026",
+  "lastUpdated": "13:00 UTC",
+
+  "statConfirmedDead": "7,015+",
+  "statConfirmedDeadSource": "HRANA",
+  "statTotalKilled": "36,500",
+  "statTotalKilledSource": "Iran Intl.",
+  "statDetained": "24,669",
+  "statUsAircraft": "150+",
+  "statUsShips": "25+",
+  "statRialRate": "1.65M",
+
+  "ticker": [
+    "HEADLINE ONE",
+    "HEADLINE TWO"
+  ]
+}
+```
+
+| Key | Where it appears | Update frequency |
+|---|---|---|
+| `date` | Masthead dateline | Every update pass |
+| `lastUpdated` | Masthead dateline | Every update pass |
+| `statConfirmedDead` / `statConfirmedDeadSource` | Stats grid | When HRANA publishes new figures |
+| `statTotalKilled` / `statTotalKilledSource` | Stats grid | When Iran Intl. updates |
+| `statDetained` | Stats grid | When HRANA/Amnesty update |
+| `statUsAircraft` | Stats grid | After Pentagon briefings |
+| `statUsShips` | Stats grid | After USNI Fleet Tracker updates |
+| `statRialRate` | Stats grid | When Bonbast.com rate changes |
+| `ticker` | Scrolling headline bar | Every update pass |
 
 ---
 
@@ -224,29 +275,42 @@ Each section below lists what it contains and what an agent should check before 
 
 ## How to update common content
 
-### 1. Dateline and "last updated" timestamp — `sections/masthead.html`
+### 1. Dateline and "last updated" timestamp
 
-Change the date and UTC time in the `<div class="dateline">` line:
+Edit **`data.json`** — no HTML required:
 
-```html
-<div class="dateline">February 25, 2026 &nbsp;|&nbsp; Compiled from 40+ international sources &nbsp;|&nbsp; Last updated 20:00 UTC</div>
+```json
+"date": "February 26, 2026",
+"lastUpdated": "13:00 UTC",
 ```
 
-### 2. Breaking-news ticker — `sections/ticker.html`
+### 2. Breaking-news ticker
 
-Add, remove, or edit `<span>` elements inside the `.ticker` div. The ticker content is **duplicated** (listed twice) to enable a seamless CSS scroll loop — keep both copies in sync.
+Edit the `"ticker"` array in **`data.json`**. Each string becomes one `<span>` in the ticker bar. The build script automatically duplicates the list for the CSS scroll loop — **no manual duplication needed**.
 
-```html
-<span>BREAKING: Your new headline here</span>
+```json
+"ticker": [
+  "BREAKING: Your new headline here",
+  "EXISTING HEADLINE TWO",
+  "..."
+]
 ```
 
-### 3. Key statistics — `sections/stats.html`
+Prepend new items at the **top** of the array so they appear first. Remove stale items that are no longer breaking.
 
-Each `.stat-box` holds a number and a label. Update the `.number` div with the new value:
+### 3. Key statistics
 
-```html
-<div class="number" style="color:var(--accent-red);">7,015+</div>
-<div class="label">Confirmed Dead<br>(HRANA)</div>
+Edit the matching keys in **`data.json`** — no HTML required:
+
+```json
+"statConfirmedDead": "7,015+",
+"statConfirmedDeadSource": "HRANA",
+"statTotalKilled": "36,500",
+"statTotalKilledSource": "Iran Intl.",
+"statDetained": "24,669",
+"statUsAircraft": "150+",
+"statUsShips": "25+",
+"statRialRate": "1.65M",
 ```
 
 ### 4. Last 24 hours timeline — `sections/last-24h.html`
@@ -321,9 +385,10 @@ var(--border-color)
 
 ## Checklist for a typical daily update
 
-- [ ] Update the dateline / timestamp in `sections/masthead.html`
-- [ ] Add new headlines to both copies in `sections/ticker.html`
-- [ ] Refresh numbers in `sections/stats.html`
+- [ ] Open `data.json` and update:
+  - [ ] `date` and `lastUpdated`
+  - [ ] `ticker` array — prepend new headlines, remove stale ones
+  - [ ] Any stat values that have changed (`statConfirmedDead`, `statRialRate`, etc.)
 - [ ] Prepend new timeline entries in `sections/last-24h.html`; shift yesterday's entries to the YESTERDAY block
 - [ ] Update any charts in `sections/charts/` that have new data
 - [ ] Add new source links to `sections/sources.html` and update the compiled-date line
