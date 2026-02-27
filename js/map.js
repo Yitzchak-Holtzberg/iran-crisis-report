@@ -26,13 +26,15 @@ document.addEventListener('DOMContentLoaded', function(){
   function blockedIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-denied"><b>ACCESS DENIED</b></div>',iconSize:[100,24],iconAnchor:[50,12]});}
   function spinupIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-spinup"><b>SPINNING UP</b></div>',iconSize:[90,24],iconAnchor:[45,12]});}
   function deployingIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-deploying"><b>DEPLOYING</b></div>',iconSize:[90,24],iconAnchor:[45,12]});}
+  // Diplomatic venue — building/flag SVG (22×22 in 32px circle)
+  function diplomacyIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-diplomacy"><svg viewBox="0 0 22 22" width="22" height="22" fill="none"><rect x="3" y="9" width="16" height="11" rx="1" fill="rgba(0,212,255,0.25)" stroke="#00d4ff" stroke-width="1.8"/><rect x="7" y="13" width="3" height="4" rx="0.5" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="1.2"/><rect x="12" y="13" width="3" height="4" rx="0.5" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="1.2"/><path d="M2 9 L11 3 L20 9" stroke="#00d4ff" stroke-width="1.8" stroke-linejoin="round" fill="rgba(0,212,255,0.15)"/><line x1="11" y1="3" x2="11" y2="1" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/><rect x="10" y="1" width="4" height="2.5" rx="0.3" fill="rgba(0,212,255,0.5)" stroke="#00d4ff" stroke-width="0.8"/></svg><span class="badge-label" style="color:#00d4ff;border-color:rgba(0,212,255,0.4);">IAEA</span></div>',iconSize:[44,44],iconAnchor:[22,22]});}
 
   // Iran - red highlight
   L.circle([32.5,53],{radius:700000,color:'#ff3b3b',fillColor:'#ff3b3b',fillOpacity:0.06,weight:1,dashArray:'6,4'}).addTo(map);
 
   // ===== ABRAHAM LINCOLN CARRIER STRIKE GROUP (Arabian Sea) =====
-  L.marker([23.5,58],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Abraham Lincoln (CVN-72)</b><br>Nimitz-class carrier &bull; CVW-9<br>~80 aircraft &bull; 5,600 crew<br><b style="color:#ff3b3b">700km from Iranian coast</b><br>F-35C, F/A-18E/F, EA-18G, E-2D, MH-60');
-  L.circle([23.5,58],{radius:700000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.04,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-9 strike radius (~700km)');
+  L.marker([23.5,58],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Abraham Lincoln (CVN-72)</b><br>Nimitz-class carrier &bull; CVW-11<br>~80 aircraft &bull; 5,600 crew<br><b style="color:#ff3b3b">700km from Iranian coast</b><br>F-35C, F/A-18E/F, EA-18G, E-2D, MH-60');
+  L.circle([23.5,58],{radius:700000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.04,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-11 strike radius (~700km)');
   // Lincoln escorts
   L.marker([24.1,57.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Frank E. Petersen Jr. (DDG-121)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort &bull; DESRON 21<br>Tomahawk &bull; Aegis BMD');
   L.marker([23.0,59.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Spruance (DDG-111)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort<br>Tomahawk &bull; Aegis BMD');
@@ -84,8 +86,8 @@ document.addEventListener('DOMContentLoaded', function(){
   L.marker([33.72,51.73],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Natanz Nuclear Facility</b><br>Uranium enrichment<br>Underground centrifuge halls<br>Heavily damaged in June 2025 strikes');
   L.marker([32.6,51.7],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Isfahan Nuclear Complex</b><br>Tunnel sealing operations in progress<br>Uranium conversion facility');
   L.marker([33.3,52.5],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">"Pickaxe Mountain"</b><br>Deep underground facility south of Natanz<br>May contain centrifuges at extreme depth (~80m+)');
-  L.marker([34.4,50.1],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Arak Heavy Water Reactor</b>');
-  L.marker([28.3,54.3],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Bushehr Nuclear Power Plant</b>');
+  L.marker([34.18,49.22],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Arak Heavy Water Reactor</b>');
+  L.marker([28.83,50.88],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Bushehr Nuclear Power Plant</b>');
   L.marker([35.54,51.77],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Parchin Military Complex</b><br><b style="color:#ff3b3b">NEW (Feb 20):</b> Satellite imagery confirms expanded soil-and-concrete hardening — direct countermeasure against GBU-57 bunker busters<br>Located ~35 km SE of Tehran<br><em>Source: The War Zone, Feb 20</em>');
 
   // ===== IRGC — STRAIT OF HORMUZ =====
@@ -110,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function(){
   L.marker([-7.32,72.42],{icon:blockedIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">Diego Garcia</b><br>Indian Ocean staging base<br><b>PM Starmer DENIED US access</b><br>Trump retaliated: withdrew Chagos deal support');
 
   // ===== VIENNA — IAEA DIPLOMATIC TALKS =====
-  L.marker([48.2,16.4],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Vienna — IAEA Headquarters</b><br><b style="color:#4a90d9">US–Iran Technical Talks begin Monday, Mar 2</b><br>Expert working groups on enrichment verification &amp; sanctions sequencing<br>IAEA DG Grossi confirms hosting<br>US lead: Steve Witkoff &bull; Iran lead: Araghchi<br><em>Sources: Reuters, AP, Al Jazeera, Feb 27</em>');
+  L.marker([48.2,16.4],{icon:diplomacyIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Vienna — IAEA Headquarters</b><br><b style="color:#4a90d9">US–Iran Technical Talks begin Monday, Mar 2</b><br>Expert working groups on enrichment verification &amp; sanctions sequencing<br>IAEA DG Grossi confirms hosting<br>US lead: Steve Witkoff &bull; Iran lead: Araghchi<br><em>Sources: Reuters, AP, Al Jazeera, Feb 27</em>');
 
   // Info box
   L.control.attribution({position:'bottomright',prefix:'<span style="color:#6a6a7a;">Sources: USNI Fleet Tracker, CSIS, WaPo, Al Jazeera, PBS, MEF | Feb 27, 2026 16:37 UTC</span>'}).addTo(map);
