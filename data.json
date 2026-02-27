@@ -1,7 +1,6 @@
 {
   "date": "February 26, 2026",
-  "lastUpdated": "23:30 UTC",
-
+  "lastUpdated": "23:59 UTC",
   "statConfirmedDead": "7,015+",
   "statConfirmedDeadSource": "HRANA",
   "statTotalKilled": "36,500",
@@ -10,12 +9,10 @@
   "statUsAircraft": "160+",
   "statUsShips": "25+",
   "statRialRate": "1.65M",
-
   "scenarioDealPct": "15",
   "scenarioStrikesPct": "55",
   "scenarioRevolutionPct": "20",
   "scenarioFrozenPct": "10",
-
   "ticker": [
     "GENEVA ROUND 3 CONCLUDES: Araghchi reports \"good progress\" — US-Iran technical talks at IAEA in Vienna begin Monday Mar 2; sides \"closer to agreement\" than any previous round — Oman confirms (Bloomberg, France24, Feb 26)",
     "F-22 RAPTORS IN ISRAEL: 24 US Air Force stealth fighters now at Ovda Air Base, southern Israel — historic first-ever operational F-22 deployment to Israeli soil; vanguard of any Iran strike (Times of Israel, ABC News, Feb 24-26)",

@@ -6,14 +6,34 @@ This is a single-page HTML news dashboard that is **assembled by a build script*
 
 ---
 
+## Automated daily build
+
+A GitHub Actions workflow (`.github/workflows/daily-build.yml`) runs every day at **00:05 UTC** and:
+
+1. Updates `data.json → date` and `lastUpdated` to the current UTC date/time via `scripts/update-date.js`.
+2. Runs `npm run build` to regenerate `index.html`.
+3. Commits the updated `data.json` and `index.html` back to the branch.
+4. Deploys the site to **GitHub Pages**.
+
+You can also trigger it manually at any time from the **Actions** tab → **Daily Build & Deploy** → **Run workflow**.
+
+> **Note:** The workflow only updates the dateline automatically. All editorial content (ticker headlines, statistics, timeline entries, etc.) still needs to be updated manually by editing `data.json` and the `sections/` files before the build runs, or by pushing a commit that the workflow will then pick up on its next run.
+
+---
+
 ## Repository layout
 
 ```
 iran-crisis-report/
+├── .github/
+│   └── workflows/
+│       └── daily-build.yml  # Scheduled daily build & GitHub Pages deploy
 ├── build.js            # Build script — assembles index.html from sections/
 ├── data.json           # ★ EDIT THIS FIRST — date, stats, ticker headlines
 ├── index.html          # GENERATED — do not edit manually
 ├── package.json        # npm scripts (build only)
+├── scripts/
+│   └── update-date.js  # Updates date/lastUpdated in data.json to today UTC
 ├── sections/           # Content source files — edit these
 │   ├── head.html       # <head>, CSS links, meta tags
 │   ├── masthead.html   # Page title, dateline, last-updated timestamp

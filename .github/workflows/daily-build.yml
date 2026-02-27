@@ -1,0 +1,68 @@
+name: Daily Build & Deploy
+
+# Runs every day at 00:05 UTC so it fires shortly after midnight, after any
+# last-minute manual commits have a chance to settle.  Can also be triggered
+# manually from the Actions tab ("Run workflow").
+on:
+  schedule:
+    - cron: '5 0 * * *'
+  workflow_dispatch:
+
+# Required for committing back to the repo and for GitHub Pages deployment.
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Only one deployment should run at a time; cancel any in-progress run when a
+# new one is triggered (e.g. from a manual dispatch overlapping the scheduler).
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Update data.json → date and lastUpdated to today's UTC date/time.
+      - name: Update date in data.json
+        run: node scripts/update-date.js
+
+      # Regenerate index.html from the updated data.json and section files.
+      - name: Build index.html
+        run: npm run build
+
+      # Commit the refreshed data.json and index.html back to the branch so
+      # the repo always reflects the latest auto-generated output.
+      - name: Commit and push updated files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json index.html
+          # Only commit when something actually changed (idempotent on re-runs).
+          git diff --staged --quiet || git commit -m "chore: daily rebuild $(date -u +'%Y-%m-%d')"
+          git push
+
+      # Upload the entire repo root as the Pages artifact (index.html, css/, js/).
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      # Deploy the artifact to GitHub Pages.
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
