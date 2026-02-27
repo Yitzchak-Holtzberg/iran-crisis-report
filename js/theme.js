@@ -5,12 +5,12 @@ function toggleTheme() {
     html.removeAttribute('data-theme');
     document.getElementById('toggleIcon').textContent = '☀️';
     document.getElementById('toggleLabel').textContent = 'Light';
-    localStorage.setItem('theme', 'dark');
+    try { localStorage.setItem('theme', 'dark'); } catch(e) {}
   } else {
     html.setAttribute('data-theme', 'light');
     document.getElementById('toggleIcon').textContent = '🌙';
     document.getElementById('toggleLabel').textContent = 'Dark';
-    localStorage.setItem('theme', 'light');
+    try { localStorage.setItem('theme', 'light'); } catch(e) {}
   }
   // Swap map tile layer between dark and light CartoDB styles
   if (window._theaterMap && window._theaterTileLayer) {
@@ -22,10 +22,22 @@ function toggleTheme() {
   }
 }
 (function() {
-  var saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.getElementById('toggleIcon').textContent = '🌙';
-    document.getElementById('toggleLabel').textContent = 'Dark';
-  }
+  try {
+    var saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.getElementById('toggleIcon').textContent = '🌙';
+      document.getElementById('toggleLabel').textContent = 'Dark';
+    }
+  } catch(e) {}
+})();
+// Attach touchend listener so the toggle fires immediately on mobile
+// (prevents the 300ms click delay and fixes tap-target issues on iOS Safari)
+(function() {
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  btn.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    toggleTheme();
+  }, {passive: false});
 })();
