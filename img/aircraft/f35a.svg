@@ -1,0 +1,452 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="460" viewBox="0 0 700 460">
+  <defs>
+    <style>
+      .ol  { fill:none; stroke:#00d4ff; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round }
+      .ol2 { fill:none; stroke:#00d4ff; stroke-width:0.8; stroke-linecap:round; stroke-linejoin:round }
+      .pl  { fill:none; stroke:#00d4ff; stroke-width:0.5; stroke-linecap:round; stroke-linejoin:round }
+      .da  { fill:none; stroke:#00d4ff; stroke-width:0.5; stroke-dasharray:3,2; stroke-linecap:round }
+      .da2 { fill:none; stroke:#00d4ff; stroke-width:0.3; stroke-dasharray:6,4; opacity:0.35 }
+      .lb  { fill:#00d4ff; font-family:'Courier New',monospace; font-size:7px }
+      .tt  { fill:#00d4ff; font-family:'Courier New',monospace; letter-spacing:1px }
+      .dt  { fill:#00d4ff }
+      .tk  { fill:none; stroke:#00d4ff; stroke-width:0.7 }
+    </style>
+  </defs>
+
+  <!-- ═══════════════  BACKGROUND  ═══════════════ -->
+  <rect width="700" height="460" fill="#060810"/>
+
+  <!-- ═══════════════  HEADER BLOCK  ═══════════════ -->
+  <text x="176" y="13"  class="tt" text-anchor="middle" font-size="8.5px">PLAN VIEW (TOP)</text>
+  <text x="176" y="237" class="tt" text-anchor="middle" font-size="8.5px">PROFILE VIEW (PORT SIDE)</text>
+  <text x="527" y="17"  class="tt" text-anchor="middle" font-size="10px" letter-spacing="2">F-35A LIGHTNING II</text>
+  <text x="527" y="29"  class="tt" text-anchor="middle" font-size="6.5px" letter-spacing="2.5">LOCKHEED MARTIN · BAE SYSTEMS · NORTHROP GRUMMAN</text>
+  <text x="527" y="46"  class="tt" text-anchor="middle" font-size="8.5px">FRONT VIEW</text>
+
+  <!-- view dividers -->
+  <line x1="358" y1="5"   x2="358" y2="455" class="da2"/>
+  <line x1="5"   y1="232" x2="352" y2="232" class="da2"/>
+
+  <!-- corner marks -->
+  <path class="pl" d="M 5,5 L 20,5 M 5,5 L 5,20"/>
+  <path class="pl" d="M 695,5 L 680,5 M 695,5 L 695,20"/>
+  <path class="pl" d="M 5,455 L 20,455 M 5,455 L 5,440"/>
+  <path class="pl" d="M 695,455 L 680,455 M 695,455 L 695,440"/>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       TOP VIEW  (PLANFORM)
+       Centreline y=117   Nose x=22   Tail x=342
+       Semi-span 107 px ≈ 5.35 m @ 20 px/m
+       Wing root LE  (113,107)  Crank  (201,50)  Tip LE (228,10)
+       Tip TE (242,12)  Root TE (283,109)
+       HS root LE (287,110)  HS tip LE (319,70)  HS root TE (307,111)
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- main planform outline (one closed path, port side → starboard mirror) -->
+  <path class="ol" d="
+    M 22,117
+    C 40,114 62,110 84,107
+    C 92,105 100,102 108,102
+    C 111,103 113,105 113,107
+    L 201,50
+    L 228,10
+    L 233,9
+    A 4,3 0 0,0 242,13
+    L 283,109
+    L 287,110
+    L 319,70
+    L 327,72
+    L 307,111
+    C 314,113 328,116 342,117
+    C 328,118 314,121 307,123
+    L 327,162
+    L 319,164
+    L 287,124
+    L 283,125
+    L 242,221
+    A 4,3 0 0,1 233,225
+    L 228,224
+    L 201,184
+    L 113,127
+    C 113,129 111,131 108,132
+    C 100,132 92,129 84,127
+    C 62,124 40,120 22,117
+    Z
+  "/>
+
+  <!-- centreline (dashed) -->
+  <line x1="22" y1="117" x2="342" y2="117" class="da"/>
+
+  <!-- vertical-tail chord shown as thin rectangle on CL -->
+  <rect x="252" y="114" width="66" height="6" class="ol2" rx="1"/>
+
+  <!-- canopy oval (visible from above) -->
+  <ellipse cx="100" cy="117" rx="23" ry="9" class="ol2"/>
+  <!-- canopy frame lines -->
+  <line x1="86"  y1="112" x2="86"  y2="122" class="pl"/>
+  <line x1="94"  y1="109" x2="94"  y2="125" class="pl"/>
+  <line x1="113" y1="112" x2="113" y2="122" class="pl"/>
+
+  <!-- DSI intake openings top-view (port & starboard) -->
+  <path class="pl" d="M 108,103 L 130,102 L 130,106 L 108,106 Z"/>
+  <path class="pl" d="M 108,128 L 130,128 L 130,132 L 108,132 Z"/>
+
+  <!-- DSI diverter bump marks -->
+  <path class="pl" d="M 98,102 C 101,100 106,99 111,101"/>
+  <path class="pl" d="M 98,132 C 101,134 106,135 111,133"/>
+
+  <!-- LERX blend lines (port & starboard) -->
+  <path class="pl" d="M 70,104 C 82,103 95,102 113,105"/>
+  <path class="pl" d="M 70,130 C 82,131 95,132 113,129"/>
+
+  <!-- engine duct run from intake to aft -->
+  <path class="pl" d="M 130,104 C 152,104 170,105 190,107"/>
+  <path class="pl" d="M 130,130 C 152,130 170,129 190,127"/>
+
+  <!-- wing internal panel lines – port -->
+  <line x1="150" y1="86"  x2="230" y2="52"  class="pl"/>
+  <line x1="168" y1="70"  x2="230" y2="32"  class="pl"/>
+  <line x1="200" y1="80"  x2="250" y2="108" class="pl"/>
+  <!-- wing internal panel lines – starboard -->
+  <line x1="150" y1="148" x2="230" y2="182" class="pl"/>
+  <line x1="168" y1="164" x2="230" y2="202" class="pl"/>
+  <line x1="200" y1="154" x2="250" y2="126" class="pl"/>
+
+  <!-- weapons-bay door outlines (dashed – underside, invisible from top) -->
+  <rect x="120" y="107" width="130" height="8"  class="da"/>
+  <rect x="120" y="117" width="130" height="8"  class="da"/>
+
+  <!-- fuselage spine lines (port & starboard of CL) -->
+  <path class="pl" d="M 145,110 L 252,110"/>
+  <path class="pl" d="M 145,124 L 252,124"/>
+
+  <!-- nozzle exit at tail (top-view) -->
+  <ellipse cx="340" cy="117" rx="5" ry="4" class="ol2"/>
+
+  <!-- wing-tip tick marks -->
+  <line x1="220" y1="5"  x2="246" y2="5"  class="tk"/>
+  <line x1="220" y1="229" x2="246" y2="229" class="tk"/>
+  <!-- nose & tail ticks -->
+  <line x1="22" y1="112" x2="22" y2="122" class="tk"/>
+  <line x1="342" y1="112" x2="342" y2="122" class="tk"/>
+  <!-- HS span ticks -->
+  <line x1="316" y1="64"  x2="330" y2="64"  class="tk"/>
+  <line x1="316" y1="170" x2="330" y2="170" class="tk"/>
+  <!-- wing-crank annotation dots -->
+  <circle cx="201" cy="50"  r="1.8" class="dt"/>
+  <circle cx="201" cy="184" r="1.8" class="dt"/>
+  <circle cx="22"  cy="117" r="1.8" class="dt"/>
+  <circle cx="342" cy="117" r="1.8" class="dt"/>
+  <circle cx="231" cy="10"  r="1.8" class="dt"/>
+  <circle cx="231" cy="224" r="1.8" class="dt"/>
+
+  <!-- sweep-angle labels -->
+  <text x="158" y="43"  class="lb">57°</text>
+  <text x="218" y="26"  class="lb">34°</text>
+  <!-- LE sweep indicator lines -->
+  <line x1="158" y1="46" x2="165" y2="53" class="pl"/>
+  <line x1="220" y1="28" x2="222" y2="35" class="pl"/>
+
+  <!-- feature labels -->
+  <text x="65"  y="101" class="lb">LERX</text>
+  <text x="121" y="98"  class="lb">DSI</text>
+  <text x="283" y="63"  class="lb">H-STAB</text>
+  <text x="255" y="108" class="lb">VT ROOT</text>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SIDE VIEW  (PROFILE – starboard side)
+       Nose x=22  Tail x=342  CL (fuselage ref) y≈362
+       VT tip ≈ (284,283)   Canopy apex ≈ (120,324)
+       Belly ≈ y=392
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- main side-profile outline (single closed path) -->
+  <path class="ol" d="
+    M 22,374
+    C 40,366 62,358 80,351
+    C 84,348 88,345 92,341
+    C 96,333 108,326 120,323
+    C 129,321 136,326 144,332
+    C 154,339 175,341 210,341
+    C 238,341 252,341 258,341
+    L 265,326
+    L 272,307
+    L 278,291
+    L 284,283
+    L 290,283
+    C 296,295 305,317 315,339
+    C 319,346 325,354 330,360
+    C 334,364 337,368 342,371
+    A 7,7 0 0,1 342,384
+    C 336,387 324,388 308,389
+    C 286,390 260,391 234,392
+    C 210,392 188,391 168,390
+    C 150,389 140,387 130,383
+    C 122,380 117,376 110,373
+    C 102,370 92,370 80,371
+    C 66,372 50,371 38,370
+    C 30,369 25,371 22,374
+    Z
+  "/>
+
+  <!-- canopy detailed inner outline (bubble) -->
+  <path class="ol2" d="
+    M 80,351
+    C 84,348 88,345 92,341
+    C 96,333 108,326 120,323
+    C 129,321 136,326 144,332
+    L 146,336
+    C 138,339 128,336 118,333
+    C 110,330 100,332 95,337
+    C 90,341 84,347 80,351
+    Z
+  "/>
+  <!-- canopy framing -->
+  <line x1="92"  y1="341" x2="94"  y2="352" class="pl"/>
+  <line x1="108" y1="327" x2="110" y2="336" class="pl"/>
+  <line x1="120" y1="323" x2="122" y2="334" class="pl"/>
+  <!-- canopy rear frame -->
+  <line x1="136" y1="325" x2="144" y2="332" class="pl"/>
+
+  <!-- DSI intake opening (port-side profile) -->
+  <path class="ol2" d="
+    M 110,373 C 110,371 113,367 119,366
+    L 148,366 C 153,366 156,369 157,373
+    L 130,376 Z
+  "/>
+  <!-- intake throat line -->
+  <line x1="119" y1="366" x2="130" y2="376" class="pl"/>
+  <line x1="148" y1="366" x2="152" y2="374" class="pl"/>
+
+  <!-- DSI diverter ramp (forward hump above intake) -->
+  <path class="ol2" d="M 90,370 C 95,367 103,364 112,366"/>
+
+  <!-- wing root LE & TE markers (side view) -->
+  <line x1="110" y1="365" x2="113" y2="392" class="ol2"/>
+  <line x1="265" y1="364" x2="268" y2="391" class="ol2"/>
+  <!-- wing lower surface chord line -->
+  <line x1="113" y1="392" x2="265" y2="392" class="pl"/>
+  <!-- wing upper surface blend hint -->
+  <path class="pl" d="M 113,367 C 150,362 210,361 265,364"/>
+
+  <!-- horizontal stabiliser (side view – small wedge aft) -->
+  <path class="ol2" d="M 268,381 L 307,378 L 310,384 L 271,387 Z"/>
+
+  <!-- fuselage spine chine line -->
+  <path class="pl" d="M 50,362 C 90,358 135,356 175,357 C 215,358 248,360 262,363"/>
+
+  <!-- belly bulge accent line -->
+  <path class="pl" d="M 170,392 C 200,393 225,393 252,393 C 272,392 288,390 305,389"/>
+
+  <!-- VT structural spine -->
+  <line x1="263" y1="331" x2="288" y2="284" class="pl"/>
+  <!-- VT hinge/fold line -->
+  <line x1="279" y1="291" x2="314" y2="340" class="pl"/>
+
+  <!-- fuselage vertical frame lines -->
+  <line x1="50"  y1="361" x2="52"  y2="372" class="pl"/>
+  <line x1="78"  y1="358" x2="80"  y2="372" class="pl"/>
+  <line x1="163" y1="357" x2="165" y2="391" class="pl"/>
+  <line x1="205" y1="358" x2="206" y2="392" class="pl"/>
+  <line x1="245" y1="357" x2="246" y2="391" class="pl"/>
+
+  <!-- nozzle exit face (platypus flat-oval hint) -->
+  <path class="ol2" d="M 342,371 A 7,7 0 0,1 342,384"/>
+  <!-- nozzle petal lines -->
+  <line x1="332" y1="371" x2="342" y2="371" class="pl"/>
+  <line x1="332" y1="377" x2="342" y2="377" class="pl"/>
+  <line x1="332" y1="383" x2="342" y2="383" class="pl"/>
+
+  <!-- fuselage reference datum line (dashed) -->
+  <line x1="22" y1="365" x2="342" y2="365" class="da" opacity="0.4"/>
+
+  <!-- dimension tick marks – side view -->
+  <line x1="16"  y1="374" x2="28"  y2="374" class="tk"/>
+  <line x1="335" y1="368" x2="348" y2="380" class="tk"/>
+  <line x1="284" y1="278" x2="297" y2="278" class="tk"/>
+  <line x1="110" y1="360" x2="110" y2="397" class="tk"/>
+  <line x1="265" y1="360" x2="265" y2="396" class="tk"/>
+
+  <!-- annotation dots – side view -->
+  <circle cx="22"  cy="374" r="1.8" class="dt"/>
+  <circle cx="342" cy="377" r="1.8" class="dt"/>
+  <circle cx="287" cy="283" r="1.8" class="dt"/>
+  <circle cx="120" cy="323" r="1.8" class="dt"/>
+  <circle cx="157" cy="370" r="1.8" class="dt"/>
+
+  <!-- label leaders & text – side view -->
+  <line x1="90"  y1="317" x2="108" y2="326" class="pl"/>
+  <text x="64"   y="316"  class="lb">BUBBLE</text>
+  <text x="64"   y="323"  class="lb">CANOPY</text>
+
+  <line x1="28"  y1="408" x2="113" y2="374" class="da" opacity="0.6"/>
+  <text x="18"   y="406"  class="lb">DSI</text>
+  <text x="15"   y="413"  class="lb">INTAKE</text>
+
+  <text x="290"  y="276"  class="lb">VT TIP</text>
+  <text x="288"  y="283"  class="lb">h=4.38m</text>
+
+  <text x="114"  y="400"  class="lb">W/LE</text>
+  <text x="258"  y="399"  class="lb">W/TE</text>
+
+  <text x="330"  y="356"  class="lb">NOZZLE</text>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       FRONT VIEW
+       Centre x=530  Wing-root y=315  Scale ≈ 28 px/m
+       Semi-span  150 px   Fuselage ±38 px wide  ±28 px deep
+       VT tip y=212   Dorsal y=287   Belly y=343
+       Wing tips (380,322) & (680,322)
+       HS tips  (446,338) & (614,338)
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- fuselage cross-section (wide-flat oval, wider than tall) -->
+  <path class="ol" d="
+    M 530,287
+    C 543,285 553,288 560,295
+    C 565,302 566,318 563,330
+    C 559,340 548,344 530,344
+    C 512,344 501,340 497,330
+    C 494,318 495,302 500,295
+    C 507,288 517,285 530,287
+    Z
+  "/>
+
+  <!-- canopy arch (front view – arch above fuselage top) -->
+  <path class="ol2" d="M 514,287 C 518,280 524,274 530,272 C 536,274 542,280 546,287"/>
+  <!-- canopy framing line -->
+  <line x1="530" y1="272" x2="530" y2="287" class="pl"/>
+
+  <!-- vertical tail (front view – narrow tapered band on centreline) -->
+  <path class="ol" d="
+    M 526,287 L 527,258 L 529,235 L 531,212
+    L 533,212 L 535,235 L 537,258 L 538,287
+    Z
+  "/>
+  <!-- VT LE accent line -->
+  <line x1="527" y1="287" x2="529" y2="212" class="pl"/>
+
+  <!-- left (port) wing – upper surface -->
+  <path class="ol" d="
+    M 497,315
+    C 480,315 460,316 440,318
+    C 418,320 396,322 380,324
+    L 380,328
+    C 396,326 418,324 440,322
+    C 460,320 480,319 498,318
+  "/>
+  <!-- left wing-tip cap -->
+  <path class="ol" d="M 380,324 A 3,4 0 0,0 380,328"/>
+
+  <!-- right (starboard) wing – upper surface -->
+  <path class="ol" d="
+    M 563,315
+    C 580,315 600,316 620,318
+    C 642,320 664,322 680,324
+    L 680,328
+    C 664,326 642,324 620,322
+    C 600,320 580,319 562,318
+  "/>
+  <!-- right wing-tip cap -->
+  <path class="ol" d="M 680,324 A 3,4 0 0,1 680,328"/>
+
+  <!-- horizontal stabiliser – left -->
+  <path class="ol2" d="M 497,332 L 461,335 L 461,340 L 498,337 Z"/>
+  <!-- horizontal stabiliser – right -->
+  <path class="ol2" d="M 563,332 L 599,335 L 599,340 L 562,337 Z"/>
+
+  <!-- DSI intake bumps (front view – one each side, convex bump) -->
+  <!-- left intake -->
+  <path class="ol2" d="M 497,308 C 492,308 489,311 489,315 C 489,319 492,322 497,322"/>
+  <path class="pl"  d="M 497,311 C 493,311 491,313 491,315 C 491,317 493,319 497,319"/>
+  <!-- right intake -->
+  <path class="ol2" d="M 563,308 C 568,308 571,311 571,315 C 571,319 568,322 563,322"/>
+  <path class="pl"  d="M 563,311 C 567,311 569,313 569,315 C 569,317 567,319 563,319"/>
+
+  <!-- fuselage chine lines -->
+  <line x1="497" y1="295" x2="530" y2="295" class="pl"/>
+  <line x1="530" y1="295" x2="563" y2="295" class="pl"/>
+
+  <!-- fuselage vertical centreline -->
+  <line x1="530" y1="272" x2="530" y2="344" class="da" opacity="0.55"/>
+
+  <!-- nozzle exit circle (shown aft of fuselage) -->
+  <ellipse cx="530" cy="337" rx="11" ry="9"  class="ol2"/>
+  <ellipse cx="530" cy="337" rx="6"  ry="5"  class="pl"/>
+
+  <!-- dimension tick marks – front view -->
+  <!-- wingspan ticks -->
+  <line x1="376" y1="320" x2="376" y2="332" class="tk"/>
+  <line x1="684" y1="320" x2="684" y2="332" class="tk"/>
+  <!-- wingspan dimension line -->
+  <line x1="376" y1="350" x2="684" y2="350" class="tk" opacity="0.35"/>
+  <line x1="376" y1="347" x2="376" y2="353" class="tk"/>
+  <line x1="684" y1="347" x2="684" y2="353" class="tk"/>
+  <!-- VT tip tick -->
+  <line x1="524" y1="209" x2="538" y2="209" class="tk"/>
+  <!-- fuselage bottom tick -->
+  <line x1="522" y1="346" x2="538" y2="346" class="tk"/>
+  <!-- HS span ticks -->
+  <line x1="458" y1="332" x2="458" y2="343" class="tk"/>
+  <line x1="602" y1="332" x2="602" y2="343" class="tk"/>
+
+  <!-- annotation dots – front view -->
+  <circle cx="530" cy="212" r="1.8" class="dt"/>
+  <circle cx="380" cy="326" r="1.8" class="dt"/>
+  <circle cx="680" cy="326" r="1.8" class="dt"/>
+  <circle cx="530" cy="344" r="1.8" class="dt"/>
+
+  <!-- labels – front view -->
+  <text x="362" y="328" class="lb" text-anchor="middle">PORT</text>
+  <text x="362" y="335" class="lb" text-anchor="middle">TIP</text>
+  <text x="697" y="328" class="lb" text-anchor="end">STBD</text>
+  <text x="697" y="335" class="lb" text-anchor="end">TIP</text>
+  <text x="543" y="209" class="lb">VT</text>
+  <text x="543" y="216" class="lb">TIP</text>
+  <text x="375" y="360" class="lb">WINGSPAN: 10.67 m</text>
+  <text x="440" y="368" class="lb">ANHEDRAL ≈ 2–3°</text>
+
+  <!-- leader lines – front view -->
+  <line x1="489" y1="312" x2="474" y2="305" class="pl"/>
+  <text x="364"  y="307" class="lb">DSI INTAKE</text>
+  <text x="364"  y="314" class="lb">BUMP (PORT)</text>
+  <line x1="571" y1="312" x2="586" y2="305" class="pl"/>
+  <text x="588"  y="307" class="lb">DSI INTAKE</text>
+  <text x="588"  y="314" class="lb">(STBD)</text>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       DATA BLOCK (lower-right)
+       ═══════════════════════════════════════════════════════════════ -->
+  <rect x="363" y="388" width="328" height="62" fill="none" stroke="#00d4ff" stroke-width="0.4" opacity="0.5"/>
+  <line x1="363" y1="397" x2="691" y2="397" stroke="#00d4ff" stroke-width="0.3" opacity="0.4"/>
+  <text x="527" y="395" class="tt" text-anchor="middle" font-size="7px" letter-spacing="1">SPECIFICATION DATA</text>
+
+  <text x="370" y="406" class="lb">LENGTH    : 15.67 m</text>
+  <text x="370" y="414" class="lb">WINGSPAN  : 10.67 m</text>
+  <text x="370" y="422" class="lb">HEIGHT    : 4.38 m</text>
+  <text x="370" y="430" class="lb">WING AREA : 42.7 m²</text>
+  <text x="370" y="438" class="lb">WING LE Λ : 57° / 34°</text>
+  <text x="370" y="446" class="lb">MTOW      : 31,751 kg</text>
+
+  <text x="500" y="406" class="lb">ENGINE   : F135-PW-100</text>
+  <text x="500" y="414" class="lb">THRUST   : 191 kN (A/B)</text>
+  <text x="500" y="422" class="lb">MAX SPD  : Mach 1.6+</text>
+  <text x="500" y="430" class="lb">RANGE    : 2,220 km</text>
+  <text x="500" y="438" class="lb">CEILING  : 15,240 m</text>
+  <text x="500" y="446" class="lb">INTAKES  : DSI (diverterless)</text>
+
+  <!-- scale bar -->
+  <line x1="614" y1="406" x2="664" y2="406" stroke="#00d4ff" stroke-width="0.7"/>
+  <line x1="614" y1="403" x2="614" y2="409" stroke="#00d4ff" stroke-width="0.7"/>
+  <line x1="664" y1="403" x2="664" y2="409" stroke="#00d4ff" stroke-width="0.7"/>
+  <line x1="639" y1="403" x2="639" y2="409" stroke="#00d4ff" stroke-width="0.5"/>
+  <text x="639" y="416" class="lb" text-anchor="middle">2.5 m</text>
+  <text x="614" y="416" class="lb" text-anchor="middle">0</text>
+  <text x="664" y="416" class="lb" text-anchor="middle">5 m</text>
+  <text x="639" y="424" class="lb" text-anchor="middle">SCALE 1:~100</text>
+
+</svg>
