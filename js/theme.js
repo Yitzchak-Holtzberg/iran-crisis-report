@@ -31,3 +31,13 @@ function toggleTheme() {
     }
   } catch(e) {}
 })();
+// Attach touchend listener so the toggle fires immediately on mobile
+// (prevents the 300ms click delay and fixes tap-target issues on iOS Safari)
+(function() {
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  btn.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    toggleTheme();
+  }, {passive: false});
+})();
