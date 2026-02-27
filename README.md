@@ -8,16 +8,28 @@ This is a single-page HTML news dashboard that is **assembled by a build script*
 
 ## Automated daily build
 
-A GitHub Actions workflow (`.github/workflows/daily-build.yml`) runs every day at **00:05 UTC** and:
+A GitHub Actions workflow (`.github/workflows/daily-build.yml`) runs every day at **00:05 UTC** and performs a full automated update:
 
 1. Updates `data.json → date` and `lastUpdated` to the current UTC date/time via `scripts/update-date.js`.
-2. Runs `npm run build` to regenerate `index.html`.
-3. Commits the updated `data.json` and `index.html` back to the branch.
-4. Deploys the site to **GitHub Pages**.
+2. **Searches the web** for the latest Iran news using the [Tavily](https://tavily.com) API (5 targeted queries).
+3. **Calls GPT-4o-mini** (OpenAI) to update `data.json` — new ticker headlines, refreshed statistics, and adjusted scenario percentages — based on the search results.
+4. **Calls GPT-4o-mini** again to generate new `.tl-item` entries for today's timeline in `sections/last-24h.html`.
+5. Runs `npm run build` to regenerate `index.html`.
+6. Commits updated `data.json`, `sections/last-24h.html`, and `index.html` back to the branch.
+7. Deploys the site to **GitHub Pages**.
 
 You can also trigger it manually at any time from the **Actions** tab → **Daily Build & Deploy** → **Run workflow**.
 
-> **Note:** The workflow only updates the dateline automatically. All editorial content (ticker headlines, statistics, timeline entries, etc.) still needs to be updated manually by editing `data.json` and the `sections/` files before the build runs, or by pushing a commit that the workflow will then pick up on its next run.
+### Required GitHub Actions secrets
+
+Add these two secrets to the repository (**Settings → Secrets and variables → Actions → New repository secret**):
+
+| Secret name | Where to get it | Cost |
+|---|---|---|
+| `TAVILY_API_KEY` | [tavily.com](https://tavily.com) — free tier includes 1,000 searches/month | ~$0.01/search after free tier |
+| `OPENAI_API_KEY` | [platform.openai.com](https://platform.openai.com) | GPT-4o-mini: $0.15/$0.60 per 1M tokens — ≈ $0.01–$0.02 per daily run |
+
+> **Graceful degradation:** the AI content update step runs with `continue-on-error: true` in the workflow, so if either secret is missing, a quota is exceeded, or a network error occurs, the step exits and the rest of the workflow still completes — falling back to a date-only update and a clean rebuild.
 
 ---
 
@@ -33,7 +45,8 @@ iran-crisis-report/
 ├── index.html          # GENERATED — do not edit manually
 ├── package.json        # npm scripts (build only)
 ├── scripts/
-│   └── update-date.js  # Updates date/lastUpdated in data.json to today UTC
+│   ├── update-date.js  # Updates date/lastUpdated in data.json to today UTC
+│   └── ai-update.js    # Fetches news (Tavily) + updates data.json & last-24h.html (GPT-4o-mini)
 ├── sections/           # Content source files — edit these
 │   ├── head.html       # <head>, CSS links, meta tags
 │   ├── masthead.html   # Page title, dateline, last-updated timestamp

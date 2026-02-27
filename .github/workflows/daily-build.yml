@@ -41,17 +41,27 @@ jobs:
       - name: Update date in data.json
         run: node scripts/update-date.js
 
+      # Pull the latest news with Tavily and update data.json + last-24h.html
+      # via GPT-4o-mini.  Uses continue-on-error so a quota or network issue
+      # never blocks the date-refresh and rebuild from completing.
+      - name: AI content update (Tavily + GPT-4o-mini)
+        continue-on-error: true
+        env:
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/ai-update.js
+
       # Regenerate index.html from the updated data.json and section files.
       - name: Build index.html
         run: npm run build
 
-      # Commit the refreshed data.json and index.html back to the branch so
-      # the repo always reflects the latest auto-generated output.
+      # Commit the refreshed files back to the branch so the repo always
+      # reflects the latest auto-generated output.
       - name: Commit and push updated files
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json index.html
+          git add data.json index.html sections/last-24h.html
           # Only commit when something actually changed (idempotent on re-runs).
           git diff --staged --quiet || git commit -m "chore: daily rebuild $(date -u +'%Y-%m-%d')"
           git push
