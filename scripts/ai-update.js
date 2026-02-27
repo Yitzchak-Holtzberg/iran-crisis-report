@@ -74,7 +74,7 @@ async function tavilySearch(query) {
 async function callGPT(systemPrompt, userContent, jsonMode = false) {
   const body = {
     model: 'gpt-5-mini',
-    max_completion_tokens: 4096,
+    max_completion_tokens: 16384,
     messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user',   content: userContent  },
