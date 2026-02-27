@@ -20,22 +20,49 @@ A GitHub Actions workflow (`.github/workflows/daily-build.yml`) runs every day a
 
 You can also trigger it manually at any time from the **Actions** tab → **Daily Build & Deploy** → **Run workflow**.
 
-### Breaking-news webhook
+### Automated breaking-news watcher
 
-For an **immediate** rebuild whenever serious breaking news warrants it, send a `repository_dispatch` event to the GitHub API.  This triggers the same full pipeline (AI content update → build → deploy) right away, without waiting for the next scheduled run.
+A second workflow (`.github/workflows/news-watcher.yml`) polls for urgent Iran-related news **every 30 minutes** and triggers the full rebuild+deploy pipeline automatically — without any manual action — the moment something serious breaks.
 
-```bash
-curl -X POST \
-  -H "Authorization: Bearer <YOUR_GITHUB_PAT>" \
-  -H "Accept: application/vnd.github+json" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  https://api.github.com/repos/Yitzchak-Holtzberg/iran-crisis-report/dispatches \
-  -d '{"event_type":"breaking-news","client_payload":{"headline":"Optional short description of the event"}}'
-```
+#### How it works
 
-`<YOUR_GITHUB_PAT>` must be a [fine-grained personal access token](https://github.com/settings/tokens?type=beta) (or a classic PAT with the `repo` scope) that has **Contents: Read and write** permission on this repository.  Keep it secret — treat it like a password.
+1. **`scripts/check-breaking-news.js`** runs a single focused Tavily query (`"Iran breaking news urgent latest"`).
+2. It filters results to only those **published in the last 30 minutes**.
+3. If a fresh result's title or content contains an **urgency keyword** (e.g. *strike*, *attack*, *nuclear*, *evacuate*, *ultimatum*, *invasion* …) the script sets `breaking=true`.
+4. A **git-log cooldown** prevents cascade rebuilds: if an automated `chore: …rebuild` commit already landed in the last 30 minutes, the script sets `breaking=false` and the workflow exits immediately.
+5. When `breaking=true` the workflow runs the same pipeline as the daily build — AI content update → `npm run build` → commit → GitHub Pages deploy.
 
-The `client_payload.headline` field is optional and purely informational; it is not used by the workflow but shows up in the Actions run log for traceability.
+When `breaking=false` the workflow job ends after a few seconds (no build, no deploy, no extra API calls).
+
+#### Required secret
+
+The watcher requires only the existing `TAVILY_API_KEY` secret — no new credentials are needed.
+
+#### Tavily API usage
+
+| Source | Queries / day | Queries / month |
+|---|---|---|
+| Daily build (7 queries × 4 runs) | 28 | ~840 |
+| Breaking-news watcher (1 query × 48 polls) | 48 | ~1,440 |
+| **Total** | **~76** | **~2,280** |
+
+Tavily's free tier covers 1,000 searches/month.  Excess usage is billed at **$0.01 per search** (~$13/month at full polling rate).  To reduce cost, increase the cron interval in `news-watcher.yml` (e.g. `0 * * * *` for hourly polling = ~720 watcher queries/month).
+
+#### Manual override
+
+You can also force an immediate rebuild at any time without waiting for the watcher:
+
+- **Actions tab:** go to **Breaking-News Watcher** → **Run workflow** (bypasses the breaking-news check and runs the full pipeline unconditionally).
+- **GitHub API (repository_dispatch):** send an event with `event_type: "breaking-news"` to the daily-build workflow using a PAT with `repo` scope:
+
+  ```bash
+  curl -X POST \
+    -H "Authorization: Bearer <YOUR_GITHUB_PAT>" \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    https://api.github.com/repos/Yitzchak-Holtzberg/iran-crisis-report/dispatches \
+    -d '{"event_type":"breaking-news"}'
+  ```
 
 ### Required GitHub Actions secrets
 
@@ -56,14 +83,16 @@ Add these two secrets to the repository (**Settings → Secrets and variables �
 iran-crisis-report/
 ├── .github/
 │   └── workflows/
-│       └── daily-build.yml  # Scheduled daily build & GitHub Pages deploy
+│       ├── daily-build.yml      # Scheduled daily build & GitHub Pages deploy
+│       └── news-watcher.yml     # Breaking-news watcher — polls every 30 min
 ├── build.js            # Build script — assembles index.html from sections/
 ├── data.json           # ★ EDIT THIS FIRST — date, stats, ticker headlines
 ├── index.html          # GENERATED — do not edit manually
 ├── package.json        # npm scripts (build only)
 ├── scripts/
-│   ├── update-date.js  # Updates date/lastUpdated in data.json to today UTC
-│   └── ai-update.js    # Fetches news (Tavily) + updates data.json & last-24h.html (GPT-4o-mini)
+│   ├── update-date.js          # Updates date/lastUpdated in data.json to today UTC
+│   ├── ai-update.js            # Fetches news (Tavily) + updates data.json & last-24h.html (GPT-4o-mini)
+│   └── check-breaking-news.js  # Detects urgent Iran news for the watcher workflow
 ├── sections/           # Content source files — edit these
 │   ├── head.html       # <head>, CSS links, meta tags
 │   ├── masthead.html   # Page title, dateline, last-updated timestamp

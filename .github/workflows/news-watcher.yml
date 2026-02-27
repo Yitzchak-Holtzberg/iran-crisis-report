@@ -1,0 +1,92 @@
+name: Breaking-News Watcher
+
+# Polls every 30 minutes for urgent Iran-related news via Tavily and fires a
+# full rebuild+deploy only when a fresh result (published in the last 30 min)
+# containing an urgency keyword is found.  A git-log cooldown prevents cascade
+# rebuilds if the main daily-build already ran very recently.
+#
+# Also accepts a manual workflow_dispatch trigger for testing.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+# Same permissions as daily-build so Pages deployment works identically.
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Share the same concurrency group as the main workflow so the two never
+# deploy to Pages simultaneously.  A watcher-triggered rebuild cancels any
+# in-progress scheduled run (and vice-versa).
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  watch-and-rebuild:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Fetch enough history for the git-log cooldown check in the script.
+          fetch-depth: 50
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Detect breaking Iran news via Tavily.
+      # Sets step output  breaking=true  or  breaking=false.
+      - name: Check for breaking Iran news
+        id: news_check
+        env:
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: node scripts/check-breaking-news.js
+
+      # All remaining steps only execute when breaking news is detected.
+
+      - name: Update date in data.json
+        if: steps.news_check.outputs.breaking == 'true'
+        run: node scripts/update-date.js
+
+      - name: AI content update (Tavily + GPT-5-mini)
+        if: steps.news_check.outputs.breaking == 'true'
+        continue-on-error: true
+        env:
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/ai-update.js
+
+      - name: Build index.html
+        if: steps.news_check.outputs.breaking == 'true'
+        run: npm run build
+
+      - name: Commit and push updated files
+        if: steps.news_check.outputs.breaking == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json index.html sections/
+          git diff --staged --quiet || git commit -m "chore: breaking-news rebuild $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          git pull --rebase
+          git push
+
+      - name: Upload Pages artifact
+        if: steps.news_check.outputs.breaking == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        if: steps.news_check.outputs.breaking == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
