@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="460" viewBox="0 0 700 460">
+<!--
+  B-2 SPIRIT — 3-VIEW TECHNICAL SCHEMATIC
+  Style: Military technical line drawing (Jane's All the World's Aircraft style)
+  Scale (top/side): 7.25 px/m   Wingspan 380px = 52.4 m   Length 152px = 21.0 m
+  Scale (front):    4.39 px/m   Wingspan 230px = 52.4 m   Height  23px =  5.18 m
+-->
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  BACKGROUND                                            -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <rect width="700" height="460" fill="#060810"/>
+
+  <!-- Zone dividers (very faint) -->
+  <line x1="422" y1="8"   x2="422" y2="452" stroke="#ff3b3b" stroke-width="0.3" stroke-dasharray="5,4" opacity="0.35"/>
+  <line x1="8"   y1="233" x2="414" y2="233" stroke="#ff3b3b" stroke-width="0.3" stroke-dasharray="5,4" opacity="0.35"/>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  TITLE BLOCK  (upper-right)                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <rect x="430" y="11" width="262" height="57" fill="none" stroke="#ff3b3b" stroke-width="0.8"/>
+  <line x1="430" y1="29" x2="692" y2="29" stroke="#ff3b3b" stroke-width="0.4"/>
+  <line x1="430" y1="45" x2="692" y2="45" stroke="#ff3b3b" stroke-width="0.3"/>
+  <text x="561" y="24"
+        text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace"
+        font-size="13" font-weight="bold" letter-spacing="5">B-2 SPIRIT</text>
+  <text x="561" y="39"
+        text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace"
+        font-size="6.5" letter-spacing="2.5">STEALTH STRATEGIC BOMBER</text>
+  <text x="561" y="61"
+        text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace"
+        font-size="5.8" letter-spacing="1.2">NORTHROP GRUMMAN  ·  3-VIEW TECHNICAL SCHEMATIC</text>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SPECIFICATIONS BLOCK                                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <rect x="430" y="76" width="262" height="148" fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+  <text x="437" y="89" fill="#ff3b3b" font-family="'Courier New',monospace"
+        font-size="6.5" font-weight="bold" letter-spacing="1">SPECIFICATIONS</text>
+  <line x1="430" y1="93" x2="692" y2="93" stroke="#ff3b3b" stroke-width="0.3"/>
+  <text x="437" y="104" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">WINGSPAN    52.4 m    (172 ft 0 in)</text>
+  <text x="437" y="115" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">LENGTH      21.0 m    ( 69 ft 0 in)</text>
+  <text x="437" y="126" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">HEIGHT       5.18 m   ( 17 ft 0 in)</text>
+  <text x="437" y="137" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">ENGINES     4 × GE F118-GE-100</text>
+  <text x="437" y="148" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">THRUST      77.0 kN (17,300 lbf) each</text>
+  <text x="437" y="159" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">CREW        2  (Pilot + Mission Cmdr)</text>
+  <text x="437" y="170" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">MAX SPEED   Mach 0.95  (1,010 km/h)</text>
+  <text x="437" y="181" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">RANGE       11,100 km  (6,900 mi)</text>
+  <text x="437" y="192" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">PAYLOAD     18,000 kg  (40,000 lb)</text>
+  <text x="437" y="203" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">FIRST FLT   17 July 1989</text>
+  <text x="437" y="214" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="6">OPERATOR    USAF 509th BW, Whiteman AFB</text>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  LEGEND                                                -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <rect x="430" y="232" width="262" height="44" fill="none" stroke="#ff3b3b" stroke-width="0.4" opacity="0.7"/>
+  <line x1="438" y1="245" x2="462" y2="245" stroke="#ff3b3b" stroke-width="1.3"/>
+  <text x="466" y="248" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">OUTER STRUCTURE (1.3 pt)</text>
+  <line x1="438" y1="257" x2="462" y2="257" stroke="#ff3b3b" stroke-width="0.7"/>
+  <text x="466" y="260" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">PANEL / DETAIL LINES (0.7 pt)</text>
+  <line x1="438" y1="269" x2="462" y2="269" stroke="#ff3b3b" stroke-width="0.5" stroke-dasharray="3,2"/>
+  <text x="466" y="272" fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">HIDDEN / INTERNAL FEATURES (dashed)</text>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!--  TOP VIEW — PLANFORM  (upper-left, dominant view)                  -->
+  <!--  Scale 7.25 px/m | Wingspan 380px=52.4m | Length 151px=21.0m      -->
+  <!--  Center x=215, nose y=45                                           -->
+  <!--  LE sweep 33° | double-W trailing edge (4 lobes total)            -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <text x="215" y="19" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="8" letter-spacing="2.5">TOP VIEW — PLANFORM</text>
+
+  <!-- ── Main planform outline ──
+       Path (clockwise):
+         Right wingtip LE → LE sweep → nose → LE sweep → Left wingtip LE
+         → Left wingtip TE → Left TE double-W → Center notch
+         → Right TE double-W → Right wingtip TE → close Z
+
+       Trailing edge W-pattern key Y coordinates:
+         Center notch (most fwd):  y=154
+         Inner lobe peaks (aft):   y=196  at x=158(L), x=272(R)
+         Inter-lobe valleys (fwd): y=176  at x=120(L), x=308(R)
+         Outer lobe peaks (aft):   y=192  at x= 91(L), x=342(R)
+         Wingtip TE:               y=178  at x= 25(L), x=405(R)
+       All bezier joins are horizontal-tangent → smooth sinusoidal wave.
+  -->
+  <path fill="none" stroke="#ff3b3b" stroke-width="1.4" stroke-linejoin="round"
+    d="M 405,167
+       L 220,46 Q 215,45 210,46 L 25,167
+       L 25,178
+       C 34,178  74,192  91,192
+       C 104,192 112,176 120,176
+       C 128,176 142,196 158,196
+       C 174,196 200,154 215,154
+       C 230,154 256,196 272,196
+       C 290,196 302,176 308,176
+       C 316,176 330,192 342,192
+       C 356,192 396,178 405,178
+       Z"/>
+
+  <!-- Fuselage centerline (dashed) -->
+  <line x1="215" y1="50" x2="215" y2="193"
+        stroke="#ff3b3b" stroke-width="0.5" stroke-dasharray="5,3"/>
+
+  <!-- Blended wing-body center hump outline -->
+  <ellipse cx="215" cy="96" rx="19" ry="48"
+           fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+
+  <!-- ── Cockpit / crew positions (2-up, side-by-side) ── -->
+  <ellipse cx="205" cy="59" rx="8" ry="5"
+           fill="none" stroke="#ff3b3b" stroke-width="0.75"/>
+  <ellipse cx="225" cy="59" rx="8" ry="5"
+           fill="none" stroke="#ff3b3b" stroke-width="0.75"/>
+  <!-- canopy centre divider -->
+  <line x1="215" y1="54" x2="215" y2="64"
+        stroke="#ff3b3b" stroke-width="0.5"/>
+
+  <!-- ── Leading-edge spar (8 % chord aft, parallel to LE) ── -->
+  <line x1="215" y1="56" x2="375" y2="156"
+        stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="4,3"/>
+  <line x1="215" y1="56" x2="55"  y2="156"
+        stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="4,3"/>
+
+  <!-- ── Engine air intakes — 4 total, dorsal surface, paired ──
+       Two per side, inner-forward + outer-aft, staggered.
+       GE F118 turbofan.  Intakes buried, blended into upper wing surface.
+  -->
+  <!-- Left-inner intake -->
+  <rect x="148" y="67" width="32" height="12" rx="3"
+        fill="none" stroke="#ff3b3b" stroke-width="0.8"/>
+  <!-- Left-outer intake (stepped aft) -->
+  <rect x="137" y="83" width="32" height="12" rx="3"
+        fill="none" stroke="#ff3b3b" stroke-width="0.8"/>
+  <!-- Right-inner intake -->
+  <rect x="214" y="67" width="32" height="12" rx="3"
+        fill="none" stroke="#ff3b3b" stroke-width="0.8"/>
+  <!-- Right-outer intake (stepped aft) -->
+  <rect x="225" y="83" width="32" height="12" rx="3"
+        fill="none" stroke="#ff3b3b" stroke-width="0.8"/>
+
+  <!-- Intake leading-edge lips (heavier line = inlet highlight) -->
+  <line x1="148" y1="67" x2="180" y2="67" stroke="#ff3b3b" stroke-width="1.1"/>
+  <line x1="137" y1="83" x2="169" y2="83" stroke="#ff3b3b" stroke-width="1.1"/>
+  <line x1="214" y1="67" x2="246" y2="67" stroke="#ff3b3b" stroke-width="1.1"/>
+  <line x1="225" y1="83" x2="257" y2="83" stroke="#ff3b3b" stroke-width="1.1"/>
+
+  <!-- Intake internal dividers (twin-channel) -->
+  <line x1="164" y1="67" x2="164" y2="79" stroke="#ff3b3b" stroke-width="0.4"/>
+  <line x1="153" y1="83" x2="153" y2="95" stroke="#ff3b3b" stroke-width="0.4"/>
+  <line x1="230" y1="67" x2="230" y2="79" stroke="#ff3b3b" stroke-width="0.4"/>
+  <line x1="241" y1="83" x2="241" y2="95" stroke="#ff3b3b" stroke-width="0.4"/>
+
+  <!-- ── Exhaust nozzles — 4 total, buried in dorsal surface ──
+       Sawtooth (serrated) trailing edges for low-observable signature.
+  -->
+  <!-- Left exhaust pair -->
+  <rect x="154" y="114" width="20" height="9" rx="1"
+        fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+  <rect x="175" y="117" width="20" height="9" rx="1"
+        fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+  <!-- Left exhaust sawtooth TE detail -->
+  <path d="M154,119 l3,-3 l3,3 l3,-3 l3,3 l3,-3 l3,3 l2,-2"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+  <path d="M175,122 l3,-3 l3,3 l3,-3 l3,3 l3,-3 l3,3 l2,-2"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+  <!-- Right exhaust pair -->
+  <rect x="220" y="114" width="20" height="9" rx="1"
+        fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+  <rect x="199" y="117" width="20" height="9" rx="1"
+        fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+  <!-- Right exhaust sawtooth TE detail -->
+  <path d="M220,119 l3,-3 l3,3 l3,-3 l3,3 l3,-3 l3,3 l2,-2"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+  <path d="M199,122 l3,-3 l3,3 l3,-3 l3,3 l3,-3 l3,3 l2,-2"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+
+  <!-- ── Weapons bays — ventral surface (hidden from above → dashed) ──
+       Two large side-by-side bays; each holds a rotary launcher.
+  -->
+  <rect x="176" y="100" width="16" height="50"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5" stroke-dasharray="3,2"/>
+  <rect x="214" y="100" width="16" height="50"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5" stroke-dasharray="3,2"/>
+  <!-- Rotary launcher circles (dashed) -->
+  <circle cx="184" cy="126" r="7"
+          fill="none" stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="2,2"/>
+  <circle cx="222" cy="126" r="7"
+          fill="none" stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="2,2"/>
+
+  <!-- ── Wing structural / panel lines ──
+       Spanwise station markers at ~30 % and ~65 % of half-span.
+  -->
+  <line x1="272" y1="90"  x2="268" y2="170"
+        stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="3,3"/>
+  <line x1="342" y1="136" x2="336" y2="178"
+        stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="3,3"/>
+  <line x1="158" y1="90"  x2="162" y2="170"
+        stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="3,3"/>
+  <line x1="88"  y1="136" x2="94"  y2="178"
+        stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="3,3"/>
+
+  <!-- ── Leading-edge sweep angle indicator ── -->
+  <!-- horizontal reference from nose -->
+  <line x1="215" y1="70" x2="250" y2="70"
+        stroke="#ff3b3b" stroke-width="0.4"/>
+  <!-- LE direction line -->
+  <line x1="215" y1="70" x2="242" y2="88"
+        stroke="#ff3b3b" stroke-width="0.4"/>
+  <!-- arc -->
+  <path d="M 237,70 A 22,22 0 0,1 228,86"
+        fill="none" stroke="#ff3b3b" stroke-width="0.4"/>
+  <text x="240" y="82" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5.5">33°</text>
+
+  <!-- ── Dimension lines — TOP VIEW ── -->
+
+  <!-- Wingspan arrow -->
+  <line x1="25"  y1="208" x2="405" y2="208" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="25"  y1="203" x2="25"  y2="213" stroke="#ff3b3b" stroke-width="0.8"/>
+  <line x1="405" y1="203" x2="405" y2="213" stroke="#ff3b3b" stroke-width="0.8"/>
+  <polygon points="28,208 35,205 35,211"  fill="#ff3b3b"/>
+  <polygon points="402,208 395,205 395,211" fill="#ff3b3b"/>
+  <text x="215" y="221" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="6.5">52.4 m  /  172 ft  WINGSPAN</text>
+
+  <!-- Length arrow (vertical, right of drawing) -->
+  <line x1="416" y1="45"  x2="416" y2="196" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="411" y1="45"  x2="421" y2="45"  stroke="#ff3b3b" stroke-width="0.8"/>
+  <line x1="411" y1="196" x2="421" y2="196" stroke="#ff3b3b" stroke-width="0.8"/>
+  <polygon points="416,49 413,56 419,56"   fill="#ff3b3b"/>
+  <polygon points="416,192 413,185 419,185" fill="#ff3b3b"/>
+  <text x="419" y="120" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5.5"
+        transform="rotate(90,419,120)">21.0 m / 69 ft</text>
+
+  <!-- ── Annotation callout dots on top-view features ── -->
+  <circle cx="215" cy="59"  r="2" fill="#ff3b3b"/>
+  <line   x1="223" y1="57"  x2="340" y2="43" stroke="#ff3b3b" stroke-width="0.4"/>
+  <text   x="342"  y="45"   fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">2-CREW COCKPIT</text>
+
+  <circle cx="230" cy="73"  r="2" fill="#ff3b3b"/>
+  <line   x1="262" y1="73"  x2="340" y2="63" stroke="#ff3b3b" stroke-width="0.4"/>
+  <text   x="342"  y="65"   fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">4× GE F118 INTAKES</text>
+
+  <circle cx="222" cy="118" r="2" fill="#ff3b3b"/>
+  <line   x1="242" y1="118" x2="340" y2="111" stroke="#ff3b3b" stroke-width="0.4"/>
+  <text   x="342"  y="113"  fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">BURIED EXHAUSTS ×4</text>
+
+  <circle cx="222" cy="126" r="2" fill="#ff3b3b"/>
+  <line   x1="242" y1="128" x2="340" y2="130" stroke="#ff3b3b" stroke-width="0.4"/>
+  <text   x="342"  y="132"  fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">WEAPONS BAYS (DASHED)</text>
+
+  <circle cx="272" cy="196" r="2" fill="#ff3b3b"/>
+  <line   x1="280" y1="196" x2="340" y2="193" stroke="#ff3b3b" stroke-width="0.4"/>
+  <text   x="342"  y="195"  fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">DOUBLE-W TE LOBES</text>
+
+  <circle cx="215" cy="154" r="2" fill="#ff3b3b"/>
+  <line   x1="215" y1="154" x2="340" y2="160" stroke="#ff3b3b" stroke-width="0.4"/>
+  <text   x="342"  y="162"  fill="#ff3b3b" font-family="'Courier New',monospace" font-size="5.5">CENTER NOTCH (FWD)</text>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!--  SIDE VIEW — PROFILE  (lower-left)                                 -->
+  <!--  Scale 14 px/m | Length 294px=21m | Height 73px≈5.18m             -->
+  <!--  x: 57–351 | y: lower surface 382, cockpit top 309                -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <text x="205" y="246" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="8" letter-spacing="2.5">SIDE VIEW — PROFILE</text>
+
+  <!-- Main side-view profile outline -->
+  <path fill="none" stroke="#ff3b3b" stroke-width="1.3" stroke-linejoin="round"
+    d="M 57,341
+       C 67,333  82,312  102,309
+       C 122,307 152,314 200,320
+       C 250,326 300,332 341,338
+       L 347,343
+       L 347,382
+       L 83,382
+       C 65,381  57,369  57,360
+       C 57,351  57,346  57,341
+       Z"/>
+
+  <!-- Cockpit canopy glazing (raised blister on upper surface) -->
+  <path d="M 78,317
+           C 83,308  93,305  103,305
+           C 113,305 124,311 128,317"
+        fill="none" stroke="#ff3b3b" stroke-width="0.8"/>
+  <!-- Canopy frame divisions -->
+  <line x1="83"  y1="313" x2="80"  y2="320" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="103" y1="305" x2="103" y2="313" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="122" y1="309" x2="124" y2="316" stroke="#ff3b3b" stroke-width="0.5"/>
+
+  <!-- Air intake scoops (dorsal bumps, visible from side) -->
+  <path d="M 140,315 C 145,309 155,307 161,309 C 167,311 168,315 167,319"
+        fill="none" stroke="#ff3b3b" stroke-width="0.6"/>
+  <path d="M 161,319 C 163,312 174,309 180,311 C 186,313 187,319 185,322"
+        fill="none" stroke="#ff3b3b" stroke-width="0.6"/>
+
+  <!-- Engine exhausts (dorsal, rear — visible as flush bumps) -->
+  <path d="M 218,323 C 223,317 234,315 240,321"
+        fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+  <path d="M 255,327 C 260,321 271,319 277,325"
+        fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+  <!-- Exhaust sawtooth TE marks (side view) -->
+  <path d="M240,321 l3,-2 l3,2 l3,-2 l3,2 l2,-2"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+  <path d="M277,325 l3,-2 l3,2 l3,-2 l3,2 l2,-2"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+
+  <!-- Lower-surface waterline reference (dashed) -->
+  <line x1="48" y1="382" x2="358" y2="382"
+        stroke="#ff3b3b" stroke-width="0.4" stroke-dasharray="5,4"/>
+
+  <!-- Structural keel / main load path (faint) -->
+  <line x1="57" y1="360" x2="347" y2="364"
+        stroke="#ff3b3b" stroke-width="0.3" stroke-dasharray="3,3" opacity="0.55"/>
+
+  <!-- "NO VERTICAL TAIL" indicator -->
+  <line x1="347" y1="338" x2="360" y2="320"
+        stroke="#ff3b3b" stroke-width="0.4"/>
+  <text x="362" y="318" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5.5">NO VERT. TAIL</text>
+
+  <!-- ── Dimension lines — SIDE VIEW ── -->
+
+  <!-- Length arrow -->
+  <line x1="57"  y1="396" x2="347" y2="396" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="57"  y1="391" x2="57"  y2="401" stroke="#ff3b3b" stroke-width="0.8"/>
+  <line x1="347" y1="391" x2="347" y2="401" stroke="#ff3b3b" stroke-width="0.8"/>
+  <polygon points="60,396 67,393 67,399"   fill="#ff3b3b"/>
+  <polygon points="344,396 337,393 337,399" fill="#ff3b3b"/>
+  <text x="202" y="410" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="6.5">21.0 m  /  69 ft  LENGTH</text>
+
+  <!-- Height arrow (right of side view) -->
+  <line x1="362" y1="309" x2="362" y2="382" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="357" y1="309" x2="367" y2="309" stroke="#ff3b3b" stroke-width="0.8"/>
+  <line x1="357" y1="382" x2="367" y2="382" stroke="#ff3b3b" stroke-width="0.8"/>
+  <polygon points="362,313 359,320 365,320" fill="#ff3b3b"/>
+  <polygon points="362,378 359,371 365,371" fill="#ff3b3b"/>
+  <text x="381" y="351" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5.5"
+        transform="rotate(90,381,351)">5.18 m / 17 ft</text>
+
+  <!-- Nose-to-cockpit callout in side view -->
+  <circle cx="103" cy="305" r="2" fill="#ff3b3b"/>
+  <line   x1="103" y1="303" x2="103" y2="292"  stroke="#ff3b3b" stroke-width="0.4"/>
+  <text   x="92"   y="290"  fill="#ff3b3b"
+          font-family="'Courier New',monospace" font-size="5.5">COCKPIT</text>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!--  FRONT VIEW  (right side)                                          -->
+  <!--  Scale 4.39 px/m | Wingspan 230px=52.4m | Height 23px≈5.18m       -->
+  <!--  Center x=563 | Extremely wide and flat (accurate to B-2)         -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <text x="563" y="283" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="8" letter-spacing="2.5">FRONT VIEW</text>
+
+  <!-- Main front-view outline
+       Upper surface: smooth arch from wingtip (448,391) up to
+         cockpit apex (563,368) and back to wingtip (678,391).
+       Lower surface: nearly flat line at y=394.
+       Height 26 px ÷ 4.39 px/m ≈ 5.9 m  (includes cockpit hump; structural
+         wing height at tip ≈ 3 px). Accurate planform ratio >10:1 width:height.
+  -->
+  <!-- Upper surface arch: wingtips at y=394, cockpit apex y=371 → height=23px=5.24m≈5.18m -->
+  <path fill="none" stroke="#ff3b3b" stroke-width="1.3" stroke-linejoin="round"
+    d="M 448,394
+       C 466,392  511,376  542,373
+       C 550,372  557,371  563,371
+       C 569,371  576,372  584,373
+       C 615,376  660,392  678,394
+       L 678,396
+       L 448,396
+       Z"/>
+
+  <!-- Fuselage centre cross-section / cockpit hump detail -->
+  <path d="M 545,396
+           C 549,386  557,373  563,372
+           C 569,373  577,386  581,396"
+        fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+
+  <!-- Cockpit canopy windows (two ovals, front view) -->
+  <ellipse cx="557" cy="373" rx="6" ry="4"
+           fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+  <ellipse cx="569" cy="373" rx="6" ry="4"
+           fill="none" stroke="#ff3b3b" stroke-width="0.7"/>
+
+  <!-- Wing cross-section station tick marks -->
+  <line x1="500" y1="394" x2="502" y2="386" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="626" y1="394" x2="624" y2="386" stroke="#ff3b3b" stroke-width="0.5"/>
+
+  <!-- Engine intake bumps (dorsal bulges visible from front) -->
+  <path d="M 539,383 C 541,378 547,376 553,378 C 557,380 558,384 558,388"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+  <path d="M 568,388 C 568,384 569,380 573,378 C 579,376 585,378 587,383"
+        fill="none" stroke="#ff3b3b" stroke-width="0.5"/>
+
+  <!-- ── Dimension lines — FRONT VIEW ── -->
+
+  <!-- Wingspan arrow -->
+  <line x1="448" y1="410" x2="678" y2="410" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="448" y1="405" x2="448" y2="415" stroke="#ff3b3b" stroke-width="0.8"/>
+  <line x1="678" y1="405" x2="678" y2="415" stroke="#ff3b3b" stroke-width="0.8"/>
+  <polygon points="451,410 458,407 458,413" fill="#ff3b3b"/>
+  <polygon points="675,410 668,407 668,413" fill="#ff3b3b"/>
+  <text x="563" y="424" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="6.5">52.4 m  /  172 ft  WINGSPAN</text>
+
+  <!-- Height arrow -->
+  <line x1="693" y1="371" x2="693" y2="396" stroke="#ff3b3b" stroke-width="0.5"/>
+  <line x1="688" y1="371" x2="698" y2="371" stroke="#ff3b3b" stroke-width="0.8"/>
+  <line x1="688" y1="396" x2="698" y2="396" stroke="#ff3b3b" stroke-width="0.8"/>
+  <polygon points="693,375 690,382 696,382" fill="#ff3b3b"/>
+  <polygon points="693,392 690,385 696,385" fill="#ff3b3b"/>
+  <text x="694" y="388" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5">5.18m</text>
+
+  <!-- ── Front-view annotation ── -->
+  <text x="563" y="436" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5" opacity="0.7">WIDTH : HEIGHT RATIO ≈ 10 : 1  (TRUE SCALE)</text>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  BOTTOM DOCUMENT LINE                                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <line x1="8" y1="450" x2="692" y2="450"
+        stroke="#ff3b3b" stroke-width="0.3" opacity="0.5"/>
+  <text x="12"  y="457" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5" opacity="0.6">TOP/SIDE SCALE ≈ 1:7430  (7.25 px/m)</text>
+  <text x="350" y="457" text-anchor="middle" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5" opacity="0.6">ALL DIMENSIONS APPROXIMATE — FOR REFERENCE ONLY</text>
+  <text x="692" y="457" text-anchor="end" fill="#ff3b3b"
+        font-family="'Courier New',monospace" font-size="5" opacity="0.6">FRONT SCALE ≈ 1:11940  (4.39 px/m)</text>
+
+</svg>
