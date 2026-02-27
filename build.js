@@ -88,15 +88,124 @@ function applyData(content, unknownKeys) {
   });
 }
 
+// ===== VALIDATION FUNCTIONS =====
+
+/** Validate that AI zone markers are properly balanced */
+function validateAIZones(content, filename) {
+  const warnings = [];
+  const openMarkers = content.match(/<!-- @ai-zone:(\w+) -->/g) || [];
+  const closeMarkers = content.match(/<!-- @\/ai-zone:(\w+) -->/g) || [];
+
+  if (openMarkers.length !== closeMarkers.length) {
+    warnings.push(`${filename}: Unbalanced AI zone markers (${openMarkers.length} open, ${closeMarkers.length} close)`);
+  }
+
+  return warnings;
+}
+
+/** Check for oversized section files */
+function checkFileSize(filename) {
+  const warnings = [];
+  const fullPath = path.join(BASE_DIR, filename);
+  const content = fs.readFileSync(fullPath, 'utf8');
+  const lineCount = content.split('\n').length;
+
+  if (lineCount > 200) {
+    warnings.push(`${filename}: Large file (${lineCount} lines) — consider splitting`);
+  }
+
+  return warnings;
+}
+
+/** Extract section IDs from HTML content */
+function extractSectionIds(content) {
+  const ids = new Set();
+  const matches = content.matchAll(/\bid=["']([^"']+)["']/g);
+  for (const match of matches) {
+    ids.add(match[1]);
+  }
+  return ids;
+}
+
+/** Extract sidebar href targets */
+function extractSidebarTargets(sidebarContent) {
+  const targets = new Set();
+  const matches = sidebarContent.matchAll(/href=["']#([^"']+)["']/g);
+  for (const match of matches) {
+    targets.add(match[1]);
+  }
+  return targets;
+}
+
+/** Validate sidebar links point to existing sections */
+function validateNavigation(output, sidebarFile) {
+  const warnings = [];
+  const sidebarContent = fs.readFileSync(path.join(BASE_DIR, sidebarFile), 'utf8');
+  const sectionIds = extractSectionIds(output);
+  const sidebarTargets = extractSidebarTargets(sidebarContent);
+
+  for (const target of sidebarTargets) {
+    if (!sectionIds.has(target)) {
+      warnings.push(`Navigation: Sidebar links to #${target} but no matching section ID found`);
+    }
+  }
+
+  return warnings;
+}
+
+/** Check for duplicate section IDs */
+function checkDuplicateIds(output) {
+  const warnings = [];
+  const ids = [];
+  const matches = output.matchAll(/\bid=["']([^"']+)["']/g);
+
+  for (const match of matches) {
+    ids.push(match[1]);
+  }
+
+  const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
+  const uniqueDuplicates = [...new Set(duplicates)];
+
+  if (uniqueDuplicates.length > 0) {
+    warnings.push(`Duplicate section IDs found: ${uniqueDuplicates.join(', ')}`);
+  }
+
+  return warnings;
+}
+
+// ===== BUILD PROCESS =====
+
 const unknownKeys = new Set();
+const allWarnings = [];
+
+// Build output
 const output = SECTIONS.map(file => {
   const content = fs.readFileSync(path.join(BASE_DIR, file), 'utf8');
+
+  // Run validations on each file
+  allWarnings.push(...validateAIZones(content, file));
+  allWarnings.push(...checkFileSize(file));
+
   return applyData(processTicker(processIncludes(content)), unknownKeys);
 }).join('');
 
+// Run global validations
+allWarnings.push(...validateNavigation(output, 'sections/sidebar.html'));
+allWarnings.push(...checkDuplicateIds(output));
+
+// Report warnings
 if (unknownKeys.size > 0) {
   process.stderr.write(`Warning: unresolved placeholders in output — check data.json for: ${[...unknownKeys].join(', ')}\n`);
 }
 
+if (allWarnings.length > 0) {
+  process.stderr.write('\nBuild Warnings:\n');
+  allWarnings.forEach(w => process.stderr.write(`  ⚠ ${w}\n`));
+  process.stderr.write('\n');
+}
+
 fs.writeFileSync(path.join(BASE_DIR, 'index.html'), output);
 console.log(`Built index.html from ${SECTIONS.length} sections.`);
+if (allWarnings.length === 0 && unknownKeys.size === 0) {
+  console.log('✓ All validation checks passed');
+}

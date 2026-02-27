@@ -2,7 +2,7 @@
 
 This is a single-page HTML news dashboard that is **assembled by a build script** from modular section files. `index.html` is a generated file — **never edit it directly**. All content lives in the `sections/` directory; run the build to regenerate the page.
 
-**For the most frequently changed data** (date, statistics, ticker headlines) edit only `data.json` — no HTML required.
+**For the most frequently changed data** (date, statistics, ticker headlines) edit only `data.json` — no HTML required. See `data.schema.json` for the complete schema and validation rules.
 
 ---
 
@@ -395,6 +395,9 @@ Add `<a href="…">Description</a>` entries inside the two-column grid div in th
 
 ## Build validation
 
+The build script runs several validation checks to ensure quality:
+
+### Placeholder Validation
 If you add a `{{key}}` placeholder to any section file but forget to add the corresponding entry to `data.json`, the build script will print a warning:
 
 ```
@@ -402,6 +405,26 @@ Warning: unresolved placeholders in output — check data.json for: myNewKey
 ```
 
 The build will still succeed, but the raw placeholder text (`{{myNewKey}}`) will appear in the page. Resolve the warning before committing.
+
+### Structural Validation
+The build also validates:
+
+- **Navigation integrity**: All sidebar links point to existing section IDs
+- **AI zone balance**: All `<!-- @ai-zone:id -->` markers are properly closed with `<!-- @/ai-zone:id -->`
+- **File size**: Warns if section files exceed 200 lines (consider splitting)
+- **Duplicate IDs**: Detects duplicate section IDs that would break navigation
+
+Example validation output:
+```
+Build Warnings:
+  ⚠ sections/naval.html: Large file (325 lines) — consider splitting
+  ⚠ Navigation: Sidebar links to #missing but no matching section ID found
+```
+
+**Note**: Warnings don't block the build, but should be addressed before committing.
+
+### AI Content Zones
+AI-managed content regions use marker syntax to define update boundaries. See `AI-ZONES.md` for complete documentation on AI zone conventions and best practices.
 
 ---
 
