@@ -20,6 +20,23 @@ A GitHub Actions workflow (`.github/workflows/daily-build.yml`) runs every day a
 
 You can also trigger it manually at any time from the **Actions** tab → **Daily Build & Deploy** → **Run workflow**.
 
+### Breaking-news webhook
+
+For an **immediate** rebuild whenever serious breaking news warrants it, send a `repository_dispatch` event to the GitHub API.  This triggers the same full pipeline (AI content update → build → deploy) right away, without waiting for the next scheduled run.
+
+```bash
+curl -X POST \
+  -H "Authorization: Bearer <YOUR_GITHUB_PAT>" \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  https://api.github.com/repos/Yitzchak-Holtzberg/iran-crisis-report/dispatches \
+  -d '{"event_type":"breaking-news","client_payload":{"headline":"Optional short description of the event"}}'
+```
+
+`<YOUR_GITHUB_PAT>` must be a [fine-grained personal access token](https://github.com/settings/tokens?type=beta) (or a classic PAT with the `repo` scope) that has **Contents: Read and write** permission on this repository.  Keep it secret — treat it like a password.
+
+The `client_payload.headline` field is optional and purely informational; it is not used by the workflow but shows up in the Actions run log for traceability.
+
 ### Required GitHub Actions secrets
 
 Add these two secrets to the repository (**Settings → Secrets and variables → Actions → New repository secret**):
