@@ -346,7 +346,7 @@
     <h3>USS Abraham Lincoln</h3>
     <div class="hull">CVN-72 &nbsp;&bull;&nbsp; Nimitz-class</div>
     <!-- Carrier side-profile — Nimitz-class CVN-72 (blue) -->
-    <svg class="csg-diagram" viewBox="0 0 340 162" xmlns="http://www.w3.org/2000/svg" aria-label="USS Abraham Lincoln — Nimitz-class carrier profile">
+    <svg class="csg-diagram csg-diagram-lincoln" viewBox="0 0 340 162" xmlns="http://www.w3.org/2000/svg" aria-label="USS Abraham Lincoln — Nimitz-class carrier profile">
       <defs>
         <linearGradient id="sky-cvn72" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#04101c"/>
@@ -366,11 +366,11 @@
         </linearGradient>
       </defs>
       <!-- Base background — fills transparent gaps (corners, section seams) -->
-      <rect width="340" height="162" rx="6" fill="#04101c"/>
+      <rect class="csg-base" width="340" height="162" rx="6" fill="#04101c"/>
       <!-- Sky -->
-      <rect width="340" height="74" fill="url(#sky-cvn72)" rx="6"/>
+      <rect class="csg-sky" width="340" height="74" fill="url(#sky-cvn72)" rx="6"/>
       <!-- Ocean -->
-      <rect y="74" width="340" height="39" fill="url(#sea-cvn72)"/>
+      <rect class="csg-sea" y="74" width="340" height="39" fill="url(#sea-cvn72)"/>
       <!-- Waterline -->
       <line x1="0" y1="74" x2="340" y2="74" stroke="#0e2238" stroke-width="1.2"/>
       <!-- Hull below waterline -->
@@ -447,24 +447,24 @@
       <!-- Caption -->
       <text x="170" y="107" text-anchor="middle" fill="#1c3d60" font-size="7" font-family="JetBrains Mono,monospace" letter-spacing="2">NIMITZ-CLASS NUCLEAR CARRIER — CVN-72</text>
       <!-- Range & distance info strip -->
-      <line x1="0" y1="113" x2="340" y2="113" stroke="#0e2238" stroke-width="0.8"/>
-      <rect x="0" y="113" width="340" height="49" fill="#030b18"/>
+      <line class="csg-divider" x1="0" y1="113" x2="340" y2="113" stroke="#0e2238" stroke-width="0.8"/>
+      <rect class="csg-info-strip" x="0" y="113" width="340" height="49" fill="#030b18"/>
       <!-- Distance badge -->
       <rect x="8" y="119" width="88" height="14" rx="7" fill="rgba(74,144,217,0.12)" stroke="rgba(74,144,217,0.35)" stroke-width="0.7"/>
       <text x="52" y="129" text-anchor="middle" fill="#4a90d9" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">700 KM · IRAN</text>
       <!-- Divider -->
-      <line x1="106" y1="116" x2="106" y2="143" stroke="#0e2238" stroke-width="0.5"/>
+      <line class="csg-divider" x1="106" y1="116" x2="106" y2="143" stroke="#0e2238" stroke-width="0.5"/>
       <!-- Tomahawk range — IN RANGE -->
-      <text x="112" y="124.5" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">TOMAHAWK BGM-109</text>
+      <text class="csg-info-label" x="112" y="124.5" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">TOMAHAWK BGM-109</text>
       <text x="112" y="135" fill="#40a060" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">1,600 km ✓</text>
       <!-- Divider -->
-      <line x1="222" y1="116" x2="222" y2="143" stroke="#0e2238" stroke-width="0.5"/>
+      <line class="csg-divider" x1="222" y1="116" x2="222" y2="143" stroke="#0e2238" stroke-width="0.5"/>
       <!-- F/A-18 combat radius — MARGINAL -->
-      <text x="228" y="124.5" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">F/A-18E/F RADIUS</text>
+      <text class="csg-info-label" x="228" y="124.5" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">F/A-18E/F RADIUS</text>
       <text x="228" y="135" fill="#c8a030" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">720 km ⚡</text>
       <!-- Transit time row -->
-      <line x1="0" y1="145" x2="340" y2="145" stroke="#0e2238" stroke-width="0.5"/>
-      <text x="12" y="156" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">⏱ TRANSIT TO IRAN  ·  20 KTS:</text>
+      <line class="csg-divider" x1="0" y1="145" x2="340" y2="145" stroke="#0e2238" stroke-width="0.5"/>
+      <text class="csg-info-label" x="12" y="156" fill="#4a7090" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">⏱ TRANSIT TO IRAN  ·  20 KTS:</text>
       <text x="196" y="156" fill="#4a90d9" font-size="9" font-family="JetBrains Mono,monospace" font-weight="700">~19 HRS</text>
     </svg>
     <div class="stats-mini">
@@ -489,7 +489,7 @@
     <h3>USS Gerald R. Ford</h3>
     <div class="hull">CVN-78 &nbsp;&bull;&nbsp; Ford-class</div>
     <!-- Carrier side-profile — Ford-class CVN-78 (orange) -->
-    <svg class="csg-diagram" viewBox="0 0 340 162" xmlns="http://www.w3.org/2000/svg" aria-label="USS Gerald R. Ford — Ford-class carrier profile">
+    <svg class="csg-diagram csg-diagram-ford" viewBox="0 0 340 162" xmlns="http://www.w3.org/2000/svg" aria-label="USS Gerald R. Ford — Ford-class carrier profile">
       <defs>
         <linearGradient id="sky-cvn78" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#100804"/>
@@ -509,11 +509,11 @@
         </linearGradient>
       </defs>
       <!-- Base background — fills transparent gaps (corners, section seams) -->
-      <rect width="340" height="162" rx="6" fill="#100804"/>
+      <rect class="csg-base" width="340" height="162" rx="6" fill="#100804"/>
       <!-- Sky -->
-      <rect width="340" height="74" fill="url(#sky-cvn78)" rx="6"/>
+      <rect class="csg-sky" width="340" height="74" fill="url(#sky-cvn78)" rx="6"/>
       <!-- Ocean -->
-      <rect y="74" width="340" height="39" fill="url(#sea-cvn78)"/>
+      <rect class="csg-sea" y="74" width="340" height="39" fill="url(#sea-cvn78)"/>
       <!-- Waterline -->
       <line x1="0" y1="74" x2="340" y2="74" stroke="#381808" stroke-width="1.2"/>
       <!-- Hull below waterline -->
@@ -589,24 +589,24 @@
       <!-- Caption -->
       <text x="170" y="107" text-anchor="middle" fill="#6a3a18" font-size="7" font-family="JetBrains Mono,monospace" letter-spacing="2">FORD-CLASS NUCLEAR CARRIER — CVN-78</text>
       <!-- Range & distance info strip -->
-      <line x1="0" y1="113" x2="340" y2="113" stroke="#38180a" stroke-width="0.8"/>
-      <rect x="0" y="113" width="340" height="49" fill="#080402"/>
+      <line class="csg-divider" x1="0" y1="113" x2="340" y2="113" stroke="#38180a" stroke-width="0.8"/>
+      <rect class="csg-info-strip" x="0" y="113" width="340" height="49" fill="#080402"/>
       <!-- Distance badge -->
       <rect x="8" y="119" width="100" height="14" rx="7" fill="rgba(220,100,30,0.12)" stroke="rgba(220,100,30,0.35)" stroke-width="0.7"/>
       <text x="58" y="129" text-anchor="middle" fill="#e08c42" font-size="8" font-family="JetBrains Mono,monospace" font-weight="700">~1,800 KM · IRAN</text>
       <!-- Divider -->
-      <line x1="118" y1="116" x2="118" y2="143" stroke="#38180a" stroke-width="0.5"/>
+      <line class="csg-divider" x1="118" y1="116" x2="118" y2="143" stroke="#38180a" stroke-width="0.5"/>
       <!-- Tomahawk range — STANDOFF (out of range) -->
-      <text x="124" y="124.5" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">TOMAHAWK BGM-109</text>
+      <text class="csg-info-label" x="124" y="124.5" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">TOMAHAWK BGM-109</text>
       <text x="124" y="135" fill="#d05030" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">1,600 km ✗</text>
       <!-- Divider -->
-      <line x1="234" y1="116" x2="234" y2="143" stroke="#38180a" stroke-width="0.5"/>
+      <line class="csg-divider" x1="234" y1="116" x2="234" y2="143" stroke="#38180a" stroke-width="0.5"/>
       <!-- F-35C combat radius — STANDOFF -->
-      <text x="240" y="124.5" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">F-35C RADIUS</text>
+      <text class="csg-info-label" x="240" y="124.5" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">F-35C RADIUS</text>
       <text x="240" y="135" fill="#d05030" font-size="9.5" font-family="JetBrains Mono,monospace" font-weight="700">1,100 km ✗</text>
       <!-- Transit time row -->
-      <line x1="0" y1="145" x2="340" y2="145" stroke="#38180a" stroke-width="0.5"/>
-      <text x="12" y="156" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">⏱ TRANSIT TO IRAN  ·  20 KTS:</text>
+      <line class="csg-divider" x1="0" y1="145" x2="340" y2="145" stroke="#38180a" stroke-width="0.5"/>
+      <text class="csg-info-label" x="12" y="156" fill="#8a5030" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.5">⏱ TRANSIT TO IRAN  ·  20 KTS:</text>
       <text x="196" y="156" fill="#e08c42" font-size="9" font-family="JetBrains Mono,monospace" font-weight="700">~49 HRS (~2.0 DAYS)</text>
     </svg>
     <div class="stats-mini">
