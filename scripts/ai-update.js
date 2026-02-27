@@ -40,6 +40,7 @@ if (!TAVILY_KEY || !OPENAI_KEY) {
 // Targeted queries that cover the dashboard's main topic areas.
 
 const SEARCH_QUERIES = [
+  'Iran breaking news major development today',
   'Iran nuclear talks US negotiations latest news',
   'Iran protests crackdown IRGC arrests latest news',
   'US military Iran strike threat carrier deployment latest',
