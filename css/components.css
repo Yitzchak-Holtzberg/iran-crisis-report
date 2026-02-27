@@ -36,7 +36,23 @@
 .carrier-card .wing-tags { display:flex; flex-wrap:wrap; gap:5px; }
 .carrier-card .wing-tag { background:rgba(74,144,217,0.1); border:1px solid rgba(74,144,217,0.25); color:#6a9ad9; font-size:10px; font-family:'JetBrains Mono',monospace; padding:3px 8px; border-radius:4px; }
 .carrier-card .csg-diagram { display:block; width:100%; margin:0 0 14px; border-radius:6px; overflow:hidden; }
-[data-theme="light"] .csg-diagram { filter: none; }
+/* ---- Light-mode carrier SVG diagram overrides ---- */
+/* Base / background fills */
+[data-theme="light"] .csg-diagram .csg-base       { fill: #cce0f0; }
+[data-theme="light"] .csg-diagram .csg-sky         { fill: #c4dff5; }
+[data-theme="light"] .csg-diagram .csg-sea         { fill: #4878a8; }
+[data-theme="light"] .csg-diagram .csg-info-strip  { fill: #ddeaf8; }
+/* Divider lines (hull-strip separator + stat column separators) */
+[data-theme="light"] .csg-diagram .csg-divider     { stroke: #8aaaca; }
+/* Info-strip label text (weapon/radius field names, transit label) */
+[data-theme="light"] .csg-diagram .csg-info-label  { fill: #3a5878; }
+/* Ford-class warm-tone overrides (orange accent) */
+[data-theme="light"] .csg-diagram-ford .csg-base       { fill: #f0e4d4; }
+[data-theme="light"] .csg-diagram-ford .csg-sky         { fill: #f0e0c8; }
+[data-theme="light"] .csg-diagram-ford .csg-sea         { fill: #4870a0; }
+[data-theme="light"] .csg-diagram-ford .csg-info-strip  { fill: #f5e8d8; }
+[data-theme="light"] .csg-diagram-ford .csg-divider     { stroke: #c09070; }
+[data-theme="light"] .csg-diagram-ford .csg-info-label  { fill: #7a4820; }
 /* Map icon badge classes for theme-aware blocked/spinup labels */
 .map-badge { display:inline-block; border-radius:6px; padding:4px 8px; font-family:'JetBrains Mono',monospace; font-size:9px; white-space:nowrap; text-align:center; font-weight:700; }
 .map-badge-denied { background:rgba(10,10,20,0.88); border:1px dashed #ff3b3b; color:#ff3b3b; }
