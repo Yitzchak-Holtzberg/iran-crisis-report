@@ -37,8 +37,8 @@ body.sb-expanded { padding-left:200px; }
 @media(max-width:900px){
   .left-sidebar { width:100%; transform:translateX(-100%); transition:transform 0.27s cubic-bezier(.4,0,.2,1); box-shadow:none; }
   /* Override desktop 36px collapsed width so the full-screen panel is always 100% on mobile */
-  .left-sidebar.collapsed { width:100%; background:var(--bg-secondary); border-right:1px solid var(--border); pointer-events:auto; }
-  .left-sidebar.open { transform:translateX(0); }
+  .left-sidebar.collapsed { width:100%; background:var(--bg-secondary); border-right:1px solid var(--border); pointer-events:none; }
+  .left-sidebar.open { transform:translateX(0); pointer-events:auto; }
   /* On mobile always show full panel when open, regardless of collapsed class */
   .left-sidebar.collapsed .sb-progress { display:block; }
   .left-sidebar.collapsed .sb-nav { display:flex; flex-direction:column; }
@@ -50,6 +50,7 @@ body.sb-expanded { padding-left:200px; }
   /* Remove padding shifts on mobile */
   body.sb-collapsed, body.sb-expanded { padding-left:0; }
   /* Move theme toggle to fixed bottom-right on mobile so it doesn't overlap masthead content */
-  .theme-toggle { position:fixed; top:auto; bottom:22px; right:16px; z-index:1001; }
+  .theme-toggle { position:fixed; top:auto; bottom:22px; right:16px; z-index:1001; touch-action:manipulation; }
+  .sb-toggle { touch-action:manipulation; }
 }
 
