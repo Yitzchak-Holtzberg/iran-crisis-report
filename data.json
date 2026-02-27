@@ -1,6 +1,6 @@
 {
   "date": "February 27, 2026",
-  "lastUpdated": "19:24 UTC",
+  "lastUpdated": "19:44 UTC",
   "statConfirmedDead": "7,015+",
   "statConfirmedDeadSource": "HRANA",
   "statTotalKilled": "36,500",
@@ -9,11 +9,15 @@
   "statUsAircraft": "160+",
   "statUsShips": "25+",
   "statRialRate": "1.63M",
-  "scenarioDealPct": "20",
-  "scenarioStrikesPct": "50",
+  "scenarioDealPct": "10",
+  "scenarioStrikesPct": "60",
   "scenarioRevolutionPct": "20",
   "scenarioFrozenPct": "10",
   "ticker": [
+    "DIPLOMACY: IRAN SAYS US MUST DROP 'EXCESSIVE DEMANDS' IN NUCLEAR TALKS (Al Jazeera, Feb 27)",
+    "IAEA: UN WATCHDOG SAYS IT IS UNABLE TO VERIFY ACTIVITIES AT SOME IRAN SITES (AP, Feb 27)",
+    "CRACKDOWN: Iran arrests six women, detains reformists as nationwide crackdown widens (Hengaw/BBC, Feb 27)",
+    "OPPOSITION: Reza Pahlavi faces split with Kurdish dissidents amid leadership tensions (US News, Feb 27)",
     "US EMBASSY STAFF IN ISRAEL ADVISED TO LEAVE: Heightened threats from Iran prompt US to allow non-emergency staff to depart Israel immediately (NBC News, Feb 27)",
     "IRAN BLOCKS UN INSPECTORS: Iran continues to obstruct UN nuclear inspectors from key sites, raising international concerns (AP News, Feb 27)",
     "TRUMP ADMINISTRATION WARNS OF IRAN THREAT: Senior officials assert Iran poses a major threat ahead of negotiations (Reuters, Feb 27)",
@@ -34,13 +38,6 @@
     "RUBIO: Iran's ballistic missile program a \"big, big problem\" — some missiles \"designed solely to strike America\"; Iran calls missiles a red line",
     "VANCE WARNING: \"You can't let the craziest and worst regime in the world have nuclear weapons\" — urges Iran to take military threat seriously",
     "SANCTIONS: Trump admin blacklists 30+ individuals, entities &amp; shadow fleet vessels — targeting Iran ballistic missiles, drones, illicit oil",
-    "IRAN UN LETTER: \"All bases, facilities and assets of the hostile force in the region would constitute legitimate targets\"",
-    "PARCHIN: Satellite imagery confirms expanded soil-and-concrete hardening at nuclear facility",
-    "SHADOW FLEET: US military seizes third sanctioned tanker (MV Bertha) in Indian Ocean — 1.9M barrels of crude seized (Feb 24)",
-    "UK RIFT: Starmer maintains ban on US use of Diego Garcia &amp; RAF Fairford despite Washington pressure",
-    "CHINA: Pentagon confirms anti-ship missile transfer to Iran — raises risk for carrier groups",
-    "JOINT CHIEFS WARNING: Chairman reiterates munition-shortage concerns to Senate Armed Services Committee",
-    "ISRAEL: IDF Chief confirms 280,000 reservists remain on standby; IAF conducting final strike rehearsals",
-    "OPPOSITION: Reza Pahlavi issues open letter to IRGC generals — \"Stand with the people, not the regime\""
+    "IRAN UN LETTER: \"All bases, facilities and assets of the hostile force in the region would constitute legitimate targets\""
   ]
 }
