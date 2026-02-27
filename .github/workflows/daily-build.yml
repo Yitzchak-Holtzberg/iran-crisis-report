@@ -42,9 +42,9 @@ jobs:
         run: node scripts/update-date.js
 
       # Pull the latest news with Tavily and update data.json + last-24h.html
-      # via GPT-4o-mini.  Uses continue-on-error so a quota or network issue
+      # via GPT-5-mini.  Uses continue-on-error so a quota or network issue
       # never blocks the date-refresh and rebuild from completing.
-      - name: AI content update (Tavily + GPT-4o-mini)
+      - name: AI content update (Tavily + GPT-5-mini)
         continue-on-error: true
         env:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -64,6 +64,7 @@ jobs:
           git add data.json index.html sections/
           # Only commit when something actually changed (idempotent on re-runs).
           git diff --staged --quiet || git commit -m "chore: daily rebuild $(date -u +'%Y-%m-%d')"
+          git pull --rebase
           git push
 
       # Upload the entire repo root as the Pages artifact (index.html, css/, js/).
