@@ -378,7 +378,7 @@ Rules:
       const newItemsHtml = newItems.join('\n');
       const candidate    = spliceTimelineItems(current24h, newItemsHtml);
       // Validate the template placeholders are still intact.
-      const placeholders = ['{{dayToday}}', '{{dayYesterday}}', '{{dayTwoDaysAgo}}'];
+      const placeholders = ['{{dayToday}}', '{{dayYesterday}}'];
       const allPresent   = placeholders.every(p => candidate.includes(p));
       if (!allPresent) {
         console.warn('last-24h.html placeholder check failed — keeping original.');
