@@ -1,7 +1,6 @@
 {
   "date": "February 27, 2026",
   "lastUpdated": "14:00 UTC",
-
   "statConfirmedDead": "7,015+",
   "statConfirmedDeadSource": "HRANA",
   "statTotalKilled": "36,500",
@@ -10,12 +9,10 @@
   "statUsAircraft": "160+",
   "statUsShips": "25+",
   "statRialRate": "1.64M",
-
   "scenarioDealPct": "20",
   "scenarioStrikesPct": "50",
   "scenarioRevolutionPct": "20",
   "scenarioFrozenPct": "10",
-
   "ticker": [
     "UK EVACUATES TEHRAN: Britain withdraws ambassador and ALL embassy staff from Iran — UK Foreign Office cites \"ongoing security concerns\"; consular support now \"extremely limited\"; British nationals urged to leave Iran immediately (The Independent, Sky News, Politico.eu, Feb 27)",
     "CHINA TELLS CITIZENS TO LEAVE IRAN: Chinese Foreign Ministry advises nationals to evacuate \"as soon as possible\" — largest-ever such advisory for Iran; China is Iran's biggest oil customer (CGTN, Al Arabiya, SCMP, Feb 27)",
