@@ -4,15 +4,15 @@
  *
  * Automatically updates page content with the latest Iran-related news by:
  *   1. Searching the web via the Tavily API (cheap, purpose-built for LLM use).
- *   2. Calling GPT-4o-mini to update data.json (ticker headlines, key statistics,
+ *   2. Calling GPT-5-mini to update data.json (ticker headlines, key statistics,
  *      scenario likelihood percentages).
- *   3. Calling GPT-4o-mini to generate new timeline items for sections/last-24h.html.
- *   4. Calling GPT-4o-mini to update all @ai-zone-marked regions across other
+ *   3. Calling GPT-5-mini to generate new timeline items for sections/last-24h.html.
+ *   4. Calling GPT-5-mini to update all @ai-zone-marked regions across other
  *      section files (nuclear track, naval positions, air-power subtitle, etc.).
  *
  * Required environment variables (set as GitHub Actions secrets):
  *   TAVILY_API_KEY   — https://tavily.com  (free tier: 1,000 searches/month)
- *   OPENAI_API_KEY   — https://platform.openai.com  (GPT-4o-mini is very cheap)
+ *   OPENAI_API_KEY   — https://platform.openai.com  (GPT-5-mini is very cheap)
  *
  * Usage:  node scripts/ai-update.js
  */
@@ -70,10 +70,10 @@ async function tavilySearch(query) {
   return res.json();
 }
 
-/** Call GPT-4o-mini and return the raw text of the first choice. */
+/** Call GPT-5-mini and return the raw text of the first choice. */
 async function callGPT(systemPrompt, userContent, jsonMode = false) {
   const body = {
-    model: 'gpt-4o-mini',
+    model: 'gpt-5-mini',
     temperature: 0.15,
     max_tokens: 4096,
     messages: [
@@ -192,7 +192,7 @@ Zone-specific rules:
 - military-parchin: the Parchin status update sentence including source and date`;
 
 /**
- * Discover all @ai-zone regions in sections/, ask GPT-4o-mini to update them
+ * Discover all @ai-zone regions in sections/, ask GPT-5-mini to update them
  * based on the search context, and write back only the changed files.
  */
 async function updateZones(searchContext) {
@@ -211,7 +211,7 @@ async function updateZones(searchContext) {
     `CURRENT ZONE CONTENTS (${zoneCount} zones):\n${zonesBlock}\n\n` +
     `WEB SEARCH RESULTS:\n${searchContext}`;
 
-  console.log(`Updating ${zoneCount} section zones via GPT-4o-mini…`);
+  console.log(`Updating ${zoneCount} section zones via GPT-5-mini…`);
   let updates;
   try {
     const raw = await callGPT(ZONES_SYSTEM_PROMPT, userContent, true);
@@ -305,7 +305,7 @@ Rules:
     `CURRENT data.json:\n${JSON.stringify(currentData, null, 2)}\n\n` +
     `WEB SEARCH RESULTS:\n${searchContext}`;
 
-  console.log('Updating data.json via GPT-4o-mini…');
+  console.log('Updating data.json via GPT-5-mini…');
   let updatedData = currentData;
   try {
     const raw = await callGPT(dataSystemPrompt, dataUserContent, true);
@@ -367,7 +367,7 @@ Rules:
     `EXISTING TODAY ITEMS (do not duplicate these):\n${existingTodayItems}\n\n` +
     `WEB SEARCH RESULTS:\n${searchContext}`;
 
-  console.log('Generating new timeline items via GPT-4o-mini…');
+  console.log('Generating new timeline items via GPT-5-mini…');
   let updatedLast24h = current24h;
   try {
     const raw = await callGPT(last24hSystemPrompt, last24hUserContent, true);
