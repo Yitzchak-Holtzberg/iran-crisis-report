@@ -38,15 +38,15 @@ document.addEventListener('DOMContentLoaded', function(){
   L.marker([23.0,59.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Spruance (DDG-111)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort<br>Tomahawk &bull; Aegis BMD');
   L.marker([22.8,57.2],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Michael Murphy (DDG-112)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort &bull; DESRON 21<br>Tomahawk &bull; Aegis BMD');
 
-  // ===== GERALD R. FORD CARRIER STRIKE GROUP (Eastern Mediterranean) =====
-  L.marker([34.5,27.5],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Gerald R. Ford (CVN-78)</b><br>Ford-class &bull; World\'s largest warship<br>CVW-8 &bull; ~75 aircraft &bull; 4,500 crew<br><b style="color:#ff8c42">Eastern Med — departed Souda Bay Feb 26</b><br>Repositioning eastward toward strike corridor<br>F-35C, F/A-18E/F, E-2D, CMV-22B');
-  L.circle([34.5,27.5],{radius:900000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.03,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-8 strike radius (~900km with F-35C)');
+  // ===== GERALD R. FORD CARRIER STRIKE GROUP (Eastern Mediterranean — transiting east) =====
+  L.marker([34.8,28.5],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Gerald R. Ford (CVN-78)</b><br>Ford-class &bull; World\'s largest warship<br>CVW-8 &bull; ~75 aircraft &bull; 4,500 crew<br><b style="color:#ff8c42">~500 km west of Cyprus — eastward transit (Feb 27)</b><br>Departed Souda Bay, Crete on Feb 26; repositioning toward strike corridor<br>F-35C, F/A-18E/F, E-2D, CMV-22B');
+  L.circle([34.8,28.5],{radius:900000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.03,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-8 strike radius (~900km with F-35C)');
   // Ford movement arrow (Med → Suez → Gulf)
-  L.polyline([[34.5,27.5],[33.5,30],[31.5,32.3]],{color:'#4a90d9',weight:1.5,dashArray:'8,6',opacity:0.5}).addTo(map);
+  L.polyline([[34.8,28.5],[33.5,30],[31.5,32.3]],{color:'#4a90d9',weight:1.5,dashArray:'8,6',opacity:0.5}).addTo(map);
   // Ford escorts
-  L.marker([35.0,28.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Winston S. Churchill (DDG-81)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
-  L.marker([34.0,27.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Bainbridge (DDG-96)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
-  L.marker([35.2,28.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Mahan (DDG-72)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
+  L.marker([35.3,29.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Winston S. Churchill (DDG-81)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
+  L.marker([34.3,28.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Bainbridge (DDG-96)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
+  L.marker([35.5,29.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Mahan (DDG-72)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
 
   // ===== INDEPENDENT DESTROYERS (Arabian Sea / Strait of Hormuz) =====
   L.marker([26.2,56.8],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS McFaul (DDG-74)</b><br>Arleigh Burke-class destroyer<br>Strait of Hormuz patrol<br>Tomahawk &bull; Aegis BMD');
@@ -69,23 +69,24 @@ document.addEventListener('DOMContentLoaded', function(){
   // ===== SUBMARINE (location approximate/undisclosed) =====
   L.marker([21.0,59.0],{icon:subIcon()}).addTo(map).bindPopup('<b style="color:#7a5af0">USS Georgia (SSGN-729)</b><br>Ohio-class guided-missile submarine<br>154 Tomahawk cruise missiles<br><b>Location undisclosed — approximate</b><br>+ unknown number of fast-attack subs');
 
-  // ===== USS GEORGE H.W. BUSH (transiting Atlantic — deployed) =====
-  L.marker([37.5,-25.0],{icon:deployingIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">USS George H.W. Bush (CVN-77)</b><br>Nimitz-class carrier &bull; CVW-7<br><b>Transiting Atlantic — DEPLOYED</b><br>Departed Norfolk late Jan; COMPTUEX complete<br>Expected in theater ~mid-March');
+  // ===== USS GEORGE H.W. BUSH (transiting Atlantic — deployed, approaching Gibraltar) =====
+  L.marker([36.5,-10.0],{icon:deployingIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">USS George H.W. Bush (CVN-77)</b><br>Nimitz-class carrier &bull; CVW-7<br><b>FORMALLY DEPLOYED — transiting Atlantic (Feb 27)</b><br>Pentagon confirmed deployment order; COMPTUEX complete<br>Approaching Strait of Gibraltar; expected in theater mid-March<br>Third carrier confirms unprecedented triple-carrier posture');
 
   // ===== IRANIAN CITIES — PROTEST SITES =====
-  L.marker([35.7,51.4],{icon:icon('#ff3b3b',14)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Tehran</b><br>Student protests Day 6<br>University of Tehran, Sharif, Amirkabir, Shahid Beheshti<br>IRGC Basij deployed to campuses<br>"Woman, life, freedom"');
-  L.marker([32.65,51.68],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Isfahan</b><br>Protests active &bull; Day 6<br>Nuclear facility tunnel sealing underway');
-  L.marker([36.3,59.6],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Mashhad</b><br>Student protests active &bull; Day 6');
+  L.marker([35.7,51.4],{icon:icon('#ff3b3b',14)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Tehran</b><br>Student protests <b>Day 7</b> — 63 overnight arrests; 410+ detained since Feb 21<br>University of Tehran, Sharif, Amirkabir, Shahid Beheshti<br>IRGC Basij deployed to all 31 provinces<br>"Woman, life, freedom" &bull; Chants for Reza Pahlavi<br><b style="color:#ff8c42">UK withdrew entire embassy staff (Feb 27)</b><br><b style="color:#ff8c42">China advising nationals to evacuate Iran (Feb 27)</b>');
+  L.marker([32.65,51.68],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Isfahan</b><br>Protests active &bull; Day 7<br>Nuclear facility tunnel sealing underway');
+  L.marker([36.3,59.6],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Mashhad</b><br>Student protests active &bull; Day 7');
   L.marker([29.6,52.5],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Shiraz</b><br>Protests reported');
   L.marker([32.3,48.7],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Ahvaz (Khuzestan)</b><br>Arab minority protests<br>Heavy military suppression');
   L.marker([35.3,46.9],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Sanandaj (Kurdistan)</b><br>Kurdish protests<br>2,000+ detained &bull; Reports of torture');
 
   // ===== NUCLEAR SITES =====
-  L.marker([33.72,51.73],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Natanz Nuclear Facility</b><br>Uranium enrichment<br>Underground centrifuge halls');
+  L.marker([33.72,51.73],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Natanz Nuclear Facility</b><br>Uranium enrichment<br>Underground centrifuge halls<br>Heavily damaged in June 2025 strikes');
   L.marker([32.6,51.7],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Isfahan Nuclear Complex</b><br>Tunnel sealing operations in progress<br>Uranium conversion facility');
-  L.marker([33.3,52.5],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">"Pickaxe Mountain"</b><br>Deep underground facility south of Natanz<br>May contain centrifuges at extreme depth');
+  L.marker([33.3,52.5],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">"Pickaxe Mountain"</b><br>Deep underground facility south of Natanz<br>May contain centrifuges at extreme depth (~80m+)');
   L.marker([34.4,50.1],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Arak Heavy Water Reactor</b>');
   L.marker([28.3,54.3],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Bushehr Nuclear Power Plant</b>');
+  L.marker([35.54,51.77],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Parchin Military Complex</b><br><b style="color:#ff3b3b">NEW (Feb 20):</b> Satellite imagery confirms expanded soil-and-concrete hardening — direct countermeasure against GBU-57 bunker busters<br>Located ~35 km SE of Tehran<br><em>Source: The War Zone, Feb 20</em>');
 
   // ===== IRGC — STRAIT OF HORMUZ =====
   L.marker([26.6,56.2],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Strait of Hormuz</b><br>IRGC naval drills active<br>Khamenei: US Navy "could be sunk"<br><b>21% of global oil passes through here</b>');
@@ -108,6 +109,9 @@ document.addEventListener('DOMContentLoaded', function(){
   L.marker([51.67,-1.79],{icon:blockedIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">RAF Fairford, United Kingdom</b><br>B-52/B-2 bomber base<br><b>PM Starmer DENIED US access</b><br>Citing international law');
   L.marker([-7.32,72.42],{icon:blockedIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">Diego Garcia</b><br>Indian Ocean staging base<br><b>PM Starmer DENIED US access</b><br>Trump retaliated: withdrew Chagos deal support');
 
+  // ===== VIENNA — IAEA DIPLOMATIC TALKS =====
+  L.marker([48.2,16.4],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Vienna — IAEA Headquarters</b><br><b style="color:#4a90d9">US–Iran Technical Talks begin Monday, Mar 2</b><br>Expert working groups on enrichment verification &amp; sanctions sequencing<br>IAEA DG Grossi confirms hosting<br>US lead: Steve Witkoff &bull; Iran lead: Araghchi<br><em>Sources: Reuters, AP, Al Jazeera, Feb 27</em>');
+
   // Info box
-  L.control.attribution({position:'bottomright',prefix:'<span style="color:#6a6a7a;">Sources: USNI Fleet Tracker, CSIS, WaPo, Al Jazeera, PBS, MEF | Feb 26, 2026 12:00 UTC</span>'}).addTo(map);
+  L.control.attribution({position:'bottomright',prefix:'<span style="color:#6a6a7a;">Sources: USNI Fleet Tracker, CSIS, WaPo, Al Jazeera, PBS, MEF | Feb 27, 2026 16:37 UTC</span>'}).addTo(map);
 });
