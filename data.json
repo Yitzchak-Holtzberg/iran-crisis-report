@@ -1,6 +1,6 @@
 {
-  "date": "February 27, 2026",
-  "lastUpdated": "22:11 UTC",
+  "date": "February 28, 2026",
+  "lastUpdated": "02:35 UTC",
   "statConfirmedDead": "7,015+",
   "statConfirmedDeadSource": "HRANA",
   "statTotalKilled": "36,500",
@@ -14,6 +14,10 @@
   "scenarioRevolutionPct": "20",
   "scenarioFrozenPct": "10",
   "ticker": [
+    "MILITARY: USS GERALD R. FORD MOVES TOWARD MIDDLE EAST — second carrier added to regional buildup (NewsNation, Feb 28)",
+    "DIPLOMACY: Iran's top diplomat arrives in Geneva as US announces fresh sanctions on vessels linked to Tehran (Al Jazeera, Feb 28)",
+    "ECONOMY: Iranian rial trades near 1.4M per USD on informal market amid surge in inflation (Deutsche Welle, Feb 28)",
+    "CRACKDOWN: Reporters Without Borders documents surge in arrests of journalists covering protests (RSF, Feb 28)",
     "DIPLOMACY: IRAN SAYS US MUST DROP 'EXCESSIVE DEMANDS' IN NUCLEAR TALKS (Al Jazeera, Feb 27)",
     "IAEA: UN WATCHDOG SAYS IT IS UNABLE TO VERIFY ACTIVITIES AT SOME IRAN SITES (AP, Feb 27)",
     "CRACKDOWN: Iran arrests six women, detains reformists as nationwide crackdown widens (Hengaw/BBC, Feb 27)",
@@ -34,10 +38,6 @@
     "GENEVA ROUND 3 CONCLUDED (Feb 26): Araghchi reports \"good progress\" — US-Iran technical talks at IAEA in Vienna begin Monday Mar 2; sides \"closer to agreement\" than any previous round — Oman confirms (Bloomberg, France24)",
     "F-22 RAPTORS IN ISRAEL: 24 US Air Force stealth fighters at Ovda Air Base, southern Israel — historic first-ever operational F-22 deployment to Israeli soil; vanguard of any Iran strike (Times of Israel, ABC News, Feb 24-26)",
     "HRANA \"CRIMSON WINTER\": 50-day report documents 7,007 confirmed protest deaths across 203 cities, 682 sites — 236 children among dead; real toll far higher (hra-iran.org, Feb 23)",
-    "POLITICO EXCLUSIVE: White House advisers believe \"politics are a lot better if Israel strikes Iran first\" — internal consensus: \"We're going to bomb them\" (Feb 25)",
-    "RUBIO: Iran's ballistic missile program a \"big, big problem\" — some missiles \"designed solely to strike America\"; Iran calls missiles a red line",
-    "VANCE WARNING: \"You can't let the craziest and worst regime in the world have nuclear weapons\" — urges Iran to take military threat seriously",
-    "SANCTIONS: Trump admin blacklists 30+ individuals, entities &amp; shadow fleet vessels — targeting Iran ballistic missiles, drones, illicit oil",
-    "IRAN UN LETTER: \"All bases, facilities and assets of the hostile force in the region would constitute legitimate targets\""
+    "POLITICO EXCLUSIVE: White House advisers believe \"politics are a lot better if Israel strikes Iran first\" — internal consensus: \"We're going to bomb them\" (Feb 25)"
   ]
 }
