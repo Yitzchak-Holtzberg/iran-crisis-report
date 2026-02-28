@@ -1,6 +1,6 @@
 {
   "date": "February 28, 2026",
-  "lastUpdated": "13:02 UTC",
+  "lastUpdated": "18:46 UTC",
   "statConfirmedDead": "7,015+",
   "statConfirmedDeadSource": "HRANA",
   "statTotalKilled": "36,500",
@@ -14,6 +14,9 @@
   "scenarioRevolutionPct": "10",
   "scenarioFrozenPct": "3",
   "ticker": [
+    "MILITARY: OPERATION EPIC FURY LAUNCHED — US and Israel name joint operation; carrier groups, air assets deployed (USNI/CNBC, Feb 28)",
+    "OIL: MAJOR TRADERS SUSPEND SHIPMENTS VIA STRAIT OF HORMUZ — supply disruptions raise oil price risk (Reuters, Feb 28)",
+    "CIVILIAN: AL JAZEERA REPORTS TWO SCHOOLS STRUCK IN IRAN, 80+ KILLED — civilian casualties reported after strikes (Al Jazeera, Feb 28)",
     "MILITARY: US AND ISRAEL LAUNCH COORDINATED STRIKES ON IRAN — Washington says 'major combat operations' begun (Reuters, Feb 28)",
     "RETALIATION: IRAN FIRES BALLISTIC MISSILES TOWARD ISRAEL AND NEIGHBOURS — missile barrages reported; interceptions underway (BBC, Feb 28)",
     "US MILITARY: MULTIPLE CARRIER STRIKE GROUPS, AIR ASSETS DEPLOYED TO MIDDLE EAST — Pentagon confirms expanded buildup amid operations (New York Times, Feb 28)",
@@ -31,9 +34,6 @@
     "CRACKDOWN: Iran arrests six women, detains reformists as nationwide crackdown widens (Hengaw/BBC, Feb 27)",
     "OPPOSITION: Reza Pahlavi faces split with Kurdish dissidents amid leadership tensions (US News, Feb 27)",
     "US EMBASSY STAFF IN ISRAEL ADVISED TO LEAVE: Heightened threats from Iran prompt US to allow non-emergency staff to depart Israel immediately (NBC News, Feb 27)",
-    "IRAN BLOCKS UN INSPECTORS: Iran continues to obstruct UN nuclear inspectors from key sites, raising international concerns (AP News, Feb 27)",
-    "TRUMP ADMINISTRATION WARNS OF IRAN THREAT: Senior officials assert Iran poses a major threat ahead of negotiations (Reuters, Feb 27)",
-    "IRAN'S RIAL CRASHES: Iranian rial plummets to 1.63M per USD, causing severe inflation and economic turmoil (Economic Times, Feb 27)",
-    "US-IRAN TALKS END WITHOUT DEAL: Third round of negotiations concludes with no finalized agreement, but discussions may resume (Al Jazeera, Feb 27)"
+    "IRAN BLOCKS UN INSPECTORS: Iran continues to obstruct UN nuclear inspectors from key sites, raising international concerns (AP News, Feb 27)"
   ]
 }
