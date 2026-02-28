@@ -101,10 +101,13 @@ document.addEventListener('DOMContentLoaded', function(){
   L.marker([26.6,56.2],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Strait of Hormuz</b><br><b style="color:#ff3b3b">IRGC ACTIVATED — closure threat underway</b><br>Major oil traders suspend shipments (Reuters, Feb 28)<br>IRGC fast-attack boats and anti-ship missiles on alert<br><b>21% of global oil passes through here</b>');
 
   // ===== US/UK AIR BASES =====
-  L.marker([25.3,51.5],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Al Udeid Air Base, Qatar</b><br>CENTCOM Forward HQ<br>F-35A, F-22A squadrons<br>20+ KC-135 tankers<br>UK Typhoons also deployed here');
-  L.marker([24.2,47.9],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Prince Sultan Air Base, Saudi Arabia</b><br>F-16 Fighting Falcons<br>E-3 AWACS (6 deployed)<br>KC-135 tankers');
-  L.marker([24.4,54.6],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Al Dhafra Air Base, UAE</b><br>F-22 Raptors<br>MQ-4C Triton ISR drones<br>KC-10 tankers');
+  L.marker([25.3,51.5],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Al Udeid Air Base, Qatar</b><br>CENTCOM Forward HQ &bull; ~10,000 US personnel<br>F-35A, F-22A squadrons &bull; 20+ KC-135 tankers<br>UK Typhoons also deployed here<br><b style="color:#ff3b3b">⚡ TARGETED BY IRAN — Feb 28</b><br>Explosions reported; THAAD/Patriot activated');
+  L.marker([24.2,47.9],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Prince Sultan Air Base, Saudi Arabia</b><br>F-16 Fighting Falcons &bull; E-3 AWACS (6 deployed)<br>KC-135 tankers<br><b style="color:#ff3b3b">⚡ TARGETED BY IRAN — Feb 28</b><br>Explosions in Saudi Arabia reported; Patriot active');
+  L.marker([24.4,54.6],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Al Dhafra Air Base, UAE</b><br>F-22 Raptors &bull; MQ-4C Triton ISR drones<br>KC-10 tankers<br><b style="color:#ff3b3b">⚡ TARGETED BY IRAN — Feb 28</b><br>Explosions in UAE reported; Patriot active');
   L.marker([32.0,36.8],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Muwaffaq Salti Air Base, Jordan</b><br><b>EVERY tactical jet slot visible from satellite is full</b><br>Confirmed via satellite imagery (Feb 20):<br>18× F-15E Strike Eagles &bull; 18× F-35A Lightning II<br>12× F-16 Fighting Falcons &bull; 6× EA-18G Growlers<br>2× MQ-9 Reapers (visible; shelters not counted)<br>Key deep-strike staging base<br><em>Jordan denied US airspace for Iran strikes</em>');
+
+  // ===== US 5TH FLEET HQ — NSA BAHRAIN (TARGETED BY IRAN) =====
+  L.marker([26.23,50.59],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">NSA Bahrain — US 5th Fleet HQ</b><br>US Naval Forces Central Command<br>Headquarters for all US naval operations in the region<br><b style="color:#ff3b3b">⚡ TARGETED BY IRAN — Feb 28</b><br>Explosions reported in Bahrain; Patriot batteries active<br>USS Canberra, USS Tulsa homeported here');
 
   // ===== ISRAEL =====
   L.marker([32,34.8],{icon:icon('#ffd700',14)}).addTo(map).bindPopup('<b style="color:#ffd700">Israel - IDF</b><br>Highest readiness since June 2025 war<br>280,000 reservists authorized<br>IAF on full alert<br>Coordinating with US CENTCOM');
@@ -123,8 +126,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ===== IRAN BALLISTIC MISSILE RETALIATION (Feb 28) =====
   // Iran fired missiles toward Israel and Gulf states after Operation Epic Fury
-  L.polyline([[32.5,54],[32.0,34.8]],{color:'#ff3b3b',weight:2,dashArray:'6,4',opacity:0.75}).addTo(map).bindPopup('<b style="color:#ff3b3b">Iran Ballistic Missile Barrage — Feb 28</b><br>Multiple ballistic missiles fired toward Israel<br>Interceptions underway — Source: BBC, Feb 28');
-  L.polyline([[32.5,54],[25.3,51.5]],{color:'#ff3b3b',weight:1.5,dashArray:'6,4',opacity:0.6}).addTo(map).bindPopup('<b style="color:#ff3b3b">Missiles toward Gulf States — Feb 28</b><br>Explosions reported in Qatar, Bahrain, Saudi Arabia, UAE<br>Air defenses activated — Source: BBC, Feb 28');
+  // Toward Israel
+  L.polyline([[32.5,54],[32.0,34.8]],{color:'#ff3b3b',weight:2.5,dashArray:'5,4',opacity:0.8}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Israel (Feb 28)</b><br><b>Weapons:</b> Shahab-3, Emad, Kheibar Shekan ballistic missiles<br><b>Target:</b> Israeli cities and IDF installations<br>Arrow 3, David\'s Sling, Iron Dome activated<br><em>Source: BBC, Feb 28</em>');
+  // Toward Qatar (Al Udeid)
+  L.polyline([[32.5,54],[25.3,51.5]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.7}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Qatar / Al Udeid (Feb 28)</b><br><b>Weapons:</b> Zolfaghar / Dezful short-medium range ballistic missiles<br><b>Target:</b> CENTCOM HQ, ~10,000 US personnel<br>THAAD / Patriot PAC-3 activated<br><em>Source: BBC, Feb 28 — Damage unconfirmed</em>');
+  // Toward Bahrain (5th Fleet)
+  L.polyline([[32.5,54],[26.23,50.59]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.7}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Bahrain / US 5th Fleet (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> NSA Bahrain — US Naval Forces Central Command HQ<br>Patriot active; explosions reported<br><em>Source: BBC, Feb 28 — Damage unconfirmed</em>');
+  // Toward Saudi Arabia (Prince Sultan)
+  L.polyline([[32.5,54],[24.2,47.9]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.65}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Saudi Arabia / Prince Sultan (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> Prince Sultan Air Base — F-16, AWACS, tankers<br>Patriot active; explosions in Saudi Arabia reported<br><em>Source: BBC, Feb 28 — Damage unconfirmed</em>');
+  // Toward UAE (Al Dhafra)
+  L.polyline([[32.5,54],[24.4,54.6]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.65}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → UAE / Al Dhafra (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> Al Dhafra Air Base — F-22 Raptors, ISR drones<br>Patriot active; explosions in UAE reported<br><em>Source: BBC, Feb 28 — Damage unconfirmed</em>');
 
   // ===== OPERATION EPIC FURY STRIKE CORRIDORS =====
   // Carrier-based aircraft strike corridors (approximate)
