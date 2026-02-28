@@ -42,6 +42,7 @@ const SECTIONS = [
   'sections/sidebar.html',
   'sections/stats.html',
   'sections/last-24h.html',
+  'sections/confirmed-unconfirmed.html',
   'sections/theater.html',
   'sections/air-power.html',
   'sections/naval.html',
