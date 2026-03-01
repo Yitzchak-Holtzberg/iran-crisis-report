@@ -4,8 +4,7 @@
   "description": "Iran Crisis Report — interactive news dashboard",
   "scripts": {
     "build": "node build.js",
-    "validate": "node build.js 2>&1 | grep -E '⚠|Warning|error' || echo '✓ No issues found'",
-    "patch": "node scripts/patch-data.js"
+    "validate": "node build.js 2>&1 | grep -E '⚠|Warning|error' || echo '✓ No issues found'"
   },
   "private": true
 }

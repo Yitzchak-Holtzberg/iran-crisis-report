@@ -1,3 +1,4 @@
+// ===== NAVIGATION: mobile toggle =====
 // ===== LEFT SIDEBAR: active section + progress on scroll =====
 (function() {
   var sectionIds = ['stats','last-24h','confirmed-unconfirmed','theater','nuclear','scenarios','analysis','strike-forces','military','inside-iran','reactions','opposition','opposition-landscape'];
@@ -41,12 +42,40 @@
   });
 })();
 
-// Close sidebar when a nav link is clicked on mobile (fires the Alpine handler).
+// ===== LEFT SIDEBAR: collapse toggle (desktop) =====
+function toggleCollapse() {
+  var sb = document.getElementById('leftSidebar');
+  var btn = document.getElementById('sbCollapseBtn');
+  var header = document.getElementById('sbHeader');
+  var collapsed = sb.classList.toggle('collapsed');
+  document.body.classList.toggle('sb-collapsed', collapsed);
+  document.body.classList.toggle('sb-expanded', !collapsed);
+  if (btn) btn.innerHTML = collapsed ? '&#9654;' : '&#9668;';
+  if (header) header.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+}
+// ===== LEFT SIDEBAR: mobile toggle =====
+function toggleSidebar() {
+  var sb = document.getElementById('leftSidebar');
+  var ov = document.getElementById('sbOverlay');
+  var open = sb.classList.toggle('open');
+  ov.classList.toggle('open', open);
+  setSidebarToggleState(open);
+}
+function closeSidebar() {
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('sbOverlay').classList.remove('open');
+  setSidebarToggleState(false);
+}
+function setSidebarToggleState(open) {
+  var icon = document.querySelector('#sbToggle .sb-toggle-icon');
+  var label = document.querySelector('#sbToggle .sb-toggle-label');
+  if (icon) icon.textContent = open ? '\u2715' : '\u2630';
+  if (label) label.textContent = open ? 'Close' : 'Menu';
+}
+// Close sidebar when a link is clicked on mobile
 document.querySelectorAll('.sb-link').forEach(function(a) {
   a.addEventListener('click', function() {
-    if (window.innerWidth <= 900) {
-      document.body.dispatchEvent(new CustomEvent('close-sidebar'));
-    }
+    if (window.innerWidth <= 900) closeSidebar();
   });
 });
 
@@ -55,11 +84,19 @@ document.querySelectorAll('.sb-link').forEach(function(a) {
   var backToTopBtn = document.getElementById('backToTop');
   if (!backToTopBtn) return;
 
-  window.addEventListener('scroll', function() {
+  function toggleBackToTop() {
     backToTopBtn.classList.toggle('visible', window.scrollY > 300);
-  }, {passive: true});
+  }
 
-  backToTopBtn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  window.addEventListener('scroll', toggleBackToTop, {passive: true});
+  backToTopBtn.addEventListener('click', scrollToTop);
+
+  toggleBackToTop();
 })();
