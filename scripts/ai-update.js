@@ -44,6 +44,17 @@ const LAST24H_PATH     = path.join(BASE_DIR, 'sections', 'last-24h.html');
 const MANIFEST_PATH    = path.join(BASE_DIR, 'update-manifest.json');
 const GUIDELINES_PATH  = path.join(BASE_DIR, 'STRUCTURAL_GUIDELINES.md');
 
+// Matches the existing TODAY items block inside last-24h.html.
+// Used both by the significance assessment (to check what's already on the page)
+// and by the timeline update phase (to avoid duplicating items).
+const TODAY_TIMELINE_RE =
+  /<!-- ── TODAY ── -->[\s\S]*?<div class="timeline"[^>]*>([\s\S]*?)<!-- ── YESTERDAY ── -->/;
+
+// Number of recent ticker headlines to include in the page-context snapshot
+// passed to the significance classifier.  10 is enough to cover the last few
+// updates without inflating the prompt token count.
+const PAGE_CONTEXT_TICKER_LIMIT = 10;
+
 // ── Environment ──────────────────────────────────────────────────────────────
 
 const TAVILY_KEY  = process.env.TAVILY_API_KEY;
@@ -343,6 +354,11 @@ would require restructuring the page — not just updating numbers/text within
 existing sections, but adding new cards, callouts, or fundamentally changing
 the analysis structure.
 
+IMPORTANT: You will also receive a summary of EXISTING PAGE CONTENT (the current
+ticker headlines and today's timeline items). Only return structural:true if the
+major development is NOT already covered by that existing content. If the event
+is already represented in the page, a routine zone-level update is sufficient.
+
 Examples of events that ARE structural:
 - A military operation is launched or concluded
 - A regime change or leadership transition occurs
@@ -365,19 +381,23 @@ Return a JSON object with exactly two keys:
 
 Be CONSERVATIVE — default to false. Only return true when the news clearly
 represents a paradigm shift that the existing page structure cannot adequately
-convey with zone-level updates alone.`;
+convey with zone-level updates alone, AND the event is not already in the page.`;
 
 /**
  * Ask GPT to assess whether the search results contain a development
  * significant enough to warrant structural page changes.
+ * @param {string} searchContext - aggregated Tavily search results
+ * @param {string} pageContext   - summary of existing page content (ticker + timeline)
  * Returns { structural: boolean, reason: string }.
  */
-async function assessSignificance(searchContext) {
+async function assessSignificance(searchContext, pageContext = '') {
   console.log('Assessing news significance (auto mode)…');
   try {
+    const userContent = (pageContext ? `EXISTING PAGE CONTENT:\n${pageContext}\n\n` : '') +
+      `WEB SEARCH RESULTS:\n${searchContext}`;
     const raw = await callGPT(
       SIGNIFICANCE_SYSTEM_PROMPT,
-      `WEB SEARCH RESULTS:\n${searchContext}`,
+      userContent,
       true
     );
     const result = JSON.parse(raw);
@@ -582,8 +602,16 @@ async function main() {
 
   // ── 2b. Significance assessment (auto mode only) ──────────────────────────
 
+  // Build a compact snapshot of what's already on the page so the significance
+  // classifier can tell whether a major event is new or already covered.
+  const todayMatchEarly = current24h.match(TODAY_TIMELINE_RE);
+  const existingTodayItemsEarly = todayMatchEarly ? todayMatchEarly[1].trim() : '';
+  const pageContext =
+    `Ticker headlines:\n${(currentData.ticker || []).slice(0, PAGE_CONTEXT_TICKER_LIMIT).join('\n')}\n\n` +
+    `Today's timeline items:\n${existingTodayItemsEarly}`;
+
   if (UPDATE_TYPE_INPUT === 'auto') {
-    const assessment = await assessSignificance(searchContext);
+    const assessment = await assessSignificance(searchContext, pageContext);
     manifest.phases.significance = { ...assessment, status: 'ok' };
     if (assessment.structural) {
       effectiveType = 'structural';
@@ -645,9 +673,7 @@ Rules:
   // ── 4. Generate new timeline items for last-24h.html ────────────────────
 
   // Extract the existing TODAY items so the model knows what's already there.
-  const todayMatch = current24h.match(
-    /<!-- ── TODAY ── -->[\s\S]*?<div class="timeline"[^>]*>([\s\S]*?)<!-- ── YESTERDAY ── -->/
-  );
+  const todayMatch = current24h.match(TODAY_TIMELINE_RE);
   const existingTodayItems = todayMatch ? todayMatch[1].trim() : '';
 
   const last24hSystemPrompt = `\
@@ -680,7 +706,7 @@ Rules:
   reserved for the existing last item in each block so it doesn't add double
   spacing before the next day-header, and new items inserted at the top don't
   need it.
-- Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*).\`;
+- Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*).`;
 
   const last24hUserContent =
     `EXISTING TODAY ITEMS (do not duplicate these):\n${existingTodayItems}\n\n` +
