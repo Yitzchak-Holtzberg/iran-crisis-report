@@ -170,6 +170,4 @@ document.addEventListener('DOMContentLoaded', function(){
   L.polyline([[23.5,58],[26.6,56.2],[30,54]],{color:'#4a90d9',weight:1.5,dashArray:'5,5',opacity:0.55}).addTo(map).bindPopup('Lincoln CVW-11 strike corridor (approx.)');
   L.polyline([[34.8,28.5],[33,34],[32,40],[32,48]],{color:'#4a90d9',weight:1.5,dashArray:'5,5',opacity:0.45}).addTo(map).bindPopup('Ford CVW-8 strike corridor (approx.)');
 
-  // Info box
-  L.control.attribution({position:'bottomright',prefix:'<span style="color:#6a6a7a;"><b style="color:#ff3b3b;">⚡ OPERATION EPIC FURY — DAY 2 ACTIVE</b> &bull; <span style="color:#ff3b3b;">&#9679; = CONFIRMED STRIKE</span> &bull; <span style="color:#ff8c42;">&#9675; = UNCONFIRMED / BDA PENDING</span> &bull; <span style="color:#ff3b3b;">&#9135;&#9135; = CONFIRMED RETALIATION</span> &bull; <span style="color:#ff8c42;">&#9135;&#9135; = INTERCEPTED / UNCONFIRMED</span> &bull; Sources: USNI, Reuters, BBC, Al Jazeera, ISW, CBS, Newsweek | Mar 1, 2026</span>'}).addTo(map);
 });
