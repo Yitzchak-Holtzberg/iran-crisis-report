@@ -42,6 +42,7 @@ const SECTIONS = [
   'sections/sidebar.html',
   'sections/stats.html',
   'sections/last-24h.html',
+  'sections/scenarios.html',
   'sections/confirmed-unconfirmed.html',
   'sections/theater.html',
   'sections/air-power.html',
@@ -51,7 +52,6 @@ const SECTIONS = [
   'sections/nuclear.html',
   'sections/hormuz.html',
   'sections/military.html',
-  'sections/scenarios.html',
   'sections/sources.html',
   'sections/scripts.html',
 ];
