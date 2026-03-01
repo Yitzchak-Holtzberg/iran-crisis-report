@@ -127,6 +127,39 @@
           ]
         }
       }
+    },
+    {
+      "timestamp": "2026-03-01T12:13:43.196Z",
+      "type": "auto",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 7,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": true,
+          "reason": "Khamenei reportedly killed in US‑Israel strikes — leadership death and major military campaign.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 2
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "scenarios",
+            "inside-iran"
+          ]
+        }
+      }
     }
   ]
 }

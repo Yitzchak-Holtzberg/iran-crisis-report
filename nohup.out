@@ -14,3 +14,13 @@
 127.0.0.1 - - [01/Mar/2026 00:18:57] "GET /js/theme.js HTTP/1.1" 200 -
 127.0.0.1 - - [01/Mar/2026 00:18:57] "GET /js/sidebar.js HTTP/1.1" 200 -
 127.0.0.1 - - [01/Mar/2026 00:18:57] "GET /img/aircraft/e3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:32] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /css/variables.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /css/base.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /css/components.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /css/sidebar.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /css/responsive.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /js/map.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /js/theme.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Mar/2026 12:33:37] "GET /js/sidebar.js HTTP/1.1" 200 -

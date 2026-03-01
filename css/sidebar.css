@@ -50,6 +50,8 @@ body.sb-expanded { padding-left:200px; }
   .left-sidebar.collapsed .sb-nav { display:flex; flex-direction:column; }
   .left-sidebar.collapsed .sb-header { height:auto; padding:10px 14px; border-bottom:1px solid var(--border); flex-direction:row; justify-content:space-between; align-items:center; }
   .left-sidebar.collapsed .sb-header > div { display:block; }
+  /* Show page-switcher pills in mobile menu (desktop hides them when collapsed) */
+  .left-sidebar.collapsed .sb-pages { display:flex; }
   .sb-nav .sb-link { padding:14px 20px 14px 0; font-size:14px; }
   /* Pill-shaped toggle button with label */
   .sb-toggle { display:flex; width:auto; padding:0 20px; border-radius:100px; font-size:16px; gap:8px; font-family:'JetBrains Mono',monospace; letter-spacing:1px; }
