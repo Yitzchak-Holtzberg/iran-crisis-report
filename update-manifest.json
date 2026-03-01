@@ -62,6 +62,38 @@
           ]
         }
       }
+    },
+    {
+      "timestamp": "2026-03-01T04:34:14.911Z",
+      "type": "auto",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 7,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": true,
+          "reason": "US and Israel launched major military strikes inside Iran, with reports the Supreme Leader was killed — a structural shi",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "naval"
+          ]
+        }
+      }
     }
   ]
 }
