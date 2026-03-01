@@ -160,6 +160,40 @@
           ]
         }
       }
+    },
+    {
+      "timestamp": "2026-03-01T19:38:42.424Z",
+      "type": "auto",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 9,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": true,
+          "reason": "US–Israel strikes on Iran and Iranian retaliation have opened an active war front requiring new conflict cards.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 4
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "inside-iran",
+            "scenarios",
+            "hormuz"
+          ]
+        }
+      }
     }
   ]
 }
