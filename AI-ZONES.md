@@ -136,16 +136,18 @@ When a major event occurs (e.g. military operation launched, regime change, new 
 
 ### How it works
 
-1. Set `UPDATE_TYPE=structural` (via env var or workflow dispatch input)
-2. The AI update script runs all routine phases first (data.json, timeline, zones)
-3. An additional **structural phase** sends eligible section files to GPT with the latest news context
-4. GPT returns full replacement HTML for sections that need structural changes
-5. Validation checks ensure the replacement preserves:
+1. On every scheduled run, `UPDATE_TYPE` defaults to `auto`
+2. After the web search, a lightweight **significance assessment** asks GPT whether the news warrants structural changes (conservative — defaults to "no")
+3. If promoted to `structural`, or if `UPDATE_TYPE=structural` was set explicitly, the script runs all routine phases first (data.json, timeline, zones)
+4. An additional **structural phase** sends eligible section files to GPT with the latest news context
+5. GPT returns full replacement HTML for sections that need structural changes
+6. Validation checks ensure the replacement preserves:
    - Section header `id` attributes (for sidebar navigation)
    - All `{{placeholder}}` template variables
    - All `@ai-zone` markers (open and close)
    - Minimum content size (rejects replacements < 30% of original)
-6. Only validated replacements are written to disk
+7. Only validated replacements are written to disk
+8. The manifest records whether structural mode was triggered, and why
 
 ### Eligible files for structural updates
 
@@ -172,6 +174,7 @@ When a major event occurs (e.g. military operation launched, regime change, new 
 ### Safety guardrails
 
 Structural updates have multiple validation layers:
+0. **Significance assessment** — in `auto` mode, GPT must explicitly classify the news as structural before the phase runs (conservative default: routine)
 1. **File allowlist** — only files in `STRUCTURAL_FILES` can be modified
 2. **Section ID preservation** — sidebar navigation links must still work
 3. **Placeholder preservation** — all `{{key}}` templates must be retained
@@ -235,9 +238,11 @@ Example:
 
 Every AI update run writes an entry to `update-manifest.json` tracking:
 - **timestamp** — ISO 8601 time of the update
-- **type** — `routine` or `structural`
+- **type** — `auto`, `routine`, or `structural` (as requested)
+- **effectiveType** — `routine` or `structural` (after significance assessment)
 - **phases** — per-phase status object:
   - `search` — web search results
+  - `significance` — (auto mode only) assessment result and reason
   - `dataJson` — data.json update
   - `timeline` — last-24h.html timeline items
   - `zones` — AI zone content updates

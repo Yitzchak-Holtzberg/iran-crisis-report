@@ -4,13 +4,17 @@
  *
  * Automatically updates page content with the latest Iran-related news.
  *
- * Update types (set via UPDATE_TYPE env var, default "routine"):
+ * Update types (set via UPDATE_TYPE env var, default "auto"):
+ *   auto       — (default) runs a significance assessment after web search; if
+ *                a major event is detected the run is promoted to "structural",
+ *                otherwise it stays "routine"
  *   routine    — daily refresh: data.json values, timeline items, AI zone content
  *   structural — major events: all routine updates PLUS section-level HTML changes
  *                (new cards, reordered content, added/removed blocks)
  *
  * Phases:
  *   1. Web search via Tavily API
+ *   1b. (auto only) Significance assessment — decides routine vs structural
  *   2. Update data.json (ticker, stats, scenario percentages)
  *   3. Generate new timeline items for sections/last-24h.html
  *   4. Update @ai-zone content regions across section files
@@ -22,7 +26,7 @@
  *   OPENAI_API_KEY   — https://platform.openai.com  (GPT-5-mini is very cheap)
  *
  * Optional environment variables:
- *   UPDATE_TYPE      — "routine" (default) or "structural"
+ *   UPDATE_TYPE      — "auto" (default), "routine", or "structural"
  *
  * Usage:  node scripts/ai-update.js
  *         UPDATE_TYPE=structural node scripts/ai-update.js
@@ -42,10 +46,10 @@ const MANIFEST_PATH = path.join(BASE_DIR, 'update-manifest.json');
 
 const TAVILY_KEY  = process.env.TAVILY_API_KEY;
 const OPENAI_KEY  = process.env.OPENAI_API_KEY;
-const UPDATE_TYPE = (process.env.UPDATE_TYPE || 'routine').toLowerCase();
+const UPDATE_TYPE_INPUT = (process.env.UPDATE_TYPE || 'auto').toLowerCase();
 
-if (!['routine', 'structural'].includes(UPDATE_TYPE)) {
-  console.error(`Error: UPDATE_TYPE must be "routine" or "structural" (got "${UPDATE_TYPE}").`);
+if (!['auto', 'routine', 'structural'].includes(UPDATE_TYPE_INPUT)) {
+  console.error(`Error: UPDATE_TYPE must be "auto", "routine" or "structural" (got "${UPDATE_TYPE_INPUT}").`);
   process.exit(1);
 }
 
@@ -298,6 +302,66 @@ function writeManifest(entry) {
   fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + '\n');
 }
 
+// ── Significance assessment ──────────────────────────────────────────────────
+
+const SIGNIFICANCE_SYSTEM_PROMPT = `\
+You are a news significance classifier for the Iran Crisis Report dashboard.
+Evaluate whether the latest web search results contain a MAJOR development that
+would require restructuring the page — not just updating numbers/text within
+existing sections, but adding new cards, callouts, or fundamentally changing
+the analysis structure.
+
+Examples of events that ARE structural:
+- A military operation is launched or concluded
+- A regime change or leadership transition occurs
+- A new scenario emerges that doesn't fit existing categories
+- A ceasefire or peace deal is signed
+- A nuclear test or confirmed weapons-grade enrichment
+- A major new front opens (e.g. ground invasion, new country enters conflict)
+
+Examples of events that are NOT structural (routine updates handle these):
+- Updated casualty figures or economic data
+- New round of existing diplomatic talks
+- Additional carrier or troop deployments within existing posture
+- Protest activity continuing at similar scale
+- Sanctions additions or removals
+- Rhetoric or threats without concrete action
+
+Return a JSON object with exactly two keys:
+  "structural": true or false
+  "reason": one sentence explaining why (max 120 chars)
+
+Be CONSERVATIVE — default to false. Only return true when the news clearly
+represents a paradigm shift that the existing page structure cannot adequately
+convey with zone-level updates alone.`;
+
+/**
+ * Ask GPT to assess whether the search results contain a development
+ * significant enough to warrant structural page changes.
+ * Returns { structural: boolean, reason: string }.
+ */
+async function assessSignificance(searchContext) {
+  console.log('Assessing news significance (auto mode)…');
+  try {
+    const raw = await callGPT(
+      SIGNIFICANCE_SYSTEM_PROMPT,
+      `WEB SEARCH RESULTS:\n${searchContext}`,
+      true
+    );
+    const result = JSON.parse(raw);
+    if (typeof result.structural !== 'boolean' || typeof result.reason !== 'string') {
+      console.warn('Significance assessment returned invalid format — defaulting to routine.');
+      return { structural: false, reason: 'invalid response format' };
+    }
+    // Enforce reason length limit.
+    result.reason = result.reason.slice(0, 120);
+    return result;
+  } catch (err) {
+    console.warn(`Significance assessment failed (${err.message}) — defaulting to routine.`);
+    return { structural: false, reason: `error: ${err.message}` };
+  }
+}
+
 // ── Structural update helpers ────────────────────────────────────────────────
 
 /**
@@ -436,8 +500,10 @@ async function updateStructural(searchContext) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  console.log(`Update type: ${UPDATE_TYPE}`);
-  const manifest = { timestamp: new Date().toISOString(), type: UPDATE_TYPE, phases: {} };
+  // Effective update type — may be promoted from 'auto' after significance assessment.
+  let effectiveType = UPDATE_TYPE_INPUT === 'auto' ? 'routine' : UPDATE_TYPE_INPUT;
+  console.log(`Update type requested: ${UPDATE_TYPE_INPUT}`);
+  const manifest = { timestamp: new Date().toISOString(), type: UPDATE_TYPE_INPUT, effectiveType, phases: {} };
 
   // 1. Read current file contents.
   const currentData  = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
@@ -457,6 +523,20 @@ async function main() {
   }).join('\n\n');
 
   manifest.phases.search = { queries: SEARCH_QUERIES.length, status: 'ok' };
+
+  // ── 2b. Significance assessment (auto mode only) ──────────────────────────
+
+  if (UPDATE_TYPE_INPUT === 'auto') {
+    const assessment = await assessSignificance(searchContext);
+    manifest.phases.significance = { ...assessment, status: 'ok' };
+    if (assessment.structural) {
+      effectiveType = 'structural';
+      console.log(`  ⚡ Promoted to STRUCTURAL: ${assessment.reason}`);
+    } else {
+      console.log(`  → Staying ROUTINE: ${assessment.reason}`);
+    }
+    manifest.effectiveType = effectiveType;
+  }
 
   // ── 3. Update data.json ──────────────────────────────────────────────────
 
@@ -588,9 +668,9 @@ Rules:
     manifest.phases.zones = { status: 'error', error: err.message };
   }
 
-  // ── 6. Structural updates (only in structural mode) ───────────────────────
+  // ── 6. Structural updates (only when effective type is structural) ──────
 
-  if (UPDATE_TYPE === 'structural') {
+  if (effectiveType === 'structural') {
     try {
       const changed = await updateStructural(searchContext);
       manifest.phases.structural = { status: 'ok', filesChanged: changed };
@@ -612,7 +692,7 @@ Rules:
   writeManifest(manifest);
   console.log(`Update manifest written to ${path.basename(MANIFEST_PATH)}.`);
 
-  console.log(`AI update complete (${UPDATE_TYPE}).`);
+  console.log(`AI update complete (requested: ${UPDATE_TYPE_INPUT}, effective: ${effectiveType}).`);
 }
 
 main().catch(err => {

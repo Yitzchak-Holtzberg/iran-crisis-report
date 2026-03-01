@@ -9,11 +9,12 @@ on:
   workflow_dispatch:
     inputs:
       update_type:
-        description: 'Update type: "routine" (daily refresh) or "structural" (major event — allows section-level HTML changes)'
+        description: 'Update type: "auto" (assess significance first), "routine" (data/zones only), or "structural" (force section-level changes)'
         required: false
-        default: 'routine'
+        default: 'auto'
         type: choice
         options:
+          - auto
           - routine
           - structural
 
@@ -58,7 +59,7 @@ jobs:
         env:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          UPDATE_TYPE: ${{ github.event.inputs.update_type || 'routine' }}
+          UPDATE_TYPE: ${{ github.event.inputs.update_type || 'auto' }}
         run: node scripts/ai-update.js
 
       # Regenerate index.html from the updated data.json and section files.

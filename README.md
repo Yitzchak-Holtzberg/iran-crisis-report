@@ -27,8 +27,11 @@ You can trigger it manually at any time from the **Actions** tab → **Periodic 
 
 | Type | When to use | What it does |
 |---|---|---|
-| **routine** (default) | Scheduled runs and most manual triggers | Updates data.json values, timeline items, and AI zone content only |
-| **structural** | Major breaking events that change the page structure | All routine updates PLUS section-level HTML modifications (new cards, callouts, reordered content) |
+| **auto** (default) | Scheduled runs and most manual triggers | Runs a significance assessment on the search results; promotes to `structural` if a major event is detected, otherwise stays `routine` |
+| **routine** | Force a lightweight refresh only | Updates data.json values, timeline items, and AI zone content only |
+| **structural** | Force section-level changes | All routine updates PLUS section-level HTML modifications (new cards, callouts, reordered content) — skips the significance check |
+
+In **auto** mode (every scheduled run), the script asks GPT to classify the news before deciding. It only promotes to structural when the news represents a paradigm shift — e.g. a military operation launches, a regime change occurs, or a peace deal is signed. Routine churn (updated figures, continuing protests, additional deployments) stays `routine`. The assessment result and reason are logged and recorded in the manifest.
 
 Structural updates have validation guardrails: they preserve section IDs, `{{placeholder}}` templates, and `@ai-zone` markers. If validation fails for a file, that file's structural change is skipped.
 
@@ -509,11 +512,11 @@ var(--border-color)
 
 ### Structural update (major events only)
 
-Use when a major event fundamentally changes the page structure (e.g. military operation launched, regime change, new scenario added):
+Structural updates run **automatically** via the default `auto` mode: the script assesses the news significance and promotes to structural when a major event is detected. You can also force it:
 
 - [ ] Trigger workflow manually with **update_type: structural**, OR set `UPDATE_TYPE=structural` when running `node scripts/ai-update.js`
 - [ ] Review the structural changes in the affected section files
 - [ ] Check that all `{{placeholder}}` templates and `@ai-zone` markers are preserved
 - [ ] Verify sidebar navigation links still work
 - [ ] Run `npm run build` and verify the page
-- [ ] Review `update-manifest.json` to confirm what changed
+- [ ] Review `update-manifest.json` — check `effectiveType` and `phases.significance.reason` to see why it was promoted
