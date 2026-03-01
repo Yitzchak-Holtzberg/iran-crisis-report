@@ -74,10 +74,13 @@ iran-crisis-report/
 │   ├── update-date.js  # Updates date/lastUpdated in data.json to today UTC
 │   └── ai-update.js    # Fetches news (Tavily) + updates content (GPT-5-mini)
 ├── sections/           # Content source files — edit these
-│   ├── head.html       # <head>, CSS links, meta tags
+│   ├── head.html       # <head>, meta tags (includes head-css.html)
+│   ├── head-css.html   # Shared CSS link tags (included by all head files)
 │   ├── masthead.html   # Page title, dateline, last-updated timestamp
 │   ├── ticker.html     # Breaking-news scrolling ticker
-│   ├── sidebar.html    # Left navigation sidebar
+│   ├── sidebar.html    # Left navigation sidebar (includes sidebar-header/footer)
+│   ├── sidebar-header.html # Shared sidebar shell: brand, subtitle, page pills
+│   ├── sidebar-footer.html # Shared sidebar closing: overlay, toggle, container
 │   ├── stats.html      # Key statistics grid (top of page)
 │   ├── last-24h.html   # Timeline of recent events
 │   ├── theater.html    # Theater map section
@@ -89,6 +92,8 @@ iran-crisis-report/
 │   ├── hormuz.html     # Strait of Hormuz section
 │   ├── military.html   # Iran military section
 │   ├── scenarios.html  # Scenarios section
+│   ├── reactions.html  # Regional reactions section
+│   ├── confirmed-unconfirmed.html # Fog of war section
 │   ├── sources.html    # Footer with source links
 │   ├── scripts.html    # Closing <script> tags
 │   └── charts/         # Inline SVG chart partials
@@ -168,6 +173,7 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
   "scenarioRevolutionPct": "8",
   "scenarioPahlaviPct": "17",
   "scenarioFrozenPct": "3",
+  "scenarioJuntaPct": "0",
 
   "ticker": [
     "HEADLINE ONE",
@@ -191,6 +197,7 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
 | `scenarioRevolutionPct` | Scenario 3 badge + bar chart | After major protest/IRGC development |
 | `scenarioPahlaviPct` | Scenario 4 badge + bar chart | After major opposition development |
 | `scenarioFrozenPct` | Scenario 5 badge + bar chart | After major diplomatic development |
+| `scenarioJuntaPct` | Scenario 6 badge + bar chart | After major IRGC/succession development |
 | `ticker` | Scrolling headline bar | Every update pass |
 
 > **Note:** `dayToday`, `dayYesterday`, `dayTwoDaysAgo`, and `dateShort` are **automatically computed** by the build script from the `date` field. `dateShort` (e.g. "Feb 28, 2026") appears in the sidebar. The day labels appear as day-group headers in the "Last 24 Hours" timeline. You never need to update them manually.
@@ -327,9 +334,9 @@ Each section below lists what it contains and what an agent should check before 
 
 ---
 
-### `sections/scenarios.html` — Five scenarios
-**Contains:** Likelihood percentages and analysis for five outcomes: (1) Deal, (2) Strikes, (3) Revolution, (4) Pahlavi Returns, (5) Prolonged Standoff.  
-**Update via `data.json`:** Change `scenarioDealPct`, `scenarioStrikesPct`, `scenarioRevolutionPct`, `scenarioPahlaviPct`, `scenarioFrozenPct` — the badges in this file and the bar chart are both updated automatically.  
+### `sections/scenarios.html` — Six scenarios
+**Contains:** Likelihood percentages and analysis for six outcomes: (1) Deal, (2) Strikes, (3) Revolution, (4) Pahlavi Returns, (5) Prolonged Standoff, (6) IRGC Junta.  
+**Update via `data.json`:** Change `scenarioDealPct`, `scenarioStrikesPct`, `scenarioRevolutionPct`, `scenarioPahlaviPct`, `scenarioFrozenPct`, `scenarioJuntaPct` — the badges in this file and the bar chart are both updated automatically.  
 **Check before updating:**
 - Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession).
 - **Sources to consult:** CSIS, MEF, Brookings, Belfer Center, National Interest, Alma Center assessments; polling by IranWire; prediction markets (Polymarket).
@@ -414,7 +421,7 @@ Severity-color convention:
 
 Charts are inline SVGs. Update data values (coordinates, labels, text) directly in the relevant `sections/charts/` file. They are included into section files via `<!-- @include … -->` directives.
 
-**Exception — scenario likelihood chart:** `sections/charts/scenario-likelihood-bar.html` uses `{{scenarioDealPct}}`, `{{scenarioStrikesPct}}`, `{{scenarioRevolutionPct}}`, `{{scenarioPahlaviPct}}`, and `{{scenarioFrozenPct}}` placeholders. Update those keys in `data.json` instead of editing the chart file.
+**Exception — scenario likelihood chart:** `sections/charts/scenario-likelihood-bar.html` uses `{{scenarioDealPct}}`, `{{scenarioStrikesPct}}`, `{{scenarioRevolutionPct}}`, `{{scenarioPahlaviPct}}`, `{{scenarioFrozenPct}}`, and `{{scenarioJuntaPct}}` placeholders. Update those keys in `data.json` instead of editing the chart file.
 
 ### 6. Source links — `sections/sources.html`
 
@@ -425,6 +432,13 @@ Add `<a href="…">Description</a>` entries inside the two-column grid div in th
 ## Build validation
 
 The build script runs several validation checks to ensure quality:
+
+### data.json Validation
+The build validates `data.json` against `data.schema.json`:
+- All required keys must be present
+- Values must match their expected patterns (date format, stat format, etc.)
+- No unknown/extra keys are allowed
+- Scenario percentages must sum to exactly 100
 
 ### Placeholder Validation
 If you add a `{{key}}` placeholder to any section file but forget to add the corresponding entry to `data.json`, the build script will print a warning:
@@ -450,7 +464,7 @@ Build Warnings:
   ⚠ Navigation: Sidebar links to #missing but no matching section ID found
 ```
 
-**Note**: Warnings don't block the build, but should be addressed before committing.
+**Note**: Warnings don't block the build, but should be addressed before committing. Use `npm run validate` to see only warnings and errors without the full build output.
 
 ### AI Content Zones
 AI-managed content regions use marker syntax to define update boundaries. See `AI-ZONES.md` for complete documentation on AI zone conventions and best practices.

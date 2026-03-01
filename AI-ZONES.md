@@ -115,10 +115,13 @@ When adding a new AI-managed content region:
 
 The following files are **NOT** AI-managed via zone markers and should remain human-curated in **routine** updates:
 
-- `sections/head.html` - HTML head, meta tags, CSS links
+- `sections/head.html` - HTML head, meta tags (includes `head-css.html` partial)
+- `sections/head-css.html` - Shared CSS link tags (included by all head files)
 - `sections/masthead.html` - Page header
 - `sections/ticker.html` - Ticker container (content in data.json)
-- `sections/sidebar.html` - Navigation structure (date auto-templated via `{{dateShort}}`)
+- `sections/sidebar.html` - Navigation structure (includes `sidebar-header.html` + `sidebar-footer.html`)
+- `sections/sidebar-header.html` - Shared sidebar shell: brand, subtitle, page pills
+- `sections/sidebar-footer.html` - Shared sidebar closing elements: overlay, toggle, container
 - `sections/stats.html` - Statistics grid (values in data.json)
 - `sections/theater.html` - Map container
 - `sections/sources.html` - Source citations
@@ -162,6 +165,8 @@ When a major event occurs (e.g. military operation launched, regime change, new 
 | opposition | `sections/opposition.html` | Opposition & Reza Pahlavi |
 | hormuz | `sections/hormuz.html` | Strait of Hormuz |
 | military | `sections/military.html` | Iran military capability |
+| reactions | `sections/reactions.html` | Regional reactions & damage assessments |
+| confirmed-unconfirmed | `sections/confirmed-unconfirmed.html` | Fog of war: confirmed vs unconfirmed |
 
 ### When to use structural updates
 
