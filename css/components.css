@@ -205,10 +205,14 @@
 .back-to-top:active {
   transform: translateY(-1px);
 }
+@media (max-width: 900px) {
+  .back-to-top {
+    bottom: 80px;
+    right: 20px;
+  }
+}
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: 20px;
-    right: 20px;
     width: 42px;
     height: 42px;
     font-size: 18px;
