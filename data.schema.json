@@ -60,12 +60,12 @@
     "statOilAtRisk": {
       "type": "string",
       "description": "Oil barrels per day at risk through Hormuz (e.g., '20M')",
-      "pattern": "^[0-9.]+[KMB]?$"
+      "pattern": "^[0-9]+(\\.[0-9]+)?[KMB]?$"
     },
     "statCitizensOffline": {
       "type": "string",
       "description": "Citizens under internet blackout (e.g., '92M')",
-      "pattern": "^[0-9.]+[KMB]?$"
+      "pattern": "^[0-9]+(\\.[0-9]+)?[KMB]?$"
     },
     "statInflation": {
       "type": "string",
