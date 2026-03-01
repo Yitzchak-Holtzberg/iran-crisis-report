@@ -402,6 +402,7 @@ const STRUCTURAL_FILES = {
   'forces-teaser':    { rel: 'sections/forces-teaser.html',     desc: 'US Strike Forces teaser (main page)' },
   'inside-iran-teaser': { rel: 'sections/inside-iran-teaser.html', desc: 'Inside Iran teaser (main page)' },
   'reactions-teaser': { rel: 'sections/reactions-teaser.html',  desc: 'Regional reactions teaser (main page)' },
+  'analysis':         { rel: 'sections/analysis.html',          desc: 'Expert analysis: CSIS, ISW, Carnegie, Brookings, Atlantic Council what-happens-next' },
 };
 
 const STRUCTURAL_SYSTEM_PROMPT = `\
