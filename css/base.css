@@ -10,7 +10,7 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Int
 .masthead .dateline { font-size:13px; color:var(--text-muted); font-family:'JetBrains Mono',monospace; letter-spacing:1px; }
 .container { max-width:1200px; margin:0 auto; padding:0 24px; }
 .ticker-wrap { background:linear-gradient(90deg,rgba(255,59,59,0.15),rgba(255,59,59,0.05),rgba(255,59,59,0.15)); border-top:1px solid rgba(255,59,59,0.3); border-bottom:1px solid rgba(255,59,59,0.3); padding:10px 0; overflow:hidden; white-space:nowrap; }
-.ticker { display:inline-block; animation:ticker 80s linear infinite; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent-red); }
+.ticker { display:inline-block; animation:ticker 120s linear infinite; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent-red); }
 @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 .ticker span { margin-right:60px; }
 .section-header { display:flex; align-items:center; gap:16px; margin:60px 0 32px; padding-bottom:16px; border-bottom:2px solid var(--border); }
@@ -67,6 +67,6 @@ a:focus-visible, button:focus-visible { outline:2px solid var(--accent-cyan); ou
 footer { text-align:center; padding:40px 20px; border-top:1px solid var(--border); margin-top:60px; font-size:12px; color:var(--text-muted); }
 .svg-graphic { display:block; margin:0 auto; max-width:100%; }
 /* ===== SCROLL TO TOP ===== */
-.scroll-top { position:fixed; bottom:80px; right:20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:18px; color:var(--text-secondary); transition:all 0.2s ease; z-index:900; opacity:0; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,0.3); }
+.scroll-top { position:fixed; bottom:80px; right:20px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:18px; color:var(--text-secondary); transition:all 0.2s ease; z-index:900; opacity:0; pointer-events:none; box-shadow:0 2px 8px rgba(0,0,0,0.3); touch-action:manipulation; }
 .scroll-top.visible { opacity:1; pointer-events:auto; }
 .scroll-top:hover { background:var(--bg-card); color:var(--text-primary); border-color:var(--text-muted); transform:translateY(-2px); }
