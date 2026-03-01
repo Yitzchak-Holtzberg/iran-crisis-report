@@ -1,6 +1,6 @@
 {
   "date": "March 1, 2026",
-  "lastUpdated": "04:34 UTC",
+  "lastUpdated": "06:58 UTC",
   "statConfirmedDead": "7,015+",
   "statConfirmedDeadSource": "HRANA",
   "statTotalKilled": "36,500",
@@ -10,11 +10,14 @@
   "statUsShips": "25+",
   "statRialRate": "1.7M",
   "scenarioDealPct": "1",
-  "scenarioStrikesPct": "60",
-  "scenarioRevolutionPct": "25",
-  "scenarioPahlaviPct": "12",
-  "scenarioFrozenPct": "2",
+  "scenarioStrikesPct": "45",
+  "scenarioRevolutionPct": "35",
+  "scenarioPahlaviPct": "18",
+  "scenarioFrozenPct": "1",
   "ticker": [
+    "SUPREME LEADER: NBC REPORTS SUPREME LEADER ALI KHAMENEI AND FAMILY KILLED IN US-ISRAEL STRIKES (NBC News, Mar 1, 2026)",
+    "OPPOSITION: REZA PAHLAVI UNVEILS 'PROSPERITY PROJECT' AND URGES UNITY AMONG OPPOSITION FACTIONS (Times of India, Mar 1, 2026)",
+    "MILITARY: MILITARY.COM OUTLINES TARGETS OF US-ISRAEL STRIKES — NUCLEAR AND BALLISTIC SITES HIT (Military.com, Feb 28, 2026)",
     "DIPLOMACY: TRUMP SAYS HE IS 'NOT HAPPY' WITH IRAN AFTER LATEST NUCLEAR TALKS — talks to continue; no deal (NPR, Feb 28, 2026)",
     "LIVE UPDATES: U.S. AND ISRAEL STRIKES SPARK REGIONAL ALERTS; TIMELINE OF ATTACKS AND RETALIATION (PBS NewsHour, Feb 28, 2026)",
     "CRACKDOWN: ARRESTS CONTINUE ACROSS IRAN AS IRGC EXPANDS DETENTIONS OF PROTESTERS AND REFORMISTS (CBS News, Feb 28, 2026)",
@@ -36,8 +39,6 @@
     "MILITARY: US AND ISRAEL LAUNCH COORDINATED STRIKES ON IRAN — Washington says 'major combat operations' begun (Reuters, Feb 28, 2026)",
     "RETALIATION: IRAN FIRES BALLISTIC MISSILES TOWARD ISRAEL AND NEIGHBOURS — missile barrages reported; interceptions underway (BBC, Feb 28, 2026)",
     "US MILITARY: MULTIPLE CARRIER STRIKE GROUPS, AIR ASSETS DEPLOYED TO MIDDLE EAST — Pentagon confirms expanded buildup amid operations (New York Times, Feb 28, 2026)",
-    "ECONOMY: RIAL PLUMMETS TO 1.65M PER USD ON INFORMAL MARKET — new low amid strikes and sanctions; inflation ~62% (Ynet/BBC, Feb 28, 2026)",
-    "REGIONAL: EXPLOSIONS REPORTED IN QATAR, BAHRAIN, SAUDI ARABIA, UAE — Gulf states on heightened alert after strikes (BBC, Feb 28, 2026)",
-    "MILITARY: ISRAEL LAUNCHES STRIKES ON IRAN — explosions heard in Tehran after pre-emptive attack (The Guardian, Feb 28, 2026)"
+    "ECONOMY: RIAL PLUMMETS TO 1.65M PER USD ON INFORMAL MARKET — new low amid strikes and sanctions; inflation ~62% (Ynet/BBC, Feb 28, 2026)"
   ]
 }

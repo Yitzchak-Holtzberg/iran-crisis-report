@@ -94,6 +94,39 @@
           ]
         }
       }
+    },
+    {
+      "timestamp": "2026-03-01T06:58:03.914Z",
+      "type": "auto",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 7,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": true,
+          "reason": "Reports say US-Israel strikes killed Supreme Leader Khamenei — regime leadership change and major military operation.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 2
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "scenarios",
+            "inside-iran"
+          ]
+        }
+      }
     }
   ]
 }
