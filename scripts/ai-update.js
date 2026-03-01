@@ -74,6 +74,8 @@ const SEARCH_QUERIES = [
   'Reza Pahlavi Iran opposition latest news',
   'Strait of Hormuz shipping oil tanker disruption Iran latest',
   'Gulf states Saudi Arabia Bahrain UAE Russia China Iran reaction latest',
+  'Iran-linked attacks US domestic IRGC proxy retaliation latest',
+  'Iran terrorism US homeland threat attack latest news',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
