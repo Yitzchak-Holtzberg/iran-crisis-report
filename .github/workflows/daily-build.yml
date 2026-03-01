@@ -73,8 +73,11 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Ensure we are up to date before generating new commits
-          git pull --rebase
+          # Ensure we are up to date before generating new commits.
+          # --autostash temporarily shelves any local changes so the rebase
+          # succeeds even when prior steps (date update, AI update, build)
+          # have left modified files in the working tree.
+          git pull --rebase --autostash
 
           # Stage everything produced by the rebuild
           git add -A
