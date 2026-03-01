@@ -572,7 +572,7 @@ Rules:
   Remove the oldest items so the total array length stays between 20 and 25.
   Do not duplicate headlines already in the array.
 - Stat keys (statUsTroops, statMissilesFired, statCarrierGroups, statOilAtRisk,
-  statCitizensOffline, statInflation): update ONLY if the search results contain a clearly
+  statCitizensOffline, statIrgcKilled): update ONLY if the search results contain a clearly
   newer confirmed figure with a credible source.
 - Scenario percentages (scenarioDealPct, scenarioStrikesPct,
   scenarioRevolutionPct, scenarioPahlaviPct, scenarioFrozenPct): adjust ONLY if

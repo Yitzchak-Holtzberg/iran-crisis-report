@@ -14,7 +14,7 @@
     "statCarrierGroups",
     "statOilAtRisk",
     "statCitizensOffline",
-    "statInflation",
+    "statIrgcKilled",
     "scenarioDealPct",
     "scenarioStrikesPct",
     "scenarioRevolutionPct",
@@ -67,10 +67,10 @@
       "description": "Citizens under internet blackout (e.g., '92M')",
       "pattern": "^[0-9]+(\\.[0-9]+)?[KMB]?$"
     },
-    "statInflation": {
+    "statIrgcKilled": {
       "type": "string",
-      "description": "Iran inflation rate (e.g., '48.6%')",
-      "pattern": "^[0-9.]+%$"
+      "description": "Iranian military and IRGC personnel killed (e.g., '435+')",
+      "pattern": "^[0-9,]+\\+?$"
     },
     "scenarioDealPct": {
       "type": "string",
