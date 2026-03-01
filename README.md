@@ -51,7 +51,7 @@ Add these two secrets to the repository (**Settings → Secrets and variables �
 | Secret name | Where to get it | Cost |
 |---|---|---|
 | `TAVILY_API_KEY` | [tavily.com](https://tavily.com) — free tier includes 1,000 searches/month | ~$0.01/search after free tier |
-| `OPENAI_API_KEY` | [platform.openai.com](https://platform.openai.com) | GPT-4o-mini: $0.15/$0.60 per 1M tokens — ≈ $0.01–$0.02 per daily run |
+| `OPENAI_API_KEY` | [platform.openai.com](https://platform.openai.com) | gpt-5-mini: ≈ $0.01–$0.02 per daily run |
 
 > **Graceful degradation:** the AI content update step runs with `continue-on-error: true` in the workflow, so if either secret is missing, a quota is exceeded, or a network error occurs, the step exits and the rest of the workflow still completes — falling back to a date-only update and a clean rebuild.
 
@@ -64,39 +64,65 @@ iran-crisis-report/
 ├── .github/
 │   └── workflows/
 │       └── daily-build.yml  # Periodic build & GitHub Pages deploy (every 6h)
-├── build.js            # Build script — assembles index.html from sections/
+├── build.js            # Build script — generates all HTML pages from sections/
 ├── data.json           # ★ EDIT THIS FIRST — date, stats, ticker headlines
 ├── data.schema.json    # JSON Schema for data.json validation
 ├── index.html          # GENERATED — do not edit manually
+├── diplomatic.html     # GENERATED — do not edit manually
+├── forces.html         # GENERATED — do not edit manually
+├── inside-iran.html    # GENERATED — do not edit manually
+├── reactions.html      # GENERATED — do not edit manually
+├── scenarios.html      # GENERATED — do not edit manually
+├── sources.html        # GENERATED — do not edit manually
 ├── package.json        # npm scripts (build only)
 ├── update-manifest.json # Auto-generated — tracks AI update history
 ├── scripts/
 │   ├── update-date.js  # Updates date/lastUpdated in data.json to today UTC
-│   └── ai-update.js    # Fetches news (Tavily) + updates content (GPT-5-mini)
+│   └── ai-update.js    # Fetches news (Tavily) + updates content (gpt-5-mini)
 ├── sections/           # Content source files — edit these
-│   ├── head.html       # <head>, meta tags (includes head-css.html)
-│   ├── head-css.html   # Shared CSS link tags (included by all head files)
-│   ├── masthead.html   # Page title, dateline, last-updated timestamp
-│   ├── ticker.html     # Breaking-news scrolling ticker
-│   ├── sidebar.html    # Left navigation sidebar (includes sidebar-header/footer)
-│   ├── sidebar-header.html # Shared sidebar shell: brand, subtitle, page pills
-│   ├── sidebar-footer.html # Shared sidebar closing: overlay, toggle, container
-│   ├── stats.html      # Key statistics grid (top of page)
-│   ├── last-24h.html   # Timeline of recent events
-│   ├── theater.html    # Theater map section
-│   ├── air-power.html  # Air power section
-│   ├── naval.html      # Naval forces section
-│   ├── inside-iran.html
-│   ├── opposition.html
-│   ├── nuclear.html    # Nuclear talks section
-│   ├── hormuz.html     # Strait of Hormuz section
-│   ├── military.html   # Iran military section
-│   ├── scenarios.html  # Scenarios section
-│   ├── reactions.html  # Regional reactions section
+│   ├── head.html               # <head> for index.html (includes head-css.html)
+│   ├── head-diplomatic.html    # <head> for diplomatic.html
+│   ├── head-forces.html        # <head> for forces.html
+│   ├── head-inside-iran.html   # <head> for inside-iran.html
+│   ├── head-reactions.html     # <head> for reactions.html
+│   ├── head-scenarios.html     # <head> for scenarios.html
+│   ├── head-sources.html       # <head> for sources.html
+│   ├── head-css.html           # Shared CSS link tags (included by all head files)
+│   ├── masthead.html           # Page title, dateline, last-updated timestamp
+│   ├── ticker.html             # Breaking-news scrolling ticker
+│   ├── sidebar.html            # Index page left navigation sidebar
+│   ├── sidebar-diplomatic.html # Diplomatic page sidebar
+│   ├── sidebar-forces.html     # Forces page sidebar
+│   ├── sidebar-inside-iran.html # Inside-Iran page sidebar
+│   ├── sidebar-reactions.html  # Reactions page sidebar
+│   ├── sidebar-scenarios.html  # Scenarios page sidebar
+│   ├── sidebar-sources.html    # Sources page sidebar
+│   ├── sidebar-header.html     # Shared sidebar shell: brand, subtitle, page pills
+│   ├── sidebar-footer.html     # Shared sidebar closing: overlay, toggle, container
+│   ├── stats.html              # Key statistics grid (top of index page)
+│   ├── last-24h.html           # Timeline of recent events
 │   ├── confirmed-unconfirmed.html # Fog of war section
-│   ├── sources.html    # Footer with source links
-│   ├── scripts.html    # Closing <script> tags
-│   └── charts/         # Inline SVG chart partials
+│   ├── theater.html            # Theater map section
+│   ├── analysis.html           # Analysis section
+│   ├── military.html           # Iran military capability section
+│   ├── opposition.html         # Opposition & Reza Pahlavi section
+│   ├── nuclear-teaser.html     # Nuclear teaser card (links to diplomatic.html)
+│   ├── scenarios-teaser.html   # Scenarios teaser card (links to scenarios.html)
+│   ├── forces-teaser.html      # Forces teaser card (links to forces.html)
+│   ├── inside-iran-teaser.html # Inside-Iran teaser card (links to inside-iran.html)
+│   ├── reactions-teaser.html   # Reactions teaser card (links to reactions.html)
+│   ├── sources-link.html       # Footer link to sources page (all pages except sources.html)
+│   ├── diplomatic.html         # Nuclear & diplomatic negotiations section
+│   ├── air-power.html          # Air power section (forces.html)
+│   ├── naval.html              # Naval forces section (forces.html)
+│   ├── inside-iran.html        # Inside Iran: seven crises section
+│   ├── nuclear.html            # Nuclear talks deep-dive section
+│   ├── hormuz.html             # Strait of Hormuz section
+│   ├── scenarios.html          # Six scenarios section
+│   ├── reactions.html          # Regional reactions section
+│   ├── sources.html            # Full source links page
+│   ├── scripts.html            # Closing <script> tags
+│   └── charts/                 # Inline SVG chart partials
 │       ├── rial-collapse.html
 │       ├── air-power-bar.html
 │       ├── nuclear-reconstruction-bar.html
@@ -119,7 +145,7 @@ iran-crisis-report/
 
 ## Build system
 
-`build.js` reads every file listed in its `SECTIONS` array in order, concatenates them, and writes the result to `index.html`.
+`build.js` processes a `BUILDS` array of page definitions, each specifying an output file and its list of section files. It generates **7 HTML pages**: `index.html`, `diplomatic.html`, `scenarios.html`, `forces.html`, `inside-iran.html`, `reactions.html`, and `sources.html`.
 
 Inside any section file, three directives are processed:
 
@@ -136,7 +162,7 @@ Replaced with `<span>` elements for every headline in `data.json → ticker`, au
 ```html
 {{key}}
 ```
-Replaced with the matching string value from `data.json` (e.g. `{{date}}`, `{{statConfirmedDead}}`).
+Replaced with the matching string value from `data.json` (e.g. `{{date}}`, `{{statUsTroops}}`).
 
 ### Run the build
 
@@ -146,7 +172,7 @@ npm run build
 node build.js
 ```
 
-Always run the build after editing any file in `sections/` **or** `data.json`. The generated `index.html` is what gets served.
+Always run the build after editing any file in `sections/` **or** `data.json`. All generated HTML pages are rebuilt each run.
 
 ---
 
@@ -156,24 +182,24 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
 
 ```json
 {
-  "date": "February 28, 2026",
-  "lastUpdated": "18:46 UTC",
+  "date": "March 1, 2026",
+  "lastUpdated": "12:13 UTC",
 
-  "statConfirmedDead": "7,015+",
-  "statConfirmedDeadSource": "HRANA",
-  "statTotalKilled": "36,500",
-  "statTotalKilledSource": "Iran Intl.",
-  "statDetained": "24,732",
-  "statUsAircraft": "160+",
-  "statUsShips": "25+",
-  "statRialRate": "1.65M",
+  "statUsTroops": "35,000+",
+  "statUsTroopsSource": "Task & Purpose",
+  "statMissilesFired": "~170",
+  "statMissilesFiredSource": "Crit. Threats",
+  "statCarrierGroups": "3",
+  "statOilAtRisk": "20M",
+  "statCitizensOffline": "92M",
+  "statIrgcKilled": "435+",
 
-  "scenarioDealPct": "4",
-  "scenarioStrikesPct": "68",
-  "scenarioRevolutionPct": "8",
-  "scenarioPahlaviPct": "17",
-  "scenarioFrozenPct": "3",
-  "scenarioJuntaPct": "0",
+  "scenarioDealPct": "0",
+  "scenarioStrikesPct": "28",
+  "scenarioRevolutionPct": "42",
+  "scenarioPahlaviPct": "16",
+  "scenarioFrozenPct": "0",
+  "scenarioJuntaPct": "14",
 
   "ticker": [
     "HEADLINE ONE",
@@ -186,12 +212,12 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
 |---|---|---|
 | `date` | Masthead dateline, sidebar, sources footer, scenario chart heading | Every update pass |
 | `lastUpdated` | Masthead dateline | Every update pass |
-| `statConfirmedDead` / `statConfirmedDeadSource` | Stats grid | When HRANA publishes new figures |
-| `statTotalKilled` / `statTotalKilledSource` | Stats grid | When Iran Intl. updates |
-| `statDetained` | Stats grid | When HRANA/Amnesty update |
-| `statUsAircraft` | Stats grid | After Pentagon briefings |
-| `statUsShips` | Stats grid | After USNI Fleet Tracker updates |
-| `statRialRate` | Stats grid | When Bonbast.com rate changes |
+| `statUsTroops` / `statUsTroopsSource` | Stats grid | After Pentagon / CENTCOM briefings |
+| `statMissilesFired` / `statMissilesFiredSource` | Stats grid | After Iranian missile launches |
+| `statCarrierGroups` | Stats grid | After USNI Fleet Tracker updates |
+| `statOilAtRisk` | Stats grid | After EIA reports or Hormuz incidents |
+| `statCitizensOffline` | Stats grid | When NetBlocks / IODA updates |
+| `statIrgcKilled` | Stats grid | When HRANA / military sources update |
 | `scenarioDealPct` | Scenario 1 badge + bar chart | After major diplomatic development |
 | `scenarioStrikesPct` | Scenario 2 badge + bar chart | After major military development |
 | `scenarioRevolutionPct` | Scenario 3 badge + bar chart | After major protest/IRGC development |
@@ -231,11 +257,14 @@ Each section below lists what it contains and what an agent should check before 
 ---
 
 ### `sections/stats.html` — Key statistics grid
-**Contains:** Six headline numbers (confirmed dead, estimated total killed, detained, US aircraft, US ships, rial/USD rate).  
+**Contains:** Six headline numbers (US troops in region, Iranian missiles fired, carrier strike groups deployed, oil at risk via Hormuz, citizens under internet blackout, IRGC/military killed).  
 **Check before updating:**
-- **Casualties / detained:** HRANA (hrana.org), Iran International, Amnesty International, UN Human Rights.
-- **US aircraft / ships:** USNI Fleet Tracker, Pentagon / CENTCOM press releases, The War Zone, Stars & Stripes.
-- **Rial / USD exchange rate:** Google Finance "IRRUSD", Bonbast.com (unofficial free-market rate), financial news wires.
+- **US troops:** Pentagon / CENTCOM press releases, Task & Purpose, Stars & Stripes.
+- **Missiles fired:** Critical Threats, USNI, The War Zone, Israeli defense sources.
+- **Carrier strike groups:** USNI Fleet Tracker, NAVCENT statements.
+- **Oil at risk:** US EIA weekly reports (eia.gov), Bloomberg Energy, Reuters commodities.
+- **Citizens offline:** NetBlocks (netblocks.org), IODA (Georgia Tech), Freedom House.
+- **IRGC / military killed:** HRANA (hrana.org), Iran International, Pentagon / CENTCOM statements.
 
 ---
 
@@ -383,14 +412,14 @@ Prepend new items at the **top** of the array so they appear first. Remove stale
 Edit the matching keys in **`data.json`** — no HTML required:
 
 ```json
-"statConfirmedDead": "7,015+",
-"statConfirmedDeadSource": "HRANA",
-"statTotalKilled": "36,500",
-"statTotalKilledSource": "Iran Intl.",
-"statDetained": "24,669",
-"statUsAircraft": "150+",
-"statUsShips": "25+",
-"statRialRate": "1.65M",
+"statUsTroops": "35,000+",
+"statUsTroopsSource": "Task & Purpose",
+"statMissilesFired": "~170",
+"statMissilesFiredSource": "Crit. Threats",
+"statCarrierGroups": "3",
+"statOilAtRisk": "20M",
+"statCitizensOffline": "92M",
+"statIrgcKilled": "435+",
 ```
 
 ### 4. Last 24 hours timeline — `sections/last-24h.html`
@@ -478,7 +507,7 @@ AI-managed content regions use marker syntax to define update boundaries. See `A
    ```html
    <div class="section-header" id="diplomacy"> … </div>
    ```
-3. Open `build.js` and add the new filename to the `SECTIONS` array at the position where it should appear on the page:
+3. Open `build.js` and add the new filename to the `sections` array of the appropriate `BUILDS` entry at the position where it should appear on the page:
    ```js
    'sections/diplomacy.html',
    ```
@@ -516,7 +545,7 @@ var(--border-color)
 - [ ] Open `data.json` and update:
   - [ ] `date` and `lastUpdated`
   - [ ] `ticker` array — prepend new headlines, remove stale ones
-  - [ ] Any stat values that have changed (`statConfirmedDead`, `statRialRate`, etc.)
+  - [ ] Any stat values that have changed (`statUsTroops`, `statMissilesFired`, `statCarrierGroups`, `statOilAtRisk`, `statCitizensOffline`, `statIrgcKilled`, etc.)
   - [ ] Scenario likelihoods if there has been a major development (`scenarioDealPct`, `scenarioStrikesPct`, etc.)
 - [ ] Prepend new timeline entries in `sections/last-24h.html`; shift yesterday's entries to the YESTERDAY block (day-header labels update automatically)
 - [ ] Update any non-scenario charts in `sections/charts/` that have new data
