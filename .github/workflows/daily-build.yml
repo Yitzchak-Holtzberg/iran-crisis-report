@@ -7,6 +7,16 @@ on:
   schedule:
     - cron: '5 0,6,12,18 * * *'
   workflow_dispatch:
+    inputs:
+      update_type:
+        description: 'Update type: "auto" (assess significance first), "routine" (data/zones only), or "structural" (force section-level changes)'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - routine
+          - structural
 
 # Required for committing back to the repo and for GitHub Pages deployment.
 permissions:
@@ -49,6 +59,7 @@ jobs:
         env:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          UPDATE_TYPE: ${{ github.event.inputs.update_type || 'auto' }}
         run: node scripts/ai-update.js
 
       # Regenerate index.html from the updated data.json and section files.
@@ -61,7 +72,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json index.html sections/
+          git add data.json index.html sections/ update-manifest.json
           # Only commit when something actually changed (idempotent on re-runs).
           git diff --staged --quiet || git commit -m "chore: daily rebuild $(date -u +'%Y-%m-%d')"
           git pull --rebase

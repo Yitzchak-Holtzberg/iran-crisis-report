@@ -2,19 +2,35 @@
 /**
  * scripts/ai-update.js
  *
- * Automatically updates page content with the latest Iran-related news by:
- *   1. Searching the web via the Tavily API (cheap, purpose-built for LLM use).
- *   2. Calling GPT-5-mini to update data.json (ticker headlines, key statistics,
- *      scenario likelihood percentages).
- *   3. Calling GPT-5-mini to generate new timeline items for sections/last-24h.html.
- *   4. Calling GPT-5-mini to update all @ai-zone-marked regions across other
- *      section files (nuclear track, naval positions, air-power subtitle, etc.).
+ * Automatically updates page content with the latest Iran-related news.
+ *
+ * Update types (set via UPDATE_TYPE env var, default "auto"):
+ *   auto       — (default) runs a significance assessment after web search; if
+ *                a major event is detected the run is promoted to "structural",
+ *                otherwise it stays "routine"
+ *   routine    — daily refresh: data.json values, timeline items, AI zone content
+ *   structural — major events: all routine updates PLUS section-level HTML changes
+ *                (new cards, reordered content, added/removed blocks)
+ *
+ * Phases:
+ *   1. Web search via Tavily API
+ *   1b. (auto only) Significance assessment — decides routine vs structural
+ *   2. Update data.json (ticker, stats, scenario percentages)
+ *   3. Generate new timeline items for sections/last-24h.html
+ *   4. Update @ai-zone content regions across section files
+ *   5. (structural only) Section-level HTML modifications
+ *   6. Write update manifest (update-manifest.json)
  *
  * Required environment variables (set as GitHub Actions secrets):
  *   TAVILY_API_KEY   — https://tavily.com  (free tier: 1,000 searches/month)
  *   OPENAI_API_KEY   — https://platform.openai.com  (GPT-5-mini is very cheap)
  *
+ * Optional environment variables:
+ *   UPDATE_TYPE              — "auto" (default), "routine", or "structural"
+ *   OPENAI_STRUCTURAL_MODEL  — model for structural HTML generation (default: "gpt-5")
+ *
  * Usage:  node scripts/ai-update.js
+ *         UPDATE_TYPE=structural node scripts/ai-update.js
  */
 
 'use strict';
@@ -22,14 +38,23 @@
 const fs   = require('fs');
 const path = require('path');
 
-const BASE_DIR     = path.join(__dirname, '..');
-const DATA_PATH    = path.join(BASE_DIR, 'data.json');
-const LAST24H_PATH = path.join(BASE_DIR, 'sections', 'last-24h.html');
+const BASE_DIR         = path.join(__dirname, '..');
+const DATA_PATH        = path.join(BASE_DIR, 'data.json');
+const LAST24H_PATH     = path.join(BASE_DIR, 'sections', 'last-24h.html');
+const MANIFEST_PATH    = path.join(BASE_DIR, 'update-manifest.json');
+const GUIDELINES_PATH  = path.join(BASE_DIR, 'STRUCTURAL_GUIDELINES.md');
 
 // ── Environment ──────────────────────────────────────────────────────────────
 
-const TAVILY_KEY = process.env.TAVILY_API_KEY;
-const OPENAI_KEY = process.env.OPENAI_API_KEY;
+const TAVILY_KEY  = process.env.TAVILY_API_KEY;
+const OPENAI_KEY  = process.env.OPENAI_API_KEY;
+const UPDATE_TYPE_INPUT = (process.env.UPDATE_TYPE || 'auto').toLowerCase();
+const STRUCTURAL_MODEL  = process.env.OPENAI_STRUCTURAL_MODEL || 'gpt-5';
+
+if (!['auto', 'routine', 'structural'].includes(UPDATE_TYPE_INPUT)) {
+  console.error(`Error: UPDATE_TYPE must be "auto", "routine" or "structural" (got "${UPDATE_TYPE_INPUT}").`);
+  process.exit(1);
+}
 
 if (!TAVILY_KEY || !OPENAI_KEY) {
   console.error('Error: TAVILY_API_KEY and OPENAI_API_KEY environment variables must be set.');
@@ -70,10 +95,10 @@ async function tavilySearch(query) {
   return res.json();
 }
 
-/** Call GPT-5-mini and return the raw text of the first choice. */
-async function callGPT(systemPrompt, userContent, jsonMode = false) {
+/** Call an OpenAI model and return the raw text of the first choice. */
+async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt-5-mini') {
   const body = {
-    model: 'gpt-5-mini',
+    model,
     max_completion_tokens: 16384,
     messages: [
       { role: 'system', content: systemPrompt },
@@ -259,9 +284,244 @@ async function updateZones(searchContext) {
   }
 }
 
+// ── Manifest helpers ──────────────────────────────────────────────────────────
+
+/** Read the existing manifest or create a blank one. */
+function readManifest() {
+  try {
+    return JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
+  } catch {
+    return { updates: [] };
+  }
+}
+
+/** Append an entry to the manifest and write it to disk. Keep last 50 entries. */
+function writeManifest(entry) {
+  const manifest = readManifest();
+  manifest.updates.push(entry);
+  if (manifest.updates.length > 50) {
+    manifest.updates = manifest.updates.slice(-50);
+  }
+  fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + '\n');
+}
+
+// ── Significance assessment ──────────────────────────────────────────────────
+
+const SIGNIFICANCE_SYSTEM_PROMPT = `\
+You are a news significance classifier for the Iran Crisis Report dashboard.
+Evaluate whether the latest web search results contain a MAJOR development that
+would require restructuring the page — not just updating numbers/text within
+existing sections, but adding new cards, callouts, or fundamentally changing
+the analysis structure.
+
+Examples of events that ARE structural:
+- A military operation is launched or concluded
+- A regime change or leadership transition occurs
+- A new scenario emerges that doesn't fit existing categories
+- A ceasefire or peace deal is signed
+- A nuclear test or confirmed weapons-grade enrichment
+- A major new front opens (e.g. ground invasion, new country enters conflict)
+
+Examples of events that are NOT structural (routine updates handle these):
+- Updated casualty figures or economic data
+- New round of existing diplomatic talks
+- Additional carrier or troop deployments within existing posture
+- Protest activity continuing at similar scale
+- Sanctions additions or removals
+- Rhetoric or threats without concrete action
+
+Return a JSON object with exactly two keys:
+  "structural": true or false
+  "reason": one sentence explaining why (max 120 chars)
+
+Be CONSERVATIVE — default to false. Only return true when the news clearly
+represents a paradigm shift that the existing page structure cannot adequately
+convey with zone-level updates alone.`;
+
+/**
+ * Ask GPT to assess whether the search results contain a development
+ * significant enough to warrant structural page changes.
+ * Returns { structural: boolean, reason: string }.
+ */
+async function assessSignificance(searchContext) {
+  console.log('Assessing news significance (auto mode)…');
+  try {
+    const raw = await callGPT(
+      SIGNIFICANCE_SYSTEM_PROMPT,
+      `WEB SEARCH RESULTS:\n${searchContext}`,
+      true
+    );
+    const result = JSON.parse(raw);
+    if (typeof result.structural !== 'boolean' || typeof result.reason !== 'string') {
+      console.warn('Significance assessment returned invalid format — defaulting to routine.');
+      return { structural: false, reason: 'invalid response format' };
+    }
+    // Enforce reason length limit.
+    result.reason = result.reason.slice(0, 120);
+    return result;
+  } catch (err) {
+    console.warn(`Significance assessment failed (${err.message}) — defaulting to routine.`);
+    return { structural: false, reason: `error: ${err.message}` };
+  }
+}
+
+// ── Structural update helpers ────────────────────────────────────────────────
+
+/**
+ * Files eligible for structural updates.  Each entry maps a logical name to
+ * its path and a short description the model sees as context.  Only these
+ * files can be modified in structural mode — everything else is off-limits.
+ */
+const STRUCTURAL_FILES = {
+  'last-24h':   { rel: 'sections/last-24h.html',   desc: 'Last 24 Hours timeline' },
+  'scenarios':  { rel: 'sections/scenarios.html',   desc: 'Five Scenarios analysis' },
+  'inside-iran':{ rel: 'sections/inside-iran.html', desc: 'Inside Iran: seven crises' },
+  'nuclear':    { rel: 'sections/nuclear.html',     desc: 'Nuclear negotiations' },
+  'naval':      { rel: 'sections/naval.html',       desc: 'Naval strike power' },
+  'air-power':  { rel: 'sections/air-power.html',   desc: 'Air power section' },
+  'opposition': { rel: 'sections/opposition.html',  desc: 'Opposition & Reza Pahlavi' },
+  'hormuz':     { rel: 'sections/hormuz.html',      desc: 'Strait of Hormuz' },
+  'military':   { rel: 'sections/military.html',    desc: 'Iran military capability' },
+};
+
+const STRUCTURAL_SYSTEM_PROMPT = `\
+You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
+occurred that requires structural changes to section HTML files — not just
+content-within-zones updates but additions, removals, or reordering of cards,
+callouts, and subsections.
+
+You will receive the current HTML of one or more section files, editorial
+guidelines, and the latest web search results. Return a JSON object where each
+key is the section name and the value is either:
+  - The FULL updated HTML for that section file, OR
+  - null if no structural change is needed
+
+Rules:
+- Follow the EDITORIAL GUIDELINES closely — they define what to add, what to
+  reorder, what NOT to touch, and which HTML patterns to use
+- Preserve ALL existing @ai-zone markers exactly as they are
+- Preserve ALL {{placeholder}} template variables exactly as they are
+- Preserve the section-header <div> with its id attribute at the top
+- Keep HTML style consistent with the existing file (same class names, CSS
+  variable usage, indentation)
+- Only make changes that are clearly justified by the search results
+- New cards/callouts MUST use the exact templates from the guidelines
+- Do NOT remove content unless it is clearly outdated or contradicted
+- Do NOT change <script> tags or JavaScript
+- Do NOT modify SVG diagrams
+- When adding new content, use the correct severity-color CSS variables
+- Maximum response size: return at most 3 section files per call`;
+
+/**
+ * Structural update phase — only runs when UPDATE_TYPE === 'structural'.
+ * Asks GPT (using the stronger STRUCTURAL_MODEL) to propose section-level HTML
+ * changes for files where the news warrants more than a zone-content tweak.
+ * Editorial guidelines from STRUCTURAL_GUIDELINES.md are injected into the
+ * prompt so the model follows consistent patterns.
+ */
+async function updateStructural(searchContext) {
+  console.log(`Running STRUCTURAL update phase (model: ${STRUCTURAL_MODEL})…`);
+
+  // Load editorial guidelines (non-fatal if missing).
+  let guidelines = '';
+  if (fs.existsSync(GUIDELINES_PATH)) {
+    guidelines = fs.readFileSync(GUIDELINES_PATH, 'utf8');
+  } else {
+    console.warn('STRUCTURAL_GUIDELINES.md not found — proceeding without editorial guidelines.');
+  }
+
+  // Read all eligible files.
+  const fileContents = {};
+  for (const [name, info] of Object.entries(STRUCTURAL_FILES)) {
+    const fullPath = path.join(BASE_DIR, info.rel);
+    if (fs.existsSync(fullPath)) {
+      fileContents[name] = fs.readFileSync(fullPath, 'utf8');
+    }
+  }
+
+  // Build a compact summary of current file contents for the prompt.
+  const filesBlock = Object.entries(fileContents)
+    .map(([name, content]) => {
+      const info  = STRUCTURAL_FILES[name];
+      const lines = content.split('\n').length;
+      return `=== ${name} (${info.desc}, ${lines} lines) ===\n${content}`;
+    })
+    .join('\n\n');
+
+  const userContent =
+    `UPDATE TYPE: STRUCTURAL — a major event requires section-level changes.\n\n` +
+    (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
+    `CURRENT SECTION FILES:\n${filesBlock}\n\n` +
+    `WEB SEARCH RESULTS:\n${searchContext}`;
+
+  let updates;
+  try {
+    const raw = await callGPT(STRUCTURAL_SYSTEM_PROMPT, userContent, true, STRUCTURAL_MODEL);
+    updates = JSON.parse(raw);
+  } catch (err) {
+    console.warn(`Structural update GPT call failed (${err.message}) — skipping.`);
+    return [];
+  }
+
+  const changed = [];
+  for (const [name, newContent] of Object.entries(updates)) {
+    if (!newContent || !STRUCTURAL_FILES[name]) continue;
+    const info     = STRUCTURAL_FILES[name];
+    const fullPath = path.join(BASE_DIR, info.rel);
+    const original = fileContents[name];
+    if (!original) continue;
+
+    // ── Validation guards ──────────────────────────────────────────────
+    // 1. Must still contain the section-header id.
+    const idMatch = original.match(/id=["']([^"']+)["']/);
+    if (idMatch && !newContent.includes(`id="${idMatch[1]}"`)) {
+      console.warn(`Structural: ${name} — section id "${idMatch[1]}" missing in replacement — skipping.`);
+      continue;
+    }
+    // 2. All {{placeholders}} from the original must still be present.
+    const origPlaceholders = [...original.matchAll(/\{\{(\w+)\}\}/g)].map(m => m[1]);
+    const missingPH = origPlaceholders.filter(p => !newContent.includes(`{{${p}}}`));
+    if (missingPH.length > 0) {
+      console.warn(`Structural: ${name} — missing placeholders: ${missingPH.join(', ')} — skipping.`);
+      continue;
+    }
+    // 3. All @ai-zone markers from the original must still be present.
+    const origZones = [...original.matchAll(/<!-- @ai-zone:([\w-]+) -->/g)].map(m => m[1]);
+    const missingZones = origZones.filter(z =>
+      !newContent.includes(`<!-- @ai-zone:${z} -->`) ||
+      !newContent.includes(`<!-- @/ai-zone:${z} -->`)
+    );
+    if (missingZones.length > 0) {
+      console.warn(`Structural: ${name} — missing AI zones: ${missingZones.join(', ')} — skipping.`);
+      continue;
+    }
+    // 4. Reject if content is suspiciously small (< 30% of original).
+    if (newContent.length < original.length * 0.3) {
+      console.warn(`Structural: ${name} — replacement is too small (${newContent.length} vs ${original.length} chars) — skipping.`);
+      continue;
+    }
+
+    fs.writeFileSync(fullPath, newContent);
+    console.log(`  Structural update applied to ${info.rel}.`);
+    changed.push(name);
+  }
+
+  if (changed.length > 0) {
+    console.log(`Structural updates: ${changed.length} file(s) modified.`);
+  } else {
+    console.log('Structural updates: no changes applied.');
+  }
+  return changed;
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
+  // Effective update type — may be promoted from 'auto' after significance assessment.
+  let effectiveType = UPDATE_TYPE_INPUT === 'auto' ? 'routine' : UPDATE_TYPE_INPUT;
+  console.log(`Update type requested: ${UPDATE_TYPE_INPUT}`);
+  const manifest = { timestamp: new Date().toISOString(), type: UPDATE_TYPE_INPUT, effectiveType, phases: {} };
+
   // 1. Read current file contents.
   const currentData  = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
   const current24h   = fs.readFileSync(LAST24H_PATH, 'utf8');
@@ -278,6 +538,22 @@ async function main() {
     }).join('\n');
     return `### Topic ${i + 1}: ${SEARCH_QUERIES[i]}\nSummary: ${sr.answer || '(none)'}\n${lines}`;
   }).join('\n\n');
+
+  manifest.phases.search = { queries: SEARCH_QUERIES.length, status: 'ok' };
+
+  // ── 2b. Significance assessment (auto mode only) ──────────────────────────
+
+  if (UPDATE_TYPE_INPUT === 'auto') {
+    const assessment = await assessSignificance(searchContext);
+    manifest.phases.significance = { ...assessment, status: 'ok' };
+    if (assessment.structural) {
+      effectiveType = 'structural';
+      console.log(`  ⚡ Promoted to STRUCTURAL: ${assessment.reason}`);
+    } else {
+      console.log(`  → Staying ROUTINE: ${assessment.reason}`);
+    }
+    manifest.effectiveType = effectiveType;
+  }
 
   // ── 3. Update data.json ──────────────────────────────────────────────────
 
@@ -297,8 +573,9 @@ Rules:
   statUsShips, statRialRate): update ONLY if the search results contain a clearly
   newer confirmed figure with a credible source.
 - Scenario percentages (scenarioDealPct, scenarioStrikesPct,
-  scenarioRevolutionPct, scenarioFrozenPct): adjust ONLY if a major development
-  materially changes the outlook. Values must be integers that sum to exactly 100.`;
+  scenarioRevolutionPct, scenarioPahlaviPct, scenarioFrozenPct): adjust ONLY if
+  a major development materially changes the outlook. Values must be integers
+  that sum to exactly 100.`;
 
   const dataUserContent =
     `CURRENT data.json:\n${JSON.stringify(currentData, null, 2)}\n\n` +
@@ -315,12 +592,15 @@ Rules:
     const missing = [...origKeys].filter(k => !returnedKeys.has(k));
     if (missing.length > 0) {
       console.warn(`data.json response missing keys: ${missing.join(', ')} — keeping original.`);
+      manifest.phases.dataJson = { status: 'skipped', reason: 'missing keys' };
     } else {
       updatedData = parsed;
       console.log('data.json updated successfully.');
+      manifest.phases.dataJson = { status: 'ok' };
     }
   } catch (err) {
     console.warn(`data.json update failed (${err.message}) — keeping original.`);
+    manifest.phases.dataJson = { status: 'error', error: err.message };
   }
 
   // ── 4. Generate new timeline items for last-24h.html ────────────────────
@@ -374,6 +654,7 @@ Rules:
     const newItems = Array.isArray(parsed.newItems) ? parsed.newItems : [];
     if (newItems.length === 0) {
       console.log('No new timeline items to add.');
+      manifest.phases.timeline = { status: 'ok', added: 0 };
     } else {
       const newItemsHtml = newItems.join('\n');
       const candidate    = spliceTimelineItems(current24h, newItemsHtml);
@@ -382,29 +663,53 @@ Rules:
       const allPresent   = placeholders.every(p => candidate.includes(p));
       if (!allPresent) {
         console.warn('last-24h.html placeholder check failed — keeping original.');
+        manifest.phases.timeline = { status: 'skipped', reason: 'placeholder check failed' };
       } else {
         updatedLast24h = candidate;
         console.log(`last-24h.html updated with ${newItems.length} new item(s).`);
+        manifest.phases.timeline = { status: 'ok', added: newItems.length };
       }
     }
   } catch (err) {
     console.warn(`last-24h.html update failed (${err.message}) — keeping original.`);
+    manifest.phases.timeline = { status: 'error', error: err.message };
   }
 
   // ── 5. Update HTML section zones ──────────────────────────────────────────
 
   try {
     await updateZones(searchContext);
+    manifest.phases.zones = { status: 'ok' };
   } catch (err) {
     console.warn(`Section zone updates failed (${err.message}) — keeping originals.`);
+    manifest.phases.zones = { status: 'error', error: err.message };
   }
 
-  // ── 6. Write updated data.json and last-24h.html ──────────────────────────
+  // ── 6. Structural updates (only when effective type is structural) ──────
+
+  if (effectiveType === 'structural') {
+    try {
+      const changed = await updateStructural(searchContext);
+      manifest.phases.structural = { status: 'ok', filesChanged: changed };
+    } catch (err) {
+      console.warn(`Structural updates failed (${err.message}) — keeping originals.`);
+      manifest.phases.structural = { status: 'error', error: err.message };
+    }
+  } else {
+    manifest.phases.structural = { status: 'skipped', reason: 'routine update' };
+  }
+
+  // ── 7. Write updated files ────────────────────────────────────────────────
 
   fs.writeFileSync(DATA_PATH, JSON.stringify(updatedData, null, 2) + '\n');
   fs.writeFileSync(LAST24H_PATH, updatedLast24h);
 
-  console.log('AI update complete.');
+  // ── 8. Write update manifest ──────────────────────────────────────────────
+
+  writeManifest(manifest);
+  console.log(`Update manifest written to ${path.basename(MANIFEST_PATH)}.`);
+
+  console.log(`AI update complete (requested: ${UPDATE_TYPE_INPUT}, effective: ${effectiveType}).`);
 }
 
 main().catch(err => {

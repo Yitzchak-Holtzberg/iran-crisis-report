@@ -6,19 +6,43 @@ This is a single-page HTML news dashboard that is **assembled by a build script*
 
 ---
 
-## Automated daily build
+## Automated periodic build
 
-A GitHub Actions workflow (`.github/workflows/daily-build.yml`) runs every day at **00:05 UTC** and performs a full automated update:
+A GitHub Actions workflow (`.github/workflows/daily-build.yml`) runs every **6 hours** (00:05, 06:05, 12:05, 18:05 UTC) and performs a full automated update:
 
 1. Updates `data.json → date` and `lastUpdated` to the current UTC date/time via `scripts/update-date.js`.
-2. **Searches the web** for the latest Iran news using the [Tavily](https://tavily.com) API (5 targeted queries).
-3. **Calls GPT-4o-mini** (OpenAI) to update `data.json` — new ticker headlines, refreshed statistics, and adjusted scenario percentages — based on the search results.
-4. **Calls GPT-4o-mini** again to generate new `.tl-item` entries for today's timeline in `sections/last-24h.html`.
-5. Runs `npm run build` to regenerate `index.html`.
-6. Commits updated `data.json`, `sections/last-24h.html`, and `index.html` back to the branch.
-7. Deploys the site to **GitHub Pages**.
+2. **Searches the web** for the latest Iran news using the [Tavily](https://tavily.com) API (7 targeted queries).
+3. **Calls GPT-5-mini** (OpenAI) to update `data.json` — new ticker headlines, refreshed statistics, and adjusted scenario percentages — based on the search results.
+4. **Calls GPT-5-mini** again to generate new `.tl-item` entries for today's timeline in `sections/last-24h.html`.
+5. **Calls GPT-5-mini** to update `@ai-zone`-marked content regions across section files.
+6. *(structural mode only)* **Calls GPT-5-mini** to propose section-level HTML changes for major events.
+7. Writes an **update manifest** (`update-manifest.json`) tracking what changed.
+8. Runs `npm run build` to regenerate `index.html`.
+9. Commits updated files back to the branch.
+10. Deploys the site to **GitHub Pages**.
 
-You can also trigger it manually at any time from the **Actions** tab → **Daily Build & Deploy** → **Run workflow**.
+You can trigger it manually at any time from the **Actions** tab → **Periodic Build & Deploy** → **Run workflow**, choosing the **update type** (see below).
+
+### Update types
+
+| Type | When to use | What it does |
+|---|---|---|
+| **auto** (default) | Scheduled runs and most manual triggers | Runs a significance assessment on the search results; promotes to `structural` if a major event is detected, otherwise stays `routine` |
+| **routine** | Force a lightweight refresh only | Updates data.json values, timeline items, and AI zone content only |
+| **structural** | Force section-level changes | All routine updates PLUS section-level HTML modifications (new cards, callouts, reordered content) — skips the significance check |
+
+In **auto** mode (every scheduled run), the script asks GPT to classify the news before deciding. It only promotes to structural when the news represents a paradigm shift — e.g. a military operation launches, a regime change occurs, or a peace deal is signed. Routine churn (updated figures, continuing protests, additional deployments) stays `routine`. The assessment result and reason are logged and recorded in the manifest.
+
+Structural updates have validation guardrails: they preserve section IDs, `{{placeholder}}` templates, and `@ai-zone` markers. If validation fails for a file, that file's structural change is skipped.
+
+### Update manifest
+
+Every AI update run writes an entry to `update-manifest.json` with:
+- Timestamp and update type
+- Per-phase status (search, data.json, timeline, zones, structural)
+- Error details for any phase that failed
+
+The manifest keeps the last 50 entries and is committed alongside other changes.
 
 ### Required GitHub Actions secrets
 
@@ -39,14 +63,16 @@ Add these two secrets to the repository (**Settings → Secrets and variables �
 iran-crisis-report/
 ├── .github/
 │   └── workflows/
-│       └── daily-build.yml  # Scheduled daily build & GitHub Pages deploy
+│       └── daily-build.yml  # Periodic build & GitHub Pages deploy (every 6h)
 ├── build.js            # Build script — assembles index.html from sections/
 ├── data.json           # ★ EDIT THIS FIRST — date, stats, ticker headlines
+├── data.schema.json    # JSON Schema for data.json validation
 ├── index.html          # GENERATED — do not edit manually
 ├── package.json        # npm scripts (build only)
+├── update-manifest.json # Auto-generated — tracks AI update history
 ├── scripts/
 │   ├── update-date.js  # Updates date/lastUpdated in data.json to today UTC
-│   └── ai-update.js    # Fetches news (Tavily) + updates data.json & last-24h.html (GPT-4o-mini)
+│   └── ai-update.js    # Fetches news (Tavily) + updates content (GPT-5-mini)
 ├── sections/           # Content source files — edit these
 │   ├── head.html       # <head>, CSS links, meta tags
 │   ├── masthead.html   # Page title, dateline, last-updated timestamp
@@ -125,22 +151,23 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
 
 ```json
 {
-  "date": "February 26, 2026",
-  "lastUpdated": "13:00 UTC",
+  "date": "February 28, 2026",
+  "lastUpdated": "18:46 UTC",
 
   "statConfirmedDead": "7,015+",
   "statConfirmedDeadSource": "HRANA",
   "statTotalKilled": "36,500",
   "statTotalKilledSource": "Iran Intl.",
-  "statDetained": "24,669",
-  "statUsAircraft": "150+",
+  "statDetained": "24,732",
+  "statUsAircraft": "160+",
   "statUsShips": "25+",
   "statRialRate": "1.65M",
 
-  "scenarioDealPct": "15",
-  "scenarioStrikesPct": "55",
-  "scenarioRevolutionPct": "20",
-  "scenarioFrozenPct": "10",
+  "scenarioDealPct": "4",
+  "scenarioStrikesPct": "68",
+  "scenarioRevolutionPct": "8",
+  "scenarioPahlaviPct": "17",
+  "scenarioFrozenPct": "3",
 
   "ticker": [
     "HEADLINE ONE",
@@ -151,7 +178,7 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
 
 | Key | Where it appears | Update frequency |
 |---|---|---|
-| `date` | Masthead dateline, sources footer, scenario chart heading | Every update pass |
+| `date` | Masthead dateline, sidebar, sources footer, scenario chart heading | Every update pass |
 | `lastUpdated` | Masthead dateline | Every update pass |
 | `statConfirmedDead` / `statConfirmedDeadSource` | Stats grid | When HRANA publishes new figures |
 | `statTotalKilled` / `statTotalKilledSource` | Stats grid | When Iran Intl. updates |
@@ -162,10 +189,11 @@ Always run the build after editing any file in `sections/` **or** `data.json`. T
 | `scenarioDealPct` | Scenario 1 badge + bar chart | After major diplomatic development |
 | `scenarioStrikesPct` | Scenario 2 badge + bar chart | After major military development |
 | `scenarioRevolutionPct` | Scenario 3 badge + bar chart | After major protest/IRGC development |
-| `scenarioFrozenPct` | Scenario 4 badge + bar chart | After major diplomatic development |
+| `scenarioPahlaviPct` | Scenario 4 badge + bar chart | After major opposition development |
+| `scenarioFrozenPct` | Scenario 5 badge + bar chart | After major diplomatic development |
 | `ticker` | Scrolling headline bar | Every update pass |
 
-> **Note:** `dayToday`, `dayYesterday`, and `dayTwoDaysAgo` are **automatically computed** by the build script from the `date` field — they appear as the day-group labels in the "Last 24 Hours" timeline. You never need to update them manually.
+> **Note:** `dayToday`, `dayYesterday`, `dayTwoDaysAgo`, and `dateShort` are **automatically computed** by the build script from the `date` field. `dateShort` (e.g. "Feb 28, 2026") appears in the sidebar. The day labels appear as day-group headers in the "Last 24 Hours" timeline. You never need to update them manually.
 
 ---
 
@@ -299,13 +327,14 @@ Each section below lists what it contains and what an agent should check before 
 
 ---
 
-### `sections/scenarios.html` — Four scenarios
-**Contains:** Likelihood percentages and analysis for four outcomes: (1) Deal, (2) Strikes, (3) Revolution, (4) Frozen conflict.  
-**Update via `data.json`:** Change `scenarioDealPct`, `scenarioStrikesPct`, `scenarioRevolutionPct`, `scenarioFrozenPct` — the badges in this file and the bar chart are both updated automatically.  
+### `sections/scenarios.html` — Five scenarios
+**Contains:** Likelihood percentages and analysis for five outcomes: (1) Deal, (2) Strikes, (3) Revolution, (4) Pahlavi Returns, (5) Prolonged Standoff.  
+**Update via `data.json`:** Change `scenarioDealPct`, `scenarioStrikesPct`, `scenarioRevolutionPct`, `scenarioPahlaviPct`, `scenarioFrozenPct` — the badges in this file and the bar chart are both updated automatically.  
 **Check before updating:**
 - Scenario likelihoods should be reassessed after every major event (talks breakdown, military movement, regime concession).
 - **Sources to consult:** CSIS, MEF, Brookings, Belfer Center, National Interest, Alma Center assessments; polling by IranWire; prediction markets (Polymarket).
-- **Also check:** Politico and CBS News for inside-source White House deliberations about strike timing, sequencing preferences (e.g. Israel-first vs. joint strike), and domestic-political calculus — these directly affect the likelihood estimates for Scenarios 2 and 4.
+- **Also check:** Politico and CBS News for inside-source White House deliberations about strike timing, sequencing preferences (e.g. Israel-first vs. joint strike), and domestic-political calculus — these directly affect the likelihood estimates.
+- **For structural updates:** A major event (e.g. operation launch, regime change) may require restructuring scenario cards — use `UPDATE_TYPE=structural` to enable section-level changes.
 
 ---
 
@@ -385,7 +414,7 @@ Severity-color convention:
 
 Charts are inline SVGs. Update data values (coordinates, labels, text) directly in the relevant `sections/charts/` file. They are included into section files via `<!-- @include … -->` directives.
 
-**Exception — scenario likelihood chart:** `sections/charts/scenario-likelihood-bar.html` uses `{{scenarioDealPct}}`, `{{scenarioStrikesPct}}`, `{{scenarioRevolutionPct}}`, and `{{scenarioFrozenPct}}` placeholders. Update those keys in `data.json` instead of editing the chart file.
+**Exception — scenario likelihood chart:** `sections/charts/scenario-likelihood-bar.html` uses `{{scenarioDealPct}}`, `{{scenarioStrikesPct}}`, `{{scenarioRevolutionPct}}`, `{{scenarioPahlaviPct}}`, and `{{scenarioFrozenPct}}` placeholders. Update those keys in `data.json` instead of editing the chart file.
 
 ### 6. Source links — `sections/sources.html`
 
@@ -466,6 +495,10 @@ var(--border-color)
 
 ## Checklist for a typical daily update
 
+> **Automated:** Most of these steps happen automatically every 6 hours via the GitHub Actions workflow. The checklists below are for manual updates or review.
+
+### Routine update (automated or manual)
+
 - [ ] Open `data.json` and update:
   - [ ] `date` and `lastUpdated`
   - [ ] `ticker` array — prepend new headlines, remove stale ones
@@ -476,3 +509,14 @@ var(--border-color)
 - [ ] Add new source links to `sections/sources.html` (compiled date updates automatically)
 - [ ] Run `npm run build` — check for any "unresolved placeholders" warnings
 - [ ] Verify `index.html` looks correct in a browser before committing
+
+### Structural update (major events only)
+
+Structural updates run **automatically** via the default `auto` mode: the script assesses the news significance and promotes to structural when a major event is detected. You can also force it:
+
+- [ ] Trigger workflow manually with **update_type: structural**, OR set `UPDATE_TYPE=structural` when running `node scripts/ai-update.js`
+- [ ] Review the structural changes in the affected section files
+- [ ] Check that all `{{placeholder}}` templates and `@ai-zone` markers are preserved
+- [ ] Verify sidebar navigation links still work
+- [ ] Run `npm run build` and verify the page
+- [ ] Review `update-manifest.json` — check `effectiveType` and `phases.significance.reason` to see why it was promoted
