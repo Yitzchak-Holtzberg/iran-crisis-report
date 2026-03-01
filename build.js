@@ -25,14 +25,17 @@ const DATA = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'data.json'), 'utf8'
 // Derive day-label helpers from the "date" field so last-24h.html day headers
 // never need manual edits (e.g. "FEB 26", "FEB 25", "FEB 24").
 (function injectDayLabels() {
-  const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-  const fmt = dt => `${MONTHS[dt.getMonth()]} ${dt.getDate()}`;
+  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const MONTHS_UP    = MONTHS_SHORT.map(m => m.toUpperCase());
+  const fmt = dt => `${MONTHS_UP[dt.getMonth()]} ${dt.getDate()}`;
   const today = new Date(DATA.date);
   const yesterday  = new Date(today); yesterday.setDate(today.getDate() - 1);
   const twoDaysAgo = new Date(today); twoDaysAgo.setDate(today.getDate() - 2);
   DATA.dayToday      = fmt(today);
   DATA.dayYesterday  = fmt(yesterday);
   DATA.dayTwoDaysAgo = fmt(twoDaysAgo);
+  // Short date for sidebar and compact displays (e.g. "Feb 28, 2026").
+  DATA.dateShort = `${MONTHS_SHORT[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
 }());
 
 const SECTIONS = [
