@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function(){
     : 'https://{s}.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}{r}.png';
   window._theaterTileLayer = L.tileLayer(tileUrl,{maxZoom:19,subdomains:'abcd'}).addTo(map);
   window._theaterMap = map;
+  // On mobile, DOMContentLoaded can fire before the browser finishes layout,
+  // causing Leaflet to measure a zero-size container and request no tiles.
+  // Deferring invalidateSize() to the next animation frame ensures a correct
+  // measurement and triggers the missing tile requests.
+  requestAnimationFrame(function(){ map.invalidateSize(); });
 
   // Protest/city dot — pulsing ring animation via .map-dot CSS class
   // color is always a hardcoded hex literal in this file; validate to prevent accidental injection
