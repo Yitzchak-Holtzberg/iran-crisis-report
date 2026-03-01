@@ -7,14 +7,14 @@
   "required": [
     "date",
     "lastUpdated",
-    "statConfirmedDead",
-    "statConfirmedDeadSource",
-    "statTotalKilled",
-    "statTotalKilledSource",
-    "statDetained",
-    "statUsAircraft",
-    "statUsShips",
-    "statRialRate",
+    "statUsTroops",
+    "statUsTroopsSource",
+    "statMissilesFired",
+    "statMissilesFiredSource",
+    "statCarrierGroups",
+    "statOilAtRisk",
+    "statCitizensOffline",
+    "statIrgcKilled",
     "scenarioDealPct",
     "scenarioStrikesPct",
     "scenarioRevolutionPct",
@@ -34,43 +34,43 @@
       "description": "Last update timestamp in format 'HH:MM UTC' (e.g., '19:44 UTC')",
       "pattern": "^[0-9]{1,2}:[0-9]{2} UTC$"
     },
-    "statConfirmedDead": {
+    "statUsTroops": {
       "type": "string",
-      "description": "Confirmed protest deaths (e.g., '7,015+')",
+      "description": "US troops deployed in region (e.g., '35,000+')",
       "pattern": "^[0-9,]+\\+?$"
     },
-    "statConfirmedDeadSource": {
+    "statUsTroopsSource": {
       "type": "string",
-      "description": "Source for confirmed death count (e.g., 'HRANA')"
+      "description": "Source for US troops count (e.g., 'Task & Purpose')"
     },
-    "statTotalKilled": {
+    "statMissilesFired": {
       "type": "string",
-      "description": "Total estimated killed (e.g., '36,500')",
+      "description": "Iranian missiles fired (e.g., '~170')",
+      "pattern": "^~?[0-9,]+\\+?$"
+    },
+    "statMissilesFiredSource": {
+      "type": "string",
+      "description": "Source for missiles fired count (e.g., 'Crit. Threats')"
+    },
+    "statCarrierGroups": {
+      "type": "string",
+      "description": "Carrier strike groups deployed (e.g., '3')",
+      "pattern": "^[0-9]+\\+?$"
+    },
+    "statOilAtRisk": {
+      "type": "string",
+      "description": "Oil barrels per day at risk through Hormuz (e.g., '20M')",
+      "pattern": "^[0-9]+(\\.[0-9]+)?[KMB]?$"
+    },
+    "statCitizensOffline": {
+      "type": "string",
+      "description": "Citizens under internet blackout (e.g., '92M')",
+      "pattern": "^[0-9]+(\\.[0-9]+)?[KMB]?$"
+    },
+    "statIrgcKilled": {
+      "type": "string",
+      "description": "Iranian military and IRGC personnel killed (e.g., '435+')",
       "pattern": "^[0-9,]+\\+?$"
-    },
-    "statTotalKilledSource": {
-      "type": "string",
-      "description": "Source for total killed estimate (e.g., 'Iran Intl.')"
-    },
-    "statDetained": {
-      "type": "string",
-      "description": "Total detained (e.g., '24,732')",
-      "pattern": "^[0-9,]+\\+?$"
-    },
-    "statUsAircraft": {
-      "type": "string",
-      "description": "US aircraft count (e.g., '160+')",
-      "pattern": "^[0-9,]+\\+?$"
-    },
-    "statUsShips": {
-      "type": "string",
-      "description": "US ships count (e.g., '25+')",
-      "pattern": "^[0-9,]+\\+?$"
-    },
-    "statRialRate": {
-      "type": "string",
-      "description": "Iranian rial to USD rate (e.g., '1.63M')",
-      "pattern": "^[0-9.]+[KM]?$"
     },
     "scenarioDealPct": {
       "type": "string",
