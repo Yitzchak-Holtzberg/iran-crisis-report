@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iran Crisis: US Strike Forces — March 1, 2026</title>
-<meta name="description" content="Complete US air and naval order of battle: 160+ aircraft (F-35, F-22, B-2, F-15E), triple carrier strike groups (Lincoln, Ford, Bush), and full naval deployment details for the Persian Gulf theater."/>
-<meta property="og:title" content="Iran Crisis: US Strike Forces — March 1, 2026"/>
-<meta property="og:description" content="Complete US air and naval order of battle: 160+ aircraft, triple carrier strike groups, and full naval deployment for the Persian Gulf theater."/>
+<title>Iran Crisis: Order of Battle — March 1, 2026</title>
+<meta name="description" content="Full order of battle: US air and naval forces (160+ aircraft, triple carrier strike groups) vs. Iran's remaining military capability — missiles, drones, IRGC Navy, and the Strait of Hormuz threat."/>
+<meta property="og:title" content="Iran Crisis: Order of Battle — March 1, 2026"/>
+<meta property="og:description" content="Full order of battle: US strike forces vs. Iran's remaining military capability — missiles, drones, IRGC Navy, and the Strait of Hormuz threat."/>
 <meta property="og:type" content="article"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous"/>
 <link rel="stylesheet" href="css/variables.css"/>
@@ -112,14 +112,179 @@
     <a class="sb-page-pill" href="sources.html" data-page="sources">Sources</a>
   </div>
   <nav class="sb-nav" aria-label="Page sections">
+    <span class="sb-group">Overview</span>
+    <a class="sb-link" href="#nation-postures" data-section="nation-postures"><span class="sb-num">00</span><span class="sb-dot"></span>All Nations</a>
+    <span class="sb-group">US Forces</span>
     <a class="sb-link" href="#air-power" data-section="air-power"><span class="sb-num">01</span><span class="sb-dot"></span>Air Power</a>
     <a class="sb-link" href="#naval" data-section="naval"><span class="sb-num">02</span><span class="sb-dot"></span>Naval Forces</a>
+    <span class="sb-group">Iran Forces</span>
+    <a class="sb-link" href="#military" data-section="military"><span class="sb-num">03</span><span class="sb-dot"></span>Iran Military</a>
+    <a class="sb-link" href="#hormuz" data-section="hormuz"><span class="sb-num">04</span><span class="sb-dot"></span>Hormuz Threat</a>
   </nav>
 </aside>
 <div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
 <button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
 
 <div class="container">
+<!-- ======== THEATER FORCE POSTURES ======== -->
+<div class="section-header" id="nation-postures">
+  <div class="icon" style="background:rgba(255,140,66,0.15);">&#127758;</div>
+  <div><h2>Theater Force Postures — All Nations</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Current military stance of every nation directly involved in or affected by Operation Epic Fury — March 1, 2026</div></div>
+</div>
+
+<!-- US & Co-belligerents -->
+<div class="chart-container" style="margin-bottom:20px;">
+  <h4>&#128308; Offensive / Strike Operations</h4>
+  <table class="force-table">
+    <thead><tr><th>Nation</th><th>Key Assets in Theater</th><th>Posture</th><th>Notable Action</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>&#127482;&#127480; United States</strong></td>
+        <td>3 carrier strike groups (Lincoln, Ford, Bush); 160+ aircraft; F-35A/C, F-22A, B-2, F-15E, F-16C; ~35,000 troops; guided-missile destroyers &amp; cruisers; SSGN guided-missile submarines; THAAD, Patriot batteries</td>
+        <td style="color:var(--accent-red);font-weight:700;">ACTIVE STRIKES</td>
+        <td>Leading Operation Epic Fury — Day 2 (Mar 1); 600+ Tomahawks fired; nuclear and C2 targets struck across Iran</td>
+      </tr>
+      <tr>
+        <td><strong>&#127470;&#127473; Israel (IDF)</strong></td>
+        <td>IAF: F-35I Adir, F-15I Ra'am, F-16I Sufa; 280,000 reservists mobilized; Arrow 3, David's Sling, Iron Dome; Dolphin-class submarines (cruise missiles)</td>
+        <td style="color:var(--accent-red);font-weight:700;">ACTIVE STRIKES</td>
+        <td>Coordinated with CENTCOM throughout; struck Khamenei command bunker, IRGC HQ, nuclear sites; all air-defense layers active against Iranian missile salvo</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Coalition / Host Nations -->
+<div class="chart-container" style="margin-bottom:20px;">
+  <h4>&#128993; Coalition Support / Host Nations Under Attack</h4>
+  <table class="force-table">
+    <thead><tr><th>Nation</th><th>Key Assets in Theater</th><th>Posture</th><th>Notable Action</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>&#127468;&#127463; United Kingdom</strong></td>
+        <td>HMS Diamond (Type 45 AAW destroyer); Typhoon FGR.4s (RAF Akrotiri, Cyprus); F-35Bs (Cyprus detachment); Sky Sabre CAMM ground-based air defense</td>
+        <td style="color:var(--accent-cyan);">Defensive assistance</td>
+        <td><strong style="color:var(--accent-red);">BLOCKED</strong> US offensive use of Diego Garcia — B-2 / GBU-57 MOP mission denied; defensive assets offered to Gulf allies; HMS Diamond active in Red Sea corridor</td>
+      </tr>
+      <tr>
+        <td><strong>&#127467;&#127479; France</strong></td>
+        <td>FS Charles de Gaulle (R91) carrier group — Rafale M fighters, E-2C Hawkeye; frigates Forbin (D620), Provence (D652), Alsace (D656); Rubis-class SSN; ~3,000 naval personnel</td>
+        <td style="color:var(--accent-blue);">Deploying</td>
+        <td>Charles de Gaulle transiting Eastern Mediterranean (Mar 1) — humanitarian protection &amp; maritime security mandate; not participating in strikes</td>
+      </tr>
+      <tr>
+        <td><strong>&#127465;&#127466; Germany</strong></td>
+        <td>Patriot PAC-3 batteries (offered); Eurofighter Typhoons (offered); no assets currently in theater</td>
+        <td style="color:var(--accent-cyan);">Defensive assistance</td>
+        <td>Patriot batteries and Typhoons offered to Gulf allies; Bundestag emergency session authorized additional defense cooperation; not participating in strikes</td>
+      </tr>
+      <tr>
+        <td><strong>&#127462;&#127470; Saudi Arabia</strong></td>
+        <td>RSAF: Typhoon, F-15SA, Tornado; Patriot PAC-3 batteries; Prince Sultan Air Base (coalition logistics hub); Red Crescent emergency teams</td>
+        <td style="color:var(--accent-green);">Assisting coalition</td>
+        <td>Overflight rights granted for humanitarian evacuations; Prince Sultan Air Base used as logistics/refueling hub; $500M+ humanitarian pledge; convened emergency GCC summit in Riyadh; air defenses active — no confirmed impacts on Saudi soil</td>
+      </tr>
+      <tr>
+        <td><strong>&#127462;&#127466; UAE</strong></td>
+        <td>Al Dhafra Air Base (F-22A, MQ-9 Reaper); THAAD battery; Patriot PAC-3; UAEAF: Rafale, F-16E/F Block 60 Desert Falcon</td>
+        <td style="color:var(--accent-red);">Under attack</td>
+        <td>Iranian ballistic missiles struck Abu Dhabi — 1 killed, multiple injured; Abu Dhabi International Airport temporarily closed; THAAD and Patriot activated; national security council convened; Iran ambassador summoned</td>
+      </tr>
+      <tr>
+        <td><strong>&#127478;&#127462; Qatar</strong></td>
+        <td>Al Udeid Air Base — CENTCOM Forward HQ; ~10,000 US troops; THAAD battery (deployed Feb 2026); Patriot PAC-3; QEF: Rafale, Typhoon</td>
+        <td style="color:var(--accent-orange);">Under attack</td>
+        <td>Al Udeid targeted in Iranian missile barrage; Qatar confirmed missile activity over its territory; Patriot and THAAD active; no confirmed base damage; Iranian ambassador summoned; Qatar offered mediation</td>
+      </tr>
+      <tr>
+        <td><strong>&#127463;&#127469; Bahrain</strong></td>
+        <td>NSA Bahrain — US 5th Fleet HQ; NAVCENT command; Patriot PAC-3 batteries; ~7,000 US personnel</td>
+        <td style="color:var(--accent-red);">Under attack — base hit</td>
+        <td>US 5th Fleet HQ struck by Iranian ballistic missiles — Bahrain confirmed the hit; casualties and damage extent not confirmed; condemned as "flagrant attack on Bahraini sovereignty"</td>
+      </tr>
+      <tr>
+        <td><strong>&#127472;&#127484; Kuwait</strong></td>
+        <td>Ali Al Salem Air Base (US F/A-18, A-10 units); Camp Arifjan; ~13,500 US personnel; Patriot PAC-3</td>
+        <td style="color:var(--accent-orange);">Force Protection Delta</td>
+        <td>Highest threat alert (FPCON Delta) declared; missile alerts issued; commercial airspace temporarily closed; no confirmed impacts; urged "maximum restraint from all parties"</td>
+      </tr>
+      <tr>
+        <td><strong>&#127471;&#127476; Jordan</strong></td>
+        <td>Muwaffaq Salti Air Base — 18×F-15E, 18×F-35A, 12×F-16C, 6×EA-18G Growler, 2×MQ-9; RJAF F-16AM/BM; Patriot PAC-3</td>
+        <td style="color:var(--accent-orange);">Elevated</td>
+        <td>Hosts major US strike assets at Muwaffaq Salti but <strong style="color:var(--accent-red);">DENIED</strong> Jordan airspace for offensive strikes into Iran; air defense alert status elevated</td>
+      </tr>
+      <tr>
+        <td><strong>&#127481;&#127479; Turkey</strong></td>
+        <td>NATO 2nd-largest military; İncirlik Air Base (US nuclear warheads, B61 gravity bombs); F-16C/D, F-4E-2020; Patriot (German-operated on Turkish soil); S-400 (Russian, inactive)</td>
+        <td style="color:var(--accent-gold);">Diplomatic / neutral</td>
+        <td>Back-channel mediation discussions; İncirlik not opened for offensive use; Erdoğan called for ceasefire and offered Ankara for negotiations; NATO consultations ongoing</td>
+      </tr>
+      <tr>
+        <td><strong>&#127476;&#127474; Oman</strong></td>
+        <td>Muscat back-channel diplomatic role; RAFO: F-16C/D; US access rights (limited); strategic position astride Gulf of Oman exit</td>
+        <td style="color:var(--accent-gold);">Mediator</td>
+        <td>Traditional US–Iran back-channel intermediary; activated diplomatic messaging lines; Sultan Haitham offering to facilitate ceasefire outreach; no military participation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Adversary / Iran Axis -->
+<div class="chart-container" style="margin-bottom:20px;">
+  <h4>&#128308; Adversary / Iran Axis — Active &amp; Proxy Forces</h4>
+  <table class="force-table">
+    <thead><tr><th>Nation / Actor</th><th>Key Assets</th><th>Posture</th><th>Current Status</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>&#127470;&#127479; Iran (IRGC / IRIAF)</strong></td>
+        <td>Est. 1,000–1,300 ballistic missiles remaining; ~150–180 mobile TEL launchers; Shahed-136/238 drone fleet; IRGC Navy fast-attack boats, Noor/Qader/Khalij Fars anti-ship missiles; Bavar-373 SAM; APT33/APT34 cyber units</td>
+        <td style="color:var(--accent-red);font-weight:700;">RETALIATING</td>
+        <td>~170 ballistic missiles fired Feb 28 (first salvo); Supreme Leader Khamenei confirmed dead Mar 1; command vacuum — second-wave authority unclear; internet &amp; comms severely disrupted; IRGC Navy untouched and fully operational</td>
+      </tr>
+      <tr>
+        <td><strong>&#127477;&#127480; Yemen (Houthis / Ansar Allah)</strong></td>
+        <td>Ballistic missiles (Burkan-3, Badr-F); Shahed-type loitering drones; Noor anti-ship missiles; coastal defense batteries; Red Sea interdiction capability</td>
+        <td style="color:var(--accent-red);">Proxy — activating</td>
+        <td>Concurrent ballistic-missile and drone attacks on Saudi oil infrastructure and Red Sea shipping reported (Feb 28–Mar 1); operating under IRGC Quds Force pre-standing orders; confirmation of specific attacks unverified independently</td>
+      </tr>
+      <tr>
+        <td><strong>&#127473;&#127463; Lebanon (Hezbollah)</strong></td>
+        <td>~150,000 rockets and missiles; Fateh-110, Zelzal, Raad-class precision missiles; anti-tank guided missiles; armed drones; ~100,000 fighters</td>
+        <td style="color:var(--accent-orange);">Proxy — alert</td>
+        <td>Placed on full readiness alert; has not launched a major second front as of Mar 1; Quds Force disruption reduces centralized coordination — Hezbollah may activate pre-standing orders independently</td>
+      </tr>
+      <tr>
+        <td><strong>&#127470;&#127478; Iraq (Iran-aligned PMF)</strong></td>
+        <td>Popular Mobilization Forces: Kataib Hezbollah, Harakat al-Nujaba, Asaib Ahl al-Haq; ballistic missiles; drones; rocket artillery; presence at bases near US assets</td>
+        <td style="color:var(--accent-orange);">Proxy — alert</td>
+        <td>PMF factions declared support for Iran; threat to US bases in Iraq elevated; Iraqi government formally protested US strikes; Iraqi PMF activation of pre-standing orders possible without Quds Force coordination</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Strategic / Geopolitical -->
+<div class="chart-container" style="margin-bottom:20px;">
+  <h4>&#9898; Strategic Opposition / Geopolitical Actors</h4>
+  <table class="force-table">
+    <thead><tr><th>Nation</th><th>Military Capability</th><th>Posture</th><th>Current Action</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>&#127479;&#127482; Russia</strong></td>
+        <td>No assets in direct theater; Black Sea Fleet; Mediterranean naval task group; Wagner-successor forces in Syria</td>
+        <td style="color:var(--accent-gold);">Condemnation — no direct action</td>
+        <td>Condemned strikes as "gross violation of international law"; called UN Security Council emergency session; co-vetoed ceasefire resolution with China; warned of "unpredictable global consequences"; monitoring but not intervening militarily</td>
+      </tr>
+      <tr>
+        <td><strong>&#127464;&#127475; China</strong></td>
+        <td>No assets in theater; confirmed supplying Iran with anti-ship missiles (Feb 24); PLAN forces in Indian Ocean</td>
+        <td style="color:var(--accent-red);">Supplying Iran — no direct action</td>
+        <td>Condemned strikes; called for "immediate cessation of military activities"; Feb 24 anti-ship missile supply agreement confirmed days before Operation Epic Fury; co-vetoed UN ceasefire resolution; whether shipments continue into active conflict is a critical open question</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <!-- ======== AIRCRAFT PROFILES ======== -->
 <div class="section-header" id="air-power">
   <div class="icon" style="background:rgba(0,212,255,0.15);">&#9992;</div>
@@ -625,6 +790,304 @@
       <tr><td><strong>China</strong></td><td>Anti-ship missiles (reported)</td><td style="color:var(--accent-red);">Supplying Iran</td><td>Confirmed Feb 25</td></tr>
     </tbody>
   </table>
+</div>
+<!-- ======== IRAN MILITARY CAPABILITY ======== -->
+<div class="section-header" id="military">
+  <div class="icon" style="background:rgba(255,140,66,0.15);">&#127942;</div>
+  <div><h2>Iran's Remaining Military Capability</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Post-Operation Epic Fury: degraded, decapitated — but not disarmed</div></div>
+</div>
+
+<div class="callout red">
+  <div class="callout-title">&#128308; Operation "Epic Fury" — Day 2 (March 1, 2026)</div>
+  <p style="color:var(--text-secondary);">U.S.-Israeli strikes entered a <strong>second consecutive day</strong> on March 1, targeting nuclear, ballistic-missile, and IRGC command-and-control infrastructure. Iran fired approximately <strong>~170 ballistic missiles</strong> in its retaliatory first salvo on Feb 28 — toward Israel and US bases across <strong>Qatar, Bahrain, Saudi Arabia, and the UAE</strong>. Iranian state media <strong>confirmed the death of Supreme Leader Ayatollah Ali Khamenei</strong> on March 1. Regional air defenses — Arrow 3, Iron Dome, Patriot, THAAD, and Aegis BMD — were activated simultaneously across all five theaters. Shipments through the <strong>Strait of Hormuz remain disrupted</strong> as oil trading houses suspended crude, fuel, and LNG transit. — Sources: <em>Reuters, BBC, Al Jazeera, Critical Threats, Mar 1</em></p>
+</div>
+
+<!-- POST-STRIKE BATTLE DAMAGE ASSESSMENT -->
+<div class="card" style="border-left:3px solid var(--accent-red);">
+  <h3 style="color:var(--accent-red);">&#128270; Post-Strike Battle Damage Assessment (BDA) — March 1</h3>
+  <p>The following assessment reflects confirmed and reported strike effects from Day 1 (Feb 28) through Day 2 (Mar 1). BDA in active strike environments is inherently uncertain; the Pentagon has not issued a full public accounting. Independent verification of specific targets remains limited due to Iranian communications disruptions.</p>
+
+  <div class="two-col" style="margin:16px 0;">
+    <div>
+      <h4 style="font-size:14px;color:var(--accent-red);margin-bottom:8px;">Confirmed / Reported Struck</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;line-height:1.7;">
+        <li><strong>IRGC Command-and-Control Nodes:</strong> Multiple C2 facilities deliberately targeted in the first wave to degrade Iran's ability to coordinate reprisal strikes. Several senior IRGC generals reported killed. — <em>PBS NewsHour, Feb 28</em></li>
+        <li><strong>Nuclear Sites — Natanz &amp; Isfahan:</strong> Strikes extended and deepened damage from June 2025; centrifuge infrastructure further degraded. Fordow underground bunker — effectiveness of penetration contested due to UK base-access denial.</li>
+        <li><strong>Parchin Military Complex (Day 2):</strong> Targeted on March 1. A soil-covered concrete hardening structure visible in Feb 20 satellite imagery was specifically designed to blunt bunker-busting munitions. — <em>The War Zone, Feb 20; Reuters, Mar 1</em></li>
+        <li><strong>Ballistic Missile Infrastructure:</strong> Mobile TEL (transporter-erector-launcher) convoys and mountain tunnel complex access points targeted. A fraction of ~200 pre-positioned launchers are estimated destroyed; exact count unknown.</li>
+        <li><strong>Air Defense Networks:</strong> S-300 radar nodes and Bavar-373 battery sites struck to suppress coverage for follow-on strike waves. Central Iranian air defense coverage assessed as severely degraded.</li>
+        <li><strong>Tehran — IRGC HQ Complex:</strong> Multiple explosions reported across Tehran districts. Significant structural damage to IRGC administrative, intelligence, and command facilities. Civilian casualties reported in surrounding areas. — <em>Al Jazeera, Reuters, Feb 28</em></li>
+        <li><strong>Airfields:</strong> IRIAF (Islamic Republic of Iran Air Force) airfields reportedly struck; runways and hardened aircraft shelters targeted to ground Iran's limited air response capability.</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:14px;color:var(--accent-red);margin-bottom:8px;">Leadership Casualties — Confirmed / Reported</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;line-height:1.7;">
+        <li><strong style="color:var(--accent-red);">Supreme Leader Ali Khamenei — DEAD:</strong> Iranian state media confirmed his death March 1. His daughter, son-in-law, and a grandchild were also killed. No succession has been announced. — <em>AP, WSJ, NBC citing Fars, Mar 1</em></li>
+        <li><strong>IRGC Senior Commanders:</strong> Multiple generals and deputy commanders across corps branches reported killed. Total IRGC personnel KIA: <strong>435+</strong> as of March 1, 2026.</li>
+        <li><strong>IRGC Quds Force Leadership:</strong> Key figures in Iran's proxy coordination network targeted. Individual commanders' status not fully confirmed; Quds Force operational capacity to direct Hezbollah, Houthis, and Iraqi PMF is degraded but not eliminated.</li>
+        <li><strong>Air Force Command:</strong> IRIAF command structure disrupted — leadership casualty reports unconfirmed independently; operational sorties not observed.</li>
+      </ul>
+      <h4 style="font-size:14px;color:var(--accent-orange);margin-bottom:8px;margin-top:16px;">Not Yet Confirmed Destroyed</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;line-height:1.7;">
+        <li><strong>Fordow Deep Bunker:</strong> Built under 80+ meters of granite mountain. US B-2 Spirits carrying GBU-57 Massive Ordnance Penetrators were denied Diego Garcia basing by UK PM Starmer; their penetration effectiveness against Fordow is unconfirmed.</li>
+        <li><strong>IRGC Navy / Hormuz Force:</strong> Fast-attack boats, mine-laying vessels, and coastal anti-ship missile batteries were not the primary strike target. The Hormuz closure threat remains fully intact.</li>
+        <li><strong>Dispersed Mobile Missile Launchers:</strong> Estimated 150–180 TEL launchers remain after first-wave targeting; mountain tunnel dispersion makes comprehensive destruction extremely difficult.</li>
+        <li><strong>Shahed Drone Stockpiles:</strong> Production facilities not confirmed destroyed; remaining Shahed-136/238 arsenal size is unknown.</li>
+        <li><strong>"Pickaxe Mountain" Facility:</strong> Deep centrifuge facility near Isfahan built with Chinese tunneling expertise — hardened depth may have limited strike effects.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COMMAND VACUUM CARD -->
+<div class="card" style="border-left:3px solid var(--accent-red);margin-top:0;">
+  <h3>&#9888;&#65039; The Command Vacuum: Iran Without Khamenei</h3>
+  <p>Khamenei's death removes the singular authority that has controlled Iran's nuclear trigger, proxy activation orders, and all strategic military decisions for 35 years. This is not merely a symbolic loss — it creates a genuine and dangerous command vacuum over a still-armed state with ballistic missiles, drones, and an intact naval force in the world's most critical energy chokepoint.</p>
+
+  <div class="two-col" style="margin:16px 0;">
+    <div>
+      <h4 style="font-size:14px;color:var(--accent-red);margin-bottom:8px;">Military Risks: Decapitation Without Disarmament</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+        <li>Iran retains <strong>an estimated 1,000–1,300 ballistic missiles</strong> after the ~170-missile first salvo — with no single confirmed authority now controlling their release</li>
+        <li>IRGC corps commanders may hold <strong>pre-delegated launch authority</strong> for second-wave ballistic salvos — a "dead hand" scenario where tactical commanders fire without political oversight</li>
+        <li>The Quds Force, absent central command, may activate <strong>terrorist sleeper cells globally</strong> under pre-standing contingency orders — no authorization needed if Khamenei is confirmed dead</li>
+        <li>Hezbollah, Houthis, and Iraqi PMF forces <strong>may escalate independently</strong> — the decapitation of the Quds Force removes the coordinating authority but not the proxy arsenals</li>
+        <li>Risk of <strong>competing IRGC factions</strong> forming separate power centers — creating unpredictable, uncoordinated decision-making loops with no diplomatic interlocutor</li>
+        <li>Iran's <strong>cyber units (APT33/APT34)</strong> operate autonomously and may launch pre-planned destructive attacks against Gulf financial systems and energy infrastructure without central authorization</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:14px;color:var(--accent-blue);margin-bottom:8px;">Succession Under Fire: Who Controls Iran Now?</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+        <li><strong>Assembly of Experts:</strong> Constitutionally empowered to elect a new Supreme Leader — but the body is fragmented, some members may be dead or unreachable, and it has never convened under active air strikes</li>
+        <li><strong>Mojtaba Khamenei (son):</strong> Had been discreetly groomed as a potential successor but holds no formal military, clerical, or governmental authority — IRGC generals are unlikely to defer to him</li>
+        <li><strong>IRGC General Command Council:</strong> The most powerful surviving military body — may assert de facto control over ballistic missiles and strategic assets regardless of formal succession processes</li>
+        <li><strong>President Masoud Pezeshkian:</strong> Reformist president constitutionally subordinate to the Supreme Leader — elevated in interregnum, but commands no IRGC loyalty and has no control over the missile force</li>
+        <li><strong>Expediency Council / Judiciary:</strong> Could attempt to convene an interim governance structure — but both lack the IRGC's weapons and the IRGC's willingness to follow civilian orders</li>
+        <li><strong>The Hardliner-Reformist Fault Line:</strong> The succession fight between IRGC hardliners and regime reformists could fracture what remains of Iranian state cohesion at the worst possible moment</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout red" style="margin-top:4px;">
+    <div class="callout-title">The Most Dangerous 72 Hours</div>
+    <p style="color:var(--text-secondary);">The window between Khamenei's death and the emergence of any successor authority is assessed by defense analysts as the most dangerous phase of the conflict. Pre-delegated launch protocols may allow IRGC corps commanders to fire second-wave ballistic salvos without political authorization — potentially larger than the 170-missile first wave. US and Israeli military planners are almost certainly accelerating strikes against remaining launch infrastructure before any successor can consolidate control and either escalate further or negotiate a ceasefire. The absence of a recognized decision-maker on the Iranian side also complicates any US back-channel ceasefire outreach.</p>
+  </div>
+</div>
+
+<!-- UPDATED DEGRADED / STILL OPERATIONAL -->
+<div class="card">
+  <p>The cumulative effect of the <strong>June 2025 Israeli-US strikes</strong> and the <strong>Feb 28–Mar 1 Operation Epic Fury strikes</strong> has fundamentally altered Iran's military posture. Iran is no longer a pre-strike power deterring an attack — it is a post-strike state that has fired its first salvo and is now assessing what remains. The central military question is no longer <em>whether</em> Iran will retaliate, but <em>what authority, and with what remaining arsenal</em>, Iran can mount a second wave.</p>
+
+  <div class="two-col" style="margin:16px 0;">
+    <div class="callout red" style="margin:0;">
+      <div class="callout-title" style="color:var(--accent-red);">Degraded / Destroyed (Post Feb 28–Mar 1)</div>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+        <li><strong>Supreme Leadership:</strong> Khamenei confirmed dead — 35 years of centralized command authority eliminated overnight; no successor named</li>
+        <li><strong>IRGC Command Structure:</strong> Multiple senior generals and C2 nodes destroyed in the first wave; 435+ IRGC personnel KIA; communications severed at multiple nodes</li>
+        <li><strong>Air Defenses:</strong> S-300 and Bavar-373 radar networks further degraded; central Iranian air defense coverage over Tehran and nuclear sites severely reduced</li>
+        <li><strong>Nuclear Facilities:</strong> Natanz and Isfahan additionally struck; Parchin targeted Day 2; Fordow contested — depth may have limited effects</li>
+        <li><strong>Ballistic Missile Inventory:</strong> ~170 missiles already expended in first retaliatory salvo; some mobile launchers and tunnel access points destroyed in strike targeting</li>
+        <li><strong>Air Force:</strong> IRIAF airfields struck; aging F-4, F-14, MiG-29 fleet grounded — never a credible match for US/Israeli 5th-gen fighters</li>
+        <li><strong>Communications Network:</strong> Nationwide internet and mobile disruptions; 92M Iranians reported offline; command-link integrity severely compromised</li>
+        <li><strong>Proxy Coordination Capacity:</strong> Quds Force command structure disrupted; centralized direction of Hezbollah, Houthis, Iraqi PMF degraded but not eliminated</li>
+      </ul>
+    </div>
+    <div class="callout gold" style="margin:0;">
+      <div class="callout-title" style="color:var(--accent-gold);">Still Operational (Estimated, March 1, 2026)</div>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+        <li><strong>Remaining Missile Arsenal:</strong> Est. 1,000–1,300 ballistic and cruise missiles after ~170-missile first salvo; ~150–180 mobile TEL launchers surviving in dispersed mountain tunnel complexes</li>
+        <li><strong>Kheibar Shekan / Fattah-1:</strong> Hypersonic-maneuvering and claimed hypersonic glide variants — whether deployed in first salvo or held in reserve is unknown; represent the highest threat to regional air defenses</li>
+        <li><strong>Bavar-373 SAM System:</strong> Some batteries may remain operational outside the heavily-struck central corridor — coverage degraded but not eliminated nationwide</li>
+        <li><strong>Shahed-136/238 Drone Fleet:</strong> Arsenal largely intact — production facilities not confirmed destroyed; represents a persistent attrition threat for days to weeks</li>
+        <li><strong>IRGC Navy — Hormuz Force:</strong> Fast-attack boats, mine-laying capability, and coastal anti-ship missile batteries fully operational and untouched; can physically close the Strait</li>
+        <li><strong>Cyber Operations:</strong> APT33/APT34 fully intact — no physical vulnerability to airstrikes; pre-positioned malware in Gulf financial and energy sector networks may be activated autonomously</li>
+        <li><strong>Proxy Arsenal:</strong> Hezbollah (~150,000 rockets), Houthis (ballistic missiles, drones), Iraqi PMF — armed and operational; may escalate without explicit Quds Force authorization</li>
+        <li><strong>Fordow Deep Bunker:</strong> Almost certainly still physically intact given UK-imposed B-2/GBU-57 basing constraints; may retain some residual centrifuge capability</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="chart-container" style="margin:24px 0;padding:20px 28px;">
+    <h4>Iran's Nuclear Hardening — Feb 2026</h4>
+    <div style="font-size:13px;color:var(--text-secondary);margin-bottom:8px;"><!-- @ai-zone:military-parchin --><strong style="color:var(--accent-orange);">NEW (Feb 20):</strong> Satellite imagery shows a <strong>concrete structure covered by soil</strong> was placed over the <strong>Parchin nuclear site</strong>, specifically to protect against potential US/Israeli airstrikes. — Source: <em>The War Zone, Feb 20, 2026</em><!-- @/ai-zone:military-parchin --></div>
+  </div>
+  <div class="callout blue" style="margin:16px 0;">
+    <div class="callout-title" style="color:var(--accent-blue);">The China Factor</div>
+    <p style="color:var(--text-secondary);">China has emerged as Iran's primary military supply chain. Despite sanctions, <strong>Chinese companies provided dual-use components</strong> for missile guidance, drone manufacturing, and radar systems throughout 2025–26. The "Pickaxe Mountain" deep centrifuge facility near Isfahan was reportedly built with Chinese tunneling expertise. Beijing's calculus: a weakened-but-surviving Iran keeps US military resources tied down in the Middle East — away from the Taiwan Strait. China's Feb 24 agreement to supply additional anti-ship missiles was confirmed days before the Feb 28 strikes. Whether China continues supply into an active wartime Iran remains a critical open question — and a major source of US-China tension.</p>
+  </div>
+</div>
+
+<!-- Iran Asymmetric Response Playbook -->
+<div class="card" id="iran-retaliation" style="border-left:3px solid var(--accent-red);">
+  <h3>&#9889; Iran's Asymmetric Response Playbook — Activated</h3>
+  <p>Iran has spent 40 years developing an asymmetric deterrence doctrine designed to impose devastating costs on a superior conventional force. That doctrine is now being executed. The ~170-missile first salvo represents Phase 1 — the pre-planned ballistic strike. Phases 2 through 5 remain in reserve or are being activated now, potentially without central coordination following Khamenei's death.</p>
+
+  <div class="chart-container" style="margin:16px 0;padding:16px 20px;">
+    <h4>Retaliation Priority Sequence (Estimated)</h4>
+    <div class="bar-row"><div class="bar-label">Hormuz Mining</div><div class="bar-track"><div class="bar-fill" style="width:95%;background:linear-gradient(90deg,#ff3b3b,#ff6b6b);">Immediate — Hours 0-6</div></div></div>
+    <div class="bar-row"><div class="bar-label">Ballistic Missile Salvos</div><div class="bar-track"><div class="bar-fill" style="width:90%;background:linear-gradient(90deg,#ff3b3b,#ff8080);">Immediate — Israel, US Gulf Bases</div></div></div>
+    <div class="bar-row"><div class="bar-label">Houthi Escalation</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:linear-gradient(90deg,#ff5252,#ff8a80);">Hours 6-24 — Saudi oil, Red Sea</div></div></div>
+    <div class="bar-row"><div class="bar-label">Iraqi PMF Attacks</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:linear-gradient(90deg,#ff6e40,#ffab91);">Hours 6-24 — US bases in Iraq/Syria</div></div></div>
+    <div class="bar-row"><div class="bar-label">Cyber Attacks</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:linear-gradient(90deg,#7a5af0,#9a7af0);">Simultaneous — financial/power/comms</div></div></div>
+    <div class="bar-row"><div class="bar-label">Drone Swarms</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,#ff8c42,#ffcc80);">Days 1-7 — Shahed attrition attacks</div></div></div>
+    <div class="bar-row"><div class="bar-label">Terror Sleeper Cells</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:linear-gradient(90deg,#9898a8,#c0c0cc);">Days 7-30 — Global, opportunistic</div></div></div>
+  </div>
+
+  <div class="two-col" style="margin:16px 0;">
+    <div>
+      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Remaining Missile Threat</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+        <li><strong>~170 missiles expended Feb 28</strong> — est. 1,000–1,300 remain across dispersed mountain tunnel complexes</li>
+        <li><strong>Shahab-3 / Ghadr:</strong> Range 2,000km — reaches Israel, Saudi Arabia, all US Gulf bases; primary workhorse of first salvo</li>
+        <li><strong>Emad / Kheibar Shekan:</strong> Precision-guided and hypersonic-maneuvering variants — designed to evade Patriot and THAAD terminal phase interception; several confirmed in first salvo</li>
+        <li><strong>Zolfaghar / Dezful:</strong> Solid-fuel, quickly repositionable — 700–1,000km range; confirmed in prior Iran barrages (2024)</li>
+        <li><strong>Fattah-1:</strong> Claimed hypersonic glide vehicle, range 1,400km; limited but high-value inventory — not confirmed deployed in first salvo</li>
+        <li><strong>~150–180 mobile TEL launchers</strong> estimated remaining in mountain tunnels — extremely difficult to destroy comprehensively from the air</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">The Cyber Threat — Fully Intact</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+        <li><strong>APT33 / Elfin:</strong> IRGC-linked group with proven capability against Saudi Aramco (Shamoon 2012), US banks, Israeli infrastructure — operates autonomously, immune to airstrikes</li>
+        <li><strong>APT34 / OilRig:</strong> Specializes in Gulf state energy sector penetration — reportedly has pre-positioned persistent access in multiple Gulf energy networks</li>
+        <li>Iranian hackers have demonstrated <strong>SCADA/ICS attacks</strong> against water treatment and power grid facilities — potential for mass civilian disruption</li>
+        <li><strong>Destructive wiper malware</strong> believed pre-positioned in adversary networks — similar to Russia's NotPetya 2017 playbook; could be triggered autonomously</li>
+        <li>An attack on <strong>Gulf financial clearing systems</strong> would cause immediate, cascading global economic disruption independent of any military outcome</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout red">
+    <div class="callout-title">The Carrier Threat — Iran's Anti-Access/Area Denial</div>
+    <p style="color:var(--text-secondary);">Iran's IRGC Navy represents the most immediately dangerous surviving force. The <strong>Noor anti-ship missile</strong> (Chinese C-802 derivative, range 170km), the <strong>Qader</strong> (200km), and the <strong>Khalij Fars</strong> anti-ship ballistic missile (300km) have all been demonstrated in live-fire drills — and the IRGC Navy was not targeted in either the June 2025 or Feb 28 strikes. The IRGC Navy's <strong>swarm tactics</strong> — hundreds of fast-attack boats simultaneously targeting a carrier strike group — are specifically designed to overwhelm close-in weapons systems. With China's Feb 24 anti-ship missile supply agreement in force, this threat has recently increased. <em>Three US carrier strike groups are now in the theater — USS Abraham Lincoln (Arabian Sea), USS Gerald R. Ford (Eastern Mediterranean), and USS George H.W. Bush (en route). The IRGC Navy has pre-positioned assets and mines for exactly this scenario.</em></p>
+  </div>
+</div>
+
+<!-- ======== IRAN RETALIATION — EXECUTED (FEB 28) ======== -->
+<div class="card" style="border-left:3px solid var(--accent-red);margin-top:0;">
+  <h3 style="color:var(--accent-red);">&#128165; Iran's Retaliation — Who Was Attacked &amp; How (Feb 28–Mar 1)</h3>
+  <p>Within hours of the Operation Epic Fury strikes, Iran activated its pre-planned asymmetric retaliation doctrine. The response was simultaneous and multi-front — approximately 170 ballistic missiles in coordinated salvos across five theaters, triggering the largest simultaneous air defense activation in regional history.</p>
+
+  <div class="callout red" style="margin-bottom:20px;">
+    <div class="callout-title">Summary — Iran's First Retaliatory Salvo (Feb 28–Mar 1)</div>
+    <p style="color:var(--text-secondary);">Iran fired approximately <strong>~170 ballistic missiles</strong> — the largest single Iranian missile barrage ever recorded — toward Israel and toward US military installations across four Gulf nations. Explosions were reported in <strong>Qatar, Bahrain, Saudi Arabia, and the UAE</strong>. Air defense systems — Patriot PAC-3, THAAD, Arrow 3, Iron Dome, David's Sling, and Aegis BMD — were activated simultaneously across all theaters. As of March 1, 2026, the US-Israeli strikes have entered a second day while Iran has not launched a confirmed second ballistic-missile wave — though IRGC doctrine calls for a follow-on salvo 24–48 hours after an initial barrage to target repair crews and overwhelm reconstituted air defenses.</p>
+  </div>
+
+  <div class="two-col" style="margin:16px 0;">
+    <div>
+      <h4 style="font-size:14px;color:var(--accent-red);margin-bottom:10px;">Targets Struck / Targeted</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;line-height:1.8;">
+        <li>
+          <strong style="color:var(--text-primary);">Israel — Cities &amp; Military Sites</strong><br>
+          Ballistic missile barrage toward Israeli population centers and IDF installations. Arrow 3 (exo-atmospheric), David's Sling (medium-range), and Iron Dome (short-range) all activated. Multiple interceptions reported; explosions heard across Israel. <em>(Confirmed — BBC, Reuters, Feb 28)</em>
+        </li>
+        <li>
+          <strong style="color:var(--text-primary);">Qatar — Al Udeid Air Base</strong><br>
+          CENTCOM forward headquarters and primary US air operations hub; home to ~10,000 US personnel and the THAAD battery deployed Feb 2026. Explosions reported; Patriot and THAAD both active. <em>(Reported — BBC, Feb 28; damage unconfirmed)</em>
+        </li>
+        <li>
+          <strong style="color:var(--text-primary);">Bahrain — NSA Bahrain / US 5th Fleet HQ</strong><br>
+          Home of US Naval Forces Central Command and the 5th Fleet. Explosions reported in Bahrain. Patriot PAC-3 activated. <em>(Reported — BBC, Feb 28; damage unconfirmed)</em>
+        </li>
+        <li>
+          <strong style="color:var(--text-primary);">Saudi Arabia — Prince Sultan Air Base</strong><br>
+          Major US air hub housing F-16s, E-3 AWACS, and KC-135 tankers. Explosions in Saudi Arabia reported. Saudi Patriot batteries active, coordinating with US CENTCOM. Saudi Arabia granted overflight rights for humanitarian evacuation flights and pledged $500M+ in regional humanitarian assistance through the GCC emergency framework. <em>(Reported — BBC, Al Jazeera, Feb 28–Mar 1; damage unconfirmed)</em>
+        </li>
+        <li>
+          <strong style="color:var(--text-primary);">UAE — Al Dhafra Air Base</strong><br>
+          F-22 Raptors and ISR drones based here; the most modern US air platform in the theater. Explosions in UAE reported; Patriot and THAAD systems active. <em>(Reported — BBC, Feb 28; damage unconfirmed)</em>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:14px;color:var(--accent-orange);margin-bottom:10px;">Weapons Identified in Salvo</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;line-height:1.8;">
+        <li>
+          <strong style="color:var(--text-primary);">Shahab-3 / Ghadr-110</strong><br>
+          Range: ~2,000 km. Liquid-fueled. Reaches all Gulf bases and Israel. Pre-positioned in mountain tunnels; fired from mobile TEL launchers concealed before the initial US strike.
+        </li>
+        <li>
+          <strong style="color:var(--text-primary);">Emad / Kheibar Shekan</strong><br>
+          Precision-guided re-entry vehicle (MARV) with terminal maneuvering. Range 1,700–2,000 km. Specifically designed to evade Patriot radar terminal-phase engagement; several confirmed in this salvo.
+        </li>
+        <li>
+          <strong style="color:var(--text-primary);">Zolfaghar / Dezful</strong><br>
+          Solid-fuel ballistic missile. Range 700–1,000 km. Repositionable quickly; confirmed in the 2024 Israel barrages; likely used here against Gulf targets.
+        </li>
+        <li>
+          <strong style="color:var(--text-primary);">Shahed-136 / Shahed-238 Drones</strong><br>
+          Loitering munitions ("kamikaze drones") — slow but extremely low cost-per-unit, designed to overwhelm air defenses through volume. Drone involvement in this specific salvo remains <em>unconfirmed</em>.
+        </li>
+        <li>
+          <strong style="color:var(--text-primary);">Houthi Coordination (Yemen)</strong><br>
+          Concurrent Houthi ballistic-missile and drone attacks on Saudi oil infrastructure and Red Sea shipping reported; operationally coordinated with IRGC Quds Force under pre-standing orders. <em>Unconfirmed independently.</em>
+        </li>
+      </ul>
+
+      <h4 style="font-size:14px;color:var(--accent-blue);margin-bottom:8px;margin-top:16px;">Air Defense Responses</h4>
+      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;line-height:1.8;">
+        <li><strong>Israel:</strong> Arrow 3 (exo-atmospheric), Iron Dome (short-range), David's Sling (medium-range) — all activated; interceptions reported</li>
+        <li><strong>Qatar / UAE / Saudi / Bahrain:</strong> Patriot PAC-3 batteries on full alert; THAAD at Al Udeid activated; all four Gulf theaters simultaneously engaged</li>
+        <li><strong>US Navy:</strong> Aegis BMD-equipped destroyers and cruisers in the Arabian Sea, Persian Gulf, and Eastern Mediterranean tracking and engaging inbound ballistic threats</li>
+        <li>Interception rates and ground damage: <em>not yet confirmed as of March 1, 2026</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout gold" style="margin-top:4px;">
+    <div class="callout-title">What Remains Unknown — &amp; The Second-Wave Risk</div>
+    <p style="color:var(--text-secondary);">Precise interception rates, confirmed ground damage at targeted bases, US/Israeli/Gulf casualty figures, and whether Houthi and Iraqi PMF attacks were launched simultaneously are all <strong>not yet confirmed</strong> as of March 1, 2026. The critical unknown is whether Iran has already initiated — or is planning — a second ballistic-missile wave. IRGC doctrine from the 2024 Israel barrages called for a follow-on salvo 24–48 hours after the first, specifically targeting repair crews and taking advantage of partially-depleted interceptor magazines. With Khamenei now dead and the IRGC command structure fragmented, <strong>authorization for a second wave may rest with corps-level commanders operating under pre-delegated authority</strong> — making it simultaneously harder to predict and harder to deter through conventional diplomatic signaling.</p>
+  </div>
+</div>
+<!-- ======== STRAIT OF HORMUZ ======== -->
+<div class="section-header" id="hormuz">
+  <div class="icon" style="background:rgba(255,59,59,0.15);">&#9981;</div>
+  <div><h2>The Strait of Hormuz: Oil's Chokepoint</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">20 million barrels per day — one-fifth of global supply — passes through a 21-mile-wide strait Iran threatens to close</div></div>
+</div>
+
+<div class="callout red" style="margin-top:10px;">
+  <div class="callout-title">Shipping Disruption Escalates — Tanker Traffic Halts; Reported Strike (Mar 1–3)</div>
+  <p style="color:var(--text-secondary);">Ship-tracking and market sources report <strong>tanker traffic through Hormuz has fallen 40–50%</strong> with <strong>hundreds of vessels clustering at approach lanes</strong> amid active strikes. <strong>Iranian state TV claimed an oil tanker was hit and sinking</strong> after attempting to transit “illegally”; independent confirmation remains limited. Maritime analysts warn Iran could escalate using <strong>mines and coastal anti-ship missiles</strong> to intensify disruption. — Sources: <em>S&amp;P Global, Sky News, TradeWinds, CBS19 (citing IRIB), Mar 1–3</em></p>
+</div>
+
+<div class="card">
+  <p>The <strong>Strait of Hormuz</strong> is the single most important energy chokepoint on Earth. If Iran follows through on Khamenei's threats to close it — or if conflict disrupts shipping — the consequences would be immediate and global.</p>
+
+  <div class="stats-grid" style="margin:16px 0;">
+    <div class="stat-box"><div class="number" style="color:#ff3b3b;">20M</div><div class="label">Barrels per day</div></div>
+    <div class="stat-box"><div class="number" style="color:#ff8c42;">21%</div><div class="label">Global oil supply</div></div>
+    <div class="stat-box"><div class="number" style="color:#ffd700;"><!-- @ai-zone:hormuz-wti-price -->$67.28<!-- @/ai-zone:hormuz-wti-price --></div><div class="label">WTI crude (4-mo high)</div></div>
+    <div class="stat-box"><div class="number" style="color:#ff3b3b;">$100+</div><div class="label">Goldman if blocked</div></div>
+  </div>
+
+  <div class="two-col" style="margin:16px 0;">
+    <div>
+      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Who Depends on Hormuz</h4>
+      <ul style="color:var(--text-secondary);font-size:14px;margin-left:20px;">
+        <li><strong>India:</strong> 50%+ of crude imports transit the Strait</li>
+        <li><strong>Japan & South Korea:</strong> 70-80% of oil imports</li>
+        <li><strong>China:</strong> 40% of crude — but also Iran's top buyer</li>
+        <li><strong>EU:</strong> ~15% of gas imports (Qatari LNG)</li>
+        <li><strong>Saudi Arabia, UAE, Kuwait, Iraq:</strong> Nearly all exports</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Iran's Hormuz Capabilities</h4>
+      <ul style="color:var(--text-secondary);font-size:14px;margin-left:20px;">
+        <li><strong>IRGC Navy:</strong> Fast-attack boats, mini-submarines, sea mines</li>
+        <li><strong>Anti-ship missiles:</strong> Chinese C-802 variants, coastal batteries</li>
+        <li><strong>Naval drills:</strong> Active exercises in Hormuz as of Feb 17</li>
+        <li><strong>Mining capability:</strong> Can lay 5,000+ contact/influence mines</li>
+        <li><strong>Precedent:</strong> Tanker attacks in 2019 ("limpet mines")</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout gold" style="margin:16px 0;">
+    <div class="callout-title" style="color:var(--accent-gold);">Economic Trigger Warning</div>
+    <p style="color:var(--text-secondary);">Goldman Sachs estimates a full Hormuz closure would push oil above <strong>$100/barrel within days</strong>, triggering a global recession. Even a <strong>partial disruption</strong> — mine threats forcing tanker insurance rates up, naval escorts slowing transit — could add $15-20/barrel. WTI crude has already risen from $60 to $67.28 on tensions alone. Every $10 increase costs the US economy ~$70B annually.</p>
+  </div>
 </div>
 <footer>
   <div class="container" style="text-align:center;">
