@@ -83,7 +83,7 @@
 <!-- ===== LEFT SIDEBAR — REACTIONS SUB-PAGE ===== -->
 <aside class="left-sidebar collapsed" id="leftSidebar" aria-label="Page navigation">
   <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
-  <div class="sb-header" onclick="toggleCollapse()">
+  <div class="sb-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleCollapse()" onkeydown="if(event.key==='Enter'){toggleCollapse();}else if(event.key===' '){event.preventDefault();toggleCollapse();}" id="sbHeader">
     <div>
       <div class="sb-brand">&#9632; Iran Report</div>
       <div class="sb-subtitle">Mar 1, 2026<br>Persian Gulf Theater</div>
@@ -98,7 +98,7 @@
     <a class="sb-page-pill" href="reactions.html" data-page="reactions">Reactions</a>
     <a class="sb-page-pill" href="diplomatic.html" data-page="diplomatic">Diplomatic</a>
   </div>
-  <nav class="sb-nav">
+  <nav class="sb-nav" aria-label="Page sections">
     <a class="sb-link" href="#reactions-iran" data-section="reactions-iran"><span class="sb-num">01</span><span class="sb-dot"></span>Iran Damage</a>
     <a class="sb-link" href="#reactions-gulf" data-section="reactions-gulf"><span class="sb-num">02</span><span class="sb-dot"></span>Gulf States Hit</a>
     <a class="sb-link" href="#reactions-israel" data-section="reactions-israel"><span class="sb-num">03</span><span class="sb-dot"></span>Israel</a>

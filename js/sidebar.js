@@ -11,7 +11,13 @@
       if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active = sectionIds[i];
     }
     sbLinks.forEach(function(a) {
-      a.classList.toggle('active', a.getAttribute('data-section') === active);
+      var isActive = a.getAttribute('data-section') === active;
+      a.classList.toggle('active', isActive);
+      if (isActive) {
+        a.setAttribute('aria-current', 'true');
+      } else {
+        a.removeAttribute('aria-current');
+      }
     });
     var pct = (window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight)) * 100;
     var fill = document.getElementById('sbProgressFill');
@@ -26,7 +32,13 @@
   var pathname = window.location.pathname.replace(/.*\//, '') || 'index.html';
   var page = pathname.replace('.html', '') || 'index';
   document.querySelectorAll('.sb-page-pill').forEach(function(pill) {
-    pill.classList.toggle('active', pill.getAttribute('data-page') === page);
+    var isActive = pill.getAttribute('data-page') === page;
+    pill.classList.toggle('active', isActive);
+    if (isActive) {
+      pill.setAttribute('aria-current', 'page');
+    } else {
+      pill.removeAttribute('aria-current');
+    }
   });
 })();
 
@@ -34,10 +46,12 @@
 function toggleCollapse() {
   var sb = document.getElementById('leftSidebar');
   var btn = document.getElementById('sbCollapseBtn');
+  var header = document.getElementById('sbHeader');
   var collapsed = sb.classList.toggle('collapsed');
   document.body.classList.toggle('sb-collapsed', collapsed);
   document.body.classList.toggle('sb-expanded', !collapsed);
   if (btn) btn.innerHTML = collapsed ? '&#9654;' : '&#9668;';
+  if (header) header.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
 }
 // ===== LEFT SIDEBAR: mobile toggle =====
 function toggleSidebar() {

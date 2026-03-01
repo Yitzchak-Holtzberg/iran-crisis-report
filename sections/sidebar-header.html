@@ -1,6 +1,6 @@
 <aside class="left-sidebar collapsed" id="leftSidebar" aria-label="Page navigation">
   <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
-  <div class="sb-header" onclick="toggleCollapse()">
+  <div class="sb-header" role="button" tabindex="0" aria-expanded="false" onclick="toggleCollapse()" onkeydown="if(event.key==='Enter'){toggleCollapse();}else if(event.key===' '){event.preventDefault();toggleCollapse();}" id="sbHeader">
     <div>
       <div class="sb-brand">&#9632; Iran Report</div>
       <div class="sb-subtitle">{{dateShort}}<br>Persian Gulf Theater</div>
