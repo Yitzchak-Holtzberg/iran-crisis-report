@@ -96,10 +96,10 @@ async function tavilySearch(query) {
 }
 
 /** Call an OpenAI model and return the raw text of the first choice. */
-async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt-5-mini') {
+async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt-5-mini', maxTokens = 16384) {
   const body = {
     model,
-    max_completion_tokens: 16384,
+    max_completion_tokens: maxTokens,
     messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user',   content: userContent  },
@@ -456,7 +456,7 @@ async function updateStructural(searchContext) {
 
   let updates;
   try {
-    const raw = await callGPT(STRUCTURAL_SYSTEM_PROMPT, userContent, true, STRUCTURAL_MODEL);
+    const raw = await callGPT(STRUCTURAL_SYSTEM_PROMPT, userContent, true, STRUCTURAL_MODEL, 32768);
     updates = JSON.parse(raw);
   } catch (err) {
     console.warn(`Structural update GPT call failed (${err.message}) — skipping.`);
