@@ -175,6 +175,7 @@ const BUILDS = [
       'sections/masthead.html',
       'sections/ticker.html',
       'sections/sidebar-forces.html',
+      'sections/nation-postures.html',
       'sections/air-power.html',
       'sections/naval.html',
       'sections/military.html',
