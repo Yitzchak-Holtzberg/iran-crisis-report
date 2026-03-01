@@ -551,7 +551,6 @@ Rules:
 
   console.log('Generating new timeline items via GPT-5-mini…');
   let updatedLast24h = current24h;
-  let newTimelineCount = 0;
   try {
     const raw = await callGPT(last24hSystemPrompt, last24hUserContent, true);
     const parsed = JSON.parse(raw);
@@ -570,7 +569,6 @@ Rules:
         manifest.phases.timeline = { status: 'skipped', reason: 'placeholder check failed' };
       } else {
         updatedLast24h = candidate;
-        newTimelineCount = newItems.length;
         console.log(`last-24h.html updated with ${newItems.length} new item(s).`);
         manifest.phases.timeline = { status: 'ok', added: newItems.length };
       }
