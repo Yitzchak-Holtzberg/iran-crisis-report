@@ -30,7 +30,7 @@ body { transition:padding-left 0.25s cubic-bezier(.4,0,.2,1); }
 body.sb-collapsed { padding-left:36px; }
 body.sb-expanded { padding-left:200px; }
 /* Page switcher pills — shown between header and section nav links */
-.sb-pages { padding:6px 10px 2px; display:flex; flex-wrap:wrap; gap:4px; border-bottom:1px solid var(--border); flex-shrink:0; }
+.sb-pages { padding:6px 10px 2px; display:flex; flex-direction:column; gap:4px; border-bottom:1px solid var(--border); flex-shrink:0; }
 .sb-page-pill { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; padding:3px 7px; border-radius:100px; border:1px solid var(--border); color:var(--text-muted); transition:all 0.15s; }
 .sb-page-pill:hover { color:var(--text-primary); border-color:var(--accent-orange); text-decoration:none; }
 .sb-page-pill.active { background:rgba(255,59,59,0.12); border-color:var(--accent-red); color:var(--accent-red); }
