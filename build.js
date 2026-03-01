@@ -107,6 +107,7 @@ const BUILDS = [
       'sections/theater.html',
       'sections/nuclear-teaser.html',
       'sections/scenarios-teaser.html',
+      'sections/analysis.html',
       'sections/forces-teaser.html',
       'sections/military.html',
       'sections/inside-iran-teaser.html',
