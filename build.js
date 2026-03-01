@@ -22,6 +22,60 @@ const BASE_DIR = __dirname;
 // Load the central data file used for template substitutions.
 const DATA = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'data.json'), 'utf8'));
 
+// Load and validate data.json against the schema.
+const SCHEMA = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'data.schema.json'), 'utf8'));
+
+/** Validate data.json against data.schema.json (lightweight, no dependencies). */
+function validateDataJson(data, schema) {
+  const warnings = [];
+
+  // Check required keys.
+  for (const key of schema.required || []) {
+    if (!(key in data)) {
+      warnings.push(`data.json: missing required key "${key}"`);
+    }
+  }
+
+  // Check property patterns and types.
+  for (const [key, val] of Object.entries(data)) {
+    const prop = (schema.properties || {})[key];
+    if (!prop) {
+      if (schema.additionalProperties === false) {
+        warnings.push(`data.json: unknown key "${key}" (not in schema)`);
+      }
+      continue;
+    }
+    if (prop.type === 'string' && typeof val !== 'string') {
+      warnings.push(`data.json: "${key}" should be a string, got ${typeof val}`);
+    } else if (prop.type === 'array' && !Array.isArray(val)) {
+      warnings.push(`data.json: "${key}" should be an array, got ${typeof val}`);
+    } else if (prop.type === 'string' && prop.pattern) {
+      const re = new RegExp(prop.pattern);
+      if (!re.test(val)) {
+        warnings.push(`data.json: "${key}" value "${val}" does not match pattern ${prop.pattern}`);
+      }
+    }
+  }
+
+  // Validate scenario percentages sum to 100.
+  const scenarioKeys = Object.keys(data).filter(k => k.startsWith('scenario') && k.endsWith('Pct'));
+  if (scenarioKeys.length > 0) {
+    const sum = scenarioKeys.reduce((s, k) => s + (parseInt(data[k], 10) || 0), 0);
+    if (sum !== 100) {
+      warnings.push(`data.json: scenario percentages sum to ${sum}, expected 100`);
+    }
+  }
+
+  return warnings;
+}
+
+const dataWarnings = validateDataJson(DATA, SCHEMA);
+if (dataWarnings.length > 0) {
+  process.stderr.write('\ndata.json Validation:\n');
+  dataWarnings.forEach(w => process.stderr.write(`  ⚠ ${w}\n`));
+  process.stderr.write('\n');
+}
+
 // Derive day-label helpers from the "date" field so last-24h.html day headers
 // never need manual edits (e.g. "FEB 26", "FEB 25", "FEB 24").
 (function injectDayLabels() {

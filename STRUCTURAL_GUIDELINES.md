@@ -132,6 +132,17 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
 - Structural changes here should only add new day-blocks or restructure the
   overall layout — individual timeline items are handled by the routine update.
 
+### `reactions.html`
+- Add new country-level cards when a new nation is directly impacted by strikes
+  or retaliatory attacks. Keep existing country cards — they document confirmed
+  events.
+- Preserve the regional grouping structure (Iran, Gulf states, Israel, global).
+
+### `confirmed-unconfirmed.html`
+- Update the verification status of claims as they are confirmed or debunked by
+  credible sources. Move items between confirmed and unconfirmed columns as
+  warranted.
+
 ## CSS Variable Reference
 
 | Variable | Usage |
