@@ -29,6 +29,12 @@
 body { transition:padding-left 0.25s cubic-bezier(.4,0,.2,1); }
 body.sb-collapsed { padding-left:36px; }
 body.sb-expanded { padding-left:200px; }
+/* Page switcher pills — shown between header and section nav links */
+.sb-pages { padding:6px 10px 2px; display:flex; flex-wrap:wrap; gap:4px; border-bottom:1px solid var(--border); flex-shrink:0; }
+.sb-page-pill { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; text-decoration:none; padding:3px 7px; border-radius:100px; border:1px solid var(--border); color:var(--text-muted); transition:all 0.15s; }
+.sb-page-pill:hover { color:var(--text-primary); border-color:var(--accent-orange); text-decoration:none; }
+.sb-page-pill.active { background:rgba(255,59,59,0.12); border-color:var(--accent-red); color:var(--accent-red); }
+.left-sidebar.collapsed .sb-pages { display:none; }
 /* Mobile: sidebar becomes full-height slide-in overlay, no margin shifts */
 .sb-toggle { display:none; position:fixed; bottom:22px; left:16px; z-index:1001; background:var(--accent-red); color:#fff; border:none; cursor:pointer; width:46px; height:46px; border-radius:50%; font-size:22px; line-height:1; box-shadow:0 3px 14px rgba(0,0,0,0.45); transition:background 0.2s; align-items:center; justify-content:center; }
 .sb-toggle:hover { background:var(--accent-orange); }

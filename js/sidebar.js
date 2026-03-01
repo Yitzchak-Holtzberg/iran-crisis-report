@@ -1,7 +1,7 @@
 // ===== NAVIGATION: mobile toggle =====
 // ===== LEFT SIDEBAR: active section + progress on scroll =====
 (function() {
-  var sectionIds = ['stats','last-24h','confirmed-unconfirmed','theater','nuclear','nuclear-deal-terms','scenarios','air-power','naval','military','iran-retaliation','hormuz','inside-iran','opposition','opposition-landscape'];
+  var sectionIds = ['stats','last-24h','confirmed-unconfirmed','theater','nuclear','scenarios','strike-forces','military','inside-iran','opposition','opposition-landscape'];
   var sbLinks = document.querySelectorAll('.sb-link');
   function onScroll() {
     var scrollY = window.scrollY + 60;
@@ -19,6 +19,15 @@
   }
   window.addEventListener('scroll', onScroll, {passive: true});
   onScroll();
+})();
+
+// ===== LEFT SIDEBAR: page-pill active state =====
+(function() {
+  var pathname = window.location.pathname.replace(/.*\//, '') || 'index.html';
+  var page = pathname.replace('.html', '') || 'index';
+  document.querySelectorAll('.sb-page-pill').forEach(function(pill) {
+    pill.classList.toggle('active', pill.getAttribute('data-page') === page);
+  });
 })();
 
 // ===== LEFT SIDEBAR: collapse toggle (desktop) =====
