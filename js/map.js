@@ -172,4 +172,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // Info box
   L.control.attribution({position:'bottomright',prefix:'<span style="color:#6a6a7a;"><b style="color:#ff3b3b;">⚡ OPERATION EPIC FURY — DAY 2 ACTIVE</b> &bull; <span style="color:#ff3b3b;">&#9679; = CONFIRMED STRIKE</span> &bull; <span style="color:#ff8c42;">&#9675; = UNCONFIRMED / BDA PENDING</span> &bull; <span style="color:#ff3b3b;">&#9135;&#9135; = CONFIRMED RETALIATION</span> &bull; <span style="color:#ff8c42;">&#9135;&#9135; = INTERCEPTED / UNCONFIRMED</span> &bull; Sources: USNI, Reuters, BBC, Al Jazeera, ISW, CBS, Newsweek | Mar 1, 2026</span>'}).addTo(map);
+
+  // On some mobile browsers the map container size isn't fully resolved when
+  // DOMContentLoaded fires, leaving the tile layer blank until something (e.g.
+  // a theme toggle) forces a re-render.  Calling invalidateSize() after a short
+  // delay lets the browser finish layout so Leaflet fetches the correct tiles.
+  setTimeout(function(){ map.invalidateSize(); }, 250);
 });
