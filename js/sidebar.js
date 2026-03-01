@@ -1,8 +1,9 @@
 // ===== NAVIGATION: mobile toggle =====
 // ===== LEFT SIDEBAR: active section + progress on scroll =====
 (function() {
-  var sectionIds = ['stats','last-24h','theater','air-power','naval','inside-iran','opposition','opposition-landscape','nuclear','nuclear-deal-terms','hormuz','military','iran-retaliation','scenarios'];
+  var sectionIds = ['stats','last-24h','confirmed-unconfirmed','theater','air-power','naval','inside-iran','opposition','opposition-landscape','nuclear','nuclear-deal-terms','hormuz','military','iran-retaliation','scenarios'];
   var sbLinks = document.querySelectorAll('.sb-link');
+  var scrollTopBtn = document.getElementById('scrollTopBtn');
   function onScroll() {
     var scrollY = window.scrollY + 60;
     var active = sectionIds[0];
@@ -16,6 +17,7 @@
     var pct = (window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight)) * 100;
     var fill = document.getElementById('sbProgressFill');
     if (fill) fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
   }
   window.addEventListener('scroll', onScroll, {passive: true});
   onScroll();

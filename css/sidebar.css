@@ -52,5 +52,6 @@ body.sb-expanded { padding-left:200px; }
   /* Move theme toggle to fixed bottom-right on mobile so it doesn't overlap masthead content */
   .theme-toggle { position:fixed; top:auto; bottom:22px; right:16px; z-index:1001; touch-action:manipulation; }
   .sb-toggle { touch-action:manipulation; }
+  .scroll-top { bottom:80px; right:16px; }
 }
 
