@@ -78,3 +78,29 @@ document.querySelectorAll('.sb-link').forEach(function(a) {
     if (window.innerWidth <= 900) closeSidebar();
   });
 });
+
+// ===== BACK TO TOP BUTTON =====
+(function() {
+  var backToTopBtn = document.getElementById('backToTop');
+  if (!backToTopBtn) return;
+
+  function toggleBackToTop() {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  window.addEventListener('scroll', toggleBackToTop, {passive: true});
+  backToTopBtn.addEventListener('click', scrollToTop);
+
+  toggleBackToTop();
+})();
