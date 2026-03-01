@@ -9,9 +9,10 @@
   "statUsAircraft": "160+",
   "statUsShips": "25+",
   "statRialRate": "1.65M",
-  "scenarioDealPct": "2",
-  "scenarioStrikesPct": "85",
-  "scenarioRevolutionPct": "10",
+  "scenarioDealPct": "4",
+  "scenarioStrikesPct": "68",
+  "scenarioRevolutionPct": "8",
+  "scenarioPahlaviPct": "17",
   "scenarioFrozenPct": "3",
   "ticker": [
     "MILITARY: OPERATION EPIC FURY LAUNCHED — US and Israel name joint operation; carrier groups, air assets deployed (USNI/CNBC, Feb 28)",
