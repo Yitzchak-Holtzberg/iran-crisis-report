@@ -113,24 +113,71 @@ When adding a new AI-managed content region:
 
 ## Files Without AI Zones
 
-The following files are **NOT** AI-managed and should remain human-curated:
+The following files are **NOT** AI-managed via zone markers and should remain human-curated in **routine** updates:
 
 - `sections/head.html` - HTML head, meta tags, CSS links
 - `sections/masthead.html` - Page header
 - `sections/ticker.html` - Ticker container (content in data.json)
-- `sections/sidebar.html` - Navigation structure
+- `sections/sidebar.html` - Navigation structure (date auto-templated via `{{dateShort}}`)
 - `sections/stats.html` - Statistics grid (values in data.json)
 - `sections/theater.html` - Map container
-- `sections/air-power.html` - Air power section
-- `sections/naval.html` - Naval forces section
-- `sections/opposition.html` - Opposition section
-- `sections/hormuz.html` - Strait of Hormuz section
-- `sections/military.html` - Iran military section
-- `sections/scenarios.html` - Scenarios section (percentages in data.json)
 - `sections/sources.html` - Source citations
 - `sections/scripts.html` - Closing scripts
 
 **Exception:** `sections/last-24h.html` is AI-updated but does NOT use zone markers because the entire timeline content is replaced daily.
+
+**Structural updates:** In `structural` mode, the AI can modify entire section files (not just zones) for the files listed in `STRUCTURAL_FILES` in `scripts/ai-update.js`. See the **Structural Updates** section below.
+
+## Structural Updates
+
+### Overview
+
+When a major event occurs (e.g. military operation launched, regime change, new scenario), **routine** zone-level updates are not enough — the page structure itself needs to change. The `structural` update mode enables section-level HTML modifications.
+
+### How it works
+
+1. Set `UPDATE_TYPE=structural` (via env var or workflow dispatch input)
+2. The AI update script runs all routine phases first (data.json, timeline, zones)
+3. An additional **structural phase** sends eligible section files to GPT with the latest news context
+4. GPT returns full replacement HTML for sections that need structural changes
+5. Validation checks ensure the replacement preserves:
+   - Section header `id` attributes (for sidebar navigation)
+   - All `{{placeholder}}` template variables
+   - All `@ai-zone` markers (open and close)
+   - Minimum content size (rejects replacements < 30% of original)
+6. Only validated replacements are written to disk
+
+### Eligible files for structural updates
+
+| Section | File | Description |
+|---|---|---|
+| last-24h | `sections/last-24h.html` | Last 24 Hours timeline |
+| scenarios | `sections/scenarios.html` | Five Scenarios analysis |
+| inside-iran | `sections/inside-iran.html` | Inside Iran: seven crises |
+| nuclear | `sections/nuclear.html` | Nuclear negotiations |
+| naval | `sections/naval.html` | Naval strike power |
+| air-power | `sections/air-power.html` | Air power section |
+| opposition | `sections/opposition.html` | Opposition & Reza Pahlavi |
+| hormuz | `sections/hormuz.html` | Strait of Hormuz |
+| military | `sections/military.html` | Iran military capability |
+
+### When to use structural updates
+
+- A military operation begins or ends
+- A new scenario needs to be added or an existing one fundamentally restructured
+- A section needs new cards, callouts, or subsections
+- Content needs to be reordered based on changing priorities
+- A major diplomatic development changes the entire analysis framework
+
+### Safety guardrails
+
+Structural updates have multiple validation layers:
+1. **File allowlist** — only files in `STRUCTURAL_FILES` can be modified
+2. **Section ID preservation** — sidebar navigation links must still work
+3. **Placeholder preservation** — all `{{key}}` templates must be retained
+4. **Zone marker preservation** — all `@ai-zone` markers must survive
+5. **Size check** — replacement must be at least 30% of original (prevents accidental deletion)
+6. **Per-file granularity** — if validation fails for one file, only that file is skipped
 
 ## Migration Guide
 
@@ -184,6 +231,20 @@ Example:
 3. Manually restore content from git history
 4. Add validation to AI script
 
+## Update Manifest
+
+Every AI update run writes an entry to `update-manifest.json` tracking:
+- **timestamp** — ISO 8601 time of the update
+- **type** — `routine` or `structural`
+- **phases** — per-phase status object:
+  - `search` — web search results
+  - `dataJson` — data.json update
+  - `timeline` — last-24h.html timeline items
+  - `zones` — AI zone content updates
+  - `structural` — section-level HTML changes (structural mode only)
+
+Each phase has a `status` field (`ok`, `skipped`, or `error`) and relevant details.
+
 ## Future Improvements
 
 - [ ] Add JSON schema for zone configuration
@@ -191,9 +252,10 @@ Example:
 - [ ] Add automated zone coverage report
 - [ ] Build visual diff tool for AI zone changes
 - [ ] Add pre-commit hook to validate zone balance
+- [ ] Add rollback capability for structural updates
 
 ---
 
-**Last Updated:** February 27, 2026
+**Last Updated:** March 1, 2026
 **Maintained By:** Repository maintainers
-**Related Files:** `build.js`, `scripts/ai-update.js`
+**Related Files:** `build.js`, `scripts/ai-update.js`, `update-manifest.json`
