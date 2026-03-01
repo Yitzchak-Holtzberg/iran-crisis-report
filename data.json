@@ -1,6 +1,6 @@
 {
   "date": "March 1, 2026",
-  "lastUpdated": "12:13 UTC",
+  "lastUpdated": "13:06 UTC",
   "statConfirmedDead": "7,015+",
   "statConfirmedDeadSource": "HRANA",
   "statTotalKilled": "36,500",
@@ -9,12 +9,16 @@
   "statUsAircraft": "160+",
   "statUsShips": "25+",
   "statRialRate": "1.7M",
-  "scenarioDealPct": "0",
-  "scenarioStrikesPct": "30",
-  "scenarioRevolutionPct": "50",
-  "scenarioPahlaviPct": "19",
-  "scenarioFrozenPct": "1",
+  "scenarioDealPct": "1",
+  "scenarioStrikesPct": "18",
+  "scenarioRevolutionPct": "55",
+  "scenarioPahlaviPct": "23",
+  "scenarioFrozenPct": "3",
   "ticker": [
+    "MOURNING: IRAN DECLARES 40 DAYS OF MOURNING AFTER SUPREME LEADER ALI KHAMENEI KILLED IN STRIKES (Reuters, Mar 1, 2026)",
+    "DIPLOMACY: OMAN MEDIATOR HAILS 'BREAKTHROUGH' IN NUCLEAR TALKS — IRAN AGREES ZERO URANIUM STOCKPILING, CONVERTS ENRICHED MATERIAL (Le Monde, Feb 28, 2026)",
+    "ECONOMY: OPEN-MARKET RIAL PLUMMETS TO ~1.75M PER USD AMID WAR FEARS (Sunday Guardian/Iran Intl, Mar 1, 2026)",
+    "HUMAN RIGHTS: IRAN HUMAN RIGHTS GROUPS REPORT MASS ARBITRARY ARRESTS, TORTURE AFTER JANUARY UNREST (Iran Human Rights, Feb 28, 2026)",
     "SUPREME LEADER: IRAN CONFIRMS DEATH OF AYATOLLAH ALI KHAMENEI AFTER U.S.-ISRAEL STRIKES (Reuters, Mar 1, 2026)",
     "MILITARY: U.S. AND ISRAEL STRIKES ENTER SECOND DAY; TARGETS INCLUDE NUCLEAR, BALLISTIC AND COMMAND SITES (Reuters, Mar 1, 2026)",
     "MISSILES: IRAN SAYS IT LAUNCHED ~170 BALLISTIC MISSILES AT ISRAEL AND U.S. BASES; INTERCEPTIONS REPORTED (Critical Threats/Guardian, Mar 1, 2026)",
@@ -32,13 +36,6 @@
     "ECONOMY: OPEN-MARKET RIAL HITS ~1.7M PER USD AFTER STRIKES, FURTHER PLUNGES REPORTED (Sunday Guardian/Ynet, Mar 1, 2026)",
     "DETENTIONS: AP REPORTS WIDESPREAD ARRESTS ROIL IRAN AFTER CRACKDOWN — mass detentions reported (AP, Feb 28, 2026)",
     "ANALYSIS: INSTITUTE FOR THE STUDY OF WAR ISSUES SPECIAL REPORT ON US-ISRAEL STRIKES AND 'AXIS OF RESISTANCE' RESPONSES (ISW, Feb 28, 2026)",
-    "MILITARY: US AND ISRAEL LAUNCH LARGEST STRIKES ON IRAN IN DECADES — targets reportedly strike military and nuclear-linked sites (Reuters, Mar 1, 2026)",
-    "SUPREME LEADER: ISRAEL SAYS AYATOLLAH ALI KHAMENEI KILLED — claim reported by Israeli officials; unconfirmed (Reuters, Mar 1, 2026)",
-    "RETALIATION: IRAN FIRES BALLISTIC MISSILES TOWARD ISRAEL AND US BASES — interceptions and regional alerts reported (Al Jazeera, Mar 1, 2026)",
-    "DIPLOMACY: US-IRAN NUCLEAR TALKS END WITH NO DEAL — both sides agree to continue talks (CNBC, Feb 27, 2026)",
-    "MILITARY: OPERATION EPIC FURY LAUNCHED — US and Israel name joint operation; carrier groups, air assets deployed (USNI/CNBC, Feb 28, 2026)",
-    "OIL: MAJOR TRADERS SUSPEND SHIPMENTS VIA STRAIT OF HORMUZ — supply disruptions raise oil price risk (Reuters, Feb 28, 2026)",
-    "CIVILIAN: AL JAZEERA REPORTS TWO SCHOOLS STRUCK IN IRAN, 80+ KILLED — civilian casualties reported after strikes (Al Jazeera, Feb 28, 2026)",
-    "MILITARY: US AND ISRAEL LAUNCH COORDINATED STRIKES ON IRAN — Washington says 'major combat operations' begun (Reuters, Feb 28, 2026)"
+    "MILITARY: US AND ISRAEL LAUNCH LARGEST STRIKES ON IRAN IN DECADES — targets reportedly strike military and nuclear-linked sites (Reuters, Mar 1, 2026)"
   ]
 }
