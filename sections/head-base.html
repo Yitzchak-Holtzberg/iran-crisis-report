@@ -8,6 +8,9 @@
 <meta property="og:title" content="{{pageTitle}}"/>
 <meta property="og:description" content="{{pageOgDescription}}"/>
 <meta property="og:type" content="{{pageOgType}}"/>
+<!-- Restore saved theme before first paint to avoid a flash of unstyled content. -->
+<script>try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
 <!-- @include sections/head-css.html -->
 </head>
-<body class="sb-collapsed">
+<body class="sb-collapsed" x-data="pageApp()"
+      :class="{ 'sb-collapsed': sidebarCollapsed, 'sb-expanded': !sidebarCollapsed }">

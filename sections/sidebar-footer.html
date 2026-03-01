@@ -1,5 +1,8 @@
 </aside>
-<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
-<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
+<div class="sb-overlay" @click="closeMobile()" :class="{ open: mobileOpen }"></div>
+<button class="sb-toggle" id="sbToggle" @click="toggleMobile()" aria-label="Toggle navigation">
+  <span class="sb-toggle-icon" x-text="mobileOpen ? '\u2715' : '\u2630'">&#x2630;</span>
+  <span class="sb-toggle-label" x-text="mobileOpen ? 'Close' : 'Menu'">Menu</span>
+</button>
 
 <div class="container">
