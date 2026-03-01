@@ -24,6 +24,11 @@
     "ticker"
   ],
   "properties": {
+    "gaTrackingId": {
+      "type": "string",
+      "description": "Google Analytics 4 Measurement ID (e.g., 'G-XXXXXXXXXX'). Replace with your real tracking ID.",
+      "pattern": "^G-[A-Z0-9]+$"
+    },
     "date": {
       "type": "string",
       "description": "Display date in format 'Month DD, YYYY' (e.g., 'February 27, 2026')",
