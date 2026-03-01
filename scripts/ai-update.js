@@ -151,6 +151,20 @@ function spliceTimelineItems(fileContent, newItemsHtml) {
 // ── Zone update helpers ───────────────────────────────────────────────────────
 
 /**
+ * Convert any residual markdown bold/italic syntax to HTML tags.
+ * GPT occasionally outputs **text** or *text* despite instructions;
+ * this is a last-resort safety net applied to all AI-generated HTML.
+ */
+function sanitizeMarkdown(html) {
+  if (!html) return html;
+  // **bold** → <strong>bold</strong>  (non-greedy, no newlines inside)
+  let out = html.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+  // *italic* → <em>italic</em>  (only remaining single stars after bold pass)
+  out = out.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+  return out;
+}
+
+/**
  * Regex that matches <!-- @ai-zone:id --> ... <!-- @/ai-zone:id --> blocks.
  * Zone IDs use lowercase letters, digits, and hyphens ([\w-]+).
  * Content between markers is captured lazily and limited to 10,000 chars so
@@ -203,6 +217,7 @@ General rules:
 - Preserve all HTML tags exactly — only update facts, dates, numbers, names
 - Do NOT insert @ai-zone or @/ai-zone comment markers into your output
 - Keep writing style consistent with the existing content
+- Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*)
 
 Zone-specific rules:
 - *-subtitle zones: update the section header subtitle if key facts changed
@@ -278,7 +293,7 @@ async function updateZones(searchContext) {
       if (!fileContents[zone.filePath]) {
         fileContents[zone.filePath] = fs.readFileSync(zone.filePath, 'utf8');
       }
-      const newOuter = `<!-- @ai-zone:${zoneId} -->${newContent}<!-- @/ai-zone:${zoneId} -->`;
+      const newOuter = `<!-- @ai-zone:${zoneId} -->${sanitizeMarkdown(newContent)}<!-- @/ai-zone:${zoneId} -->`;
       fileContents[zone.filePath] = fileContents[zone.filePath].replace(zone.outerMatch, newOuter);
       updatedZoneCount++;
     }
@@ -431,7 +446,8 @@ Rules:
 - Do NOT change <script> tags or JavaScript
 - Do NOT modify SVG diagrams
 - When adding new content, use the correct severity-color CSS variables
-- Maximum response size: return at most 3 section files per call`;
+- Maximum response size: return at most 3 section files per call
+- Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*)`;
 
 /**
  * Structural update phase — only runs when UPDATE_TYPE === 'structural'.
@@ -522,7 +538,7 @@ async function updateStructural(searchContext) {
       continue;
     }
 
-    fs.writeFileSync(fullPath, newContent);
+    fs.writeFileSync(fullPath, sanitizeMarkdown(newContent));
     console.log(`  Structural update applied to ${info.rel}.`);
     changed.push(name);
   }
@@ -661,7 +677,8 @@ Rules:
 - Do NOT add style="margin-bottom:0;" to any item you generate — that style is
   reserved for the existing last item in each block so it doesn't add double
   spacing before the next day-header, and new items inserted at the top don't
-  need it.`;
+  need it.
+- Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*).\`;
 
   const last24hUserContent =
     `EXISTING TODAY ITEMS (do not duplicate these):\n${existingTodayItems}\n\n` +
@@ -677,7 +694,7 @@ Rules:
       console.log('No new timeline items to add.');
       manifest.phases.timeline = { status: 'ok', added: 0 };
     } else {
-      const newItemsHtml = newItems.join('\n');
+      const newItemsHtml = newItems.map(sanitizeMarkdown).join('\n');
       const candidate    = spliceTimelineItems(current24h, newItemsHtml);
       // Validate the template placeholders are still intact.
       const placeholders = ['{{dayToday}}', '{{dayYesterday}}'];
