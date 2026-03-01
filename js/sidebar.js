@@ -57,3 +57,7 @@ document.querySelectorAll('.sb-link').forEach(function(a) {
     if (window.innerWidth <= 900) closeSidebar();
   });
 });
+function scrollToTop() {
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top: 0, behavior: prefersReduced ? 'auto' : 'smooth'});
+}
