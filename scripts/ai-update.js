@@ -72,6 +72,8 @@ const SEARCH_QUERIES = [
   'Iran economy rial rate sanctions latest news',
   'Iran Israel military threat latest news',
   'Reza Pahlavi Iran opposition latest news',
+  'Strait of Hormuz shipping oil tanker disruption Iran latest',
+  'Gulf states Saudi Arabia Bahrain UAE Russia China Iran reaction latest',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -162,9 +164,12 @@ const VALID_ZONE_ID = /^[\w-]+$/;
 
 /**
  * Scan all sections/*.html files and return a map of:
- *   { zoneId → { filePath, outerMatch, innerContent } }
+ *   { zoneId → [{ filePath, outerMatch, innerContent }, ...] }
  *
  * Any section file can participate — just add the markers in HTML.
+ * When the same zone ID appears in multiple files (e.g. a subtitle zone
+ * shared between a full section and its teaser), all occurrences are
+ * collected so every file is kept in sync on update.
  */
 function discoverZones() {
   const zones      = {};
@@ -176,7 +181,8 @@ function discoverZones() {
     ZONE_RE.lastIndex = 0;
     let m;
     while ((m = ZONE_RE.exec(content)) !== null) {
-      zones[m[1]] = { filePath, outerMatch: m[0], innerContent: m[2] };
+      if (!zones[m[1]]) zones[m[1]] = [];
+      zones[m[1]].push({ filePath, outerMatch: m[0], innerContent: m[2] });
     }
   }
   return zones;
@@ -228,7 +234,11 @@ async function updateZones(searchContext) {
   }
 
   const zonesBlock = Object.entries(zones)
-    .map(([id, z]) => `=== Zone: ${id} (${path.basename(z.filePath)}) ===\n${z.innerContent.trim()}`)
+    .map(([id, occurrences]) => {
+      const z     = occurrences[0]; // use first occurrence for prompt content
+      const files = occurrences.map(o => path.basename(o.filePath)).join(', ');
+      return `=== Zone: ${id} (${files}) ===\n${z.innerContent.trim()}`;
+    })
     .join('\n\n');
 
   const userContent =
@@ -251,8 +261,6 @@ async function updateZones(searchContext) {
 
   for (const [zoneId, newContent] of Object.entries(updates)) {
     if (!newContent || !zones[zoneId]) continue;
-    const zone = zones[zoneId];
-    if (newContent.trim() === zone.innerContent.trim()) continue; // unchanged
 
     // Safety: prevent zone marker pollution and invalid IDs in replacement.
     if (newContent.includes('@ai-zone')) {
@@ -264,12 +272,16 @@ async function updateZones(searchContext) {
       continue;
     }
 
-    if (!fileContents[zone.filePath]) {
-      fileContents[zone.filePath] = fs.readFileSync(zone.filePath, 'utf8');
+    for (const zone of zones[zoneId]) {
+      if (newContent.trim() === zone.innerContent.trim()) continue; // unchanged
+
+      if (!fileContents[zone.filePath]) {
+        fileContents[zone.filePath] = fs.readFileSync(zone.filePath, 'utf8');
+      }
+      const newOuter = `<!-- @ai-zone:${zoneId} -->${newContent}<!-- @/ai-zone:${zoneId} -->`;
+      fileContents[zone.filePath] = fileContents[zone.filePath].replace(zone.outerMatch, newOuter);
+      updatedZoneCount++;
     }
-    const newOuter = `<!-- @ai-zone:${zoneId} -->${newContent}<!-- @/ai-zone:${zoneId} -->`;
-    fileContents[zone.filePath] = fileContents[zone.filePath].replace(zone.outerMatch, newOuter);
-    updatedZoneCount++;
   }
 
   for (const [filePath, newContent] of Object.entries(fileContents)) {
@@ -384,6 +396,12 @@ const STRUCTURAL_FILES = {
   'military':   { rel: 'sections/military.html',    desc: 'Iran military capability' },
   'reactions':  { rel: 'sections/reactions.html',    desc: 'Regional reactions & damage assessments' },
   'confirmed-unconfirmed': { rel: 'sections/confirmed-unconfirmed.html', desc: 'Fog of war: confirmed vs unconfirmed' },
+  'theater':          { rel: 'sections/theater.html',           desc: 'Theater of Operations map section' },
+  'nuclear-teaser':   { rel: 'sections/nuclear-teaser.html',    desc: 'Nuclear/diplomatic teaser (main page)' },
+  'scenarios-teaser': { rel: 'sections/scenarios-teaser.html',  desc: 'Scenarios teaser (main page)' },
+  'forces-teaser':    { rel: 'sections/forces-teaser.html',     desc: 'US Strike Forces teaser (main page)' },
+  'inside-iran-teaser': { rel: 'sections/inside-iran-teaser.html', desc: 'Inside Iran teaser (main page)' },
+  'reactions-teaser': { rel: 'sections/reactions-teaser.html',  desc: 'Regional reactions teaser (main page)' },
 };
 
 const STRUCTURAL_SYSTEM_PROMPT = `\
@@ -575,7 +593,7 @@ Rules:
   statCitizensOffline, statIrgcKilled): update ONLY if the search results contain a clearly
   newer confirmed figure with a credible source.
 - Scenario percentages (scenarioDealPct, scenarioStrikesPct,
-  scenarioRevolutionPct, scenarioPahlaviPct, scenarioFrozenPct): adjust ONLY if
+  scenarioRevolutionPct, scenarioPahlaviPct, scenarioFrozenPct, scenarioJuntaPct): adjust ONLY if
   a major development materially changes the outlook. Values must be integers
   that sum to exactly 100.`;
 
