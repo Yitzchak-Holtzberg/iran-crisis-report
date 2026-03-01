@@ -160,38 +160,6 @@
           ]
         }
       }
-    },
-    {
-      "timestamp": "2026-03-01T13:06:32.574Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 7,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Death of Supreme Leader Khamenei in U.S./Israeli strikes, regime leadership change and major military escalation.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "scenarios"
-          ]
-        }
-      }
     }
   ]
 }

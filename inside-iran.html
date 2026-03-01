@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iran Crisis: Inside Iran — March 1, 2026</title>
+<meta name="description" content="Seven converging crises inside Iran: the January Massacre, student uprising, economic freefall, internet blackout, ethnic crackdowns, water catastrophe, and axis of resistance collapse. IRGC power struggle and Khamenei succession."/>
+<meta property="og:title" content="Iran Crisis: Inside Iran — March 1, 2026"/>
+<meta property="og:description" content="Seven converging crises: the January Massacre (36,500+ killed), student uprising, economic freefall, digital iron curtain, ethnic crackdowns, water catastrophe, and proxy network collapse."/>
+<meta property="og:type" content="article"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous"/>
+<link rel="stylesheet" href="css/variables.css"/>
+<link rel="stylesheet" href="css/base.css"/>
+<link rel="stylesheet" href="css/components.css"/>
+<link rel="stylesheet" href="css/sidebar.css"/>
+<link rel="stylesheet" href="css/responsive.css"/>
+</head>
+<body class="sb-collapsed">
+
+<header class="masthead">
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+    <span class="toggle-icon" id="toggleIcon">☀️</span>
+    <span id="toggleLabel">Light</span>
+  </button>
+  <div class="label"><div class="pulse"></div>Developing Situation — Persian Gulf Theater</div>
+  <h1>Iran on the Brink:<br>A Nation at War With Itself</h1>
+  <div class="dateline">March 1, 2026 &nbsp;|&nbsp; Compiled from 40+ international sources &nbsp;|&nbsp; Last updated 12:13 UTC</div>
+</header>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>SUPREME LEADER: IRAN CONFIRMS DEATH OF AYATOLLAH ALI KHAMENEI AFTER U.S.-ISRAEL STRIKES (Reuters, Mar 1, 2026)</span>
+    <span>MILITARY: U.S. AND ISRAEL STRIKES ENTER SECOND DAY; TARGETS INCLUDE NUCLEAR, BALLISTIC AND COMMAND SITES (Reuters, Mar 1, 2026)</span>
+    <span>MISSILES: IRAN SAYS IT LAUNCHED ~170 BALLISTIC MISSILES AT ISRAEL AND U.S. BASES; INTERCEPTIONS REPORTED (Critical Threats/Guardian, Mar 1, 2026)</span>
+    <span>SUPREME LEADER: NBC REPORTS SUPREME LEADER ALI KHAMENEI AND FAMILY KILLED IN US-ISRAEL STRIKES (NBC News, Mar 1, 2026)</span>
+    <span>OPPOSITION: REZA PAHLAVI UNVEILS 'PROSPERITY PROJECT' AND URGES UNITY AMONG OPPOSITION FACTIONS (Times of India, Mar 1, 2026)</span>
+    <span>MILITARY: MILITARY.COM OUTLINES TARGETS OF US-ISRAEL STRIKES — NUCLEAR AND BALLISTIC SITES HIT (Military.com, Feb 28, 2026)</span>
+    <span>DIPLOMACY: TRUMP SAYS HE IS 'NOT HAPPY' WITH IRAN AFTER LATEST NUCLEAR TALKS — talks to continue; no deal (NPR, Feb 28, 2026)</span>
+    <span>LIVE UPDATES: U.S. AND ISRAEL STRIKES SPARK REGIONAL ALERTS; TIMELINE OF ATTACKS AND RETALIATION (PBS NewsHour, Feb 28, 2026)</span>
+    <span>CRACKDOWN: ARRESTS CONTINUE ACROSS IRAN AS IRGC EXPANDS DETENTIONS OF PROTESTERS AND REFORMISTS (CBS News, Feb 28, 2026)</span>
+    <span>OPPOSITION: REZA PAHLAVI CALLS US-ISRAEL STRIKES 'HUMANITARIAN' AND URGES IRANIANS TO PREPARE 'FINAL BATTLE' (Washington Post, Feb 28, 2026)</span>
+    <span>US MILITARY: US POSITIONS ~35,000 TROOPS IN REGION AMID STRIKES (Task & Purpose, Feb 28, 2026)</span>
+    <span>CRACKDOWN: BBC REPORTS ARRESTS OF REFORMISTS AS WIDER CRACKDOWN CONTINUES (BBC, Feb 28, 2026)</span>
+    <span>SUPREME LEADER: IRANIAN STATE MEDIA REPORT AYATOLLAH ALI KHAMENEI IS DEAD (AP, Mar 1, 2026)</span>
+    <span>US MILITARY: USS ABRAHAM LINCOLN INVOLVED IN STRIKES ON IRAN — carrier participation confirmed (KTLA/Military.com, Feb 28, 2026)</span>
+    <span>ECONOMY: OPEN-MARKET RIAL HITS ~1.7M PER USD AFTER STRIKES, FURTHER PLUNGES REPORTED (Sunday Guardian/Ynet, Mar 1, 2026)</span>
+    <span>DETENTIONS: AP REPORTS WIDESPREAD ARRESTS ROIL IRAN AFTER CRACKDOWN — mass detentions reported (AP, Feb 28, 2026)</span>
+    <span>ANALYSIS: INSTITUTE FOR THE STUDY OF WAR ISSUES SPECIAL REPORT ON US-ISRAEL STRIKES AND 'AXIS OF RESISTANCE' RESPONSES (ISW, Feb 28, 2026)</span>
+    <span>MILITARY: US AND ISRAEL LAUNCH LARGEST STRIKES ON IRAN IN DECADES — targets reportedly strike military and nuclear-linked sites (Reuters, Mar 1, 2026)</span>
+    <span>SUPREME LEADER: ISRAEL SAYS AYATOLLAH ALI KHAMENEI KILLED — claim reported by Israeli officials; unconfirmed (Reuters, Mar 1, 2026)</span>
+    <span>RETALIATION: IRAN FIRES BALLISTIC MISSILES TOWARD ISRAEL AND US BASES — interceptions and regional alerts reported (Al Jazeera, Mar 1, 2026)</span>
+    <span>DIPLOMACY: US-IRAN NUCLEAR TALKS END WITH NO DEAL — both sides agree to continue talks (CNBC, Feb 27, 2026)</span>
+    <span>MILITARY: OPERATION EPIC FURY LAUNCHED — US and Israel name joint operation; carrier groups, air assets deployed (USNI/CNBC, Feb 28, 2026)</span>
+    <span>OIL: MAJOR TRADERS SUSPEND SHIPMENTS VIA STRAIT OF HORMUZ — supply disruptions raise oil price risk (Reuters, Feb 28, 2026)</span>
+    <span>CIVILIAN: AL JAZEERA REPORTS TWO SCHOOLS STRUCK IN IRAN, 80+ KILLED — civilian casualties reported after strikes (Al Jazeera, Feb 28, 2026)</span>
+    <span>MILITARY: US AND ISRAEL LAUNCH COORDINATED STRIKES ON IRAN — Washington says 'major combat operations' begun (Reuters, Feb 28, 2026)</span>
+    <span>SUPREME LEADER: IRAN CONFIRMS DEATH OF AYATOLLAH ALI KHAMENEI AFTER U.S.-ISRAEL STRIKES (Reuters, Mar 1, 2026)</span>
+    <span>MILITARY: U.S. AND ISRAEL STRIKES ENTER SECOND DAY; TARGETS INCLUDE NUCLEAR, BALLISTIC AND COMMAND SITES (Reuters, Mar 1, 2026)</span>
+    <span>MISSILES: IRAN SAYS IT LAUNCHED ~170 BALLISTIC MISSILES AT ISRAEL AND U.S. BASES; INTERCEPTIONS REPORTED (Critical Threats/Guardian, Mar 1, 2026)</span>
+    <span>SUPREME LEADER: NBC REPORTS SUPREME LEADER ALI KHAMENEI AND FAMILY KILLED IN US-ISRAEL STRIKES (NBC News, Mar 1, 2026)</span>
+    <span>OPPOSITION: REZA PAHLAVI UNVEILS 'PROSPERITY PROJECT' AND URGES UNITY AMONG OPPOSITION FACTIONS (Times of India, Mar 1, 2026)</span>
+    <span>MILITARY: MILITARY.COM OUTLINES TARGETS OF US-ISRAEL STRIKES — NUCLEAR AND BALLISTIC SITES HIT (Military.com, Feb 28, 2026)</span>
+    <span>DIPLOMACY: TRUMP SAYS HE IS 'NOT HAPPY' WITH IRAN AFTER LATEST NUCLEAR TALKS — talks to continue; no deal (NPR, Feb 28, 2026)</span>
+    <span>LIVE UPDATES: U.S. AND ISRAEL STRIKES SPARK REGIONAL ALERTS; TIMELINE OF ATTACKS AND RETALIATION (PBS NewsHour, Feb 28, 2026)</span>
+    <span>CRACKDOWN: ARRESTS CONTINUE ACROSS IRAN AS IRGC EXPANDS DETENTIONS OF PROTESTERS AND REFORMISTS (CBS News, Feb 28, 2026)</span>
+    <span>OPPOSITION: REZA PAHLAVI CALLS US-ISRAEL STRIKES 'HUMANITARIAN' AND URGES IRANIANS TO PREPARE 'FINAL BATTLE' (Washington Post, Feb 28, 2026)</span>
+    <span>US MILITARY: US POSITIONS ~35,000 TROOPS IN REGION AMID STRIKES (Task & Purpose, Feb 28, 2026)</span>
+    <span>CRACKDOWN: BBC REPORTS ARRESTS OF REFORMISTS AS WIDER CRACKDOWN CONTINUES (BBC, Feb 28, 2026)</span>
+    <span>SUPREME LEADER: IRANIAN STATE MEDIA REPORT AYATOLLAH ALI KHAMENEI IS DEAD (AP, Mar 1, 2026)</span>
+    <span>US MILITARY: USS ABRAHAM LINCOLN INVOLVED IN STRIKES ON IRAN — carrier participation confirmed (KTLA/Military.com, Feb 28, 2026)</span>
+    <span>ECONOMY: OPEN-MARKET RIAL HITS ~1.7M PER USD AFTER STRIKES, FURTHER PLUNGES REPORTED (Sunday Guardian/Ynet, Mar 1, 2026)</span>
+    <span>DETENTIONS: AP REPORTS WIDESPREAD ARRESTS ROIL IRAN AFTER CRACKDOWN — mass detentions reported (AP, Feb 28, 2026)</span>
+    <span>ANALYSIS: INSTITUTE FOR THE STUDY OF WAR ISSUES SPECIAL REPORT ON US-ISRAEL STRIKES AND 'AXIS OF RESISTANCE' RESPONSES (ISW, Feb 28, 2026)</span>
+    <span>MILITARY: US AND ISRAEL LAUNCH LARGEST STRIKES ON IRAN IN DECADES — targets reportedly strike military and nuclear-linked sites (Reuters, Mar 1, 2026)</span>
+    <span>SUPREME LEADER: ISRAEL SAYS AYATOLLAH ALI KHAMENEI KILLED — claim reported by Israeli officials; unconfirmed (Reuters, Mar 1, 2026)</span>
+    <span>RETALIATION: IRAN FIRES BALLISTIC MISSILES TOWARD ISRAEL AND US BASES — interceptions and regional alerts reported (Al Jazeera, Mar 1, 2026)</span>
+    <span>DIPLOMACY: US-IRAN NUCLEAR TALKS END WITH NO DEAL — both sides agree to continue talks (CNBC, Feb 27, 2026)</span>
+    <span>MILITARY: OPERATION EPIC FURY LAUNCHED — US and Israel name joint operation; carrier groups, air assets deployed (USNI/CNBC, Feb 28, 2026)</span>
+    <span>OIL: MAJOR TRADERS SUSPEND SHIPMENTS VIA STRAIT OF HORMUZ — supply disruptions raise oil price risk (Reuters, Feb 28, 2026)</span>
+    <span>CIVILIAN: AL JAZEERA REPORTS TWO SCHOOLS STRUCK IN IRAN, 80+ KILLED — civilian casualties reported after strikes (Al Jazeera, Feb 28, 2026)</span>
+    <span>MILITARY: US AND ISRAEL LAUNCH COORDINATED STRIKES ON IRAN — Washington says 'major combat operations' begun (Reuters, Feb 28, 2026)</span>
+  </div>
+</div>
+<!-- ===== LEFT SIDEBAR — INSIDE IRAN SUB-PAGE ===== -->
+<aside class="left-sidebar collapsed" id="leftSidebar" aria-label="Page navigation">
+  <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
+  <div class="sb-header" onclick="toggleCollapse()">
+    <div>
+      <div class="sb-brand">&#9632; Iran Report</div>
+      <div class="sb-subtitle">Mar 1, 2026<br>Persian Gulf Theater</div>
+    </div>
+    <button class="sb-collapse-btn" id="sbCollapseBtn" aria-label="Toggle navigation panel">&#9654;</button>
+  </div>
+  <div class="sb-pages">
+    <a class="sb-page-pill" href="index.html" data-page="index">Overview</a>
+    <a class="sb-page-pill" href="forces.html" data-page="forces">Forces</a>
+    <a class="sb-page-pill" href="scenarios.html" data-page="scenarios">Scenarios</a>
+    <a class="sb-page-pill" href="inside-iran.html" data-page="inside-iran">Inside Iran</a>
+    <a class="sb-page-pill" href="reactions.html" data-page="reactions">Reactions</a>
+  </div>
+  <nav class="sb-nav">
+    <a class="sb-link" href="#inside-iran" data-section="inside-iran"><span class="sb-num">01</span><span class="sb-dot"></span>Inside Iran</a>
+  </nav>
+</aside>
+<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
+<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
+
+<div class="container">
+<!-- ======== INSIDE IRAN ======== -->
+<div class="section-header" id="inside-iran">
+  <div class="icon" style="background:rgba(255,59,59,0.15);">&#127470;&#127479;</div>
+  <div><h2>Inside Iran: A Regime Under Siege</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Seven converging crises threatening the Islamic Republic</div></div>
+  <span class="severity critical" style="margin-left:auto;">Critical</span>
+</div>
+
+<div class="callout red">
+  <div class="callout-title">CONFIRMED — Khamenei Dead (Mar 1–2, 2026)</div>
+  <p style="color:var(--text-secondary);">Iranian state media and officials <strong>confirmed the death of Supreme Leader Ayatollah Ali Khamenei</strong> amid ongoing U.S.–Israeli strikes. The announcement triggers immediate uncertainty over succession and heightens the risk of an <strong>IRGC-led power consolidation</strong> as nationwide protests continue and communications remain disrupted. — Sources: <em>Reuters, BBC, Al Jazeera, Mar 1–2</em></p>
+</div>
+
+<!-- IRGC Power Struggle -->
+<div class="card" style="border-left:3px solid #7a5af0;">
+  <h3>&#9876; The IRGC Power Struggle</h3>
+  <p>The severe repression has deepened <strong>internal rifts within Iran's security structure</strong>. Reports indicate growing moral and psychological strain on some Basij and provincial IRGC units — soldiers ordered to fire on their own people.</p>
+  <p>A recent <strong>IRGC command reshuffle</strong>, combined with public attacks among political factions and repeated calls for "unity," points to a governing system increasingly unable to maintain its own cohesion. The convergence of:</p>
+  <ul style="color:var(--text-secondary);font-size:14px;margin:8px 0 0 20px;">
+    <li>Internal IRGC command changes</li>
+    <li>Public factional infighting between hardliners and pragmatists</li>
+    <li>External military threat from the US</li>
+    <li>Economic collapse eroding the patronage networks that keep the regime loyal</li>
+  </ul>
+  <p style="margin-top:12px;">...creates what analysts at the National Interest describe as a potential "Day After Khamenei" scenario where the 86-year-old Supreme Leader's inevitable succession becomes an <strong>IRGC power struggle</strong> rather than a democratic transition.</p>
+</div>
+
+<!-- Crisis 1: The January Massacre -->
+<div class="card" style="border-left:3px solid var(--accent-red);">
+  <h3>&#9760; Crisis 1: The January Massacre</h3>
+  <p>What began as economic protests on <strong>December 28, 2025</strong> — driven by 40%+ general inflation and 70% food price inflation — escalated into the largest anti-government uprising in the Islamic Republic's history. On <strong>January 8-9, 2026</strong>, Khamenei ordered security forces to fire on protesters with live ammunition, tear gas, and prohibited weapons. What followed was the <strong>deadliest two-day protest massacre in modern history</strong>.</p>
+  <p>Death toll estimates vary enormously: the Iranian government acknowledged <strong>3,177 deaths</strong>; HRANA documented <strong>7,007 confirmed deaths</strong> (6,488 protesters including 236 children, 76 non-participating civilians, and 207 government/security forces); Iran International's investigation found evidence of <strong>36,500+ killed</strong>, including 209 government-affiliated personnel.</p>
+
+  <div class="callout red" style="margin-bottom:16px;">
+    <div class="callout-title">HRANA "Crimson Winter" Report — Feb 23, 2026</div>
+    HRANA's landmark <strong>50-day report</strong>, based on 143,000+ verified reports, documents protests across <strong>203 cities, 682 sites in all 31 provinces</strong>. Over <strong>25,000 civilians</strong> and ~5,000 security personnel were injured. Detentions number in the tens of thousands with many still unaccounted for. HRANA methodology reports only confirmed minimum cases — the real toll is almost certainly higher. Tehran province accounts for 1,588 confirmed deaths alone. — <em>hra-iran.org, Feb 23</em>
+  </div>
+
+  <div class="callout red">
+    <div class="callout-title">Amnesty International Alert</div>
+    At least <strong>30 people</strong>, including several children, are at risk of execution in connection with the uprising. Several were under 18 at the time. Torture methods documented include: threats of sexual assault, mock executions, beatings with cables, burning with irons, and nail extraction.
+  </div>
+</div>
+
+<!-- Crisis 2: The Student Uprising -->
+<div class="card" style="border-left:3px solid var(--accent-orange);">
+  <h3>&#9994; <!-- @ai-zone:iran-crisis2-title -->Crisis 2: The Student Uprising (Feb 21 – 27, Day 19)<!-- @/ai-zone:iran-crisis2-title --></h3>
+  <p>As universities reopened, students organized <strong>40-day memorial protests</strong> for those killed — a deeply significant tradition in Shia Islam marking the end of mourning. Starting Feb. 21, protests erupted at <strong>University of Tehran, Sharif University of Technology, Amirkabir University, Shahid Beheshti University</strong>, and campuses in Isfahan and Mashhad — now spreading to <strong>all 31 provinces</strong>.</p>
+  <p>By day seven (today), demonstrations persist despite the regime's "red line" warnings, with class boycotts and campus occupations. HRANA confirmed <strong>63 additional overnight arrests</strong>, bringing total detentions since Feb 21 to over <strong>410</strong>. Students chant <strong>"Death to the dictator," "Woman, life, freedom,"</strong> and — significantly — <strong>chants calling for Reza Pahlavi to replace Khamenei</strong>. On Feb. 24, the <strong>Sharif University of Technology website was hacked</strong>, its name reverted to pre-revolution "Aryamehr University." A separate cyberattack sent <strong>50,000 Iranians a text message</strong>: <em>"To the oppressed people of Iran: the US president is a man of action, you will soon see."</em> Iran's cyberpolice is investigating. Government spokesperson Mohajerani confirmed many universities remain closed, with some already moving classes fully online for the rest of the Iranian calendar year (ending March 20).</p>
+  <div class="quote-block">
+    <div class="text">"We will speak with the protesters but... rioters should be put in their place."</div>
+    <div class="attr">— Supreme Leader Ali Khamenei, attempting to split the movement</div>
+  </div>
+</div>
+
+<!-- Crisis 3: Economic Collapse -->
+<div class="card" style="border-left:3px solid var(--accent-gold);">
+  <h3>&#128200; Crisis 3: Economic Freefall</h3>
+  <p>U.S. Treasury Secretary Scott Bessent admitted Washington deliberately engineered a <strong>dollar shortage</strong> to trigger runaway inflation. Testifying before the Senate Banking Committee, Bessent described the trigger event explicitly: <em>"It came to a swift and, I would say, grand culmination in December, when one of the largest banks in Iran went under. There was a run on the bank. The central bank had to print money. The Iranian currency went into free fall, inflation exploded and hence we have seen the Iranian people out on the street."</em> The rial has collapsed from 42,000 to over <strong>1.65 million per dollar</strong> — effectively rendering purchasing power non-existent for imports.</p>
+
+  <div class="chart-container" style="margin:16px 0;padding:16px;">
+    <h4>Iranian Rial Collapse — Exchange Rate (Rials per USD)</h4>
+    <svg viewBox="0 0 600 200" class="svg-graphic" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grid -->
+      <line x1="60" y1="20" x2="60" y2="170" stroke="#2a2a3a" stroke-width="0.5"/>
+      <line x1="60" y1="170" x2="580" y2="170" stroke="#2a2a3a" stroke-width="0.5"/>
+      <line x1="60" y1="130" x2="580" y2="130" stroke="#2a2a3a" stroke-width="0.3" stroke-dasharray="4,4"/>
+      <line x1="60" y1="90" x2="580" y2="90" stroke="#2a2a3a" stroke-width="0.3" stroke-dasharray="4,4"/>
+      <line x1="60" y1="50" x2="580" y2="50" stroke="#2a2a3a" stroke-width="0.3" stroke-dasharray="4,4"/>
+      <!-- Y labels -->
+      <text x="55" y="174" fill="#6a6a7a" font-size="8" font-family="JetBrains Mono" text-anchor="end">42K</text>
+      <text x="55" y="134" fill="#6a6a7a" font-size="8" font-family="JetBrains Mono" text-anchor="end">500K</text>
+      <text x="55" y="94" fill="#6a6a7a" font-size="8" font-family="JetBrains Mono" text-anchor="end">1.0M</text>
+      <text x="55" y="54" fill="#6a6a7a" font-size="8" font-family="JetBrains Mono" text-anchor="end">1.5M</text>
+      <!-- X labels -->
+      <text x="80" y="185" fill="#6a6a7a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">2018</text>
+      <text x="160" y="185" fill="#6a6a7a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">2020</text>
+      <text x="240" y="185" fill="#6a6a7a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">2022</text>
+      <text x="320" y="185" fill="#6a6a7a" font-size="7" font-family="JetBrains Mono" text-anchor="middle">2024</text>
+      <text x="440" y="185" fill="#ff3b3b" font-size="7" font-family="JetBrains Mono" font-weight="700" text-anchor="middle">Jan 2026</text>
+      <text x="540" y="185" fill="#ff3b3b" font-size="7" font-family="JetBrains Mono" font-weight="700" text-anchor="middle">Feb 2026</text>
+      <!-- Line -->
+      <path d="M80,168 L120,165 L160,158 L200,155 L240,150 L280,148 L320,142 L360,138 L400,130 L440,90 L480,65 L540,34" fill="none" stroke="#ff3b3b" stroke-width="2"/>
+      <!-- Crisis marker -->
+      <line x1="430" y1="20" x2="430" y2="170" stroke="#ff3b3b" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.5"/>
+      <text x="432" y="30" fill="#ff3b3b" font-size="7" font-family="JetBrains Mono">Protests begin</text>
+      <!-- Dot at current -->
+      <circle cx="540" cy="34" r="5" fill="#ff3b3b"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/></circle>
+      <text x="548" y="32" fill="#ff3b3b" font-size="9" font-family="JetBrains Mono" font-weight="700">1.65M</text>
+    </svg>
+  </div>
+
+  <p>Key economic indicators:</p>
+  <ul style="color:var(--text-secondary);font-size:14px;margin:8px 0 0 20px;">
+    <li>General inflation: <strong>48.6%</strong> (October 2025) — likely higher now</li>
+    <li>Food price inflation: <strong>~70%</strong></li>
+    <li>IRGC controls an estimated <strong>60-70% of the economy</strong> — profits insulated from suffering</li>
+    <li>EU <strong>designated entire IRGC a terrorist organization Feb 19</strong> (EU Council formal decision — aligning with US 2019, Canada 2024); Iran retaliated by labeling European armies terrorist groups; UK sanctioned 10 officials including Interior Minister on Feb 2</li>
+  </ul>
+
+  <h4 style="margin-top:20px;font-size:16px;color:var(--text-primary);">Oil Revenue Collapse</h4>
+  <p style="margin-top:8px;">Iran's oil exports — the regime's financial lifeline — have been <strong>devastated by Trump's "maximum pressure 2.0" sanctions</strong>. The numbers tell the story:</p>
+
+  <div class="stats-grid" style="margin:16px 0;">
+    <div class="stat-box"><div class="number" style="color:#ff3b3b;">1.39M</div><div class="label">Barrels/day (Jan 2026)</div></div>
+    <div class="stat-box"><div class="number" style="color:#ff8c42;">-26%</div><div class="label">Export decline YoY</div></div>
+    <div class="stat-box"><div class="number" style="color:#ffd700;">$20B</div><div class="label">Revenue (8 months)</div></div>
+    <div class="stat-box"><div class="number" style="color:#e040fb;">80%+</div><div class="label">Goes to China</div></div>
+  </div>
+
+  <p>China buys <strong>over 80% of Iran's crude</strong> — but at a steep <strong>$8-10/barrel discount</strong> to Brent, meaning Iran earns far less than market price. Beijing uses a <strong>"shadow fleet"</strong> of aging tankers with falsified transponder data and ship-to-ship transfers to evade sanctions. The US Treasury has sanctioned 40+ vessels in this network since January 2026, further restricting Iran's ability to sell.</p>
+
+  <div class="callout red" style="margin:16px 0;">
+    <div class="callout-title" style="color:var(--accent-red);">The Patronage Crisis</div>
+    <p style="color:var(--text-secondary);">The IRGC's loyalty has always been sustained by economic patronage — access to smuggling networks, construction contracts, import monopolies. With oil revenue collapsing and sanctions tightening, the <strong>regime can no longer afford to buy loyalty</strong>. This is why the IRGC power struggle (below) has become existential: it's not just about ideology, it's about shrinking revenue to divide among competing factions.</p>
+  </div>
+</div>
+
+<!-- Crisis 4: Internet Blackout -->
+<div class="card" style="border-left:3px solid var(--accent-cyan);">
+  <h3>&#128274; Crisis 4: The Digital Iron Curtain</h3>
+  <p>On January 8, Iran imposed a <strong>near-total internet shutdown</strong> — the longest ever recorded in the country — cutting off <strong>92 million citizens</strong> from the global web. Even phone and text messaging were restricted.</p>
+  <p>Although partially relaxed on January 28, the regime is now building something far more sinister: a <strong>two-tier internet system</strong> where only security-vetted elites receive global access, while 90 million citizens are locked inside a state-controlled intranet. Government spokesperson Fatemeh Mohajerani confirmed international access won't be restored until <strong>at least late March</strong>.</p>
+
+  <div class="callout cyan">
+    <div class="callout-title">Foreign Policy — Feb 24, 2026</div>
+    "The regime is testing a two-tier internet where access becomes a vetted privilege... building a system that grants web access only to security-vetted elites, while locking 90 million citizens inside an intranet."
+  </div>
+
+  <p>Georgia Tech researchers confirmed the blackout extended to <strong>Starlink satellite terminals</strong>, which Iran has been jamming. The shutdown is simultaneously concealing ongoing atrocities and destroying the economy — Iranian businesses report catastrophic losses from weeks without connectivity.</p>
+
+  <div class="callout red">
+    <div class="callout-title">CIA Targets Iranian Insiders — Feb 24-25, 2026</div>
+    The CIA released a <strong>Farsi-language video</strong> on X, Instagram, and YouTube offering detailed instructions for Iranian insiders to make secure contact: use a paid VPN registered outside Iran/Russia/China, a disposable device, private/incognito browsing, and access a dedicated <strong>Tor (.onion) portal</strong>. CIA Director Ratcliffe noted previous campaigns targeting Russian and Chinese speakers had yielded actionable results. Iran condemned the campaign as open interference. In a related development, Iranian authorities <strong>seized Starlink equipment</strong> found in a diplomat's luggage. — Sources: <em>CNBC, Iran Int'l, US News, Feb 25</em>
+  </div>
+</div>
+
+<!-- Crisis 5: Ethnic Minority Crackdown -->
+<div class="card" style="border-left:3px solid var(--accent-orange);">
+  <h3>&#127463;&#127469; Crisis 5: The Ethnic Periphery Erupts</h3>
+  <p>While students protest in Tehran, Iran's ethnic minorities have borne the most brutal repression. The regime deployed <strong>heavy machine guns, armored vehicles, tanks, helicopter gunships</strong> in Kurdish, Baloch, and Arab-majority regions — a dramatically heavier response than in Persian cities.</p>
+
+  <div class="crisis-grid">
+    <div class="crisis-card">
+      <h4 style="color:#ff8c42;">Kurdistan</h4>
+      <p><strong>2,000+ Kurdish citizens arrested.</strong> Families report torture: threats of sexual assault, mock executions, beatings with cables, burning with irons, nail extraction. IRGC and Basij conducting warrantless raids and mass detentions.</p>
+      <div class="meter"><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-orange);"></div></div>
+    </div>
+    <div class="crisis-card">
+      <h4 style="color:#ff8c42;">Sistan-Baluchestan</h4>
+      <p>Heavy military deployment with reports of armored vehicles and helicopter gunships used against civilians. The Baloch community, already among Iran's most marginalized, faces the most militarized crackdown.</p>
+      <div class="meter"><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div></div>
+    </div>
+    <div class="crisis-card">
+      <h4 style="color:#ff8c42;">Khuzestan (Arab)</h4>
+      <p>Ahwaz Arabs face heavy artillery and military-grade suppression. The oil-rich province has long been a site of ethnic grievance, with communities demanding linguistic and cultural rights.</p>
+      <div class="meter"><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-orange);"></div><div class="seg"></div></div>
+    </div>
+    <div class="crisis-card">
+      <h4 style="color:#ff8c42;">Azerbaijan (Turkish)</h4>
+      <p>Ethnic Azeri Turks — Iran's largest minority — have joined the broader protest movement. The Congress of Nationalities of Federal Iran now represents all minority groups united against the regime.</p>
+      <div class="meter"><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg"></div><div class="seg"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Crisis 6: Water Catastrophe -->
+<div class="card" style="border-left:3px solid #00bcd4;">
+  <h3>&#128167; Crisis 6: The Water Catastrophe</h3>
+  <p>Iran faces a <strong>water crisis of existential proportions</strong> that predates the current political upheaval — but now accelerates it. Decades of IRGC-directed dam-building, agricultural mismanagement, and climate change have turned one of the ancient world's most water-rich civilizations into a country running dry.</p>
+
+  <div class="stats-grid" style="margin:16px 0;">
+    <div class="stat-box"><div class="number" style="color:#00bcd4;">97%</div><div class="label">Lake Urmia volume lost</div></div>
+    <div class="stat-box"><div class="number" style="color:#ff3b3b;">31,000</div><div class="label">Villages deserted</div></div>
+    <div class="stat-box"><div class="number" style="color:#ff8c42;">19</div><div class="label">Provinces in drought</div></div>
+    <div class="stat-box"><div class="number" style="color:#ffd700;">70%</div><div class="label">Groundwater depleted</div></div>
+  </div>
+
+  <p><strong>Lake Urmia</strong>, once the Middle East's largest lake (5,200 km&sup2;) and a UNESCO Biosphere Reserve, has shrunk to <strong>less than 10% of its former volume</strong>. Its exposed lakebed now creates toxic salt and dust storms carrying heavy metals across northwestern Iran, causing respiratory disease, crop failure, and mass displacement.</p>
+
+  <div class="callout cyan" style="margin:16px 0;">
+    <div class="callout-title" style="color:var(--accent-cyan);">Root Cause: IRGC Dam Policy</div>
+    <p style="color:var(--text-secondary);">The IRGC and its affiliated companies built <strong>600+ dams</strong> across Iran — many without environmental review — diverting rivers that fed lakes and wetlands. The Zayandeh River that sustained Isfahan (pop. 2M) now runs dry for months each year. Farmers in Khuzestan (Crisis 5's Arab heartland) have seen the Karun River — Iran's largest — reduced to a trickle, fueling both the ethnic and water crises simultaneously.</p>
+  </div>
+
+  <p><strong>Tehran itself</strong> (pop. 9M metro) faces acute water rationing. The Karaj Dam reservoir is at historic lows. Officials have warned of a "Day Zero" scenario — the point at which municipal taps stop flowing — as early as summer 2026. Meanwhile, <strong>Iranian agriculture consumes 92% of available water</strong>, much of it for IRGC-controlled pistachio and saffron export farms that prioritize foreign currency over domestic food supply.</p>
+
+  <p>The water crisis is now <strong>inseparable from the protest movement</strong>. The December 2025 economic protests were partly driven by water shortages in Isfahan, Khuzestan, and Sistan-Baluchestan. When the regime shut off internet access in January, it also shut off the water-monitoring apps that farmers relied on, leading to further crop losses.</p>
+</div>
+
+<!-- Crisis 7: Proxy Network Collapse -->
+<div class="card" style="border-left:3px solid #e040fb;">
+  <h3>&#128373; Crisis 7: Axis of Resistance Unraveling</h3>
+  <p>Iran's carefully built <strong>"Axis of Resistance"</strong> — its network of proxy forces across the Middle East — has suffered catastrophic losses since mid-2025. What was once Tehran's primary tool of asymmetric power projection is now fractured, depleted, and increasingly unreliable.</p>
+
+  <div class="crisis-grid">
+    <div class="crisis-card">
+      <h4 style="color:#e040fb;">Hezbollah — Decimated</h4>
+      <p><strong>Hassan Nasrallah killed</strong> (Sep 2025) along with most of the senior command council. Israel's June-August 2025 twelve-day campaign destroyed 60%+ of Hezbollah's long-range missile arsenal. The Syria supply route — Iran's land bridge — has been severed since the fall of Assad in Dec 2024. Hezbollah is now a <strong>regional militia, not a strategic deterrent</strong>.</p>
+      <div class="meter"><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div></div>
+    </div>
+    <div class="crisis-card">
+      <h4 style="color:#e040fb;">Houthis — Restructuring</h4>
+      <p>Yemen's Ansar Allah has proven the most resilient proxy, still launching anti-shipping missiles into the Red Sea. But US/UK strikes since Jan 2024 have degraded their command infrastructure. <strong>Increasingly operating independently</strong> from Tehran — a sign of weakening control, not strength.</p>
+      <div class="meter"><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-orange);"></div><div class="seg" style="background:var(--accent-orange);"></div><div class="seg"></div></div>
+    </div>
+    <div class="crisis-card">
+      <h4 style="color:#e040fb;">Iraqi PMF / Kataib Hezbollah</h4>
+      <p>Iraqi Shia militias remain Iran's most intact proxy force. <strong>Kataib Hezbollah issued a Jan 2026 statement</strong> calling for "martyrdom operations" against US forces in Iraq and Syria. However, the Iraqi government is increasingly distancing itself, and US strikes on PMF positions have degraded coordination.</p>
+      <div class="meter"><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-orange);"></div><div class="seg"></div></div>
+    </div>
+    <div class="crisis-card">
+      <h4 style="color:#e040fb;">Syria — Collapsed</h4>
+      <p>The fall of Assad (Dec 2024) eliminated Iran's most critical regional foothold. Syrian proxies — Liwa Fatemiyoun, NDF units, IRGC advisors — have been expelled or disbanded. <strong>The "land bridge" from Tehran to Beirut no longer exists.</strong> Iran lost billions in infrastructure investment overnight.</p>
+      <div class="meter"><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div><div class="seg" style="background:var(--accent-red);"></div></div>
+    </div>
+  </div>
+
+  <div class="callout red" style="margin:16px 0;">
+    <div class="callout-title" style="color:var(--accent-red);">Strategic Implication</div>
+    <p style="color:var(--text-secondary);">The collapse of the Axis of Resistance means Iran's primary <strong>deterrence strategy has failed</strong>. Tehran built this network specifically to threaten retaliation against US and Israeli targets without direct state-to-state warfare. With Hezbollah's leadership wiped out, Syria lost, and the land bridge severed, Iran must now either <strong>escalate to direct confrontation</strong> (which its degraded military cannot sustain) or <strong>accept a significantly weakened negotiating position</strong> in Geneva.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <h4 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;color:var(--text-secondary);">Sources</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 32px;text-align:left;max-width:900px;margin:0 auto;font-size:12px;">
+      <a href="https://www.independent.co.uk/news/world/middle-east/iran-trump-us-uk-evacuations-strikes-live-updates-b2928983.html">The Independent: UK withdraws Iran embassy staff ahead of potential US strikes, Feb 27</a>
+      <a href="https://news.sky.com/story/uk-government-staff-have-been-withdrawn-from-iran-13512938">Sky News: UK government staff have been withdrawn from Iran, Feb 27</a>
+      <a href="https://www.politico.eu/article/uk-ambassador-iran-evacuation-embassy-foreign-office/">Politico EU: UK ambassador and all embassy staff evacuated from Iran, Feb 27</a>
+      <a href="https://www.dailymail.co.uk/news/article-15599195/Britain-evacuates-staff-Iran-amid-growing-fears-Trump-launch-attack.html">Daily Mail: Britain evacuates staff from Iran amid fears Trump will launch attack, Feb 27</a>
+      <a href="https://www.telegraph.co.uk/world-news/2026/02/27/iran-us-latest-britain-pulls-embassy-staff-out-of-tehran/">The Telegraph: Iran-US latest — Britain pulls embassy staff out of Tehran, Feb 27</a>
+      <a href="https://www.scmp.com/news/china/diplomacy/article/3344924/china-tells-citizens-get-out-iran-soon-possible-us-strike-fears-grow">SCMP: China tells citizens to leave Iran "as soon as possible" — US strike fears grow, Feb 27</a>
+      <a href="https://english.alarabiya.net/News/middle-east/2026/02/27/china-urges-citizens-in-iran-to-evacuate">Al Arabiya: China urges citizens in Iran to evacuate, Feb 27</a>
+      <a href="https://www.thedefensenews.com/news-details/US-Deploys-USS-George-HW-Bush-Third-Aircraft-Carrier-to-Middle-East-as-Pressure-Builds-on-Iran/">The Defense News: US deploys USS George H.W. Bush — third aircraft carrier — to Middle East, Feb 27</a>
+      <a href="https://www.cnbc.com/2026/02/27/us-iran-nuclear-talks-oil-middle-east.html">CNBC: US and Iran wrap up "most intense" nuclear talks with no deal, Feb 27</a>
+      <a href="https://www.reuters.com/world/middle-east/us-iran-technical-delegations-depart-geneva-vienna-iaea-talks-2026-02-27/">Reuters: US-Iran technical delegations depart for Vienna — IAEA confirms March 2 working groups, Feb 27</a>
+      <a href="https://apnews.com/article/iran-us-nuclear-talks-vienna-iaea-march-2026">AP: US and Iran to hold expert-level nuclear talks in Vienna beginning March 2, Feb 27</a>
+      <a href="https://www.aljazeera.com/news/2026/2/27/iran-us-technical-teams-head-to-vienna-for-nuclear-talks">Al Jazeera: Iran, US technical teams head to Vienna for nuclear talks, Feb 27</a>
+      <a href="https://iranintl.com/en/202602276543">Iran International: IRGC hardliners call Geneva Round 3 outcome "insufficient"; Araghchi defends diplomacy, Feb 27</a>
+      <a href="https://bonbast.com/">Bonbast.com: Rial/USD — 1.63M (Feb 27, 2026)</a>
+      <a href="https://www.aljazeera.com/news/liveblog/2026/2/26/us-iran-talks-live-nuclear-talks-to-kick-off-in-geneva-amid-tensions">Al Jazeera: US-Iran Geneva Round 3 talks live blog</a>
+      <a href="https://www.upi.com/Top_News/World-News/2026/02/26/switzerland-US-Iran-nuclear-talks/6371772094801/">UPI: Third round of US-Iran nuclear talks begin in Geneva</a>
+      <a href="https://www.politico.com/news/2026/02/25/white-house-politics-israel-strikes-iran-00799456">Politico: White House believes "politics better" if Israel strikes Iran first (Feb 25)</a>
+      <a href="https://www.cbsnews.com/news/trump-netanyahu-israeli-strikes-iran-ballistic-missiles/">CBS News: Trump told Netanyahu he'd back Israeli strikes on Iran if talks fail (Feb 15)</a>
+      <a href="https://www.cnbc.com/2026/02/26/us-iran-nuclear-weapons-talks-rubio-geneva-ballistic-missiles.html">CNBC: US-Iran Geneva talks — ballistic missiles on agenda</a>
+      <a href="https://www.timesofisrael.com/iranian-fm-arrives-in-geneva-for-talks-as-us-demands-any-nuclear-deal-not-sunset/">Times of Israel: Araghchi arrives in Geneva; US demands no sunset clauses</a>
+      <a href="https://www.usnews.com/news/world/articles/2026-02-26/us-and-iran-to-hold-a-third-round-of-nuclear-talks-as-more-american-forces-deploy-to-the-mideast">US News: Third round of nuclear talks as US forces deploy to Mideast</a>
+      <a href="https://www.independent.co.uk/news/world/middle-east/trump-iran-nuclear-talks-geneva-b2927798.html">The Independent: US and Iran begin critical nuclear talks</a>
+      <a href="https://bonbast.com/">Bonbast.com: Rial/USD free market rate — 1.63M (Feb 27, 2026)</a>
+      <a href="https://www.hra-iran.org/the-crimson-winter-a-50-day-record-of-irans-2025-2026-nationwide-protests/">HRANA: "The Crimson Winter" — 7,007 confirmed protest deaths, 50-day report, Feb 23, 2026</a>
+      <a href="https://www.reuters.com/world/middle-east/irans-araghchi-heads-geneva-nuclear-talks-2026-02-26/">Reuters: Araghchi departs Tehran for Geneva Round 3</a>
+      <a href="https://iranintl.com/en/202602265678">Iran International: Day 6 student protests — Basij deployed to campuses</a>
+      <a href="https://www.independent.co.uk/news/uk/home-news/uk-iran-embassy-staff-leave-tehran-b2928001.html">The Independent: UK withdraws ambassador and ALL embassy staff from Tehran, Feb 27</a>
+      <a href="https://news.sky.com/story/uk-withdraws-iran-ambassador-amid-security-concerns-as-us-and-tehran-hold-nuclear-talks-13321417">Sky News: UK withdraws Iran ambassador amid security concerns, Feb 27</a>
+      <a href="https://www.cgtn.com/story/2026-02-27/china-urges-nationals-to-leave-iran-as-soon-as-possible.html">CGTN: China urges nationals to leave Iran "as soon as possible," Feb 27</a>
+      <a href="https://www.defensenews.com/naval/2026/02/27/pentagon-confirms-bush-carrier-strike-group-deployment-to-middle-east/">Defense News: Pentagon confirms USS George H.W. Bush CSG deployment to Middle East, Feb 27</a>
+      <a href="https://www.reuters.com/world/middle-east/us-iran-delegations-depart-vienna-iaea-talks-march-2-2026-02-27/">Reuters: US &amp; Iran technical delegations depart for Vienna; IAEA confirms March 2 session, Feb 27</a>
+      <a href="https://www.aljazeera.com/news/2026/2/26/iran-parliament-emergency-session-trump-sotu">Al Jazeera: Iran parliament emergency session after Trump SOTU</a>
+      <a href="https://www.cnbc.com/2026/02/26/the-cia-urges-iranians-to-reach-out-as-informants-in-rare-move.html">CNBC: CIA urges Iranians to reach out as informants</a>
+      <a href="https://www.usnews.com/news/world/articles/2026-02-24/cia-offers-tips-to-potential-informants-in-iran-as-trump-considers-military-action">US News: CIA offers tips to potential informants in Iran</a>
+      <a href="https://www.twz.com/news-features/supercarrier-uss-gerald-r-ford-has-crossed-into-the-mediterranean">The War Zone: Ford CSG enters Mediterranean</a>
+      <a href="https://www.nbcnews.com/world/iran/us-iran-hold-high-stakes-nuclear-talks-geneva-threat-war-looms-rcna259304">NBC: US-Iran hold high-stakes Geneva nuclear talks</a>
+      <a href="https://www.aljazeera.com/news/2026/2/25/trump-says-preference-is-to-solve-iran-tensions-through-diplomacy">Al Jazeera: Trump SOTU — Iran "big lies" response</a>
+      <a href="https://www.cnbc.com/2026/02/25/us-iran-talks-nuclear-trump-oil-prices-war-conflict.html">CNBC: Trump says Iran wants deal more than US</a>
+      <a href="https://news.usni.org/2026/02/23/usni-news-fleet-and-marine-tracker-feb-23-2026">USNI: Fleet and Marine Tracker Feb 23</a>
+      <a href="https://www.stripes.com/branches/navy/2026-02-20/ford-middle-east-mediterranean-iran-20813486.html">Stars &amp; Stripes: Ford CSG arrives in Mediterranean</a>
+      <a href="https://www.meforum.org/mef-reports/americas-military-buildup-around-iran-what-we-know-and-what-it-means">MEF: Complete military buildup inventory</a>
+      <a href="https://gulfnews.com/world/mena/us-navy-makes-staggering-mideast-force-buildup-one-third-of-deployed-fleet-now-aimed-at-iran-1.500445245">Gulf News: 1/3 of deployed fleet aimed at Iran</a>
+      <a href="https://www.csis.org/analysis/us-military-middle-east-numbers-behind-trumps-threats-against-iran">CSIS: US Military in the Middle East by the Numbers</a>
+      <a href="https://www.washingtonpost.com/investigations/2026/02/24/united-states-iran-buildup/">WaPo: 150+ US aircraft surge into Middle East</a>
+      <a href="https://www.pbs.org/newshour/world/heres-what-we-know-about-the-buildup-of-u-s-military-assets-in-the-middle-east">PBS: Military buildup details</a>
+      <a href="https://www.nbcnews.com/world/iran/iran-hit-new-protests-us-builds-pressure-nuclear-talks-rcna260211">NBC: Iran hit by resurgent protests</a>
+      <a href="https://www.aljazeera.com/news/2026/2/24/irans-government-stresses-red-lines-as-students-protest-in-universities">Al Jazeera: Iran "red lines" for students</a>
+      <a href="https://www.npr.org/2026/02/23/nx-s1-5708935/trumps-sanctions-on-iran-have-dramatically-affected-its-economy-and-led-to-protests">NPR: Sanctions and Iran's economic crisis</a>
+      <a href="https://www.amnesty.org/en/latest/news/2026/01/iran-massacre-of-protesters-demands-global-diplomatic-action-to-signal-an-end-to-impunity/">Amnesty: Iran protest massacres</a>
+      <a href="https://israel-alma.org/iran-situation-assessment-february-2026-the-race-to-rebuild-the-nuclear-and-missile-array-casual-terror-and-the-crink/">Alma Center: Iran assessment Feb 2026</a>
+      <a href="https://www.axios.com/2026/01/13/pahlavi-witkoff-iran-protest-meeting-trump">Axios: Pahlavi secret meeting with Witkoff</a>
+      <a href="https://foreignpolicy.com/2026/02/24/tehran-internet-tiered-connectivity-shutdown/">Foreign Policy: Iran's two-tiered internet</a>
+      <a href="https://www.britannica.com/event/2026-Iranian-Protests">Britannica: 2026 Iranian Protests</a>
+      <a href="https://nationalinterest.org/blog/middle-east-watch/the-day-after-khamenei-irans-liberation-will-begin-as-an-irgc-power-struggle">National Interest: IRGC power struggle</a>
+      <a href="https://www.cnn.com/2026/02/20/europe/britain-air-base-access-us-iran-intl-hnk-ml">CNN: Britain blocking air bases</a>
+      <a href="https://news.usni.org/2026/02/02/destroyer-uss-truxtun-to-deploy-as-navy-maintains-warship-build-up-in-southern-central-commands">USNI: Destroyer buildup in CENTCOM</a>
+      <a href="https://www.twz.com/news-features/supercarrier-uss-gerald-r-ford-has-crossed-into-the-mediterranean">The War Zone: Ford crosses into Mediterranean</a>
+      <a href="https://news.usni.org/2026/01/29/destroyer-delbert-d-black-now-in-red-sea-following-lincoln-strike-group-shift-to-middle-east">USNI: Delbert D. Black shifts to Red Sea</a>
+      <a href="https://news.usni.org/2026/02/24/u-s-captures-third-shadow-fleet-tanker-in-indian-ocean">USNI: US captures third shadow fleet tanker in Indian Ocean</a>
+      <a href="https://www.timesofisrael.com/us-forces-board-3rd-oil-tanker-in-indian-ocean-accused-of-trying-to-defy-iran-sanctions/">Times of Israel: US seizes 3rd tanker — defying Iran sanctions</a>
+      <a href="https://indianexpress.com/article/world/us-iran-geneva-talks-live-updates-trump-sanctions-military-buildup-kushner-10552491/">Indian Express: US-Iran Geneva talks live — Vance warning, Rubio on missiles</a>
+      <a href="https://www.wionews.com/world/-us-has-seen-evidence-vance-warns-iran-ahead-of-geneva-meet-rubio-flags-missile-problem-will-nuclear-talks-fail-1772078367975">WION: Vance warns Iran, Rubio flags missile "big problem"</a>
+      <a href="https://www.timesofisrael.com/f-22-jets-deploy-at-israeli-air-force-base-as-us-builds-up-forces-for-iran-strike/">Times of Israel: F-22 jets deploy at Israeli Air Force base — Ovda, Feb 24</a>
+      <a href="https://abcnews.com/International/us-air-force-stealth-fighters-land-israel-official/story?id=130467142">ABC News: US Air Force F-22 stealth fighters land in Israel, Feb 24</a>
+      <a href="https://www.bloomberg.com/news/articles/2026-02-26/us-iran-to-hold-talks-at-technical-level-next-week-oman-says">Bloomberg: US, Iran to hold technical-level talks next week in Vienna — Oman, Feb 26</a>
+      <a href="https://www.france24.com/en/middle-east/20260226-live-us-iran-third-round-talks-trump-warships-mideast">France24: US-Iran Round 3 live — "good progress," Vienna technical talks Monday, Feb 26</a>
+      <a href="https://www.wcvb.com/article/maps-us-israel-iran-strikes/70551104">WCVB / AP: Mapped — Operation Epic Fury strike locations across Iran, Feb 28</a>
+      <a href="https://en.wikipedia.org/wiki/2026_Israeli%E2%80%93United_States_strikes_on_Iran">Wikipedia: 2026 Israeli–United States strikes on Iran — full target list, Feb 28</a>
+      <a href="https://www.aljazeera.com/news/2026/2/28/mapping-us-and-israeli-attacks-on-iran-and-tehrans-retaliatory-strikes">Al Jazeera: Mapping US and Israeli attacks on Iran and Tehran's retaliatory strikes, Feb 28</a>
+      <a href="https://www.cbsnews.com/news/map-iran-strike-locations/">CBS News: Map shows military strike locations across Iran, Feb 28</a>
+      <a href="https://www.newsweek.com/map-reveals-all-targets-hit-by-us-and-iran-11597913">Newsweek: Map reveals all targets hit by US and Iran, Feb 28</a>
+      <a href="https://www.csis.org/analysis/operation-epic-fury-and-remnants-irans-nuclear-program">CSIS: Operation Epic Fury and the Remnants of Iran's Nuclear Program, Feb 28</a>
+      <a href="https://www.armyrecognition.com/news/army-news/2026/us-israel-launch-operation-epic-fury-against-iran-nuclear-program-and-missile-arsenal">Army Recognition: US and Israel launch Operation Epic Fury against Iran, Feb 28</a>
+      <a href="https://www.centcom.mil/MEDIA/PRESS-RELEASES/Press-Release-View/Article/4418396/us-forces-launch-operation-epic-fury/">US CENTCOM: Press release — US Forces Launch Operation Epic Fury, Feb 28</a>
+      <a href="https://www.timesnownews.com/world/middle-east/from-key-routes-leading-to-fordow-nuclear-site-to-homeland-defence-command-centres-list-of-targets-hit-by-israel-in-iran-article-152136727">Times Now: From Fordow to command bunkers — list of Israeli targets in Iran, Feb 28</a>
+      <a href="https://www.twz.com/news-features/israel-strikes-key-iranian-command-and-control-sites-in-tehran">The War Zone: Israel strikes key Iranian C2 sites in Tehran — IRGC HQ, Feb 28</a>
+      <a href="https://www.kurdistan24.net/en/story/845412">Kurdistan24: Names of strategic sites in Iran bombed by Israel, Feb 28</a>
+      <a href="https://jinsa.org/jinsa_report/israeli-strikes-against-iranian-targets/">JINSA: US and Israeli strikes against Iranian targets — full analysis, Feb 28</a>
+      <a href="https://www.aljazeera.com/news/2026/2/28/multiple-gulf-arab-states-that-host-us-assets-targeted-in-iran-retaliation">Al Jazeera: Multiple Gulf Arab states targeted in Iran retaliation, Feb 28</a>
+      <a href="https://www.middleeasteye.net/news/iranian-missiles-strike-gulf-countries-bahrain-says-us-fifth-fleet-base-attacked">Middle East Eye: Iranian missiles strike Gulf countries — Bahrain 5th Fleet base attacked, Feb 28</a>
+      <a href="https://www.usnews.com/news/world/articles/2026-02-28/iran-fires-missiles-at-gulf-arab-states-one-killed-in-abu-dhabi">US News &amp; World Report: Iran fires missiles at Gulf Arab states — one killed in Abu Dhabi, Feb 28</a>
+      <a href="https://www.understandingwar.org/research/middle-east/iran-update-special-report-us-and-israeli-strikes-february-28-2026/">ISW: Iran Update — Special Report: US and Israeli Strikes, Feb 28, 2026</a>
+    </div>
+    <div style="margin-top:24px;font-size:11px;">Compiled March 1, 2026 &bull; For informational purposes only &bull; 40+ international sources</div>
+  </div>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="js/map.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/sidebar.js"></script>
+
+</body>
+</html>

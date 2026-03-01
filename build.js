@@ -38,25 +38,83 @@ const DATA = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'data.json'), 'utf8'
   DATA.dateShort = `${MONTHS_SHORT[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
 }());
 
-const SECTIONS = [
-  'sections/head.html',
-  'sections/masthead.html',
-  'sections/ticker.html',
-  'sections/sidebar.html',
-  'sections/stats.html',
-  'sections/last-24h.html',
-  'sections/scenarios.html',
-  'sections/confirmed-unconfirmed.html',
-  'sections/theater.html',
-  'sections/air-power.html',
-  'sections/naval.html',
-  'sections/inside-iran.html',
-  'sections/opposition.html',
-  'sections/nuclear.html',
-  'sections/hormuz.html',
-  'sections/military.html',
-  'sections/sources.html',
-  'sections/scripts.html',
+const BUILDS = [
+  {
+    output: 'index.html',
+    sidebarFile: 'sections/sidebar.html',
+    sections: [
+      'sections/head.html',
+      'sections/masthead.html',
+      'sections/ticker.html',
+      'sections/sidebar.html',
+      'sections/stats.html',
+      'sections/last-24h.html',
+      'sections/confirmed-unconfirmed.html',
+      'sections/theater.html',
+      'sections/nuclear.html',
+      'sections/scenarios-teaser.html',
+      'sections/forces-teaser.html',
+      'sections/military.html',
+      'sections/inside-iran-teaser.html',
+      'sections/reactions-teaser.html',
+      'sections/opposition.html',
+      'sections/sources.html',
+      'sections/scripts.html',
+    ],
+  },
+  {
+    output: 'scenarios.html',
+    sidebarFile: 'sections/sidebar-scenarios.html',
+    sections: [
+      'sections/head-scenarios.html',
+      'sections/masthead.html',
+      'sections/ticker.html',
+      'sections/sidebar-scenarios.html',
+      'sections/scenarios.html',
+      'sections/sources.html',
+      'sections/scripts.html',
+    ],
+  },
+  {
+    output: 'forces.html',
+    sidebarFile: 'sections/sidebar-forces.html',
+    sections: [
+      'sections/head-forces.html',
+      'sections/masthead.html',
+      'sections/ticker.html',
+      'sections/sidebar-forces.html',
+      'sections/air-power.html',
+      'sections/naval.html',
+      'sections/sources.html',
+      'sections/scripts.html',
+    ],
+  },
+  {
+    output: 'inside-iran.html',
+    sidebarFile: 'sections/sidebar-inside-iran.html',
+    sections: [
+      'sections/head-inside-iran.html',
+      'sections/masthead.html',
+      'sections/ticker.html',
+      'sections/sidebar-inside-iran.html',
+      'sections/inside-iran.html',
+      'sections/sources.html',
+      'sections/scripts.html',
+    ],
+  },
+  {
+    output: 'reactions.html',
+    sidebarFile: 'sections/sidebar-reactions.html',
+    sections: [
+      'sections/head-reactions.html',
+      'sections/masthead.html',
+      'sections/ticker.html',
+      'sections/sidebar-reactions.html',
+      'sections/reactions.html',
+      'sections/sources.html',
+      'sections/scripts.html',
+    ],
+  },
 ];
 
 function processIncludes(content) {
@@ -182,20 +240,29 @@ function checkDuplicateIds(output) {
 const unknownKeys = new Set();
 const allWarnings = [];
 
-// Build output
-const output = SECTIONS.map(file => {
-  const content = fs.readFileSync(path.join(BASE_DIR, file), 'utf8');
+for (const build of BUILDS) {
+  const buildWarnings = [];
 
-  // Run validations on each file
-  allWarnings.push(...validateAIZones(content, file));
-  allWarnings.push(...checkFileSize(file));
+  // Build output for this page
+  const output = build.sections.map(file => {
+    const content = fs.readFileSync(path.join(BASE_DIR, file), 'utf8');
 
-  return applyData(processTicker(processIncludes(content)), unknownKeys);
-}).join('');
+    // Run validations on each file (only once, for the first build that uses it)
+    buildWarnings.push(...validateAIZones(content, file));
+    buildWarnings.push(...checkFileSize(file));
 
-// Run global validations
-allWarnings.push(...validateNavigation(output, 'sections/sidebar.html'));
-allWarnings.push(...checkDuplicateIds(output));
+    return applyData(processTicker(processIncludes(content)), unknownKeys);
+  }).join('');
+
+  // Run global validations
+  buildWarnings.push(...validateNavigation(output, build.sidebarFile));
+  buildWarnings.push(...checkDuplicateIds(output));
+
+  allWarnings.push(...buildWarnings);
+
+  fs.writeFileSync(path.join(BASE_DIR, build.output), output);
+  console.log(`Built ${build.output} from ${build.sections.length} sections.`);
+}
 
 // Report warnings
 if (unknownKeys.size > 0) {
@@ -208,8 +275,6 @@ if (allWarnings.length > 0) {
   process.stderr.write('\n');
 }
 
-fs.writeFileSync(path.join(BASE_DIR, 'index.html'), output);
-console.log(`Built index.html from ${SECTIONS.length} sections.`);
 if (allWarnings.length === 0 && unknownKeys.size === 0) {
   console.log('✓ All validation checks passed');
 }
