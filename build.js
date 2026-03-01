@@ -103,6 +103,7 @@ const BUILDS = [
       'sections/sidebar.html',
       'sections/stats.html',
       'sections/last-24h.html',
+      'sections/footage.html',
       'sections/confirmed-unconfirmed.html',
       'sections/theater.html',
       'sections/nuclear-teaser.html',
