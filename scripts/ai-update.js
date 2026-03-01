@@ -571,8 +571,8 @@ Rules:
   "CATEGORY IN ALL CAPS: concise summary with key names/numbers (Source, Date)".
   Remove the oldest items so the total array length stays between 20 and 25.
   Do not duplicate headlines already in the array.
-- Stat keys (statConfirmedDead, statTotalKilled, statDetained, statUsAircraft,
-  statUsShips, statRialRate): update ONLY if the search results contain a clearly
+- Stat keys (statUsTroops, statMissilesFired, statCarrierGroups, statOilAtRisk,
+  statCitizensOffline, statInflation): update ONLY if the search results contain a clearly
   newer confirmed figure with a credible source.
 - Scenario percentages (scenarioDealPct, scenarioStrikesPct,
   scenarioRevolutionPct, scenarioPahlaviPct, scenarioFrozenPct): adjust ONLY if
