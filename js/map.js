@@ -165,6 +165,15 @@ document.addEventListener('DOMContentLoaded', function(){
   // Charles de Gaulle movement arrow (Central Med → Eastern Med)
   L.polyline([[43.1,5.9],[37.0,10.5],[35.5,20.0]],{color:'#0055a4',weight:1.5,dashArray:'8,6',opacity:0.5}).addTo(map).bindPopup('Charles de Gaulle transit route (Toulon → Eastern Med)');
 
+  // ===== US DOMESTIC — TEXAS SHOOTING (Iran-linked, Mar 1) =====
+  L.marker([29.4,-98.5],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; TEXAS — Shooting Incident (Mar 1, 2026)</b><br><b style="color:#ff3b3b">Suspected Iran-linked attack — Joint Base San Antonio area</b><br>Multiple casualties reported; FBI taking lead on investigation<br>Suspected attacker apprehended; Iran-linked cell suspected<br>US domestic threat level raised; military installations on alert<br>FBI stepped up monitoring of Iran-linked threat networks nationwide<br><em>Sources: FBI, SAPD, Mar 1</em>');
+
+  // ===== UK — COUNTRY MARKER (defensive assistance) =====
+  L.marker([51.5,-0.1],{icon:icon('#00d4ff',10)}).addTo(map).bindPopup('<b style="color:#00d4ff">&#127468;&#127463; United Kingdom — Defensive Assistance Offered</b><br>Monitoring situation closely; briefed by US in advance<br><b style="color:#00d4ff">Defensive military assistance offers (Mar 1):</b><br>HMS Diamond (Type 45 destroyer) — forward-deployed to Gulf for air defense<br>Sky Sabre (CAMM) short-to-medium range air defense offered to Gulf allies<br>Typhoon jets offered in defensive CAP role<br>Royal Navy assets deploying for humanitarian corridor protection<br>FCDO coordinating evacuation flights for British nationals<br><em>PM Starmer BLOCKED US use of RAF bases for offensive strikes</em><br><em>Sources: UK MoD, UK FCDO, Reuters, Mar 1</em>');
+
+  // ===== GERMANY — COUNTRY MARKER (defensive assistance) =====
+  L.marker([52.5,13.4],{icon:icon('#5588cc',10)}).addTo(map).bindPopup('<b style="color:#5588cc">&#127465;&#127466; Germany — Defensive Assistance Offered</b><br>Called for immediate ceasefire; supporting UN humanitarian corridor<br><b style="color:#5588cc">Defensive military assistance offers (Mar 1):</b><br>Patriot PAC-3 air defense batteries offered to Gulf allies<br>Eurofighter Typhoons offered in defensive/CAP role<br>Bundestag emergency session authorized defense cooperation<br>€50M pledged in emergency humanitarian aid<br>Coordinating with UNHCR on refugee response<br><em>Sources: German MoD, German Foreign Ministry, Mar 1</em>');
+
   // ===== IRAN BALLISTIC MISSILE RETALIATION (Feb 28) =====
   // Iran fired missiles toward Israel and Gulf states after Operation Epic Fury
   // IRGC called this the "first wave" with more to follow
