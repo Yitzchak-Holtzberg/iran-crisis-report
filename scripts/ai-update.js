@@ -26,7 +26,8 @@
  *   OPENAI_API_KEY   — https://platform.openai.com  (GPT-5-mini is very cheap)
  *
  * Optional environment variables:
- *   UPDATE_TYPE      — "auto" (default), "routine", or "structural"
+ *   UPDATE_TYPE              — "auto" (default), "routine", or "structural"
+ *   OPENAI_STRUCTURAL_MODEL  — model for structural HTML generation (default: "gpt-5")
  *
  * Usage:  node scripts/ai-update.js
  *         UPDATE_TYPE=structural node scripts/ai-update.js
@@ -37,16 +38,18 @@
 const fs   = require('fs');
 const path = require('path');
 
-const BASE_DIR      = path.join(__dirname, '..');
-const DATA_PATH     = path.join(BASE_DIR, 'data.json');
-const LAST24H_PATH  = path.join(BASE_DIR, 'sections', 'last-24h.html');
-const MANIFEST_PATH = path.join(BASE_DIR, 'update-manifest.json');
+const BASE_DIR         = path.join(__dirname, '..');
+const DATA_PATH        = path.join(BASE_DIR, 'data.json');
+const LAST24H_PATH     = path.join(BASE_DIR, 'sections', 'last-24h.html');
+const MANIFEST_PATH    = path.join(BASE_DIR, 'update-manifest.json');
+const GUIDELINES_PATH  = path.join(BASE_DIR, 'STRUCTURAL_GUIDELINES.md');
 
 // ── Environment ──────────────────────────────────────────────────────────────
 
 const TAVILY_KEY  = process.env.TAVILY_API_KEY;
 const OPENAI_KEY  = process.env.OPENAI_API_KEY;
 const UPDATE_TYPE_INPUT = (process.env.UPDATE_TYPE || 'auto').toLowerCase();
+const STRUCTURAL_MODEL  = process.env.OPENAI_STRUCTURAL_MODEL || 'gpt-5';
 
 if (!['auto', 'routine', 'structural'].includes(UPDATE_TYPE_INPUT)) {
   console.error(`Error: UPDATE_TYPE must be "auto", "routine" or "structural" (got "${UPDATE_TYPE_INPUT}").`);
@@ -92,10 +95,10 @@ async function tavilySearch(query) {
   return res.json();
 }
 
-/** Call GPT-5-mini and return the raw text of the first choice. */
-async function callGPT(systemPrompt, userContent, jsonMode = false) {
+/** Call an OpenAI model and return the raw text of the first choice. */
+async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt-5-mini') {
   const body = {
-    model: 'gpt-5-mini',
+    model,
     max_completion_tokens: 16384,
     messages: [
       { role: 'system', content: systemPrompt },
@@ -387,32 +390,45 @@ occurred that requires structural changes to section HTML files — not just
 content-within-zones updates but additions, removals, or reordering of cards,
 callouts, and subsections.
 
-You will receive the current HTML of one or more section files plus the latest
-web search results. Return a JSON object where each key is the section name and
-the value is either:
+You will receive the current HTML of one or more section files, editorial
+guidelines, and the latest web search results. Return a JSON object where each
+key is the section name and the value is either:
   - The FULL updated HTML for that section file, OR
   - null if no structural change is needed
 
 Rules:
+- Follow the EDITORIAL GUIDELINES closely — they define what to add, what to
+  reorder, what NOT to touch, and which HTML patterns to use
 - Preserve ALL existing @ai-zone markers exactly as they are
 - Preserve ALL {{placeholder}} template variables exactly as they are
 - Preserve the section-header <div> with its id attribute at the top
 - Keep HTML style consistent with the existing file (same class names, CSS
   variable usage, indentation)
 - Only make changes that are clearly justified by the search results
-- New cards/callouts should use the same patterns as existing ones
+- New cards/callouts MUST use the exact templates from the guidelines
 - Do NOT remove content unless it is clearly outdated or contradicted
 - Do NOT change <script> tags or JavaScript
+- Do NOT modify SVG diagrams
 - When adding new content, use the correct severity-color CSS variables
 - Maximum response size: return at most 3 section files per call`;
 
 /**
  * Structural update phase — only runs when UPDATE_TYPE === 'structural'.
- * Asks GPT to propose section-level HTML changes for files where the news
- * warrants more than a zone-content tweak.
+ * Asks GPT (using the stronger STRUCTURAL_MODEL) to propose section-level HTML
+ * changes for files where the news warrants more than a zone-content tweak.
+ * Editorial guidelines from STRUCTURAL_GUIDELINES.md are injected into the
+ * prompt so the model follows consistent patterns.
  */
 async function updateStructural(searchContext) {
-  console.log('Running STRUCTURAL update phase…');
+  console.log(`Running STRUCTURAL update phase (model: ${STRUCTURAL_MODEL})…`);
+
+  // Load editorial guidelines (non-fatal if missing).
+  let guidelines = '';
+  if (fs.existsSync(GUIDELINES_PATH)) {
+    guidelines = fs.readFileSync(GUIDELINES_PATH, 'utf8');
+  } else {
+    console.warn('STRUCTURAL_GUIDELINES.md not found — proceeding without editorial guidelines.');
+  }
 
   // Read all eligible files.
   const fileContents = {};
@@ -434,12 +450,13 @@ async function updateStructural(searchContext) {
 
   const userContent =
     `UPDATE TYPE: STRUCTURAL — a major event requires section-level changes.\n\n` +
+    (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
     `CURRENT SECTION FILES:\n${filesBlock}\n\n` +
     `WEB SEARCH RESULTS:\n${searchContext}`;
 
   let updates;
   try {
-    const raw = await callGPT(STRUCTURAL_SYSTEM_PROMPT, userContent, true);
+    const raw = await callGPT(STRUCTURAL_SYSTEM_PROMPT, userContent, true, STRUCTURAL_MODEL);
     updates = JSON.parse(raw);
   } catch (err) {
     console.warn(`Structural update GPT call failed (${err.message}) — skipping.`);
