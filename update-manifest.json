@@ -1,0 +1,34 @@
+{
+  "updates": [
+    {
+      "timestamp": "2026-03-01T03:33:02.087Z",
+      "type": "auto",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 7,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": true,
+          "reason": "Reported death of Supreme Leader Khamenei and US–Israeli strikes signal leadership change and major military operations.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": []
+        }
+      }
+    }
+  ]
+}
