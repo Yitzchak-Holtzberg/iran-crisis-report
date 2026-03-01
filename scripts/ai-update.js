@@ -382,6 +382,8 @@ const STRUCTURAL_FILES = {
   'opposition': { rel: 'sections/opposition.html',  desc: 'Opposition & Reza Pahlavi' },
   'hormuz':     { rel: 'sections/hormuz.html',      desc: 'Strait of Hormuz' },
   'military':   { rel: 'sections/military.html',    desc: 'Iran military capability' },
+  'reactions':  { rel: 'sections/reactions.html',    desc: 'Regional reactions & damage assessments' },
+  'confirmed-unconfirmed': { rel: 'sections/confirmed-unconfirmed.html', desc: 'Fog of war: confirmed vs unconfirmed' },
 };
 
 const STRUCTURAL_SYSTEM_PROMPT = `\

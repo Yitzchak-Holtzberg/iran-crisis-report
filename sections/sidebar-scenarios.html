@@ -1,25 +1,6 @@
 <!-- ===== LEFT SIDEBAR — SCENARIOS SUB-PAGE ===== -->
-<aside class="left-sidebar collapsed" id="leftSidebar" aria-label="Page navigation">
-  <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
-  <div class="sb-header" onclick="toggleCollapse()">
-    <div>
-      <div class="sb-brand">&#9632; Iran Report</div>
-      <div class="sb-subtitle">{{dateShort}}<br>Persian Gulf Theater</div>
-    </div>
-    <button class="sb-collapse-btn" id="sbCollapseBtn" aria-label="Toggle navigation panel">&#9654;</button>
-  </div>
-  <div class="sb-pages">
-    <a class="sb-page-pill" href="index.html" data-page="index">Overview</a>
-    <a class="sb-page-pill" href="forces.html" data-page="forces">Forces</a>
-    <a class="sb-page-pill" href="scenarios.html" data-page="scenarios">Scenarios</a>
-    <a class="sb-page-pill" href="inside-iran.html" data-page="inside-iran">Inside Iran</a>
-    <a class="sb-page-pill" href="reactions.html" data-page="reactions">Reactions</a>
-  </div>
+<!-- @include sections/sidebar-header.html -->
   <nav class="sb-nav">
     <a class="sb-link" href="#scenarios" data-section="scenarios"><span class="sb-num">01</span><span class="sb-dot"></span>Five Scenarios</a>
   </nav>
-</aside>
-<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
-<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
-
-<div class="container">
+<!-- @include sections/sidebar-footer.html -->
