@@ -59,18 +59,18 @@ function toggleSidebar() {
   var ov = document.getElementById('sbOverlay');
   var open = sb.classList.toggle('open');
   ov.classList.toggle('open', open);
-  var icon = document.querySelector('#sbToggle .sb-toggle-icon');
-  var label = document.querySelector('#sbToggle .sb-toggle-label');
-  if (icon) icon.textContent = open ? '\u2715' : '\u2630';
-  if (label) label.textContent = open ? 'Close' : 'Menu';
+  setSidebarToggleState(open);
 }
 function closeSidebar() {
   document.getElementById('leftSidebar').classList.remove('open');
   document.getElementById('sbOverlay').classList.remove('open');
+  setSidebarToggleState(false);
+}
+function setSidebarToggleState(open) {
   var icon = document.querySelector('#sbToggle .sb-toggle-icon');
   var label = document.querySelector('#sbToggle .sb-toggle-label');
-  if (icon) icon.textContent = '\u2630';
-  if (label) label.textContent = 'Menu';
+  if (icon) icon.textContent = open ? '\u2715' : '\u2630';
+  if (label) label.textContent = open ? 'Close' : 'Menu';
 }
 // Close sidebar when a link is clicked on mobile
 document.querySelectorAll('.sb-link').forEach(function(a) {
@@ -85,11 +85,7 @@ document.querySelectorAll('.sb-link').forEach(function(a) {
   if (!backToTopBtn) return;
 
   function toggleBackToTop() {
-    if (window.scrollY > 300) {
-      backToTopBtn.classList.add('visible');
-    } else {
-      backToTopBtn.classList.remove('visible');
-    }
+    backToTopBtn.classList.toggle('visible', window.scrollY > 300);
   }
 
   function scrollToTop() {

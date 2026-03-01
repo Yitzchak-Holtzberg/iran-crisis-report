@@ -96,8 +96,14 @@ const BUILDS = [
   {
     output: 'index.html',
     sidebarFile: 'sections/sidebar.html',
+    meta: {
+      pageTitle: 'Iran Crisis Report — {{date}}',
+      pageDescription: 'Live situation report: US\u2013Iran military standoff, nuclear negotiations, protest crackdowns, and economic collapse. Updated multiple times daily.',
+      pageOgDescription: 'Live situation report: US\u2013Iran military standoff, nuclear negotiations, protest crackdowns, and economic collapse. Updated multiple times daily.',
+      pageOgType: 'website',
+    },
     sections: [
-      'sections/head.html',
+      'sections/head-base.html',
       'sections/masthead.html',
       'sections/ticker.html',
       'sections/sidebar.html',
@@ -120,8 +126,14 @@ const BUILDS = [
   {
     output: 'diplomatic.html',
     sidebarFile: 'sections/sidebar-diplomatic.html',
+    meta: {
+      pageTitle: 'Iran Crisis: Diplomatic Track &amp; Nuclear Negotiations \u2014 {{date}}',
+      pageDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, UK-US rift, and Israel\u2019s strike options. Round-by-round briefing updated daily.',
+      pageOgDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, UK-US rift, and Israel\u2019s strike options. Round-by-round briefing updated daily.',
+      pageOgType: 'article',
+    },
     sections: [
-      'sections/head-diplomatic.html',
+      'sections/head-base.html',
       'sections/masthead.html',
       'sections/ticker.html',
       'sections/sidebar-diplomatic.html',
@@ -133,8 +145,14 @@ const BUILDS = [
   {
     output: 'scenarios.html',
     sidebarFile: 'sections/sidebar-scenarios.html',
+    meta: {
+      pageTitle: 'Iran Crisis: Six Scenarios \u2014 {{date}}',
+      pageDescription: 'Six strategic scenarios for the Iran crisis post-Operation Epic Fury: regime collapse, military strikes (in progress), Pahlavi democratic transition, IRGC junta, diplomatic deal (eliminated), and prolonged standoff (eliminated). Analyst consensus probabilities.',
+      pageOgDescription: 'Six strategic scenarios for the Iran crisis: regime collapse, military strikes (Operation Epic Fury \u2014 in progress), Pahlavi democratic transition, IRGC junta succession, diplomatic deal (eliminated), and prolonged standoff (eliminated).',
+      pageOgType: 'article',
+    },
     sections: [
-      'sections/head-scenarios.html',
+      'sections/head-base.html',
       'sections/masthead.html',
       'sections/ticker.html',
       'sections/sidebar-scenarios.html',
@@ -146,8 +164,14 @@ const BUILDS = [
   {
     output: 'forces.html',
     sidebarFile: 'sections/sidebar-forces.html',
+    meta: {
+      pageTitle: 'Iran Crisis: US Strike Forces \u2014 {{date}}',
+      pageDescription: 'Complete US air and naval order of battle: 160+ aircraft (F-35, F-22, B-2, F-15E), triple carrier strike groups (Lincoln, Ford, Bush), and full naval deployment details for the Persian Gulf theater.',
+      pageOgDescription: 'Complete US air and naval order of battle: 160+ aircraft, triple carrier strike groups, and full naval deployment for the Persian Gulf theater.',
+      pageOgType: 'article',
+    },
     sections: [
-      'sections/head-forces.html',
+      'sections/head-base.html',
       'sections/masthead.html',
       'sections/ticker.html',
       'sections/sidebar-forces.html',
@@ -160,8 +184,14 @@ const BUILDS = [
   {
     output: 'inside-iran.html',
     sidebarFile: 'sections/sidebar-inside-iran.html',
+    meta: {
+      pageTitle: 'Iran Crisis: Inside Iran \u2014 {{date}}',
+      pageDescription: 'Eight converging crises inside Iran: Operation Epic Fury strikes, Khamenei succession crisis, the January Massacre, student uprising, economic freefall, internet blackout, ethnic crackdowns, water catastrophe, and axis of resistance collapse.',
+      pageOgDescription: 'Eight converging crises: Operation Epic Fury direct strikes (Day 2), Khamenei confirmed dead, January Massacre (36,500+ killed), student uprising, economic freefall (rial at 1.7M/USD), digital iron curtain, ethnic crackdowns, water catastrophe, and proxy network collapse.',
+      pageOgType: 'article',
+    },
     sections: [
-      'sections/head-inside-iran.html',
+      'sections/head-base.html',
       'sections/masthead.html',
       'sections/ticker.html',
       'sections/sidebar-inside-iran.html',
@@ -173,8 +203,14 @@ const BUILDS = [
   {
     output: 'reactions.html',
     sidebarFile: 'sections/sidebar-reactions.html',
+    meta: {
+      pageTitle: 'Iran Crisis: Regional Reactions &amp; Damage Assessments \u2014 {{date}}',
+      pageDescription: 'Country-by-country reactions to US-Israel Operation Epic Fury strikes on Iran: Bahrain 5th Fleet hit, Abu Dhabi casualties, Qatar, Saudi Arabia, Israel, and full strike damage assessments.',
+      pageOgDescription: 'Country-by-country reactions to Operation Epic Fury and Iran\u2019s retaliatory strikes: Gulf states hit, damage assessments, diplomatic fallout, and casualty reports.',
+      pageOgType: 'article',
+    },
     sections: [
-      'sections/head-reactions.html',
+      'sections/head-base.html',
       'sections/masthead.html',
       'sections/ticker.html',
       'sections/sidebar-reactions.html',
@@ -186,8 +222,14 @@ const BUILDS = [
   {
     output: 'sources.html',
     sidebarFile: 'sections/sidebar-sources.html',
+    meta: {
+      pageTitle: 'Iran Crisis Report \u2014 Sources &amp; References \u2014 {{date}}',
+      pageDescription: 'Full list of sources and references for the Iran Crisis Report, compiled from 40+ international news outlets, think tanks, and official statements.',
+      pageOgDescription: 'Full list of sources and references for the Iran Crisis Report, compiled from 40+ international news outlets, think tanks, and official statements.',
+      pageOgType: 'website',
+    },
     sections: [
-      'sections/head-sources.html',
+      'sections/head-base.html',
       'sections/masthead.html',
       'sections/ticker.html',
       'sections/sidebar-sources.html',
@@ -235,8 +277,8 @@ function applyData(content, unknownKeys) {
 /** Validate that AI zone markers are properly balanced */
 function validateAIZones(content, filename) {
   const warnings = [];
-  const openMarkers = content.match(/<!-- @ai-zone:(\w+) -->/g) || [];
-  const closeMarkers = content.match(/<!-- @\/ai-zone:(\w+) -->/g) || [];
+  const openMarkers = content.match(/<!-- @ai-zone:([\w-]+) -->/g) || [];
+  const closeMarkers = content.match(/<!-- @\/ai-zone:([\w-]+) -->/g) || [];
 
   if (openMarkers.length !== closeMarkers.length) {
     warnings.push(`${filename}: Unbalanced AI zone markers (${openMarkers.length} open, ${closeMarkers.length} close)`);
@@ -246,17 +288,12 @@ function validateAIZones(content, filename) {
 }
 
 /** Check for oversized section files */
-function checkFileSize(filename) {
-  const warnings = [];
-  const fullPath = path.join(BASE_DIR, filename);
-  const content = fs.readFileSync(fullPath, 'utf8');
+function checkFileSize(content, filename) {
   const lineCount = content.split('\n').length;
-
   if (lineCount > 200) {
-    warnings.push(`${filename}: Large file (${lineCount} lines) — consider splitting`);
+    return [`${filename}: Large file (${lineCount} lines) — consider splitting`];
   }
-
-  return warnings;
+  return [];
 }
 
 /** Extract section IDs from HTML content */
@@ -323,16 +360,32 @@ const allWarnings = [];
 for (const build of BUILDS) {
   const buildWarnings = [];
 
+  // Temporarily inject per-page meta into DATA, pre-resolving any {{key}} references
+  // in meta values (e.g. {{date}} inside pageTitle) against the current DATA state.
+  const savedMeta = {};
+  for (const [k, v] of Object.entries(build.meta || {})) {
+    savedMeta[k] = DATA[k];
+    DATA[k] = v.replace(/\{\{([^}]+)\}\}/g, (_m, key) => (DATA[key] !== undefined ? DATA[key] : _m));
+  }
+
   // Build output for this page
   const output = build.sections.map(file => {
     const content = fs.readFileSync(path.join(BASE_DIR, file), 'utf8');
 
     // Run validations on each file (only once, for the first build that uses it)
     buildWarnings.push(...validateAIZones(content, file));
-    buildWarnings.push(...checkFileSize(file));
+    buildWarnings.push(...checkFileSize(content, file));
 
     return applyData(processTicker(processIncludes(content)), unknownKeys);
   }).join('');
+
+  // Restore DATA to its pre-build state.  Keys that didn't exist before this build
+  // (savedMeta[k] === undefined) must be deleted rather than assigned, so they don't
+  // bleed into subsequent builds as stale placeholders.
+  for (const [k, v] of Object.entries(savedMeta)) {
+    if (v === undefined) delete DATA[k];
+    else DATA[k] = v;
+  }
 
   // Run global validations
   buildWarnings.push(...validateNavigation(output, build.sidebarFile));
