@@ -2,7 +2,7 @@
 @media(max-width:768px){
   .carrier-grid { grid-template-columns:1fr; }
   .carrier-card h3 { font-size:17px; }
-  .masthead { padding:36px 16px 28px; }
+  .masthead { padding:44px 16px 32px; }
   .masthead h1 { font-size:clamp(22px,6vw,36px); }
   .masthead .dateline { font-size:10px; letter-spacing:0.5px; }
   .masthead .label { font-size:9px; letter-spacing:2px; }
@@ -44,6 +44,7 @@
   .map-legend-item { font-size:10px; }
   .svg-graphic { max-width:100%; height:auto; }
   .ticker { font-size:10px; }
+  .ticker-live { font-size:8px; padding:0 10px; }
   footer { padding:24px 12px; font-size:10px; }
   footer div[style*="grid-template-columns"] { grid-template-columns:1fr !important; gap:4px !important; }
   .scenarios-grid { grid-template-columns:1fr !important; }
