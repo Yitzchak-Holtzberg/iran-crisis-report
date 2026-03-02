@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 2, 2026",
-  "lastUpdated": "20:53 UTC",
+  "lastUpdated": "23:35 UTC",
   "statUsTroops": "35,000+",
   "statUsTroopsSource": "Task & Purpose",
   "statMissilesFired": "~170",
@@ -17,6 +17,9 @@
   "scenarioFrozenPct": "0",
   "scenarioJuntaPct": "10",
   "ticker": [
+    "MILITARY: U.S. tightens security at San Diego bases after Iran strikes; access restricted (Axios, Mar 2, 2026)",
+    "HUMANITARIAN: Hospitals and schools in Iran reported damaged by strikes; U.N. and aid groups call for protection (Al Jazeera, Mar 2, 2026)",
+    "NAVAL: USS ABRAHAM LINCOLN WITHDRAWN AFTER IRAN THREATS; CARRIERS REDEPLOYED (Stars & Stripes/Axios, Mar 2, 2026)",
     "CASUALTIES: FOUR U.S. SERVICE MEMBERS CONFIRMED KILLED IN CONFLICT WITH IRAN (CNBC/Reuters, Mar 2, 2026)",
     "MILITARY: IRGC COMMANDER SAYS STRAIT OF HORMUZ CLOSED, THREATENS TO SET SHIPS ON FIRE (Reuters, Mar 2, 2026)",
     "US NAVY: USS GERALD R. FORD ORDERED TO MEDITERRANEAN AMID MILITARY BUILDUP (Stars & Stripes, Mar 2, 2026)",
@@ -38,9 +41,6 @@
     "AVIATION: MIDDLE EAST AIRSPACE SHUT — THOUSANDS STRANDED AFTER STRIKES (Al Jazeera, Mar 2, 2026)",
     "DIPLOMACY: IRAN REJECTS U.S. CALLS FOR TALKS; ALI LARIJANI DENIES PUSH TO RESUME NEGOTIATIONS (Al Jazeera, Mar 2, 2026)",
     "PENTAGON: Pentagon says no intelligence of imminent Iranian strike on U.S. homeland (NBC/Reuters, Mar 2, 2026)",
-    "SHIPPING: Tanker 'Skylight' struck near Strait of Hormuz; Hapag‑Lloyd halts Gulf transits (CNN, Mar 2, 2026)",
-    "US MILITARY: CENTCOM confirms ongoing operations to neutralize Iranian threats in the Gulf (US CENTCOM, Mar 2, 2026)",
-    "OPERATION: White House launches 'Operation Epic Fury' to target Iranian regime and nuclear sites (White House, Mar 2, 2026)",
-    "ECONOMY: IRAN RIAL COLLAPSES — TRADES NEAR 1.7M RIALS PER USD AS WAR, SANCTIONS HIT (Iran International, Mar 1, 2026)"
+    "SHIPPING: Tanker 'Skylight' struck near Strait of Hormuz; Hapag‑Lloyd halts Gulf transits (CNN, Mar 2, 2026)"
   ]
 }
