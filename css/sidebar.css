@@ -8,12 +8,14 @@
 .sb-header .sb-subtitle { font-size:10px; color:var(--text-muted); margin-top:3px; line-height:1.4; }
 .sb-collapse-btn { background:none; border:none; color:var(--text-muted); cursor:pointer; padding:0; font-size:11px; line-height:1; flex-shrink:0; transition:color 0.15s; }
 .sb-collapse-btn:hover { color:var(--text-primary); }
+/* Desktop collapsed tab: use accent-red so the toggle is clearly visible */
 /* Collapsed: show only the toggle button centred in the 36 px strip */
 .left-sidebar.collapsed .sb-progress { display:none; }
 .left-sidebar.collapsed .sb-nav { display:none; }
-.left-sidebar.collapsed .sb-header { padding:0; border-bottom:none; flex-direction:column; justify-content:center; align-items:center; gap:0; pointer-events:auto; background:var(--bg-secondary); height:72px; clip-path:polygon(0 0%, 100% 12%, 100% 88%, 0 100%); filter:drop-shadow(2px 0 4px rgba(0,0,0,0.4)); }
+.left-sidebar.collapsed .sb-header { padding:0; border-bottom:none; flex-direction:column; justify-content:center; align-items:center; gap:0; pointer-events:auto; background:var(--accent-red); height:72px; clip-path:polygon(0 0%, 100% 12%, 100% 88%, 0 100%); filter:drop-shadow(2px 0 8px rgba(255,59,59,0.5)); transition:filter 0.2s; }
+.left-sidebar.collapsed .sb-header:hover { filter:drop-shadow(2px 0 14px rgba(255,59,59,0.75)); }
 .left-sidebar.collapsed .sb-header > div { display:none; }
-.left-sidebar.collapsed .sb-collapse-btn { font-size:14px; }
+.left-sidebar.collapsed .sb-collapse-btn { font-size:18px; color:#fff; }
 .sb-nav { flex:1; overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--border) transparent; padding:8px 0 12px; }
 .sb-nav::-webkit-scrollbar { width:3px; }
 .sb-nav::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
