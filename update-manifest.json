@@ -374,6 +374,36 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-02T19:00:41.494Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "No new paradigm-shifting event — results duplicate items already on the page (strikes, nuclear site hits, Hormuz disrupt",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
