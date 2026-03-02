@@ -284,6 +284,36 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-02T07:10:28.207Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results repeat strikes, shipping attacks, rial collapse, negotiations and threats already on the page—no new para",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 4
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
