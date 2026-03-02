@@ -434,6 +434,36 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-02T20:53:24.653Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Results report updated casualty and maritime details already on the page; no new paradigm-shifting event.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 2
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }

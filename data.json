@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 2, 2026",
-  "lastUpdated": "19:56 UTC",
+  "lastUpdated": "20:53 UTC",
   "statUsTroops": "35,000+",
   "statUsTroopsSource": "Task & Purpose",
   "statMissilesFired": "~170",
@@ -17,6 +17,9 @@
   "scenarioFrozenPct": "0",
   "scenarioJuntaPct": "10",
   "ticker": [
+    "CASUALTIES: FOUR U.S. SERVICE MEMBERS CONFIRMED KILLED IN CONFLICT WITH IRAN (CNBC/Reuters, Mar 2, 2026)",
+    "MILITARY: IRGC COMMANDER SAYS STRAIT OF HORMUZ CLOSED, THREATENS TO SET SHIPS ON FIRE (Reuters, Mar 2, 2026)",
+    "US NAVY: USS GERALD R. FORD ORDERED TO MEDITERRANEAN AMID MILITARY BUILDUP (Stars & Stripes, Mar 2, 2026)",
     "CASUALTIES: Iran death toll reported at 555 amid widening U.S.-Israel attacks (Al Jazeera, Mar 2, 2026)",
     "DIPLOMACY: U.S. and Iran end latest nuclear talks with no deal but plan further negotiations (Reuters, Feb 26, 2026)",
     "HOMELAND WARNING: Department of Homeland Security warns of potential targeted and cyber threats in U.S.; agencies on high alert (ABC News, Mar 2, 2026)",
@@ -38,8 +41,6 @@
     "SHIPPING: Tanker 'Skylight' struck near Strait of Hormuz; Hapag‑Lloyd halts Gulf transits (CNN, Mar 2, 2026)",
     "US MILITARY: CENTCOM confirms ongoing operations to neutralize Iranian threats in the Gulf (US CENTCOM, Mar 2, 2026)",
     "OPERATION: White House launches 'Operation Epic Fury' to target Iranian regime and nuclear sites (White House, Mar 2, 2026)",
-    "ECONOMY: IRAN RIAL COLLAPSES — TRADES NEAR 1.7M RIALS PER USD AS WAR, SANCTIONS HIT (Iran International, Mar 1, 2026)",
-    "US MILITARY: USS ABRAHAM LINCOLN DEPLOYED TO REGION AMID HEIGHTENED THREAT (Fox5 San Diego, Mar 2, 2026)",
-    "CRACKDOWN: IRAN ARRESTS PROTESTERS AND REFORMISTS AS CRACKDOWN WIDENS; NUMBERS UNKNOWN (BBC & CBS News, Mar 1, 2026)"
+    "ECONOMY: IRAN RIAL COLLAPSES — TRADES NEAR 1.7M RIALS PER USD AS WAR, SANCTIONS HIT (Iran International, Mar 1, 2026)"
   ]
 }
