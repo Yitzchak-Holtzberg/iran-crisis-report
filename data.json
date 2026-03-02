@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 2, 2026",
-  "lastUpdated": "19:00 UTC",
+  "lastUpdated": "19:56 UTC",
   "statUsTroops": "35,000+",
   "statUsTroopsSource": "Task & Purpose",
   "statMissilesFired": "~170",
@@ -12,11 +12,15 @@
   "statIrgcKilled": "435+",
   "scenarioDealPct": "0",
   "scenarioStrikesPct": "0",
-  "scenarioRevolutionPct": "61",
-  "scenarioPahlaviPct": "26",
+  "scenarioRevolutionPct": "70",
+  "scenarioPahlaviPct": "20",
   "scenarioFrozenPct": "0",
-  "scenarioJuntaPct": "13",
+  "scenarioJuntaPct": "10",
   "ticker": [
+    "CASUALTIES: Iran death toll reported at 555 amid widening U.S.-Israel attacks (Al Jazeera, Mar 2, 2026)",
+    "DIPLOMACY: U.S. and Iran end latest nuclear talks with no deal but plan further negotiations (Reuters, Feb 26, 2026)",
+    "HOMELAND WARNING: Department of Homeland Security warns of potential targeted and cyber threats in U.S.; agencies on high alert (ABC News, Mar 2, 2026)",
+    "REGIONAL REACTIONS: Gulf states condemn Iranian strikes; Russia and China issue supportive statements for Tehran (TIME, Mar 2, 2026)",
     "TEHRAN STRIKES: Smoke plumes rise over Tehran after simultaneous strikes as U.S.-Israel air war widens (CNN, Mar 2, 2026)",
     "IRAN MISSILES: Iranian missile barrage reportedly strikes Beersheba in Israel amid escalation (Al Jazeera, Mar 2, 2026)",
     "OIL: Insurers withdraw tanker coverage; Strait of Hormuz commercial traffic plunges, oil prices +8% (AP/Washington Post, Mar 2, 2026)",
@@ -36,7 +40,6 @@
     "OPERATION: White House launches 'Operation Epic Fury' to target Iranian regime and nuclear sites (White House, Mar 2, 2026)",
     "ECONOMY: IRAN RIAL COLLAPSES — TRADES NEAR 1.7M RIALS PER USD AS WAR, SANCTIONS HIT (Iran International, Mar 1, 2026)",
     "US MILITARY: USS ABRAHAM LINCOLN DEPLOYED TO REGION AMID HEIGHTENED THREAT (Fox5 San Diego, Mar 2, 2026)",
-    "CRACKDOWN: IRAN ARRESTS PROTESTERS AND REFORMISTS AS CRACKDOWN WIDENS; NUMBERS UNKNOWN (BBC & CBS News, Mar 1, 2026)",
-    "NUCLEAR TALKS: OMAN HAILS 'BREAKTHROUGH' IN US-IRAN TALKS — SAYS AGREEMENT ON ZERO URANIUM STOCKPILING (Le Monde, Feb 28, 2026)"
+    "CRACKDOWN: IRAN ARRESTS PROTESTERS AND REFORMISTS AS CRACKDOWN WIDENS; NUMBERS UNKNOWN (BBC & CBS News, Mar 1, 2026)"
   ]
 }

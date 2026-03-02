@@ -404,6 +404,36 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-02T19:56:22.987Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "False — results reiterate events already on the page (strikes, Khamenei death, missile barrages, shipping/oil shocks).",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
