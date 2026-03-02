@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 2, 2026",
-  "lastUpdated": "07:10 UTC",
+  "lastUpdated": "13:19 UTC",
   "statUsTroops": "35,000+",
   "statUsTroopsSource": "Task & Purpose",
   "statMissilesFired": "~170",
@@ -11,12 +11,16 @@
   "statCitizensOffline": "92M",
   "statIrgcKilled": "435+",
   "scenarioDealPct": "0",
-  "scenarioStrikesPct": "28",
-  "scenarioRevolutionPct": "42",
-  "scenarioPahlaviPct": "16",
+  "scenarioStrikesPct": "22",
+  "scenarioRevolutionPct": "48",
+  "scenarioPahlaviPct": "20",
   "scenarioFrozenPct": "0",
-  "scenarioJuntaPct": "14",
+  "scenarioJuntaPct": "10",
   "ticker": [
+    "MILITARY: U.S. & ISRAEL LAUNCH MAJOR STRIKES; SUPREME LEADER ALI KHAMENEI REPORTED KILLED (AP/CNBC/Reuters, Mar 2, 2026)",
+    "SHIPPING: AT LEAST 4 TANKERS DAMAGED, ~150 SHIPS STRANDED NEAR STRAIT OF HORMUZ (Reuters, Mar 2, 2026)",
+    "AVIATION: MIDDLE EAST AIRSPACE SHUT — THOUSANDS STRANDED AFTER STRIKES (Al Jazeera, Mar 2, 2026)",
+    "DIPLOMACY: IRAN REJECTS U.S. CALLS FOR TALKS; ALI LARIJANI DENIES PUSH TO RESUME NEGOTIATIONS (Al Jazeera, Mar 2, 2026)",
     "PENTAGON: Pentagon says no intelligence of imminent Iranian strike on U.S. homeland (NBC/Reuters, Mar 2, 2026)",
     "SHIPPING: Tanker 'Skylight' struck near Strait of Hormuz; Hapag‑Lloyd halts Gulf transits (CNN, Mar 2, 2026)",
     "US MILITARY: CENTCOM confirms ongoing operations to neutralize Iranian threats in the Gulf (US CENTCOM, Mar 2, 2026)",
@@ -37,9 +41,6 @@
     "EUROPE: FRANCE OFFERS PARIS FOR PEACE TALKS, PLEDGES HUMANITARIAN AIRLIFT; GERMANY PLEDGES €50M AID AND UN HUMANITARIAN CORRIDOR SUPPORT (French & German Foreign Ministries, Mar 1, 2026)",
     "MILITARY: IRAN LAUNCHES STRIKES AT UAE — SMOKE SEEN IN DUBAI, SHARJAH; CASUALTIES REPORTED (AP, Mar 1, 2026)",
     "CASUALTIES: 100+ INJURED, AT LEAST 4 KILLED IN GULF CITIES AFTER IRAN STRIKES (New York Times, Mar 1, 2026)",
-    "DIPLOMACY: SAUDI ARABIA, UAE CONDEMN IRAN ATTACKS; RUSSIA, CHINA ISSUE PRO-IRAN STATEMENTS (Al Jazeera/Time, Mar 1, 2026)",
-    "LEADERSHIP: IRAN PRESIDENT SAYS NEW LEADERSHIP COUNCIL 'HAS BEGUN ITS WORK' AFTER KHAMENEI'S DEATH (AP, Mar 1, 2026)",
-    "MILITARY: 3 U.S. SERVICE MEMBERS KILLED, 5 WOUNDED IN IRAN — U.S. CENTCOM CONFIRMS CASUALTIES (Fortune, Mar 1, 2026)",
-    "OIL: TANKER TRAFFIC HALTS IN STRAIT OF HORMUZ — 240 SHIPS CLUSTERED, SHIPPING ACTIVITY DOWN ~40-50% (S&P Global, Mar 1, 2026)"
+    "DIPLOMACY: SAUDI ARABIA, UAE CONDEMN IRAN ATTACKS; RUSSIA, CHINA ISSUE PRO-IRAN STATEMENTS (Al Jazeera/Time, Mar 1, 2026)"
   ]
 }
