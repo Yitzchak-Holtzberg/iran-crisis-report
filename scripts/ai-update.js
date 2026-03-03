@@ -128,19 +128,24 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
   let lastErr;
   for (let attempt = 1; attempt <= MAX_GPT_ATTEMPTS; attempt++) {
     try {
+      const bodyStr = JSON.stringify(body);
+      if (attempt === 1) {
+        console.log(`  [callGPT] model=${model} body=${(bodyStr.length / 1024).toFixed(1)}KB`);
+      }
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${OPENAI_KEY}`,
         },
-        body: JSON.stringify(body),
+        body: bodyStr,
       });
       if (!res.ok) {
         const text = await res.text();
         // Only retry on server-side errors (5xx); surface client errors immediately.
         if (res.status >= 500 && attempt < MAX_GPT_ATTEMPTS) {
           lastErr = new Error(`OpenAI error ${res.status}: ${text}`);
+          console.warn(`  [callGPT] attempt ${attempt}/${MAX_GPT_ATTEMPTS} — ${lastErr.message} — retrying…`);
           await new Promise(r => setTimeout(r, 2 ** attempt * 1000));
           continue;
         }
@@ -152,8 +157,10 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
       // Retry on network-level errors (e.g. "fetch failed") but not on the
       // explicit throws above which are already final.
       if (err.message && err.message.startsWith('OpenAI error')) throw err;
-      lastErr = err;
+      const cause = err.cause ? ` (cause: ${err.cause.message || err.cause})` : '';
+      lastErr = new Error(`${err.message}${cause}`, { cause: err.cause });
       if (attempt < MAX_GPT_ATTEMPTS) {
+        console.warn(`  [callGPT] attempt ${attempt}/${MAX_GPT_ATTEMPTS} — ${lastErr.message} — retrying…`);
         await new Promise(r => setTimeout(r, 2 ** attempt * 1000));
       }
     }
