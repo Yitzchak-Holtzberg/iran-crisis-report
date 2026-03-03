@@ -54,7 +54,7 @@ body.sb-expanded { padding-left:200px; }
   /* On mobile always show full panel when open, regardless of collapsed class */
   .left-sidebar.collapsed .sb-progress { display:block; }
   .left-sidebar.collapsed .sb-nav { display:flex; flex-direction:column; }
-  .left-sidebar.collapsed .sb-header { height:auto; padding:12px 14px; border-top:2px solid var(--accent-red); border-bottom:1px solid var(--border); background:linear-gradient(180deg,rgba(255,59,59,0.06) 0%,transparent 100%); flex-direction:row; justify-content:space-between; align-items:center; }
+  .left-sidebar.collapsed .sb-header { height:auto; padding:12px 14px; border-top:2px solid var(--accent-red); border-bottom:1px solid var(--border); background:linear-gradient(180deg,rgba(255,59,59,0.06) 0%,transparent 100%); flex-direction:row; justify-content:space-between; align-items:center; clip-path:none; filter:none; }
   .left-sidebar.collapsed .sb-header > div { display:block; }
   /* Show page-switcher pills in mobile menu (desktop hides them when collapsed) */
   .left-sidebar.collapsed .sb-pages { display:grid; }
