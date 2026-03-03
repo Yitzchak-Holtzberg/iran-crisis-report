@@ -15,6 +15,8 @@
     "statOilAtRisk",
     "statCitizensOffline",
     "statIrgcKilled",
+    "statUsCasualties",
+    "statUsCasualtiesSource",
     "scenarioDealPct",
     "scenarioStrikesPct",
     "scenarioRevolutionPct",
@@ -74,8 +76,17 @@
     },
     "statIrgcKilled": {
       "type": "string",
-      "description": "Iranian military and IRGC personnel killed (e.g., '435+')",
+      "description": "Iranian military and IRGC personnel killed (e.g., '555+')",
       "pattern": "^[0-9,]+\\+?$"
+    },
+    "statUsCasualties": {
+      "type": "string",
+      "description": "US service members killed in action (e.g., '6')",
+      "pattern": "^[0-9,]+\\+?$"
+    },
+    "statUsCasualtiesSource": {
+      "type": "string",
+      "description": "Source for US casualties count (e.g., 'CNBC/CBS')"
     },
     "scenarioDealPct": {
       "type": "string",
