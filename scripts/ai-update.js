@@ -76,17 +76,17 @@ if (!TAVILY_KEY || !OPENAI_KEY) {
 // Targeted queries that cover the dashboard's main topic areas.
 
 const SEARCH_QUERIES = [
-  'Iran breaking news major development today',
-  'Iran nuclear talks US negotiations latest news',
-  'Iran protests crackdown IRGC arrests latest news',
-  'US military Iran strike threat carrier deployment latest',
-  'Iran economy rial rate sanctions latest news',
-  'Iran Israel military threat latest news',
-  'Reza Pahlavi Iran opposition latest news',
-  'Strait of Hormuz shipping oil tanker disruption Iran latest',
-  'Gulf states Saudi Arabia Qatar Bahrain UAE Russia China Iran military coalition strikes reaction latest',
-  'Iran-linked attacks US domestic IRGC proxy retaliation latest',
-  'Iran terrorism US homeland threat attack latest news',
+  'Iran breaking news military political crisis latest today',
+  'Iran nuclear enrichment IAEA program talks deal latest news',
+  'Iran protests crackdown IRGC arrests dissidents latest news',
+  'US military Iran strikes operations carrier deployment latest news',
+  'Iran economy rial oil exports sanctions latest news',
+  'Iran Israel strikes attack military operations latest news',
+  'Iran opposition Pahlavi MEK resistance movement latest news',
+  'Strait of Hormuz shipping oil tanker Iran disruption latest',
+  'Gulf states Saudi Arabia Qatar Bahrain UAE Russia China Iran coalition reaction latest',
+  'Iran proxy Hezbollah Houthi Yemen Iraq militia strikes attack latest',
+  'Iran IRGC assassination plot cyber espionage covert operations latest',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
