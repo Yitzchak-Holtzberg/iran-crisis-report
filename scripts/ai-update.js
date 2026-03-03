@@ -84,8 +84,7 @@ const SEARCH_QUERIES = [
   'Iran Israel military threat latest news',
   'Reza Pahlavi Iran opposition latest news',
   'Strait of Hormuz shipping oil tanker disruption Iran latest',
-  'Gulf states Saudi Arabia Bahrain UAE Russia China Iran reaction latest',
-  'Qatar Saudi Arabia UAE Bahrain join coalition military strikes Iran latest',
+  'Gulf states Saudi Arabia Qatar Bahrain UAE Russia China Iran military coalition strikes reaction latest',
   'Iran-linked attacks US domestic IRGC proxy retaliation latest',
   'Iran terrorism US homeland threat attack latest news',
 ];
