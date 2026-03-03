@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 3, 2026",
-  "lastUpdated": "02:52 UTC",
+  "lastUpdated": "07:04 UTC",
   "statUsTroops": "40,000+",
   "statUsTroopsSource": "NewsNation",
   "statMissilesFired": "~170",
@@ -17,6 +17,11 @@
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 5,
   "ticker": [
+    "SHIPPING: AT LEAST FIVE TANKERS DAMAGED, TWO CREW KILLED; ~150 VESSELS STRANDED NEAR STRAIT OF HORMUZ (Reuters, Mar 3, 2026)",
+    "ECONOMY: IRAN RIAL PLUNGES TO ~1.63M PER USD AS SANCTIONS, CONFLICT BATTER THE CURRENCY (See.News, Mar 3, 2026)",
+    "INTERNAL SECURITY: IRAN ARRESTS PROMINENT REFORMISTS IN CRACKDOWN AFTER MASS PROTESTS (Al Jazeera, Mar 2, 2026)",
+    "REGIONAL: SEVEN GULF STATES JOIN U.S. IN CONDEMNING IRAN'S MISSILE, DRONE ATTACKS (Times of India, Mar 2, 2026)",
+    "U.S. STATEMENT: TRUMP SAYS OPERATION 'COULD TAKE FOUR WEEKS OR LESS' AS CAMPAIGN CONTINUES (CBS, Mar 2, 2026)",
     "ENERGY: Saudi oil refinery struck by Iran; major facility damaged, production hit (NPR, Mar 3, 2026)",
     "AVIATION: Hundreds of thousands of airline passengers stranded as Middle East airspace closures continue (NPR, Mar 3, 2026)",
     "MILITARY: U.S. tightens security at San Diego bases after Iran strikes; access restricted (Axios, Mar 2, 2026)",
@@ -36,11 +41,6 @@
     "OIL: OIL PRICES SURGE ~8% AS STRAIT OF HORMUZ DISRUPTIONS STRAND ~150 VESSELS (AP/GCaptain, Mar 2, 2026)",
     "SHIPPING: QATAR DECLARES FORCE MAJEURE ON LNG EXPORTS AFTER HORMUZ DISRUPTIONS (GCaptain/AP, Mar 2, 2026)",
     "MILITARY: THREE F-15s REPORTEDLY DOWNED OVER KUWAIT — CAUSE AND ATTRIBUTION UNCONFIRMED; ISW ASSESSING (CNN/Multiple Outlets, Mar 2, 2026)",
-    "MILITARY: U.S. & ISRAEL LAUNCH MAJOR STRIKES; SUPREME LEADER ALI KHAMENEI REPORTED KILLED (AP/CNBC/Reuters, Mar 2, 2026)",
-    "SHIPPING: AT LEAST 4 TANKERS DAMAGED, ~150 SHIPS STRANDED NEAR STRAIT OF HORMUZ (Reuters, Mar 2, 2026)",
-    "AVIATION: MIDDLE EAST AIRSPACE SHUT — THOUSANDS STRANDED AFTER STRIKES (Al Jazeera, Mar 2, 2026)",
-    "DIPLOMACY: IRAN REJECTS U.S. CALLS FOR TALKS; ALI LARIJANI DENIES PUSH TO RESUME NEGOTIATIONS (Al Jazeera, Mar 2, 2026)",
-    "PENTAGON: Pentagon says no intelligence of imminent Iranian strike on U.S. homeland (NBC/Reuters, Mar 2, 2026)",
-    "SHIPPING: Tanker 'Skylight' struck near Strait of Hormuz; Hapag‑Lloyd halts Gulf transits (CNN, Mar 2, 2026)"
+    "MILITARY: U.S. & ISRAEL LAUNCH MAJOR STRIKES; SUPREME LEADER ALI KHAMENEI REPORTED KILLED (AP/CNBC/Reuters, Mar 2, 2026)"
   ]
 }
