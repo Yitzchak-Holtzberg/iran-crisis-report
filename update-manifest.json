@@ -612,6 +612,36 @@
           ]
         }
       }
+    },
+    {
+      "timestamp": "2026-03-03T15:55:23.249Z",
+      "type": "structural",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 1
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "nuclear",
+            "confirmed-unconfirmed",
+            "scenarios",
+            "reactions"
+          ]
+        }
+      }
     }
   ]
 }

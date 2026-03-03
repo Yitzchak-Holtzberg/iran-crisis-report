@@ -1,9 +1,9 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 3, 2026",
-  "lastUpdated": "13:43 UTC",
-  "statUsTroops": "40,000+",
-  "statUsTroopsSource": "NewsNation",
+  "lastUpdated": "15:55 UTC",
+  "statUsTroops": "35,000+",
+  "statUsTroopsSource": "Stars & Stripes/CENTCOM",
   "statMissilesFired": "~300+",
   "statMissilesFiredSource": "Crit. Threats",
   "statCarrierGroups": "3",
@@ -19,6 +19,9 @@
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 5,
   "ticker": [
+    "MILITARY: CENTCOM reports ~35,000 U.S. forces deployed in the region amid Iran strikes (Stars & Stripes/CENTCOM, Mar 3, 2026)",
+    "NUCLEAR: IAEA confirms buildings damaged at Natanz but reports no radiological consequences (IAEA/Al Jazeera, Mar 3, 2026)",
+    "DIPLOMACY: Oman says U.S.-Iran talks showed 'potential progress' though no deal reached (Reuters, Mar 3, 2026)",
     "ECONOMY: SUPERTANKER RATES SOAR AS INSURERS DROP WAR-RISK COVERAGE, SHIPPING BACKLOG GROWS (CNBC, Mar 3, 2026)",
     "ANALYSIS: IRAN'S CLOSURE OF SHIPPING ROUTE COULD PUSH GULF STATES INTO A BROADER COALITION AGAINST TEHRAN (Reuters, Mar 2, 2026)",
     "DIPLOMACY: OMAN MEDIATES NEW PUSH FOR U.S.-IRAN NUCLEAR TALKS AMID ESCALATION (Al Jazeera, Feb 27, 2026)",
@@ -37,16 +40,6 @@
     "HUMANITARIAN: Hospitals and schools in Iran reported damaged by strikes; U.N. and aid groups call for protection (Al Jazeera, Mar 2, 2026)",
     "CASUALTIES: SIX U.S. SERVICE MEMBERS CONFIRMED KILLED IN CONFLICT WITH IRAN (CNBC/CBS News, Mar 2, 2026)",
     "MILITARY: IRGC COMMANDER SAYS STRAIT OF HORMUZ CLOSED, THREATENS TO SET SHIPS ON FIRE (Reuters, Mar 2, 2026)",
-    "US NAVY: USS GERALD R. FORD ORDERED TO MEDITERRANEAN AMID MILITARY BUILDUP (Stars & Stripes, Mar 2, 2026)",
-    "CASUALTIES: Iran death toll reported at 555 amid widening U.S.-Israel attacks (Al Jazeera, Mar 2, 2026)",
-    "DIPLOMACY: U.S. and Iran end latest nuclear talks with no deal but plan further negotiations (Reuters, Feb 26, 2026)",
-    "HOMELAND WARNING: Department of Homeland Security warns of potential targeted and cyber threats in U.S.; agencies on high alert (ABC News, Mar 2, 2026)",
-    "REGIONAL REACTIONS: Gulf states condemn Iranian strikes; Russia and China issue supportive statements for Tehran (TIME, Mar 2, 2026)",
-    "TEHRAN STRIKES: Smoke plumes rise over Tehran after simultaneous strikes as U.S.-Israel air war widens (CNN, Mar 2, 2026)",
-    "IRAN MISSILES: Iranian missile barrage reportedly strikes Beersheba in Israel amid escalation (Al Jazeera, Mar 2, 2026)",
-    "EASTERN MED: GREECE DEPLOYS NAVY FRIGATES TO CYPRIOT WATERS AMID EASTERN MEDITERRANEAN SPILLOVER FEARS (Kathimerini/Reuters, Mar 3, 2026)",
-    "US MILITARY: PENTAGON ANNOUNCES IRAN'S NAVY DESTROYED; IRIN &amp; IRGC NAVAL FORCES NO LONGER POSE COHERENT MARITIME THREAT (CENTCOM, Mar 3, 2026)",
-    "HORMUZ: US NAVY 5TH FLEET &amp; COALITION MINESWEEPERS BEGIN MINE-CLEARANCE OPERATIONS IN STRAIT OF HORMUZ (CENTCOM/Reuters, Mar 3, 2026)",
-    "HORMUZ: PENTAGON ANNOUNCES PHASED RE-OPENING PLAN — PARTIAL ESCORTED TRANSITS WITHIN 48-72 HRS; FULL REOPENING EST. 7-14 DAYS (Pentagon, Mar 3, 2026)"
+    "US NAVY: USS GERALD R. FORD ORDERED TO MEDITERRANEAN AMID MILITARY BUILDUP (Stars & Stripes, Mar 2, 2026)"
   ]
 }
