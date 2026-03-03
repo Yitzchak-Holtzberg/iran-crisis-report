@@ -110,7 +110,10 @@ async function tavilySearch(query) {
   return res.json();
 }
 
-/** Call an OpenAI model and return the raw text of the first choice. */
+/** Call an OpenAI model and return the raw text of the first choice.
+ *  Tries up to MAX_GPT_ATTEMPTS times (exponential backoff: 2s, 4s between retries)
+ *  on transient network errors or 5xx responses. */
+const MAX_GPT_ATTEMPTS = 3;
 async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt-5-mini', maxTokens = 16384) {
   const body = {
     model,
@@ -122,19 +125,40 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
   };
   if (jsonMode) body.response_format = { type: 'json_object' };
 
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${OPENAI_KEY}`,
-    },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    throw new Error(`OpenAI error ${res.status}: ${await res.text()}`);
+  let lastErr;
+  for (let attempt = 1; attempt <= MAX_GPT_ATTEMPTS; attempt++) {
+    try {
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${OPENAI_KEY}`,
+        },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        // Only retry on server-side errors (5xx); surface client errors immediately.
+        if (res.status >= 500 && attempt < MAX_GPT_ATTEMPTS) {
+          lastErr = new Error(`OpenAI error ${res.status}: ${text}`);
+          await new Promise(r => setTimeout(r, 2 ** attempt * 1000));
+          continue;
+        }
+        throw new Error(`OpenAI error ${res.status}: ${text}`);
+      }
+      const json = await res.json();
+      return json.choices[0].message.content;
+    } catch (err) {
+      // Retry on network-level errors (e.g. "fetch failed") but not on the
+      // explicit throws above which are already final.
+      if (err.message && err.message.startsWith('OpenAI error')) throw err;
+      lastErr = err;
+      if (attempt < MAX_GPT_ATTEMPTS) {
+        await new Promise(r => setTimeout(r, 2 ** attempt * 1000));
+      }
+    }
   }
-  const json = await res.json();
-  return json.choices[0].message.content;
+  throw lastErr;
 }
 
 /**
