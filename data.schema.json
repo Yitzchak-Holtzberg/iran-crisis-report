@@ -23,6 +23,8 @@
     "scenarioPahlaviPct",
     "scenarioFrozenPct",
     "scenarioJuntaPct",
+    "scenarioCivilWarPct",
+    "scenarioRegionalEscalationPct",
     "ticker"
   ],
   "properties": {
@@ -116,6 +118,16 @@
     "scenarioJuntaPct": {
       "type": "string",
       "description": "Likelihood percentage for Scenario 6: IRGC Junta — Succession Council (0-100)",
+      "pattern": "^[0-9]{1,3}$"
+    },
+    "scenarioCivilWarPct": {
+      "type": "string",
+      "description": "Likelihood percentage for Scenario 4b: Iranian Civil War / State Fragmentation (0-100)",
+      "pattern": "^[0-9]{1,3}$"
+    },
+    "scenarioRegionalEscalationPct": {
+      "type": "string",
+      "description": "Likelihood percentage for Scenario 5b: Regional Escalation / Proxy War Spread (0-100)",
       "pattern": "^[0-9]{1,3}$"
     },
     "ticker": {
