@@ -76,17 +76,17 @@ if (!TAVILY_KEY || !OPENAI_KEY) {
 // Targeted queries that cover the dashboard's main topic areas.
 
 const SEARCH_QUERIES = [
-  'Iran breaking news major development today',
-  'Iran nuclear talks US negotiations latest news',
-  'Iran protests crackdown IRGC arrests latest news',
-  'US military Iran strike threat carrier deployment latest',
-  'Iran economy rial rate sanctions latest news',
-  'Iran Israel military threat latest news',
-  'Reza Pahlavi Iran opposition latest news',
-  'Strait of Hormuz shipping oil tanker disruption Iran latest',
-  'Gulf states Saudi Arabia Bahrain UAE Russia China Iran reaction latest',
-  'Iran-linked attacks US domestic IRGC proxy retaliation latest',
-  'Iran terrorism US homeland threat attack latest news',
+  'Iran breaking news military political crisis latest today',
+  'Iran nuclear enrichment IAEA program talks deal latest news',
+  'Iran protests crackdown IRGC arrests dissidents latest news',
+  'US military Iran strikes operations carrier deployment latest news',
+  'Iran economy rial oil exports sanctions latest news',
+  'Iran Israel strikes attack military operations latest news',
+  'Iran opposition Pahlavi MEK resistance movement latest news',
+  'Strait of Hormuz shipping oil tanker Iran disruption latest',
+  'Gulf states Saudi Arabia Qatar Bahrain UAE Russia China Iran coalition reaction latest',
+  'Iran proxy Hezbollah Houthi Yemen Iraq militia strikes attack latest',
+  'Iran IRGC assassination plot cyber espionage covert operations latest',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -368,6 +368,13 @@ ticker headlines and today's timeline items). Only return structural:true if the
 major development is NOT already covered by that existing content. If the event
 is already represented in the page, a routine zone-level update is sufficient.
 
+ESCALATION RULE: A country or actor *escalating* from a lesser action to a
+more serious one is a NEW structural event, not a duplicate — e.g. if the page
+already says a country is "considering" or "weighing" joining a military
+campaign, confirmed reports that the same country has now *actively joined*
+(launched strikes, deployed forces, or formally entered the coalition) is a
+NEW structural development and must be treated as NOT already covered.
+
 Examples of events that ARE structural:
 - A military operation is launched or concluded
 - A regime change or leadership transition occurs
@@ -375,6 +382,8 @@ Examples of events that ARE structural:
 - A ceasefire or peace deal is signed
 - A nuclear test or confirmed weapons-grade enrichment
 - A major new front opens (e.g. ground invasion, new country enters conflict)
+- A country moves from diplomatic support / condemnation to active military
+  participation (strikes, deployments, or formal coalition entry)
 
 Examples of events that are NOT structural (routine updates handle these):
 - Updated casualty figures or economic data
@@ -383,6 +392,7 @@ Examples of events that are NOT structural (routine updates handle these):
 - Protest activity continuing at similar scale
 - Sanctions additions or removals
 - Rhetoric or threats without concrete action
+- A country reiterating condemnation or diplomatic support it already expressed
 
 Return a JSON object with exactly two keys:
   "structural": true or false
@@ -797,7 +807,10 @@ Rules:
 - "ticker": prepend up to 5 NEW breaking headline strings. Format each as:
   "CATEGORY IN ALL CAPS: concise summary with key names/numbers (Source, Date)".
   Remove the oldest items so the total array length stays between 20 and 25.
-  Do not duplicate headlines already in the array.
+  Do not duplicate headlines already in the array. IMPORTANT: an escalation is
+  NOT a duplicate — if the array already contains "Country X weighing/considering
+  joining", a new confirmed report that Country X has *actively joined* (launched
+  strikes, deployed forces) is a new headline and must be prepended.
 - Stat keys (statUsTroops, statMissilesFired, statCarrierGroups, statOilAtRisk,
   statCitizensOffline, statIrgcKilled): update ONLY if the search results contain a clearly
   newer confirmed figure with a credible source.
@@ -848,6 +861,10 @@ Each string is a complete <div class="tl-item"> … </div> block (no outer wrapp
 Rules:
 - Return AT MOST 5 items. Only include events that are GENUINELY NEW and not
   already covered by the existing TODAY items shown below.
+- An ESCALATION is NOT a duplicate: if an existing item says a country is
+  "considering" or "weighing" joining a military campaign, a confirmed report
+  of that country *actively joining* (launching strikes, deploying forces) is a
+  NEW item and must be included.
 - If there are no new events worth adding, return { "newItems": [] }.
 - HTML format for each item:
     <div class="tl-item">
