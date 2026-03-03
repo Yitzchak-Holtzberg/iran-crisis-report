@@ -34,6 +34,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    outputs:
+      ai_update_failed: ${{ steps.ai_update.outcome == 'failure' }}
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -55,6 +58,7 @@ jobs:
       # via GPT-5-mini.  Uses continue-on-error so a quota or network issue
       # never blocks the date-refresh and rebuild from completing.
       - name: AI content update (Tavily + GPT-5-mini)
+        id: ai_update
         continue-on-error: true
         env:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -98,3 +102,52 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Open a GitHub issue whenever the build-and-deploy job fails or the AI
+  # content update step fails silently (continue-on-error).  The issue
+  # includes a direct link to the run so failures are easy to investigate.
+  notify-on-failure:
+    needs: build-and-deploy
+    if: always() && (needs.build-and-deploy.result == 'failure' || needs.build-and-deploy.outputs.ai_update_failed == 'true')
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+
+    steps:
+      - name: Create failure notification issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const jobResult = '${{ needs.build-and-deploy.result }}';
+            const aiUpdateFailed = '${{ needs.build-and-deploy.outputs.ai_update_failed }}' === 'true';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const date = new Date().toISOString().split('T')[0];
+
+            const failures = [];
+            if (jobResult === 'failure') {
+              failures.push('The **build-and-deploy** job failed (a required step exited with an error).');
+            }
+            if (aiUpdateFailed) {
+              failures.push('The **AI content update** step failed (Tavily/OpenAI quota or network issue).');
+            }
+
+            const body = [
+              `## Workflow run failure — ${date}`,
+              '',
+              `**Workflow:** ${context.workflow}`,
+              `**Triggered by:** \`${context.eventName}\``,
+              `**Run:** [View logs and details](${runUrl})`,
+              '',
+              '### What failed',
+              ...failures.map(f => `- ${f}`),
+              '',
+              'Please check the run link above for full logs.',
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 Workflow failure: ${context.workflow} (${date})`,
+              body,
+            });
