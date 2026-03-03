@@ -43,6 +43,7 @@ const DATA_PATH        = path.join(BASE_DIR, 'data.json');
 const LAST24H_PATH     = path.join(BASE_DIR, 'sections', 'last-24h.html');
 const MANIFEST_PATH    = path.join(BASE_DIR, 'update-manifest.json');
 const GUIDELINES_PATH  = path.join(BASE_DIR, 'STRUCTURAL_GUIDELINES.md');
+const GPT_LOG_PATH     = path.join(BASE_DIR, 'logs', 'gpt-calls.jsonl');
 
 // Matches the existing TODAY items block inside last-24h.html.
 // Used both by the significance assessment (to check what's already on the page)
@@ -110,7 +111,11 @@ async function tavilySearch(query) {
   return res.json();
 }
 
-/** Call an OpenAI model and return the raw text of the first choice. */
+/** Call an OpenAI model and return the raw text of the first choice.
+ *  Tries up to MAX_GPT_ATTEMPTS times (exponential backoff: 2s, 4s between retries)
+ *  on transient network errors or 5xx responses.
+ *  Each call (success or final failure) is appended as a JSON line to logs/gpt-calls.jsonl. */
+const MAX_GPT_ATTEMPTS = 3;
 async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt-5-mini', maxTokens = 16384) {
   const body = {
     model,
@@ -122,19 +127,62 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
   };
   if (jsonMode) body.response_format = { type: 'json_object' };
 
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${OPENAI_KEY}`,
-    },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    throw new Error(`OpenAI error ${res.status}: ${await res.text()}`);
+  const promptSizeKB = +(body.messages.reduce((s, m) => s + m.content.length, 0) / 1024).toFixed(1);
+  let lastErr;
+  for (let attempt = 1; attempt <= MAX_GPT_ATTEMPTS; attempt++) {
+    try {
+      const bodyStr = JSON.stringify(body);
+      if (attempt === 1) {
+        console.log(`  [callGPT] model=${model} body=${(bodyStr.length / 1024).toFixed(1)}KB`);
+      }
+      const res = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${OPENAI_KEY}`,
+        },
+        body: bodyStr,
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        // Only retry on server-side errors (5xx); surface client errors immediately.
+        if (res.status >= 500 && attempt < MAX_GPT_ATTEMPTS) {
+          lastErr = new Error(`OpenAI error ${res.status}: ${text}`);
+          console.warn(`  [callGPT] attempt ${attempt}/${MAX_GPT_ATTEMPTS} — ${lastErr.message} — retrying…`);
+          await new Promise(r => setTimeout(r, 2 ** attempt * 1000));
+          continue;
+        }
+        throw new Error(`OpenAI error ${res.status}: ${text}`);
+      }
+      const json = await res.json();
+      const result = json.choices[0].message.content;
+      appendGptLog({ model, bodySizeKB: promptSizeKB, systemPrompt, userContent, result, error: null });
+      return result;
+    } catch (err) {
+      // Retry on network-level errors (e.g. "fetch failed") but not on the
+      // explicit throws above which are already final.
+      if (err.message && err.message.startsWith('OpenAI error')) throw err;
+      const cause = err.cause ? ` (cause: ${err.cause.message || err.cause})` : '';
+      lastErr = new Error(`${err.message}${cause}`, { cause: err.cause });
+      if (attempt < MAX_GPT_ATTEMPTS) {
+        console.warn(`  [callGPT] attempt ${attempt}/${MAX_GPT_ATTEMPTS} — ${lastErr.message} — retrying…`);
+        await new Promise(r => setTimeout(r, 2 ** attempt * 1000));
+      }
+    }
   }
-  const json = await res.json();
-  return json.choices[0].message.content;
+  appendGptLog({ model, bodySizeKB: promptSizeKB, systemPrompt, userContent, result: null, error: lastErr.message });
+  throw lastErr;
+}
+
+/** Append a single JSON line to logs/gpt-calls.jsonl (creates the file/dir if needed). */
+function appendGptLog(entry) {
+  try {
+    const logsDir = path.dirname(GPT_LOG_PATH);
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+    fs.appendFileSync(GPT_LOG_PATH, JSON.stringify({ timestamp: new Date().toISOString(), ...entry }) + '\n');
+  } catch (e) {
+    console.warn(`[callGPT] Failed to write gpt-calls.jsonl: ${e.message}`);
+  }
 }
 
 /**
@@ -267,7 +315,7 @@ async function updateZones(searchContext) {
   const zoneCount = Object.keys(zones).length;
   if (zoneCount === 0) {
     console.log('No @ai-zone markers found in sections/ — skipping zone updates.');
-    return;
+    return { zonesUpdated: [], filesUpdated: [] };
   }
 
   const zonesBlock = Object.entries(zones)
@@ -289,12 +337,12 @@ async function updateZones(searchContext) {
     updates = JSON.parse(raw);
   } catch (err) {
     console.warn(`Zone update GPT call failed (${err.message}) — keeping all originals.`);
-    return;
+    throw err;
   }
 
   // Group replacements by file so each file is read and written only once.
   const fileContents = {};
-  let updatedZoneCount = 0;
+  const updatedZoneIdSet = new Set();
 
   for (const [zoneId, newContent] of Object.entries(updates)) {
     if (!newContent || !zones[zoneId]) continue;
@@ -317,7 +365,7 @@ async function updateZones(searchContext) {
       }
       const newOuter = `<!-- @ai-zone:${zoneId} -->${sanitizeMarkdown(newContent)}<!-- @/ai-zone:${zoneId} -->`;
       fileContents[zone.filePath] = fileContents[zone.filePath].replace(zone.outerMatch, newOuter);
-      updatedZoneCount++;
+      updatedZoneIdSet.add(zoneId);
     }
   }
 
@@ -326,11 +374,14 @@ async function updateZones(searchContext) {
     console.log(`  Updated zones in ${path.basename(filePath)}.`);
   }
 
-  if (updatedZoneCount > 0) {
-    console.log(`Zone updates: ${updatedZoneCount} zone(s) across ${Object.keys(fileContents).length} file(s).`);
+  const filesUpdated = Object.keys(fileContents).map(p => path.basename(p));
+  const zonesUpdated = [...updatedZoneIdSet];
+  if (zonesUpdated.length > 0) {
+    console.log(`Zone updates: ${zonesUpdated.length} zone(s) across ${filesUpdated.length} file(s).`);
   } else {
     console.log('Zone updates: no changes needed.');
   }
+  return { zonesUpdated, filesUpdated };
 }
 
 // ── Manifest helpers ──────────────────────────────────────────────────────────
@@ -669,7 +720,9 @@ async function updateStructural(searchContext) {
     return name;
   }
 
-  const changed = [];
+  const changedSet = new Set();
+  /** Per-pass result objects collected and returned for the manifest. */
+  const passes = {};
 
   // ── Pass 1: broad pass over non-deep-update files ─────────────────────
   const pass1Block = Object.entries(fileContents)
@@ -690,12 +743,15 @@ async function updateStructural(searchContext) {
   try {
     const raw     = await callGPT(STRUCTURAL_SYSTEM_PROMPT, pass1UserContent, true, STRUCTURAL_MODEL, 32768);
     const updates = JSON.parse(raw);
+    const pass1Changed = [];
     for (const [name, newContent] of Object.entries(updates)) {
       const applied = applyUpdate(name, newContent);
-      if (applied) changed.push(applied);
+      if (applied) { changedSet.add(applied); pass1Changed.push(applied); }
     }
+    passes['pass1'] = { status: 'ok', filesChanged: pass1Changed };
   } catch (err) {
     console.warn(`Structural pass 1 GPT call failed (${err.message}) — continuing to deep-update pass.`);
+    passes['pass1'] = { status: 'error', error: err.message };
   }
 
   // ── Passes 2-N: dedicated deep-update per group (always runs) ────────
@@ -723,6 +779,7 @@ async function updateStructural(searchContext) {
     try {
       const raw     = await callGPT(systemPrompt, groupUserContent, true, STRUCTURAL_MODEL, 32768);
       const updates = JSON.parse(raw);
+      const groupChanged = [];
       for (const name of group.names) {
         const newContent = updates[name];
         if (!newContent) {
@@ -730,19 +787,22 @@ async function updateStructural(searchContext) {
           continue;
         }
         const applied = applyUpdate(name, newContent);
-        if (applied && !changed.includes(applied)) changed.push(applied);
+        if (applied && !changedSet.has(applied)) { changedSet.add(applied); groupChanged.push(applied); }
       }
+      passes[group.label] = { status: 'ok', filesChanged: groupChanged };
     } catch (err) {
       console.warn(`Structural deep-update pass (${group.label}) GPT call failed (${err.message}) — skipping.`);
+      passes[group.label] = { status: 'error', error: err.message };
     }
   }
 
-  if (changed.length > 0) {
-    console.log(`Structural updates: ${changed.length} file(s) modified.`);
+  const filesChanged = [...changedSet];
+  if (filesChanged.length > 0) {
+    console.log(`Structural updates: ${filesChanged.length} file(s) modified.`);
   } else {
     console.log('Structural updates: no changes applied.');
   }
-  return changed;
+  return { filesChanged, passes };
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -923,8 +983,8 @@ Rules:
   // ── 5. Update HTML section zones ──────────────────────────────────────────
 
   try {
-    await updateZones(searchContext);
-    manifest.phases.zones = { status: 'ok' };
+    const zoneResult = await updateZones(searchContext);
+    manifest.phases.zones = { status: 'ok', zonesUpdated: zoneResult.zonesUpdated, filesUpdated: zoneResult.filesUpdated };
   } catch (err) {
     console.warn(`Section zone updates failed (${err.message}) — keeping originals.`);
     manifest.phases.zones = { status: 'error', error: err.message };
@@ -934,8 +994,8 @@ Rules:
 
   if (effectiveType === 'structural') {
     try {
-      const changed = await updateStructural(searchContext);
-      manifest.phases.structural = { status: 'ok', filesChanged: changed };
+      const { filesChanged, passes } = await updateStructural(searchContext);
+      manifest.phases.structural = { status: 'ok', filesChanged, passes };
     } catch (err) {
       console.warn(`Structural updates failed (${err.message}) — keeping originals.`);
       manifest.phases.structural = { status: 'error', error: err.message };
