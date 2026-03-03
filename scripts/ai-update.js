@@ -443,6 +443,7 @@ const STRUCTURAL_FILES = {
   'reactions':  { rel: 'sections/reactions.html',    desc: 'Regional reactions & damage assessments' },
   'confirmed-unconfirmed': { rel: 'sections/confirmed-unconfirmed.html', desc: 'Fog of war: confirmed vs unconfirmed' },
   'theater':          { rel: 'sections/theater.html',           desc: 'Theater of Operations map section' },
+  'map':              { rel: 'js/map.js',                        desc: 'Theater of Operations interactive map data (Leaflet markers, popups, corridors, strike lines)' },
   'nuclear-teaser':   { rel: 'sections/nuclear-teaser.html',    desc: 'Nuclear/diplomatic teaser (main page)' },
   'scenarios-teaser': { rel: 'sections/scenarios-teaser.html',  desc: 'Scenarios teaser (main page)' },
   'forces-teaser':    { rel: 'sections/forces-teaser.html',     desc: 'US Strike Forces teaser (main page)' },
@@ -480,15 +481,105 @@ Rules:
 - Maximum response size: return at most 3 section files per call
 - Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*)`;
 
+// Names of files that must always be deeply updated in every structural run.
+// Each name MUST exist as a key in STRUCTURAL_FILES above.
+// Groups are processed as separate GPT calls to stay within token limits.
+const DEEP_UPDATE_GROUPS = [
+  {
+    names:  ['analysis', 'map'],
+    label:  'analysis + map',
+    prompt: 'analysis-map',   // uses DEEP_UPDATE_SYSTEM_PROMPT (analysis+map specific)
+  },
+  {
+    names:  ['scenarios', 'reactions'],
+    label:  'scenarios + reactions',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+  {
+    names:  ['naval', 'air-power', 'military'],
+    label:  'forces (naval, air-power, military)',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+];
+
+const DEEP_UPDATE_SYSTEM_PROMPT = `\
+You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
+occurred. You MUST return deeply updated content for BOTH files listed below —
+they are the expert-analysis section and the interactive theater map and both
+must always reflect the latest confirmed developments.
+
+For each file you will receive the current content. Return a JSON object with
+exactly two keys matching the file names. The value for each key MUST be the
+FULL updated content — never null.
+
+Rules for analysis.html:
+- Follow the EDITORIAL GUIDELINES for card/callout patterns and source tiers
+- Preserve ALL existing @ai-zone markers exactly as they are
+- Preserve ALL {{placeholder}} template variables exactly as they are
+- Preserve the section-header <div> with its id attribute
+- Update every think-tank card to reflect the latest news; add new callouts at
+  the top for the most significant developments
+- Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
+
+Rules for map (js/map.js):
+- Preserve the outer document.addEventListener('DOMContentLoaded', ...) wrapper
+- Preserve the opening map initialisation block (L.map, tile layer, etc.) and
+  all icon/helper function definitions exactly as-is — do NOT alter SVG or CSS
+- Update or add L.marker / L.polyline / L.circle calls to reflect confirmed
+  force positions, strike corridors, and events from the search results
+- Update popup text for existing markers that have changed status
+- Add new markers or trajectory lines for new confirmed events
+- Remove markers ONLY for assets that have definitively departed the theater
+- Do NOT modify any icon helper functions or the SVG within them`;
+
+const DEEP_UPDATE_HTML_SYSTEM_PROMPT = `\
+You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
+occurred. You MUST return deeply updated HTML for ALL files listed below — these
+are high-priority sections that must always reflect the latest confirmed
+developments.
+
+For each file you will receive the current HTML. Return a JSON object where each
+key matches the file name and the value is the FULL updated HTML — never null.
+
+Rules:
+- Follow the EDITORIAL GUIDELINES for card/callout patterns and source tiers
+- Preserve ALL existing @ai-zone markers exactly as they are
+- Preserve ALL {{placeholder}} template variables exactly as they are
+- Preserve the section-header <div> with its id attribute at the top
+- Keep HTML style consistent with the existing file (same class names, CSS
+  variable usage, indentation)
+- Update all content to reflect the latest news; add new callouts at the top
+  for the most significant developments
+- Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
+- Do NOT change <script> tags, inline JavaScript, or SVG diagrams`;
+
 /**
  * Structural update phase — only runs when UPDATE_TYPE === 'structural'.
  * Asks GPT (using the stronger STRUCTURAL_MODEL) to propose section-level HTML
  * changes for files where the news warrants more than a zone-content tweak.
  * Editorial guidelines from STRUCTURAL_GUIDELINES.md are injected into the
  * prompt so the model follows consistent patterns.
+ *
+ * Four passes are always run:
+ *   Pass 1 — broad pass over all STRUCTURAL_FILES not in any deep-update group
+ *   Pass 2 — analysis + map (always updated)
+ *   Pass 3 — scenarios + reactions (always updated)
+ *   Pass 4 — forces: naval, air-power, military (always updated)
  */
 async function updateStructural(searchContext) {
   console.log(`Running STRUCTURAL update phase (model: ${STRUCTURAL_MODEL})…`);
+
+  // Sanity-check that every deep-update name exists in STRUCTURAL_FILES.
+  for (const group of DEEP_UPDATE_GROUPS) {
+    for (const name of group.names) {
+      if (!STRUCTURAL_FILES[name]) {
+        console.error(`DEEP_UPDATE_GROUPS includes "${name}" which is not in STRUCTURAL_FILES — fix the configuration.`);
+      }
+    }
+  }
+
+  // Flat list of all names that belong to any deep-update group.
+  const allDeepUpdateNames = DEEP_UPDATE_GROUPS.flatMap(g => g.names);
 
   // Load editorial guidelines (non-fatal if missing).
   let guidelines = '';
@@ -507,8 +598,72 @@ async function updateStructural(searchContext) {
     }
   }
 
-  // Build a compact summary of current file contents for the prompt.
-  const filesBlock = Object.entries(fileContents)
+  /**
+   * Validate a proposed update for a single file and write it if valid.
+   * Returns the name if applied, null if validation failed.
+   */
+  function applyUpdate(name, newContent) {
+    if (!newContent || !STRUCTURAL_FILES[name]) return null;
+    const info     = STRUCTURAL_FILES[name];
+    const fullPath = path.join(BASE_DIR, info.rel);
+    const original = fileContents[name];
+    if (!original) return null;
+
+    const isJs = info.rel.endsWith('.js');
+
+    if (isJs) {
+      // JS-specific validation: preserve the Leaflet wrapper and map init.
+      if (!newContent.includes('document.addEventListener(')) {
+        console.warn(`Structural: ${name} — DOMContentLoaded wrapper missing — skipping.`);
+        return null;
+      }
+      if (!newContent.includes('L.map(')) {
+        console.warn(`Structural: ${name} — Leaflet map initialisation missing — skipping.`);
+        return null;
+      }
+    } else {
+      // HTML validation guards
+      // 1. Must still contain the section-header id.
+      const idMatch = original.match(/id=["']([^"']+)["']/);
+      if (idMatch && !newContent.includes(`id="${idMatch[1]}"`)) {
+        console.warn(`Structural: ${name} — section id "${idMatch[1]}" missing in replacement — skipping.`);
+        return null;
+      }
+      // 2. All {{placeholders}} from the original must still be present.
+      const origPlaceholders = [...original.matchAll(/\{\{(\w+)\}\}/g)].map(m => m[1]);
+      const missingPH = origPlaceholders.filter(p => !newContent.includes(`{{${p}}}`));
+      if (missingPH.length > 0) {
+        console.warn(`Structural: ${name} — missing placeholders: ${missingPH.join(', ')} — skipping.`);
+        return null;
+      }
+      // 3. All @ai-zone markers from the original must still be present.
+      const origZones = [...original.matchAll(/<!-- @ai-zone:([\w-]+) -->/g)].map(m => m[1]);
+      const missingZones = origZones.filter(z =>
+        !newContent.includes(`<!-- @ai-zone:${z} -->`) ||
+        !newContent.includes(`<!-- @/ai-zone:${z} -->`)
+      );
+      if (missingZones.length > 0) {
+        console.warn(`Structural: ${name} — missing AI zones: ${missingZones.join(', ')} — skipping.`);
+        return null;
+      }
+    }
+
+    // Common: Reject if content is suspiciously small (< 30% of original).
+    if (newContent.length < original.length * 0.3) {
+      console.warn(`Structural: ${name} — replacement is too small (${newContent.length} vs ${original.length} chars) — skipping.`);
+      return null;
+    }
+
+    fs.writeFileSync(fullPath, isJs ? newContent : sanitizeMarkdown(newContent));
+    console.log(`  Structural update applied to ${info.rel}.`);
+    return name;
+  }
+
+  const changed = [];
+
+  // ── Pass 1: broad pass over non-deep-update files ─────────────────────
+  const pass1Block = Object.entries(fileContents)
+    .filter(([name]) => !allDeepUpdateNames.includes(name))
     .map(([name, content]) => {
       const info  = STRUCTURAL_FILES[name];
       const lines = content.split('\n').length;
@@ -516,62 +671,60 @@ async function updateStructural(searchContext) {
     })
     .join('\n\n');
 
-  const userContent =
+  const pass1UserContent =
     `UPDATE TYPE: STRUCTURAL — a major event requires section-level changes.\n\n` +
     (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
-    `CURRENT SECTION FILES:\n${filesBlock}\n\n` +
+    `CURRENT SECTION FILES:\n${pass1Block}\n\n` +
     `WEB SEARCH RESULTS:\n${searchContext}`;
 
-  let updates;
   try {
-    const raw = await callGPT(STRUCTURAL_SYSTEM_PROMPT, userContent, true, STRUCTURAL_MODEL, 32768);
-    updates = JSON.parse(raw);
+    const raw     = await callGPT(STRUCTURAL_SYSTEM_PROMPT, pass1UserContent, true, STRUCTURAL_MODEL, 32768);
+    const updates = JSON.parse(raw);
+    for (const [name, newContent] of Object.entries(updates)) {
+      const applied = applyUpdate(name, newContent);
+      if (applied) changed.push(applied);
+    }
   } catch (err) {
-    console.warn(`Structural update GPT call failed (${err.message}) — skipping.`);
-    return [];
+    console.warn(`Structural pass 1 GPT call failed (${err.message}) — continuing to deep-update pass.`);
   }
 
-  const changed = [];
-  for (const [name, newContent] of Object.entries(updates)) {
-    if (!newContent || !STRUCTURAL_FILES[name]) continue;
-    const info     = STRUCTURAL_FILES[name];
-    const fullPath = path.join(BASE_DIR, info.rel);
-    const original = fileContents[name];
-    if (!original) continue;
+  // ── Passes 2-N: dedicated deep-update per group (always runs) ────────
+  for (const group of DEEP_UPDATE_GROUPS) {
+    console.log(`Running STRUCTURAL deep-update pass (${group.label})…`);
+    const groupBlock = group.names
+      .filter(name => fileContents[name])
+      .map(name => {
+        const info  = STRUCTURAL_FILES[name];
+        const lines = fileContents[name].split('\n').length;
+        return `=== ${name} (${info.desc}, ${lines} lines) ===\n${fileContents[name]}`;
+      })
+      .join('\n\n');
 
-    // ── Validation guards ──────────────────────────────────────────────
-    // 1. Must still contain the section-header id.
-    const idMatch = original.match(/id=["']([^"']+)["']/);
-    if (idMatch && !newContent.includes(`id="${idMatch[1]}"`)) {
-      console.warn(`Structural: ${name} — section id "${idMatch[1]}" missing in replacement — skipping.`);
-      continue;
-    }
-    // 2. All {{placeholders}} from the original must still be present.
-    const origPlaceholders = [...original.matchAll(/\{\{(\w+)\}\}/g)].map(m => m[1]);
-    const missingPH = origPlaceholders.filter(p => !newContent.includes(`{{${p}}}`));
-    if (missingPH.length > 0) {
-      console.warn(`Structural: ${name} — missing placeholders: ${missingPH.join(', ')} — skipping.`);
-      continue;
-    }
-    // 3. All @ai-zone markers from the original must still be present.
-    const origZones = [...original.matchAll(/<!-- @ai-zone:([\w-]+) -->/g)].map(m => m[1]);
-    const missingZones = origZones.filter(z =>
-      !newContent.includes(`<!-- @ai-zone:${z} -->`) ||
-      !newContent.includes(`<!-- @/ai-zone:${z} -->`)
-    );
-    if (missingZones.length > 0) {
-      console.warn(`Structural: ${name} — missing AI zones: ${missingZones.join(', ')} — skipping.`);
-      continue;
-    }
-    // 4. Reject if content is suspiciously small (< 30% of original).
-    if (newContent.length < original.length * 0.3) {
-      console.warn(`Structural: ${name} — replacement is too small (${newContent.length} vs ${original.length} chars) — skipping.`);
-      continue;
-    }
+    const groupUserContent =
+      `UPDATE TYPE: STRUCTURAL DEEP UPDATE — you MUST return updated content for ALL files below.\n\n` +
+      (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
+      `FILES TO DEEPLY UPDATE:\n${groupBlock}\n\n` +
+      `WEB SEARCH RESULTS:\n${searchContext}`;
 
-    fs.writeFileSync(fullPath, sanitizeMarkdown(newContent));
-    console.log(`  Structural update applied to ${info.rel}.`);
-    changed.push(name);
+    const systemPrompt = group.prompt === 'analysis-map'
+      ? DEEP_UPDATE_SYSTEM_PROMPT
+      : DEEP_UPDATE_HTML_SYSTEM_PROMPT;
+
+    try {
+      const raw     = await callGPT(systemPrompt, groupUserContent, true, STRUCTURAL_MODEL, 32768);
+      const updates = JSON.parse(raw);
+      for (const name of group.names) {
+        const newContent = updates[name];
+        if (!newContent) {
+          console.warn(`Structural deep-update (${group.label}): ${name} — model returned null/empty — skipping.`);
+          continue;
+        }
+        const applied = applyUpdate(name, newContent);
+        if (applied && !changed.includes(applied)) changed.push(applied);
+      }
+    } catch (err) {
+      console.warn(`Structural deep-update pass (${group.label}) GPT call failed (${err.message}) — skipping.`);
+    }
   }
 
   if (changed.length > 0) {

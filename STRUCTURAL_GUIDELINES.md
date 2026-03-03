@@ -131,13 +131,15 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
 
 ## Section-specific Rules
 
-### `naval.html`
+### `naval.html` (deep-updated on every structural run)
+- This section is **always** deeply updated during structural runs.
 - Only add a new carrier card if a **new carrier strike group** deploys to the
   region. Never remove existing carrier cards — they represent historical
   deployment facts.
 - Preserve all SVG carrier schematics exactly as-is.
 
-### `scenarios.html`
+### `scenarios.html` (deep-updated on every structural run)
+- This section is **always** deeply updated during structural runs.
 - The five existing scenarios must always be present. You may add a 6th if a
   genuinely new trajectory emerges.
 - Probability percentages must always sum to 100 across all scenarios.
@@ -147,12 +149,20 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
   card (Crisis 8, etc.) but never remove or merge existing ones.
 - Each crisis card uses `border-left:3px solid var(--accent-COLOR)`.
 
+### `military.html` (deep-updated on every structural run)
+- This section is **always** deeply updated during structural runs.
+- Update threat assessments, capability estimates, and damage-assessment callouts
+  to reflect the latest confirmed strike results and intelligence assessments.
+- Never remove existing capability cards — they document confirmed order-of-battle
+  facts; add new cards for newly identified units or weapons systems.
+
 ### `opposition.html`
 - The Pahlavi timeline (`@ai-zone:opposition-track`) is updated by routine zone
   updates — structural changes should only touch content **outside** that zone.
 - Never remove the "Case For" / "Case Against" two-column layout.
 
-### `air-power.html`
+### `air-power.html` (deep-updated on every structural run)
+- This section is **always** deeply updated during structural runs.
 - Preserve all aircraft SVG schematics. Only add new aircraft cards if a
   genuinely new aircraft type is deployed.
 
@@ -160,7 +170,8 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
 - Structural changes here should only add new day-blocks or restructure the
   overall layout — individual timeline items are handled by the routine update.
 
-### `reactions.html`
+### `reactions.html` (deep-updated on every structural run)
+- This section is **always** deeply updated during structural runs.
 - Add new country-level cards when a new nation is directly impacted by strikes
   or retaliatory attacks. Keep existing country cards — they document confirmed
   events.
@@ -170,6 +181,31 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
 - Update the verification status of claims as they are confirmed or debunked by
   credible sources. Move items between confirmed and unconfirmed columns as
   warranted.
+
+### `analysis.html` (deep-updated on every structural run)
+- This section is **always** deeply updated during structural runs — never return
+  `null` for it.
+- The top-of-section Phase Status callout must reflect the current operation day
+  and the most recent confirmed developments.
+- Each think-tank card (CSIS, ISW, Carnegie, Brookings, Atlantic Council, CFR,
+  RAND) must be refreshed with the latest assessment relevant to that
+  organisation's focus area.
+- Add a new callout at the **top** of each card when there is a major finding
+  from that think-tank or when a previously-predicted event has occurred.
+- Preserve all `@ai-zone` markers within the section exactly as they appear.
+
+### `map` / `js/map.js` (deep-updated on every structural run)
+- This file is **always** deeply updated during structural runs — the map must
+  always reflect the current confirmed force disposition.
+- Preserve the `document.addEventListener('DOMContentLoaded', ...)` wrapper and
+  all icon/helper function definitions (lines 1–41) **exactly as-is**.
+- Update `L.marker` popup text for any asset whose status has changed (position,
+  operational status, casualty info, etc.).
+- Add new `L.marker` / `L.polyline` / `L.circle` entries for newly confirmed
+  strike events, force movements, or diplomatic venues.
+- Remove a marker only when the asset has **definitively** departed the theater
+  (confirmed by CENTCOM, MoD, or equivalent Tier-1 source).
+- Do **not** alter any SVG icon strings inside the helper functions.
 
 ## CSS Variable Reference
 
