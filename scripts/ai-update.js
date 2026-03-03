@@ -89,6 +89,7 @@ const SEARCH_QUERIES = [
   'Gulf states Saudi Arabia Qatar Bahrain UAE Russia China Iran coalition reaction latest',
   'Iran proxy Hezbollah Houthi Yemen Iraq militia strikes attack latest',
   'Iran IRGC assassination plot cyber espionage covert operations latest',
+  'Iran new supreme leader ayatollah successor Khamenei Assembly of Experts leadership transition',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
