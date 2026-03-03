@@ -111,13 +111,129 @@
     <a class="sb-page-pill" href="sources.html" data-page="sources">Sources</a>
   </div>
   <nav class="sb-nav" aria-label="Page sections">
-    <a class="sb-link" href="#sources" data-section="sources"><span class="sb-num">01</span><span class="sb-dot"></span>All Sources</a>
+    <a class="sb-link" href="#source-reliability" data-section="source-reliability"><span class="sb-num">01</span><span class="sb-dot"></span>Reliability Guide</a>
+    <a class="sb-link" href="#sources" data-section="sources"><span class="sb-num">02</span><span class="sb-dot"></span>All Sources</a>
   </nav>
 </aside>
 <div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
 <button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
 
 <div class="container">
+
+<!-- ======== SOURCE RELIABILITY GUIDE ======== -->
+<div class="section-header" id="source-reliability">
+  <div class="icon" style="background:rgba(74,144,217,0.15);">&#9878;</div>
+  <div><h2>Source Reliability Guide</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">How we evaluate and weight sources — understanding editorial bias and credibility tiers</div></div>
+  <span class="severity high" style="margin-left:auto;">Read First</span>
+</div>
+
+<div class="card" style="margin-bottom:20px;">
+  <p style="color:var(--text-secondary);font-size:13px;margin-bottom:20px;">Not all sources carry equal weight. In an active conflict with high information fog, it matters whether a claim comes from an official press release, a wire-service dispatch, a specialized think tank, a regionally partisan outlet, or an advocacy group. This guide categorizes every source type used in this report so readers can calibrate how much confidence to place in each claim. <strong>Use tier-1 and tier-2 sources to establish facts; use tiers 3–5 for context and analysis; treat tier-6 sources as one perspective among many.</strong></p>
+
+  <!-- Tier grid -->
+  <div class="two-col">
+
+    <!-- Tier 1 -->
+    <div style="border-left:4px solid var(--accent-green);padding:12px 16px;background:rgba(0,200,83,0.05);border-radius:0 6px 6px 0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="background:rgba(0,200,83,0.15);color:var(--accent-green);border-radius:4px;padding:2px 8px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:1px;">TIER 1 — HIGHEST WEIGHT</span>
+      </div>
+      <h4 style="font-size:13px;margin-bottom:6px;color:var(--text-primary);">Official Primary Sources</h4>
+      <p style="color:var(--text-secondary);font-size:12px;margin-bottom:8px;">Government and international-body statements are the authoritative record for confirmed military actions, casualty acknowledgments, and policy positions. Treat as ground truth for what governments <em>claim</em> — not necessarily objective reality.</p>
+      <ul style="color:var(--text-secondary);font-size:12px;margin-left:16px;line-height:1.7;">
+        <li><strong>US CENTCOM</strong> — official DoD press releases and briefings</li>
+        <li><strong>IAEA</strong> — nuclear safeguards and inspections</li>
+        <li><strong>State Dept / DoD</strong> — US policy statements</li>
+        <li><strong>UN / OCHA / WHO</strong> — humanitarian and casualty assessments</li>
+      </ul>
+      <p style="color:var(--text-muted);font-size:11px;margin-top:8px;font-style:italic;">⚠ Official sources reflect the issuing government's narrative — always note which government is speaking.</p>
+    </div>
+
+    <!-- Tier 2 -->
+    <div style="border-left:4px solid var(--accent-blue);padding:12px 16px;background:rgba(74,144,217,0.05);border-radius:0 6px 6px 0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="background:rgba(74,144,217,0.15);color:var(--accent-blue);border-radius:4px;padding:2px 8px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:1px;">TIER 2 — HIGH WEIGHT</span>
+      </div>
+      <h4 style="font-size:13px;margin-bottom:6px;color:var(--text-primary);">Major Wire Services</h4>
+      <p style="color:var(--text-secondary);font-size:12px;margin-bottom:8px;">Wire services have editors, fact-checkers, and legal accountability. Breaking-news dispatches are less verified than analyzed pieces — but wire reports are still among the most reliable for confirming discrete events.</p>
+      <ul style="color:var(--text-secondary);font-size:12px;margin-left:16px;line-height:1.7;">
+        <li><strong>Reuters</strong> — global wire; strong Middle East bureau</li>
+        <li><strong>AP (Associated Press)</strong> — broad international verification</li>
+        <li><strong>AFP</strong> — strong on European and MENA coverage</li>
+      </ul>
+    </div>
+
+    <!-- Tier 3 -->
+    <div style="border-left:4px solid var(--accent-cyan);padding:12px 16px;background:rgba(0,212,255,0.05);border-radius:0 6px 6px 0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="background:rgba(0,212,255,0.15);color:var(--accent-cyan);border-radius:4px;padding:2px 8px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:1px;">TIER 3 — GOOD WEIGHT</span>
+      </div>
+      <h4 style="font-size:13px;margin-bottom:6px;color:var(--text-primary);">Specialized Military &amp; Defense Analysis</h4>
+      <p style="color:var(--text-secondary);font-size:12px;margin-bottom:8px;">These outlets have deep domain expertise and are generally the most reliable for military order-of-battle, technical claims, and operational assessments. Preferred for hardware, deployments, and strike analysis.</p>
+      <ul style="color:var(--text-secondary);font-size:12px;margin-left:16px;line-height:1.7;">
+        <li><strong>ISW</strong> (Institute for the Study of War) — rigorous daily updates; some US-aligned framing</li>
+        <li><strong>USNI News</strong> — authoritative on US naval movements</li>
+        <li><strong>The War Zone (TWZ)</strong> — excellent OSINT and technical analysis</li>
+        <li><strong>CSIS</strong> — strong strategic analysis; generally centrist Western perspective</li>
+        <li><strong>Defense News / Stars &amp; Stripes</strong> — credible DoD-adjacent reporting</li>
+      </ul>
+    </div>
+
+    <!-- Tier 4 -->
+    <div style="border-left:4px solid #9898a8;padding:12px 16px;background:rgba(152,152,168,0.05);border-radius:0 6px 6px 0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="background:rgba(152,152,168,0.15);color:#9898a8;border-radius:4px;padding:2px 8px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:1px;">TIER 4 — STANDARD WEIGHT</span>
+      </div>
+      <h4 style="font-size:13px;margin-bottom:6px;color:var(--text-primary);">Quality Journalism (Mainstream US/UK)</h4>
+      <p style="color:var(--text-secondary);font-size:12px;margin-bottom:8px;">Major broadcast and print outlets with editorial standards and international correspondents. Good for confirmed events and context; analysis pieces may reflect editorial positions.</p>
+      <ul style="color:var(--text-secondary);font-size:12px;margin-left:16px;line-height:1.7;">
+        <li>NYT, WaPo, BBC, The Guardian, FT, The Economist</li>
+        <li>CNN, NBC, CBS, CNBC, ABC</li>
+        <li>PBS, NPR, Axios, Politico</li>
+        <li>The Independent, Sky News, The Telegraph</li>
+      </ul>
+    </div>
+
+    <!-- Tier 5 -->
+    <div style="border-left:4px solid var(--accent-gold);padding:12px 16px;background:rgba(255,215,0,0.05);border-radius:0 6px 6px 0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="background:rgba(255,215,0,0.15);color:var(--accent-gold);border-radius:4px;padding:2px 8px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:1px;">TIER 5 — REGIONAL / VERIFY FRAMING</span>
+      </div>
+      <h4 style="font-size:13px;margin-bottom:6px;color:var(--text-primary);">Regional &amp; Foreign Media — Note Editorial Angle</h4>
+      <p style="color:var(--text-secondary);font-size:12px;margin-bottom:8px;">These outlets often have the best on-the-ground access in their regions but carry editorial perspectives tied to their ownership or location. Valuable for regional reactions and events; cross-check framing with wire services.</p>
+      <ul style="color:var(--text-secondary);font-size:12px;margin-left:16px;line-height:1.7;">
+        <li><strong>Al Jazeera</strong> — Qatar-government funded; credible journalism but watch framing on Gulf state politics and Israel-Palestine</li>
+        <li><strong>Iran International</strong> — London-based; strongly anti-Iranian government; valuable for internal Iran reporting, but framing leans toward regime collapse narratives</li>
+        <li><strong>Al Arabiya</strong> — Saudi-owned; check for Saudi government perspective</li>
+        <li><strong>Times of Israel</strong> — Israel-based; credible but check Israeli government framing</li>
+        <li><strong>SCMP</strong> — Hong Kong; credible but note Beijing editorial constraints</li>
+        <li><strong>HRANA</strong> — Iran human-rights NGO; valuable casualty data but opposition-aligned; figures should be treated as estimates pending corroboration</li>
+      </ul>
+    </div>
+
+    <!-- Tier 6 -->
+    <div style="border-left:4px solid var(--accent-orange);padding:12px 16px;background:rgba(255,140,66,0.05);border-radius:0 6px 6px 0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="background:rgba(255,140,66,0.15);color:var(--accent-orange);border-radius:4px;padding:2px 8px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:1px;">TIER 6 — ADVOCACY / USE WITH CAUTION</span>
+      </div>
+      <h4 style="font-size:13px;margin-bottom:6px;color:var(--text-primary);">Advocacy Think Tanks &amp; Partisan Sources</h4>
+      <p style="color:var(--text-secondary);font-size:12px;margin-bottom:8px;">These organizations publish detailed analysis but have explicitly stated policy missions that shape their framing. Useful for perspectives and detailed breakdowns — <strong>not neutral arbiters.</strong> Weight their conclusions accordingly.</p>
+      <ul style="color:var(--text-secondary);font-size:12px;margin-left:16px;line-height:1.7;">
+        <li><strong>JINSA</strong> (Jewish Institute for National Security Affairs) — pro-Israel advocacy; Israel strike analysis leans toward justifying Israeli military action</li>
+        <li><strong>MEF</strong> (Middle East Forum) — conservative, strongly anti-Iran and pro-Israel; favors regime change framing</li>
+        <li><strong>Alma Research Center</strong> — Israeli security think tank; pro-Israel institutional perspective on Iranian threats</li>
+        <li><strong>National Interest</strong> — realist/conservative; anti-interventionist but sometimes ideologically driven analysis</li>
+        <li><strong>CGTN</strong> — Chinese state media; pro-Beijing, may amplify anti-US or pro-Iran narratives</li>
+        <li><strong>Wikipedia</strong> — user-edited; rapidly updated during crises but unverified; use as a starting point only, not a primary source</li>
+      </ul>
+    </div>
+
+  </div><!-- /tier grid -->
+
+  <div style="margin-top:20px;padding:12px 16px;background:rgba(255,140,66,0.08);border:1px solid rgba(255,140,66,0.2);border-radius:6px;font-size:12px;color:var(--text-secondary);">
+    <strong style="color:var(--accent-orange);">⚠ Source Weighting Note:</strong> This report uses all six tiers to build a comprehensive picture. Official denial of a claim (Tier 1) outweighs an advocacy source's assertion (Tier 6). A wire-service confirmation (Tier 2) outweighs a regional outlet's single-source claim (Tier 5). Where key statistics or confirmed events rely primarily on Tier 5–6 sources, they are flagged in the <a href="index.html#confirmed-unconfirmed" style="color:var(--accent-orange);">Fog of War</a> section. Casualty figures, BDA claims, and strike tallies from any single source should be treated as preliminary until corroborated across tiers.
+  </div>
+</div>
 
 <footer id="sources">
   <div class="container">
