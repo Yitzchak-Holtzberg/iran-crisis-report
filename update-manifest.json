@@ -708,6 +708,67 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-03T19:03:44.160Z",
+      "type": "auto",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": true,
+          "reason": "Multiple reports claim Iran’s Supreme Leader Ali Khamenei was killed—an unrepresented regime‑change event requiring page",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [],
+          "filesUpdated": []
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "hormuz",
+            "confirmed-unconfirmed",
+            "scenarios",
+            "reactions"
+          ],
+          "passes": {
+            "pass1": {
+              "status": "ok",
+              "filesChanged": [
+                "hormuz",
+                "confirmed-unconfirmed"
+              ]
+            },
+            "analysis + map": {
+              "status": "error",
+              "error": "fetch failed (cause: Headers Timeout Error)"
+            },
+            "scenarios + reactions": {
+              "status": "ok",
+              "filesChanged": [
+                "scenarios",
+                "reactions"
+              ]
+            },
+            "forces (naval, air-power, military)": {
+              "status": "error",
+              "error": "fetch failed (cause: Headers Timeout Error)"
+            }
+          }
+        }
+      }
     }
   ]
 }
