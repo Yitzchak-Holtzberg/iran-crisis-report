@@ -44,6 +44,7 @@
 
 // ===== LEFT SIDEBAR: collapse toggle (desktop) =====
 function toggleCollapse() {
+  if (window.innerWidth <= 900) { closeSidebar(); return; }
   var sb = document.getElementById('leftSidebar');
   var btn = document.getElementById('sbCollapseBtn');
   var header = document.getElementById('sbHeader');
