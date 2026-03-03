@@ -769,6 +769,42 @@
           }
         }
       }
+    },
+    {
+      "timestamp": "2026-03-03T23:05:58.885Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results reiterate strikes, Khamenei's death, and regional escalation already reflected on the page.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 4
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis2-title"
+          ],
+          "filesUpdated": [
+            "inside-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }

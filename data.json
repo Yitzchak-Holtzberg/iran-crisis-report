@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 3, 2026",
-  "lastUpdated": "19:03 UTC",
+  "lastUpdated": "23:05 UTC",
   "statUsTroops": "35,000+",
   "statUsTroopsSource": "Stars & Stripes/CENTCOM",
   "statMissilesFired": "~300+",
@@ -19,6 +19,11 @@
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 12,
   "ticker": [
+    "MILITARY: U.S. says it has struck more than 1,700 targets inside Iran since operations began (The Guardian/CNN, Mar 3, 2026)",
+    "MILITARY: U.S. asserts most of Iran's military installations have been 'knocked out' as strikes continue (CNN, Mar 3, 2026)",
+    "DIPLOMACY: Three U.S. embassies in the Gulf region closed amid escalating strikes and security concerns (Washington Post, Mar 3, 2026)",
+    "ATTACK: Drone strike damages U.S. consulate in Dubai; staff report damage (Wall Street Journal, Mar 3, 2026)",
+    "ECONOMY: U.S. to offer insurance support for Gulf shipping as private insurers drop war-risk coverage (CNBC, Mar 3, 2026)",
     "LEADERSHIP: Iran's Supreme Leader Ali Khamenei reported killed in U.S.-Israeli strikes (CNBC, Mar 3, 2026)",
     "MILITARY: U.S. confirms strike on Iranian drone carrier Shahid Bagheri (CENTCOM/Military.com, Mar 3, 2026)",
     "MILITARY: U.S. says it destroyed IRGC command centre; Iran reports 13 soldiers killed in Kerman (Al Jazeera, Mar 3, 2026)",
@@ -37,12 +42,6 @@
     "DIPLOMACY: OMAN MEDIATES NEW PUSH FOR U.S.-IRAN NUCLEAR TALKS AMID ESCALATION (Al Jazeera, Feb 27, 2026)",
     "MILITARY: ISRAEL STRIKES TEHRAN AND BEIRUT AS WAR WIDENS (Reuters, Mar 3, 2026)",
     "ATTACK: U.S. EMBASSY IN RIYADH HIT BY DRONES; STAFF REPORTS DAMAGE (Reuters, Mar 3, 2026)",
-    "IRAN LAUNCH: BALLISTIC MISSILES AND DRONES LAUNCHED ACROSS MIDDLE EAST; INTERCEPTS REPORTED (CNN, Mar 3, 2026)",
-    "GROUNDS OPERATIONS: ISRAELI TROOPS REPORTED OPERATING INSIDE LEBANON (NBC, Mar 3, 2026)",
-    "SHIPPING: AT LEAST FIVE TANKERS DAMAGED, TWO CREW KILLED; ~150 VESSELS STRANDED NEAR STRAIT OF HORMUZ (Reuters, Mar 3, 2026)",
-    "ECONOMY: IRAN RIAL PLUNGES TO ~1.63M PER USD AS SANCTIONS, CONFLICT BATTER THE CURRENCY (See.News, Mar 3, 2026)",
-    "INTERNAL SECURITY: IRAN ARRESTS PROMINENT REFORMISTS IN CRACKDOWN AFTER MASS PROTESTS (Al Jazeera, Mar 2, 2026)",
-    "REGIONAL: SEVEN GULF STATES JOIN U.S. IN CONDEMNING IRAN'S MISSILE, DRONE ATTACKS (Times of India, Mar 2, 2026)",
-    "U.S. STATEMENT: TRUMP SAYS OPERATION 'COULD TAKE FOUR WEEKS OR LESS' AS CAMPAIGN CONTINUES (CBS, Mar 2, 2026)"
+    "IRAN LAUNCH: BALLISTIC MISSILES AND DRONES LAUNCHED ACROSS MIDDLE EAST; INTERCEPTS REPORTED (CNN, Mar 3, 2026)"
   ]
 }
