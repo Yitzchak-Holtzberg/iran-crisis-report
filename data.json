@@ -1,24 +1,27 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 3, 2026",
-  "lastUpdated": "16:26 UTC",
+  "lastUpdated": "17:32 UTC",
   "statUsTroops": "35,000+",
   "statUsTroopsSource": "Stars & Stripes/CENTCOM",
   "statMissilesFired": "~300+",
   "statMissilesFiredSource": "Crit. Threats",
-  "statCarrierGroups": "3",
+  "statCarrierGroups": "2",
   "statOilAtRisk": "20M",
   "statCitizensOffline": "92M",
   "statIrgcKilled": "555+",
   "statUsCasualties": "6",
   "statUsCasualtiesSource": "CNBC/CBS",
   "scenarioDealPct": 0,
-  "scenarioStrikesPct": 0,
-  "scenarioRevolutionPct": 80,
-  "scenarioPahlaviPct": 15,
+  "scenarioStrikesPct": 15,
+  "scenarioRevolutionPct": 70,
+  "scenarioPahlaviPct": 10,
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 5,
   "ticker": [
+    "DIPLOMACY: U.S. closes two Gulf embassies amid escalating strikes and warnings (New York Times, Mar 3, 2026)",
+    "MILITARY: TWO U.S. carrier strike groups (USS Gerald R. Ford, USS Abraham Lincoln) operating in region (Military.com/CNN, Mar 3, 2026)",
+    "PROXIES: Houthis resume missile and drone attacks on Red Sea shipping after strikes (AP, Mar 3, 2026)",
     "CASUALTIES: Red Crescent reports 700+ dead after U.S.-Israeli strikes across Iran (Red Crescent/WSJ, Mar 3, 2026)",
     "DIPLOMACY: U.S.-Iran nuclear talks end without deal; Iran rejects U.S. demands (Al Jazeera/Mar 3, 2026)",
     "REGIONAL: Gulf states weigh joining broader campaign against Iran after strikes (Reuters, Mar 3, 2026)",
@@ -40,8 +43,6 @@
     "ENERGY: Saudi oil refinery struck by Iran; major facility damaged, production hit (NPR, Mar 3, 2026)",
     "AVIATION: Hundreds of thousands of airline passengers stranded as Middle East airspace closures continue (NPR, Mar 3, 2026)",
     "MILITARY: U.S. tightens security at San Diego bases after Iran strikes; access restricted (Axios, Mar 2, 2026)",
-    "HUMANITARIAN: Hospitals and schools in Iran reported damaged by strikes; U.N. and aid groups call for protection (Al Jazeera, Mar 2, 2026)",
-    "CASUALTIES: SIX U.S. SERVICE MEMBERS CONFIRMED KILLED IN CONFLICT WITH IRAN (CNBC/CBS News, Mar 2, 2026)",
-    "MILITARY: IRGC COMMANDER SAYS STRAIT OF HORMUZ CLOSED, THREATENS TO SET SHIPS ON FIRE (Reuters, Mar 2, 2026)"
+    "HUMANITARIAN: Hospitals and schools in Iran reported damaged by strikes; U.N. and aid groups call for protection (Al Jazeera, Mar 2, 2026)"
   ]
 }

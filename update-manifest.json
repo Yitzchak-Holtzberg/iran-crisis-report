@@ -672,6 +672,42 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-03T17:32:15.967Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results largely reiterate strikes, deployments, talks, and proxy activity already reflected on the page—no new pa",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 4
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "naval-subtitle"
+          ],
+          "filesUpdated": [
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
