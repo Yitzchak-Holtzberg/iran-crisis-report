@@ -171,6 +171,31 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
   credible sources. Move items between confirmed and unconfirmed columns as
   warranted.
 
+### `analysis.html` (deep-updated on every structural run)
+- This section is **always** deeply updated during structural runs — never return
+  `null` for it.
+- The top-of-section Phase Status callout must reflect the current operation day
+  and the most recent confirmed developments.
+- Each think-tank card (CSIS, ISW, Carnegie, Brookings, Atlantic Council, CFR,
+  RAND) must be refreshed with the latest assessment relevant to that
+  organisation's focus area.
+- Add a new callout at the **top** of each card when there is a major finding
+  from that think-tank or when a previously-predicted event has occurred.
+- Preserve all `@ai-zone` markers within the section exactly as they appear.
+
+### `map` / `js/map.js` (deep-updated on every structural run)
+- This file is **always** deeply updated during structural runs — the map must
+  always reflect the current confirmed force disposition.
+- Preserve the `document.addEventListener('DOMContentLoaded', ...)` wrapper and
+  all icon/helper function definitions (lines 1–41) **exactly as-is**.
+- Update `L.marker` popup text for any asset whose status has changed (position,
+  operational status, casualty info, etc.).
+- Add new `L.marker` / `L.polyline` / `L.circle` entries for newly confirmed
+  strike events, force movements, or diplomatic venues.
+- Remove a marker only when the asset has **definitively** departed the theater
+  (confirmed by CENTCOM, MoD, or equivalent Tier-1 source).
+- Do **not** alter any SVG icon strings inside the helper functions.
+
 ## CSS Variable Reference
 
 | Variable | Usage |
