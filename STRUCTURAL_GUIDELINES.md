@@ -8,6 +8,33 @@ Edit this file to adjust editorial policy without touching `ai-update.js`.
 
 ---
 
+## Source Reliability Tiers
+
+All new content must respect the site's six-tier credibility hierarchy
+(visible to readers in `sources.html#source-reliability`). Apply these rules
+when adding or evaluating claims:
+
+| Tier | Weight | Examples | Editorial rule |
+|---|---|---|---|
+| 1 | Highest | US CENTCOM, IAEA, State Dept, UN/OCHA/WHO | Treat as ground truth for *what governments claim* — note which government is speaking |
+| 2 | High | Reuters, AP, AFP | Preferred for confirming discrete events; breaking dispatches are less verified than analysis pieces |
+| 3 | Good | ISW, USNI News, The War Zone, CSIS, Defense News | Preferred for military order-of-battle, technical claims, and operational assessments |
+| 4 | Standard | NYT, WaPo, BBC, CNN, NPR, The Guardian, FT, Axios, Politico | Good for confirmed events and context; analysis may reflect editorial positions |
+| 5 | Verify framing | Al Jazeera, Iran International, Al Arabiya, Times of Israel, HRANA | Valuable for regional events and on-the-ground access; note editorial angle — cross-check framing with tiers 1–2 |
+| 6 | Caution | JINSA, MEF, Alma Center, Wikipedia | Advocacy/partisan — state their perspective explicitly; do not cite as neutral arbiters; must be corroborated by a tier 1–4 source |
+
+Rules for new content:
+- **Establish facts from tiers 1–3.** If only a tier-4 source reports something,
+  that is acceptable for confirmed events but note it is not yet wire-confirmed.
+- **Tier-5 sources require a framing note** in the attribution, e.g.
+  `— Source: <em>Iran International (opposition-aligned), Mar 5</em>`.
+- **Tier-6 sources must be corroborated.** Never use a tier-6 source as the
+  sole basis for a factual claim. Always pair with a tier 1–4 citation.
+- Claims sourced only from tiers 5–6 that appear in `confirmed-unconfirmed.html`
+  belong in the **unconfirmed** column until corroborated by a higher tier.
+
+---
+
 ## General Principles
 
 1. **Additive bias** — prefer adding new cards/callouts over removing existing
@@ -16,7 +43,8 @@ Edit this file to adjust editorial policy without touching `ai-update.js`.
 2. **Minimal change** — only modify sections where the news justifies it. Return
    `null` for any section that does not need structural changes.
 3. **Source everything** — every new fact must include a source attribution in
-   italics (e.g. `— Source: <em>Reuters, Mar 1</em>`).
+   italics (e.g. `— Source: <em>Reuters, Mar 1</em>`). Apply the tier rules
+   above to decide how to frame the attribution.
 
 ## What to Add
 

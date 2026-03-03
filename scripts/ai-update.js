@@ -232,6 +232,15 @@ General rules:
 - Keep writing style consistent with the existing content
 - Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*)
 
+Source reliability tiers (mirrors the Source Reliability Guide on the sources page):
+- Tier 1 — Highest: US CENTCOM, IAEA, State Dept, UN/OCHA/WHO — treat as ground truth for confirmed claims
+- Tier 2 — High: Reuters, AP, AFP — preferred for confirming discrete events
+- Tier 3 — Good: ISW, USNI News, The War Zone, CSIS, Defense News — preferred for military/technical claims
+- Tier 4 — Standard: NYT, WaPo, BBC, CNN, NPR, The Guardian, Axios — acceptable for confirmed events with editorial context
+- Tier 5 — Verify framing: Al Jazeera, Iran International, Al Arabiya, Times of Israel, HRANA — must add framing note in attribution (e.g. "Iran International (opposition-aligned)")
+- Tier 6 — Caution: JINSA, MEF, Alma Center, Wikipedia — never sole basis for a fact; must be corroborated by a tier 1–4 source
+Establish new facts from tiers 1–3 whenever possible. Tier-5 attributions must include the outlet's editorial angle. Tier-6 sources require corroboration.
+
 Zone-specific rules:
 - *-subtitle zones: update the section header subtitle if key facts changed
   (counts, status, date, location). Keep under 140 characters.
