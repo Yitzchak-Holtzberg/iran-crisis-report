@@ -43,6 +43,7 @@ const DATA_PATH        = path.join(BASE_DIR, 'data.json');
 const LAST24H_PATH     = path.join(BASE_DIR, 'sections', 'last-24h.html');
 const MANIFEST_PATH    = path.join(BASE_DIR, 'update-manifest.json');
 const GUIDELINES_PATH  = path.join(BASE_DIR, 'STRUCTURAL_GUIDELINES.md');
+const GPT_LOG_PATH     = path.join(BASE_DIR, 'logs', 'gpt-calls.jsonl');
 
 // Matches the existing TODAY items block inside last-24h.html.
 // Used both by the significance assessment (to check what's already on the page)
@@ -112,7 +113,8 @@ async function tavilySearch(query) {
 
 /** Call an OpenAI model and return the raw text of the first choice.
  *  Tries up to MAX_GPT_ATTEMPTS times (exponential backoff: 2s, 4s between retries)
- *  on transient network errors or 5xx responses. */
+ *  on transient network errors or 5xx responses.
+ *  Each call (success or final failure) is appended as a JSON line to logs/gpt-calls.jsonl. */
 const MAX_GPT_ATTEMPTS = 3;
 async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt-5-mini', maxTokens = 16384) {
   const body = {
@@ -125,6 +127,7 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
   };
   if (jsonMode) body.response_format = { type: 'json_object' };
 
+  const promptSizeKB = +(body.messages.reduce((s, m) => s + m.content.length, 0) / 1024).toFixed(1);
   let lastErr;
   for (let attempt = 1; attempt <= MAX_GPT_ATTEMPTS; attempt++) {
     try {
@@ -152,7 +155,9 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
         throw new Error(`OpenAI error ${res.status}: ${text}`);
       }
       const json = await res.json();
-      return json.choices[0].message.content;
+      const result = json.choices[0].message.content;
+      appendGptLog({ model, bodySizeKB: promptSizeKB, systemPrompt, userContent, result, error: null });
+      return result;
     } catch (err) {
       // Retry on network-level errors (e.g. "fetch failed") but not on the
       // explicit throws above which are already final.
@@ -165,7 +170,19 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
       }
     }
   }
+  appendGptLog({ model, bodySizeKB: promptSizeKB, systemPrompt, userContent, result: null, error: lastErr.message });
   throw lastErr;
+}
+
+/** Append a single JSON line to logs/gpt-calls.jsonl (creates the file/dir if needed). */
+function appendGptLog(entry) {
+  try {
+    const logsDir = path.dirname(GPT_LOG_PATH);
+    if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
+    fs.appendFileSync(GPT_LOG_PATH, JSON.stringify({ timestamp: new Date().toISOString(), ...entry }) + '\n');
+  } catch (e) {
+    console.warn(`[callGPT] Failed to write gpt-calls.jsonl: ${e.message}`);
+  }
 }
 
 /**
