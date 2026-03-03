@@ -483,7 +483,24 @@ Rules:
 
 // Names of files that must always be deeply updated in every structural run.
 // Each name MUST exist as a key in STRUCTURAL_FILES above.
-const DEEP_UPDATE_NAMES = ['analysis', 'map'];
+// Groups are processed as separate GPT calls to stay within token limits.
+const DEEP_UPDATE_GROUPS = [
+  {
+    names:  ['analysis', 'map'],
+    label:  'analysis + map',
+    prompt: 'analysis-map',   // uses DEEP_UPDATE_SYSTEM_PROMPT (analysis+map specific)
+  },
+  {
+    names:  ['scenarios', 'reactions'],
+    label:  'scenarios + reactions',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+  {
+    names:  ['naval', 'air-power', 'military'],
+    label:  'forces (naval, air-power, military)',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+];
 
 const DEEP_UPDATE_SYSTEM_PROMPT = `\
 You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
@@ -515,6 +532,27 @@ Rules for map (js/map.js):
 - Remove markers ONLY for assets that have definitively departed the theater
 - Do NOT modify any icon helper functions or the SVG within them`;
 
+const DEEP_UPDATE_HTML_SYSTEM_PROMPT = `\
+You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
+occurred. You MUST return deeply updated HTML for ALL files listed below — these
+are high-priority sections that must always reflect the latest confirmed
+developments.
+
+For each file you will receive the current HTML. Return a JSON object where each
+key matches the file name and the value is the FULL updated HTML — never null.
+
+Rules:
+- Follow the EDITORIAL GUIDELINES for card/callout patterns and source tiers
+- Preserve ALL existing @ai-zone markers exactly as they are
+- Preserve ALL {{placeholder}} template variables exactly as they are
+- Preserve the section-header <div> with its id attribute at the top
+- Keep HTML style consistent with the existing file (same class names, CSS
+  variable usage, indentation)
+- Update all content to reflect the latest news; add new callouts at the top
+  for the most significant developments
+- Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
+- Do NOT change <script> tags, inline JavaScript, or SVG diagrams`;
+
 /**
  * Structural update phase — only runs when UPDATE_TYPE === 'structural'.
  * Asks GPT (using the stronger STRUCTURAL_MODEL) to propose section-level HTML
@@ -522,19 +560,26 @@ Rules for map (js/map.js):
  * Editorial guidelines from STRUCTURAL_GUIDELINES.md are injected into the
  * prompt so the model follows consistent patterns.
  *
- * Two passes are always run:
- *   Pass 1 — broad pass over all STRUCTURAL_FILES (up to 3 files changed)
- *   Pass 2 — dedicated deep-update pass for analysis and map (always updated)
+ * Four passes are always run:
+ *   Pass 1 — broad pass over all STRUCTURAL_FILES not in any deep-update group
+ *   Pass 2 — analysis + map (always updated)
+ *   Pass 3 — scenarios + reactions (always updated)
+ *   Pass 4 — forces: naval, air-power, military (always updated)
  */
 async function updateStructural(searchContext) {
   console.log(`Running STRUCTURAL update phase (model: ${STRUCTURAL_MODEL})…`);
 
   // Sanity-check that every deep-update name exists in STRUCTURAL_FILES.
-  for (const name of DEEP_UPDATE_NAMES) {
-    if (!STRUCTURAL_FILES[name]) {
-      console.error(`DEEP_UPDATE_NAMES includes "${name}" which is not in STRUCTURAL_FILES — fix the configuration.`);
+  for (const group of DEEP_UPDATE_GROUPS) {
+    for (const name of group.names) {
+      if (!STRUCTURAL_FILES[name]) {
+        console.error(`DEEP_UPDATE_GROUPS includes "${name}" which is not in STRUCTURAL_FILES — fix the configuration.`);
+      }
     }
   }
+
+  // Flat list of all names that belong to any deep-update group.
+  const allDeepUpdateNames = DEEP_UPDATE_GROUPS.flatMap(g => g.names);
 
   // Load editorial guidelines (non-fatal if missing).
   let guidelines = '';
@@ -618,7 +663,7 @@ async function updateStructural(searchContext) {
 
   // ── Pass 1: broad pass over non-deep-update files ─────────────────────
   const pass1Block = Object.entries(fileContents)
-    .filter(([name]) => !DEEP_UPDATE_NAMES.includes(name))
+    .filter(([name]) => !allDeepUpdateNames.includes(name))
     .map(([name, content]) => {
       const info  = STRUCTURAL_FILES[name];
       const lines = content.split('\n').length;
@@ -643,37 +688,43 @@ async function updateStructural(searchContext) {
     console.warn(`Structural pass 1 GPT call failed (${err.message}) — continuing to deep-update pass.`);
   }
 
-  // ── Pass 2: dedicated deep-update for analysis + map (always runs) ─────
-  console.log('Running STRUCTURAL deep-update pass (analysis + map)…');
-  const pass2Block = DEEP_UPDATE_NAMES
-    .filter(name => fileContents[name])
-    .map(name => {
-      const info  = STRUCTURAL_FILES[name];
-      const lines = fileContents[name].split('\n').length;
-      return `=== ${name} (${info.desc}, ${lines} lines) ===\n${fileContents[name]}`;
-    })
-    .join('\n\n');
+  // ── Passes 2-N: dedicated deep-update per group (always runs) ────────
+  for (const group of DEEP_UPDATE_GROUPS) {
+    console.log(`Running STRUCTURAL deep-update pass (${group.label})…`);
+    const groupBlock = group.names
+      .filter(name => fileContents[name])
+      .map(name => {
+        const info  = STRUCTURAL_FILES[name];
+        const lines = fileContents[name].split('\n').length;
+        return `=== ${name} (${info.desc}, ${lines} lines) ===\n${fileContents[name]}`;
+      })
+      .join('\n\n');
 
-  const pass2UserContent =
-    `UPDATE TYPE: STRUCTURAL DEEP UPDATE — you MUST return updated content for BOTH files below.\n\n` +
-    (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
-    `FILES TO DEEPLY UPDATE:\n${pass2Block}\n\n` +
-    `WEB SEARCH RESULTS:\n${searchContext}`;
+    const groupUserContent =
+      `UPDATE TYPE: STRUCTURAL DEEP UPDATE — you MUST return updated content for ALL files below.\n\n` +
+      (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
+      `FILES TO DEEPLY UPDATE:\n${groupBlock}\n\n` +
+      `WEB SEARCH RESULTS:\n${searchContext}`;
 
-  try {
-    const raw     = await callGPT(DEEP_UPDATE_SYSTEM_PROMPT, pass2UserContent, true, STRUCTURAL_MODEL, 32768);
-    const updates = JSON.parse(raw);
-    for (const name of DEEP_UPDATE_NAMES) {
-      const newContent = updates[name];
-      if (!newContent) {
-        console.warn(`Structural deep-update: ${name} — model returned null/empty — skipping.`);
-        continue;
+    const systemPrompt = group.prompt === 'analysis-map'
+      ? DEEP_UPDATE_SYSTEM_PROMPT
+      : DEEP_UPDATE_HTML_SYSTEM_PROMPT;
+
+    try {
+      const raw     = await callGPT(systemPrompt, groupUserContent, true, STRUCTURAL_MODEL, 32768);
+      const updates = JSON.parse(raw);
+      for (const name of group.names) {
+        const newContent = updates[name];
+        if (!newContent) {
+          console.warn(`Structural deep-update (${group.label}): ${name} — model returned null/empty — skipping.`);
+          continue;
+        }
+        const applied = applyUpdate(name, newContent);
+        if (applied && !changed.includes(applied)) changed.push(applied);
       }
-      const applied = applyUpdate(name, newContent);
-      if (applied && !changed.includes(applied)) changed.push(applied);
+    } catch (err) {
+      console.warn(`Structural deep-update pass (${group.label}) GPT call failed (${err.message}) — skipping.`);
     }
-  } catch (err) {
-    console.warn(`Structural deep-update pass GPT call failed (${err.message}) — skipping.`);
   }
 
   if (changed.length > 0) {
