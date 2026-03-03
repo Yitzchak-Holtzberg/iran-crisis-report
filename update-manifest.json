@@ -494,6 +494,36 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-03T02:52:16.126Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 11,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results report additional strikes and energy/shipping impacts already reflected in timeline (Hormuz closure, Gulf",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 4
+        },
+        "zones": {
+          "status": "ok"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
