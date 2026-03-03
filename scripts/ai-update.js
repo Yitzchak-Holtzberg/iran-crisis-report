@@ -298,7 +298,7 @@ async function updateZones(searchContext) {
   const zoneCount = Object.keys(zones).length;
   if (zoneCount === 0) {
     console.log('No @ai-zone markers found in sections/ — skipping zone updates.');
-    return;
+    return { zonesUpdated: [], filesUpdated: [] };
   }
 
   const zonesBlock = Object.entries(zones)
@@ -320,12 +320,12 @@ async function updateZones(searchContext) {
     updates = JSON.parse(raw);
   } catch (err) {
     console.warn(`Zone update GPT call failed (${err.message}) — keeping all originals.`);
-    return;
+    throw err;
   }
 
   // Group replacements by file so each file is read and written only once.
   const fileContents = {};
-  let updatedZoneCount = 0;
+  const updatedZoneIdSet = new Set();
 
   for (const [zoneId, newContent] of Object.entries(updates)) {
     if (!newContent || !zones[zoneId]) continue;
@@ -348,7 +348,7 @@ async function updateZones(searchContext) {
       }
       const newOuter = `<!-- @ai-zone:${zoneId} -->${sanitizeMarkdown(newContent)}<!-- @/ai-zone:${zoneId} -->`;
       fileContents[zone.filePath] = fileContents[zone.filePath].replace(zone.outerMatch, newOuter);
-      updatedZoneCount++;
+      updatedZoneIdSet.add(zoneId);
     }
   }
 
@@ -357,11 +357,14 @@ async function updateZones(searchContext) {
     console.log(`  Updated zones in ${path.basename(filePath)}.`);
   }
 
-  if (updatedZoneCount > 0) {
-    console.log(`Zone updates: ${updatedZoneCount} zone(s) across ${Object.keys(fileContents).length} file(s).`);
+  const filesUpdated = Object.keys(fileContents).map(p => path.basename(p));
+  const zonesUpdated = [...updatedZoneIdSet];
+  if (zonesUpdated.length > 0) {
+    console.log(`Zone updates: ${zonesUpdated.length} zone(s) across ${filesUpdated.length} file(s).`);
   } else {
     console.log('Zone updates: no changes needed.');
   }
+  return { zonesUpdated, filesUpdated };
 }
 
 // ── Manifest helpers ──────────────────────────────────────────────────────────
@@ -690,7 +693,9 @@ async function updateStructural(searchContext) {
     return name;
   }
 
-  const changed = [];
+  const changedSet = new Set();
+  /** Per-pass result objects collected and returned for the manifest. */
+  const passes = {};
 
   // ── Pass 1: broad pass over non-deep-update files ─────────────────────
   const pass1Block = Object.entries(fileContents)
@@ -711,12 +716,15 @@ async function updateStructural(searchContext) {
   try {
     const raw     = await callGPT(STRUCTURAL_SYSTEM_PROMPT, pass1UserContent, true, STRUCTURAL_MODEL, 32768);
     const updates = JSON.parse(raw);
+    const pass1Changed = [];
     for (const [name, newContent] of Object.entries(updates)) {
       const applied = applyUpdate(name, newContent);
-      if (applied) changed.push(applied);
+      if (applied) { changedSet.add(applied); pass1Changed.push(applied); }
     }
+    passes['pass1'] = { status: 'ok', filesChanged: pass1Changed };
   } catch (err) {
     console.warn(`Structural pass 1 GPT call failed (${err.message}) — continuing to deep-update pass.`);
+    passes['pass1'] = { status: 'error', error: err.message };
   }
 
   // ── Passes 2-N: dedicated deep-update per group (always runs) ────────
@@ -744,6 +752,7 @@ async function updateStructural(searchContext) {
     try {
       const raw     = await callGPT(systemPrompt, groupUserContent, true, STRUCTURAL_MODEL, 32768);
       const updates = JSON.parse(raw);
+      const groupChanged = [];
       for (const name of group.names) {
         const newContent = updates[name];
         if (!newContent) {
@@ -751,19 +760,22 @@ async function updateStructural(searchContext) {
           continue;
         }
         const applied = applyUpdate(name, newContent);
-        if (applied && !changed.includes(applied)) changed.push(applied);
+        if (applied && !changedSet.has(applied)) { changedSet.add(applied); groupChanged.push(applied); }
       }
+      passes[group.label] = { status: 'ok', filesChanged: groupChanged };
     } catch (err) {
       console.warn(`Structural deep-update pass (${group.label}) GPT call failed (${err.message}) — skipping.`);
+      passes[group.label] = { status: 'error', error: err.message };
     }
   }
 
-  if (changed.length > 0) {
-    console.log(`Structural updates: ${changed.length} file(s) modified.`);
+  const filesChanged = [...changedSet];
+  if (filesChanged.length > 0) {
+    console.log(`Structural updates: ${filesChanged.length} file(s) modified.`);
   } else {
     console.log('Structural updates: no changes applied.');
   }
-  return changed;
+  return { filesChanged, passes };
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -937,8 +949,8 @@ Rules:
   // ── 5. Update HTML section zones ──────────────────────────────────────────
 
   try {
-    await updateZones(searchContext);
-    manifest.phases.zones = { status: 'ok' };
+    const zoneResult = await updateZones(searchContext);
+    manifest.phases.zones = { status: 'ok', zonesUpdated: zoneResult.zonesUpdated, filesUpdated: zoneResult.filesUpdated };
   } catch (err) {
     console.warn(`Section zone updates failed (${err.message}) — keeping originals.`);
     manifest.phases.zones = { status: 'error', error: err.message };
@@ -948,8 +960,8 @@ Rules:
 
   if (effectiveType === 'structural') {
     try {
-      const changed = await updateStructural(searchContext);
-      manifest.phases.structural = { status: 'ok', filesChanged: changed };
+      const { filesChanged, passes } = await updateStructural(searchContext);
+      manifest.phases.structural = { status: 'ok', filesChanged, passes };
     } catch (err) {
       console.warn(`Structural updates failed (${err.message}) — keeping originals.`);
       manifest.phases.structural = { status: 'error', error: err.message };
