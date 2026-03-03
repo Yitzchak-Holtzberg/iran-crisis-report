@@ -35,8 +35,9 @@
 
 'use strict';
 
-const fs   = require('fs');
-const path = require('path');
+const fs    = require('fs');
+const https = require('https');
+const path  = require('path');
 
 const BASE_DIR         = path.join(__dirname, '..');
 const DATA_PATH        = path.join(BASE_DIR, 'data.json');
@@ -111,6 +112,57 @@ async function tavilySearch(query) {
   return res.json();
 }
 
+// Timeout (ms) for each OpenAI HTTPS request.  Built-in fetch uses undici whose
+// default headersTimeout is only 10 s — far too short for large prompts (100-170 KB)
+// that take the model extra time to process before sending response headers.
+const GPT_TIMEOUT_MS = 120_000; // 2 minutes
+
+/**
+ * Minimal HTTPS POST helper that returns a fetch-compatible response object.
+ * Uses Node.js's built-in `https` module so we can set an explicit socket
+ * timeout, avoiding the undici default 10-second headers-timeout error.
+ */
+function httpsPost(url, headers, bodyStr) {
+  return new Promise((resolve, reject) => {
+    const { hostname, pathname, search } = new URL(url);
+    const req = https.request(
+      {
+        hostname,
+        path: pathname + (search || ''),
+        method: 'POST',
+        headers: {
+          ...headers,
+          'Content-Length': Buffer.byteLength(bodyStr),
+        },
+      },
+      (res) => {
+        const chunks = [];
+        res.on('error', reject);
+        res.on('data', (chunk) => chunks.push(chunk));
+        res.on('end', () => {
+          const body = Buffer.concat(chunks).toString('utf8');
+          resolve({
+            ok: res.statusCode >= 200 && res.statusCode < 300,
+            status: res.statusCode,
+            text: () => Promise.resolve(body),
+            json: () => {
+              try { return Promise.resolve(JSON.parse(body)); }
+              catch (e) { return Promise.reject(e); }
+            },
+          });
+        });
+      },
+    );
+    req.on('error', reject);
+    req.on('timeout', () => {
+      req.destroy(new Error(`Request timeout after ${GPT_TIMEOUT_MS} ms`));
+    });
+    req.setTimeout(GPT_TIMEOUT_MS);
+    req.write(bodyStr);
+    req.end();
+  });
+}
+
 /** Call an OpenAI model and return the raw text of the first choice.
  *  Tries up to MAX_GPT_ATTEMPTS times (exponential backoff: 2s, 4s between retries)
  *  on transient network errors or 5xx responses.
@@ -135,14 +187,14 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
       if (attempt === 1) {
         console.log(`  [callGPT] model=${model} body=${(bodyStr.length / 1024).toFixed(1)}KB`);
       }
-      const res = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
+      const res = await httpsPost(
+        'https://api.openai.com/v1/chat/completions',
+        {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${OPENAI_KEY}`,
         },
-        body: bodyStr,
-      });
+        bodyStr,
+      );
       if (!res.ok) {
         const text = await res.text();
         // Only retry on server-side errors (5xx); surface client errors immediately.
