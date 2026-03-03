@@ -1,29 +1,33 @@
 
 <!-- ======== TOP STATS ======== -->
 <div class="stats-grid" id="stats" style="margin-top:40px;">
-  <div class="stat-box" style="border-top:2px solid var(--accent-red);">
+  <div class="stat-box" style="border-top:2px solid var(--accent-red);" title="US troops deployed in the Middle East region. Source: {{statUsTroopsSource}}">
     <div class="number" style="color:var(--accent-red);">{{statUsTroops}}</div>
     <div class="label">US Troops<br>in Region ({{statUsTroopsSource}})</div>
   </div>
-  <div class="stat-box" style="border-top:2px solid var(--accent-orange);">
+  <div class="stat-box" style="border-top:2px solid var(--accent-orange);" title="Iranian ballistic missiles and drones fired during the conflict. Source: {{statMissilesFiredSource}}">
     <div class="number" style="color:var(--accent-orange);">{{statMissilesFired}}</div>
     <div class="label">Iranian Missiles<br>Fired ({{statMissilesFiredSource}})</div>
   </div>
-  <div class="stat-box" style="border-top:2px solid var(--accent-gold);">
+  <div class="stat-box" style="border-top:2px solid var(--accent-gold);" title="US Navy carrier strike groups currently deployed to the region (US Navy)">
     <div class="number" style="color:var(--accent-gold);">{{statCarrierGroups}}</div>
     <div class="label">Carrier Strike<br>Groups Deployed</div>
   </div>
-  <div class="stat-box" style="border-top:2px solid var(--accent-blue);">
+  <div class="stat-box" style="border-top:2px solid var(--accent-blue);" title="Barrels per day of global oil supply transiting the Strait of Hormuz now at risk. Source: EIA">
     <div class="number" style="color:var(--accent-blue);">{{statOilAtRisk}}</div>
     <div class="label">bbl/day Oil<br>at Risk (EIA)</div>
   </div>
-  <div class="stat-box" style="border-top:2px solid var(--accent-cyan);">
+  <div class="stat-box" style="border-top:2px solid var(--accent-cyan);" title="Iranian citizens affected by government-imposed internet shutdowns and blackouts (NetBlocks)">
     <div class="number" style="color:var(--accent-cyan);">{{statCitizensOffline}}</div>
     <div class="label">Citizens Under<br>Internet Blackout</div>
   </div>
-  <div class="stat-box" style="border-top:2px solid var(--accent-green);">
+  <div class="stat-box" style="border-top:2px solid var(--accent-green);" title="Confirmed Iranian casualties including military and IRGC personnel. Source: Al Jazeera">
     <div class="number" style="color:var(--accent-green);">{{statIrgcKilled}}</div>
-    <div class="label">IRGC &amp; Military<br>Killed (HRANA)</div>
+    <div class="label">Iran Casualties<br>Reported (Al Jazeera)</div>
+  </div>
+  <div class="stat-box" style="border-top:2px solid var(--accent-purple);" title="US service members killed in action during the conflict. Source: {{statUsCasualtiesSource}}">
+    <div class="number" style="color:var(--accent-purple);">{{statUsCasualties}}</div>
+    <div class="label">US Service Members<br>Killed ({{statUsCasualtiesSource}})</div>
   </div>
 </div>
 
