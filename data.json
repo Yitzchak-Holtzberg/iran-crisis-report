@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 3, 2026",
-  "lastUpdated": "13:17 UTC",
+  "lastUpdated": "13:43 UTC",
   "statUsTroops": "40,000+",
   "statUsTroopsSource": "NewsNation",
   "statMissilesFired": "~170",
@@ -17,6 +17,9 @@
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 5,
   "ticker": [
+    "ECONOMY: SUPERTANKER RATES SOAR AS INSURERS DROP WAR-RISK COVERAGE, SHIPPING BACKLOG GROWS (CNBC, Mar 3, 2026)",
+    "ANALYSIS: IRAN'S CLOSURE OF SHIPPING ROUTE COULD PUSH GULF STATES INTO A BROADER COALITION AGAINST TEHRAN (Reuters, Mar 2, 2026)",
+    "DIPLOMACY: OMAN MEDIATES NEW PUSH FOR U.S.-IRAN NUCLEAR TALKS AMID ESCALATION (Al Jazeera, Feb 27, 2026)",
     "MILITARY: ISRAEL STRIKES TEHRAN AND BEIRUT AS WAR WIDENS (Reuters, Mar 3, 2026)",
     "ATTACK: U.S. EMBASSY IN RIYADH HIT BY DRONES; STAFF REPORTS DAMAGE (Reuters, Mar 3, 2026)",
     "IRAN LAUNCH: BALLISTIC MISSILES AND DRONES LAUNCHED ACROSS MIDDLE EAST; INTERCEPTS REPORTED (CNN, Mar 3, 2026)",
@@ -38,9 +41,6 @@
     "HOMELAND WARNING: Department of Homeland Security warns of potential targeted and cyber threats in U.S.; agencies on high alert (ABC News, Mar 2, 2026)",
     "REGIONAL REACTIONS: Gulf states condemn Iranian strikes; Russia and China issue supportive statements for Tehran (TIME, Mar 2, 2026)",
     "TEHRAN STRIKES: Smoke plumes rise over Tehran after simultaneous strikes as U.S.-Israel air war widens (CNN, Mar 2, 2026)",
-    "IRAN MISSILES: Iranian missile barrage reportedly strikes Beersheba in Israel amid escalation (Al Jazeera, Mar 2, 2026)",
-    "OIL: Insurers withdraw tanker coverage; Strait of Hormuz commercial traffic plunges, oil prices +8% (AP/Washington Post, Mar 2, 2026)",
-    "CURRENCY: Iranian rial plunges to record ~1.5M per USD amid sanctions and inflation (Al Jazeera, Jan 27, 2026)",
-    "NUCLEAR: FORDOW AND NATANZ NUCLEAR SITES STRUCK — EXPLOSIONS REPORTED; U.S./ISRAEL IMPLICATED (Al Jazeera/CNN, Mar 2, 2026)"
+    "IRAN MISSILES: Iranian missile barrage reportedly strikes Beersheba in Israel amid escalation (Al Jazeera, Mar 2, 2026)"
   ]
 }
