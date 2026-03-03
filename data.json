@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 3, 2026",
-  "lastUpdated": "15:55 UTC",
+  "lastUpdated": "16:26 UTC",
   "statUsTroops": "35,000+",
   "statUsTroopsSource": "Stars & Stripes/CENTCOM",
   "statMissilesFired": "~300+",
@@ -19,6 +19,9 @@
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 5,
   "ticker": [
+    "CASUALTIES: Red Crescent reports 700+ dead after U.S.-Israeli strikes across Iran (Red Crescent/WSJ, Mar 3, 2026)",
+    "DIPLOMACY: U.S.-Iran nuclear talks end without deal; Iran rejects U.S. demands (Al Jazeera/Mar 3, 2026)",
+    "REGIONAL: Gulf states weigh joining broader campaign against Iran after strikes (Reuters, Mar 3, 2026)",
     "MILITARY: CENTCOM reports ~35,000 U.S. forces deployed in the region amid Iran strikes (Stars & Stripes/CENTCOM, Mar 3, 2026)",
     "NUCLEAR: IAEA confirms buildings damaged at Natanz but reports no radiological consequences (IAEA/Al Jazeera, Mar 3, 2026)",
     "DIPLOMACY: Oman says U.S.-Iran talks showed 'potential progress' though no deal reached (Reuters, Mar 3, 2026)",
@@ -39,7 +42,6 @@
     "MILITARY: U.S. tightens security at San Diego bases after Iran strikes; access restricted (Axios, Mar 2, 2026)",
     "HUMANITARIAN: Hospitals and schools in Iran reported damaged by strikes; U.N. and aid groups call for protection (Al Jazeera, Mar 2, 2026)",
     "CASUALTIES: SIX U.S. SERVICE MEMBERS CONFIRMED KILLED IN CONFLICT WITH IRAN (CNBC/CBS News, Mar 2, 2026)",
-    "MILITARY: IRGC COMMANDER SAYS STRAIT OF HORMUZ CLOSED, THREATENS TO SET SHIPS ON FIRE (Reuters, Mar 2, 2026)",
-    "US NAVY: USS GERALD R. FORD ORDERED TO MEDITERRANEAN AMID MILITARY BUILDUP (Stars & Stripes, Mar 2, 2026)"
+    "MILITARY: IRGC COMMANDER SAYS STRAIT OF HORMUZ CLOSED, THREATENS TO SET SHIPS ON FIRE (Reuters, Mar 2, 2026)"
   ]
 }
