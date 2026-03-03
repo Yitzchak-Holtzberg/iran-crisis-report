@@ -57,8 +57,8 @@ function validateDataJson(data, schema) {
     }
   }
 
-  // Validate scenario percentages sum to 100.
-  const scenarioKeys = Object.keys(data).filter(k => k.startsWith('scenario') && k.endsWith('Pct'));
+  // Validate scenario percentages sum to 100 (excluding scenarioStrikesPct — Military Strikes is in progress and excluded from probability analysis).
+  const scenarioKeys = Object.keys(data).filter(k => k.startsWith('scenario') && k.endsWith('Pct') && k !== 'scenarioStrikesPct');
   if (scenarioKeys.length > 0) {
     const sum = scenarioKeys.reduce((s, k) => s + (parseInt(data[k], 10) || 0), 0);
     if (sum !== 100) {
