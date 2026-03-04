@@ -146,9 +146,9 @@ const BUILDS = [
     output: 'scenarios.html',
     sidebarFile: 'sections/sidebar-scenarios.html',
     meta: {
-      pageTitle: 'Iran Crisis: Six Scenarios \u2014 {{date}}',
-      pageDescription: 'Six strategic scenarios for the Iran crisis post-Operation Epic Fury: regime collapse, military strikes (in progress), Pahlavi democratic transition, IRGC junta, diplomatic deal (eliminated), and prolonged standoff (eliminated). Analyst consensus probabilities.',
-      pageOgDescription: 'Six strategic scenarios for the Iran crisis: regime collapse, military strikes (Operation Epic Fury \u2014 in progress), Pahlavi democratic transition, IRGC junta succession, diplomatic deal (eliminated), and prolonged standoff (eliminated).',
+      pageTitle: 'Iran Crisis: Five Scenarios \u2014 {{date}}',
+      pageDescription: 'Five active scenarios for the Iran crisis post-Operation Epic Fury: regime collapse/revolution, Pahlavi democratic transition, IRGC junta succession, Iranian civil war/fragmentation, and regional escalation. Analyst consensus probabilities.',
+      pageOgDescription: 'Five active scenarios for the Iran crisis post-Operation Epic Fury: regime collapse/revolution (most likely), Pahlavi democratic transition, IRGC junta succession, Iranian civil war/fragmentation, and regional escalation/proxy war spread.',
       pageOgType: 'article',
     },
     sections: [
