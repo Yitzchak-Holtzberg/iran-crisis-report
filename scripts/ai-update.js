@@ -978,6 +978,23 @@ Rules:
   "considering" or "weighing" joining a military campaign, a confirmed report
   of that country *actively joining* (launching strikes, deploying forces) is a
   NEW item and must be included.
+- SIGNIFICANCE THRESHOLD — only include an item if it represents a discrete,
+  consequential development. The following types of content are NOT significant
+  enough and must be EXCLUDED:
+    • Routine force-presence status updates (e.g. "Carrier X is operating in
+      the region", "CSG continues patrols", "deployment extended amid rising
+      operational tempo") — these describe ongoing background conditions, not
+      new events.
+    • Military media/PR releases (e.g. "CENTCOM releases strike footage",
+      "DoD publishes video of carrier operations", "Pentagon releases imagery")
+      — publishing a press release or video is not an operational event.
+    • Generic operational-tempo reports with no new factual development (e.g.
+      "forces remain on heightened alert", "operations continue").
+    • Items whose only news value is that a government or military confirmed
+      something already widely known or already covered in existing items.
+  Ask yourself: "Does this represent something that *changed* or *happened*
+  today, or is it just describing a continuing background situation or a
+  media release?" Only include it if the answer is the former.
 - If there are no new events worth adding, return { "newItems": [] }.
 - HTML format for each item:
     <div class="tl-item">
