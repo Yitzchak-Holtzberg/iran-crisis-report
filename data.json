@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 4, 2026",
-  "lastUpdated": "19:03 UTC",
+  "lastUpdated": "20:58 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "~300+",
@@ -23,6 +23,9 @@
   "scenarioCivilWarPct": 5,
   "scenarioRegionalEscalationPct": 7,
   "ticker": [
+    "NATO: Intercepts Iran-fired ballistic missile headed toward Turkish airspace (Reuters, Mar 4, 2026)",
+    "MILITARY: U.S. sinks Iranian warship amid strikes on naval targets (Reuters, Mar 4, 2026)",
+    "STRAIT OF HORMUZ: Traffic through the Strait collapses to near standstill; oil tankers stranded (Bloomberg, Mar 4, 2026)",
     "PENTAGON: U.S. military says it killed senior Iranian official linked to alleged assassination plot (Reuters, Mar 4, 2026)",
     "U.S./CIA: Reports say U.S. has discussed arming Kurdish forces for a potential operation inside Iran (US News/CNN, Mar 3-4, 2026)",
     "SHIPPING: Hapag‑Lloyd halts transits through the Strait of Hormuz after tanker attacks, deepening shipping disruption (Reuters/CNN, Mar 3, 2026)",
@@ -44,9 +47,6 @@
     "PENTAGON: Identifies 4 of 6 U.S. troops killed in Kuwait — Capt. Cody Khork, Sgt. 1st Class Noah Tietjens, Sgt. 1st Class Nicole Amor, Sgt. Declan Coady, 103rd Sustainment Command (Pentagon, Mar 4, 2026)",
     "LEADERSHIP: Assembly of Experts names Mojtaba Khamenei new Supreme Leader; appointment deeply contested by opposition and Western governments (Reuters/AP/Al Jazeera, Mar 3, 2026)",
     "MILITARY: U.S. says it has struck nearly 2,000 targets inside Iran since operations began — updated figure per Cooper briefing (CENTCOM/ABC News, Mar 4, 2026)",
-    "MILITARY: U.S. asserts most of Iran's military installations have been 'knocked out' as strikes continue (CNN, Mar 3, 2026)",
-    "DIPLOMACY: Three U.S. embassies in the Gulf region closed amid escalating strikes and security concerns (Washington Post, Mar 3, 2026)",
-    "ATTACK: Drone strike damages U.S. consulate in Dubai; staff report damage (Wall Street Journal, Mar 3, 2026)",
-    "ECONOMY: U.S. to offer insurance support for Gulf shipping as private insurers drop war-risk coverage (CNBC, Mar 3, 2026)"
+    "MILITARY: U.S. asserts most of Iran's military installations have been 'knocked out' as strikes continue (CNN, Mar 3, 2026)"
   ]
 }

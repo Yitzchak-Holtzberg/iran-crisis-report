@@ -956,6 +956,44 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-04T20:58:11.049Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results largely reiterate items already on the page (Turkey/NATO strike, B‑52s, Kurds/CIA, IAEA, shipping); no ne",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 1
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis2-title",
+            "opposition-track"
+          ],
+          "filesUpdated": [
+            "inside-iran.html",
+            "opposition.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
