@@ -90,6 +90,16 @@ const SEARCH_QUERIES = [
   'Iran proxy Hezbollah Houthi Yemen Iraq militia strikes attack latest',
   'Iran IRGC assassination plot cyber espionage covert operations latest',
   'Iran new supreme leader ayatollah successor Khamenei Assembly of Experts leadership transition',
+  // ── Gap-coverage queries added to avoid systematic blind spots ────────────
+  // Kurdish groups and US-Kurdish arming (previously missed category)
+  // KRG = Kurdistan Regional Government (Iraq); KDPI/PJAK = Kurdish groups inside Iran; SDF = Syria
+  'US arming Kurdish forces Peshmerga KRG KDPI PJAK SDF Syria Iraq Iran region latest',
+  // Iraq as an active theater: PMF attacks, US bases, Baghdad politics
+  'Iraq PMF Shia militia US bases attacks Iran influence Baghdad government latest news',
+  // Iran ethnic-minority armed resistance (Baluch, Khuzestan Arab, Azerbaijani, Kurdish)
+  'Iran ethnic minority armed resistance Baluchistan Khuzestan Arab Azerbaijani KDPI uprising latest',
+  // US/coalition covert support, arms transfers to opposition or proxy groups
+  'CIA special operations covert arms support anti-Iran opposition proxy groups latest news',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
