@@ -90,6 +90,21 @@ const SEARCH_QUERIES = [
   'Iran proxy Hezbollah Houthi Yemen Iraq militia strikes attack latest',
   'Iran IRGC assassination plot cyber espionage covert operations latest',
   'Iran new supreme leader ayatollah successor Khamenei Assembly of Experts leadership transition',
+  // ── Gap-coverage queries added to avoid systematic blind spots ────────────
+  // Kurdish groups and US-Kurdish arming (previously missed category)
+  // KRG = Kurdistan Regional Government (Iraq); KDPI/PJAK = Kurdish groups inside Iran; SDF = Syria
+  'US arming Kurdish forces Peshmerga KRG KDPI PJAK SDF Syria Iraq Iran region latest',
+  // Iraq as an active theater: PMF attacks, US bases, Baghdad politics
+  'Iraq PMF Shia militia US bases attacks Iran influence Baghdad government latest news',
+  // Iran ethnic-minority armed resistance (Baluch, Khuzestan Arab, Azerbaijani, Kurdish)
+  'Iran ethnic minority armed resistance Baluchistan Khuzestan Arab Azerbaijani KDPI uprising latest',
+  // US/coalition covert support, arms transfers to opposition or proxy groups
+  'CIA special operations covert arms support anti-Iran opposition proxy groups latest news',
+  // ── Horizon-scan queries: catch any Iran-relevant development in arenas not
+  //    explicitly covered above (space, bioweapons, AI/tech warfare, unexpected
+  //    new actors, financial system attacks, environmental/infrastructure, etc.)
+  'Iran unexpected surprise development any domain technology space cyber bioweapons latest news',
+  'Iran crisis new actor development unexpected arena finance infrastructure international latest',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -488,6 +503,10 @@ Examples of events that ARE structural:
 - A major new front opens (e.g. ground invasion, new country enters conflict)
 - A country moves from diplomatic support / condemnation to active military
   participation (strikes, deployments, or formal coalition entry)
+- A significant development in a domain NOT currently covered by the dashboard
+  (e.g. space/satellite warfare, bioweapons, AI-enabled weapons, attacks on
+  global financial systems, a completely new country or actor entering the
+  conflict, environmental/infrastructure sabotage, new technology first-use)
 
 Examples of events that are NOT structural (routine updates handle these):
 - Updated casualty figures or economic data

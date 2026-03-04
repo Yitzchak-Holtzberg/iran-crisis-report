@@ -56,6 +56,10 @@ Rules for new content:
 | Peace deal or ceasefire signed | Add a **blue callout** (`callout blue`) at the top of the most relevant section; adjust scenario cards accordingly. |
 | Nuclear test or confirmed weapons-grade enrichment | Add a **red callout** in `nuclear.html`; consider adding a new crisis card in `inside-iran.html`. |
 | New scenario emerges that doesn't fit existing five | Add a 6th scenario card in `scenarios.html` using the same card/grid pattern as the existing five. Ensure the `{{scenarioXxxPct}}` placeholder is added for build.js. |
+| Credible report of US/coalition covertly arming or supplying Kurdish forces, ethnic-minority armed groups, or any anti-regime proxy (even if unconfirmed) | Immediately add an **orange-bordered callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim, source tier, and what corroboration is still needed. If subsequently confirmed by a Tier 1–3 source, move to the confirmed column and add a card to the relevant section (`opposition.html`, `military.html`, or a new `inside-iran.html` crisis card). |
+| Significant activity by Kurdish armed groups (Peshmerga, KDPI, PJAK, SDF) in or near Iran | Add a timeline item to `last-24h.html` and, if the activity crosses the border or directly implicates the crisis, add a card to `military.html` or `inside-iran.html`. |
+| Iraq enters the conflict as a direct theater (PMF — Popular Mobilization Forces — attacks on US bases, Baghdad government taking sides, Iraqi airspace used) | Add a **red callout** to `reactions.html` under regional reactions and update the map (`js/map.js`) with relevant markers. |
+| A significant development occurs in a domain **not currently covered** by any existing section (e.g. space/satellite warfare, bioweapons, AI-enabled weapons, global financial system attack, a completely new country entering the conflict, environmental or infrastructure sabotage, new-technology first-use) | Route by source tier: **(Tier 1–3 sourced)** Treat as confirmed news: (1) Add a prominent timeline item to `last-24h.html`. (2) Add a card to the most closely related existing section (`military.html` for new weapons/capabilities, `reactions.html` for new actors/countries, `inside-iran.html` for internal regime developments). (3) **Always** update `analysis.html` with the strategic implications of the new domain — what it means for the five scenarios and the broader conflict trajectory. (4) Evaluate whether the development shifts any scenario probability in `scenarios.html`; if so, update the affected scenario card(s). If the domain is large enough to warrant its own section, flag this explicitly in the `analysis.html` card and the editorial team will create the section manually. **(Tier 4 sourced)** Follow the same path but note the source tier in the attribution (e.g. `— Source: <em>NYT, not yet wire-confirmed</em>`). **(Tier 5–6 only)** Add an **orange callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim and what confirmation would look like; hold all other sections until a Tier 1–4 source corroborates. |
 
 ## What to Reorder
 
@@ -181,6 +185,38 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
 - Update the verification status of claims as they are confirmed or debunked by
   credible sources. Move items between confirmed and unconfirmed columns as
   warranted.
+- **Low-friction rumor intake**: This section is the *first stop* for any
+  newsworthy claim that lacks Tier 1–3 confirmation — do **not** wait for
+  confirmation before adding it here. The bar for adding an item to the
+  **UNCONFIRMED** column is a *plausible, sourced rumor from any tier* — e.g.
+  a Tier-5 outlet reporting that the US is arming Kurdish forces should appear
+  here immediately with an `? UNCONFIRMED` badge, the outlet's tier framing
+  note, and a description of what confirmation would look like.
+- Priority rumor categories to watch (previously under-covered):
+  - US/coalition covertly arming or supplying Kurdish groups (Peshmerga, Kurdistan
+    Regional Government/KRG, KDPI — Kurdish Democratic Party of Iran, PJAK —
+    Free Life Party of Kurdistan, SDF — Syrian Democratic Forces), ethnic-minority
+    militias, or MEK (Mojahedin-e Khalq) -linked armed cells
+  - Iraqi PMF (Popular Mobilization Forces) attacks on US or coalition assets
+    (may be underreported early)
+  - Iranian strikes or assassination plots on targets outside the named theater
+    (Turkey, Central Asia, diaspora communities)
+  - Covert diplomacy or back-channel ceasefire terms not yet publicly confirmed
+  - Internal IRGC dissent or defections reported by opposition-aligned outlets
+- **New-domain discoveries**: If a search result describes a development in a
+  domain with **no existing section** (e.g. satellite/space warfare, bioweapons,
+  global financial infrastructure attack, a new country entering the conflict that
+  isn't represented anywhere on the site), route by tier:
+  - **Tier 1–3** — Do NOT park in unconfirmed. Treat as confirmed news (see "What
+    to Add" table) and update `last-24h.html`, the relevant section, `analysis.html`,
+    and `scenarios.html` as appropriate. A note in the **confirmed** column here is
+    optional but not required.
+  - **Tier 4** — Add to the **confirmed** column with the tier-4 attribution note
+    and cross-populate `last-24h.html` and `analysis.html`.
+  - **Tier 5–6** — Write an `? UNCONFIRMED` item with the domain noted in the
+    headline (e.g. `SPACE — IRAN SATELLITE JAMMING CLAIM`) so the editorial team
+    can decide whether to create a dedicated new section once a higher-tier source
+    corroborates.
 
 ### `analysis.html` (deep-updated on every structural run)
 - This section is **always** deeply updated during structural runs — never return
