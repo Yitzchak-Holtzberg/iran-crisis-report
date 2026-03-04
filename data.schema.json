@@ -103,42 +103,42 @@
     },
     "scenarioDealPct": {
       "type": "string",
-      "description": "Likelihood percentage for Scenario 1: Diplomatic Deal (0-100)",
+      "description": "Likelihood percentage for Diplomatic Deal scenario (eliminated — keep at 0)",
       "pattern": "^[0-9]{1,3}$"
     },
     "scenarioStrikesPct": {
       "type": "string",
-      "description": "Likelihood percentage for Scenario 2: Military Strikes (0-100)",
+      "description": "Likelihood percentage for Military Strikes (standalone) scenario (in progress / excluded from sum — keep at 0)",
       "pattern": "^[0-9]{1,3}$"
     },
     "scenarioRevolutionPct": {
       "type": "string",
-      "description": "Likelihood percentage for Scenario 3: Revolution (0-100)",
+      "description": "Likelihood percentage for Scenario 1: Regime Collapse / Revolution (0-100)",
       "pattern": "^[0-9]{1,3}$"
     },
     "scenarioPahlaviPct": {
       "type": "string",
-      "description": "Likelihood percentage for Scenario 4: Pahlavi Returns — Democratic Transition (0-100)",
+      "description": "Likelihood percentage for Scenario 2: Pahlavi Returns — Democratic Transition (0-100)",
       "pattern": "^[0-9]{1,3}$"
     },
     "scenarioFrozenPct": {
       "type": "string",
-      "description": "Likelihood percentage for Scenario 5: Prolonged Standoff / Frozen Conflict (0-100)",
+      "description": "Likelihood percentage for Prolonged Standoff / Frozen Conflict scenario (eliminated — keep at 0)",
       "pattern": "^[0-9]{1,3}$"
     },
     "scenarioJuntaPct": {
       "type": "string",
-      "description": "Likelihood percentage for Scenario 6: IRGC Junta — Succession Council (0-100)",
+      "description": "Likelihood percentage for Scenario 3: IRGC Junta — Succession Council (0-100)",
       "pattern": "^[0-9]{1,3}$"
     },
     "scenarioCivilWarPct": {
       "type": "string",
-      "description": "Likelihood percentage for Scenario 4b: Iranian Civil War / State Fragmentation (0-100)",
+      "description": "Likelihood percentage for Scenario 4: Iranian Civil War / State Fragmentation (0-100)",
       "pattern": "^[0-9]{1,3}$"
     },
     "scenarioRegionalEscalationPct": {
       "type": "string",
-      "description": "Likelihood percentage for Scenario 5b: Regional Escalation / Proxy War Spread (0-100)",
+      "description": "Likelihood percentage for Scenario 5: Regional Escalation / Proxy War Spread (0-100)",
       "pattern": "^[0-9]{1,3}$"
     },
     "ticker": {
