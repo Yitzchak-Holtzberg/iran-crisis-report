@@ -843,6 +843,42 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-04T07:01:45.577Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results mainly repeat covered events (strikes, casualties, IAEA findings, new supreme leader); no new structural ",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis2-title"
+          ],
+          "filesUpdated": [
+            "inside-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }

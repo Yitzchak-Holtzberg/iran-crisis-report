@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 4, 2026",
-  "lastUpdated": "02:45 UTC",
+  "lastUpdated": "07:01 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "~300+",
@@ -23,6 +23,10 @@
   "scenarioCivilWarPct": 5,
   "scenarioRegionalEscalationPct": 3,
   "ticker": [
+    "MILITARY: U.S. deploys B-52 bombers to the region and uses them in strikes on Iranian targets (Aviation Week/Military Times, Mar 3-4, 2026)",
+    "ISRAEL/IDF: Israeli strike flattens building where Assembly of Experts met to choose Iran's next supreme leader (Jerusalem Post/Yahoo, Mar 3, 2026)",
+    "IRAQ MILITIA: Saraya Awliya al-Dam claims drone attack on U.S. troops at Baghdad airport; U.S. reports increased militia strikes (AP/Mar 1-3, 2026)",
+    "GULF: Gulf states say they intercepted Iranian missiles and drones targeting embassies and infrastructure (Washington Examiner/Times of India, Mar 3, 2026)",
     "NUCLEAR: IAEA says most of 440 kg highly enriched uranium stored at Isfahan underground complex, urges inspections (IAEA/Al Jazeera, Mar 2-3, 2026)",
     "STRAIT OF HORMUZ: At least five tankers damaged, two crew killed; ~150 vessels stranded as transits halted (Bloomberg/AP, Mar 2-3, 2026)",
     "MILITARY: Pentagon confirms additional carrier (USS Nimitz) and naval assets operating in region to support strikes (Military Times/Defense News, Mar 3, 2026)",
