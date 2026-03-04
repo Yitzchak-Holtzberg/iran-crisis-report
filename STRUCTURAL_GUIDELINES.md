@@ -59,7 +59,7 @@ Rules for new content:
 | Credible report of US/coalition covertly arming or supplying Kurdish forces, ethnic-minority armed groups, or any anti-regime proxy (even if unconfirmed) | Immediately add an **orange-bordered callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim, source tier, and what corroboration is still needed. If subsequently confirmed by a Tier 1–3 source, move to the confirmed column and add a card to the relevant section (`opposition.html`, `military.html`, or a new `inside-iran.html` crisis card). |
 | Significant activity by Kurdish armed groups (Peshmerga, KDPI, PJAK, SDF) in or near Iran | Add a timeline item to `last-24h.html` and, if the activity crosses the border or directly implicates the crisis, add a card to `military.html` or `inside-iran.html`. |
 | Iraq enters the conflict as a direct theater (PMF — Popular Mobilization Forces — attacks on US bases, Baghdad government taking sides, Iraqi airspace used) | Add a **red callout** to `reactions.html` under regional reactions and update the map (`js/map.js`) with relevant markers. |
-| A significant development occurs in a domain **not currently covered** by any existing section (e.g. space/satellite warfare, bioweapons, AI-enabled weapons, global financial system attack, a completely new country entering the conflict, environmental or infrastructure sabotage, new-technology first-use) | (1) Add a `last-24h.html` timeline item immediately. (2) Add an **orange callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim and what confirmation would look like. (3) If confirmed by a Tier 1–3 source, add a card to the most closely related existing section (e.g. `military.html` for new weapons, `reactions.html` for new actors, `analysis.html` for strategic implications). If the development is large enough to warrant its own section, flag this in the `analysis.html` card and the editorial team will create the section manually. |
+| A significant development occurs in a domain **not currently covered** by any existing section (e.g. space/satellite warfare, bioweapons, AI-enabled weapons, global financial system attack, a completely new country entering the conflict, environmental or infrastructure sabotage, new-technology first-use) | Route by source tier: **(Tier 1–3 sourced)** Treat as confirmed news: (1) Add a prominent timeline item to `last-24h.html`. (2) Add a card to the most closely related existing section (`military.html` for new weapons/capabilities, `reactions.html` for new actors/countries, `inside-iran.html` for internal regime developments). (3) **Always** update `analysis.html` with the strategic implications of the new domain — what it means for the five scenarios and the broader conflict trajectory. (4) Evaluate whether the development shifts any scenario probability in `scenarios.html`; if so, update the affected scenario card(s). If the domain is large enough to warrant its own section, flag this explicitly in the `analysis.html` card and the editorial team will create the section manually. **(Tier 4 sourced)** Follow the same path but note the source tier in the attribution (e.g. `— Source: <em>NYT, not yet wire-confirmed</em>`). **(Tier 5–6 only)** Add an **orange callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim and what confirmation would look like; hold all other sections until a Tier 1–4 source corroborates. |
 
 ## What to Reorder
 
@@ -206,11 +206,17 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
 - **New-domain discoveries**: If a search result describes a development in a
   domain with **no existing section** (e.g. satellite/space warfare, bioweapons,
   global financial infrastructure attack, a new country entering the conflict that
-  isn't represented anywhere on the site), it must still be captured here
-  immediately — even if it doesn't fit the existing unconfirmed item categories.
-  Write an `? UNCONFIRMED` item with the domain noted in the headline (e.g.
-  `SPACE — IRAN SATELLITE JAMMING CLAIM`) so the editorial team can decide
-  whether to create a dedicated new section.
+  isn't represented anywhere on the site), route by tier:
+  - **Tier 1–3** — Do NOT park in unconfirmed. Treat as confirmed news (see "What
+    to Add" table) and update `last-24h.html`, the relevant section, `analysis.html`,
+    and `scenarios.html` as appropriate. A note in the **confirmed** column here is
+    optional but not required.
+  - **Tier 4** — Add to the **confirmed** column with the tier-4 attribution note
+    and cross-populate `last-24h.html` and `analysis.html`.
+  - **Tier 5–6** — Write an `? UNCONFIRMED` item with the domain noted in the
+    headline (e.g. `SPACE — IRAN SATELLITE JAMMING CLAIM`) so the editorial team
+    can decide whether to create a dedicated new section once a higher-tier source
+    corroborates.
 
 ### `analysis.html` (deep-updated on every structural run)
 - This section is **always** deeply updated during structural runs — never return
