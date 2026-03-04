@@ -59,6 +59,7 @@ Rules for new content:
 | Credible report of US/coalition covertly arming or supplying Kurdish forces, ethnic-minority armed groups, or any anti-regime proxy (even if unconfirmed) | Immediately add an **orange-bordered callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim, source tier, and what corroboration is still needed. If subsequently confirmed by a Tier 1–3 source, move to the confirmed column and add a card to the relevant section (`opposition.html`, `military.html`, or a new `inside-iran.html` crisis card). |
 | Significant activity by Kurdish armed groups (Peshmerga, KDPI, PJAK, SDF) in or near Iran | Add a timeline item to `last-24h.html` and, if the activity crosses the border or directly implicates the crisis, add a card to `military.html` or `inside-iran.html`. |
 | Iraq enters the conflict as a direct theater (PMF — Popular Mobilization Forces — attacks on US bases, Baghdad government taking sides, Iraqi airspace used) | Add a **red callout** to `reactions.html` under regional reactions and update the map (`js/map.js`) with relevant markers. |
+| A significant development occurs in a domain **not currently covered** by any existing section (e.g. space/satellite warfare, bioweapons, AI-enabled weapons, global financial system attack, a completely new country entering the conflict, environmental or infrastructure sabotage, new-technology first-use) | (1) Add a `last-24h.html` timeline item immediately. (2) Add an **orange callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim and what confirmation would look like. (3) If confirmed by a Tier 1–3 source, add a card to the most closely related existing section (e.g. `military.html` for new weapons, `reactions.html` for new actors, `analysis.html` for strategic implications). If the development is large enough to warrant its own section, flag this in the `analysis.html` card and the editorial team will create the section manually. |
 
 ## What to Reorder
 
@@ -202,6 +203,14 @@ Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
     (Turkey, Central Asia, diaspora communities)
   - Covert diplomacy or back-channel ceasefire terms not yet publicly confirmed
   - Internal IRGC dissent or defections reported by opposition-aligned outlets
+- **New-domain discoveries**: If a search result describes a development in a
+  domain with **no existing section** (e.g. satellite/space warfare, bioweapons,
+  global financial infrastructure attack, a new country entering the conflict that
+  isn't represented anywhere on the site), it must still be captured here
+  immediately — even if it doesn't fit the existing unconfirmed item categories.
+  Write an `? UNCONFIRMED` item with the domain noted in the headline (e.g.
+  `SPACE — IRAN SATELLITE JAMMING CLAIM`) so the editorial team can decide
+  whether to create a dedicated new section.
 
 ### `analysis.html` (deep-updated on every structural run)
 - This section is **always** deeply updated during structural runs — never return
