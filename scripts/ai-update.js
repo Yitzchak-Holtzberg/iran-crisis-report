@@ -946,10 +946,11 @@ Rules:
 - Stat keys (statUsTroops, statMissilesFired, statCarrierGroups, statOilAtRisk,
   statCitizensOffline, statIrgcKilled): update ONLY if the search results contain a clearly
   newer confirmed figure with a credible source.
-- Scenario percentages (scenarioDealPct, scenarioStrikesPct,
-  scenarioRevolutionPct, scenarioPahlaviPct, scenarioFrozenPct, scenarioJuntaPct): adjust ONLY if
+- Scenario percentages (scenarioRevolutionPct, scenarioPahlaviPct, scenarioJuntaPct,
+  scenarioCivilWarPct, scenarioRegionalEscalationPct): adjust ONLY if
   a major development materially changes the outlook. Values must be integers
-  that sum to exactly 100.`;
+  that sum to exactly 100. Keep scenarioDealPct, scenarioStrikesPct, and scenarioFrozenPct
+  at 0 (these scenarios are eliminated).`;
 
   const dataUserContent =
     `CURRENT data.json:\n${JSON.stringify(currentData, null, 2)}\n\n` +
