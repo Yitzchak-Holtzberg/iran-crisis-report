@@ -12,7 +12,7 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Plu
 .ticker-live { font-family:var(--font-mono); font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent-red); padding:0 14px; border-right:1px solid rgba(255,59,59,0.35); flex-shrink:0; display:flex; align-items:center; gap:5px; }
 .ticker-live::before { content:''; display:inline-block; width:6px; height:6px; background:var(--accent-red); border-radius:50%; animation:pulse 2s infinite; }
 .ticker-scroll { overflow:hidden; flex:1; white-space:nowrap; }
-.ticker { display:inline-block; animation:ticker 90s linear infinite; font-family:var(--font-mono); font-size:12px; color:var(--accent-red); }
+.ticker { display:inline-block; animation:ticker 160s linear infinite; font-family:var(--font-mono); font-size:12px; color:var(--accent-red); }
 @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 .ticker span { margin-right:60px; }
 .section-header { display:flex; align-items:center; gap:16px; margin:60px 0 32px; padding-bottom:16px; border-bottom:2px solid transparent; border-image:linear-gradient(90deg,var(--accent-red) 0%,var(--border) 55%) 1; }
