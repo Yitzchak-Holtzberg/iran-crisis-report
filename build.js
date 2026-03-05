@@ -128,8 +128,8 @@ const BUILDS = [
     sidebarFile: 'sections/sidebar-diplomatic.html',
     meta: {
       pageTitle: 'Iran Crisis: Diplomatic Track &amp; Nuclear Negotiations \u2014 {{date}}',
-      pageDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, UK-US rift, and Israel\u2019s strike options. Round-by-round briefing updated daily.',
-      pageOgDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, UK-US rift, and Israel\u2019s strike options. Round-by-round briefing updated daily.',
+      pageDescription: 'Diplomatic track suspended: US-Iran Geneva rounds timeline, deal terms, Mojtaba Khamenei succession, NATO Article 4 consultations after Turkish missile strike, IAEA nuclear access blocked, Gulf states joint condemnation, and Israel\u2019s strikes. Updated daily.',
+      pageOgDescription: 'Diplomatic track suspended: US-Iran Geneva rounds timeline, deal terms, Mojtaba Khamenei succession, NATO Article 4 consultations after Turkish missile strike, IAEA nuclear access blocked, and Gulf states joint condemnation.',
       pageOgType: 'article',
     },
     sections: [
