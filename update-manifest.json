@@ -1094,6 +1094,38 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-05T19:23:18.777Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "No new paradigm-shifting event beyond those already on the page (strikes, sanctions, Kurds, proxies, IAEA).",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 2
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [],
+          "filesUpdated": []
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
