@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 5, 2026",
-  "lastUpdated": "19:23 UTC",
+  "lastUpdated": "21:57 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "~300+",
@@ -21,6 +21,9 @@
   "scenarioCivilWarPct": 6,
   "scenarioRegionalEscalationPct": 9,
   "ticker": [
+    "STRAIT OF HORMUZ: Iran largely halts oil and gas exports; maritime traffic down ~80%, at least four tankers struck (The Guardian, Mar 3, 2026)",
+    "GULF SHIPPING: 200+ ships anchored off coast after Hormuz shutdown, tankers stranded and delays worsen (CNA, Mar 3, 2026)",
+    "U.S.: Deploys B-52 bombers in strikes on Iran; Pentagon releases footage showing bombers and carrier operations (MilitaryTimes/DefenseNews, Mar 2-4, 2026)",
     "IRAN: Supreme Leader Ayatollah Khamenei killed in joint U.S.-Israeli strikes (Gulf News/CNBC, Mar 1-2, 2026)",
     "CIA: CIA has decided to arm Kurdish militias to foment insurgency inside Iran (Asiae/CNN, Mar 5, 2026)",
     "IRAQ MILITIAS: Iraqi Shiite militia claims drone attack on U.S. troops at Baghdad airport (Arab News/WRAL, Mar 5, 2026)",
@@ -37,9 +40,6 @@
     "SANCTIONS: U.S. Treasury sanctions 30+ individuals and vessels tied to illicit Iranian oil exports (U.S. Treasury, Mar 5, 2026)",
     "REUTERS: U.S. and Israeli strikes hit 1,000+ targets across Iran, coalition steps up (Reuters, Mar 5, 2026)",
     "INTELLIGENCE: Reports Iran accelerating development of chemical/biological warheads for long-range missiles (Bipartisan Commission on Biodefense, Mar 5, 2026)",
-    "OPPOSITION: Exiled Iranian factions remain divided as Reza Pahlavi urges mass mobilisation (Reuters, Jan 15, 2026)",
-    "STRAIT OF HORMUZ: Despite Iranian closure threat, shipping has so far avoided mass disruption, transit continues with delays (NBC, Mar 5, 2026)",
-    "NATO: Intercepts Iran-fired ballistic missile headed toward Turkish airspace (Reuters, Mar 4, 2026)",
-    "MILITARY: U.S. sinks Iranian warship amid strikes on naval targets (Reuters, Mar 4, 2026)"
+    "OPPOSITION: Exiled Iranian factions remain divided as Reza Pahlavi urges mass mobilisation (Reuters, Jan 15, 2026)"
   ]
 }

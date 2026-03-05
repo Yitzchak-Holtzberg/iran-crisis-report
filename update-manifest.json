@@ -1126,6 +1126,60 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-05T21:57:25.073Z",
+      "type": "structural",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "nuclear-subtitle"
+          ],
+          "filesUpdated": [
+            "nuclear-teaser.html",
+            "nuclear.html"
+          ]
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "confirmed-unconfirmed"
+          ],
+          "passes": {
+            "pass1": {
+              "status": "ok",
+              "filesChanged": [
+                "confirmed-unconfirmed"
+              ]
+            },
+            "analysis + map": {
+              "status": "error",
+              "error": "Request timeout after 120000 ms"
+            },
+            "scenarios + reactions": {
+              "status": "error",
+              "error": "Request timeout after 120000 ms"
+            },
+            "forces (naval, air-power, military)": {
+              "status": "error",
+              "error": "Request timeout after 120000 ms"
+            }
+          }
+        }
+      }
     }
   ]
 }
