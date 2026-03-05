@@ -127,9 +127,9 @@ const BUILDS = [
     output: 'diplomatic.html',
     sidebarFile: 'sections/sidebar-diplomatic.html',
     meta: {
-      pageTitle: 'Iran Crisis: Diplomatic Track &amp; Nuclear Negotiations \u2014 {{date}}',
-      pageDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, UK-US rift, and Israel\u2019s strike options. Round-by-round briefing updated daily.',
-      pageOgDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, UK-US rift, and Israel\u2019s strike options. Round-by-round briefing updated daily.',
+      pageTitle: 'Iran Crisis: Diplomatic Track, Reactions &amp; Damage \u2014 {{date}}',
+      pageDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, Operation Epic Fury strike damage assessments, country-by-country reactions (Gulf states, Israel, UN Security Council), and global diplomatic fallout.',
+      pageOgDescription: 'US-Iran nuclear talks that failed, the strikes that followed, and the global aftermath: Gulf states hit, Israel response, UN Security Council veto, Russia/China/UK/EU positions.',
       pageOgType: 'article',
     },
     sections: [
@@ -138,6 +138,7 @@ const BUILDS = [
       'sections/ticker.html',
       'sections/sidebar-diplomatic.html',
       'sections/diplomatic.html',
+      'sections/reactions.html',
       'sections/sources-link.html',
       'sections/scripts.html',
     ],
@@ -188,9 +189,9 @@ const BUILDS = [
     output: 'inside-iran.html',
     sidebarFile: 'sections/sidebar-inside-iran.html',
     meta: {
-      pageTitle: 'Iran Crisis: Inside Iran &amp; Regional Reactions \u2014 {{date}}',
-      pageDescription: 'Eight converging crises inside Iran plus country-by-country regional reactions and damage assessments from Operation Epic Fury: Khamenei succession, January Massacre, student uprising, economic freefall, Gulf states hit, Israel, and global diplomatic response.',
-      pageOgDescription: 'Eight converging crises inside Iran (Khamenei confirmed dead, January Massacre, student uprising, economic freefall) plus regional reactions: Gulf states struck, Israel home front, global diplomatic fallout from Operation Epic Fury.',
+      pageTitle: 'Iran Crisis: Inside Iran \u2014 {{date}}',
+      pageDescription: 'Eight converging crises inside Iran: Operation Epic Fury strikes, Khamenei succession crisis, the January Massacre, student uprising, economic freefall, internet blackout, ethnic crackdowns, water catastrophe, and axis of resistance collapse.',
+      pageOgDescription: 'Eight converging crises: Operation Epic Fury direct strikes (Day 2), Khamenei confirmed dead, January Massacre (36,500+ killed), student uprising, economic freefall (rial at 1.7M/USD), digital iron curtain, ethnic crackdowns, water catastrophe, and proxy network collapse.',
       pageOgType: 'article',
     },
     sections: [
@@ -199,7 +200,6 @@ const BUILDS = [
       'sections/ticker.html',
       'sections/sidebar-inside-iran.html',
       'sections/inside-iran.html',
-      'sections/reactions.html',
       'sections/sources-link.html',
       'sections/scripts.html',
     ],
