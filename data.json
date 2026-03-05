@@ -1,12 +1,12 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 5, 2026",
-  "lastUpdated": "02:47 UTC",
+  "lastUpdated": "07:04 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "~300+",
   "statMissilesFiredSource": "Crit. Threats",
-  "statCarrierGroups": "2",
+  "statCarrierGroups": "3",
   "statOilAtRisk": "20M",
   "statCitizensOffline": "92M",
   "statIrgcKilled": "555+",
@@ -14,13 +14,18 @@
   "statUsCasualtiesSource": "CNBC/CBS",
   "scenarioDealPct": 0,
   "scenarioStrikesPct": 0,
-  "scenarioRevolutionPct": 64,
+  "scenarioRevolutionPct": 59,
   "scenarioPahlaviPct": 14,
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 10,
   "scenarioCivilWarPct": 5,
-  "scenarioRegionalEscalationPct": 7,
+  "scenarioRegionalEscalationPct": 12,
   "ticker": [
+    "IRAN: Launches wave of ballistic missiles at Israel; millions sheltering (Reuters, Mar 5, 2026)",
+    "PROXIES: Houthis resume missile and drone attacks on Israel and shipping routes (AP, Mar 5, 2026)",
+    "U.S. NAVY: USS Abraham Lincoln repositioned after Iranian missile strike (TASS, Mar 4, 2026)",
+    "IAEA: IAEA prepared to support negotiations on Iran nuclear programme in Vienna (IAEA, Mar 5, 2026)",
+    "SANCTIONS: U.S. Treasury sanctions 30+ individuals and vessels tied to illicit Iranian oil exports (U.S. Treasury, Mar 5, 2026)",
     "REUTERS: U.S. and Israeli strikes hit 1,000+ targets across Iran, coalition steps up (Reuters, Mar 5, 2026)",
     "INTELLIGENCE: Reports Iran accelerating development of chemical/biological warheads for long-range missiles (Bipartisan Commission on Biodefense, Mar 5, 2026)",
     "OPPOSITION: Exiled Iranian factions remain divided as Reza Pahlavi urges mass mobilisation (Reuters, Jan 15, 2026)",
@@ -39,11 +44,6 @@
     "MILITARY: U.S. deploys B-52 bombers to the region and uses them in strikes on Iranian targets (Aviation Week/Military Times, Mar 3-4, 2026)",
     "ISRAEL/IDF: Israeli strike flattens building where Assembly of Experts met to choose Iran's next supreme leader (Jerusalem Post/Yahoo, Mar 3, 2026)",
     "IRAQ MILITIA: Saraya Awliya al-Dam claims drone attack on U.S. troops at Baghdad airport; U.S. reports increased militia strikes (AP/Mar 1-3, 2026)",
-    "GULF: Gulf states say they intercepted Iranian missiles and drones targeting embassies and infrastructure (Washington Examiner/Times of India, Mar 3, 2026)",
-    "NUCLEAR: IAEA says most of 440 kg highly enriched uranium stored at Isfahan underground complex, urges inspections (IAEA/Al Jazeera, Mar 2-3, 2026)",
-    "STRAIT OF HORMUZ: At least five tankers damaged, two crew killed; ~150 vessels stranded as transits halted (Bloomberg/AP, Mar 2-3, 2026)",
-    "MILITARY: Pentagon confirms additional carrier (USS Nimitz) and naval assets operating in region to support strikes (Military Times/Defense News, Mar 3, 2026)",
-    "CENTCOM: Admiral Cooper video briefing — 'We are AHEAD of our game plan' — nearly 2,000 targets struck, 17 Iranian ships destroyed incl. submarine, 50,000+ troops deployed (CENTCOM/ABC News, Mar 4, 2026)",
-    "CENTCOM: Cooper — Iran air defenses 'severely degraded'; hundreds of ballistic missiles, launchers and drones destroyed; U.S. combat power 'building' as Iran's 'declines' (CENTCOM, Mar 4, 2026)"
+    "GULF: Gulf states say they intercepted Iranian missiles and drones targeting embassies and infrastructure (Washington Examiner/Times of India, Mar 3, 2026)"
   ]
 }
