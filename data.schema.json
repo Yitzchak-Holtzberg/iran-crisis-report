@@ -17,8 +17,6 @@
     "statIrgcKilled",
     "statUsCasualties",
     "statUsCasualtiesSource",
-    "statCivilianDeaths",
-    "statCivilianDeathsSource",
     "scenarioDealPct",
     "scenarioStrikesPct",
     "scenarioRevolutionPct",
@@ -91,15 +89,6 @@
     "statUsCasualtiesSource": {
       "type": "string",
       "description": "Source for US casualties count (e.g., 'CNBC/CBS')"
-    },
-    "statCivilianDeaths": {
-      "type": "string",
-      "description": "Civilian deaths across the Middle East (e.g., '1,400+')",
-      "pattern": "^~?[0-9,]+\\+?$"
-    },
-    "statCivilianDeathsSource": {
-      "type": "string",
-      "description": "Source for civilian deaths count (e.g., 'OCHA/Red Crescent')"
     },
     "scenarioDealPct": {
       "type": "string",
