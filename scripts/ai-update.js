@@ -1020,9 +1020,9 @@ Rules:
     <div class="tl-item">
       <div class="tl-dot" style="border-color:var(--COLOR);"></div>
       <div class="date">CATEGORY — SHORT HEADLINE IN UPPER CASE</div>
-      <div class="content">1–3 sentence description with <strong>key details bolded</strong>. — Source: <a href="URL" style="color:var(--accent-cyan);">Outlet, Date</a></div>
+      <div class="content">1–3 sentence description with <strong>key details bolded</strong>. — Source: <a href="URL" style="color:var(--accent-cyan);" target="_blank" rel="noopener noreferrer">Outlet, Date</a></div>
     </div>
-  For multiple sources use: <a href="URL1" style="color:var(--accent-cyan);">Outlet1, Date</a>; <a href="URL2" style="color:var(--accent-cyan);">Outlet2, Date</a>
+  For multiple sources use: <a href="URL1" style="color:var(--accent-cyan);" target="_blank" rel="noopener noreferrer">Outlet1, Date</a>; <a href="URL2" style="color:var(--accent-cyan);" target="_blank" rel="noopener noreferrer">Outlet2, Date</a>
   Always include the direct article URL when available; use the outlet homepage as a fallback (e.g. https://www.reuters.com/ for Reuters).
   Do NOT use <em> tags to wrap source citations — use <a href> links instead.
 - Dot color convention (use exact CSS variable names):
