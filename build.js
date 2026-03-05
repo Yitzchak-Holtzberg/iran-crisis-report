@@ -127,9 +127,9 @@ const BUILDS = [
     output: 'diplomatic.html',
     sidebarFile: 'sections/sidebar-diplomatic.html',
     meta: {
-      pageTitle: 'Iran Crisis: Diplomatic Track &amp; Nuclear Negotiations \u2014 {{date}}',
-      pageDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, UK-US rift, and Israel\u2019s strike options. Round-by-round briefing updated daily.',
-      pageOgDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, UK-US rift, and Israel\u2019s strike options. Round-by-round briefing updated daily.',
+      pageTitle: 'Iran Crisis: Diplomatic Track, Reactions &amp; Damage \u2014 {{date}}',
+      pageDescription: 'Full diplomatic track: US-Iran nuclear talks timeline, deal terms, Operation Epic Fury strike damage assessments, country-by-country reactions (Gulf states, Israel, UN Security Council), and global diplomatic fallout.',
+      pageOgDescription: 'US-Iran nuclear talks that failed, the strikes that followed, and the global aftermath: Gulf states hit, Israel response, UN Security Council veto, Russia/China/UK/EU positions.',
       pageOgType: 'article',
     },
     sections: [
@@ -138,6 +138,7 @@ const BUILDS = [
       'sections/ticker.html',
       'sections/sidebar-diplomatic.html',
       'sections/diplomatic.html',
+      'sections/reactions.html',
       'sections/sources-link.html',
       'sections/scripts.html',
     ],
@@ -205,21 +206,10 @@ const BUILDS = [
   },
   {
     output: 'reactions.html',
-    sidebarFile: 'sections/sidebar-reactions.html',
-    meta: {
-      pageTitle: 'Iran Crisis: Regional Reactions &amp; Damage Assessments \u2014 {{date}}',
-      pageDescription: 'Country-by-country reactions to US-Israel Operation Epic Fury strikes on Iran: Bahrain 5th Fleet hit, Abu Dhabi casualties, Qatar, Saudi Arabia, Israel, and full strike damage assessments.',
-      pageOgDescription: 'Country-by-country reactions to Operation Epic Fury and Iran\u2019s retaliatory strikes: Gulf states hit, damage assessments, diplomatic fallout, and casualty reports.',
-      pageOgType: 'article',
-    },
+    sidebarFile: null, // redirect page — no sidebar navigation to validate
+    meta: {},
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
-      'sections/sidebar-reactions.html',
-      'sections/reactions.html',
-      'sections/sources-link.html',
-      'sections/scripts.html',
+      'sections/reactions-redirect.html',
     ],
   },
   {
@@ -321,6 +311,7 @@ function extractSidebarTargets(sidebarContent) {
 
 /** Validate sidebar links point to existing sections */
 function validateNavigation(output, sidebarFile) {
+  if (!sidebarFile) return [];
   const warnings = [];
   const sidebarContent = fs.readFileSync(path.join(BASE_DIR, sidebarFile), 'utf8');
   const sectionIds = extractSectionIds(output);
