@@ -994,6 +994,42 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-05T02:47:53.980Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results repeat events already on page (naval losses, NATO Article 4, Kurdish arming, IAEA talks); no new structur",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis2-title"
+          ],
+          "filesUpdated": [
+            "inside-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
