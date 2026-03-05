@@ -573,7 +573,7 @@ const STRUCTURAL_FILES = {
   'opposition': { rel: 'sections/opposition.html',  desc: 'Opposition & Reza Pahlavi' },
   'hormuz':     { rel: 'sections/hormuz.html',      desc: 'Strait of Hormuz' },
   'military':   { rel: 'sections/military.html',    desc: 'Iran military capability' },
-  'reactions':  { rel: 'sections/reactions.html',    desc: 'Regional reactions & damage assessments' },
+  'reactions':  { rel: 'sections/reactions.html',    desc: 'Regional reactions & damage assessments (merged into inside-iran.html page)' },
   'confirmed-unconfirmed': { rel: 'sections/confirmed-unconfirmed.html', desc: 'Fog of war: confirmed vs unconfirmed' },
   'theater':          { rel: 'sections/theater.html',           desc: 'Theater of Operations map section' },
   'map':              { rel: 'js/map.js',                        desc: 'Theater of Operations interactive map data (Leaflet markers, popups, corridors, strike lines)' },
@@ -624,8 +624,13 @@ const DEEP_UPDATE_GROUPS = [
     prompt: 'analysis-map',   // uses DEEP_UPDATE_SYSTEM_PROMPT (analysis+map specific)
   },
   {
-    names:  ['scenarios', 'reactions'],
-    label:  'scenarios + reactions',
+    names:  ['scenarios'],
+    label:  'scenarios',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+  {
+    names:  ['inside-iran', 'reactions'],
+    label:  'inside-iran + reactions',
     prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
   },
   {

@@ -188,9 +188,9 @@ const BUILDS = [
     output: 'inside-iran.html',
     sidebarFile: 'sections/sidebar-inside-iran.html',
     meta: {
-      pageTitle: 'Iran Crisis: Inside Iran \u2014 {{date}}',
-      pageDescription: 'Eight converging crises inside Iran: Operation Epic Fury strikes, Khamenei succession crisis, the January Massacre, student uprising, economic freefall, internet blackout, ethnic crackdowns, water catastrophe, and axis of resistance collapse.',
-      pageOgDescription: 'Eight converging crises: Operation Epic Fury direct strikes (Day 2), Khamenei confirmed dead, January Massacre (36,500+ killed), student uprising, economic freefall (rial at 1.7M/USD), digital iron curtain, ethnic crackdowns, water catastrophe, and proxy network collapse.',
+      pageTitle: 'Iran Crisis: Inside Iran &amp; Regional Reactions \u2014 {{date}}',
+      pageDescription: 'Eight converging crises inside Iran plus country-by-country regional reactions and damage assessments from Operation Epic Fury: Khamenei succession, January Massacre, student uprising, economic freefall, Gulf states hit, Israel, and global diplomatic response.',
+      pageOgDescription: 'Eight converging crises inside Iran (Khamenei confirmed dead, January Massacre, student uprising, economic freefall) plus regional reactions: Gulf states struck, Israel home front, global diplomatic fallout from Operation Epic Fury.',
       pageOgType: 'article',
     },
     sections: [
@@ -199,27 +199,17 @@ const BUILDS = [
       'sections/ticker.html',
       'sections/sidebar-inside-iran.html',
       'sections/inside-iran.html',
+      'sections/reactions.html',
       'sections/sources-link.html',
       'sections/scripts.html',
     ],
   },
   {
     output: 'reactions.html',
-    sidebarFile: 'sections/sidebar-reactions.html',
-    meta: {
-      pageTitle: 'Iran Crisis: Regional Reactions &amp; Damage Assessments \u2014 {{date}}',
-      pageDescription: 'Country-by-country reactions to US-Israel Operation Epic Fury strikes on Iran: Bahrain 5th Fleet hit, Abu Dhabi casualties, Qatar, Saudi Arabia, Israel, and full strike damage assessments.',
-      pageOgDescription: 'Country-by-country reactions to Operation Epic Fury and Iran\u2019s retaliatory strikes: Gulf states hit, damage assessments, diplomatic fallout, and casualty reports.',
-      pageOgType: 'article',
-    },
+    sidebarFile: null, // redirect page — no sidebar navigation to validate
+    meta: {},
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
-      'sections/sidebar-reactions.html',
-      'sections/reactions.html',
-      'sections/sources-link.html',
-      'sections/scripts.html',
+      'sections/reactions-redirect.html',
     ],
   },
   {
@@ -321,6 +311,7 @@ function extractSidebarTargets(sidebarContent) {
 
 /** Validate sidebar links point to existing sections */
 function validateNavigation(output, sidebarFile) {
+  if (!sidebarFile) return [];
   const warnings = [];
   const sidebarContent = fs.readFileSync(path.join(BASE_DIR, sidebarFile), 'utf8');
   const sectionIds = extractSectionIds(output);

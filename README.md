@@ -71,7 +71,7 @@ iran-crisis-report/
 ├── diplomatic.html     # GENERATED — do not edit manually
 ├── forces.html         # GENERATED — do not edit manually
 ├── inside-iran.html    # GENERATED — do not edit manually
-├── reactions.html      # GENERATED — do not edit manually
+├── reactions.html      # GENERATED — redirect to inside-iran.html#reactions-iran
 ├── scenarios.html      # GENERATED — do not edit manually
 ├── sources.html        # GENERATED — do not edit manually
 ├── package.json        # npm scripts (build only)
@@ -110,7 +110,7 @@ iran-crisis-report/
 │   ├── scenarios-teaser.html   # Scenarios teaser card (links to scenarios.html)
 │   ├── forces-teaser.html      # Forces teaser card (links to forces.html)
 │   ├── inside-iran-teaser.html # Inside-Iran teaser card (links to inside-iran.html)
-│   ├── reactions-teaser.html   # Reactions teaser card (links to reactions.html)
+│   ├── reactions-teaser.html   # Reactions teaser card (links to inside-iran.html#reactions-iran)
 │   ├── sources-link.html       # Footer link to sources page (all pages except sources.html)
 │   ├── diplomatic.html         # Nuclear & diplomatic negotiations section
 │   ├── air-power.html          # Air power section (forces.html)
@@ -145,7 +145,7 @@ iran-crisis-report/
 
 ## Build system
 
-`build.js` processes a `BUILDS` array of page definitions, each specifying an output file and its list of section files. It generates **7 HTML pages**: `index.html`, `diplomatic.html`, `scenarios.html`, `forces.html`, `inside-iran.html`, `reactions.html`, and `sources.html`.
+`build.js` processes a `BUILDS` array of page definitions, each specifying an output file and its list of section files. It generates **7 HTML pages**: `index.html`, `diplomatic.html`, `scenarios.html`, `forces.html`, `inside-iran.html` (which now includes the reactions content), `reactions.html` (a redirect to `inside-iran.html#reactions-iran`), and `sources.html`.
 
 Inside any section file, three directives are processed:
 
