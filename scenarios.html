@@ -8,7 +8,10 @@
 <meta property="og:title" content="Iran Crisis: Five Scenarios — March 6, 2026"/>
 <meta property="og:description" content="Five active scenarios for the Iran crisis post-Operation Epic Fury: regime collapse/revolution, Pahlavi democratic transition, IRGC junta succession, Iranian civil war/fragmentation, and regional escalation/proxy war spread."/>
 <meta property="og:type" content="article"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Iran Crisis: Five Scenarios — March 6, 2026"/>
+<meta name="twitter:description" content="Five active scenarios for the Iran crisis post-Operation Epic Fury: regime collapse/revolution, Pahlavi democratic transition, IRGC junta succession, Iranian civil war/fragmentation, and regional escalation/proxy war spread."/>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous"/>
 <link rel="stylesheet" href="css/variables.css"/>
 <link rel="stylesheet" href="css/base.css"/>
 <link rel="stylesheet" href="css/components.css"/>
@@ -120,12 +123,12 @@
 <!-- ======== BIG PICTURE ======== -->
 <div class="section-header" id="scenarios">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#127758;</div>
-  <div><h2>The Big Picture: Five Scenarios</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Post-strike analysis — <b style="color:var(--accent-red);">Operation Epic Fury Day 5–6</b> — Khamenei confirmed dead — Mojtaba named Supreme Leader — IRGC fracture signals advancing — scenarios probability-ordered</div></div>
+  <div><h2>The Big Picture: Five Scenarios</h2><div class="section-subtitle">Post-strike analysis — <b style="color:var(--accent-red);">Operation Epic Fury Day 5–6</b> — Khamenei confirmed dead — Mojtaba named Supreme Leader — IRGC fracture signals advancing — scenarios probability-ordered</div></div>
 </div>
 
 <div class="callout red" style="margin:12px 0 18px;">
   <div class="callout-title">&#9889; Phase Transition Update — Day 5–6 (Mar 4, 2026): Succession Confirmed; Fractures Advancing</div>
-  <p style="color:var(--text-secondary);">Operation Epic Fury has entered its fifth and sixth days with strike packages expanding to <strong>IRGC logistics nodes, fuel depots, and missile storage facilities in Khuzestan and Fars provinces</strong>. US casualties stand at <strong>6 killed</strong> — four identified by the Pentagon (Pentagon, Mar 4); OCHA and Red Crescent report <strong>1,400+ civilian dead</strong> and CENTCOM confirms <strong>555+ IRGC personnel killed</strong> (OCHA/Red Crescent/CENTCOM, Mar 4). The <strong>IAEA confirms structural damage at Natanz, no radiological release</strong>, and is seeking urgent access. Iran's claimed Strait of Hormuz closure — while not yet enforced by physical mining — is driving supertanker war-risk insurance to multi-year highs. A <strong>drone attack struck the US Embassy compound in Riyadh</strong> (AP, Mar 3). The Oman diplomatic channel is now <strong>frozen</strong> as IRGC junta consolidation makes any commitment impossible; Iran and the US are expected to hold <strong>technical-level talks in Vienna next week</strong> on nuclear verification and IAEA access (Al Jazeera / IAEA, Mar 4) — the only active diplomatic track. The <strong>Assembly of Experts named Mojtaba Khamenei new Supreme Leader</strong> (Reuters, AP, Al Jazeera, Mar 3), resolving 72-hour succession uncertainty but opening a legitimacy crisis: his <em>Hojjat ol-Islam</em> rank falls below the Grand Ayatollah constitutional requirement. Operation Epic Fury continues — <strong>the "Pickaxe Mountain" deep Natanz BDA remains unresolved</strong>: IAEA access requested but not granted; no ELINT confirmation of centrifuge spin-down at the potential 80m-depth facility. If it survived, Iran can reconstitute 90% enrichment capability within months (Alma Center, Mar 3). — Sources: <em>Pentagon, OCHA, Red Crescent, CENTCOM, Reuters, AP, Al Jazeera, IAEA, Alma Center, Mar 3–4</em></p>
+  <p>Operation Epic Fury has entered its fifth and sixth days with strike packages expanding to <strong>IRGC logistics nodes, fuel depots, and missile storage facilities in Khuzestan and Fars provinces</strong>. US casualties stand at <strong>6 killed</strong> — four identified by the Pentagon (Pentagon, Mar 4); OCHA and Red Crescent report <strong>1,400+ civilian dead</strong> and CENTCOM confirms <strong>555+ IRGC personnel killed</strong> (OCHA/Red Crescent/CENTCOM, Mar 4). The <strong>IAEA confirms structural damage at Natanz, no radiological release</strong>, and is seeking urgent access. Iran's claimed Strait of Hormuz closure — while not yet enforced by physical mining — is driving supertanker war-risk insurance to multi-year highs. A <strong>drone attack struck the US Embassy compound in Riyadh</strong> (AP, Mar 3). The Oman diplomatic channel is now <strong>frozen</strong> as IRGC junta consolidation makes any commitment impossible; Iran and the US are expected to hold <strong>technical-level talks in Vienna next week</strong> on nuclear verification and IAEA access (Al Jazeera / IAEA, Mar 4) — the only active diplomatic track. The <strong>Assembly of Experts named Mojtaba Khamenei new Supreme Leader</strong> (Reuters, AP, Al Jazeera, Mar 3), resolving 72-hour succession uncertainty but opening a legitimacy crisis: his <em>Hojjat ol-Islam</em> rank falls below the Grand Ayatollah constitutional requirement. Operation Epic Fury continues — <strong>the "Pickaxe Mountain" deep Natanz BDA remains unresolved</strong>: IAEA access requested but not granted; no ELINT confirmation of centrifuge spin-down at the potential 80m-depth facility. If it survived, Iran can reconstitute 90% enrichment capability within months (Alma Center, Mar 3). — Sources: <em>Pentagon, OCHA, Red Crescent, CENTCOM, Reuters, AP, Al Jazeera, IAEA, Alma Center, Mar 3–4</em></p>
 </div>
 
 <!-- Scenario likelihood bar -->
@@ -141,14 +144,14 @@
 
 <!-- Scenario 1: Regime Collapse — Most Likely -->
 <div class="card" style="border-left:4px solid var(--accent-red);margin-bottom:20px;">
-  <div class="scenario-header" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-    <div style="background:rgba(255,59,59,0.15);border-radius:8px;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--accent-red);letter-spacing:1px;text-transform:uppercase;">Scenario 1</div>
-    <h3 style="margin:0;">Regime Collapse — Revolution From Within</h3>
-    <span class="severity critical" style="margin-left:auto;">Likelihood: 59% — <i>Most Likely Post-Strike Outcome</i></span>
+  <div class="scenario-header">
+    <div class="scenario-badge scenario-badge-red">Scenario 1</div>
+    <h3>Regime Collapse — Revolution From Within</h3>
+    <span class="severity critical">Likelihood: 59% — <i>Most Likely Post-Strike Outcome</i></span>
   </div>
   <div class="callout red" style="margin-bottom:16px;">
     <div class="callout-title">&#128308; Day 5–6 Inflection: IRGC Fractures Confirmed; Succession Resolved</div>
-    <p style="color:var(--text-secondary);">Three previously-watched indicators have now <em>triggered</em>. First: the <strong>17th Qods Corps (Sistan-Baluchestan)</strong> has reportedly stood down in at least two garrison towns — units in the ethnically Baloch southeast, historically the IRGC's most reluctant enforcers, appear to have halted operations without orders. Second: <strong>Bank Melli payroll failed for IRGC subsidiary accounts</strong> — a one-cycle failure, but soldiers who did not receive pay in a rial at 1.7M/USD are now calculating loyalty in real time. Third: <strong>the Assembly of Experts named Mojtaba Khamenei new Supreme Leader</strong> (Reuters, AP, Al Jazeera, Mar 3), resolving the 72-hour succession vacuum — but triggering an immediate legitimacy crisis, as his <em>Hojjat ol-Islam</em> rank does not satisfy the Grand Ayatollah constitutional requirement for the velayat-e faqih role; IRGC coercion alone cannot resolve that deficit. None of these is irreversible; together, they constitute the leading edge of an avalanche. — Sources: <em>Reuters, AP (garrison reports unconfirmed tier-4/5), Mar 3–4; Wall Street Journal, Mar 3; Reuters, AP, Al Jazeera, Mar 3 (Mojtaba succession)</em></p>
+    <p>Three previously-watched indicators have now <em>triggered</em>. First: the <strong>17th Qods Corps (Sistan-Baluchestan)</strong> has reportedly stood down in at least two garrison towns — units in the ethnically Baloch southeast, historically the IRGC's most reluctant enforcers, appear to have halted operations without orders. Second: <strong>Bank Melli payroll failed for IRGC subsidiary accounts</strong> — a one-cycle failure, but soldiers who did not receive pay in a rial at 1.7M/USD are now calculating loyalty in real time. Third: <strong>the Assembly of Experts named Mojtaba Khamenei new Supreme Leader</strong> (Reuters, AP, Al Jazeera, Mar 3), resolving the 72-hour succession vacuum — but triggering an immediate legitimacy crisis, as his <em>Hojjat ol-Islam</em> rank does not satisfy the Grand Ayatollah constitutional requirement for the velayat-e faqih role; IRGC coercion alone cannot resolve that deficit. None of these is irreversible; together, they constitute the leading edge of an avalanche. — Sources: <em>Reuters, AP (garrison reports unconfirmed tier-4/5), Mar 3–4; Wall Street Journal, Mar 3; Reuters, AP, Al Jazeera, Mar 3 (Mojtaba succession)</em></p>
   </div>
   <p>The Islamic Republic has always operated on what analysts call the <strong>"avalanche model" of loyalty</strong>: its power appears solid until it suddenly isn't. The regime survives because everyone believes everyone else is loyal. The moment a significant unit visibly defects — and survives — that fiction evaporates. Provincial garrison commanders who were on the fence now calculate that the regime cannot punish them all. Khamenei's death, ongoing strikes, mass protests in all 31 provinces, and economic freefall have pushed the system to the threshold. Day 4–5 data suggests that threshold is being crossed.</p>
   <div class="callout gold" style="margin:16px 0;">
@@ -164,8 +167,8 @@
   </div>
   <div class="two-col" style="margin:16px 0;">
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Remaining Signals to Watch</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">Remaining Signals to Watch</h4>
+      <ul class="content-list-sm">
         <li><strong>First general-rank defection to CIA channel</strong> — the mid-level contact is a signal; a general-rank defection is the cascade trigger that changes every provincial commander's calculus within hours.</li>
         <li><strong>Arafi public posture — now the key succession indicator</strong> — Mojtaba was named Supreme Leader on Mar 3, resolving the succession vacancy; whether <strong>Ayatollah Alireza Arafi</strong> (interim Supreme Leader in the provisional council) publicly endorses, remains silent, or contests the appointment in the next 24–48 hours is now the primary observable; any public contest activates the clerical fracture scenario.</li>
         <li><strong>Second payroll failure cycle</strong> — the first cycle shock; the second cycle is a loyalty-breaking event. Next payroll window is 72 hours out. — Source: <em>WSJ, Mar 3</em></li>
@@ -174,8 +177,8 @@
       </ul>
     </div>
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">The Transition Problem</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">The Transition Problem</h4>
+      <ul class="content-list-sm">
         <li><strong>No unified opposition command inside Iran</strong> — collapse without a pre-positioned transitional authority risks a Libya-style vacuum. Pahlavi's Prosperity Project (Sc2) is the closest ready plan but lacks organizational infrastructure inside Iran.</li>
         <li><strong>IRGC controls 60–70% of the economy</strong> — the Guards' construction, import monopolies, and pension funds involve millions of families. Dismantling this overnight destroys livelihoods, not just a power structure.</li>
         <li><strong>Nuclear material security gap</strong> — IAEA confirms <strong>440 kg of highly enriched uranium at Isfahan</strong>; CSIS estimates <strong>600–900 kg at 20–60% enrichment</strong> at dispersed sites. All of this must be secured in hours, not days. If central authority collapses before US/IAEA teams move in, proliferation risk is acute. — Sources: <em>IAEA/Al Jazeera, Mar 2–3; CSIS, Mar 3</em></li>
@@ -188,24 +191,24 @@
 
 <!-- Scenario 2: Pahlavi Returns — Democratic Transition -->
 <div class="card" style="border-left:4px solid var(--accent-green);margin-bottom:20px;">
-  <div class="scenario-header" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-    <div style="background:rgba(0,200,83,0.15);border-radius:8px;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--accent-green);letter-spacing:1px;text-transform:uppercase;">Scenario 2</div>
-    <h3 style="margin:0;">Pahlavi Returns — Democratic Transition</h3>
-    <span class="severity elevated" style="margin-left:auto;">Likelihood: 13% — <i>Requires ordered collapse, not chaotic one</i></span>
+  <div class="scenario-header">
+    <div class="scenario-badge scenario-badge-green">Scenario 2</div>
+    <h3>Pahlavi Returns — Democratic Transition</h3>
+    <span class="severity elevated">Likelihood: 13% — <i>Requires ordered collapse, not chaotic one</i></span>
   </div>
   <div class="callout green" style="margin-bottom:16px;">
     <div class="callout-title">Day 4–5: Prosperity Project Gains International Traction — Saudi $500M Confirmed</div>
-    <p style="color:var(--text-secondary);">Reza Pahlavi's <strong>"Prosperity Project"</strong>, unveiled March 1, has generated significant international media coverage through Day 4–5. Critically: <strong>Saudi Arabia confirmed a $500M humanitarian aid pledge</strong> contingent on a recognized transitional authority (Reuters, Mar 3) — the first concrete Gulf financial commitment to a post-regime framework. The <strong>Trump administration back-channel is developing</strong>: Witkoff's team has held a second informal contact with Pahlavi's advisers (POLITICO, Mar 3), and White House press secretary language is shifting toward "the Iranian people deserve a choice." These are early-stage signals, not commitments — but they change the international legitimacy calculus for fence-sitting IRGC commanders. — Sources: <em>Reuters, Mar 3; POLITICO, Mar 3; Washington Post, Mar 2</em></p>
+    <p>Reza Pahlavi's <strong>"Prosperity Project"</strong>, unveiled March 1, has generated significant international media coverage through Day 4–5. Critically: <strong>Saudi Arabia confirmed a $500M humanitarian aid pledge</strong> contingent on a recognized transitional authority (Reuters, Mar 3) — the first concrete Gulf financial commitment to a post-regime framework. The <strong>Trump administration back-channel is developing</strong>: Witkoff's team has held a second informal contact with Pahlavi's advisers (POLITICO, Mar 3), and White House press secretary language is shifting toward "the Iranian people deserve a choice." These are early-stage signals, not commitments — but they change the international legitimacy calculus for fence-sitting IRGC commanders. — Sources: <em>Reuters, Mar 3; POLITICO, Mar 3; Washington Post, Mar 2</em></p>
   </div>
   <div class="callout gold" style="margin-bottom:16px;">
     <div class="callout-title">&#9888; Kurdish Fracture Risk: PJAK Has NOT Endorsed the Prosperity Project</div>
-    <p style="color:var(--text-secondary);">As of Day 4–5, the <strong>PJAK (Party for a Free Life in Kurdistan)</strong> — the armed Kurdish opposition group in northwestern Iran — has not publicly endorsed the Prosperity Project and has not responded to outreach from Pahlavi's circle. This is a significant spoiler risk: if Kurdish armed groups do not receive binding commitments on autonomy before a transitional authority is declared, PJAK and affiliated factions may pursue their own armed agenda in the northwest during the transition window. Pahlavi's "One Iran" framing explicitly offers maximum autonomy within a unified state — but PJAK's threshold for "binding" is higher than a public framework document. This fracture, unresolved, could produce a low-grade northwest insurgency in the transition's first weeks — exactly the kind of instability that allows IRGC remnants to claim a security emergency. — Sources: <em>BBC, Feb 27; Reuters, Mar 3</em></p>
+    <p>As of Day 4–5, the <strong>PJAK (Party for a Free Life in Kurdistan)</strong> — the armed Kurdish opposition group in northwestern Iran — has not publicly endorsed the Prosperity Project and has not responded to outreach from Pahlavi's circle. This is a significant spoiler risk: if Kurdish armed groups do not receive binding commitments on autonomy before a transitional authority is declared, PJAK and affiliated factions may pursue their own armed agenda in the northwest during the transition window. Pahlavi's "One Iran" framing explicitly offers maximum autonomy within a unified state — but PJAK's threshold for "binding" is higher than a public framework document. This fracture, unresolved, could produce a low-grade northwest insurgency in the transition's first weeks — exactly the kind of instability that allows IRGC remnants to claim a security emergency. — Sources: <em>BBC, Feb 27; Reuters, Mar 3</em></p>
   </div>
   <p>This scenario requires Sc1 (collapse) to not descend into chaos — it is specifically the <em>ordered</em> version of regime change, where IRGC stand-down is coordinated rather than anarchic. The Prosperity Project provides the political architecture; the CIA's defection channel provides the coordination mechanism; Saudi financial commitment and the Trump back-channel provide the international scaffolding. The race is against Sc1's chaotic variant and Sc3's junta consolidation.</p>
   <div class="two-col" style="margin:16px 0;">
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">What Would Trigger This</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">What Would Trigger This</h4>
+      <ul class="content-list-sm">
         <li><strong>IRGC command fractures in coordination</strong> — not chaotic defection, but 3–5 senior generals collectively announcing support for a transitional authority, removing the coordination barrier for others</li>
         <li><strong>Khamenei death — CONFIRMED (Mar 1)</strong> — succession vacuum active; no figure with equivalent authority to order resistance — Source: <em>AP, Mar 1</em></li>
         <li><strong>Trump administration recognition</strong> — Witkoff back-channel becomes official; White House endorses Pahlavi's transitional council, giving it international legitimacy before it has domestic control — Source: <em>POLITICO, Mar 3</em></li>
@@ -214,8 +217,8 @@
       </ul>
     </div>
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Critical Obstacles</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">Critical Obstacles</h4>
+      <ul class="content-list-sm">
         <li><strong>Mojtaba Khamenei's network</strong> — even if the formal IRGC stands down, Khamenei's son controls IRGC intelligence and Basij ideological units. He doesn't need legal authority to spoil a transition if he retains armed loyalists.</li>
         <li><strong>Kurdish–Pahlavi fracture</strong> — PJAK non-endorsement is public and unresolved. Kurdish armed groups may not honor an amnesty they weren't part of negotiating. — Source: <em>BBC, Feb 27</em></li>
         <li><strong>Nuclear material as leverage</strong> — whatever IRGC faction controls enriched uranium holds a decisive bargaining chip unlikely to be surrendered absent binding security guarantees and phased amnesty.</li>
@@ -225,24 +228,24 @@
   </div>
   <div class="callout gold">
     <div class="callout-title">Historical Parallel — Five Simultaneously Unprecedented Conditions</div>
-    <p style="color:var(--text-secondary);">Every previous Iranian opposition effort since 1979 failed against the same wall: IRGC loyalty to the regime. Five things have simultaneously changed in February–March 2026: (1) the IRGC's <em>economic base</em> is disrupted, removing the financial incentive for loyalty; (2) the protest movement has named a single leader, giving fence-sitting commanders a face to surrender to; (3) the CIA has opened a verified, operational defection channel with reportedly active contacts; (4) the US has signaled willingness to recognize a transitional government; (5) Khamenei's death removes the authority figure who could have ordered resistance regardless of material incentives. <strong>The question is whether Pahlavi and the opposition can convert conditions into a coordinated institutional move before Sc1 goes chaotic or Sc3 consolidates.</strong> — Sources: <em>CBS/60 Minutes, Mar 3; POLITICO, Mar 3</em></p>
+    <p>Every previous Iranian opposition effort since 1979 failed against the same wall: IRGC loyalty to the regime. Five things have simultaneously changed in February–March 2026: (1) the IRGC's <em>economic base</em> is disrupted, removing the financial incentive for loyalty; (2) the protest movement has named a single leader, giving fence-sitting commanders a face to surrender to; (3) the CIA has opened a verified, operational defection channel with reportedly active contacts; (4) the US has signaled willingness to recognize a transitional government; (5) Khamenei's death removes the authority figure who could have ordered resistance regardless of material incentives. <strong>The question is whether Pahlavi and the opposition can convert conditions into a coordinated institutional move before Sc1 goes chaotic or Sc3 consolidates.</strong> — Sources: <em>CBS/60 Minutes, Mar 3; POLITICO, Mar 3</em></p>
   </div>
 </div>
 
 <!-- Scenario 3: IRGC Junta — Succession Council -->
 <div class="card" style="border-left:4px solid var(--accent-cyan);margin-bottom:20px;">
-  <div class="scenario-header" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-    <div style="background:rgba(0,212,255,0.15);border-radius:8px;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--accent-cyan);letter-spacing:1px;text-transform:uppercase;">Scenario 3</div>
-    <h3 style="margin:0;">IRGC Junta — Succession Council Consolidates Power</h3>
-    <span class="severity high" style="margin-left:auto;">Likelihood: 8% — <i>Declining as IRGC fractures emerge</i></span>
+  <div class="scenario-header">
+    <div class="scenario-badge scenario-badge-cyan">Scenario 3</div>
+    <h3>IRGC Junta — Succession Council Consolidates Power</h3>
+    <span class="severity high">Likelihood: 8% — <i>Declining as IRGC fractures emerge</i></span>
   </div>
   <div class="callout red" style="margin-bottom:16px;">
     <div class="callout-title">Day 5–6: Junta Attempts Consolidation — Legitimacy Crisis Active</div>
-    <p style="color:var(--text-secondary);">President Masoud Pezeshkian's statement that a leadership council <strong>"has begun its work"</strong> (AP, Mar 3) is constitutionally correct under Article 131 — but in practice, the structure he is describing is the <strong>IRGC's attempt to impose constitutional legitimacy on a security-organ power seizure</strong>. The Assembly of Experts named <strong>Mojtaba Khamenei</strong> new Supreme Leader on Mar 3 (Reuters, AP, Al Jazeera — confirmed Tier 2), ending the succession vacuum. However, Mojtaba's <em>Hojjat ol-Islam</em> rank — below the Grand Ayatollah constitutional requirement for velayat-e faqih — creates an immediate legitimacy deficit that IRGC coercion alone cannot resolve. As of Day 5–6, <strong>12 of Iran's 31 provinces</strong> have significant disruption to normal IRGC operations — a number that has doubled in 48 hours. A junta succeeds by moving faster than the collapse dynamic: the IRGC has approximately <strong>48 hours</strong> to achieve visible internal consensus on a shadow leadership structure, impose emergency law with sufficient force to halt the protest–garrison merger, and produce a public-facing constitutional narrative credible enough to split the opposition. If all three do not happen within this window, provincial commanders will individually calculate that the junta cannot protect them — and the cascade tips irrevocably toward Sc1. The 17th Qods Corps stand-down reports are the clearest signal that this window is already eroding. — Sources: <em>AP, Reuters, Al Jazeera, Mar 3–4</em></p>
+    <p>President Masoud Pezeshkian's statement that a leadership council <strong>"has begun its work"</strong> (AP, Mar 3) is constitutionally correct under Article 131 — but in practice, the structure he is describing is the <strong>IRGC's attempt to impose constitutional legitimacy on a security-organ power seizure</strong>. The Assembly of Experts named <strong>Mojtaba Khamenei</strong> new Supreme Leader on Mar 3 (Reuters, AP, Al Jazeera — confirmed Tier 2), ending the succession vacuum. However, Mojtaba's <em>Hojjat ol-Islam</em> rank — below the Grand Ayatollah constitutional requirement for velayat-e faqih — creates an immediate legitimacy deficit that IRGC coercion alone cannot resolve. As of Day 5–6, <strong>12 of Iran's 31 provinces</strong> have significant disruption to normal IRGC operations — a number that has doubled in 48 hours. A junta succeeds by moving faster than the collapse dynamic: the IRGC has approximately <strong>48 hours</strong> to achieve visible internal consensus on a shadow leadership structure, impose emergency law with sufficient force to halt the protest–garrison merger, and produce a public-facing constitutional narrative credible enough to split the opposition. If all three do not happen within this window, provincial commanders will individually calculate that the junta cannot protect them — and the cascade tips irrevocably toward Sc1. The 17th Qods Corps stand-down reports are the clearest signal that this window is already eroding. — Sources: <em>AP, Reuters, Al Jazeera, Mar 3–4</em></p>
   </div>
   <div class="callout red" style="margin-bottom:16px;">
     <div class="callout-title">&#128308; Who Would Actually Run the Junta</div>
-    <p style="color:var(--text-secondary);">Under <strong>Article 131</strong>, when the Supreme Leader dies, a Leadership Council of Three — the First VP, the parliament speaker, and the judiciary chief — manages the country for <strong>50 days</strong> while the Assembly of Experts selects a successor. In theory: <strong>Mohammad Mokhber</strong> (First VP) assumes executive power. In practice, four figures hold the actual levers:</p>
+    <p>Under <strong>Article 131</strong>, when the Supreme Leader dies, a Leadership Council of Three — the First VP, the parliament speaker, and the judiciary chief — manages the country for <strong>50 days</strong> while the Assembly of Experts selects a successor. In theory: <strong>Mohammad Mokhber</strong> (First VP) assumes executive power. In practice, four figures hold the actual levers:</p>
     <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;margin-top:8px;">
       <li><strong>Mojtaba Khamenei</strong> — named new Supreme Leader by the Assembly of Experts on Mar 3 (Reuters, AP, Al Jazeera — confirmed Tier 2), ending the succession vacuum. He controls IRGC intelligence directorate and Basij ideological corps. His <em>Hojjat ol-Islam</em> rank — below the Grand Ayatollah constitutional requirement — creates a legitimacy challenge that IRGC coercion alone cannot resolve; <strong>Ayatollah Alireza Arafi's</strong> public posture in the next 24–48 hours is the key indicator of clerical acceptance or resistance. — Sources: <em>Reuters, AP, Al Jazeera, Mar 3</em></li>
       <li><strong>Hossein Salami</strong> (IRGC Commander-in-Chief) — hardline ideologue, commands the military apparatus. Would be the junta's enforcer, not its public face; lacks clerical legitimacy to serve as Supreme Leader. — Source: <em>Reuters, Mar 2</em></li>
@@ -254,15 +257,15 @@
   <p>This scenario is Sc1's dark mirror: the same conditions that could produce collapse could instead produce consolidation, if the IRGC acts faster than the protest movement. The 48-hour window analysis above suggests the IRGC is losing that race — but a single decisive move (Mojtaba reappearing, a mass arrest of protest leaders, or a dramatic proxy escalation) could reverse the momentum.</p>
   <div class="two-col" style="margin:16px 0;">
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">The Mojtaba Factor — Day 5–6 Update</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">The Mojtaba Factor — Day 5–6 Update</h4>
+      <ul class="content-list-sm">
         <li>Mojtaba was named Supreme Leader by the Assembly of Experts on Mar 3 (Reuters, AP, Al Jazeera — confirmed Tier 2). His appointment is contested on multiple grounds: his <em>Hojjat ol-Islam</em> rank falls below the Grand Ayatollah constitutional requirement; quorum and session independence are disputed; Western governments and opposition have declared the appointment illegitimate. <strong>The question is now whether IRGC coercion can substitute for clerical consensus — and whether Arafi contests or accepts the outcome.</strong></li>
         <li>Russia and China have incentives to back a junta that maintains continuity — chaos in Iran threatens their energy and trade relationships. Expect quiet signaling of support for Mojtaba continuity, but neither will commit publicly to a losing bet. — Source: <em>Reuters, Mar 3</em></li>
       </ul>
     </div>
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Why the Junta Is Failing</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">Why the Junta Is Failing</h4>
+      <ul class="content-list-sm">
         <li><strong>IRGC fractional math</strong> — the IRGC's six independent corps (Aerospace, Ground Forces, Navy, Quds, Intelligence, Basij) are competing fiefdoms. A junta requires all six to agree on who is in charge — under wartime pressure and with payroll failing.</li>
         <li><strong>12/31 provinces disrupted</strong> — provincial operational disruption has doubled in 48 hours. A junta that cannot project authority into 12 provinces by Day 5 is not consolidating; it is contracting. — Source: <em>Reuters, Mar 4</em></li>
         <li><strong>Economic collapse accelerates under junta</strong> — rial slide, disrupted oil exports, and isolation worsen immediately. — Source: <em>Reuters, Mar 2</em></li>
@@ -272,26 +275,26 @@
   </div>
   <div class="callout orange">
     <div class="callout-title">If the Junta Somehow Consolidates: Consequences</div>
-    <p style="color:var(--text-secondary);">A stable IRGC junta — if it achieves internal cohesion within the remaining 48-hour window — would: impose emergency law and communications blackout; detain prominent protest leaders; condition IAEA access on sanctions relief; activate proxies (PMF, Houthis) to signal deterrence; and seek recognition from Russia/China. <strong>Nuclear risk rises sharply</strong> if enriched material survives and weaponization accelerates under existential threat logic. — Sources: <em>IAEA (access statements), Mar 3; ISW, Mar 2</em></p>
+    <p>A stable IRGC junta — if it achieves internal cohesion within the remaining 48-hour window — would: impose emergency law and communications blackout; detain prominent protest leaders; condition IAEA access on sanctions relief; activate proxies (PMF, Houthis) to signal deterrence; and seek recognition from Russia/China. <strong>Nuclear risk rises sharply</strong> if enriched material survives and weaponization accelerates under existential threat logic. — Sources: <em>IAEA (access statements), Mar 3; ISW, Mar 2</em></p>
   </div>
 </div>
 
 <!-- Scenario 4: Iranian Civil War / State Fragmentation -->
 <div class="card" style="border-left:4px solid var(--accent-orange);margin-bottom:20px;">
-  <div class="scenario-header" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-    <div style="background:rgba(255,140,0,0.15);border-radius:8px;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--accent-orange);letter-spacing:1px;text-transform:uppercase;">Scenario 4</div>
-    <h3 style="margin:0;">Iranian Civil War — State Fragmentation</h3>
-    <span class="severity elevated" style="margin-left:auto;">Likelihood: 6% — <i>Chaotic collapse variant; rises if Sc1 goes ungoverned</i></span>
+  <div class="scenario-header">
+    <div class="scenario-badge scenario-badge-orange">Scenario 4</div>
+    <h3>Iranian Civil War — State Fragmentation</h3>
+    <span class="severity elevated">Likelihood: 6% — <i>Chaotic collapse variant; rises if Sc1 goes ungoverned</i></span>
   </div>
   <div class="callout orange" style="margin-bottom:16px;">
     <div class="callout-title">&#9888; The Chaos Fork: Sc1 Without a Coordinated Successor</div>
-    <p style="color:var(--text-secondary);">Scenario 4 is not an independent event — it is what Scenario 1 (Regime Collapse) becomes if the collapse is <em>uncoordinated</em>. If Mojtaba Khamenei's network fragments without capitulating, if IRGC corps stand down in different directions rather than toward a single transitional authority, and if the Pahlavi Prosperity Project has not secured Kurdish and ethnic minority buy-in, the collapse does not produce a new Iran — it produces <strong>several competing Irans</strong>. The risk is not theoretical: Libya 2011 and Iraq 2003 both began as "liberation" events and ended as multi-actor civil conflicts. Iran has four times Iraq's population, a larger and more geographically dispersed armed apparatus, and an active nuclear program. — Sources: <em>ISW, Carnegie Endowment, Mar 3</em></p>
+    <p>Scenario 4 is not an independent event — it is what Scenario 1 (Regime Collapse) becomes if the collapse is <em>uncoordinated</em>. If Mojtaba Khamenei's network fragments without capitulating, if IRGC corps stand down in different directions rather than toward a single transitional authority, and if the Pahlavi Prosperity Project has not secured Kurdish and ethnic minority buy-in, the collapse does not produce a new Iran — it produces <strong>several competing Irans</strong>. The risk is not theoretical: Libya 2011 and Iraq 2003 both began as "liberation" events and ended as multi-actor civil conflicts. Iran has four times Iraq's population, a larger and more geographically dispersed armed apparatus, and an active nuclear program. — Sources: <em>ISW, Carnegie Endowment, Mar 3</em></p>
   </div>
   <p>This scenario activates when Scenario 1's collapse dynamic proceeds faster than political coordination can follow. The IRGC does not stand down as a unit — some corps defect to the transitional authority, some fight for Mojtaba loyalists, some simply dissolve into regional criminal and militia structures. Ethnic armed groups that have been suppressed for decades — Kurdish PJAK in the northwest, Baloch separatists in Sistan-Baluchestan, Arab Ahvazi factions in Khuzestan — fill the vacuum in their regions before any central authority can assert control.</p>
   <div class="two-col" style="margin:16px 0;">
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Fragmentation Flashpoints</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">Fragmentation Flashpoints</h4>
+      <ul class="content-list-sm">
         <li><strong>Kurdistan / Northwest Iran (PJAK)</strong> — armed Kurdish factions have not endorsed the Prosperity Project; if the transition does not include binding autonomy commitments, armed Kurdish expansion into IRGC-vacated territory begins within hours of a collapse announcement. — Source: <em>BBC, Feb 27</em></li>
         <li><strong>Sistan-Baluchestan (Jaish al-Adl)</strong> — already the most restive province; the 17th Qods Corps stand-down reports suggest IRGC authority here is already thinning. Baloch militant groups are structured for exactly this kind of vacuum. — Source: <em>Reuters, Mar 4</em></li>
         <li><strong>Khuzestan (Arab Ahvazi groups)</strong> — Iran's oil-producing heartland; Arab minority factions with Gulf state ties could move to assert control over oil infrastructure. This is the scenario most threatening to Gulf energy markets. — Source: <em>Reuters, Mar 2</em></li>
@@ -299,8 +302,8 @@
       </ul>
     </div>
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">The Nuclear Proliferation Worst Case</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">The Nuclear Proliferation Worst Case</h4>
+      <ul class="content-list-sm">
         <li><strong>Enriched uranium stockpile in a fragmented state</strong> — the IAEA confirms <strong>440 kg of highly enriched uranium stored at Isfahan</strong> (IAEA/Al Jazeera, Mar 2–3); CSIS estimates a further <strong>600–900 kg at 20–60% enrichment</strong> at dispersed sites. In a civil war scenario, this material is not under unified command. Multiple IRGC factions and potentially non-state actors compete for it as a strategic asset and bargaining chip. — Sources: <em>IAEA/Al Jazeera, Mar 2–3; CSIS, Mar 3</em></li>
         <li><strong>US/IAEA secure-and-remove window is measured in hours</strong> — the Pentagon's 48-hour nuclear material security contingency planning assumes a reasonably intact state actor to coordinate with. In a fragmentation scenario, that assumption fails. — Source: <em>IAEA background, Mar 3</em></li>
         <li><strong>External actors accelerate fragmentation</strong> — Russia and China, seeking to deny the US a stable Iran client, have incentives to quietly sustain competing factions. Gulf states may fund Ahvazi groups. Turkey has historical interests in the Kurdish northwest.</li>
@@ -310,26 +313,26 @@
   </div>
   <div class="callout red">
     <div class="callout-title">What Prevents Fragmentation</div>
-    <p style="color:var(--text-secondary);">Fragmentation is avoided only if: (1) IRGC stand-down is sufficiently coordinated that most corps defect toward the same transitional authority simultaneously; (2) Pahlavi's team secures Kurdish, Baloch, and Ahvazi buy-in through concrete autonomy commitments before the collapse event; (3) US/NATO rapid reaction forces secure nuclear material sites within the first 48 hours; and (4) Mojtaba Khamenei is neutralized — captured, killed, or decisively isolated — before he can organize a loyalist resistance. All four conditions must hold simultaneously. The CIA defection channel and Saudi financial commitment are partial countermeasures, but they address the IRGC coordination problem and not the ethnic flashpoints. — Sources: <em>ISW, Carnegie Endowment, Reuters, Mar 3–4</em></p>
+    <p>Fragmentation is avoided only if: (1) IRGC stand-down is sufficiently coordinated that most corps defect toward the same transitional authority simultaneously; (2) Pahlavi's team secures Kurdish, Baloch, and Ahvazi buy-in through concrete autonomy commitments before the collapse event; (3) US/NATO rapid reaction forces secure nuclear material sites within the first 48 hours; and (4) Mojtaba Khamenei is neutralized — captured, killed, or decisively isolated — before he can organize a loyalist resistance. All four conditions must hold simultaneously. The CIA defection channel and Saudi financial commitment are partial countermeasures, but they address the IRGC coordination problem and not the ethnic flashpoints. — Sources: <em>ISW, Carnegie Endowment, Reuters, Mar 3–4</em></p>
   </div>
 </div>
 
 <!-- Scenario 5: Regional Escalation / Proxy War Spread -->
 <div class="card" style="border-left:4px solid #c850c0;margin-bottom:20px;">
-  <div class="scenario-header" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-    <div style="background:rgba(200,80,192,0.15);border-radius:8px;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#c850c0;letter-spacing:1px;text-transform:uppercase;">Scenario 5</div>
-    <h3 style="margin:0;">Regional Escalation — Proxy War Spreads Beyond Iran</h3>
-    <span class="severity high" style="margin-left:auto;">Likelihood: 14% — <i>Low but non-zero; Houthi/PMF activity is the leading indicator</i></span>
+  <div class="scenario-header">
+    <div class="scenario-badge scenario-badge-purple">Scenario 5</div>
+    <h3>Regional Escalation — Proxy War Spreads Beyond Iran</h3>
+    <span class="severity high">Likelihood: 14% — <i>Low but non-zero; Houthi/PMF activity is the leading indicator</i></span>
   </div>
   <div class="callout orange" style="margin-bottom:16px;">
     <div class="callout-title">&#9888; Day 5–6: Houthis Active; Embassy Struck; PMF Escalating</div>
-    <p style="color:var(--text-secondary);">Three Day 4–5 events elevate this scenario from theoretical to monitoring status. First: <strong>Houthis resumed missile and drone attacks on Red Sea shipping</strong> following the US strikes (AP, Mar 3) — demonstrating that Iran's external proxy network retains operational capability independent of IRGC command-and-control disruptions. Second: <strong>a drone struck the US Embassy compound in Riyadh</strong> (AP, Mar 3) — an attack on a Gulf capital that, if attributed to Iranian-aligned actors, constitutes a threshold event for Saudi Arabia. Third: <strong>Iraqi PMF units are on elevated alert posture</strong> (ISW, Mar 3) — and PMF leadership has not publicly indicated whether it will honor IRGC stand-down signals or operate independently. If PMF activates offensive operations against US forces in Iraq/Syria, the conflict escapes the Iran-bilateral frame entirely. — Sources: <em>AP, ISW, Mar 3</em></p>
+    <p>Three Day 4–5 events elevate this scenario from theoretical to monitoring status. First: <strong>Houthis resumed missile and drone attacks on Red Sea shipping</strong> following the US strikes (AP, Mar 3) — demonstrating that Iran's external proxy network retains operational capability independent of IRGC command-and-control disruptions. Second: <strong>a drone struck the US Embassy compound in Riyadh</strong> (AP, Mar 3) — an attack on a Gulf capital that, if attributed to Iranian-aligned actors, constitutes a threshold event for Saudi Arabia. Third: <strong>Iraqi PMF units are on elevated alert posture</strong> (ISW, Mar 3) — and PMF leadership has not publicly indicated whether it will honor IRGC stand-down signals or operate independently. If PMF activates offensive operations against US forces in Iraq/Syria, the conflict escapes the Iran-bilateral frame entirely. — Sources: <em>AP, ISW, Mar 3</em></p>
   </div>
   <p>Scenario 5 is the scenario in which Operation Epic Fury — intended as a bilateral US-Iran strike campaign — becomes a regional war involving Saudi Arabia, Iraq, Yemen, and potentially Israel in coordinated offensive operations. The catalyst is proxy escalation that crosses the threshold for direct Saudi or Gulf Cooperation Council military engagement. This scenario is currently assessed as low probability because (a) Gulf states have strong economic incentives to avoid regional war and (b) Houthi and PMF capacity has been significantly degraded. However, the Riyadh drone attack is the clearest signal that threshold logic is at risk.</p>
   <div class="two-col" style="margin:16px 0;">
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Escalation Ladder</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">Escalation Ladder</h4>
+      <ul class="content-list-sm">
         <li><strong>Rung 1 (Current): Houthi/PMF harassment</strong> — Red Sea attacks resumed, Saudi Embassy drone, PMF on alert. Below the threshold for Gulf military response. <span style="color:var(--accent-red);">ACTIVE</span></li>
         <li><strong>Rung 2: Mass casualty attack on Gulf infrastructure</strong> — A Houthi/PMF strike on Saudi Aramco facilities, Abu Dhabi oil infrastructure, or a Gulf capital produces a Saudi/UAE decision point. Probability conditional on Rung 1 continuing: ~15%.</li>
         <li><strong>Rung 3: Gulf military counter-engagement</strong> — Saudi Arabia activates its air force against Houthi sites in Yemen; UAE conducts strikes on PMF-linked Iraqi targets. US provides ISR/SEAD support. The conflict is now a 5+ party war.</li>
@@ -338,8 +341,8 @@
       </ul>
     </div>
     <div>
-      <h4 style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">Strait of Hormuz Closure — The Economic Trigger</h4>
-      <ul style="color:var(--text-secondary);font-size:13px;margin-left:16px;">
+      <h4 class="sub-header">Strait of Hormuz Closure — The Economic Trigger</h4>
+      <ul class="content-list-sm">
         <li><strong>Iran's claimed closure is not yet enforced</strong> — no confirmed physical mining; supertanker war-risk insurance at multi-year highs; major traders self-imposing shipping suspension. — Source: <em>CNBC, Mar 3</em></li>
         <li><strong>Effective closure crosses the Gulf red line</strong> — Saudi Arabia, UAE, and Kuwait cannot sustain a Hormuz closure indefinitely; it would trigger a Gulf military campaign to re-open the strait, with or without explicit US authorization.</li>
         <li><strong>WTI above $120 triggers NATO consultation</strong> — European economies dependent on Gulf oil would pressure NATO for a military response to Hormuz enforcement; this internationalizes the conflict beyond CENTCOM's bilateral frame.</li>
@@ -349,7 +352,7 @@
   </div>
   <div class="callout gold">
     <div class="callout-title">Why This Scenario Remains Low Probability — And What Would Change That</div>
-    <p style="color:var(--text-secondary);">Scenario 5 is currently 14% because Gulf states have strong de-escalation incentives, Houthi and PMF capacity has been degraded, and Qaani (Quds Force) is focused on preserving — not expanding — external leverage under domestic collapse pressure. The scenario probability rises sharply if: (a) the Riyadh drone attack is publicly attributed to IRGC-directed actors and Saudi Arabia issues an ultimatum; (b) a second mass-casualty attack hits Gulf infrastructure; (c) Hormuz is physically enforced with mines or vessel seizures; or (d) Mojtaba Khamenei, unable to consolidate internally, attempts to force a regional escalation to change the military-political calculus. Qaani's preservation instinct is the primary firewall; if he loses control of PMF or Houthi command authority — possible if IRGC command is disrupted — that firewall dissolves. — Sources: <em>ISW, AP, CNBC, Mar 3–4</em></p>
+    <p>Scenario 5 is currently 14% because Gulf states have strong de-escalation incentives, Houthi and PMF capacity has been degraded, and Qaani (Quds Force) is focused on preserving — not expanding — external leverage under domestic collapse pressure. The scenario probability rises sharply if: (a) the Riyadh drone attack is publicly attributed to IRGC-directed actors and Saudi Arabia issues an ultimatum; (b) a second mass-casualty attack hits Gulf infrastructure; (c) Hormuz is physically enforced with mines or vessel seizures; or (d) Mojtaba Khamenei, unable to consolidate internally, attempts to force a regional escalation to change the military-political calculus. Qaani's preservation instinct is the primary firewall; if he loses control of PMF or Houthi command authority — possible if IRGC command is disrupted — that firewall dissolves. — Sources: <em>ISW, AP, CNBC, Mar 3–4</em></p>
   </div>
 </div>
 
@@ -382,7 +385,7 @@
 </footer>
 <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>
 <script src="js/map.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/sidebar.js"></script>

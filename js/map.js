@@ -1,233 +1,301 @@
 document.addEventListener('DOMContentLoaded', function(){
-  var map = L.map('theater-map',{zoomControl:true,scrollWheelZoom:false,attributionControl:false}).setView([30,46],4);
-  var isLightNow = document.documentElement.getAttribute('data-theme')==='light';
-  var tileUrl = isLightNow
-    ? 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
-    : 'https://{s}.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}{r}.png';
-  window._theaterTileLayer = L.tileLayer(tileUrl,{maxZoom:19,subdomains:'abcd'}).addTo(map);
+  var mapEl = document.getElementById('theater-map');
+  if (!mapEl) return;
+
+  var DARK_STYLE  = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+  var LIGHT_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
+  var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+  var map = new maplibregl.Map({
+    container: 'theater-map',
+    style: isLight ? LIGHT_STYLE : DARK_STYLE,
+    center: [46, 30],
+    zoom: 3.5,
+    attributionControl: false,
+    scrollZoom: false
+  });
+  map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
   window._theaterMap = map;
-  // On mobile, DOMContentLoaded can fire before the browser finishes layout,
-  // causing Leaflet to measure a zero-size container and request no tiles.
-  // Deferring invalidateSize() to the next animation frame ensures a correct
-  // measurement and triggers the missing tile requests.
-  requestAnimationFrame(function(){ map.invalidateSize(); });
 
-  // Protest/city dot — pulsing ring animation via .map-dot CSS class
-  // color is always a hardcoded hex literal in this file; validate to prevent accidental injection
-  function icon(color,size){var c=/^#[0-9a-fA-F]{3,8}$/.test(color)?color:'#888888';var h=size/2;return L.divIcon({className:'',html:'<div class="map-dot" style="--c:'+c+';width:'+size+'px;height:'+size+'px;background:'+c+';border:2px solid rgba(255,255,255,0.65);box-shadow:0 0 '+(size*1.5)+'px '+c+',0 2px 4px rgba(0,0,0,0.55);"></div>',iconSize:[size,size],iconAnchor:[h,h]});}
-  // Carrier (CVN) — bold anchor SVG (26×27 in 44px circle)
-  function shipIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-cvn"><svg viewBox="0 0 22 23" width="26" height="27" fill="none"><circle cx="11" cy="4" r="2.7" stroke="#4a90d9" stroke-width="2.2" fill="none"/><line x1="11" y1="6.7" x2="11" y2="20" stroke="#4a90d9" stroke-width="2.5" stroke-linecap="round"/><line x1="3.5" y1="11" x2="18.5" y2="11" stroke="#4a90d9" stroke-width="2.2" stroke-linecap="round"/><path d="M11 20 L5 18.5 L5 21.5" stroke="#4a90d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 20 L17 18.5 L17 21.5" stroke="#4a90d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="badge-label">CVN</span></div>',iconSize:[44,44],iconAnchor:[22,22]});}
-  // Destroyer / Cruiser (DDG/CG) — bold ship-hull SVG (21×14 in 26px circle)
-  function ddgIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-ddg"><svg viewBox="0 0 22 14" width="21" height="14" fill="none"><path d="M2 13 L4 8.5 L11 7 L18 8.5 L20 13 Z" fill="rgba(74,144,217,0.35)" stroke="#4a90d9" stroke-width="2" stroke-linejoin="round"/><rect x="9" y="3.5" width="4" height="4" rx="1" fill="rgba(74,144,217,0.3)" stroke="#4a90d9" stroke-width="1.8"/><line x1="11" y1="3.5" x2="11" y2="1.5" stroke="#4a90d9" stroke-width="2" stroke-linecap="round"/></svg></div>',iconSize:[26,26],iconAnchor:[13,13]});}
-  // LCS — smaller ship-hull SVG (17×11 in 20px circle)
-  function lcsIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-lcs"><svg viewBox="0 0 18 12" width="17" height="11" fill="none"><path d="M1.5 11 L4 7.5 L9 6 L14 7.5 L16.5 11 Z" fill="rgba(90,149,204,0.32)" stroke="#5a95cc" stroke-width="1.8" stroke-linejoin="round"/><rect x="7.5" y="3.5" width="3" height="3" rx="0.8" fill="rgba(90,149,204,0.25)" stroke="#5a95cc" stroke-width="1.5"/></svg></div>',iconSize:[20,20],iconAnchor:[10,10]});}
-  // Submarine (SSN/SSGN) — torpedo hull + conning tower SVG (27×15 in 34px circle)
-  function subIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-sub"><svg viewBox="0 0 28 16" width="27" height="15" fill="none"><path d="M5 12 Q5 9 8 9 L20 9 Q25 9 25 12 Q25 15 20 15 L8 15 Q5 15 5 12 Z" fill="rgba(122,90,240,0.3)" stroke="#7a5af0" stroke-width="2"/><rect x="11" y="4" width="7" height="6" rx="1.5" fill="rgba(122,90,240,0.25)" stroke="#7a5af0" stroke-width="1.8"/><line x1="14.5" y1="4" x2="14.5" y2="2" stroke="#7a5af0" stroke-width="1.8" stroke-linecap="round"/><line x1="14.5" y1="2" x2="18" y2="2" stroke="#7a5af0" stroke-width="1.5" stroke-linecap="round"/></svg><span class="badge-label">SSN</span></div>',iconSize:[34,34],iconAnchor:[17,17]});}
-  // Air base — top-down fighter-jet SVG (21×25 in 32px circle)
-  function jetIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-jet"><svg viewBox="0 0 22 26" width="21" height="25" fill="none"><ellipse cx="11" cy="12" rx="2.5" ry="10.5" fill="rgba(0,212,255,0.35)" stroke="#00d4ff" stroke-width="2"/><path d="M8.5 9.5 L1 16.5 L1 18.5 L8.5 14 Z" fill="rgba(0,212,255,0.28)" stroke="#00d4ff" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.5 9.5 L21 16.5 L21 18.5 L13.5 14 Z" fill="rgba(0,212,255,0.28)" stroke="#00d4ff" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 20 L6 25 L8 25 L10.5 21 Z" fill="rgba(0,212,255,0.22)" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/><path d="M13 20 L16 25 L14 25 L11.5 21 Z" fill="rgba(0,212,255,0.22)" stroke="#00d4ff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>',iconSize:[32,32],iconAnchor:[16,16]});}
-  // Nuclear facility — radiation trefoil SVG (22×22 in 32px circle) + pulsing glow
-  function nukeIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-nuke"><svg viewBox="0 0 22 22" width="22" height="22" fill="none"><circle cx="11" cy="11" r="3" fill="#ff8c42"/><path d="M9.25 7.97 L6.5 3.2 A9 9 0 0 1 15.5 3.2 L12.75 7.97 A3.5 3.5 0 0 0 9.25 7.97 Z" fill="rgba(255,140,66,0.7)" stroke="#ff8c42" stroke-width="0.8"/><path d="M14.5 11 L20 11 A9 9 0 0 1 15.5 18.8 L12.75 14.03 A3.5 3.5 0 0 0 14.5 11 Z" fill="rgba(255,140,66,0.7)" stroke="#ff8c42" stroke-width="0.8"/><path d="M9.25 14.03 L6.5 18.8 A9 9 0 0 1 2 11 L7.5 11 A3.5 3.5 0 0 0 9.25 14.03 Z" fill="rgba(255,140,66,0.7)" stroke="#ff8c42" stroke-width="0.8"/></svg></div>',iconSize:[32,32],iconAnchor:[16,16]});}
-  // Blocked / Denied — CSS-class badge (theme-aware via stylesheet)
-  function blockedIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-denied"><b>ACCESS DENIED</b></div>',iconSize:[100,24],iconAnchor:[50,12]});}
-  function spinupIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-spinup"><b>SPINNING UP</b></div>',iconSize:[90,24],iconAnchor:[45,12]});}
-  function deployingIcon(){return L.divIcon({className:'',html:'<div class="map-badge map-badge-deploying"><b>DEPLOYING</b></div>',iconSize:[90,24],iconAnchor:[45,12]});}
-  // Diplomatic venue — building/flag SVG (22×22 in 32px circle)
-  function diplomacyIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-diplomacy"><svg viewBox="0 0 22 22" width="22" height="22" fill="none"><rect x="3" y="9" width="16" height="11" rx="1" fill="rgba(0,212,255,0.25)" stroke="#00d4ff" stroke-width="1.8"/><rect x="7" y="13" width="3" height="4" rx="0.5" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="1.2"/><rect x="12" y="13" width="3" height="4" rx="0.5" fill="rgba(0,212,255,0.3)" stroke="#00d4ff" stroke-width="1.2"/><path d="M2 9 L11 3 L20 9" stroke="#00d4ff" stroke-width="1.8" stroke-linejoin="round" fill="rgba(0,212,255,0.15)"/><line x1="11" y1="3" x2="11" y2="1" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/><rect x="10" y="1" width="4" height="2.5" rx="0.3" fill="rgba(0,212,255,0.5)" stroke="#00d4ff" stroke-width="0.8"/></svg><span class="badge-label" style="color:#00d4ff;border-color:rgba(0,212,255,0.4);">IAEA</span></div>',iconSize:[44,44],iconAnchor:[22,22]});}
-  // Strike impact — explosion SVG (24×24 in 36px circle) — used for CONFIRMED hit sites
-  function strikeIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-nuke" style="background:rgba(255,59,59,0.25);border-color:rgba(255,59,59,0.8);box-shadow:0 0 18px rgba(255,59,59,0.7);animation:pulse-ring 1.2s infinite;"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="4" fill="#ff3b3b"/><line x1="12" y1="2" x2="12" y2="5" stroke="#ff3b3b" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="19" x2="12" y2="22" stroke="#ff3b3b" stroke-width="2" stroke-linecap="round"/><line x1="2" y1="12" x2="5" y2="12" stroke="#ff3b3b" stroke-width="2" stroke-linecap="round"/><line x1="19" y1="12" x2="22" y2="12" stroke="#ff3b3b" stroke-width="2" stroke-linecap="round"/><line x1="4.9" y1="4.9" x2="7.1" y2="7.1" stroke="#ff3b3b" stroke-width="2" stroke-linecap="round"/><line x1="16.9" y1="16.9" x2="19.1" y2="19.1" stroke="#ff3b3b" stroke-width="2" stroke-linecap="round"/><line x1="19.1" y1="4.9" x2="16.9" y2="7.1" stroke="#ff3b3b" stroke-width="2" stroke-linecap="round"/><line x1="7.1" y1="16.9" x2="4.9" y2="19.1" stroke="#ff3b3b" stroke-width="2" stroke-linecap="round"/></svg></div>',iconSize:[36,36],iconAnchor:[18,18]});}
-  // Unconfirmed strike — dashed orange ring, "?" marker — used for unconfirmed/BDA-pending sites
-  function strikeUnconfirmedIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-nuke" style="background:rgba(255,140,66,0.18);border-color:rgba(255,140,66,0.7);border-style:dashed;box-shadow:0 0 12px rgba(255,140,66,0.45);"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><circle cx="12" cy="12" r="3.5" fill="none" stroke="#ff8c42" stroke-width="2" stroke-dasharray="3,2"/><line x1="12" y1="2" x2="12" y2="5" stroke="#ff8c42" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2,2"/><line x1="12" y1="19" x2="12" y2="22" stroke="#ff8c42" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2,2"/><line x1="2" y1="12" x2="5" y2="12" stroke="#ff8c42" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2,2"/><line x1="19" y1="12" x2="22" y2="12" stroke="#ff8c42" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2,2"/><text x="12" y="16" text-anchor="middle" font-size="9" fill="#ff8c42" font-family="monospace" font-weight="bold">?</text></svg></div>',iconSize:[32,32],iconAnchor:[16,16]});}
-  // French aircraft carrier (Porte-Avions) — same anchor SVG in French navy blue (#0055a4)
-  function frenchCarrierIcon(){return L.divIcon({className:'',html:'<div class="map-icon map-icon-cvn" style="border-color:rgba(0,85,164,0.8);box-shadow:0 0 16px rgba(0,85,164,0.55),0 4px 10px rgba(0,0,0,0.6);"><svg viewBox="0 0 22 23" width="26" height="27" fill="none"><circle cx="11" cy="4" r="2.7" stroke="#0055a4" stroke-width="2.2" fill="none"/><line x1="11" y1="6.7" x2="11" y2="20" stroke="#0055a4" stroke-width="2.5" stroke-linecap="round"/><line x1="3.5" y1="11" x2="18.5" y2="11" stroke="#0055a4" stroke-width="2.2" stroke-linecap="round"/><path d="M11 20 L5 18.5 L5 21.5" stroke="#0055a4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 20 L17 18.5 L17 21.5" stroke="#0055a4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="badge-label" style="color:#5588cc;border-color:rgba(0,85,164,0.4);">PA</span></div>',iconSize:[44,44],iconAnchor:[22,22]});}
+  // ── Layer group config ──
+  var LAYER_GROUPS = [
+    {id:'navy',    label:'US Navy',       color:'#4a90d9', cats:['us-carrier','us-destroyer','us-lcs','us-submarine','french-carrier']},
+    {id:'air',     label:'Air Bases',     color:'#00d4ff', cats:['air-base']},
+    {id:'iran',    label:'Iranian Sites', color:'#ff8c42', cats:['nuclear-site','irgc-target']},
+    {id:'strikes', label:'Strikes',       color:'#ff3b3b', cats:['strike-confirmed','strike-unconfirmed']},
+    {id:'protests',label:'Protests',      color:'#e84040', cats:['iranian-city']},
+    {id:'lines',   label:'Corridors',     color:'#ff5555', cats:['missile-corridor','strike-corridor','transit-route']},
+    {id:'other',   label:'Other',         color:'#aaa',    cats:['deploying','blocked','diplomatic','country-marker','israeli-forces','saudi-forces','radius-circle','spinup']}
+  ];
 
-  // Iran - red highlight (active strikes)
-  L.circle([32.5,53],{radius:700000,color:'#ff3b3b',fillColor:'#ff3b3b',fillOpacity:0.10,weight:2,dashArray:'4,3'}).addTo(map);
+  // ── Icon SVG templates (rendered to ImageData for MapLibre) ──
+  function createIcon(svg, size) {
+    return new Promise(function(resolve) {
+      var img = new Image();
+      img.onload = function() {
+        var canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, size, size);
+        resolve({data: ctx.getImageData(0, 0, size, size), size: size});
+      };
+      img.onerror = function() { resolve(null); };
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    });
+  }
 
-  // ===== ABRAHAM LINCOLN CARRIER STRIKE GROUP (Arabian Sea) =====
-  L.marker([23.5,58],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Abraham Lincoln (CVN-72)</b><br>Nimitz-class carrier &bull; CVW-11<br>~80 aircraft &bull; 5,600 crew<br><b style="color:#ff3b3b">ACTIVE — 700km from Iranian coast</b><br><b style="color:#ff3b3b">Launched strikes Feb 28 — Operation Epic Fury</b><br>F-35C, F/A-18E/F, EA-18G, E-2D, MH-60');
-  L.circle([23.5,58],{radius:700000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.04,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-11 strike radius (~700km)');
-  // Lincoln escorts
-  L.marker([24.1,57.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Frank E. Petersen Jr. (DDG-121)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort &bull; DESRON 21<br>Tomahawk &bull; Aegis BMD');
-  L.marker([23.0,59.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Spruance (DDG-111)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort<br>Tomahawk &bull; Aegis BMD');
-  L.marker([22.8,57.2],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Michael Murphy (DDG-112)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort &bull; DESRON 21<br>Tomahawk &bull; Aegis BMD');
+  var ICONS = {
+    'us-carrier': {size:40, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#0d2a50" stroke="#4a90d9" stroke-width="2.5"/><path d="M20 8 L20 32 M14 14 L26 14 M12 20 L28 20 M16 26 Q20 30 24 26" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round"/><text x="20" y="37" text-anchor="middle" font-size="7" font-weight="bold" fill="#7ab5ff" font-family="monospace">CVN</text></svg>'},
+    'french-carrier': {size:40, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#001840" stroke="#0055a4" stroke-width="2.5"/><path d="M20 8 L20 32 M14 14 L26 14 M12 20 L28 20 M16 26 Q20 30 24 26" fill="none" stroke="#0055a4" stroke-width="2" stroke-linecap="round"/><text x="20" y="37" text-anchor="middle" font-size="7" font-weight="bold" fill="#6090d0" font-family="monospace">PA</text></svg>'},
+    'us-destroyer': {size:26, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="#0d2a50" stroke="#4a90d9" stroke-width="2"/><path d="M7 15 L13 8 L19 15 M13 8 L13 19" fill="none" stroke="#6ab0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'},
+    'us-lcs': {size:20, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#0a2248" stroke="#5a95cc" stroke-width="1.5"/><path d="M6 12 L10 6 L14 12" fill="none" stroke="#6ab0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'},
+    'us-submarine': {size:32, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#1a0840" stroke="#7a5af0" stroke-width="2"/><ellipse cx="16" cy="17" rx="10" ry="5" fill="none" stroke="#9a7af0" stroke-width="1.5"/><rect x="14" y="10" width="4" height="7" rx="2" fill="#9a7af0"/><text x="16" y="29" text-anchor="middle" font-size="6" font-weight="bold" fill="#9a7af0" font-family="monospace">SSN</text></svg>'},
+    'air-base': {size:30, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><circle cx="15" cy="15" r="14" fill="#081c30" stroke="#00d4ff" stroke-width="2"/><path d="M15 7 L15 23 M9 15 L21 15 M10 11 L15 7 L20 11 M10 19 L15 23 L20 19" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'},
+    'nuclear-site': {size:30, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><circle cx="15" cy="15" r="14" fill="#2c1000" stroke="#ff8c42" stroke-width="2"/><circle cx="15" cy="15" r="3" fill="#ff8c42"/><path d="M15 5 A10 10 0 0 1 23.66 20 L15 15 Z" fill="#ff8c42" opacity="0.5"/><path d="M23.66 20 A10 10 0 0 1 6.34 20 L15 15 Z" fill="#ff8c42" opacity="0.5"/><path d="M6.34 20 A10 10 0 0 1 15 5 L15 15 Z" fill="#ff8c42" opacity="0.5"/></svg>'},
+    'strike-confirmed': {size:28, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="13" fill="#3a0000" stroke="#ff3b3b" stroke-width="2"/><line x1="14" y1="4" x2="14" y2="24" stroke="#ff3b3b" stroke-width="2"/><line x1="4" y1="14" x2="24" y2="14" stroke="#ff3b3b" stroke-width="2"/><circle cx="14" cy="14" r="6" fill="none" stroke="#ff3b3b" stroke-width="1.5"/><circle cx="14" cy="14" r="2.5" fill="#ff3b3b"/></svg>'},
+    'strike-unconfirmed': {size:26, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="none" stroke="#ff8c42" stroke-width="2" stroke-dasharray="3,2"/><text x="13" y="18" text-anchor="middle" font-size="16" font-weight="bold" fill="#ff8c42">?</text></svg>'},
+    'irgc-target': {size:24, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#3a0505" stroke="#ff3b3b" stroke-width="1.5"/><path d="M12 4 L14 10 L20 12 L14 14 L12 20 L10 14 L4 12 L10 10 Z" fill="#ff3b3b" opacity="0.7"/></svg>'},
+    'iranian-city': {size:18, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="#ff3b3b" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><circle cx="9" cy="9" r="3" fill="rgba(255,255,255,0.4)"/></svg>'},
+    'diplomatic': {size:30, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><circle cx="15" cy="15" r="14" fill="#003020" stroke="#00c853" stroke-width="2"/><rect x="10" y="8" width="10" height="14" rx="1" fill="none" stroke="#00c853" stroke-width="1.5"/><line x1="10" y1="12" x2="20" y2="12" stroke="#00c853" stroke-width="1"/><rect x="13" y="16" width="4" height="6" fill="#00c853" opacity="0.5"/></svg>'},
+    'deploying': {size:24, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#4a90d9" stroke-width="2" stroke-dasharray="4,2"/><path d="M8 12 L16 12 M13 8 L17 12 L13 16" fill="none" stroke="#4a90d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'},
+    'blocked': {size:24, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#ff3b3b" stroke-width="2" stroke-dasharray="4,2"/><line x1="6" y1="6" x2="18" y2="18" stroke="#ff3b3b" stroke-width="2"/></svg>'},
+    'country-marker': {size:18, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="#555" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><circle cx="9" cy="9" r="2.5" fill="rgba(255,255,255,0.3)"/></svg>'},
+    'israeli-forces': {size:24, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#2a2000" stroke="#ffd700" stroke-width="2"/><polygon points="12,4 14,10 20,10 15,14 17,20 12,16 7,20 9,14 4,10 10,10" fill="none" stroke="#ffd700" stroke-width="1.2"/></svg>'},
+    'saudi-forces': {size:22, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#002a10" stroke="#00c853" stroke-width="2"/><path d="M7 11 L11 7 L15 11 L11 15 Z" fill="#00c853" opacity="0.6" stroke="#00c853" stroke-width="1"/></svg>'},
+    'spinup': {size:22, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#ff8c42" stroke-width="2" stroke-dasharray="4,2"/><path d="M11 5 L11 11 L15 14" fill="none" stroke="#ff8c42" stroke-width="1.8" stroke-linecap="round"/></svg>'}
+  };
 
-  // ===== GERALD R. FORD CARRIER STRIKE GROUP (Red Sea — operating in region, Mar 3) =====
-  L.marker([20.5,38.5],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Gerald R. Ford (CVN-78)</b><br>Ford-class &bull; World\'s largest warship<br>CVW-8 &bull; ~75 aircraft &bull; 4,500 crew<br><b style="color:#ff3b3b">RED SEA — OPERATING IN REGION (Mar 3)</b><br>Transited Suez Canal; now in Red Sea transit toward Arabian Sea<br><b style="color:#ff3b3b">Strike package launched Feb 28 — Operation Epic Fury</b><br>Confirmed: TWO carrier strike groups now operating in region (Military.com/CNN, Mar 3)<br>F-35C, F/A-18E/F, E-2D, CMV-22B');
-  L.circle([20.5,38.5],{radius:900000,color:'#4a90d9',fillColor:'#4a90d9',fillOpacity:0.03,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('CVW-8 strike radius (~900km with F-35C)');
-  // Ford movement route (Eastern Med → Suez → Red Sea)
-  L.polyline([[34.8,28.5],[33.5,32.3],[31.5,32.3],[27.5,34.0],[20.5,38.5]],{color:'#4a90d9',weight:1.5,dashArray:'8,6',opacity:0.5}).addTo(map).bindPopup('Ford CSG transit route (Eastern Med → Suez → Red Sea)');
-  // Ford escorts
-  L.marker([21.2,38.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Winston S. Churchill (DDG-81)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
-  L.marker([19.8,39.2],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Bainbridge (DDG-96)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
-  L.marker([21.5,39.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Mahan (DDG-72)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD');
+  // ── Register all icons then load data ──
+  function registerIcons() {
+    var promises = [];
+    Object.keys(ICONS).forEach(function(key) {
+      var icon = ICONS[key];
+      promises.push(
+        createIcon(icon.svg, icon.size).then(function(result) {
+          if (result && !map.hasImage('icon-' + key)) {
+            map.addImage('icon-' + key, result.data, {sdf: false});
+          }
+        })
+      );
+    });
+    return Promise.all(promises);
+  }
 
-  // ===== INDEPENDENT DESTROYERS (Arabian Sea / Strait of Hormuz) =====
-  L.marker([26.2,56.8],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS McFaul (DDG-74)</b><br>Arleigh Burke-class destroyer<br>Strait of Hormuz patrol<br>Tomahawk &bull; Aegis BMD');
-  L.marker([25.8,57.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Mitscher (DDG-57)</b><br>Arleigh Burke-class destroyer<br>Strait of Hormuz patrol<br>Tomahawk &bull; Aegis BMD');
-  L.marker([22.0,60.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Pinckney (DDG-91)</b><br>Arleigh Burke-class destroyer<br>North Arabian Sea<br>Tomahawk &bull; Aegis BMD');
-  L.marker([21.5,62.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS John Finn (DDG-113)</b><br>Arleigh Burke-class destroyer<br>Arabian Sea<br>Tomahawk &bull; Aegis BMD');
+  // ── Category to icon mapping ──
+  var CAT_ICON = {};
+  Object.keys(ICONS).forEach(function(k){ CAT_ICON[k] = 'icon-' + k; });
 
-  // ===== MEDITERRANEAN DESTROYERS =====
-  L.marker([34.2,26.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Roosevelt (DDG-80)</b><br>Arleigh Burke-class destroyer<br>Eastern Mediterranean<br>Tomahawk &bull; Aegis BMD');
-  L.marker([33.8,28.0],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Bulkeley (DDG-84)</b><br>Arleigh Burke-class destroyer<br>Eastern Mediterranean<br>Tomahawk &bull; Aegis BMD');
+  // ── Color map (fallback for categories without icons) ──
+  var CAT_COLORS = {
+    'us-carrier':'#4a90d9','french-carrier':'#0055a4','us-destroyer':'#4a90d9','us-lcs':'#6ab0ff',
+    'us-submarine':'#7a5af0','air-base':'#00d4ff','nuclear-site':'#ff8c42','irgc-target':'#ff3b3b',
+    'strike-confirmed':'#ff3b3b','strike-unconfirmed':'#ff8c42','iranian-city':'#ff3b3b',
+    'deploying':'#4a90d9','blocked':'#ff3b3b','diplomatic':'#00c853','country-marker':'#aaaaaa',
+    'israeli-forces':'#ffd700','saudi-forces':'#00c853','radius-circle':'transparent','spinup':'#ff8c42'
+  };
 
-  // ===== RED SEA DESTROYER =====
-  L.marker([18.5,39.5],{icon:ddgIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">USS Delbert D. Black (DDG-119)</b><br>Arleigh Burke-class destroyer<br>Red Sea patrol<br>Tomahawk &bull; Aegis BMD');
+  function loadMapData() {
+    Promise.all([
+      fetch('markers.geojson').then(function(r){return r.json();}),
+      fetch('corridors.geojson').then(function(r){return r.json();}),
+      registerIcons()
+    ]).then(function(data){
+      var markers = data[0];
+      var corridors = data[1];
 
-  // ===== LITTORAL COMBAT SHIPS (Persian Gulf) =====
-  L.marker([26.8,51.5],{icon:lcsIcon()}).addTo(map).bindPopup('<b style="color:#6ab0ff">USS Canberra (LCS-30)</b><br>Independence-class LCS<br>Persian Gulf patrol<br>Mine countermeasures &bull; ASW');
-  L.marker([26.2,50.8],{icon:lcsIcon()}).addTo(map).bindPopup('<b style="color:#6ab0ff">USS Tulsa (LCS-16)</b><br>Independence-class LCS<br>Persian Gulf &bull; Homeported Bahrain<br>Mine countermeasures &bull; ASW');
-  L.marker([27.2,52.2],{icon:lcsIcon()}).addTo(map).bindPopup('<b style="color:#6ab0ff">USS Santa Barbara (LCS-32)</b><br>Independence-class LCS<br>Persian Gulf patrol<br>Mine countermeasures &bull; ASW');
+      // Separate radius circles from point markers
+      var points = {type:'FeatureCollection', features:[]};
+      var circles = [];
+      markers.features.forEach(function(f){
+        if (f.properties.category === 'radius-circle') {
+          circles.push(f);
+        } else {
+          points.features.push(f);
+        }
+      });
 
-  // ===== SUBMARINE (location approximate/undisclosed) =====
-  L.marker([21.0,59.0],{icon:subIcon()}).addTo(map).bindPopup('<b style="color:#7a5af0">USS Georgia (SSGN-729)</b><br>Ohio-class guided-missile submarine<br>154 Tomahawk cruise missiles<br><b>Location undisclosed — approximate</b><br>+ unknown number of fast-attack subs');
+      // ── Clean up old layers & sources ──
+      var layersToRemove = ['clusters','cluster-count','corridors-line'];
+      Object.keys(CAT_COLORS).forEach(function(cat){ layersToRemove.push('cat-'+cat); });
+      for (var ri = 0; ri < 20; ri++) {
+        layersToRemove.push('radius-fill-'+ri, 'radius-fill-'+ri+'-stroke');
+      }
+      layersToRemove.forEach(function(id){ try { if (map.getLayer(id)) map.removeLayer(id); } catch(e){} });
+      ['markers','corridors'].forEach(function(id){ try { if (map.getSource(id)) map.removeSource(id); } catch(e){} });
+      for (var ri2 = 0; ri2 < 20; ri2++) { try { if (map.getSource('radius-'+ri2)) map.removeSource('radius-'+ri2); } catch(e){} }
 
-  // ===== USS GEORGE H.W. BUSH (Central Mediterranean — transiting east, approaching Suez) =====
-  L.marker([37.5,10.0],{icon:deployingIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">USS George H.W. Bush (CVN-77)</b><br>Nimitz-class carrier &bull; CVW-7<br><b>TRANSITING — Central Mediterranean (Mar 3)</b><br>Passed Gibraltar ~Mar 1; now in central Med approaching Sicily/Malta<br>Expected in theater late March; third carrier reinforcement<br>Pentagon confirmed deployment; COMPTUEX complete');
+      map.addSource('markers', {
+        type: 'geojson',
+        data: points,
+        cluster: true,
+        clusterRadius: 50,
+        clusterMaxZoom: 7
+      });
 
-  // ===== IRANIAN CITIES — PROTEST SITES =====
-  L.marker([35.7,51.4],{icon:icon('#ff3b3b',14)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Tehran</b><br>Student protests active — 410+ detained since Feb 21<br><b style="color:#ff3b3b">CONFIRMED STRIKES — Operation Epic Fury, Feb 28 – ongoing Mar 3</b><br>IRGC HQ, Ministry of Defense, Ministry of Intelligence, Parchin, Karaj struck<br>IRGC Basij deployed to all 31 provinces<br><b style="color:#ff3b3b">KHAMENEI KILLED Mar 1 — Mojtaba Khamenei appointed new Supreme Leader (Mar 3)</b><br>"Woman, life, freedom" &bull; Chants for Reza Pahlavi<br><b style="color:#ff8c42">UK withdrew entire embassy staff (Feb 27)</b><br><b style="color:#ff8c42">ISRAEL STRIKES TEHRAN AND BEIRUT (Mar 3, Reuters)</b>');
-  L.marker([36.3,59.6],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Mashhad</b><br>Student protests active &bull; Day 7<br>2nd Tactical Air Base targeted in strikes');
-  L.marker([29.6,52.5],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Shiraz</b><br>Protests reported<br><b style="color:#ff8c42">? Shahid Dastghaib Air Base possibly targeted (unconfirmed)</b>');
-  L.marker([32.3,48.7],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Ahvaz (Khuzestan)</b><br>Arab minority protests<br>Heavy military suppression');
-  L.marker([35.3,46.9],{icon:icon('#ff3b3b',8)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Sanandaj (Kurdistan)</b><br>Kurdish protests<br>2,000+ detained &bull; Reports of torture');
-  // Isfahan city (separate from nuclear complex)
-  L.marker([32.65,51.68],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Isfahan</b><br>Protests active &bull; Day 7<br>Nuclear Technology Center and UCF struck Feb 28');
+      map.addSource('corridors', {
+        type: 'geojson',
+        data: corridors
+      });
 
-  // ===== IRGC COMMAND & LEADERSHIP TARGETS — TEHRAN =====
-  // IRGC Headquarters (northern Tehran)
-  L.marker([35.76,51.42],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ IRGC Headquarters — Tehran</b><br><b>Confirmed strike — Feb 28 (Operation Epic Fury)</b><br>Alborz Corps HQ (Tehran garrison defense)<br>Thar-Allah Command Centre (capital security &amp; protest suppression)<br>Sayyed al-Shuhada Corps (national homeland defense)<br>Multiple command-and-control buildings destroyed per IDF imagery<br><em>Sources: Times Now Israel targets list, The War Zone, Feb 28</em>');
-  // Ministry of Defense Tehran
-  L.marker([35.69,51.43],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Ministry of Defense — Tehran</b><br><b>Confirmed strike — Feb 28</b><br>Primary procurement and weapons program coordination hub<br>Atomic Energy Organization of Iran also struck nearby<br><em>Sources: Newsweek map, Al Jazeera mapping, Feb 28</em>');
-  // Ministry of Intelligence (MOIS) Tehran
-  L.marker([35.73,51.38],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Ministry of Intelligence (MOIS) — Tehran</b><br><b>Confirmed strike — Feb 28</b><br>Intelligence directorate general — headquarters<br>Internal Security Forces intelligence building also hit<br><em>Sources: Kurdistan24 targets list, Feb 28</em>');
-  // Khamenei compound — Niavaran / Jamaran, North Tehran (CONFIRMED KILLED Mar 1)
-  L.marker([35.80,51.47],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Khamenei Compound — Niavaran / Jamaran, Tehran</b><br><b style="color:#ff3b3b">CONFIRMED: SUPREME LEADER AYATOLLAH ALI KHAMENEI KILLED — Mar 1, 2026</b><br>Iranian state media confirmed death; Israeli officials claimed the kill; AP, Reuters, NBC corroborate<br>Daughter, son-in-law, and grandchild also reported killed in the same strike (NBC/Fars)<br>Government declared 40-day national mourning<br><b style="color:#ff3b3b">SUCCESSION: Assembly of Experts named Mojtaba Khamenei (son) as new Supreme Leader — Mar 3, 2026</b><br>Appointment deeply contested by opposition and Western governments (Reuters/AP/Al Jazeera, Mar 3)<br><em>Sources: AP, Reuters, NBC News, Iranian state media, Mar 1–3</em>');
+      // ── Cluster layers ──
+      map.addLayer({
+        id: 'clusters',
+        type: 'circle',
+        source: 'markers',
+        filter: ['has', 'point_count'],
+        paint: {
+          'circle-color': ['step',['get','point_count'], '#4a90d9', 10,'#ff8c42', 25,'#ff3b3b'],
+          'circle-radius': ['step',['get','point_count'], 16, 10, 22, 25, 30],
+          'circle-stroke-width': 2,
+          'circle-stroke-color': 'rgba(255,255,255,0.35)',
+          'circle-opacity': 0.85
+        }
+      });
+      map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'markers',
+        filter: ['has', 'point_count'],
+        layout: { 'text-field': '{point_count_abbreviated}', 'text-size': 12 },
+        paint: { 'text-color': '#ffffff' }
+      });
 
-  // ===== NUCLEAR SITES =====
-  L.marker([33.72,51.73],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Natanz Nuclear Facility</b><br>Primary uranium enrichment site — underground centrifuge halls, FEP & PFEP<br><b style="color:#ff3b3b">✔ CONFIRMED STRIKE — Feb 28 (Operation Epic Fury)</b><br>Heavily damaged in June 2025 strikes; re-targeted Feb 28 to destroy residual centrifuge capacity<br>BDA: structural collapse of surface buildings confirmed via satellite; underground halls — partial<br><em>Sources: CSIS, CBS News map, Feb 28</em>');
-  L.marker([32.6,51.7],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Isfahan Nuclear Technology Center</b><br>Uranium conversion facility (UCF) &bull; Nuclear research reactors<br>Tunnel sealing operations were underway prior to strikes<br><b style="color:#ff3b3b">✔ CONFIRMED STRIKE — Feb 28</b><br>Surface UCF building confirmed hit; research reactors status unclear<br><em>Sources: Al Jazeera mapping, CBS News, Feb 28</em>');
-  L.marker([33.3,52.5],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">"Pickaxe Mountain" / Shahid Ali Mohammadi Facility</b><br>Deep underground facility south of Natanz (est. 80–100m depth)<br>Suspected hardened centrifuge hall — possible GBU-57 target<br><b style="color:#ff8c42">⚡ STRUCK — Feb 28 | BDA PENDING</b><br>GBU-57 MOP (Massive Ordnance Penetrator) used; penetration of full depth unconfirmed<br>US officials: "significant damage" — independent verification not yet possible<br><em>Sources: CSIS analysis, NYT, Feb 28</em>');
-  L.marker([34.88,50.99],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Fordow Uranium Enrichment Plant (FUEP)</b><br>Buried ~90m under mountain near Qom &bull; 3,000 IR-1 &amp; advanced centrifuges<br>Hardened against conventional bunker-busters<br><b style="color:#ff3b3b">✔ CONFIRMED STRIKE — Feb 28</b><br>Key access routes and surface infrastructure destroyed; underground hall damage unconfirmed<br>IRGC air defense in area engaged before strikes<br><em>Sources: Times Now (Israel targets list), Wikipedia, CBS News, Feb 28</em>');
-  L.marker([34.18,49.22],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Arak IR-40 Heavy Water Reactor &amp; Research Complex</b><br>Heavy water production facility &bull; Plutonium-producing reactor (modified under 2015 JCPOA)<br><b style="color:#ff3b3b">✔ CONFIRMED STRIKE — Feb 28</b><br>Surface reactor hall and heavy water production buildings confirmed struck<br><em>Sources: Al Jazeera map, CBS News, Feb 28</em>');
-  L.marker([28.83,50.88],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Bushehr Nuclear Power Plant</b><br>Russia-built civilian reactor (VVER-1000) &bull; Operational since 2013<br><b style="color:#00c853">NOT STRUCK — deliberate avoidance</b><br>US/Israel avoided to prevent radiological contamination of Persian Gulf<br>Russian technicians on site (additional diplomatic constraint)<br><em>Sources: CSIS analysis, Feb 28</em>');
-  L.marker([35.54,51.77],{icon:nukeIcon()}).addTo(map).bindPopup('<b style="color:#ff8c42">Parchin Military Complex</b><br>IRGC-linked military-nuclear R&amp;D site &bull; ~35 km SE of Tehran<br>Expanded concrete-and-soil hardening confirmed Feb 20 — targeted by GBU-57<br><b style="color:#ff3b3b">✔ CONFIRMED STRIKE — Feb 28</b><br>Multiple hardened structures destroyed per satellite BDA<br><em>Sources: The War Zone Feb 20, CBS News Feb 28</em>');
+      // ── Individual marker layers (symbol layers with icons) ──
+      Object.keys(CAT_COLORS).forEach(function(cat){
+        if (cat === 'radius-circle') return;
+        var layerId = 'cat-' + cat;
+        if (CAT_ICON[cat]) {
+          map.addLayer({
+            id: layerId,
+            type: 'symbol',
+            source: 'markers',
+            filter: ['all', ['!', ['has', 'point_count']], ['==', ['get','category'], cat]],
+            layout: {
+              'icon-image': CAT_ICON[cat],
+              'icon-size': 1,
+              'icon-allow-overlap': true,
+              'icon-ignore-placement': true
+            }
+          });
+        } else {
+          map.addLayer({
+            id: layerId,
+            type: 'circle',
+            source: 'markers',
+            filter: ['all', ['!', ['has', 'point_count']], ['==', ['get','category'], cat]],
+            paint: {
+              'circle-color': CAT_COLORS[cat] || '#888',
+              'circle-radius': 6,
+              'circle-stroke-width': 2,
+              'circle-stroke-color': 'rgba(255,255,255,0.5)',
+              'circle-opacity': 0.9
+            }
+          });
+        }
+      });
 
-  // ===== IRGC — STRAIT OF HORMUZ =====
-  L.marker([26.6,56.2],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">Strait of Hormuz</b><br><b style="color:#ff3b3b">IRGC ACTIVATED — closure threat underway</b><br>Major oil traders suspend shipments (Reuters, Feb 28)<br>IRGC fast-attack boats and anti-ship missiles on alert<br><b>21% of global oil passes through here</b>');
-  // Shahid Bagheri — Iranian drone carrier, confirmed struck (Mar 3)
-  L.marker([25.0,57.8],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ IRGC Drone Carrier Shahid Bagheri — Struck</b><br><b style="color:#ff3b3b">Confirmed strike — Mar 3, 2026</b><br>U.S. confirms strike on Iranian drone carrier Shahid Bagheri<br>Converted vessel used by IRGC Navy to launch drone attacks<br>Gulf of Oman / Strait of Hormuz area<br><em>Sources: CENTCOM, Military.com, Mar 3, 2026</em>');
+      // ── Corridor lines ──
+      map.addLayer({
+        id: 'corridors-line',
+        type: 'line',
+        source: 'corridors',
+        paint: {
+          'line-color': ['get', 'color'],
+          'line-width': ['get', 'weight'],
+          'line-opacity': ['get', 'opacity'],
+          'line-dasharray': [5, 4]
+        }
+      });
 
-  // ===== IRGC MISSILE BASES & MILITARY AIRBASES HIT IN IRAN =====
-  // Karaj — IRGC missile production / enrichment support (NW Tehran suburbs)
-  L.marker([35.83,50.96],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Karaj — IRGC Missile &amp; Nuclear Support Facility</b><br><b>Confirmed strike — Feb 28</b><br>IRGC missile production and storage infrastructure<br>Uranium enrichment support complex<br>~35 km west of Tehran center<br><em>Sources: Wikipedia (2026 strikes), Al Jazeera, Newsweek map, Feb 28</em>');
-  // Tabriz 2nd Tactical Air Base — missile storage and air defense
-  L.marker([38.13,46.24],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Tabriz — 2nd Tactical Air Base (TAB-2)</b><br><b>Confirmed strike — Feb 28</b><br>IRIAF tactical air base &bull; Co-located with Shahid Madani Int\'l Airport<br>Missile storage and IRGC air defense batteries destroyed<br>Tabriz is Iran\'s 4th largest city — NW strategic node<br><em>Sources: WCVB/CBS maps, Al Jazeera, Feb 28</em>');
-  // Kermanshah — missile storage and airbase
-  L.marker([34.35,47.16],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Kermanshah — Missile Storage &amp; Shahid Ashrafi Esfahani Air Base</b><br><b>Confirmed strike — Feb 28</b><br>IRGC missile storage and launch infrastructure, western Iran<br>Air base and logistics hub destroyed<br><em>Sources: Al Jazeera mapping, Newsweek, Feb 28</em>');
-  // Qom — IRGC bases in and around holy city (distinct from Fordow)
-  L.marker([34.64,50.88],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Qom — IRGC Security &amp; Missile Infrastructure</b><br><b>Confirmed strike — Feb 28</b><br>IRGC corps headquarters and security assets in Qom<br>Separate from Fordow (marked individually north of city)<br>Qom is a key regime center and IRGC command node<br><em>Sources: Al Jazeera, Wikipedia (2026 strikes), Feb 28</em>');
-  // Kharg Island — oil export terminal (reported unconfirmed)
-  L.marker([29.25,50.32],{icon:icon('#ff8c42',10)}).addTo(map).bindPopup('<b style="color:#ff8c42">? Kharg Island — Oil Terminal &amp; IRGC Navy Base</b><br><b style="color:#ff8c42">REPORTED struck — Feb 28 | Damage UNCONFIRMED</b><br>Iran\'s primary oil export terminal — handles ~90% of Iranian crude exports<br>IRGC naval base co-located<br>Strike not confirmed by US CENTCOM; visual confirmation pending<br><em>Sources: Newsweek map (reported), Feb 28</em>');
-  // Ilam / Lorestan — airfield and military logistics
-  L.marker([33.64,46.42],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Ilam — Military Airfield &amp; IRGC Logistics</b><br><b>Confirmed strike — Feb 28</b><br>Military airfield and IRGC logistical hub — western Iran<br>Lorestan province military supply route infrastructure struck<br><em>Sources: Al Jazeera, WCVB/CBS maps, Feb 28</em>');
-  // Kerman — IRGC command centre (Mar 3)
-  L.marker([30.3,57.1],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">✔ Kerman — IRGC Command Centre</b><br><b style="color:#ff3b3b">Confirmed strike — Mar 3, 2026</b><br>U.S. says it destroyed IRGC command centre in Kerman<br>Iran reports 13 soldiers killed in the strike<br>Southeastern Iran strategic and logistics hub<br><em>Sources: Al Jazeera, Mar 3, 2026</em>');
+      // ── Radius circles ──
+      circles.forEach(function(c, i){
+        var srcId = 'radius-' + i;
+        var layerId = 'radius-fill-' + i;
+        var center = c.geometry.coordinates;
+        var km = c.properties.radiusKm;
+        var pts = 64;
+        var coords = [];
+        for (var a = 0; a <= pts; a++) {
+          var angle = (a / pts) * 2 * Math.PI;
+          var dx = km / (111.32 * Math.cos(center[1] * Math.PI / 180));
+          var dy = km / 110.574;
+          coords.push([center[0] + dx * Math.cos(angle), center[1] + dy * Math.sin(angle)]);
+        }
+        map.addSource(srcId, {
+          type: 'geojson',
+          data: {type:'Feature', geometry:{type:'Polygon', coordinates:[coords]}, properties:c.properties}
+        });
+        map.addLayer({
+          id: layerId, type: 'fill', source: srcId,
+          paint: { 'fill-color': c.properties.fillColor || c.properties.color, 'fill-opacity': c.properties.fillOpacity || 0.05 }
+        });
+        map.addLayer({
+          id: layerId + '-stroke', type: 'line', source: srcId,
+          paint: { 'line-color': c.properties.color, 'line-width': c.properties.weight || 1, 'line-dasharray': [4, 3], 'line-opacity': 0.5 }
+        });
+      });
 
-  // ===== US/UK AIR BASES =====
-  L.marker([25.3,51.5],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Al Udeid Air Base, Qatar</b><br>CENTCOM Forward HQ &bull; ~10,000 US personnel<br>F-35A, F-22A squadrons &bull; 20+ KC-135 tankers<br>UK Typhoons also deployed here<br><b style="color:#ff8c42">⚡ TARGETED BY IRAN — Feb 28 | Intercepts reported; no confirmed ground damage</b><br>THAAD/Patriot PAC-3 activated; air sirens sounded; Qatar intercepted incoming missiles<br><em>Sources: BBC, Al Jazeera, ISW, Feb 28</em>');
-  L.marker([24.2,47.9],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Prince Sultan Air Base, Saudi Arabia</b><br>F-16 Fighting Falcons &bull; E-3 AWACS (6 deployed)<br>KC-135 tankers<br><b style="color:#ff8c42">⚡ TARGETED BY IRAN — Feb 28 | Explosions in Saudi Arabia reported; no confirmed base damage</b><br>Patriot batteries active; Riyadh-area alerts issued; intercepts reported<br><b style="color:#00c853">✔ SAUDI ASSISTANCE: Logistical hub for US coalition forces; evacuation flights coordinated</b><br><em>Sources: BBC, US News &amp; World Report, Al Jazeera, Feb 28</em>');
-  L.marker([24.4,54.6],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Al Dhafra Air Base, UAE (Abu Dhabi)</b><br>F-22 Raptors &bull; MQ-4C Triton ISR drones<br>KC-10 tankers<br><b style="color:#ff3b3b">⚡ CONFIRMED HIT — UAE, Feb 28: 1 civilian killed (falling debris); 4 injured</b><br>Missiles intercepted over Abu Dhabi; large plumes of smoke visible; Palm Jumeirah building fire<br>Patriot active; base operational status not confirmed impaired<br><em>Sources: US News &amp; World Report, Al Jazeera, Feb 28</em>');
-  L.marker([32.0,36.8],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Muwaffaq Salti Air Base, Jordan</b><br><b>EVERY tactical jet slot visible from satellite is full</b><br>Confirmed via satellite imagery (Feb 20):<br>18× F-15E Strike Eagles &bull; 18× F-35A Lightning II<br>12× F-16 Fighting Falcons &bull; 6× EA-18G Growlers<br>2× MQ-9 Reapers (visible; shelters not counted)<br>Key deep-strike staging base<br><em>Jordan denied US airspace for Iran strikes; base placed on highest alert</em><br>Jordan intercepted Iranian missiles transiting its airspace (Feb 28)');
+      // ── Popups ──
+      var popup = new maplibregl.Popup({offset:12, maxWidth:'340px', closeButton:true});
 
-  // ===== US 5TH FLEET HQ — NSA BAHRAIN (CONFIRMED HIT) =====
-  L.marker([26.23,50.59],{icon:shipIcon()}).addTo(map).bindPopup('<b style="color:#4a90d9">NSA Bahrain — US 5th Fleet HQ</b><br>US Naval Forces Central Command<br>Headquarters for all US naval operations in the region<br><b style="color:#ff3b3b">✔ CONFIRMED HIT — Feb 28: Most significant confirmed retaliation strike</b><br>Missile impact on tower block near naval base confirmed; fires and substantial property damage<br>Social media videos confirm direct missile impact in Manama<br>Bahraini authorities: "treacherous attack" — civil defense deployed<br>USS Canberra, USS Tulsa homeported here<br><em>Sources: Al Jazeera, Middle East Eye, US News, Feb 28</em>');
+      Object.keys(CAT_COLORS).forEach(function(cat){
+        if (cat === 'radius-circle') return;
+        var layerId = 'cat-' + cat;
+        map.on('click', layerId, function(e){
+          var f = e.features[0];
+          var html = f.properties.popup || '<b>'+f.properties.label+'</b>';
+          var coords = f.geometry.coordinates.slice();
+          popup.setLngLat(coords).setHTML(html).addTo(map);
+        });
+        map.on('mouseenter', layerId, function(){ map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', layerId, function(){ map.getCanvas().style.cursor = ''; });
+      });
 
-  // ===== US CONSULATE DUBAI — DRONE STRIKE (Mar 3) =====
-  L.marker([25.2,55.3],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; US Consulate Dubai — Drone Strike</b><br><b style="color:#ff3b3b">Confirmed damage — Mar 3, 2026</b><br>Drone strike damages U.S. consulate in Dubai<br>Staff report damage; extent under assessment<br>Part of wider Iranian drone/missile barrage across region<br><em>Sources: Wall Street Journal, Mar 3, 2026</em>');
+      map.on('click', 'corridors-line', function(e){
+        var f = e.features[0];
+        if (f.properties.popup) popup.setLngLat(e.lngLat).setHTML(f.properties.popup).addTo(map);
+      });
+      map.on('mouseenter', 'corridors-line', function(){ map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', 'corridors-line', function(){ map.getCanvas().style.cursor = ''; });
 
-  // ===== US EMBASSY RIYADH — DRONE HIT (Mar 3) =====
-  L.marker([24.68,46.75],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; US Embassy Riyadh — Drone Attack</b><br><b style="color:#ff3b3b">Confirmed hit — Mar 3, 2026</b><br>U.S. Embassy in Riyadh hit by drones; staff report damage<br>Multiple U.S. embassies in the Gulf region closed after escalating strikes (Washington Post, Mar 3)<br><em>Sources: Reuters, Mar 3, 2026</em>');
+      map.on('click', 'clusters', function(e){
+        var features = map.queryRenderedFeatures(e.point, {layers:['clusters']});
+        var clusterId = features[0].properties.cluster_id;
+        map.getSource('markers').getClusterExpansionZoom(clusterId, function(err, zoom){
+          if (err) return;
+          map.easeTo({center:features[0].geometry.coordinates, zoom:zoom});
+        });
+      });
+      map.on('mouseenter', 'clusters', function(){ map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', 'clusters', function(){ map.getCanvas().style.cursor = ''; });
 
-  // ===== ISRAEL =====
-  L.marker([32,34.8],{icon:icon('#ffd700',14)}).addTo(map).bindPopup('<b style="color:#ffd700">Israel - IDF</b><br>Highest readiness since June 2025 war<br>280,000 reservists authorized<br>IAF on full alert<br>Coordinating with US CENTCOM');
-  // F-22 Raptors at Ovda Air Base (southern Israel, ~30km north of Eilat)
-  L.marker([29.9,34.9],{icon:jetIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Ovda Air Base, Israel</b><br><b style="color:#ff8c42">24× F-22A Raptor</b> — world\'s most advanced stealth fighter<br><b>First-ever F-22 deployment to Israeli soil</b><br>Arrived Feb 24–26 from RAF Lakenheath, UK<br>Vanguard of any Iran strike<br><em>Sources: Times of Israel, ABC News</em>');
+      buildToggles();
+    });
+  }
 
-  // ===== UK CYPRUS =====
-  L.marker([34.6,33],{icon:icon('#00d4ff',10)}).addTo(map).bindPopup('<b style="color:#00d4ff">RAF Akrotiri, Cyprus</b><br>UK F-35B Lightning II deployed<br>Defensive posture only<br><b style="color:#ff8c42">? REPORTED: Iranian missile/drone activity targeting Cyprus — UNCONFIRMED</b><br>Social media intercepts suggest strike attempt; not confirmed by UK MoD, Cyprus govt, or US CENTCOM<br>If verified: first Iranian strike on a NATO-adjacent sovereign base<br><em>Sources: Social media intercepts, Mar 1 — Unconfirmed</em>');
+  function buildToggles() {
+    var container = document.getElementById('layerToggles');
+    if (!container) return;
+    container.innerHTML = '';
+    LAYER_GROUPS.forEach(function(group){
+      var btn = document.createElement('button');
+      btn.className = 'layer-toggle-btn active';
+      btn.textContent = group.label;
+      btn.style.setProperty('--toggle-color', group.color);
+      btn.addEventListener('click', function(){
+        var active = btn.classList.toggle('active');
+        group.cats.forEach(function(cat){
+          var layerId = 'cat-' + cat;
+          if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', active ? 'visible' : 'none');
+          if (map.getLayer('corridors-line') && (cat === 'missile-corridor' || cat === 'strike-corridor' || cat === 'transit-route'))
+            map.setLayoutProperty('corridors-line', 'visibility', active ? 'visible' : 'none');
+        });
+      });
+      container.appendChild(btn);
+    });
+  }
 
-  // ===== BLOCKED UK BASES =====
-  L.marker([51.67,-1.79],{icon:blockedIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">RAF Fairford, United Kingdom</b><br>B-52/B-2 bomber base<br><b>PM Starmer DENIED US access</b><br>Citing international law');
-  L.marker([-7.32,72.42],{icon:blockedIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">Diego Garcia</b><br>Indian Ocean staging base<br><b>PM Starmer DENIED US access</b><br>Trump retaliated: withdrew Chagos deal support');
-
-  // ===== VIENNA — IAEA DIPLOMATIC TALKS =====
-  L.marker([48.2,16.4],{icon:diplomacyIcon()}).addTo(map).bindPopup('<b style="color:#00d4ff">Vienna — IAEA Headquarters</b><br><b style="color:#ff3b3b">US–Iran Technical Talks ENDED WITHOUT DEAL — Mar 3</b><br>Talks held Mar 2–3; Iran rejected U.S. demands (Al Jazeera/Mar 3)<br>Oman says talks showed "potential progress" (Reuters, Mar 3)<br>IAEA DG Grossi hosted; confirmed buildings damaged at Natanz but no radiological consequences<br>US lead: Steve Witkoff &bull; Iran lead: Araghchi<br><em>Sources: Reuters, AP, Al Jazeera, Mar 3</em>');
-
-  // ===== SAUDI ARABIA — COUNTRY-LEVEL ASSISTANCE =====
-  L.marker([24.7,46.7],{icon:icon('#00c853',12)}).addTo(map).bindPopup('<b style="color:#00c853">&#127462;&#127470; Saudi Arabia — Coalition Assistance</b><br><b style="color:#00c853">Humanitarian aid &amp; coalition logistics provider</b><br>Prince Sultan Air Base open to US coalition forces<br>Patriot batteries coordinating air defense with US CENTCOM<br>Overflight rights granted for humanitarian evacuation flights<br>Saudi Red Crescent deploying emergency response teams<br>Pledged $500M+ in regional humanitarian assistance (GCC framework)<br>Emergency GCC summit convened in Riyadh<br><b style="color:#ff8c42">Condemned Iran attacks on UAE; called them "unprovoked aggression"</b><br><em>Sources: Al Jazeera, Arab News, Saudi Foreign Ministry, Mar 1</em>');
-
-  // ===== FRANCE — COUNTRY MARKER & CHARLES DE GAULLE CARRIER =====
-  L.marker([48.9,2.3],{icon:icon('#0055a4',10)}).addTo(map).bindPopup('<b style="color:#0055a4">&#127467;&#127479; France — Engaged</b><br>Voted YES on UN ceasefire resolution<br>Humanitarian airlift lead (EU framework)<br>Paris offered as ceasefire/peace talk venue<br>French Foreign Minister called for 72-hour humanitarian pause<br><b style="color:#0055a4">Charles de Gaulle (R91) aircraft carrier group DEPLOYING — Mar 1</b><br><em>Sources: Élysée Palace, French Foreign Ministry, Mar 1</em>');
-  // ===== CHARLES DE GAULLE CARRIER STRIKE GROUP (Central Mediterranean — deploying) =====
-  L.marker([37.0,10.5],{icon:frenchCarrierIcon()}).addTo(map).bindPopup('<b style="color:#0055a4">FS Charles de Gaulle (R91)</b><br>Nuclear-powered aircraft carrier &bull; Porte-Avions<br>~40 aircraft (Rafale M, E-2C Hawkeye, Dauphin)<br><b style="color:#ff8c42">DEPLOYING — Central Mediterranean (Mar 1)</b><br>Departed Toulon naval base; now transiting toward Eastern Med<br>Tasked with humanitarian protection and maritime security<br>Accompanied by: Forbin (D620), Provence (D652), Alsace (D656), Rubis-class SSN<br><em>Sources: French Ministry of the Armed Forces, Mar 1</em>');
-  L.circle([37.0,10.5],{radius:700000,color:'#0055a4',fillColor:'#0055a4',fillOpacity:0.03,weight:0.5,dashArray:'8,6'}).addTo(map).bindPopup('Rafale M strike radius (~700km)');
-  // Charles de Gaulle movement arrow (Central Med → Eastern Med)
-  L.polyline([[43.1,5.9],[37.0,10.5],[35.5,20.0]],{color:'#0055a4',weight:1.5,dashArray:'8,6',opacity:0.5}).addTo(map).bindPopup('Charles de Gaulle transit route (Toulon → Eastern Med)');
-
-  // ===== US DOMESTIC — TEXAS SHOOTING (Iran-linked, Mar 1) =====
-  L.marker([29.4,-98.5],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; TEXAS — Shooting Incident (Mar 1, 2026)</b><br><b style="color:#ff3b3b">Suspected Iran-linked attack — Joint Base San Antonio area</b><br>Multiple casualties reported; FBI taking lead on investigation<br>Suspected attacker apprehended; Iran-linked cell suspected<br>US domestic threat level raised; military installations on alert<br>FBI stepped up monitoring of Iran-linked threat networks nationwide<br><em>Sources: FBI, SAPD, Mar 1</em>');
-
-  // ===== UK — COUNTRY MARKER (defensive assistance) =====
-  L.marker([51.5,-0.1],{icon:icon('#00d4ff',10)}).addTo(map).bindPopup('<b style="color:#00d4ff">&#127468;&#127463; United Kingdom — Defensive Assistance Offered</b><br>Monitoring situation closely; briefed by US in advance<br><b style="color:#00d4ff">Defensive military assistance offers (Mar 1):</b><br>HMS Diamond (Type 45 destroyer) — forward-deployed to Gulf for air defense<br>Sky Sabre (CAMM) short-to-medium range air defense offered to Gulf allies<br>Typhoon jets offered in defensive CAP role<br>Royal Navy assets deploying for humanitarian corridor protection<br>FCDO coordinating evacuation flights for British nationals<br><em>PM Starmer BLOCKED US use of RAF bases for offensive strikes</em><br><em>Sources: UK MoD, UK FCDO, Reuters, Mar 1</em>');
-
-  // ===== GERMANY — COUNTRY MARKER (defensive assistance) =====
-  L.marker([52.5,13.4],{icon:icon('#5588cc',10)}).addTo(map).bindPopup('<b style="color:#5588cc">&#127465;&#127466; Germany — Defensive Assistance Offered</b><br>Called for immediate ceasefire; supporting UN humanitarian corridor<br><b style="color:#5588cc">Defensive military assistance offers (Mar 1):</b><br>Patriot PAC-3 air defense batteries offered to Gulf allies<br>Eurofighter Typhoons offered in defensive/CAP role<br>Bundestag emergency session authorized defense cooperation<br>€50M pledged in emergency humanitarian aid<br>Coordinating with UNHCR on refugee response<br><em>Sources: German MoD, German Foreign Ministry, Mar 1</em>');
-
-  // ===== IRAN BALLISTIC MISSILE RETALIATION (Feb 28) =====
-  // Iran fired missiles toward Israel and Gulf states after Operation Epic Fury
-  // IRGC called this the "first wave" with more to follow
-  // Toward Israel
-  L.polyline([[32.5,54],[32.0,34.8]],{color:'#ff3b3b',weight:2.5,dashArray:'5,4',opacity:0.8}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Israel (Feb 28 – Mar 1)</b><br><b>~170 ballistic missiles total barrage (Critical Threats / Guardian)</b><br><b>Weapons:</b> Shahab-3, Emad, Kheibar Shekan ballistic missiles<br><b>Target:</b> Israeli cities and IDF installations<br>Arrow 3, David\'s Sling, Iron Dome activated; mass intercepts reported<br><b style="color:#ff8c42">Damage: Unconfirmed — interception rate not released</b><br><em>Source: BBC, ISW, Critical Threats, Feb 28–Mar 1</em>');
-  // Toward Qatar (Al Udeid) — INTERCEPTED, no confirmed ground damage
-  L.polyline([[32.5,54],[25.3,51.5]],{color:'#ff8c42',weight:2,dashArray:'5,4',opacity:0.7}).addTo(map).bindPopup('<b style="color:#ff8c42">&#128165; Iran → Qatar / Al Udeid (Feb 28)</b><br><b>Weapons:</b> Zolfaghar / Dezful short-medium range ballistic missiles<br><b>Target:</b> CENTCOM HQ, ~10,000 US personnel<br>THAAD / Patriot PAC-3 activated; air sirens sounded in Doha<br><b style="color:#ff8c42">Status: Intercepted — no confirmed ground damage to Al Udeid</b><br><em>Sources: Al Jazeera, ISW, Feb 28</em>');
-  // Toward Bahrain (5th Fleet) — CONFIRMED HIT
-  L.polyline([[32.5,54],[26.23,50.59]],{color:'#ff3b3b',weight:2.5,dashArray:'5,4',opacity:0.85}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Bahrain / US 5th Fleet (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles — type unspecified<br><b>Target:</b> NSA Bahrain — US Naval Forces Central Command HQ<br><b style="color:#ff3b3b">✔ CONFIRMED HIT: Missile impacted tower block near naval base</b><br>Fires and property damage confirmed; Patriot systems partially overwhelmed<br><em>Sources: Middle East Eye, Al Jazeera, US News, Feb 28</em>');
-  // Toward Saudi Arabia (Prince Sultan) — explosions, intercepts, no confirmed base damage
-  L.polyline([[32.5,54],[24.2,47.9]],{color:'#ff8c42',weight:2,dashArray:'5,4',opacity:0.65}).addTo(map).bindPopup('<b style="color:#ff8c42">&#128165; Iran → Saudi Arabia / Prince Sultan (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> Prince Sultan Air Base — F-16, AWACS, tankers<br>Explosions in Riyadh area; widespread alerts issued; Patriot active<br><b style="color:#ff8c42">Status: Intercepts reported — no confirmed direct hit on US facilities</b><br><em>Sources: BBC, US News, Feb 28</em>');
-  // Toward UAE (Al Dhafra / Abu Dhabi) — CONFIRMED civilian death, building fire
-  L.polyline([[32.5,54],[24.4,54.6]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.75}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → UAE / Abu Dhabi (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> Al Dhafra Air Base area — F-22 Raptors, ISR drones<br><b style="color:#ff3b3b">✔ CONFIRMED: 1 civilian killed (falling debris); 4 injured</b><br>Building fire on Palm Jumeirah; large smoke plumes; intercepts visible<br><em>Sources: US News &amp; World Report, Al Jazeera, Feb 28</em>');
-  // Toward Kuwait — intercepted, public warned about shrapnel
-  L.polyline([[32.5,54],[29.37,47.98]],{color:'#ff8c42',weight:1.5,dashArray:'5,4',opacity:0.55}).addTo(map).bindPopup('<b style="color:#ff8c42">&#128165; Iran → Kuwait (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br>Air defense systems engaged; missiles intercepted<br>Public warned about shrapnel and debris; no confirmed casualties<br><em>Sources: Al Jazeera, ISW, Feb 28</em>');
-  // Toward Cyprus (RAF Akrotiri) — UNCONFIRMED (Mar 1)
-  L.polyline([[32.5,54],[34.6,33]],{color:'#ff8c42',weight:1.5,dashArray:'5,4',opacity:0.5}).addTo(map).bindPopup('<b style="color:#ff8c42">&#128165; Iran → Cyprus / RAF Akrotiri (Mar 1)</b><br><b>Weapons:</b> Missiles / drones — type unconfirmed<br><b>Target:</b> UK Sovereign Base Area — RAF Akrotiri (F-35B staging/ISR hub)<br><b style="color:#ff8c42">Status: UNCONFIRMED — social media intercepts only</b><br>Not confirmed by UK MoD, Cyprus govt, or US CENTCOM<br>If verified: first Iranian strike on a NATO-adjacent sovereign base — major escalation<br><em>Sources: Social media intercepts, Mar 1 — Unconfirmed</em>');
-
-  // ===== OPERATION EPIC FURY STRIKE CORRIDORS =====
-  // Carrier-based aircraft strike corridors (approximate)
-  L.polyline([[23.5,58],[26.6,56.2],[30,54]],{color:'#4a90d9',weight:1.5,dashArray:'5,5',opacity:0.55}).addTo(map).bindPopup('Lincoln CVW-11 strike corridor (approx.)');
-  L.polyline([[34.8,28.5],[33,34],[32,40],[32,48]],{color:'#4a90d9',weight:1.5,dashArray:'5,5',opacity:0.45}).addTo(map).bindPopup('Ford CVW-8 strike corridor (approx.)');
-
-  // ===== HOUTHIS — YEMEN (RESUMED ATTACKS, Mar 3) =====
-  L.marker([15.35,44.2],{icon:icon('#ff3b3b',10)}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#127988; Yemen — Houthis (Ansar Allah)</b><br><b style="color:#ff3b3b">Resumed missile and drone attacks on Red Sea shipping — Mar 3</b><br>Houthis resume attacks after pause during Iran strike operations<br>Targeting Red Sea commercial shipping and naval vessels<br>Red Sea shipping corridor further disrupted<br><em>Sources: AP, Mar 3, 2026</em>');
-
-  // ===== IRAN DRONE ATTACKS — Mar 3 (UAE/Dubai, Saudi/Riyadh) =====
-  // Toward Dubai consulate
-  L.polyline([[32.5,54],[25.2,55.3]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.7}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Dubai / US Consulate (Mar 3)</b><br><b>Weapons:</b> Drones<br><b>Target:</b> US Consulate, Dubai<br><b style="color:#ff3b3b">✔ CONFIRMED: Damage reported; staff evacuated</b><br><em>Sources: Wall Street Journal, Mar 3, 2026</em>');
-  // Toward Riyadh Embassy
-  L.polyline([[32.5,54],[24.68,46.75]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.7}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Riyadh / US Embassy (Mar 3)</b><br><b>Weapons:</b> Drones<br><b>Target:</b> US Embassy, Riyadh<br><b style="color:#ff3b3b">✔ CONFIRMED HIT: Staff report damage</b><br><em>Sources: Reuters, Mar 3, 2026</em>');
-
-  // ===== IRAN MISSILE STRIKE ON OMAN — Mar 5 =====
-  L.marker([23.6,58.6],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#127476;&#127474; Oman — Iranian Missile/Drone Strike (Mar 5)</b><br><b style="color:#ff3b3b">✔ CONFIRMED: Iranian strike hit Omani territory — Mar 5, 2026</b><br>Muscat International Airport area targeted<br>Oman suspends back-channel mediator role<br>Air defense systems activated; casualties under assessment<br>Sultan Haitham condemned the attack<br>Previously sole remaining US–Iran diplomatic channel<br><em>Sources: Reuters / AP, Mar 5, 2026</em>');
-  L.marker([23.6,58.6],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Muscat — Iranian Strike Site (Mar 5)</b><br><b style="color:#ff3b3b">✔ CONFIRMED: Strike on Omani territory</b><br>Muscat International Airport area<br><em>Sources: Reuters / AP, Mar 5, 2026</em>');
-  L.polyline([[32.5,54],[23.6,58.6]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.75}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Oman / Muscat (Mar 5)</b><br><b>Weapons:</b> Missiles/drones<br><b>Target:</b> Muscat — ending Oman\'s mediator role<br><b style="color:#ff3b3b">✔ CONFIRMED HIT: Strike on Omani territory</b><br><em>Sources: Reuters / AP, Mar 5, 2026</em>');
-
-  // ===== HEZBOLLAH — ATTEMPTED SECOND FRONT (Mar 5) =====
-  L.marker([33.5,35.5],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#127473;&#127463; Hezbollah — Attempted Second Front (Mar 5)</b><br><b style="color:#ff3b3b">Hezbollah attempted to open second front — Mar 5, 2026</b><br>Rocket barrages launched toward northern Israel<br>IDF Iron Dome and David\'s Sling activated<br>Israel struck Hezbollah launch sites in southern Lebanon<br>Activation partially disrupted by IDF preemptive strikes<br>Acting on pre-standing orders independently (Quds Force disrupted)<br><em>Sources: Reuters / Times of Israel, Mar 5, 2026</em>');
-  L.polyline([[33.5,35.5],[32.0,34.8]],{color:'#ff3b3b',weight:2,dashArray:'5,4',opacity:0.75}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Hezbollah → Northern Israel (Mar 5)</b><br><b>Weapons:</b> Rockets and precision missiles<br><b>Target:</b> Northern Israeli communities and IDF positions<br><b style="color:#ff8c42">Status: Partially intercepted — IDF struck launch sites in response</b><br><em>Sources: Reuters / Times of Israel, Mar 5, 2026</em>');
-
-
-  L.marker([39.9,32.9],{icon:icon('#ff3b3b',12)}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#127481;&#127479; Turkey — Iranian Missile Strike (Mar 4)</b><br><b style="color:#ff3b3b">✔ CONFIRMED: Iranian missiles struck Turkish territory — Mar 4, 2026</b><br>NATO Article 4 consultations triggered<br>President Erdoğan condemned the attack<br>İncirlik Air Base on heightened alert<br>Turkey reserves right of self-defense<br>S-400 and Patriot (German-operated) air defense systems activated<br><em>Sources: Reuters / NATO, Mar 4, 2026</em>');
-  L.marker([37.0,35.4],{icon:strikeIcon()}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; İncirlik Air Base Area — Iranian Missile Strike</b><br><b style="color:#ff3b3b">✔ CONFIRMED: Strike on Turkish territory near İncirlik — Mar 4, 2026</b><br>İncirlik Air Base on heightened alert; US B61 nuclear gravity bombs stored on site<br>Turkish and US forces on full air defense alert<br>NATO Article 4 consultations triggered<br><em>Sources: Reuters / NATO, Mar 4, 2026</em>');
-  L.polyline([[32.5,54],[37.0,35.4]],{color:'#ff3b3b',weight:2.5,dashArray:'5,4',opacity:0.85}).addTo(map).bindPopup('<b style="color:#ff3b3b">&#128165; Iran → Turkey / İncirlik Area (Mar 4)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> Turkish territory — İncirlik Air Base area<br><b style="color:#ff3b3b">✔ CONFIRMED HIT: Strike on Turkish soil confirmed</b><br>NATO Article 4 consultations triggered; Erdoğan condemned attack<br><em>Sources: Reuters / NATO, Mar 4, 2026</em>');
-
+  window._reloadMapData = loadMapData;
+  map.on('load', loadMapData);
 });

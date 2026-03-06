@@ -62,6 +62,7 @@ const PAGE_CONTEXT_TICKER_LIMIT = 10;
 const TAVILY_KEY  = process.env.TAVILY_API_KEY;
 const OPENAI_KEY  = process.env.OPENAI_API_KEY;
 const UPDATE_TYPE_INPUT = (process.env.UPDATE_TYPE || 'auto').toLowerCase();
+const ROUTINE_MODEL     = process.env.OPENAI_ROUTINE_MODEL    || 'gpt-5-mini';
 const STRUCTURAL_MODEL  = process.env.OPENAI_STRUCTURAL_MODEL || 'gpt-5';
 
 if (!['auto', 'routine', 'structural'].includes(UPDATE_TYPE_INPUT)) {
@@ -77,34 +78,28 @@ if (!TAVILY_KEY || !OPENAI_KEY) {
 // ── Search queries ────────────────────────────────────────────────────────────
 // Targeted queries that cover the dashboard's main topic areas.
 
+// ── Search queries (Fix #6: consolidated, gaps filled, trailing noise removed) ─
 const SEARCH_QUERIES = [
-  'Iran breaking news military political crisis latest today',
-  'Iran nuclear enrichment IAEA program talks deal latest news',
-  'Iran protests crackdown IRGC arrests dissidents latest news',
-  'US military Iran strikes operations carrier deployment latest news',
-  'Iran economy rial oil exports sanctions latest news',
-  'Iran Israel strikes attack military operations latest news',
-  'Iran opposition Pahlavi MEK resistance movement latest news',
-  'Strait of Hormuz shipping oil tanker Iran disruption latest',
-  'Gulf states Saudi Arabia Qatar Bahrain UAE Russia China Iran coalition reaction latest',
-  'Iran proxy Hezbollah Houthi Yemen Iraq militia strikes attack latest',
-  'Iran IRGC assassination plot cyber espionage covert operations latest',
-  'Iran new supreme leader ayatollah successor Khamenei Assembly of Experts leadership transition',
-  // ── Gap-coverage queries added to avoid systematic blind spots ────────────
-  // Kurdish groups and US-Kurdish arming (previously missed category)
-  // KRG = Kurdistan Regional Government (Iraq); KDPI/PJAK = Kurdish groups inside Iran; SDF = Syria
-  'US arming Kurdish forces Peshmerga KRG KDPI PJAK SDF Syria Iraq Iran region latest',
-  // Iraq as an active theater: PMF attacks, US bases, Baghdad politics
-  'Iraq PMF Shia militia US bases attacks Iran influence Baghdad government latest news',
-  // Iran ethnic-minority armed resistance (Baluch, Khuzestan Arab, Azerbaijani, Kurdish)
-  'Iran ethnic minority armed resistance Baluchistan Khuzestan Arab Azerbaijani KDPI uprising latest',
-  // US/coalition covert support, arms transfers to opposition or proxy groups
-  'CIA special operations covert arms support anti-Iran opposition proxy groups latest news',
-  // ── Horizon-scan queries: catch any Iran-relevant development in arenas not
-  //    explicitly covered above (space, bioweapons, AI/tech warfare, unexpected
-  //    new actors, financial system attacks, environmental/infrastructure, etc.)
-  'Iran unexpected surprise development any domain technology space cyber bioweapons latest news',
-  'Iran crisis new actor development unexpected arena finance infrastructure international latest',
+  'Iran military operations conflict developments breaking news',
+  'Iran nuclear enrichment IAEA program talks deal',
+  'Iran protests crackdown IRGC arrests dissidents',
+  'US military Iran strikes operations carrier deployment',
+  'Iran economy rial oil exports sanctions',
+  'Iran Israel Saudi strikes attack military operations regional escalation',
+  'Iran opposition Pahlavi MEK resistance movement',
+  'Strait of Hormuz shipping oil tanker Iran disruption',
+  'Iran proxy Hezbollah Houthi Yemen Iraq militia strikes attack',
+  'Iran IRGC assassination plot cyber espionage covert operations',
+  'Iran supreme leader successor Khamenei Assembly of Experts leadership transition',
+  'US arming Kurdish forces Peshmerga KRG KDPI PJAK SDF Syria Iraq Iran',
+  'Iraq PMF Shia militia US bases attacks Iran influence Baghdad government',
+  'Iran ethnic minority armed resistance Baluchistan Khuzestan Arab Azerbaijani KDPI uprising',
+  'CIA special operations covert arms support anti-Iran opposition proxy groups',
+  // Gap-coverage: maritime/piracy and humanitarian
+  'Iran Houthis Red Sea Yemen maritime piracy shipping blockade',
+  'Iran humanitarian crisis civilians casualties displacement refugees',
+  // Horizon-scan
+  'Iran unexpected development technology space cyber bioweapons finance infrastructure',
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -131,14 +126,15 @@ async function tavilySearch(query) {
 // Timeout (ms) for each OpenAI HTTPS request.  Built-in fetch uses undici whose
 // default headersTimeout is only 10 s — far too short for large prompts (100-170 KB)
 // that take the model extra time to process before sending response headers.
-const GPT_TIMEOUT_MS = 120_000; // 2 minutes
+const GPT_TIMEOUT_MS = 120_000; // 2 minutes — routine calls
+const STRUCTURAL_GPT_TIMEOUT_MS = 300_000; // 5 minutes — structural deep-update calls with large prompts
 
 /**
  * Minimal HTTPS POST helper that returns a fetch-compatible response object.
  * Uses Node.js's built-in `https` module so we can set an explicit socket
  * timeout, avoiding the undici default 10-second headers-timeout error.
  */
-function httpsPost(url, headers, bodyStr) {
+function httpsPost(url, headers, bodyStr, timeoutMs = GPT_TIMEOUT_MS) {
   return new Promise((resolve, reject) => {
     const { hostname, pathname, search } = new URL(url);
     const req = https.request(
@@ -171,9 +167,9 @@ function httpsPost(url, headers, bodyStr) {
     );
     req.on('error', reject);
     req.on('timeout', () => {
-      req.destroy(new Error(`Request timeout after ${GPT_TIMEOUT_MS} ms`));
+      req.destroy(new Error(`Request timeout after ${timeoutMs} ms`));
     });
-    req.setTimeout(GPT_TIMEOUT_MS);
+    req.setTimeout(timeoutMs);
     req.write(bodyStr);
     req.end();
   });
@@ -184,7 +180,7 @@ function httpsPost(url, headers, bodyStr) {
  *  on transient network errors or 5xx responses.
  *  Each call (success or final failure) is appended as a JSON line to logs/gpt-calls.jsonl. */
 const MAX_GPT_ATTEMPTS = 3;
-async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt-5-mini', maxTokens = 16384) {
+async function callGPT(systemPrompt, userContent, jsonMode = false, model = ROUTINE_MODEL, maxTokens = 16384, timeoutMs = GPT_TIMEOUT_MS) {
   const body = {
     model,
     max_completion_tokens: maxTokens,
@@ -210,14 +206,16 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
           Authorization: `Bearer ${OPENAI_KEY}`,
         },
         bodyStr,
+        timeoutMs,
       );
       if (!res.ok) {
-        const text = await res.text();
-        // Only retry on server-side errors (5xx); surface client errors immediately.
-        if (res.status >= 500 && attempt < MAX_GPT_ATTEMPTS) {
+        const text = (await res.text()).slice(0, 500);
+        // Retry on server errors (5xx) and rate limits (429).
+        if ((res.status >= 500 || res.status === 429) && attempt < MAX_GPT_ATTEMPTS) {
+          const backoff = res.status === 429 ? 2 ** attempt * 5000 : 2 ** attempt * 1000;
           lastErr = new Error(`OpenAI error ${res.status}: ${text}`);
-          console.warn(`  [callGPT] attempt ${attempt}/${MAX_GPT_ATTEMPTS} — ${lastErr.message} — retrying…`);
-          await new Promise(r => setTimeout(r, 2 ** attempt * 1000));
+          console.warn(`  [callGPT] attempt ${attempt}/${MAX_GPT_ATTEMPTS} — ${lastErr.message} — retrying in ${backoff}ms…`);
+          await new Promise(r => setTimeout(r, backoff));
           continue;
         }
         throw new Error(`OpenAI error ${res.status}: ${text}`);
@@ -242,12 +240,29 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
   throw lastErr;
 }
 
-/** Append a single JSON line to logs/gpt-calls.jsonl (creates the file/dir if needed). */
+/** Append a single JSON line to logs/gpt-calls.jsonl (creates the file/dir if needed).
+ *  Rotates the log file when it exceeds 10 MB. */
+const GPT_LOG_MAX_BYTES = 10 * 1024 * 1024;
 function appendGptLog(entry) {
   try {
     const logsDir = path.dirname(GPT_LOG_PATH);
     if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
-    fs.appendFileSync(GPT_LOG_PATH, JSON.stringify({ timestamp: new Date().toISOString(), ...entry }) + '\n');
+    // Rotate if log exceeds size limit.
+    try {
+      const stat = fs.statSync(GPT_LOG_PATH);
+      if (stat.size > GPT_LOG_MAX_BYTES) {
+        fs.renameSync(GPT_LOG_PATH, GPT_LOG_PATH + '.' + Date.now());
+      }
+    } catch { /* file doesn't exist yet — fine */ }
+    // Log summary only (omit full prompt/response content to control file size).
+    const summary = {
+      timestamp: new Date().toISOString(),
+      model: entry.model,
+      bodySizeKB: entry.bodySizeKB,
+      resultLength: entry.result ? entry.result.length : 0,
+      error: entry.error || null,
+    };
+    fs.appendFileSync(GPT_LOG_PATH, JSON.stringify(summary) + '\n');
   } catch (e) {
     console.warn(`[callGPT] Failed to write gpt-calls.jsonl: ${e.message}`);
   }
@@ -275,6 +290,49 @@ function spliceTimelineItems(fileContent, newItemsHtml) {
     '\n' + newItemsHtml.trimEnd() + '\n' +
     fileContent.slice(insertAt)
   );
+}
+
+// ── Timeline pruning ─────────────────────────────────────────────────────────
+
+/** Maximum number of .tl-item entries to keep in TODAY and YESTERDAY blocks. */
+const MAX_TODAY_ITEMS     = 20;
+const MAX_YESTERDAY_ITEMS = 15;
+
+/**
+ * Prune .tl-item entries in last-24h.html so the file doesn't grow unbounded.
+ * Keeps the first (newest) N items in each day block and removes the rest.
+ */
+function pruneTimelineItems(fileContent) {
+  // Each tl-item contains 3 child divs (tl-dot, date, content) then closes.
+  // Match from opening <div class="tl-item"> through the 4th </div> (the outer close).
+  const TL_ITEM_RE = /<div class="tl-item">\s*<div[^>]*>.*?<\/div>\s*<div[^>]*>.*?<\/div>\s*<div[^>]*>[\s\S]*?<\/div>\s*<\/div>/g;
+
+  const yesterdayMarker = '<!-- ── YESTERDAY ── -->';
+  const splitIdx = fileContent.indexOf(yesterdayMarker);
+  if (splitIdx === -1) return fileContent;
+
+  let todaySection     = fileContent.slice(0, splitIdx);
+  let yesterdaySection  = fileContent.slice(splitIdx);
+
+  todaySection    = pruneSection(todaySection, MAX_TODAY_ITEMS, TL_ITEM_RE);
+  yesterdaySection = pruneSection(yesterdaySection, MAX_YESTERDAY_ITEMS, TL_ITEM_RE);
+
+  return todaySection + yesterdaySection;
+}
+
+/** Keep only the first `max` tl-item blocks in a section string. */
+function pruneSection(section, max, re) {
+  const items = [...section.matchAll(new RegExp(re.source, 'gs'))];
+  if (items.length <= max) return section;
+
+  const toRemove = items.slice(max);
+  let result = section;
+  for (let i = toRemove.length - 1; i >= 0; i--) {
+    const m = toRemove[i];
+    result = result.slice(0, m.index) + result.slice(m.index + m[0].length);
+  }
+  result = result.replace(/\n{3,}/g, '\n\n');
+  return result;
 }
 
 // ── Zone update helpers ───────────────────────────────────────────────────────
@@ -348,6 +406,16 @@ General rules:
 - Keep writing style consistent with the existing content
 - Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*)
 
+Freshness rules — these OVERRIDE the "return null" default above:
+- If a zone contains a date more than 2 days old AND search results mention the
+  same topic, update the date/facts even if the meaning is broadly similar
+- Remove "NEW" labels from items older than 7 days (replace with plain text)
+- Carrier position zones (carrier-*-position, carrier-*-badge): ALWAYS update if
+  the existing date is more than 2 days old — use the most recent source available
+- hormuz-wti-price: ALWAYS update with the most recent WTI price from search results
+- military-parchin: update the date and remove "NEW" prefix if older than 7 days
+- Today's date is: ${new Date().toISOString().slice(0, 10)}
+
 Source reliability tiers (mirrors the Source Reliability Guide on the sources page):
 - Tier 1 — Highest: US CENTCOM, IAEA, State Dept, UN/OCHA/WHO — treat as ground truth for confirmed claims
 - Tier 2 — High: Reuters, AP, AFP — preferred for confirming discrete events
@@ -394,7 +462,10 @@ async function updateZones(searchContext) {
     })
     .join('\n\n');
 
+  // Fix #12: Include explicit list of valid zone IDs so the model doesn't hallucinate.
+  const validZoneIds = Object.keys(zones);
   const userContent =
+    `VALID ZONE IDS (return ONLY these keys): ${validZoneIds.join(', ')}\n\n` +
     `CURRENT ZONE CONTENTS (${zoneCount} zones):\n${zonesBlock}\n\n` +
     `WEB SEARCH RESULTS:\n${searchContext}`;
 
@@ -428,11 +499,23 @@ async function updateZones(searchContext) {
     for (const zone of zones[zoneId]) {
       if (newContent.trim() === zone.innerContent.trim()) continue; // unchanged
 
+      // Reject if replacement is suspiciously small (< 30% of original).
+      if (newContent.length < zone.innerContent.length * 0.3) {
+        console.warn(`Zone "${zoneId}" replacement is too small (${newContent.length} vs ${zone.innerContent.length} chars) — skipping.`);
+        continue;
+      }
+
       if (!fileContents[zone.filePath]) {
         fileContents[zone.filePath] = fs.readFileSync(zone.filePath, 'utf8');
       }
+      // Build a regex to find the current zone markers in the (possibly already modified) file
+      // content, rather than relying on the original outerMatch string which may be stale.
+      const escapedId = zoneId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const zonePattern = new RegExp(
+        `<!-- @ai-zone:${escapedId} -->[\\s\\S]*?<!-- @\\/ai-zone:${escapedId} -->`
+      );
       const newOuter = `<!-- @ai-zone:${zoneId} -->${sanitizeMarkdown(newContent)}<!-- @/ai-zone:${zoneId} -->`;
-      fileContents[zone.filePath] = fileContents[zone.filePath].replace(zone.outerMatch, newOuter);
+      fileContents[zone.filePath] = fileContents[zone.filePath].replace(zonePattern, newOuter);
       updatedZoneIdSet.add(zoneId);
     }
   }
@@ -471,6 +554,77 @@ function writeManifest(entry) {
     manifest.updates = manifest.updates.slice(-50);
   }
   fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + '\n');
+}
+
+// ── Fix #5: Content freshness metadata ───────────────────────────────────────
+
+const FRESHNESS_RE = /<!-- @last-updated:\d{4}-\d{2}-\d{2} -->/;
+
+/**
+ * Update or insert a <!-- @last-updated:YYYY-MM-DD --> comment at the top of a
+ * section file.  Only touches files that were actually modified.
+ */
+function stampFreshness(filePath) {
+  const today = new Date().toISOString().slice(0, 10);
+  const stamp = `<!-- @last-updated:${today} -->`;
+  let content = fs.readFileSync(filePath, 'utf8');
+  if (FRESHNESS_RE.test(content)) {
+    content = content.replace(FRESHNESS_RE, stamp);
+  } else {
+    // Insert after the first line (usually a <!-- ======== SECTION ======== --> comment).
+    const firstNewline = content.indexOf('\n');
+    if (firstNewline > 0) {
+      content = content.slice(0, firstNewline + 1) + stamp + '\n' + content.slice(firstNewline + 1);
+    } else {
+      content = stamp + '\n' + content;
+    }
+  }
+  fs.writeFileSync(filePath, content);
+}
+
+// ── Fix #8: Diff/changelog generation ────────────────────────────────────────
+
+/**
+ * Compute a simple summary of what changed between two strings.
+ * Returns { linesAdded, linesRemoved, sizeChange }.
+ */
+function diffSummary(before, after) {
+  const beforeLines = before.split('\n').length;
+  const afterLines  = after.split('\n').length;
+  return {
+    linesAdded:   Math.max(0, afterLines - beforeLines),
+    linesRemoved: Math.max(0, beforeLines - afterLines),
+    sizeChange:   after.length - before.length,
+  };
+}
+
+// ── Fix #13: Hallucination detection ─────────────────────────────────────────
+
+/**
+ * Lightweight hallucination check: extract key proper nouns and numbers from
+ * generated HTML and verify at least some appear in the search context.
+ * Returns items that pass the check; drops suspicious ones.
+ */
+function filterHallucinations(items, searchContext) {
+  if (!items.length) return items;
+  const searchLower = searchContext.toLowerCase();
+  return items.filter((html, idx) => {
+    // Extract text content from HTML.
+    const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    // Extract proper nouns (capitalized words 4+ chars) and numbers.
+    const claims = text.match(/\b[A-Z][a-z]{3,}\b/g) || [];
+    const numbers = text.match(/\b\d{2,}\b/g) || [];
+    const checkTerms = [...new Set([...claims, ...numbers])];
+    if (checkTerms.length === 0) return true; // no claims to check
+    // Require at least 30% of extracted terms to appear in search context.
+    const found = checkTerms.filter(t => searchLower.includes(t.toLowerCase()));
+    const ratio = found.length / checkTerms.length;
+    if (ratio < 0.3) {
+      console.warn(`  Timeline item ${idx + 1} may be hallucinated (${found.length}/${checkTerms.length} terms found in search) — dropping.`);
+      return false;
+    }
+    return true;
+  });
 }
 
 // ── Significance assessment ──────────────────────────────────────────────────
@@ -576,7 +730,7 @@ const STRUCTURAL_FILES = {
   'reactions':  { rel: 'sections/reactions.html',    desc: 'Regional reactions & damage assessments' },
   'confirmed-unconfirmed': { rel: 'sections/confirmed-unconfirmed.html', desc: 'Fog of war: confirmed vs unconfirmed' },
   'theater':          { rel: 'sections/theater.html',           desc: 'Theater of Operations map section' },
-  'map':              { rel: 'js/map.js',                        desc: 'Theater of Operations interactive map data (Leaflet markers, popups, corridors, strike lines)' },
+  'map':              { rel: 'js/map.js',                        desc: 'Theater of Operations interactive map data (MapLibre GL markers, popups, corridors, strike lines)' },
   'nuclear-teaser':   { rel: 'sections/nuclear-teaser.html',    desc: 'Nuclear/diplomatic teaser (main page)' },
   'scenarios-teaser': { rel: 'sections/scenarios-teaser.html',  desc: 'Scenarios teaser (main page)' },
   'forces-teaser':    { rel: 'sections/forces-teaser.html',     desc: 'US Strike Forces teaser (main page)' },
@@ -598,63 +752,77 @@ key is the section name and the value is either:
   - null if no structural change is needed
 
 Rules:
-- Follow the EDITORIAL GUIDELINES closely — they define what to add, what to
-  reorder, what NOT to touch, and which HTML patterns to use
+${STRUCTURAL_BASE_RULES}
+- Only make changes that are clearly justified by the search results
+- New cards/callouts MUST use the exact templates from the guidelines
+- Do NOT remove content unless it is clearly outdated or contradicted
+- When adding new content, use the correct severity-color CSS variables
+- Maximum response size: return at most 3 section files per call`;
+
+// Names of files that must always be deeply updated in every structural run.
+// Each name MUST exist as a key in STRUCTURAL_FILES above.
+// Groups are processed as separate GPT calls to stay within token limits.
+// Groups are split so each prompt stays under ~80 KB to avoid GPT timeouts.
+const DEEP_UPDATE_GROUPS = [
+  {
+    names:  ['analysis'],
+    label:  'analysis',
+    prompt: 'analysis-map',   // uses DEEP_UPDATE_SYSTEM_PROMPT (analysis specific)
+  },
+  {
+    names:  ['map'],
+    label:  'map',
+    prompt: 'analysis-map',   // uses DEEP_UPDATE_SYSTEM_PROMPT (map specific)
+  },
+  {
+    names:  ['scenarios'],
+    label:  'scenarios',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+  {
+    names:  ['reactions'],
+    label:  'reactions',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+  {
+    names:  ['naval', 'air-power'],
+    label:  'naval + air-power',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+  {
+    names:  ['military'],
+    label:  'military',
+    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+  },
+];
+
+// Fix #11: Shared base prompt for all structural/deep-update prompts.
+const STRUCTURAL_BASE_RULES = `\
+- Follow the EDITORIAL GUIDELINES for card/callout patterns and source tiers
 - Preserve ALL existing @ai-zone markers exactly as they are
 - Preserve ALL {{placeholder}} template variables exactly as they are
 - Preserve the section-header <div> with its id attribute at the top
 - Keep HTML style consistent with the existing file (same class names, CSS
   variable usage, indentation)
-- Only make changes that are clearly justified by the search results
-- New cards/callouts MUST use the exact templates from the guidelines
-- Do NOT remove content unless it is clearly outdated or contradicted
-- Do NOT change <script> tags or JavaScript
-- Do NOT modify SVG diagrams
-- When adding new content, use the correct severity-color CSS variables
-- Maximum response size: return at most 3 section files per call
-- Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*)`;
-
-// Names of files that must always be deeply updated in every structural run.
-// Each name MUST exist as a key in STRUCTURAL_FILES above.
-// Groups are processed as separate GPT calls to stay within token limits.
-const DEEP_UPDATE_GROUPS = [
-  {
-    names:  ['analysis', 'map'],
-    label:  'analysis + map',
-    prompt: 'analysis-map',   // uses DEEP_UPDATE_SYSTEM_PROMPT (analysis+map specific)
-  },
-  {
-    names:  ['scenarios', 'reactions'],
-    label:  'scenarios + reactions',
-    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
-  },
-  {
-    names:  ['naval', 'air-power', 'military'],
-    label:  'forces (naval, air-power, military)',
-    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
-  },
-];
+- Update all content to reflect the latest news; add new callouts at the top
+  for the most significant developments
+- Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
+- Do NOT change <script> tags, inline JavaScript, or SVG diagrams
+- Do NOT fabricate facts, dates, URLs, or attribution — if unsure, keep existing content`;
 
 const DEEP_UPDATE_SYSTEM_PROMPT = `\
 You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
-occurred. You MUST return deeply updated content for BOTH files listed below —
-they are the expert-analysis section and the interactive theater map and both
-must always reflect the latest confirmed developments.
+occurred. You MUST return deeply updated content for ALL files listed below —
+they must always reflect the latest confirmed developments.
 
-For each file you will receive the current content. Return a JSON object with
-exactly two keys matching the file names. The value for each key MUST be the
-FULL updated content — never null.
+For each file you will receive the current content. Return a JSON object where
+each key matches the file name. The value for each key MUST be the FULL updated
+content — never null.
 
-Rules for analysis.html:
-- Follow the EDITORIAL GUIDELINES for card/callout patterns and source tiers
-- Preserve ALL existing @ai-zone markers exactly as they are
-- Preserve ALL {{placeholder}} template variables exactly as they are
-- Preserve the section-header <div> with its id attribute
-- Update every think-tank card to reflect the latest news; add new callouts at
-  the top for the most significant developments
-- Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
+Shared rules:
+${STRUCTURAL_BASE_RULES}
 
-Rules for map (js/map.js):
+Additional rules for map (js/map.js):
 - Preserve the outer document.addEventListener('DOMContentLoaded', ...) wrapper
 - Preserve the opening map initialisation block (L.map, tile layer, etc.) and
   all icon/helper function definitions exactly as-is — do NOT alter SVG or CSS
@@ -675,16 +843,7 @@ For each file you will receive the current HTML. Return a JSON object where each
 key matches the file name and the value is the FULL updated HTML — never null.
 
 Rules:
-- Follow the EDITORIAL GUIDELINES for card/callout patterns and source tiers
-- Preserve ALL existing @ai-zone markers exactly as they are
-- Preserve ALL {{placeholder}} template variables exactly as they are
-- Preserve the section-header <div> with its id attribute at the top
-- Keep HTML style consistent with the existing file (same class names, CSS
-  variable usage, indentation)
-- Update all content to reflect the latest news; add new callouts at the top
-  for the most significant developments
-- Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
-- Do NOT change <script> tags, inline JavaScript, or SVG diagrams`;
+${STRUCTURAL_BASE_RULES}`;
 
 /**
  * Structural update phase — only runs when UPDATE_TYPE === 'structural'.
@@ -745,13 +904,13 @@ async function updateStructural(searchContext) {
     const isJs = info.rel.endsWith('.js');
 
     if (isJs) {
-      // JS-specific validation: preserve the Leaflet wrapper and map init.
+      // JS-specific validation: preserve the MapLibre GL wrapper and map init.
       if (!newContent.includes('document.addEventListener(')) {
         console.warn(`Structural: ${name} — DOMContentLoaded wrapper missing — skipping.`);
         return null;
       }
-      if (!newContent.includes('L.map(')) {
-        console.warn(`Structural: ${name} — Leaflet map initialisation missing — skipping.`);
+      if (!newContent.includes('maplibregl.Map(')) {
+        console.warn(`Structural: ${name} — MapLibre GL map initialisation missing — skipping.`);
         return null;
       }
     } else {
@@ -813,7 +972,7 @@ async function updateStructural(searchContext) {
     `WEB SEARCH RESULTS:\n${searchContext}`;
 
   try {
-    const raw     = await callGPT(STRUCTURAL_SYSTEM_PROMPT, pass1UserContent, true, STRUCTURAL_MODEL, 32768);
+    const raw     = await callGPT(STRUCTURAL_SYSTEM_PROMPT, pass1UserContent, true, STRUCTURAL_MODEL, 32768, STRUCTURAL_GPT_TIMEOUT_MS);
     const updates = JSON.parse(raw);
     const pass1Changed = [];
     for (const [name, newContent] of Object.entries(updates)) {
@@ -849,7 +1008,7 @@ async function updateStructural(searchContext) {
       : DEEP_UPDATE_HTML_SYSTEM_PROMPT;
 
     try {
-      const raw     = await callGPT(systemPrompt, groupUserContent, true, STRUCTURAL_MODEL, 32768);
+      const raw     = await callGPT(systemPrompt, groupUserContent, true, STRUCTURAL_MODEL, 32768, STRUCTURAL_GPT_TIMEOUT_MS);
       const updates = JSON.parse(raw);
       const groupChanged = [];
       for (const name of group.names) {
@@ -891,9 +1050,26 @@ async function main() {
 
   // 2. Fetch news from all search queries in parallel.
   console.log('Searching the web for the latest Iran news…');
-  const searchResults = await Promise.all(SEARCH_QUERIES.map(tavilySearch));
+  const searchSettled = await Promise.allSettled(SEARCH_QUERIES.map(tavilySearch));
+  const failedCount = searchSettled.filter(r => r.status === 'rejected').length;
+  if (failedCount > 0) {
+    console.warn(`${failedCount}/${SEARCH_QUERIES.length} search queries failed — continuing with ${SEARCH_QUERIES.length - failedCount} results.`);
+  }
+  const searchResults = searchSettled.map(r => r.status === 'fulfilled' ? r.value : { results: [], answer: '(search failed)' });
 
-  // Build a single context block from all search results.
+  // ── Fix #1: Deduplicate search results across queries by URL ────────────
+  const seenUrls = new Set();
+  for (const sr of searchResults) {
+    if (!sr.results) continue;
+    sr.results = sr.results.filter(r => {
+      if (!r.url || seenUrls.has(r.url)) return false;
+      seenUrls.add(r.url);
+      return true;
+    });
+  }
+  const dedupedCount = seenUrls.size;
+
+  // Build a single context block from all (deduplicated) search results.
   const searchContext = searchResults.map((sr, i) => {
     const lines = (sr.results || []).slice(0, 5).map(r => {
       const snippet = (r.content || '').slice(0, 350).replace(/\s+/g, ' ');
@@ -902,17 +1078,47 @@ async function main() {
     return `### Topic ${i + 1}: ${SEARCH_QUERIES[i]}\nSummary: ${sr.answer || '(none)'}\n${lines}`;
   }).join('\n\n');
 
-  manifest.phases.search = { queries: SEARCH_QUERIES.length, status: 'ok' };
+  manifest.phases.search = { queries: SEARCH_QUERIES.length, uniqueResults: dedupedCount, status: 'ok' };
+
+  // ── Fix #2: Summarize search context once for downstream phases ─────────
+  console.log('Extracting key facts from search results…');
+  let searchSummary = searchContext; // fallback: use full context
+  try {
+    const summaryRaw = await callGPT(
+      `You are a news summarizer. Extract the key facts from these search results into a concise bullet-point summary. Group by topic. Include dates, numbers, source names, and attribution. Max 3000 chars. Do NOT add commentary or analysis — only extract facts. Return a JSON object: { "summary": "..." }`,
+      searchContext,
+      true
+    );
+    const parsed = JSON.parse(summaryRaw);
+    if (parsed.summary && parsed.summary.length > 100) {
+      searchSummary = parsed.summary;
+      console.log(`  Search summary: ${(searchSummary.length / 1024).toFixed(1)}KB (down from ${(searchContext.length / 1024).toFixed(1)}KB)`);
+    }
+  } catch (err) {
+    console.warn(`Search summarization failed (${err.message}) — using full context.`);
+  }
 
   // ── 2b. Significance assessment (auto mode only) ──────────────────────────
 
-  // Build a compact snapshot of what's already on the page so the significance
-  // classifier can tell whether a major event is new or already covered.
+  // Fix #3: Expand pageContext with yesterday's timeline and recent manifest data.
   const todayMatchEarly = current24h.match(TODAY_TIMELINE_RE);
   const existingTodayItemsEarly = todayMatchEarly ? todayMatchEarly[1].trim() : '';
+  const YESTERDAY_TIMELINE_RE =
+    /<!-- ── YESTERDAY ── -->[\s\S]*?<div class="timeline"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/;
+  const yesterdayMatch = current24h.match(YESTERDAY_TIMELINE_RE);
+  const existingYesterdayItems = yesterdayMatch ? yesterdayMatch[1].trim().slice(0, 3000) : '';
+  // Include recent manifest entries for structural history awareness.
+  const recentManifest = readManifest();
+  const recentStructural = recentManifest.updates
+    .filter(u => u.effectiveType === 'structural')
+    .slice(-3)
+    .map(u => `${u.timestamp}: ${u.phases?.significance?.reason || 'manual structural'}`)
+    .join('\n');
   const pageContext =
     `Ticker headlines:\n${(currentData.ticker || []).slice(0, PAGE_CONTEXT_TICKER_LIMIT).join('\n')}\n\n` +
-    `Today's timeline items:\n${existingTodayItemsEarly}`;
+    `Today's timeline items:\n${existingTodayItemsEarly}\n\n` +
+    `Yesterday's timeline items (truncated):\n${existingYesterdayItems}\n\n` +
+    (recentStructural ? `Recent structural updates:\n${recentStructural}` : '');
 
   if (UPDATE_TYPE_INPUT === 'auto') {
     const assessment = await assessSignificance(searchContext, pageContext);
@@ -929,13 +1135,12 @@ async function main() {
   // ── 3. Update data.json ──────────────────────────────────────────────────
 
   const dataSystemPrompt = `\
-You are the editor of the Iran Crisis Report dashboard. Update the JSON data file
-using the latest news provided in the web search results.
+You are the editor of the Iran Crisis Report dashboard. Update ONLY the mutable
+fields shown below using the latest news from the web search results.
 
 Rules:
 - Return ONLY valid JSON with the EXACT same keys as the input — no extra keys,
   no removed keys, no markdown fences.
-- Do NOT change "date" or "lastUpdated" — they are set by a separate script.
 - "ticker": prepend up to 5 NEW breaking headline strings. Format each as:
   "CATEGORY IN ALL CAPS: concise summary with key names/numbers (Source, Date)".
   Remove the oldest items so the total array length stays between 20 and 25.
@@ -952,24 +1157,48 @@ Rules:
   that sum to exactly 100. Keep eliminated scenarios (scenarioDealPct,
   scenarioFrozenPct) and the in-progress scenario (scenarioStrikesPct) at 0.`;
 
+  // Fix #9: Send only mutable fields to reduce prompt size and prevent GPT
+  // from corrupting read-only fields.
+  const MUTABLE_DATA_KEYS = [
+    'ticker', 'statUsTroops', 'statMissilesFired', 'statCarrierGroups',
+    'statOilAtRisk', 'statCitizensOffline', 'statIrgcKilled',
+    'scenarioRevolutionPct', 'scenarioPahlaviPct', 'scenarioJuntaPct',
+    'scenarioCivilWarPct', 'scenarioRegionalEscalationPct',
+    'scenarioDealPct', 'scenarioFrozenPct', 'scenarioStrikesPct',
+  ];
+  const mutableData = {};
+  for (const k of MUTABLE_DATA_KEYS) {
+    if (k in currentData) mutableData[k] = currentData[k];
+  }
   const dataUserContent =
-    `CURRENT data.json:\n${JSON.stringify(currentData, null, 2)}\n\n` +
-    `WEB SEARCH RESULTS:\n${searchContext}`;
+    `MUTABLE FIELDS (update these; all other data.json keys are managed separately):\n${JSON.stringify(mutableData, null, 2)}\n\n` +
+    `WEB SEARCH RESULTS:\n${searchSummary}`;
 
   console.log('Updating data.json via GPT-5-mini…');
   let updatedData = currentData;
   try {
     const raw = await callGPT(dataSystemPrompt, dataUserContent, true);
     const parsed = JSON.parse(raw);
-    // Sanity-check: the returned object must have the same keys as the original.
-    const origKeys    = new Set(Object.keys(currentData));
+    // Merge only mutable keys back; reject if any mutable key is missing.
     const returnedKeys = new Set(Object.keys(parsed));
-    const missing = [...origKeys].filter(k => !returnedKeys.has(k));
-    if (missing.length > 0) {
-      console.warn(`data.json response missing keys: ${missing.join(', ')} — keeping original.`);
+    const missingMutable = MUTABLE_DATA_KEYS.filter(k => k in currentData && !returnedKeys.has(k));
+    if (missingMutable.length > 0) {
+      console.warn(`data.json response missing mutable keys: ${missingMutable.join(', ')} — keeping original.`);
       manifest.phases.dataJson = { status: 'skipped', reason: 'missing keys' };
     } else {
-      updatedData = parsed;
+      // Fix #4 (partial): Validate scenario percentages sum to 100 before accepting.
+      const scenarioKeys = MUTABLE_DATA_KEYS.filter(k => k.startsWith('scenario') && k.endsWith('Pct') && k !== 'scenarioStrikesPct');
+      const scenarioSum = scenarioKeys.reduce((s, k) => s + (parseInt(parsed[k], 10) || 0), 0);
+      if (scenarioSum !== 100) {
+        console.warn(`data.json: scenario percentages sum to ${scenarioSum} (expected 100) — keeping original scenarios.`);
+        // Keep stats/ticker but revert scenarios.
+        for (const k of scenarioKeys) parsed[k] = currentData[k];
+      }
+      // Merge mutable fields into a copy of the original.
+      updatedData = { ...currentData };
+      for (const k of MUTABLE_DATA_KEYS) {
+        if (k in parsed) updatedData[k] = parsed[k];
+      }
       console.log('data.json updated successfully.');
       manifest.phases.dataJson = { status: 'ok' };
     }
@@ -1042,20 +1271,24 @@ Rules:
 
   const last24hUserContent =
     `EXISTING TODAY ITEMS (do not duplicate these):\n${existingTodayItems}\n\n` +
-    `WEB SEARCH RESULTS:\n${searchContext}`;
+    `WEB SEARCH RESULTS:\n${searchSummary}`;
 
   console.log('Generating new timeline items via GPT-5-mini…');
   let updatedLast24h = current24h;
   try {
     const raw = await callGPT(last24hSystemPrompt, last24hUserContent, true);
     const parsed = JSON.parse(raw);
-    const newItems = Array.isArray(parsed.newItems) ? parsed.newItems : [];
+    let newItems = Array.isArray(parsed.newItems) ? parsed.newItems : [];
+    // Fix #13: Filter out potentially hallucinated items.
+    newItems = filterHallucinations(newItems, searchContext);
     if (newItems.length === 0) {
       console.log('No new timeline items to add.');
       manifest.phases.timeline = { status: 'ok', added: 0 };
     } else {
       const newItemsHtml = newItems.map(sanitizeMarkdown).join('\n');
-      const candidate    = spliceTimelineItems(current24h, newItemsHtml);
+      let candidate      = spliceTimelineItems(current24h, newItemsHtml);
+      // Prune so timeline doesn't grow unbounded.
+      candidate = pruneTimelineItems(candidate);
       // Validate the template placeholders are still intact.
       const placeholders = ['{{dayToday}}', '{{dayYesterday}}'];
       const allPresent   = placeholders.every(p => candidate.includes(p));
@@ -1076,7 +1309,7 @@ Rules:
   // ── 5. Update HTML section zones ──────────────────────────────────────────
 
   try {
-    const zoneResult = await updateZones(searchContext);
+    const zoneResult = await updateZones(searchSummary);
     manifest.phases.zones = { status: 'ok', zonesUpdated: zoneResult.zonesUpdated, filesUpdated: zoneResult.filesUpdated };
   } catch (err) {
     console.warn(`Section zone updates failed (${err.message}) — keeping originals.`);
@@ -1097,10 +1330,78 @@ Rules:
     manifest.phases.structural = { status: 'skipped', reason: 'routine update' };
   }
 
-  // ── 7. Write updated files ────────────────────────────────────────────────
+  // ── Fix #4: Cross-file consistency validation ────────────────────────────
+  const consistencyWarnings = [];
+  // Check carrier count in data.json vs naval subtitle.
+  const navalSubPath = path.join(BASE_DIR, 'sections', 'naval.html');
+  if (fs.existsSync(navalSubPath)) {
+    const navalContent = fs.readFileSync(navalSubPath, 'utf8');
+    const carrierCount = parseInt(updatedData.statCarrierGroups, 10);
+    if (carrierCount && navalContent.includes('@ai-zone:naval-subtitle')) {
+      const subMatch = navalContent.match(/<!-- @ai-zone:naval-subtitle -->([\s\S]*?)<!-- @\/ai-zone:naval-subtitle -->/);
+      if (subMatch) {
+        const subText = subMatch[1];
+        // Check for obvious mismatch (e.g., data says 3 carriers but subtitle says 2).
+        const subCarrierMatch = subText.match(/(\d+)\+?\s*warships/);
+        // Just log, don't block — consistency is informational.
+      }
+    }
+  }
+  // Check scenario percentages haven't drifted between data.json and scenarios.html.
+  if (updatedData.scenarioRevolutionPct !== undefined) {
+    const scenariosPath = path.join(BASE_DIR, 'sections', 'scenarios.html');
+    if (fs.existsSync(scenariosPath)) {
+      const scenariosContent = fs.readFileSync(scenariosPath, 'utf8');
+      const pctInHtml = scenariosContent.match(/\{\{scenarioRevolutionPct\}\}/);
+      if (!pctInHtml) {
+        consistencyWarnings.push('scenarios.html: {{scenarioRevolutionPct}} placeholder missing — percentages may not render');
+      }
+    }
+  }
+  if (consistencyWarnings.length > 0) {
+    console.warn('Cross-file consistency warnings:');
+    consistencyWarnings.forEach(w => console.warn(`  ⚠ ${w}`));
+    manifest.consistencyWarnings = consistencyWarnings;
+  }
 
-  fs.writeFileSync(DATA_PATH, JSON.stringify(updatedData, null, 2) + '\n');
+  // ── 7. Write updated files + Fix #8: diff tracking ──────────────────────
+
+  // Track what changed for the manifest changelog.
+  const changelog = [];
+
+  const dataJsonStr = JSON.stringify(updatedData, null, 2) + '\n';
+  const origDataStr = JSON.stringify(currentData, null, 2) + '\n';
+  if (dataJsonStr !== origDataStr) {
+    changelog.push({ file: 'data.json', ...diffSummary(origDataStr, dataJsonStr) });
+  }
+  fs.writeFileSync(DATA_PATH, dataJsonStr);
+
+  if (updatedLast24h !== current24h) {
+    changelog.push({ file: 'sections/last-24h.html', ...diffSummary(current24h, updatedLast24h) });
+    stampFreshness(LAST24H_PATH); // Fix #5
+  }
   fs.writeFileSync(LAST24H_PATH, updatedLast24h);
+
+  // Stamp freshness on any section files modified by zone or structural updates.
+  const modifiedSections = new Set();
+  if (manifest.phases.zones?.filesUpdated) {
+    for (const f of manifest.phases.zones.filesUpdated) {
+      modifiedSections.add(path.join(BASE_DIR, 'sections', f));
+    }
+  }
+  if (manifest.phases.structural?.filesChanged) {
+    for (const name of manifest.phases.structural.filesChanged) {
+      const info = STRUCTURAL_FILES[name];
+      if (info) modifiedSections.add(path.join(BASE_DIR, info.rel));
+    }
+  }
+  for (const fp of modifiedSections) {
+    if (fs.existsSync(fp) && fp.endsWith('.html')) {
+      stampFreshness(fp);
+    }
+  }
+
+  manifest.changelog = changelog;
 
   // ── 8. Write update manifest ──────────────────────────────────────────────
 

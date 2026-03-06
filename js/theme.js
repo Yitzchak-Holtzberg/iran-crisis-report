@@ -12,13 +12,15 @@ function toggleTheme() {
     document.getElementById('toggleLabel').textContent = 'Dark';
     try { localStorage.setItem('theme', 'light'); } catch(e) {}
   }
-  // Swap map tile layer between dark and light CartoDB styles
-  if (window._theaterMap && window._theaterTileLayer) {
-    window._theaterMap.removeLayer(window._theaterTileLayer);
-    var newUrl = isLight
-      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-      : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-    window._theaterTileLayer = L.tileLayer(newUrl,{maxZoom:19,subdomains:'abcd'}).addTo(window._theaterMap);
+  // Swap MapLibre GL style between dark and light
+  if (window._theaterMap) {
+    var newStyle = isLight
+      ? 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
+      : 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
+    window._theaterMap.setStyle(newStyle);
+    window._theaterMap.once('styledata', function() {
+      if (window._reloadMapData) window._reloadMapData();
+    });
   }
 }
 (function() {

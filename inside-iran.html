@@ -8,7 +8,10 @@
 <meta property="og:title" content="Iran Crisis: Inside Iran — March 6, 2026"/>
 <meta property="og:description" content="Eight converging crises: Operation Epic Fury direct strikes (Day 2), Khamenei confirmed dead, January Massacre (36,500+ killed), student uprising, economic freefall (rial at 1.7M/USD), digital iron curtain, ethnic crackdowns, water catastrophe, and proxy network collapse."/>
 <meta property="og:type" content="article"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Iran Crisis: Inside Iran — March 6, 2026"/>
+<meta name="twitter:description" content="Eight converging crises: Operation Epic Fury direct strikes (Day 2), Khamenei confirmed dead, January Massacre (36,500+ killed), student uprising, economic freefall (rial at 1.7M/USD), digital iron curtain, ethnic crackdowns, water catastrophe, and proxy network collapse."/>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous"/>
 <link rel="stylesheet" href="css/variables.css"/>
 <link rel="stylesheet" href="css/base.css"/>
 <link rel="stylesheet" href="css/components.css"/>
@@ -120,33 +123,33 @@
 <!-- ======== INSIDE IRAN ======== -->
 <div class="section-header" id="inside-iran">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#127470;&#127479;</div>
-  <div><h2>Inside Iran: A Regime Under Siege</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Eight converging crises threatening the Islamic Republic</div></div>
-  <span class="severity critical" style="margin-left:auto;">Critical</span>
+  <div><h2>Inside Iran: A Regime Under Siege</h2><div class="section-subtitle">Eight converging crises threatening the Islamic Republic</div></div>
+  <span class="severity critical">Critical</span>
 </div>
 
 <!-- @ai-zone:iran-leadership-succession -->
 <div class="callout red">
   <div class="callout-title">BREAKING — Assembly of Experts Names Mojtaba Khamenei New Supreme Leader (Mar 3, 2026)</div>
-  <p style="color:var(--text-secondary);">A partial session of the <strong>Assembly of Experts</strong>, convened under IRGC security escort, voted to name <strong>Mojtaba Khamenei</strong> — son of the late Ayatollah Ali Khamenei — as the new Supreme Leader, ending his 72-hour public absence. The appointment is <strong>deeply contested</strong>: Mojtaba holds no senior clerical credentials, and opposition figures, reformist clerics, and international observers have rejected the session’s legitimacy. IRGC Commander Salami immediately pledged loyalty. The move effectively completes the junta’s constitutional consolidation bid, though its durability depends on whether provincial IRGC commanders comply. — Sources: <em>Reuters, AP, Al Jazeera, Mar 3</em></p>
+  <p>A partial session of the <strong>Assembly of Experts</strong>, convened under IRGC security escort, voted to name <strong>Mojtaba Khamenei</strong> — son of the late Ayatollah Ali Khamenei — as the new Supreme Leader, ending his 72-hour public absence. The appointment is <strong>deeply contested</strong>: Mojtaba holds no senior clerical credentials, and opposition figures, reformist clerics, and international observers have rejected the session’s legitimacy. IRGC Commander Salami immediately pledged loyalty. The move effectively completes the junta’s constitutional consolidation bid, though its durability depends on whether provincial IRGC commanders comply. — Sources: <em>Reuters, AP, Al Jazeera, Mar 3</em></p>
 </div>
 
 <div class="callout red">
   <div class="callout-title">NEW — Leadership Council Asserts Authority (Mar 3, 2026)</div>
-  <p style="color:var(--text-secondary);">President Masoud Pezeshkian announced a <strong>three-man leadership council “has begun its work”</strong> in the wake of Khamenei’s death, invoking constitutional succession while strikes continue. The move signals an <strong>IRGC-aligned bid to consolidate power quickly</strong> and could accelerate a junta-style outcome if security organs enforce it on the street. — Source: <em>AP, Mar 3</em></p>
+  <p>President Masoud Pezeshkian announced a <strong>three-man leadership council “has begun its work”</strong> in the wake of Khamenei’s death, invoking constitutional succession while strikes continue. The move signals an <strong>IRGC-aligned bid to consolidate power quickly</strong> and could accelerate a junta-style outcome if security organs enforce it on the street. — Source: <em>AP, Mar 3</em></p>
 </div>
 
 <div class="callout red">
   <div class="callout-title">CONFIRMED — Khamenei Dead (Mar 1–2, 2026)</div>
-  <p style="color:var(--text-secondary);">Iranian state media and officials <strong>confirmed the death of Supreme Leader Ayatollah Ali Khamenei</strong> amid ongoing U.S.–Israeli strikes. The announcement triggers immediate uncertainty over succession and heightens the risk of an <strong>IRGC-led power consolidation</strong> as nationwide protests continue and communications remain disrupted. — Sources: <em>Reuters, BBC, Al Jazeera, Mar 1–2</em></p>
+  <p>Iranian state media and officials <strong>confirmed the death of Supreme Leader Ayatollah Ali Khamenei</strong> amid ongoing U.S.–Israeli strikes. The announcement triggers immediate uncertainty over succession and heightens the risk of an <strong>IRGC-led power consolidation</strong> as nationwide protests continue and communications remain disrupted. — Sources: <em>Reuters, BBC, Al Jazeera, Mar 1–2</em></p>
 </div>
 <!-- @/ai-zone:iran-leadership-succession -->
 
 <!-- IRGC Succession Crisis -->
-<div class="card" style="border-left:3px solid #7a5af0;">
+<div class="card card-purple">
   <h3>&#9876; The IRGC Succession Crisis — Active</h3>
   <p>The severe repression deepened <strong>internal rifts within Iran's security structure</strong> long before Khamenei's death. Reports documented growing moral and psychological strain on Basij and provincial IRGC units — soldiers ordered to fire on their own people.</p>
   <p>A prior <strong>IRGC command reshuffle</strong>, combined with factional infighting and repeated calls for "unity," pointed to a governing system already unable to maintain its own cohesion. The convergence of:</p>
-  <ul style="color:var(--text-secondary);font-size:14px;margin:8px 0 0 20px;">
+  <ul class="content-list" style="margin:8px 0 0 20px;">
     <li>Internal IRGC command changes and competing power centers</li>
     <li>Public factional infighting between hardliners and pragmatists</li>
     <li>Active U.S.–Israeli military strikes degrading IRGC command nodes</li>
@@ -156,7 +159,7 @@
 </div>
 
 <!-- Crisis 1: The January Massacre -->
-<div class="card" style="border-left:3px solid var(--accent-red);">
+<div class="card card-red">
   <h3>&#9760; Crisis 1: The January Massacre</h3>
   <p>What began as economic protests on <strong>December 28, 2025</strong> — driven by 40%+ general inflation and 70% food price inflation — escalated into the largest anti-government uprising in the Islamic Republic's history. On <strong>January 8-9, 2026</strong>, Khamenei ordered security forces to fire on protesters with live ammunition, tear gas, and prohibited weapons. What followed was the <strong>deadliest two-day protest massacre in modern history</strong>.</p>
   <p>Death toll estimates vary enormously: the Iranian government acknowledged <strong>3,177 deaths</strong>; HRANA documented <strong>7,007 confirmed deaths</strong> (6,488 adult protesters, 236 children, 76 non-participating civilians, and 207 government/security forces); Iran International's investigation found evidence of <strong>36,500+ killed</strong>, including 209 government-affiliated personnel.</p>
@@ -173,7 +176,7 @@
 </div>
 
 <!-- Crisis 2: The Student Uprising -->
-<div class="card" style="border-left:3px solid var(--accent-orange);">
+<div class="card card-orange">
   <h3>&#9994; <!-- @ai-zone:iran-crisis2-title -->Crisis 2: The Student Uprising (Feb 21 - Mar 6, Day 27)<!-- @/ai-zone:iran-crisis2-title --></h3>
   <p>As universities reopened, students organized <strong>40-day memorial protests</strong> for those killed — a deeply significant tradition in Shia Islam marking the end of mourning. Starting Feb. 21, protests erupted at <strong>University of Tehran, Sharif University of Technology, Amirkabir University, Shahid Beheshti University</strong>, and campuses in Isfahan and Mashhad — now spreading to <strong>all 31 provinces</strong>.</p>
   <p>By <strong>Day 9 (March 1)</strong>, demonstrations have taken on new dimensions as news of Khamenei's confirmed death spreads and U.S.–Israeli strikes enter their second day. Despite the regime's "red line" warnings, class boycotts and campus occupations persist. HRANA reported total detentions since Feb. 21 have surpassed <strong>410</strong>. Students chant <strong>"Death to the dictator," "Woman, life, freedom,"</strong> and — significantly — <strong>chants calling for Reza Pahlavi to replace Khamenei</strong>. The news of Khamenei's death has reinvigorated demonstrators, with reports of spontaneous street celebrations in several cities despite the active military situation. On Feb. 24, the <strong>Sharif University of Technology website was hacked</strong>, its name reverted to pre-revolution "Aryamehr University." A separate cyberattack sent <strong>50,000 Iranians a text message</strong>: <em>"To the oppressed people of Iran: the US president is a man of action, you will soon see."</em> Government spokesperson Mohajerani confirmed many universities remain closed, with some already moving classes fully online for the rest of the Iranian calendar year (ending March 20). — Sources: <em>HRANA, Iran Int'l, CBS News, Mar 1</em></p>
@@ -184,7 +187,7 @@
 </div>
 
 <!-- Crisis 3: Economic Collapse -->
-<div class="card" style="border-left:3px solid var(--accent-gold);">
+<div class="card card-gold">
   <h3>&#128200; Crisis 3: Economic Freefall</h3>
   <p>U.S. Treasury Secretary Scott Bessent admitted Washington deliberately engineered a <strong>dollar shortage</strong> to trigger runaway inflation. Testifying before the Senate Banking Committee, Bessent described the trigger event explicitly: <em>"It came to a swift and, I would say, grand culmination in December, when one of the largest banks in Iran went under. There was a run on the bank. The central bank had to print money. The Iranian currency went into free fall, inflation exploded and hence we have seen the Iranian people out on the street."</em> The rial has collapsed from 42,000 to approximately <strong>1.7 million per dollar</strong> — with further slides reported in the hours following Operation Epic Fury strikes, effectively rendering purchasing power non-existent for imports. — Sources: <em>Sunday Guardian, Ynet, Mar 1</em></p>
 
@@ -221,7 +224,7 @@
   </div>
 
   <p>Key economic indicators:</p>
-  <ul style="color:var(--text-secondary);font-size:14px;margin:8px 0 0 20px;">
+  <ul class="content-list" style="margin:8px 0 0 20px;">
     <li>General inflation: <strong>48.6%</strong> (October 2025) — likely higher now</li>
     <li>Food price inflation: <strong>~70%</strong></li>
     <li>IRGC controls an estimated <strong>60-70% of the economy</strong> — profits insulated from suffering</li>
@@ -242,12 +245,12 @@
 
   <div class="callout red" style="margin:16px 0;">
     <div class="callout-title" style="color:var(--accent-red);">The Patronage Crisis</div>
-    <p style="color:var(--text-secondary);">The IRGC's loyalty has always been sustained by economic patronage — access to smuggling networks, construction contracts, import monopolies. With oil revenue collapsing and sanctions tightening, the <strong>regime can no longer afford to buy loyalty</strong>. This is why the IRGC power struggle (below) has become existential: it's not just about ideology, it's about shrinking revenue to divide among competing factions.</p>
+    <p>The IRGC's loyalty has always been sustained by economic patronage — access to smuggling networks, construction contracts, import monopolies. With oil revenue collapsing and sanctions tightening, the <strong>regime can no longer afford to buy loyalty</strong>. This is why the IRGC power struggle (below) has become existential: it's not just about ideology, it's about shrinking revenue to divide among competing factions.</p>
   </div>
 </div>
 
 <!-- Crisis 4: Internet Blackout -->
-<div class="card" style="border-left:3px solid var(--accent-cyan);">
+<div class="card card-cyan">
   <h3>&#128274; Crisis 4: The Digital Iron Curtain</h3>
   <p>On January 8, Iran imposed a <strong>near-total internet shutdown</strong> — the longest ever recorded in the country — cutting off <strong>92 million citizens</strong> from the global web. Even phone and text messaging were restricted.</p>
   <p>Although partially relaxed on January 28, the regime is now building something far more sinister: a <strong>two-tier internet system</strong> where only security-vetted elites receive global access, while 90 million citizens are locked inside a state-controlled intranet. Government spokesperson Fatemeh Mohajerani confirmed international access won't be restored until <strong>at least late March</strong>.</p>
@@ -266,12 +269,12 @@
 
   <div class="callout red" style="margin-top:16px;">
     <div class="callout-title">Strike-Era Communications Blackout — Mar 1, 2026</div>
-    <p style="color:var(--text-secondary);">As Operation Epic Fury strikes entered Day 2, communications inside Iran are again effectively severed. The partial restoration of internet access following the January blackout was reversed within hours of the first strike wave on Feb. 28. Foreign journalists and NGOs operating inside Iran report all VPN-based contact has been lost. Iranian businesses face compounded losses: weeks of January blackout damage followed by this renewed shutdown during active military strikes. — Sources: <em>Netblocks, Reuters, AP, Mar 1</em></p>
+    <p>As Operation Epic Fury strikes entered Day 2, communications inside Iran are again effectively severed. The partial restoration of internet access following the January blackout was reversed within hours of the first strike wave on Feb. 28. Foreign journalists and NGOs operating inside Iran report all VPN-based contact has been lost. Iranian businesses face compounded losses: weeks of January blackout damage followed by this renewed shutdown during active military strikes. — Sources: <em>Netblocks, Reuters, AP, Mar 1</em></p>
   </div>
 </div>
 
 <!-- Crisis 5: Ethnic Minority Crackdown -->
-<div class="card" style="border-left:3px solid var(--accent-orange);">
+<div class="card card-orange">
   <h3>&#127463;&#127469; Crisis 5: The Ethnic Periphery Erupts</h3>
   <p>While students protest in Tehran, Iran's ethnic minorities have borne the most brutal repression. The regime deployed <strong>heavy machine guns, armored vehicles, tanks, helicopter gunships</strong> in Kurdish, Baloch, and Arab-majority regions — a dramatically heavier response than in Persian cities.</p>
 
@@ -300,7 +303,7 @@
 </div>
 
 <!-- Crisis 6: Water Catastrophe -->
-<div class="card" style="border-left:3px solid #00bcd4;">
+<div class="card card-cyan">
   <h3>&#128167; Crisis 6: The Water Catastrophe</h3>
   <p>Iran faces a <strong>water crisis of existential proportions</strong> that predates the current political upheaval — but now accelerates it. Decades of IRGC-directed dam-building, agricultural mismanagement, and climate change have turned one of the ancient world's most water-rich civilizations into a country running dry.</p>
 
@@ -315,7 +318,7 @@
 
   <div class="callout cyan" style="margin:16px 0;">
     <div class="callout-title" style="color:var(--accent-cyan);">Root Cause: IRGC Dam Policy</div>
-    <p style="color:var(--text-secondary);">The IRGC and its affiliated companies built <strong>600+ dams</strong> across Iran — many without environmental review — diverting rivers that fed lakes and wetlands. The Zayandeh River that sustained Isfahan (pop. 2M) now runs dry for months each year. Farmers in Khuzestan (Crisis 5's Arab heartland) have seen the Karun River — Iran's largest — reduced to a trickle, fueling both the ethnic and water crises simultaneously.</p>
+    <p>The IRGC and its affiliated companies built <strong>600+ dams</strong> across Iran — many without environmental review — diverting rivers that fed lakes and wetlands. The Zayandeh River that sustained Isfahan (pop. 2M) now runs dry for months each year. Farmers in Khuzestan (Crisis 5's Arab heartland) have seen the Karun River — Iran's largest — reduced to a trickle, fueling both the ethnic and water crises simultaneously.</p>
   </div>
 
   <p><strong>Tehran itself</strong> (pop. 9M metro) faces acute water rationing. The Karaj Dam reservoir is at historic lows. Officials have warned of a "Day Zero" scenario — the point at which municipal taps stop flowing — as early as summer 2026. Meanwhile, <strong>Iranian agriculture consumes 92% of available water</strong>, much of it for IRGC-controlled pistachio and saffron export farms that prioritize foreign currency over domestic food supply.</p>
@@ -324,7 +327,7 @@
 </div>
 
 <!-- Crisis 7: Proxy Network Collapse -->
-<div class="card" style="border-left:3px solid #e040fb;">
+<div class="card card-purple">
   <h3>&#128373; Crisis 7: Axis of Resistance Unraveling</h3>
   <p>Iran's carefully built <strong>"Axis of Resistance"</strong> — its network of proxy forces across the Middle East — has suffered catastrophic losses since mid-2025. What was once Tehran's primary tool of asymmetric power projection is now fractured, depleted, and increasingly unreliable.</p>
 
@@ -353,18 +356,18 @@
 
   <div class="callout red" style="margin:16px 0;">
     <div class="callout-title" style="color:var(--accent-red);">Strategic Implication — Updated Mar 1, 2026</div>
-    <p style="color:var(--text-secondary);">The collapse of the Axis of Resistance means Iran's primary <strong>deterrence strategy has failed</strong>. Tehran built this network specifically to threaten retaliation against US and Israeli targets without direct state-to-state warfare. With Hezbollah's leadership wiped out, Syria lost, and the land bridge severed, Iran's only remaining retaliatory tool was its ballistic missile arsenal — which it deployed on March 1 (<strong>~170 missiles fired</strong> at Israel and US bases). The ISW notes this represents the exhaustion of Iran's asymmetric options and likely ends the "Axis of Resistance" as a coherent strategic concept. — Sources: <em>ISW Special Report, Feb 28; Critical Threats/Guardian, Mar 1</em></p>
+    <p>The collapse of the Axis of Resistance means Iran's primary <strong>deterrence strategy has failed</strong>. Tehran built this network specifically to threaten retaliation against US and Israeli targets without direct state-to-state warfare. With Hezbollah's leadership wiped out, Syria lost, and the land bridge severed, Iran's only remaining retaliatory tool was its ballistic missile arsenal — which it deployed on March 1 (<strong>~170 missiles fired</strong> at Israel and US bases). The ISW notes this represents the exhaustion of Iran's asymmetric options and likely ends the "Axis of Resistance" as a coherent strategic concept. — Sources: <em>ISW Special Report, Feb 28; Critical Threats/Guardian, Mar 1</em></p>
   </div>
 </div>
 
 <!-- Crisis 8: Operation Epic Fury -->
-<div class="card" style="border-left:3px solid var(--accent-red);">
+<div class="card card-red">
   <h3>&#128293; Crisis 8: Operation Epic Fury — Direct Strikes on Iranian Soil</h3>
   <p>On <strong>February 28, 2026</strong>, the United States and Israel launched <strong>Operation Epic Fury</strong> — the largest coordinated military strikes on Iran in decades, and the first direct US military action against the Islamic Republic since the 1988 tanker war. Targets included nuclear enrichment facilities, ballistic missile production sites, IRGC command nodes, and air defense infrastructure across multiple provinces. By March 1, strikes entered their second day with additional waves targeting hardened underground sites. — Sources: <em>Reuters, USNI, CNBC, Feb 28–Mar 1</em></p>
 
   <div class="callout red" style="margin:16px 0;">
     <div class="callout-title" style="color:var(--accent-red);">Inside Iran: Civilian Impact — Feb 28–Mar 1</div>
-    <p style="color:var(--text-secondary);">Al Jazeera reported <strong>two schools struck</strong> with <strong>80+ killed</strong> in the initial wave. Major oil infrastructure around Khuzestan and the Bushehr nuclear power plant vicinity has been targeted. A near-total communications blackout has been reimposed (see Crisis 4). The rial plunged a further 3%+ in the first hours of strikes, reaching approximately <strong>1.7 million per dollar</strong>. Major traders have <strong>suspended shipments via the Strait of Hormuz</strong>, driving oil price spikes. — Sources: <em>Al Jazeera, Reuters, Ynet, Feb 28–Mar 1</em></p>
+    <p>Al Jazeera reported <strong>two schools struck</strong> with <strong>80+ killed</strong> in the initial wave. Major oil infrastructure around Khuzestan and the Bushehr nuclear power plant vicinity has been targeted. A near-total communications blackout has been reimposed (see Crisis 4). The rial plunged a further 3%+ in the first hours of strikes, reaching approximately <strong>1.7 million per dollar</strong>. Major traders have <strong>suspended shipments via the Strait of Hormuz</strong>, driving oil price spikes. — Sources: <em>Al Jazeera, Reuters, Ynet, Feb 28–Mar 1</em></p>
   </div>
 
   <div class="stats-grid" style="margin:16px 0;">
@@ -385,7 +388,7 @@
 </footer>
 <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>
 <script src="js/map.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/sidebar.js"></script>
