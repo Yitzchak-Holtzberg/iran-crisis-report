@@ -1180,6 +1180,42 @@
           }
         }
       }
+    },
+    {
+      "timestamp": "2026-03-06T02:45:32.187Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results largely repeat coverage already on the page (strikes, Hormuz closure, CIA arming Kurds, IAEA/nuclear issu",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 1
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis2-title"
+          ],
+          "filesUpdated": [
+            "inside-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
