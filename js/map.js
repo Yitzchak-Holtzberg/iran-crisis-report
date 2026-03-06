@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
     scrollZoom: false
   });
   map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
+  map.addControl(new maplibregl.FullscreenControl(), 'top-right');
   window._theaterMap = map;
 
   // ── Layer group config ──
@@ -27,6 +28,16 @@ document.addEventListener('DOMContentLoaded', function(){
     {id:'lines',   label:'Corridors',     color:'#ff5555', cats:['missile-corridor','strike-corridor','transit-route']},
     {id:'other',   label:'Other',         color:'#aaa',    cats:['deploying','blocked','diplomatic','country-marker','israeli-forces','saudi-forces','radius-circle','spinup']}
   ];
+
+  // ── Default map center/zoom for reset button ──
+  var DEFAULT_CENTER = [46, 30];
+  var DEFAULT_ZOOM = 3.5;
+
+  // ── Category → group color mapping (for popup accent) ──
+  var CAT_GROUP_COLOR = {};
+  LAYER_GROUPS.forEach(function(g){
+    g.cats.forEach(function(cat){ CAT_GROUP_COLOR[cat] = g.color; });
+  });
 
   // ── Icon SVG templates (rendered to ImageData for MapLibre) ──
   function createIcon(svg, size) {
@@ -95,10 +106,13 @@ document.addEventListener('DOMContentLoaded', function(){
     'israeli-forces':'#ffd700','saudi-forces':'#00c853','radius-circle':'transparent','spinup':'#ff8c42'
   };
 
+  // ── Strike pulse categories ──
+  var STRIKE_CATS = ['strike-confirmed', 'strike-unconfirmed'];
+
   function loadMapData() {
     Promise.all([
-      fetch('markers.geojson').then(function(r){return r.json();}),
-      fetch('corridors.geojson').then(function(r){return r.json();}),
+      fetch('data/markers.geojson').then(function(r){return r.json();}),
+      fetch('data/corridors.geojson').then(function(r){return r.json();}),
       registerIcons()
     ]).then(function(data){
       var markers = data[0];
@@ -115,14 +129,19 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       });
 
+      // Build strike-only GeoJSON for pulse layer
+      var strikePoints = {type:'FeatureCollection', features: points.features.filter(function(f){
+        return STRIKE_CATS.indexOf(f.properties.category) !== -1;
+      })};
+
       // ── Clean up old layers & sources ──
-      var layersToRemove = ['clusters','cluster-count','corridors-line'];
+      var layersToRemove = ['clusters','cluster-count','corridors-line','strike-pulse'];
       Object.keys(CAT_COLORS).forEach(function(cat){ layersToRemove.push('cat-'+cat); });
       for (var ri = 0; ri < 20; ri++) {
         layersToRemove.push('radius-fill-'+ri, 'radius-fill-'+ri+'-stroke');
       }
       layersToRemove.forEach(function(id){ try { if (map.getLayer(id)) map.removeLayer(id); } catch(e){} });
-      ['markers','corridors'].forEach(function(id){ try { if (map.getSource(id)) map.removeSource(id); } catch(e){} });
+      ['markers','corridors','strike-pulse-src'].forEach(function(id){ try { if (map.getSource(id)) map.removeSource(id); } catch(e){} });
       for (var ri2 = 0; ri2 < 20; ri2++) { try { if (map.getSource('radius-'+ri2)) map.removeSource('radius-'+ri2); } catch(e){} }
 
       map.addSource('markers', {
@@ -136,6 +155,25 @@ document.addEventListener('DOMContentLoaded', function(){
       map.addSource('corridors', {
         type: 'geojson',
         data: corridors
+      });
+
+      // ── Strike pulse source (separate so it doesn't cluster) ──
+      map.addSource('strike-pulse-src', {
+        type: 'geojson',
+        data: strikePoints
+      });
+
+      // ── Strike pulse glow layer (rendered below everything) ──
+      map.addLayer({
+        id: 'strike-pulse',
+        type: 'circle',
+        source: 'strike-pulse-src',
+        paint: {
+          'circle-color': '#ff3b3b',
+          'circle-radius': 18,
+          'circle-opacity': 0,
+          'circle-stroke-width': 0
+        }
       });
 
       // ── Cluster layers ──
@@ -236,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
       });
 
-      // ── Popups ──
+      // ── Popups (with category-colored accent) ──
       var popup = new maplibregl.Popup({offset:12, maxWidth:'340px', closeButton:true});
 
       Object.keys(CAT_COLORS).forEach(function(cat){
@@ -244,7 +282,9 @@ document.addEventListener('DOMContentLoaded', function(){
         var layerId = 'cat-' + cat;
         map.on('click', layerId, function(e){
           var f = e.features[0];
-          var html = f.properties.popup || '<b>'+f.properties.label+'</b>';
+          var accentColor = CAT_GROUP_COLOR[f.properties.category] || '#888';
+          var content = f.properties.popup || '<b>'+f.properties.label+'</b>';
+          var html = '<div style="border-left:3px solid '+accentColor+';padding-left:10px;">'+content+'</div>';
           var coords = f.geometry.coordinates.slice();
           popup.setLngLat(coords).setHTML(html).addTo(map);
         });
@@ -254,30 +294,117 @@ document.addEventListener('DOMContentLoaded', function(){
 
       map.on('click', 'corridors-line', function(e){
         var f = e.features[0];
-        if (f.properties.popup) popup.setLngLat(e.lngLat).setHTML(f.properties.popup).addTo(map);
+        if (f.properties.popup) {
+          var html = '<div style="border-left:3px solid '+(f.properties.color || '#ff5555')+';padding-left:10px;">'+f.properties.popup+'</div>';
+          popup.setLngLat(e.lngLat).setHTML(html).addTo(map);
+        }
       });
       map.on('mouseenter', 'corridors-line', function(){ map.getCanvas().style.cursor = 'pointer'; });
       map.on('mouseleave', 'corridors-line', function(){ map.getCanvas().style.cursor = ''; });
 
+      // ── Cluster click → flyTo (cinematic zoom) ──
       map.on('click', 'clusters', function(e){
         var features = map.queryRenderedFeatures(e.point, {layers:['clusters']});
         var clusterId = features[0].properties.cluster_id;
         map.getSource('markers').getClusterExpansionZoom(clusterId, function(err, zoom){
           if (err) return;
-          map.easeTo({center:features[0].geometry.coordinates, zoom:zoom});
+          map.flyTo({center:features[0].geometry.coordinates, zoom:zoom, speed:0.8, curve:1.4});
         });
       });
       map.on('mouseenter', 'clusters', function(){ map.getCanvas().style.cursor = 'pointer'; });
       map.on('mouseleave', 'clusters', function(){ map.getCanvas().style.cursor = ''; });
 
+      // Track hidden categories and full point set for cluster filtering
+      window._allPoints = points;
+      window._hiddenCats = {};
+
+      // ── Start strike pulse animation ──
+      startStrikePulse();
+
+      // ── Start corridor dash animation ──
+      startCorridorAnimation();
+
       buildToggles();
     });
+  }
+
+  // ── Strike pulse animation (pulsing glow ring) ──
+  var pulseRaf;
+  function startStrikePulse() {
+    if (pulseRaf) cancelAnimationFrame(pulseRaf);
+    var start = performance.now();
+    function tick() {
+      var t = ((performance.now() - start) % 2000) / 2000; // 2s cycle
+      var r = 18 + 14 * t;          // radius grows 18→32
+      var opacity = 0.6 * (1 - t);  // fades out
+      if (map.getLayer('strike-pulse')) {
+        map.setPaintProperty('strike-pulse', 'circle-radius', r);
+        map.setPaintProperty('strike-pulse', 'circle-opacity', opacity);
+      }
+      pulseRaf = requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  // ── Corridor dash animation (flowing dashes) ──
+  var corridorRaf;
+  function startCorridorAnimation() {
+    if (corridorRaf) cancelAnimationFrame(corridorRaf);
+    var step = 0;
+    function tick() {
+      step = (step + 1) % 18; // cycle length matches dash pattern (5+4)*2
+      if (map.getLayer('corridors-line')) {
+        // Shift the dash pattern to create flow effect
+        var a = 5 + step * 0.5;
+        var b = 4;
+        map.setPaintProperty('corridors-line', 'line-dasharray', [a % 9 + 1, b]);
+      }
+      corridorRaf = requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  function updateClusterFilter() {
+    var src = map.getSource('markers');
+    if (!src || !window._allPoints) return;
+    var hidden = window._hiddenCats;
+    var filtered = {
+      type: 'FeatureCollection',
+      features: window._allPoints.features.filter(function(f) {
+        return !hidden[f.properties.category];
+      })
+    };
+    src.setData(filtered);
+
+    // Also update strike pulse source
+    var pulseSrc = map.getSource('strike-pulse-src');
+    if (pulseSrc) {
+      var strikeFiltered = {
+        type: 'FeatureCollection',
+        features: window._allPoints.features.filter(function(f) {
+          return !hidden[f.properties.category] && STRIKE_CATS.indexOf(f.properties.category) !== -1;
+        })
+      };
+      pulseSrc.setData(strikeFiltered);
+    }
   }
 
   function buildToggles() {
     var container = document.getElementById('layerToggles');
     if (!container) return;
     container.innerHTML = '';
+
+    // ── Reset View button ──
+    var resetBtn = document.createElement('button');
+    resetBtn.className = 'layer-toggle-btn';
+    resetBtn.innerHTML = '&#8634; Reset View';
+    resetBtn.style.setProperty('--toggle-color', '#666');
+    resetBtn.style.borderStyle = 'dashed';
+    resetBtn.addEventListener('click', function(){
+      map.flyTo({center: DEFAULT_CENTER, zoom: DEFAULT_ZOOM, speed: 0.8, curve: 1.2});
+    });
+    container.appendChild(resetBtn);
+
     LAYER_GROUPS.forEach(function(group){
       var btn = document.createElement('button');
       btn.className = 'layer-toggle-btn active';
@@ -290,7 +417,9 @@ document.addEventListener('DOMContentLoaded', function(){
           if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', active ? 'visible' : 'none');
           if (map.getLayer('corridors-line') && (cat === 'missile-corridor' || cat === 'strike-corridor' || cat === 'transit-route'))
             map.setLayoutProperty('corridors-line', 'visibility', active ? 'visible' : 'none');
+          if (active) { delete window._hiddenCats[cat]; } else { window._hiddenCats[cat] = true; }
         });
+        updateClusterFilter();
       });
       container.appendChild(btn);
     });

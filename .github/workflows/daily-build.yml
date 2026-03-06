@@ -112,7 +112,7 @@ jobs:
           git pull --rebase --autostash
 
           # Stage only known build outputs and data files
-          git add data.json update-manifest.json \
+          git add data.json data/update-manifest.json \
                  index.html diplomatic.html scenarios.html forces.html \
                  inside-iran.html reactions.html sources.html \
                  sections/ logs/ 2>/dev/null || true

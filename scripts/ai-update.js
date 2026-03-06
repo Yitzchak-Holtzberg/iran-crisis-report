@@ -42,7 +42,7 @@ const path  = require('path');
 const BASE_DIR         = path.join(__dirname, '..');
 const DATA_PATH        = path.join(BASE_DIR, 'data.json');
 const LAST24H_PATH     = path.join(BASE_DIR, 'sections', 'last-24h.html');
-const MANIFEST_PATH    = path.join(BASE_DIR, 'update-manifest.json');
+const MANIFEST_PATH    = path.join(BASE_DIR, 'data', 'update-manifest.json');
 const GUIDELINES_PATH  = path.join(BASE_DIR, 'STRUCTURAL_GUIDELINES.md');
 const GPT_LOG_PATH     = path.join(BASE_DIR, 'logs', 'gpt-calls.jsonl');
 
@@ -846,6 +846,24 @@ const STRUCTURAL_FILES = {
   'analysis':         { rel: 'sections/analysis.html',          desc: 'Expert analysis: CSIS, ISW, Carnegie, Brookings, Atlantic Council what-happens-next' },
 };
 
+// Fix #11: Shared base prompt for all structural/deep-update prompts.
+const STRUCTURAL_BASE_RULES = `\
+- Follow the EDITORIAL GUIDELINES for card/callout patterns and source tiers
+- Preserve ALL existing @ai-zone markers exactly as they are
+- Preserve ALL {{placeholder}} template variables exactly as they are
+- Preserve the section-header <div> with its id attribute at the top
+- Keep HTML style consistent with the existing file (same class names, CSS
+  variable usage, indentation)
+- Update all content to reflect the latest news; add new callouts at the top
+  for the most significant developments
+- Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
+- Do NOT change <script> tags, inline JavaScript, or SVG diagrams
+- Do NOT fabricate facts, dates, URLs, or attribution — if unsure, keep existing content
+- Search results are pre-tagged with [Tier N] source reliability labels:
+  Tiers 1-3: trusted for facts. Tier 4: good for confirmed events. Tier 5: include framing note.
+  Tier 6: only for unconfirmed/fog-of-war content, must note "requires corroboration".
+  Tiers 5 and 6 CAN update confirmed-unconfirmed sections (fog of war) with appropriate caveats.`;
+
 const STRUCTURAL_SYSTEM_PROMPT = `\
 You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
 occurred that requires structural changes to section HTML files — not just
@@ -902,24 +920,6 @@ const DEEP_UPDATE_GROUPS = [
     prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
   },
 ];
-
-// Fix #11: Shared base prompt for all structural/deep-update prompts.
-const STRUCTURAL_BASE_RULES = `\
-- Follow the EDITORIAL GUIDELINES for card/callout patterns and source tiers
-- Preserve ALL existing @ai-zone markers exactly as they are
-- Preserve ALL {{placeholder}} template variables exactly as they are
-- Preserve the section-header <div> with its id attribute at the top
-- Keep HTML style consistent with the existing file (same class names, CSS
-  variable usage, indentation)
-- Update all content to reflect the latest news; add new callouts at the top
-  for the most significant developments
-- Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
-- Do NOT change <script> tags, inline JavaScript, or SVG diagrams
-- Do NOT fabricate facts, dates, URLs, or attribution — if unsure, keep existing content
-- Search results are pre-tagged with [Tier N] source reliability labels:
-  Tiers 1-3: trusted for facts. Tier 4: good for confirmed events. Tier 5: include framing note.
-  Tier 6: only for unconfirmed/fog-of-war content, must note "requires corroboration".
-  Tiers 5 and 6 CAN update confirmed-unconfirmed sections (fog of war) with appropriate caveats.`;
 
 const DEEP_UPDATE_SYSTEM_PROMPT = `\
 You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
