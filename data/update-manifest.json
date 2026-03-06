@@ -1312,6 +1312,107 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-06T21:00:19.696Z",
+      "type": "structural",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "uniqueResults": 98,
+          "tierDropped": 0,
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 3
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-leadership-succession",
+            "military-parchin",
+            "carrier-ford-position",
+            "nuclear-subtitle",
+            "opposition-track"
+          ],
+          "filesUpdated": [
+            "inside-iran.html",
+            "military.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html",
+            "opposition.html"
+          ]
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "hormuz",
+            "theater",
+            "analysis",
+            "map",
+            "scenarios"
+          ],
+          "passes": {
+            "pass1": {
+              "status": "ok",
+              "filesChanged": [
+                "hormuz",
+                "theater"
+              ]
+            },
+            "analysis": {
+              "status": "ok",
+              "filesChanged": [
+                "analysis"
+              ]
+            },
+            "map": {
+              "status": "ok",
+              "filesChanged": [
+                "map"
+              ]
+            },
+            "scenarios": {
+              "status": "ok",
+              "filesChanged": [
+                "scenarios"
+              ]
+            },
+            "reactions": {
+              "status": "error",
+              "error": "OpenAI error 429: {\n    \"error\": {\n        \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\",\n        \"type\": \"insufficient_quota\",\n        \"param\": null,\n        \"code\": \"insufficient_quota\"\n    }\n}\n"
+            },
+            "naval + air-power": {
+              "status": "error",
+              "error": "OpenAI error 429: {\n    \"error\": {\n        \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\",\n        \"type\": \"insufficient_quota\",\n        \"param\": null,\n        \"code\": \"insufficient_quota\"\n    }\n}\n"
+            },
+            "military": {
+              "status": "error",
+              "error": "OpenAI error 429: {\n    \"error\": {\n        \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.\",\n        \"type\": \"insufficient_quota\",\n        \"param\": null,\n        \"code\": \"insufficient_quota\"\n    }\n}\n"
+            }
+          }
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 2,
+          "sizeChange": -97
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 178,
+          "sizeChange": -28185
+        }
+      ]
     }
   ]
 }
