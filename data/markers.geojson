@@ -3,21 +3,33 @@
   "features": [
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [53, 32.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53,
+          32.5
+        ]
+      },
       "properties": {
         "category": "radius-circle",
         "label": "Iran red highlight",
         "radiusKm": 700,
         "color": "#ff3b3b",
         "fillColor": "#ff3b3b",
-        "fillOpacity": 0.10,
+        "fillOpacity": 0.1,
         "weight": 2,
         "dashArray": "4,3"
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [59.5, 24.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.5,
+          24.2
+        ]
+      },
       "properties": {
         "category": "us-carrier",
         "label": "USS Abraham Lincoln (CVN-72)",
@@ -26,7 +38,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [59.5, 24.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.5,
+          24.2
+        ]
+      },
       "properties": {
         "category": "radius-circle",
         "label": "CVW-11 strike radius (~700km)",
@@ -41,7 +59,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [60.2, 24.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.2,
+          24.5
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Frank E. Petersen Jr. (DDG-121)",
@@ -50,7 +74,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [61.0, 23.8] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61,
+          23.8
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Spruance (DDG-111)",
@@ -59,7 +89,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [60.5, 23.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.5,
+          23.2
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Michael Murphy (DDG-112)",
@@ -68,7 +104,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [33.0, 34.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33,
+          34.5
+        ]
+      },
       "properties": {
         "category": "us-carrier",
         "label": "USS Gerald R. Ford (CVN-78)",
@@ -77,7 +119,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [33.0, 34.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33,
+          34.5
+        ]
+      },
       "properties": {
         "category": "radius-circle",
         "label": "CVW-8 strike radius (~900km with F-35C)",
@@ -92,7 +140,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [32.5, 35.0] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5,
+          35
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Winston S. Churchill (DDG-81)",
@@ -101,7 +155,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [33.5, 34.0] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.5,
+          34
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Bainbridge (DDG-96)",
@@ -110,7 +170,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [34.0, 33.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34,
+          33.5
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Mahan (DDG-72)",
@@ -119,7 +185,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [56.2, 25.8] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          56.2,
+          25.8
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS McFaul (DDG-74)",
@@ -128,7 +200,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [58.0, 25.0] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58,
+          25
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Mitscher (DDG-57)",
@@ -137,7 +215,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [62.5, 22.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.5,
+          22.5
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Pinckney (DDG-91)",
@@ -146,7 +230,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [64.0, 22.0] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          64,
+          22
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS John Finn (DDG-113)",
@@ -155,7 +245,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [26.5, 34.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.5,
+          34.2
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Roosevelt (DDG-80)",
@@ -164,7 +260,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [28.0, 33.8] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28,
+          33.8
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Bulkeley (DDG-84)",
@@ -173,7 +275,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [39.5, 18.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.5,
+          18.5
+        ]
+      },
       "properties": {
         "category": "us-destroyer",
         "label": "USS Delbert D. Black (DDG-119)",
@@ -182,7 +290,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.5, 26.8] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.5,
+          26.8
+        ]
+      },
       "properties": {
         "category": "us-lcs",
         "label": "USS Canberra (LCS-30)",
@@ -191,7 +305,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [50.8, 26.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.8,
+          26.2
+        ]
+      },
       "properties": {
         "category": "us-lcs",
         "label": "USS Tulsa (LCS-16)",
@@ -200,7 +320,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [52.2, 27.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.2,
+          27.2
+        ]
+      },
       "properties": {
         "category": "us-lcs",
         "label": "USS Santa Barbara (LCS-32)",
@@ -209,7 +335,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [62.0, 20.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62,
+          20.5
+        ]
+      },
       "properties": {
         "category": "us-submarine",
         "label": "USS Georgia (SSGN-729)",
@@ -218,7 +350,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-12.0, 37.0] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -12,
+          37
+        ]
+      },
       "properties": {
         "category": "deploying",
         "label": "USS George H.W. Bush (CVN-77)",
@@ -227,7 +365,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.4, 35.7] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.4,
+          35.7
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Tehran",
@@ -238,7 +382,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [59.6, 36.3] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.6,
+          36.3
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Mashhad",
@@ -249,7 +399,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [52.5, 29.6] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.5,
+          29.6
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Shiraz",
@@ -260,7 +416,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [48.7, 32.3] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.7,
+          32.3
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Ahvaz (Khuzestan)",
@@ -271,7 +433,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [46.9, 35.3] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.9,
+          35.3
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Sanandaj (Kurdistan)",
@@ -282,7 +450,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.68, 32.65] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.68,
+          32.65
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Isfahan",
@@ -293,7 +467,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.42, 35.76] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.42,
+          35.76
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "IRGC Headquarters — Tehran",
@@ -304,7 +484,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.43, 35.69] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.43,
+          35.69
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Ministry of Defense — Tehran",
@@ -315,7 +501,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.38, 35.73] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.38,
+          35.73
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Ministry of Intelligence (MOIS) — Tehran",
@@ -326,7 +518,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.47, 35.80] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.47,
+          35.8
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Khamenei Compound — Niavaran / Jamaran, Tehran",
@@ -335,7 +533,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.389, 35.6892] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.389,
+          35.6892
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "IRGC Malek-Ashtar Building — Tehran",
@@ -344,7 +548,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.42, 35.72] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.42,
+          35.72
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "IRIB (State Broadcaster) HQ — Tehran",
@@ -353,7 +563,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.46, 35.70] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.46,
+          35.7
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Imam Hossein University Area — Tehran",
@@ -362,7 +578,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.43, 35.80] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.43,
+          35.8
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Evin Prison Perimeter — Tehran",
@@ -371,7 +593,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [45.72, 36.76] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.72,
+          36.76
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Basij Center near Mahabad Prison — Mahabad",
@@ -380,7 +608,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.73, 33.72] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.73,
+          33.72
+        ]
+      },
       "properties": {
         "category": "nuclear-site",
         "label": "Natanz Nuclear Facility",
@@ -389,7 +623,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.7, 32.6] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.7,
+          32.6
+        ]
+      },
       "properties": {
         "category": "nuclear-site",
         "label": "Isfahan Nuclear Technology Center",
@@ -398,7 +638,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [52.5, 33.3] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.5,
+          33.3
+        ]
+      },
       "properties": {
         "category": "nuclear-site",
         "label": "Pickaxe Mountain / Shahid Ali Mohammadi Facility",
@@ -407,7 +653,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [50.99, 34.88] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.99,
+          34.88
+        ]
+      },
       "properties": {
         "category": "nuclear-site",
         "label": "Fordow Uranium Enrichment Plant (FUEP)",
@@ -416,7 +668,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [49.22, 34.18] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.22,
+          34.18
+        ]
+      },
       "properties": {
         "category": "nuclear-site",
         "label": "Arak IR-40 Heavy Water Reactor & Research Complex",
@@ -425,7 +683,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [50.88, 28.83] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.88,
+          28.83
+        ]
+      },
       "properties": {
         "category": "nuclear-site",
         "label": "Bushehr Nuclear Power Plant",
@@ -434,7 +698,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.77, 35.54] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.77,
+          35.54
+        ]
+      },
       "properties": {
         "category": "nuclear-site",
         "label": "Parchin Military Complex",
@@ -443,7 +713,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [56.2, 26.6] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          56.2,
+          26.6
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Strait of Hormuz",
@@ -454,7 +730,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [57.8, 25.0] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.8,
+          25
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "IRGC Drone Carrier Shahid Bagheri — Struck",
@@ -463,7 +745,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [50.96, 35.83] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.96,
+          35.83
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Karaj — IRGC Missile & Nuclear Support Facility",
@@ -474,7 +762,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [50.97, 35.84] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.97,
+          35.84
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Karaj",
@@ -485,7 +779,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [46.24, 38.13] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.24,
+          38.13
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Tabriz — 2nd Tactical Air Base (TAB-2)",
@@ -496,7 +796,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [46.29, 38.08] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.29,
+          38.08
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Tabriz",
@@ -507,7 +813,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [47.16, 34.35] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.16,
+          34.35
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Kermanshah — Missile Storage & Shahid Ashrafi Esfahani Air Base",
@@ -518,7 +830,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [50.88, 34.64] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.88,
+          34.64
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Qom — IRGC Security & Missile Infrastructure",
@@ -529,7 +847,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [50.32, 29.25] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.32,
+          29.25
+        ]
+      },
       "properties": {
         "category": "strike-unconfirmed",
         "label": "Kharg Island — Oil Terminal & IRGC Navy Base",
@@ -540,7 +864,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [46.42, 33.64] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.42,
+          33.64
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Ilam — Military Airfield & IRGC Logistics",
@@ -551,7 +881,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [57.1, 30.3] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.1,
+          30.3
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Kerman — IRGC Command Centre",
@@ -560,7 +896,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [51.5, 25.3] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.5,
+          25.3
+        ]
+      },
       "properties": {
         "category": "air-base",
         "label": "Al Udeid Air Base, Qatar",
@@ -569,7 +911,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [47.9, 24.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.9,
+          24.2
+        ]
+      },
       "properties": {
         "category": "air-base",
         "label": "Prince Sultan Air Base, Saudi Arabia",
@@ -578,7 +926,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [54.6, 24.4] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          54.6,
+          24.4
+        ]
+      },
       "properties": {
         "category": "air-base",
         "label": "Al Dhafra Air Base, UAE (Abu Dhabi)",
@@ -587,7 +941,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [36.8, 32.0] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.8,
+          32
+        ]
+      },
       "properties": {
         "category": "air-base",
         "label": "Muwaffaq Salti Air Base, Jordan",
@@ -596,7 +956,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [50.59, 26.23] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.59,
+          26.23
+        ]
+      },
       "properties": {
         "category": "us-carrier",
         "label": "NSA Bahrain — US 5th Fleet HQ",
@@ -605,7 +971,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [55.3, 25.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          55.3,
+          25.2
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "US Consulate Dubai — Drone Strike",
@@ -614,7 +986,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [46.75, 24.68] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.75,
+          24.68
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "US Embassy Riyadh — Drone Attack",
@@ -623,7 +1001,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [48.17, 29.04] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.17,
+          29.04
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Kuwait — Shuaiba Port Iranian Strike",
@@ -632,7 +1016,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [45.46, 39.19] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.46,
+          39.19
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Azerbaijan — Nakhchivan International Airport Iranian Strike",
@@ -641,7 +1031,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [45.40, 39.15] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.4,
+          39.15
+        ]
+      },
       "properties": {
         "category": "strike-unconfirmed",
         "label": "Azerbaijan — Shakarabad Village Drone Impact",
@@ -650,7 +1046,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [36.22, 36.85] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.22,
+          36.85
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Turkey — Dortyol, Hatay Province Iranian Missile",
@@ -659,7 +1061,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [34.8, 32] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8,
+          32
+        ]
+      },
       "properties": {
         "category": "israeli-forces",
         "label": "Israel - IDF",
@@ -670,7 +1078,103 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [34.9, 29.9] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.95,
+          31.25
+        ]
+      },
+      "properties": {
+        "category": "israeli-forces",
+        "label": "Nevatim Air Base",
+        "popup": "<b style=\"color:#ffd700\">Nevatim Air Base</b><br>Home of IAF F-35I Adir squadron<br>Primary long-range strike base<br><b>HIGH ALERT — Sorties ongoing</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.73,
+          32.6
+        ]
+      },
+      "properties": {
+        "category": "israeli-forces",
+        "label": "Ramat David Air Base",
+        "popup": "<b style=\"color:#ffd700\">Ramat David Air Base</b><br>F-16I Sufa &amp; F-15I Ra'am<br>Northern command air ops<br><b>ACTIVE — Hezbollah front support</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.55,
+          31.9
+        ]
+      },
+      "properties": {
+        "category": "israeli-forces",
+        "label": "Palmachim — Arrow-3 / Iron Dome",
+        "popup": "<b style=\"color:#ffd700\">Palmachim Missile Base</b><br>Arrow-3 ballistic missile defense<br>David's Sling &amp; Iron Dome batteries<br><b style=\"color:#ff3b3b\">ACTIVE — Intercepting Iranian salvos</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2,
+          31.75
+        ]
+      },
+      "properties": {
+        "category": "israeli-forces",
+        "label": "IDF Central Command — HQ Kirya, Tel Aviv",
+        "popup": "<b style=\"color:#ffd700\">IDF General Staff / Kirya</b><br>Central Command HQ<br>War cabinet in session<br>Full mobilization authorized"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.23,
+          31.78
+        ]
+      },
+      "properties": {
+        "category": "israeli-forces",
+        "label": "Mossad HQ — Glilot Junction",
+        "popup": "<b style=\"color:#ffd700\">Mossad HQ — Glilot</b><br>Intelligence coordination with CIA<br>Iran targeting cell active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.5,
+          33.05
+        ]
+      },
+      "properties": {
+        "category": "israeli-forces",
+        "label": "IDF Northern Command — Safed",
+        "popup": "<b style=\"color:#ffd700\">IDF Northern Command</b><br>Lebanon border ops<br><b style=\"color:#ff3b3b\">ACTIVE — Hezbollah second front</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9,
+          29.9
+        ]
+      },
       "properties": {
         "category": "air-base",
         "label": "Ovda Air Base, Israel",
@@ -679,7 +1183,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [33, 34.6] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33,
+          34.6
+        ]
+      },
       "properties": {
         "category": "country-marker",
         "label": "RAF Akrotiri, Cyprus",
@@ -690,7 +1200,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-1.79, 51.67] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.79,
+          51.67
+        ]
+      },
       "properties": {
         "category": "blocked",
         "label": "RAF Fairford, United Kingdom",
@@ -699,7 +1215,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [72.42, -7.32] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.42,
+          -7.32
+        ]
+      },
       "properties": {
         "category": "blocked",
         "label": "Diego Garcia",
@@ -708,7 +1230,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [16.4, 48.2] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.4,
+          48.2
+        ]
+      },
       "properties": {
         "category": "diplomatic",
         "label": "Vienna — IAEA Headquarters",
@@ -717,7 +1245,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [46.7, 24.7] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.7,
+          24.7
+        ]
+      },
       "properties": {
         "category": "saudi-forces",
         "label": "Saudi Arabia — Coalition Assistance",
@@ -728,7 +1262,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [2.3, 48.9] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3,
+          48.9
+        ]
+      },
       "properties": {
         "category": "country-marker",
         "label": "France — Engaged",
@@ -739,7 +1279,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [10.0, 38.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10,
+          38.5
+        ]
+      },
       "properties": {
         "category": "french-carrier",
         "label": "FS Charles de Gaulle (R91)",
@@ -748,7 +1294,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [10.0, 38.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10,
+          38.5
+        ]
+      },
       "properties": {
         "category": "radius-circle",
         "label": "Rafale M strike radius (~700km)",
@@ -763,7 +1315,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-98.5, 29.4] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.5,
+          29.4
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "TEXAS — Shooting Incident (Mar 1, 2026)",
@@ -772,7 +1330,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-0.1, 51.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.1,
+          51.5
+        ]
+      },
       "properties": {
         "category": "country-marker",
         "label": "United Kingdom — Defensive Assistance Offered",
@@ -783,7 +1347,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [13.4, 52.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4,
+          52.5
+        ]
+      },
       "properties": {
         "category": "country-marker",
         "label": "Germany — Defensive Assistance Offered",
@@ -794,7 +1364,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [44.2, 15.35] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.2,
+          15.35
+        ]
+      },
       "properties": {
         "category": "iranian-city",
         "label": "Yemen — Houthis (Ansar Allah)",
@@ -805,7 +1381,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [58.6, 23.6] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.6,
+          23.6
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Oman — Iranian Missile/Drone Strike (Mar 5)",
@@ -816,7 +1398,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [58.6, 23.6] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.6,
+          23.6
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Muscat — Iranian Strike Site (Mar 5)",
@@ -825,7 +1413,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [35.50, 33.89] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.5,
+          33.89
+        ]
+      },
       "properties": {
         "category": "country-marker",
         "label": "Hezbollah — Lebanon",
@@ -836,7 +1430,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [35.5, 33.5] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.5,
+          33.5
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Hezbollah — Attempted Second Front (Mar 5)",
@@ -847,7 +1447,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [44.4, 33.3] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.4,
+          33.3
+        ]
+      },
       "properties": {
         "category": "country-marker",
         "label": "Iraq — Shia Militia Mobilization",
@@ -858,7 +1464,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [32.9, 39.9] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.9,
+          39.9
+        ]
+      },
       "properties": {
         "category": "irgc-target",
         "label": "Turkey — Iranian Missile Strike (Mar 4)",
@@ -869,11 +1481,122 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [35.4, 37.0] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4,
+          37
+        ]
+      },
       "properties": {
         "category": "strike-confirmed",
         "label": "Incirlik Air Base Area — Iranian Missile Strike",
         "popup": "<b style=\"color:#ff3b3b\">&#128165; Incirlik Air Base Area — Iranian Missile Strike</b><br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED: Strike on Turkish territory near Incirlik — Mar 4, 2026</b><br>Incirlik Air Base on heightened alert; US B61 nuclear gravity bombs stored on site<br>Turkish and US forces on full air defense alert<br>NATO Article 4 consultations triggered<br><em>Sources: Reuters / NATO, Mar 4, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.95,
+          31.25
+        ]
+      },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Nevatim Air Base — Iranian Missile Impact",
+        "popup": "<b style=\"color:#ff3b3b\">Nevatim Air Base — Iranian Strike</b><br>Ballistic missile impact on runway<br>Partial damage to taxiway<br><b>Arrow-3 intercepted 80% of salvo</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.82,
+          32.08
+        ]
+      },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Tel Aviv — Iranian Missile Debris",
+        "popup": "<b style=\"color:#ff3b3b\">Tel Aviv — Missile Debris Impact</b><br>Iron Dome interception — debris fell in Ramat Gan<br>12 injured, 2 buildings damaged"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.79,
+          31.25
+        ]
+      },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Be'er Sheva — Iranian Drone Strike",
+        "popup": "<b style=\"color:#ff3b3b\">Be'er Sheva — Drone Impact</b><br>Shahed-136 drone penetrated air defense<br>Hit industrial zone<br>3 casualties reported"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.22,
+          32.7
+        ]
+      },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Haifa Port — Iranian Cruise Missile",
+        "popup": "<b style=\"color:#ff3b3b\">Haifa Port — Cruise Missile Strike</b><br>Soumar cruise missile impact near port<br>Fuel storage fire — contained<br><b>David's Sling intercepted 2 of 3</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.5,
+          32.95
+        ]
+      },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Tiberias — Hezbollah Rocket Barrage",
+        "popup": "<b style=\"color:#ff3b3b\">Tiberias — Hezbollah Rockets</b><br>Multiple Falaq-1 rocket impacts<br>Second front opened from Lebanon<br>8 wounded, residential damage"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.54,
+          33.2
+        ]
+      },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Kiryat Shmona — Hezbollah Barrage",
+        "popup": "<b style=\"color:#ff3b3b\">Kiryat Shmona — Hezbollah Barrage</b><br>Heavy rocket fire from southern Lebanon<br>Multiple impacts in town<br>Evacuations underway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.65,
+          31.8
+        ]
+      },
+      "properties": {
+        "category": "strike-unconfirmed",
+        "label": "Dimona — Suspected Iranian Targeting",
+        "popup": "<b style=\"color:#ff8c42\">Dimona Nuclear Facility — Unconfirmed</b><br>Reports of ballistic missile aimed at Dimona<br>Arrow-3 intercept claimed<br><b>Requires corroboration</b>"
       }
     }
   ]

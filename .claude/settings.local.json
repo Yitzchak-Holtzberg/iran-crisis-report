@@ -12,7 +12,13 @@
       "mcp__plugin_playwright_playwright__browser_evaluate",
       "WebSearch",
       "mcp__plugin_playwright_playwright__browser_run_code",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(ls -lh *.html *.json *.geojson)",
+      "Read(//c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/**)",
+      "Bash(du -sh sections sections/* js css scripts .github)",
+      "Bash(mkdir -p data)",
+      "Bash(mv corridors.geojson data/)",
+      "Bash(mv markers.geojson data/)"
     ]
   }
 }
