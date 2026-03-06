@@ -1248,6 +1248,38 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-06T13:15:57.660Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "No new paradigm-shift — results reiterate strikes, Hormuz closure, CIA arming Kurds and leadership succession already on",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 1
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [],
+          "filesUpdated": []
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
