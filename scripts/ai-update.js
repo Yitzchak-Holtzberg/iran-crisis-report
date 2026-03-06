@@ -149,43 +149,45 @@ function getSourceTier(url) {
 
 /**
  * Annotate each search result with its source tier and apply filtering rules.
- * - Tier 1-4 results: kept as-is with tier tag
- * - Tier 5 results: kept but tagged with "[Tier 5 — verify framing]"
- * - Tier 6 results: kept only if topic relates to unconfirmed/fog-of-war content;
- *   tagged with "[Tier 6 — requires corroboration]"
- * - Unknown (tier 0): treated as tier 4 (benefit of the doubt)
+ * - Tier 1-4: always kept, treated as real news (no caveats)
+ * - Tier 5: kept, tagged "[Tier 5 — verify framing]" — can update fog-of-war
+ * - Tier 6: dropped when tier 1-4 sources cover the same batch; kept for
+ *   unconfirmed/fog-of-war content when no better source exists
+ * - Unknown (tier 0): kept without tag (benefit of the doubt)
  *
- * Returns { results: annotatedResults[], dropped: number }
+ * Returns { dropped: number }
  */
 function classifyAndFilterResults(searchResults) {
   let dropped = 0;
   for (const sr of searchResults) {
     if (!sr.results) continue;
     const filtered = [];
-    // Check if this query batch relates to unconfirmed/fog-of-war topics
-    const hasHigherTierOnSameBatch = sr.results.some(r => {
+    // Check if any tier 1-4 source exists in this batch
+    const hasTrustedSource = sr.results.some(r => {
       const t = getSourceTier(r.url || '');
-      return t >= 1 && t <= 3;
+      return t >= 1 && t <= 4;
     });
     for (const r of sr.results) {
       const tier = getSourceTier(r.url || '');
       r._sourceTier = tier;
-      if (tier === 6) {
-        // Tier 6: only keep if there's no tier 1-3 source in same batch
-        // (signals it's niche/unconfirmed territory) OR content is clearly
-        // unconfirmed-type. Always tag for downstream prompts.
-        if (!hasHigherTierOnSameBatch) {
+      if (tier >= 1 && tier <= 4) {
+        // Tiers 1-4: real news — always keep, no caveats
+        r._tierTag = '';
+        filtered.push(r);
+      } else if (tier === 5) {
+        r._tierTag = '[Tier 5 — verify framing]';
+        filtered.push(r);
+      } else if (tier === 6) {
+        // Tier 6: drop if trusted sources already cover this batch
+        if (!hasTrustedSource) {
           r._tierTag = '[Tier 6 — requires corroboration]';
           filtered.push(r);
         } else {
           dropped++;
         }
-      } else if (tier === 5) {
-        r._tierTag = '[Tier 5 — verify framing]';
-        filtered.push(r);
       } else {
-        // Tiers 1-4 and unknown (0)
-        r._tierTag = tier >= 1 ? `[Tier ${tier}]` : '';
+        // Unknown source — keep without tag
+        r._tierTag = '';
         filtered.push(r);
       }
     }
