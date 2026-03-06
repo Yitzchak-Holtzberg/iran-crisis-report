@@ -102,6 +102,98 @@ const SEARCH_QUERIES = [
   'Iran unexpected development technology space cyber bioweapons finance infrastructure',
 ];
 
+// ── Source Tier Classification ────────────────────────────────────────────────
+// Maps domains to the 6-tier credibility hierarchy from STRUCTURAL_GUIDELINES.md.
+// Tier 0 = unknown (treated as tier 4 for filtering purposes).
+
+const SOURCE_TIERS = {
+  // Tier 1 — Official government / intergovernmental
+  'centcom.mil': 1, 'state.gov': 1, 'defense.gov': 1, 'whitehouse.gov': 1,
+  'iaea.org': 1, 'un.org': 1, 'who.int': 1, 'unocha.org': 1,
+  'reliefweb.int': 1, 'treasury.gov': 1,
+  // Tier 2 — Wire services
+  'reuters.com': 2, 'apnews.com': 2, 'france24.com': 2, 'afp.com': 2,
+  // Tier 3 — Specialist defence / think-tank
+  'understandingwar.org': 3, 'news.usni.org': 3, 'thedrive.com': 3,
+  'csis.org': 3, 'defensenews.com': 3, 'armscontrol.org': 3,
+  'crisisgroup.org': 3, 'sipri.org': 3, 'janes.com': 3,
+  // Tier 4 — Quality broadsheets / networks
+  'nytimes.com': 4, 'washingtonpost.com': 4, 'bbc.com': 4, 'bbc.co.uk': 4,
+  'cnn.com': 4, 'npr.org': 4, 'theguardian.com': 4, 'ft.com': 4,
+  'axios.com': 4, 'politico.com': 4, 'economist.com': 4, 'wsj.com': 4,
+  'nbcnews.com': 4, 'cbsnews.com': 4, 'abcnews.go.com': 4, 'pbs.org': 4,
+  // Tier 5 — Regional / verify framing
+  'aljazeera.com': 5, 'iranintl.com': 5, 'alarabiya.net': 5,
+  'timesofisrael.com': 5, 'hrana.org': 5, 'middleeasteye.net': 5,
+  'i24news.tv': 5, 'presstv.ir': 5, 'tasnimnews.com': 5,
+  // Tier 6 — Advocacy / caution
+  'jinsa.org': 6, 'meforum.org': 6, 'alma-center.org': 6,
+  'wikipedia.org': 6, 'en.wikipedia.org': 6,
+};
+
+/**
+ * Classify a URL into a source tier (1-6, or 0 for unknown).
+ * Walks up subdomain levels so e.g. "www.reuters.com" matches "reuters.com".
+ */
+function getSourceTier(url) {
+  try {
+    let hostname = new URL(url).hostname.replace(/^www\./, '');
+    // Try exact match, then strip one subdomain at a time
+    while (hostname.includes('.')) {
+      if (SOURCE_TIERS[hostname]) return SOURCE_TIERS[hostname];
+      hostname = hostname.replace(/^[^.]+\./, '');
+    }
+  } catch { /* malformed URL */ }
+  return 0; // unknown
+}
+
+/**
+ * Annotate each search result with its source tier and apply filtering rules.
+ * - Tier 1-4 results: kept as-is with tier tag
+ * - Tier 5 results: kept but tagged with "[Tier 5 — verify framing]"
+ * - Tier 6 results: kept only if topic relates to unconfirmed/fog-of-war content;
+ *   tagged with "[Tier 6 — requires corroboration]"
+ * - Unknown (tier 0): treated as tier 4 (benefit of the doubt)
+ *
+ * Returns { results: annotatedResults[], dropped: number }
+ */
+function classifyAndFilterResults(searchResults) {
+  let dropped = 0;
+  for (const sr of searchResults) {
+    if (!sr.results) continue;
+    const filtered = [];
+    // Check if this query batch relates to unconfirmed/fog-of-war topics
+    const hasHigherTierOnSameBatch = sr.results.some(r => {
+      const t = getSourceTier(r.url || '');
+      return t >= 1 && t <= 3;
+    });
+    for (const r of sr.results) {
+      const tier = getSourceTier(r.url || '');
+      r._sourceTier = tier;
+      if (tier === 6) {
+        // Tier 6: only keep if there's no tier 1-3 source in same batch
+        // (signals it's niche/unconfirmed territory) OR content is clearly
+        // unconfirmed-type. Always tag for downstream prompts.
+        if (!hasHigherTierOnSameBatch) {
+          r._tierTag = '[Tier 6 — requires corroboration]';
+          filtered.push(r);
+        } else {
+          dropped++;
+        }
+      } else if (tier === 5) {
+        r._tierTag = '[Tier 5 — verify framing]';
+        filtered.push(r);
+      } else {
+        // Tiers 1-4 and unknown (0)
+        r._tierTag = tier >= 1 ? `[Tier ${tier}]` : '';
+        filtered.push(r);
+      }
+    }
+    sr.results = filtered;
+  }
+  return { dropped };
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 /** Run a single Tavily search and return the result object. */
@@ -424,6 +516,8 @@ Source reliability tiers (mirrors the Source Reliability Guide on the sources pa
 - Tier 5 — Verify framing: Al Jazeera, Iran International, Al Arabiya, Times of Israel, HRANA — must add framing note in attribution (e.g. "Iran International (opposition-aligned)")
 - Tier 6 — Caution: JINSA, MEF, Alma Center, Wikipedia — never sole basis for a fact; must be corroborated by a tier 1–4 source
 Establish new facts from tiers 1–3 whenever possible. Tier-5 attributions must include the outlet's editorial angle. Tier-6 sources require corroboration.
+Search results are pre-tagged with [Tier N] labels — use these to decide confidence level.
+Exception: Tiers 5 and 6 CAN update unconfirmed/fog-of-war zones (confirmed-unconfirmed sections) — these zones exist specifically to surface unverified claims with appropriate caveats.
 
 Zone-specific rules:
 - *-subtitle zones: update the section header subtitle if key facts changed
@@ -808,7 +902,11 @@ const STRUCTURAL_BASE_RULES = `\
   for the most significant developments
 - Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
 - Do NOT change <script> tags, inline JavaScript, or SVG diagrams
-- Do NOT fabricate facts, dates, URLs, or attribution — if unsure, keep existing content`;
+- Do NOT fabricate facts, dates, URLs, or attribution — if unsure, keep existing content
+- Search results are pre-tagged with [Tier N] source reliability labels:
+  Tiers 1-3: trusted for facts. Tier 4: good for confirmed events. Tier 5: include framing note.
+  Tier 6: only for unconfirmed/fog-of-war content, must note "requires corroboration".
+  Tiers 5 and 6 CAN update confirmed-unconfirmed sections (fog of war) with appropriate caveats.`;
 
 const DEEP_UPDATE_SYSTEM_PROMPT = `\
 You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
@@ -1069,16 +1167,24 @@ async function main() {
   }
   const dedupedCount = seenUrls.size;
 
-  // Build a single context block from all (deduplicated) search results.
+  // ── Source tier classification and filtering ───────────────────────────
+  const { dropped: tierDropped } = classifyAndFilterResults(searchResults);
+  if (tierDropped > 0) {
+    console.log(`  Source tier filter: dropped ${tierDropped} low-tier results (tier 6 where higher-tier coverage exists).`);
+  }
+
+  // Build a single context block from all (deduplicated, tier-filtered) search results.
+  // Include tier tags so downstream GPT prompts are aware of source credibility.
   const searchContext = searchResults.map((sr, i) => {
     const lines = (sr.results || []).slice(0, 5).map(r => {
       const snippet = (r.content || '').slice(0, 350).replace(/\s+/g, ' ');
-      return `  - [${r.url}] ${r.title || ''}: ${snippet}`;
+      const tag = r._tierTag || '';
+      return `  - ${tag} [${r.url}] ${r.title || ''}: ${snippet}`;
     }).join('\n');
     return `### Topic ${i + 1}: ${SEARCH_QUERIES[i]}\nSummary: ${sr.answer || '(none)'}\n${lines}`;
   }).join('\n\n');
 
-  manifest.phases.search = { queries: SEARCH_QUERIES.length, uniqueResults: dedupedCount, status: 'ok' };
+  manifest.phases.search = { queries: SEARCH_QUERIES.length, uniqueResults: dedupedCount, tierDropped, status: 'ok' };
 
   // ── Fix #2: Summarize search context once for downstream phases ─────────
   console.log('Extracting key facts from search results…');
@@ -1267,7 +1373,10 @@ Rules:
   reserved for the existing last item in each block so it doesn't add double
   spacing before the next day-header, and new items inserted at the top don't
   need it.
-- Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*).`;
+- Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*).
+- Source tier guidance: search results are tagged [Tier N]. Prefer tier 1-3 sources for
+  confirmed facts. Tier 4 is acceptable. Tier 5 items need a framing note (e.g. "opposition-aligned").
+  Tier 6 items should NOT appear in the timeline unless corroborated by a higher-tier source.`;
 
   const last24hUserContent =
     `EXISTING TODAY ITEMS (do not duplicate these):\n${existingTodayItems}\n\n` +
