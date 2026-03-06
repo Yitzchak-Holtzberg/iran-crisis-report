@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 6, 2026",
-  "lastUpdated": "02:45 UTC",
+  "lastUpdated": "07:02 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "~300+",
@@ -21,6 +21,10 @@
   "scenarioCivilWarPct": 6,
   "scenarioRegionalEscalationPct": 14,
   "ticker": [
+    "IRAN: Explosions rock Tehran as Israel intensifies strikes (Al Jazeera, Mar 6, 2026)",
+    "IRAN: Widespread arrests roil country after crackdown on protests (AP, Mar 5, 2026)",
+    "STRAIT OF HORMUZ: 112 crude tankers remain in Persian Gulf after closure (Riviera, Mar 3, 2026)",
+    "IRAN: Uprising reportedly expands to ~190 cities with hit-and-run battles (NCRI, Mar 5, 2026)",
     "US HOUSE: House narrowly rejects resolution to end presidential Iran war powers (PBS, Mar 5, 2026)",
     "GULF STATES: Gulf governments weigh response after Iranian strikes; analysts warn conflict may widen (Reuters, Mar 3, 2026)",
     "IRAN: Assembly of Experts convenes to pick new Supreme Leader after Khamenei's death; potential successors named (CNBC, Mar 3, 2026)",
@@ -39,11 +43,6 @@
     "MARKETS: Investors make dash for cash as Iran crisis upends global markets (Reuters, Mar 3, 2026)",
     "IRAN: Launches wave of ballistic missiles at Israel; millions sheltering (Reuters, Mar 5, 2026)",
     "PROXIES: Houthis resume missile and drone attacks on Israel and shipping routes (AP, Mar 5, 2026)",
-    "U.S. NAVY: USS Abraham Lincoln repositioned after Iranian missile strike (TASS, Mar 4, 2026)",
-    "IAEA: IAEA prepared to support negotiations on Iran nuclear programme in Vienna (IAEA, Mar 5, 2026)",
-    "SANCTIONS: U.S. Treasury sanctions 30+ individuals and vessels tied to illicit Iranian oil exports (U.S. Treasury, Mar 5, 2026)",
-    "REUTERS: U.S. and Israeli strikes hit 1,000+ targets across Iran, coalition steps up (Reuters, Mar 5, 2026)",
-    "INTELLIGENCE: Reports Iran accelerating development of chemical/biological warheads for long-range missiles (Bipartisan Commission on Biodefense, Mar 5, 2026)",
-    "OPPOSITION: Exiled Iranian factions remain divided as Reza Pahlavi urges mass mobilisation (Reuters, Jan 15, 2026)"
+    "U.S. NAVY: USS Abraham Lincoln repositioned after Iranian missile strike (TASS, Mar 4, 2026)"
   ]
 }

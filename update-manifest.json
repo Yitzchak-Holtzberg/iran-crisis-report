@@ -1216,6 +1216,38 @@
           "reason": "routine update"
         }
       }
+    },
+    {
+      "timestamp": "2026-03-06T07:02:23.858Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 18,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results reiterate already‑covered major events (strikes, Hormuz closure, leadership change, CIA arming Kurds), so",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 1
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [],
+          "filesUpdated": []
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      }
     }
   ]
 }
