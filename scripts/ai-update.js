@@ -198,17 +198,28 @@ function classifyAndFilterResults(searchResults) {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-/** Run a single Tavily search and return the result object. */
-async function tavilySearch(query) {
+/**
+ * Run a single Tavily search and return the result object.
+ * @param {string} query
+ * @param {object} [opts] - Override defaults per-query
+ * @param {'basic'|'advanced'} [opts.search_depth] - 'advanced' costs 2 credits
+ * @param {'day'|'week'|'month'} [opts.time_range] - Filter by recency
+ * @param {'general'|'news'} [opts.topic]
+ */
+async function tavilySearch(query, opts = {}) {
   const res = await fetch('https://api.tavily.com/search', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       api_key: TAVILY_KEY,
       query,
-      max_results: 6,
-      search_depth: 'basic',
+      topic: opts.topic || 'news',
+      time_range: opts.time_range || 'day',
+      search_depth: opts.search_depth || 'basic',
+      max_results: opts.max_results || 6,
       include_answer: true,
+      include_domains: opts.include_domains || [],
+      exclude_domains: opts.exclude_domains || [],
     }),
   });
   if (!res.ok) {
@@ -1149,8 +1160,15 @@ async function main() {
   const current24h   = fs.readFileSync(LAST24H_PATH, 'utf8');
 
   // 2. Fetch news from all search queries in parallel.
-  console.log('Searching the web for the latest Iran news…');
-  const searchSettled = await Promise.allSettled(SEARCH_QUERIES.map(tavilySearch));
+  // Structural runs use 'week' time range for broader context; routine uses 'day'.
+  const isStructural = UPDATE_TYPE_INPUT === 'structural';
+  const searchOpts = {
+    topic: 'news',
+    time_range: isStructural ? 'week' : 'day',
+    search_depth: isStructural ? 'advanced' : 'basic',
+  };
+  console.log(`Searching the web for the latest Iran news (topic=news, range=${searchOpts.time_range}, depth=${searchOpts.search_depth})…`);
+  const searchSettled = await Promise.allSettled(SEARCH_QUERIES.map(q => tavilySearch(q, searchOpts)));
   const failedCount = searchSettled.filter(r => r.status === 'rejected').length;
   if (failedCount > 0) {
     console.warn(`${failedCount}/${SEARCH_QUERIES.length} search queries failed — continuing with ${SEARCH_QUERIES.length - failedCount} results.`);
