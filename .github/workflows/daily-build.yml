@@ -70,6 +70,34 @@ jobs:
       - name: Build index.html
         run: npm run build
 
+      # Fix #7: Validate build output before deployment.
+      - name: Validate build output
+        run: |
+          node build.js 2>&1 | tee /tmp/build-output.txt
+          # Fail on critical issues: unresolved placeholders or unbalanced zones.
+          if grep -qE 'unresolved placeholders|Unbalanced AI zone' /tmp/build-output.txt; then
+            echo "::error::Build validation failed — blocking deployment"
+            exit 1
+          fi
+          # Verify all 7 output files exist and are non-empty.
+          for f in index.html diplomatic.html scenarios.html forces.html inside-iran.html reactions.html sources.html; do
+            if [ ! -s "$f" ]; then
+              echo "::error::$f is missing or empty"
+              exit 1
+            fi
+          done
+          echo "✓ Build validation passed"
+
+      # Fix #10: Tag the pre-update state for easy rollback.
+      - name: Tag pre-update state for rollback
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Delete previous rollback tag if it exists, then create a new one.
+          git tag -d last-good-deploy 2>/dev/null || true
+          git push origin :refs/tags/last-good-deploy 2>/dev/null || true
+          git tag last-good-deploy
+
       # Commit the refreshed files back to the branch so the repo always
       # reflects the latest auto-generated output.
       - name: Commit and push updated files
@@ -83,14 +111,18 @@ jobs:
           # have left modified files in the working tree.
           git pull --rebase --autostash
 
-          # Stage everything produced by the rebuild
-          git add -A
+          # Stage only known build outputs and data files
+          git add data.json update-manifest.json \
+                 index.html diplomatic.html scenarios.html forces.html \
+                 inside-iran.html reactions.html sources.html \
+                 sections/ logs/ 2>/dev/null || true
 
           # Commit only if there are changes
           git diff --staged --quiet || git commit -m "chore: daily rebuild $(date -u +'%Y-%m-%d')"
 
-          # Push if a commit was created
+          # Push commit and rollback tag
           git push
+          git push origin last-good-deploy
 
       # Upload the entire repo root as the Pages artifact (index.html, css/, js/).
       - name: Upload Pages artifact

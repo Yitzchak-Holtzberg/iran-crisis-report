@@ -23,7 +23,13 @@
     var fill = document.getElementById('sbProgressFill');
     if (fill) fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
   }
-  window.addEventListener('scroll', onScroll, {passive: true});
+  var scrollTicking = false;
+  window.addEventListener('scroll', function() {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(function() { onScroll(); scrollTicking = false; });
+    }
+  }, {passive: true});
   onScroll();
 })();
 
@@ -96,7 +102,13 @@ document.querySelectorAll('.sb-link').forEach(function(a) {
     });
   }
 
-  window.addEventListener('scroll', toggleBackToTop, {passive: true});
+  var bttTicking = false;
+  window.addEventListener('scroll', function() {
+    if (!bttTicking) {
+      bttTicking = true;
+      requestAnimationFrame(function() { toggleBackToTop(); bttTicking = false; });
+    }
+  }, {passive: true});
   backToTopBtn.addEventListener('click', scrollToTop);
 
   toggleBackToTop();

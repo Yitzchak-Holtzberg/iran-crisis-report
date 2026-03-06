@@ -47,12 +47,22 @@ function validateDataJson(data, schema) {
     }
     if (prop.type === 'string' && typeof val !== 'string') {
       warnings.push(`data.json: "${key}" should be a string, got ${typeof val}`);
+    } else if (prop.type === 'integer' && (typeof val !== 'number' || !Number.isInteger(val))) {
+      warnings.push(`data.json: "${key}" should be an integer, got ${typeof val} (${val})`);
     } else if (prop.type === 'array' && !Array.isArray(val)) {
       warnings.push(`data.json: "${key}" should be an array, got ${typeof val}`);
     } else if (prop.type === 'string' && prop.pattern) {
       const re = new RegExp(prop.pattern);
       if (!re.test(val)) {
         warnings.push(`data.json: "${key}" value "${val}" does not match pattern ${prop.pattern}`);
+      }
+    }
+    if (prop.type === 'integer' && typeof val === 'number') {
+      if (prop.minimum !== undefined && val < prop.minimum) {
+        warnings.push(`data.json: "${key}" value ${val} is below minimum ${prop.minimum}`);
+      }
+      if (prop.maximum !== undefined && val > prop.maximum) {
+        warnings.push(`data.json: "${key}" value ${val} is above maximum ${prop.maximum}`);
       }
     }
   }
@@ -83,6 +93,9 @@ if (dataWarnings.length > 0) {
   const MONTHS_UP    = MONTHS_SHORT.map(m => m.toUpperCase());
   const fmt = dt => `${MONTHS_UP[dt.getMonth()]} ${dt.getDate()}`;
   const today = new Date(DATA.date);
+  if (isNaN(today.getTime())) {
+    throw new Error(`data.json "date" field is not a valid date: "${DATA.date}"`);
+  }
   const yesterday  = new Date(today); yesterday.setDate(today.getDate() - 1);
   const twoDaysAgo = new Date(today); twoDaysAgo.setDate(today.getDate() - 2);
   DATA.dayToday      = fmt(today);
@@ -91,6 +104,9 @@ if (dataWarnings.length > 0) {
   // Short date for sidebar and compact displays (e.g. "Feb 28, 2026").
   DATA.dateShort = `${MONTHS_SHORT[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
 }());
+
+const HEADER_SECTIONS = ['sections/head-base.html', 'sections/masthead.html', 'sections/ticker.html'];
+const FOOTER_SECTIONS = ['sections/sources-link.html', 'sections/scripts.html'];
 
 const BUILDS = [
   {
@@ -103,9 +119,7 @@ const BUILDS = [
       pageOgType: 'website',
     },
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
+      ...HEADER_SECTIONS,
       'sections/sidebar.html',
       'sections/stats.html',
       'sections/last-24h.html',
@@ -119,8 +133,7 @@ const BUILDS = [
       'sections/inside-iran-teaser.html',
       'sections/reactions-teaser.html',
       'sections/opposition.html',
-      'sections/sources-link.html',
-      'sections/scripts.html',
+      ...FOOTER_SECTIONS,
     ],
   },
   {
@@ -133,13 +146,10 @@ const BUILDS = [
       pageOgType: 'article',
     },
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
+      ...HEADER_SECTIONS,
       'sections/sidebar-diplomatic.html',
       'sections/diplomatic.html',
-      'sections/sources-link.html',
-      'sections/scripts.html',
+      ...FOOTER_SECTIONS,
     ],
   },
   {
@@ -152,13 +162,10 @@ const BUILDS = [
       pageOgType: 'article',
     },
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
+      ...HEADER_SECTIONS,
       'sections/sidebar-scenarios.html',
       'sections/scenarios.html',
-      'sections/sources-link.html',
-      'sections/scripts.html',
+      ...FOOTER_SECTIONS,
     ],
   },
   {
@@ -171,17 +178,14 @@ const BUILDS = [
       pageOgType: 'article',
     },
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
+      ...HEADER_SECTIONS,
       'sections/sidebar-forces.html',
       'sections/nation-postures.html',
       'sections/air-power.html',
       'sections/naval.html',
       'sections/military.html',
       'sections/hormuz.html',
-      'sections/sources-link.html',
-      'sections/scripts.html',
+      ...FOOTER_SECTIONS,
     ],
   },
   {
@@ -194,13 +198,10 @@ const BUILDS = [
       pageOgType: 'article',
     },
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
+      ...HEADER_SECTIONS,
       'sections/sidebar-inside-iran.html',
       'sections/inside-iran.html',
-      'sections/sources-link.html',
-      'sections/scripts.html',
+      ...FOOTER_SECTIONS,
     ],
   },
   {
@@ -213,13 +214,10 @@ const BUILDS = [
       pageOgType: 'article',
     },
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
+      ...HEADER_SECTIONS,
       'sections/sidebar-reactions.html',
       'sections/reactions.html',
-      'sections/sources-link.html',
-      'sections/scripts.html',
+      ...FOOTER_SECTIONS,
     ],
   },
   {
@@ -232,9 +230,7 @@ const BUILDS = [
       pageOgType: 'website',
     },
     sections: [
-      'sections/head-base.html',
-      'sections/masthead.html',
-      'sections/ticker.html',
+      ...HEADER_SECTIONS,
       'sections/sidebar-sources.html',
       'sections/sources.html',
       'sections/scripts.html',
@@ -245,7 +241,8 @@ const BUILDS = [
 function processIncludes(content) {
   return content.replace(/<!-- @include\s+(\S+)\s*-->\n?/g, (_match, includePath) => {
     const fullPath = path.resolve(BASE_DIR, includePath);
-    if (!fullPath.startsWith(BASE_DIR + path.sep) && fullPath !== BASE_DIR) {
+    const relative = path.relative(BASE_DIR, fullPath);
+    if (relative.startsWith('..') || path.isAbsolute(relative)) {
       throw new Error(`Security: include path "${includePath}" resolves outside project directory`);
     }
     try {
@@ -357,6 +354,21 @@ function checkDuplicateIds(output) {
 
 // ===== BUILD PROCESS =====
 
+// Fix #15: Incremental builds — only rebuild pages whose sections or data changed.
+const INCREMENTAL = process.argv.includes('--incremental');
+const BUILD_HASH_PATH = path.join(BASE_DIR, '.build-hashes.json');
+const crypto = require('crypto');
+
+function computeHash(content) {
+  return crypto.createHash('md5').update(content).digest('hex');
+}
+
+let prevHashes = {};
+if (INCREMENTAL) {
+  try { prevHashes = JSON.parse(fs.readFileSync(BUILD_HASH_PATH, 'utf8')); } catch { /* first run */ }
+}
+const newHashes = {};
+
 const unknownKeys = new Set();
 const allWarnings = [];
 
@@ -396,8 +408,21 @@ for (const build of BUILDS) {
 
   allWarnings.push(...buildWarnings);
 
+  // Incremental: skip write if output hash matches previous build.
+  const outputHash = computeHash(output);
+  newHashes[build.output] = outputHash;
+  if (INCREMENTAL && prevHashes[build.output] === outputHash) {
+    console.log(`Skipped ${build.output} (unchanged).`);
+    continue;
+  }
+
   fs.writeFileSync(path.join(BASE_DIR, build.output), output);
   console.log(`Built ${build.output} from ${build.sections.length} sections.`);
+}
+
+// Write hashes for next incremental run.
+if (INCREMENTAL) {
+  fs.writeFileSync(BUILD_HASH_PATH, JSON.stringify(newHashes, null, 2));
 }
 
 // Report warnings

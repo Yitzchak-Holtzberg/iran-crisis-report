@@ -1,0 +1,309 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[33.0, 34.5], [33.5, 33.0], [33.0, 31.0], [34.0, 27.5], [38.5, 20.5]]
+      },
+      "properties": {
+        "category": "transit-route",
+        "label": "Ford CSG transit route (Eastern Med to Suez to Red Sea)",
+        "color": "#4a90d9",
+        "weight": 1.5,
+        "dashArray": "8,6",
+        "opacity": 0.5,
+        "popup": "Ford CSG transit route (Eastern Med → Suez → Red Sea)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [34.8, 32.0]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Israel (Feb 28 – Mar 1)",
+        "color": "#ff3b3b",
+        "weight": 2.5,
+        "dashArray": "5,4",
+        "opacity": 0.8,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → Israel (Feb 28 – Mar 1)</b><br><b>~170 ballistic missiles total barrage (Critical Threats / Guardian)</b><br><b>Weapons:</b> Shahab-3, Emad, Kheibar Shekan ballistic missiles<br><b>Target:</b> Israeli cities and IDF installations<br>Arrow 3, David's Sling, Iron Dome activated; mass intercepts reported<br><b style=\"color:#ff8c42\">Damage: Unconfirmed — interception rate not released</b><br><em>Source: BBC, ISW, Critical Threats, Feb 28–Mar 1</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [51.5, 25.3]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Qatar / Al Udeid (Feb 28)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.7,
+        "popup": "<b style=\"color:#ff8c42\">&#128165; Iran → Qatar / Al Udeid (Feb 28)</b><br><b>Weapons:</b> Zolfaghar / Dezful short-medium range ballistic missiles<br><b>Target:</b> CENTCOM HQ, ~10,000 US personnel<br>THAAD / Patriot PAC-3 activated; air sirens sounded in Doha<br><b style=\"color:#ff8c42\">Status: Intercepted — no confirmed ground damage to Al Udeid</b><br><em>Sources: Al Jazeera, ISW, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [50.59, 26.23]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Bahrain / US 5th Fleet (Feb 28)",
+        "color": "#ff3b3b",
+        "weight": 2.5,
+        "dashArray": "5,4",
+        "opacity": 0.85,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → Bahrain / US 5th Fleet (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles — type unspecified<br><b>Target:</b> NSA Bahrain — US Naval Forces Central Command HQ<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED HIT: Missile impacted tower block near naval base</b><br>Fires and property damage confirmed; Patriot systems partially overwhelmed<br><em>Sources: Middle East Eye, Al Jazeera, US News, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [47.9, 24.2]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Saudi Arabia / Prince Sultan (Feb 28)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.65,
+        "popup": "<b style=\"color:#ff8c42\">&#128165; Iran → Saudi Arabia / Prince Sultan (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> Prince Sultan Air Base — F-16, AWACS, tankers<br>Explosions in Riyadh area; widespread alerts issued; Patriot active<br><b style=\"color:#ff8c42\">Status: Intercepts reported — no confirmed direct hit on US facilities</b><br><em>Sources: BBC, US News, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [54.6, 24.4]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to UAE / Abu Dhabi (Feb 28)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.75,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → UAE / Abu Dhabi (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> Al Dhafra Air Base area — F-22 Raptors, ISR drones<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED: 1 civilian killed (falling debris); 4 injured</b><br>Building fire on Palm Jumeirah; large smoke plumes; intercepts visible<br><em>Sources: US News &amp; World Report, Al Jazeera, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [47.98, 29.37]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Kuwait (Feb 28)",
+        "color": "#ff3b3b",
+        "weight": 1.5,
+        "dashArray": "5,4",
+        "opacity": 0.55,
+        "popup": "<b style=\"color:#ff8c42\">&#128165; Iran → Kuwait (Feb 28)</b><br><b>Weapons:</b> Ballistic missiles<br>Air defense systems engaged; missiles intercepted<br>Public warned about shrapnel and debris; no confirmed casualties<br><em>Sources: Al Jazeera, ISW, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [48.17, 29.04]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Kuwait / Shuaiba Port (Mar 6)",
+        "color": "#ff3b3b",
+        "weight": 2.5,
+        "dashArray": "5,4",
+        "opacity": 0.9,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → Kuwait / Shuaiba Port (Mar 6)</b><br><b>Weapons:</b> Direct strike on makeshift US operations center<br><b>Target:</b> Shuaiba Port — US military operations facility<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED HIT: 6 US service members killed</b><br>KEY ESCALATION: First confirmed US military fatalities from direct Iranian strike<br><em>Sources: Verified intelligence, Mar 6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [33, 34.6]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Cyprus / RAF Akrotiri (Mar 1)",
+        "color": "#ff3b3b",
+        "weight": 1.5,
+        "dashArray": "5,4",
+        "opacity": 0.5,
+        "popup": "<b style=\"color:#ff8c42\">&#128165; Iran → Cyprus / RAF Akrotiri (Mar 1)</b><br><b>Weapons:</b> Missiles / drones — type unconfirmed<br><b>Target:</b> UK Sovereign Base Area — RAF Akrotiri (F-35B staging/ISR hub)<br><b style=\"color:#ff8c42\">Status: UNCONFIRMED — social media intercepts only</b><br>Not confirmed by UK MoD, Cyprus govt, or US CENTCOM<br>If verified: first Iranian strike on a NATO-adjacent sovereign base — major escalation<br><em>Sources: Social media intercepts, Mar 1 — Unconfirmed</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[59.5, 24.2], [56.2, 26.6], [54, 30]]
+      },
+      "properties": {
+        "category": "strike-corridor",
+        "label": "Lincoln CVW-11 strike corridor (approx.)",
+        "color": "#4a90d9",
+        "weight": 1.5,
+        "dashArray": "5,5",
+        "opacity": 0.55,
+        "popup": "Lincoln CVW-11 strike corridor (approx.)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[33.0, 34.5], [38, 33], [44, 32.5], [48, 32]]
+      },
+      "properties": {
+        "category": "strike-corridor",
+        "label": "Ford CVW-8 strike corridor (approx.)",
+        "color": "#4a90d9",
+        "weight": 1.5,
+        "dashArray": "5,5",
+        "opacity": 0.45,
+        "popup": "Ford CVW-8 strike corridor (approx.)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [55.3, 25.2]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Dubai / US Consulate (Mar 3)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.7,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → Dubai / US Consulate (Mar 3)</b><br><b>Weapons:</b> Drones<br><b>Target:</b> US Consulate, Dubai<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED: Damage reported; staff evacuated</b><br><em>Sources: Wall Street Journal, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [46.75, 24.68]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Riyadh / US Embassy (Mar 3)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.7,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → Riyadh / US Embassy (Mar 3)</b><br><b>Weapons:</b> Drones<br><b>Target:</b> US Embassy, Riyadh<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED HIT: Staff report damage</b><br><em>Sources: Reuters, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [58.6, 23.6]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Oman / Muscat (Mar 5)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.75,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → Oman / Muscat (Mar 5)</b><br><b>Weapons:</b> Missiles/drones<br><b>Target:</b> Muscat — ending Oman's mediator role<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED HIT: Strike on Omani territory</b><br><em>Sources: Reuters / AP, Mar 5, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[35.5, 33.5], [34.8, 32.0]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Hezbollah to Northern Israel (Mar 5)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.75,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Hezbollah → Northern Israel (Mar 5)</b><br><b>Weapons:</b> Rockets and precision missiles<br><b>Target:</b> Northern Israeli communities and IDF positions<br><b style=\"color:#ff8c42\">Status: Partially intercepted — IDF struck launch sites in response</b><br><em>Sources: Reuters / Times of Israel, Mar 5, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [35.4, 37.0]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Turkey / Incirlik Area (Mar 4)",
+        "color": "#ff3b3b",
+        "weight": 2.5,
+        "dashArray": "5,4",
+        "opacity": 0.85,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → Turkey / Incirlik Area (Mar 4)</b><br><b>Weapons:</b> Ballistic missiles<br><b>Target:</b> Turkish territory — Incirlik Air Base area<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED HIT: Strike on Turkish soil confirmed</b><br>NATO Article 4 consultations triggered; Erdogan condemned attack<br><em>Sources: Reuters / NATO, Mar 4, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [45.46, 39.19]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Azerbaijan / Nakhchivan (Mar 6)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.8,
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Iran → Azerbaijan / Nakhchivan (Mar 6)</b><br><b>Weapons:</b> Drones<br><b>Target:</b> Nakhchivan International Airport terminal<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED: First Iranian attack on Azerbaijan</b><br>Drone hit airport terminal; drone also fell near school in Shakarabad village<br>Major escalation — Iran attacking non-belligerent neighbor<br><em>Sources: Verified intelligence, Mar 6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[54, 32.5], [36.22, 36.85]]
+      },
+      "properties": {
+        "category": "missile-corridor",
+        "label": "Iran to Turkey / Hatay Province (Mar 6)",
+        "color": "#ff3b3b",
+        "weight": 2,
+        "dashArray": "5,4",
+        "opacity": 0.75,
+        "popup": "<b style=\"color:#ff8c42\">&#128165; Iran → Turkey / Dortyol, Hatay Province (Mar 6)</b><br><b>Weapons:</b> Ballistic missile<br><b>Target:</b> Dortyol area, Hatay Province<br><b style=\"color:#ff8c42\">Status: INTERCEPTED by NATO — missile debris landed in area</b><br>Turkey asserts right to self-defense<br>Second confirmed Iranian missile targeting Turkish territory<br><em>Sources: Verified intelligence, Mar 6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[12.0, 55.6], [10.0, 48.0], [8.0, 43.0], [10.0, 38.5]]
+      },
+      "properties": {
+        "category": "transit-route",
+        "label": "Charles de Gaulle transit route (Toulon to Eastern Med)",
+        "color": "#0055a4",
+        "weight": 1.5,
+        "dashArray": "8,6",
+        "opacity": 0.5,
+        "popup": "Charles de Gaulle transit route (Toulon → Eastern Med)"
+      }
+    }
+  ]
+}

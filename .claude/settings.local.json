@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l css/* js/*)",
+      "Bash(wc -l /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/sections/*.html)",
+      "Bash(grep -rn \"onclick\\\\|onerror\\\\|onload\" /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/sections/*.html)",
+      "Bash(npm run validate)",
+      "Bash(grep -l \"teaser\" /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/sections/*.html)",
+      "Bash(grep -E \"\\\\.html$|\\\\.js$|\\\\.css$\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8765/index.html)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "WebSearch",
+      "mcp__plugin_playwright_playwright__browser_run_code",
+      "Bash(npm run build)"
+    ]
+  }
+}

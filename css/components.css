@@ -1,3 +1,64 @@
+/* ===== SHARED UTILITY CLASSES ===== */
+
+/* Section header subtitle */
+.section-subtitle { font-size:13px; color:var(--text-muted); margin-top:2px; }
+
+/* Scenario number badge */
+.scenario-badge { border-radius:8px; padding:8px 14px; font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+.scenario-badge-red    { background:rgba(255,59,59,0.15); color:var(--accent-red); }
+.scenario-badge-green  { background:rgba(0,200,83,0.15); color:var(--accent-green); }
+.scenario-badge-cyan   { background:rgba(0,212,255,0.15); color:var(--accent-cyan); }
+.scenario-badge-orange { background:rgba(255,140,0,0.15); color:var(--accent-orange); }
+.scenario-badge-purple { background:rgba(200,80,192,0.15); color:#c850c0; }
+
+/* Scenario header layout */
+.scenario-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.scenario-header h3 { margin:0; }
+
+/* Tag / badge pills */
+.tag { padding:4px 10px; border-radius:4px; font-family:var(--font-mono); font-size:10px; display:inline-block; }
+.tag-cyan   { background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.3); color:var(--accent-cyan); }
+.tag-gold   { background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.3); color:var(--accent-gold); }
+.tag-orange { background:rgba(255,140,66,0.1); border:1px solid rgba(255,140,66,0.3); color:var(--accent-orange); }
+.tag-green  { background:rgba(0,200,83,0.1); border:1px solid rgba(0,200,83,0.3); color:var(--accent-green); }
+.tag-red    { background:rgba(255,59,59,0.1); border:1px solid rgba(255,59,59,0.3); color:var(--accent-red); }
+.tag-blue   { background:rgba(74,144,217,0.1); border:1px solid rgba(74,144,217,0.3); color:var(--accent-blue); }
+.tag-muted  { background:rgba(150,150,150,0.1); border:1px solid rgba(150,150,150,0.3); color:var(--text-muted); }
+
+/* Teaser CTA button */
+.teaser-cta { display:inline-block; padding:11px 28px; border-radius:6px; font-family:var(--font-mono); font-size:11px; letter-spacing:1.5px; text-decoration:none; text-transform:uppercase; transition:background 0.15s; }
+.teaser-cta:hover { text-decoration:none; }
+.teaser-cta-red    { background:rgba(255,59,59,0.1); border:1px solid var(--accent-red); color:var(--accent-red); }
+.teaser-cta-red:hover    { background:rgba(255,59,59,0.2); }
+.teaser-cta-gold   { background:rgba(255,215,0,0.12); border:1px solid var(--accent-gold); color:var(--accent-gold); }
+.teaser-cta-gold:hover   { background:rgba(255,215,0,0.22); }
+.teaser-cta-cyan   { background:rgba(0,212,255,0.1); border:1px solid var(--accent-cyan); color:var(--accent-cyan); }
+.teaser-cta-cyan:hover   { background:rgba(0,212,255,0.2); }
+.teaser-cta-orange { background:rgba(255,140,66,0.1); border:1px solid var(--accent-orange); color:var(--accent-orange); }
+.teaser-cta-orange:hover { background:rgba(255,140,66,0.2); }
+
+/* Teaser bottom card */
+.teaser-bottom { text-align:center; padding:24px 20px; }
+.teaser-bottom p { color:var(--text-secondary); font-size:14px; margin-bottom:20px; max-width:560px; margin-left:auto; margin-right:auto; }
+
+/* Content lists */
+.content-list    { color:var(--text-secondary); font-size:14px; line-height:1.8; padding-left:16px; }
+.content-list-sm { color:var(--text-secondary); font-size:13px; margin-left:16px; }
+
+/* Source citation */
+.source-cite { color:var(--text-muted); font-size:12px; margin-top:8px; }
+
+/* Sub-header (two-col sections) */
+.sub-header { font-size:14px; color:var(--text-primary); margin-bottom:8px; }
+
+/* Info box / highlight box */
+.info-box { margin-top:10px; padding:10px 14px; border-radius:8px; }
+.info-box-cyan { background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.3); }
+.info-box-red  { background:rgba(255,59,59,0.08); border:1px solid rgba(255,59,59,0.35); }
+.info-box-blue { background:rgba(0,85,164,0.08); border:1px solid rgba(0,85,164,0.3); }
+
+/* ===== EXISTING COMPONENT CLASSES ===== */
+
 .aircraft-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin:24px 0; }
 .aircraft-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center; }
 .aircraft-card h5 { font-family:var(--font-mono); font-size:14px; margin:12px 0 4px; color:var(--text-primary); }
@@ -55,124 +116,39 @@
 [data-theme="light"] .csg-diagram-ford .csg-info-strip  { fill: #f5e8d8; }
 [data-theme="light"] .csg-diagram-ford .csg-divider     { stroke: #c09070; }
 [data-theme="light"] .csg-diagram-ford .csg-info-label  { fill: #7a4820; }
-/* Map icon badge classes for theme-aware blocked/spinup labels */
-.map-badge { display:inline-block; border-radius:6px; padding:4px 8px; font-family:var(--font-mono); font-size:9px; white-space:nowrap; text-align:center; font-weight:700; }
-.map-badge-denied { background:rgba(10,10,20,0.88); border:1px dashed #ff3b3b; color:#ff3b3b; }
-.map-badge-spinup { background:rgba(10,10,20,0.88); border:1px dashed #ff8c42; color:#ff8c42; }
-.map-badge-deploying { background:rgba(10,10,20,0.88); border:1px dashed #4a90d9; color:#4a90d9; }
-[data-theme="light"] .map-badge-denied { background:rgba(255,255,255,0.95); border-color:#c02020; color:#c02020; }
-[data-theme="light"] .map-badge-spinup { background:rgba(255,255,255,0.95); border-color:#b85000; color:#b85000; }
-[data-theme="light"] .map-badge-deploying { background:rgba(255,255,255,0.95); border-color:#2a6ab8; color:#2a6ab8; }
-
-/* ===== MAP ICON MODERNIZATION ===== */
-
-/* Pulsing ring for protest/city dots */
-@keyframes map-dot-ring {
-  0%   { transform:scale(0.5); opacity:0.5; }
-  100% { transform:scale(2.6); opacity:0; }
-}
-.map-dot { border-radius:50%; position:relative; }
-.map-dot::after {
-  content:''; position:absolute; inset:-5px; border-radius:50%;
-  background:var(--c, currentColor);
-  animation:map-dot-ring 2.2s ease-out infinite; pointer-events:none;
-}
-
-/* Shared icon container */
-.map-icon {
-  border-radius:50%; display:flex; align-items:center; justify-content:center;
-  flex-direction:column; gap:1px; transition:transform 0.15s ease, filter 0.15s ease; cursor:pointer;
-}
-.map-icon:hover { transform:scale(1.14); filter:brightness(1.25); }
-.map-icon svg { display:block; flex-shrink:0; overflow:visible; }
-.badge-label {
-  font-family:var(--font-mono); font-size:6.5px; font-weight:700;
-  letter-spacing:0.5px; line-height:1; text-transform:uppercase; user-select:none; white-space:nowrap;
-}
-
-/* Carrier (CVN) */
-.map-icon-cvn {
-  width:44px; height:44px;
-  background:linear-gradient(145deg,#0b1828,#0d2a50);
-  border:2.5px solid #4a90d9;
-  box-shadow:0 0 18px rgba(74,144,217,0.65),0 3px 8px rgba(0,0,0,0.65);
-}
-.map-icon-cvn .badge-label { color:#7ab5ff; }
-
-/* Destroyer / Cruiser (DDG/CG) */
-.map-icon-ddg {
-  width:26px; height:26px;
-  background:linear-gradient(145deg,#0a1d3a,#0d2a50);
-  border:2px solid #4a90d9;
-  box-shadow:0 0 10px rgba(74,144,217,0.5),0 2px 5px rgba(0,0,0,0.6);
-}
-
-/* LCS */
-.map-icon-lcs {
-  width:20px; height:20px;
-  background:linear-gradient(145deg,#091830,#0a2248);
-  border:1.5px solid #5a95cc;
-  box-shadow:0 0 7px rgba(90,149,204,0.4),0 1px 3px rgba(0,0,0,0.55);
-}
-
-/* Submarine (SSN/SSGN) */
-.map-icon-sub {
-  width:34px; height:34px;
-  background:linear-gradient(145deg,#0e0320,#1a0840);
-  border:2px solid #7a5af0;
-  box-shadow:0 0 14px rgba(122,90,240,0.6),0 2px 6px rgba(0,0,0,0.65);
-}
-.map-icon-sub .badge-label { color:#9a7af0; }
-
-/* Air Base */
-.map-icon-jet {
-  width:32px; height:32px;
-  background:linear-gradient(145deg,#041520,#081c30);
-  border:2px solid #00d4ff;
-  box-shadow:0 0 14px rgba(0,212,255,0.55),0 2px 6px rgba(0,0,0,0.6);
-}
-
-/* Nuclear facility — pulsing orange glow */
-@keyframes nuke-glow {
-  0%,100% { box-shadow:0 0 14px rgba(255,140,66,0.55),0 2px 6px rgba(0,0,0,0.6); }
-  50%      { box-shadow:0 0 26px rgba(255,140,66,0.9),0 2px 6px rgba(0,0,0,0.6); }
-}
-.map-icon-nuke {
-  width:32px; height:32px;
-  background:linear-gradient(145deg,#1c0800,#2c1000);
-  border:2px solid #ff8c42;
-  animation:nuke-glow 3s ease-in-out infinite;
-}
-
-/* ===== LEAFLET POPUP THEMING ===== */
-.leaflet-popup-content-wrapper {
+/* ===== MAPLIBRE POPUP THEMING ===== */
+.maplibregl-popup-content {
   background:var(--bg-card) !important;
   border:1px solid var(--border) !important;
   border-radius:12px !important;
   box-shadow:0 8px 32px rgba(0,0,0,0.45) !important;
-  padding:2px 0 !important;
+  padding:14px 18px !important;
   color:var(--text-secondary) !important;
-}
-.leaflet-popup-content {
-  margin:14px 18px !important;
   font-family:'Plus Jakarta Sans',system-ui,sans-serif !important;
   font-size:13px !important;
-  color:var(--text-secondary) !important;
   line-height:1.6 !important;
+  max-width:340px;
 }
-.leaflet-popup-tip { background:var(--bg-card) !important; box-shadow:none !important; }
-.leaflet-popup-close-button {
+.maplibregl-popup-close-button {
   color:var(--text-muted) !important; font-size:18px !important;
-  top:8px !important; right:10px !important;
+  top:6px !important; right:8px !important;
   width:22px !important; height:22px !important;
-  line-height:22px !important; text-align:center !important; padding:0 !important;
 }
-.leaflet-popup-close-button:hover { color:var(--text-primary) !important; background:none !important; }
-.leaflet-control-attribution {
-  background:rgba(10,10,20,0.82) !important; color:var(--text-muted) !important;
-  border-radius:6px 0 0 0 !important; padding:3px 6px !important;
+.maplibregl-popup-close-button:hover { color:var(--text-primary) !important; }
+.maplibregl-popup-tip { border-top-color:var(--bg-card) !important; }
+
+/* ===== LAYER TOGGLE BUTTONS ===== */
+.layer-toggles { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+.layer-toggle-btn {
+  font-size:11px; padding:4px 12px; border-radius:16px; cursor:pointer;
+  border:1.5px solid var(--border); background:var(--bg-card); color:var(--text-muted);
+  transition:all 0.15s ease; user-select:none; font-family:'Plus Jakarta Sans',system-ui,sans-serif;
 }
-[data-theme="light"] .leaflet-control-attribution { background:rgba(245,245,247,0.9) !important; }
+.layer-toggle-btn.active {
+  background:var(--toggle-color, var(--accent-blue)); color:#fff;
+  border-color:var(--toggle-color, var(--accent-blue));
+}
+.layer-toggle-btn:hover { border-color:var(--text-muted); }
 
 /* ===== BACK TO TOP BUTTON ===== */
 .back-to-top {

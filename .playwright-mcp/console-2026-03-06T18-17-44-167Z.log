@@ -1,0 +1,7 @@
+[    1801ms] RangeError: mismatched image size. expected: 0 but got: 10000
+    at vo (https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:42:196443)
+    at new Ao (https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:42:197657)
+    at t.Map.addImage (https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:46:409121)
+    at http://127.0.0.1:8766/js/map.js:79:17
+    at async Promise.all (index 0)
+    at async Promise.all (index 2)

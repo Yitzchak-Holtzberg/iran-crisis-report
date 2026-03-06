@@ -8,7 +8,10 @@
 <meta property="og:title" content="Iran Crisis: Regional Reactions &amp; Damage Assessments — March 6, 2026"/>
 <meta property="og:description" content="Country-by-country reactions to Operation Epic Fury and Iran’s retaliatory strikes: Gulf states hit, damage assessments, diplomatic fallout, and casualty reports."/>
 <meta property="og:type" content="article"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Iran Crisis: Regional Reactions &amp; Damage Assessments — March 6, 2026"/>
+<meta name="twitter:description" content="Country-by-country reactions to Operation Epic Fury and Iran’s retaliatory strikes: Gulf states hit, damage assessments, diplomatic fallout, and casualty reports."/>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous"/>
 <link rel="stylesheet" href="css/variables.css"/>
 <link rel="stylesheet" href="css/base.css"/>
 <link rel="stylesheet" href="css/components.css"/>
@@ -129,24 +132,24 @@
 <!-- SECTION 1: IRAN — STRIKES DAMAGE ASSESSMENT -->
 <div class="section-header" id="reactions-iran">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#127470;&#127479;</div>
-  <div><h2>Iran: Strike Damage Assessment</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Operation Epic Fury — confirmed and assessed damage to Iranian targets (Feb 28–Mar 4, 2026)</div></div>
-  <span class="severity critical" style="margin-left:auto;">Critical</span>
+  <div><h2>Iran: Strike Damage Assessment</h2><div class="section-subtitle">Operation Epic Fury — confirmed and assessed damage to Iranian targets (Feb 28–Mar 4, 2026)</div></div>
+  <span class="severity critical">Critical</span>
 </div>
 
 <div class="callout red">
   <div class="callout-title">Supreme Leader Khamenei Confirmed Dead — Mar 1, 2026</div>
-  <p style="color:var(--text-secondary);">Iranian state media confirmed <strong>Ayatollah Ali Khamenei is dead</strong>. Israeli officials publicly claimed he was killed during strikes on a command bunker in Tehran. NBC News separately reported members of his family were also killed; this remains unverified due to communications disruptions. — Source: <em>AP, Reuters, NBC News, Mar 1</em></p>
+  <p>Iranian state media confirmed <strong>Ayatollah Ali Khamenei is dead</strong>. Israeli officials publicly claimed he was killed during strikes on a command bunker in Tehran. NBC News separately reported members of his family were also killed; this remains unverified due to communications disruptions. — Source: <em>AP, Reuters, NBC News, Mar 1</em></p>
 </div>
 
 <div class="callout blue">
   <div class="callout-title">IAEA: Natanz Buildings Damaged; No Radiological Consequence — Mar 3</div>
-  <p style="color:var(--text-secondary);">The International Atomic Energy Agency reported that <strong>buildings at Natanz sustained damage</strong> amid the strikes and that there was <strong>no radiological consequence observed</strong>. The IAEA is <strong>seeking access</strong> for verification of the current status of safeguarded materials and facilities. — Source: <em>IAEA, Mar 3</em></p>
+  <p>The International Atomic Energy Agency reported that <strong>buildings at Natanz sustained damage</strong> amid the strikes and that there was <strong>no radiological consequence observed</strong>. The IAEA is <strong>seeking access</strong> for verification of the current status of safeguarded materials and facilities. — Source: <em>IAEA, Mar 3</em></p>
 </div>
 
 <div class="grid-2col" style="margin-bottom:20px;">
-  <div class="card" style="border-left:3px solid var(--accent-red);">
+  <div class="card card-red">
     <h3>&#128165; Nuclear & Missile Sites</h3>
-    <ul style="color:var(--text-secondary);font-size:14px;line-height:1.8;padding-left:16px;">
+    <ul class="content-list">
       <li><strong>Fordow</strong> — underground enrichment facility assessed struck; full BDA pending due to limited access</li>
       <li><strong>Natanz</strong> — IAEA confirms <em>buildings damaged</em>; status of underground centrifuge halls <em>unclear</em></li>
       <li><strong>Isfahan</strong> — uranium conversion complex hit; ancillary structural damage reported</li>
@@ -154,11 +157,11 @@
       <li><strong>Shahrud</strong> — ballistic missile production infrastructure impacted</li>
       <li><strong>Imam Ali missile base (Kermanshah)</strong> — launch infrastructure degraded</li>
     </ul>
-    <p style="color:var(--text-muted);font-size:12px;margin-top:8px;">Sources: <em>IAEA, Mar 3; CSIS, Mar 2; ISW, Mar 1–3; Reuters, Feb 28–Mar 3</em></p>
+    <p class="source-cite">Sources: <em>IAEA, Mar 3; CSIS, Mar 2; ISW, Mar 1–3; Reuters, Feb 28–Mar 3</em></p>
   </div>
-  <div class="card" style="border-left:3px solid var(--accent-orange);">
+  <div class="card card-orange">
     <h3>&#127970; Command & Control Targets</h3>
-    <ul style="color:var(--text-secondary);font-size:14px;line-height:1.8;padding-left:16px;">
+    <ul class="content-list">
       <li><strong>IRGC HQ, Tehran</strong> — struck; significant damage reported</li>
       <li><strong>Ministry of Defense, Tehran</strong> — hit in second wave</li>
       <li><strong>IRGC Aerospace Force HQ</strong> — command node damaged</li>
@@ -167,11 +170,11 @@
       <li><strong>State media broadcast centers</strong> — IRIB TV disrupted for 4+ hours</li>
       <li><strong>Cyber infrastructure</strong> — nationwide internet/comms disruptions observed</li>
     </ul>
-    <p style="color:var(--text-muted);font-size:12px;margin-top:8px;">Sources: <em>US CENTCOM, Mar 2; The War Zone, Feb 28; Reuters, Feb 28–Mar 2; Cloudflare, Mar 1</em></p>
+    <p class="source-cite">Sources: <em>US CENTCOM, Mar 2; The War Zone, Feb 28; Reuters, Feb 28–Mar 2; Cloudflare, Mar 1</em></p>
   </div>
 </div>
 
-<div class="card" style="border-left:3px solid var(--accent-yellow);">
+<div class="card card-gold">
   <h3>&#128128; Iranian Civilian Casualties</h3>
   <div class="grid-2col" style="margin-top:12px;">
     <div>
@@ -189,27 +192,27 @@
 <!-- SECTION 2: GULF STATES HIT -->
 <div class="section-header" id="reactions-gulf" style="margin-top:40px;">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#127468;&#127463;</div>
-  <div><h2>Gulf States: Iranian Retaliation Damage</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Iran's ballistic missile and drone attacks affected US‑hosting Gulf nations — Feb 28–Mar 3, 2026</div></div>
-  <span class="severity" style="margin-left:auto;background:rgba(255,140,66,0.15);color:var(--accent-orange);border-color:var(--accent-orange);">Active</span>
+  <div><h2>Gulf States: Iranian Retaliation Damage</h2><div class="section-subtitle">Iran's ballistic missile and drone attacks affected US‑hosting Gulf nations — Feb 28–Mar 3, 2026</div></div>
+  <span class="severity high">Active</span>
 </div>
 
 <div class="callout red">
   <div class="callout-title">Mar 3 — Riyadh: U.S. Embassy Compound Struck by Drones</div>
-  <p style="color:var(--text-secondary);">Reuters reporting indicates the <strong>U.S. embassy compound in Riyadh was hit by drone strikes</strong>, marking a <strong>direct attack on a U.S. diplomatic mission</strong>. Saudi and U.S. security forces responded; <strong>casualty figures not officially released</strong> as of publication. — Source: <em>Reuters, Mar 3</em></p>
+  <p>Reuters reporting indicates the <strong>U.S. embassy compound in Riyadh was hit by drone strikes</strong>, marking a <strong>direct attack on a U.S. diplomatic mission</strong>. Saudi and U.S. security forces responded; <strong>casualty figures not officially released</strong> as of publication. — Source: <em>Reuters, Mar 3</em></p>
 </div>
 
 <div class="callout orange">
   <div class="callout-title">Iran fired ~170 ballistic missiles at Israel and US bases across the Gulf</div>
-  <p style="color:var(--text-secondary);">Iran confirmed launching approximately <strong>170 ballistic missiles</strong> targeting Israel and US military installations across Gulf Arab states. THAAD, Patriot, Arrow 3, and Iron Dome batteries were activated across the region. Intercepts were reported; some impacts occurred. — Sources: <em>Reuters, Mar 1; Critical Threats, Mar 1</em></p>
+  <p>Iran confirmed launching approximately <strong>170 ballistic missiles</strong> targeting Israel and US military installations across Gulf Arab states. THAAD, Patriot, Arrow 3, and Iron Dome batteries were activated across the region. Intercepts were reported; some impacts occurred. — Sources: <em>Reuters, Mar 1; Critical Threats, Mar 1</em></p>
 </div>
 
 <div class="grid-2col" style="margin-bottom:20px;">
-  <div class="card" style="border-left:3px solid var(--accent-red);">
+  <div class="card card-red">
     <h3>&#127463;&#127469; Bahrain — US 5th Fleet Base Reported Hit</h3>
     <p style="color:var(--text-secondary);font-size:14px;"><strong>US Naval Support Activity Bahrain</strong> — home of the US 5th Fleet — was reported struck by Iranian missiles. Manama acknowledged missile activity over its territory. Damage and casualty assessments remain limited publicly. — Sources: <em>Middle East Eye (regional), Feb 28; Reuters (regional roundup), Mar 1</em></p>
     <p style="color:var(--text-secondary);font-size:14px;margin-top:8px;"><strong>Official response:</strong> Bahrain condemned the strikes as "a flagrant attack on Bahraini sovereignty and a direct assault on regional security."</p>
   </div>
-  <div class="card" style="border-left:3px solid var(--accent-orange);">
+  <div class="card card-orange">
     <h3>&#127462;&#127466; UAE — Abu Dhabi Casualty Confirmed</h3>
     <p style="color:var(--text-secondary);font-size:14px;">An Iranian missile struck near a US‑linked site in <strong>Abu Dhabi</strong>. <strong>One person was killed</strong> in Abu Dhabi and others were injured in separate incidents across the UAE. The UAE activated its <strong>Patriot and THAAD batteries</strong>; multiple intercepts were confirmed. — Sources: <em>US News &amp; World Report, Feb 28; Al Jazeera (regional), Feb 28</em></p>
     <p style="color:var(--text-secondary);font-size:14px;margin-top:8px;"><strong>Official response:</strong> Formal protest to Iran and emergency National Security Council session; temporary airport closures reported.</p>
@@ -217,19 +220,19 @@
 </div>
 
 <div class="grid-2col" style="margin-bottom:20px;">
-  <div class="card" style="border-left:3px solid var(--accent-yellow);">
+  <div class="card card-gold">
     <h3>&#127478;&#127462; Qatar — Al Udeid Air Base Targeted</h3>
     <p style="color:var(--text-secondary);font-size:14px;"><strong>Al Udeid Air Base</strong> — the largest US air base in the Middle East and CENTCOM Forward HQ — was among targets in Iran's barrage. Patriot systems activated; initial reports indicated intercepts. US military has not confirmed base damage as of Mar 3. — Sources: <em>Al Jazeera (regional), Feb 28; Stars and Stripes, Mar 1</em></p>
     <p style="color:var(--text-secondary);font-size:14px;margin-top:8px;"><strong>Official response:</strong> Doha called for de‑escalation and offered to mediate; the Iranian ambassador was summoned.</p>
   </div>
-  <div class="card" style="border-left:3px solid var(--accent-green);">
+  <div class="card card-green">
     <h3>&#127462;&#127470; Saudi Arabia — Energy &amp; Air Defense</h3>
     <p style="color:var(--text-secondary);font-size:14px;">Saudi Arabia activated <strong>Patriot</strong> systems as projectiles were tracked over its airspace. <strong>Impacts were reported on Saudi soil</strong>, including a <strong>strike affecting a major refinery (Mar 2)</strong> and <strong>drone hits on the U.S. Embassy compound in Riyadh (Mar 3)</strong>. Intercepts limited further damage; assessments ongoing. — Sources: <em>NPR, Mar 2; Reuters, Mar 3</em></p>
     <p style="color:var(--text-secondary);font-size:14px;margin-top:8px;"><strong>Regional coordination:</strong> GCC emergency summit convened in Riyadh; humanitarian and air defense cooperation expanded with US CENTCOM.</p>
   </div>
 </div>
 
-<div class="card" style="border-left:3px solid var(--accent-blue);">
+<div class="card card-blue">
   <h3>&#127472;&#127484; Kuwait — Ali Al Salem Base on Alert</h3>
   <p style="color:var(--text-secondary);font-size:14px;">Ali Al Salem Air Base, which hosts US aircraft, was placed on <strong>Force Protection Condition Delta</strong> (highest threat level). Missile alerts were issued; <strong>no confirmed impacts</strong> reported in Kuwait. Airspace restrictions were temporarily enacted. — Source: <em>Stars and Stripes, Mar 1</em></p>
 </div>
@@ -237,27 +240,27 @@
 <!-- SECTION 3: ISRAEL -->
 <div class="section-header" id="reactions-israel" style="margin-top:40px;">
   <div class="icon" style="background:rgba(0,212,255,0.15);">&#127470;&#127473;</div>
-  <div><h2>Israel: Strike Outcomes &amp; Response</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Israeli military assessment and public reaction to Operation Epic Fury</div></div>
+  <div><h2>Israel: Strike Outcomes &amp; Response</h2><div class="section-subtitle">Israeli military assessment and public reaction to Operation Epic Fury</div></div>
 </div>
 
 <div class="grid-2col" style="margin-bottom:20px;">
-  <div class="card" style="border-left:3px solid var(--accent-cyan);">
+  <div class="card card-cyan">
     <h3>&#9992; Military Assessment</h3>
-    <ul style="color:var(--text-secondary);font-size:14px;line-height:1.8;padding-left:16px;">
+    <ul class="content-list">
       <li>IDF stated the nuclear and ballistic missile threat was "significantly degraded"</li>
       <li>Arrow 3 and Iron Dome intercepted the majority of Iranian ballistic missiles; <strong>some penetrations occurred</strong></li>
       <li>Israel Air Force flew <strong>200+ sorties</strong> in the first 24 hours</li>
       <li>F‑35I Adir and F‑15I Ra'am platforms used in strike packages</li>
     </ul>
-    <p style="color:var(--text-muted);font-size:12px;margin-top:8px;">Sources: <em>IDF statements (gov't claim), Mar 1–2; Reuters, Mar 2</em></p>
+    <p class="source-cite">Sources: <em>IDF statements (gov't claim), Mar 1–2; Reuters, Mar 2</em></p>
   </div>
-  <div class="card" style="border-left:3px solid var(--accent-green);">
+  <div class="card card-green">
     <h3>&#128227; Official Israeli Response</h3>
     <p style="color:var(--text-secondary);font-size:14px;">The Prime Minister's Office said: <em>"Israel will not allow a nuclear Iran. We acted in pre‑emptive self‑defense. The operation continues until its objectives are achieved."</em> The Defense Minister termed the strikes a "historic and necessary operation" and affirmed <strong>full coordination with the United States</strong>. — Source: <em>Reuters, Mar 1</em></p>
   </div>
 </div>
 
-<div class="card" style="border-left:3px solid var(--accent-yellow);">
+<div class="card card-gold">
   <h3>&#127968; Israeli Home Front — Iranian Retaliation Impact</h3>
   <div class="grid-2col" style="margin-top:12px;">
     <div>
@@ -271,7 +274,7 @@
   </div>
 </div>
 
-<div class="card" style="border-left:3px solid var(--accent-cyan);margin-top:16px;">
+<div class="card card-cyan" style="margin-top:16px;">
   <h3>&#9940; Mar 3 — IAF Strikes in Tehran and Beirut</h3>
   <p style="color:var(--text-secondary);font-size:14px;">The Israeli Air Force conducted <strong>additional strikes in Tehran</strong> and targeted <strong>weapons storage facilities in Beirut</strong> in coordinated operations. Lebanese and Iranian authorities reported explosions; Israel said the strikes aimed at IRGC-linked infrastructure. — Sources: <em>NYT, Mar 3; The Guardian, Mar 3</em></p>
 </div>
@@ -279,35 +282,35 @@
 <!-- SECTION 4: GLOBAL RESPONSE -->
 <div class="section-header" id="reactions-global" style="margin-top:40px;">
   <div class="icon" style="background:rgba(74,144,217,0.15);">&#127758;</div>
-  <div><h2>Global Diplomatic Response</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">International reactions to Operation Epic Fury — Mar 1–4, 2026</div></div>
+  <div><h2>Global Diplomatic Response</h2><div class="section-subtitle">International reactions to Operation Epic Fury — Mar 1–4, 2026</div></div>
 </div>
 
 <div class="grid-2col" style="margin-bottom:20px;">
-  <div class="card" style="border-left:3px solid var(--accent-blue);">
+  <div class="card card-blue">
     <h3>&#127482;&#127480; United States</h3>
     <p style="color:var(--text-secondary);font-size:14px;">President Trump confirmed "major combat operations" have begun against Iran, framing the operation as a last resort after talks failed. He warned of <strong>possible US casualties</strong> and placed regional forces on highest readiness. CENTCOM publicly named the campaign <strong>Operation Epic Fury</strong>. Several US diplomatic posts in the Gulf <strong>reduced operations or closed temporarily</strong> due to security threats. — Sources: <em>Reuters, Mar 1; CNN live updates, Mar 3; CNBC, Mar 3</em></p>
   </div>
-  <div class="card" style="border-left:3px solid var(--accent-red);">
+  <div class="card card-red">
     <h3>&#128165; US Domestic — Texas Shooting (Iran‑Linked Probe)</h3>
     <p style="color:var(--text-secondary);font-size:14px;">A <strong>shooting incident near Joint Base San Antonio, Texas</strong> left multiple casualties on March 1. The FBI is leading the investigation; a suspect was apprehended. Officials cited <strong>suspected Iran‑linked connections</strong> consistent with pre‑existing threat warnings. Force protection levels were raised nationwide. — Sources: <em>FBI, DHS advisories, Mar 1</em></p>
   </div>
 </div>
 
 <div class="grid-2col" style="margin-bottom:20px;">
-  <div class="card" style="border-left:3px solid var(--accent-red);">
+  <div class="card card-red">
     <h3>&#127479;&#127482; Russia</h3>
     <p style="color:var(--text-secondary);font-size:14px;">Russia condemned the operation as <strong>"a gross violation of international law"</strong> and called an emergency UN Security Council session, warning of "unpredictable consequences." — Source: <em>Reuters, Mar 1</em></p>
   </div>
-  <div class="card" style="border-left:3px solid var(--accent-red);">
+  <div class="card card-red">
     <h3>&#127464;&#127475; China</h3>
     <p style="color:var(--text-secondary);font-size:14px;">China called for <strong>immediate cessation</strong> of military activities and respect for Iranian sovereignty, aligning with Russia to convene the UN Security Council. — Source: <em>Reuters, Mar 1</em></p>
   </div>
 </div>
 
-<div class="card" style="border-left:3px solid var(--accent-blue);margin-bottom:20px;">
+<div class="card card-blue" style="margin-bottom:20px;">
     <h3>&#127468;&#127463; United Kingdom</h3>
     <p style="color:var(--text-secondary);font-size:14px;">The UK said it was <strong>monitoring closely</strong> and had been briefed in advance. London stopped short of endorsing the strikes but called Iran's nuclear program "an existential threat to regional security." HMS Diamond (Type 45) was placed on heightened readiness. Defensive aid offers focused on air defense and humanitarian corridor protection. — Sources: <em>UK FCDO, UK MoD, Reuters, Mar 1</em></p>
-    <div style="margin-top:10px;padding:10px 14px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);border-radius:8px;">
+    <div class="info-box info-box-cyan">
       <strong style="color:var(--accent-cyan);">&#128737; UK Defensive Military Assistance Offers — Mar 1, 2026</strong>
       <ul style="color:var(--text-secondary);font-size:13px;margin-top:6px;padding-left:16px;line-height:1.8;">
         <li><strong>HMS Diamond (Type 45)</strong> forward‑deployed to Gulf</li>
@@ -320,18 +323,18 @@
 </div>
 
 <div class="grid-2col" style="margin-bottom:20px;">
-  <div class="card" style="border-left:3px solid var(--accent-blue);">
+  <div class="card card-blue">
     <h3>&#127467;&#127479; France &amp; &#127465;&#127466; Germany</h3>
     <p style="color:var(--text-secondary);font-size:14px;">France and Germany called for <strong>maximum restraint</strong> and condemned Iranian retaliation on Gulf states as unacceptable. The EU convened an emergency foreign affairs council; evacuations of nationals began. — Sources: <em>Reuters, Mar 1–2</em></p>
-    <div style="margin-top:10px;padding:10px 14px;background:rgba(0,85,164,0.08);border:1px solid rgba(0,85,164,0.3);border-radius:8px;">
+    <div class="info-box info-box-blue">
       <strong style="color:#5588cc;">&#9875; France deploys Charles de Gaulle (R91) carrier group — Mar 1, 2026</strong>
       <p style="color:var(--text-secondary);font-size:13px;margin-top:6px;">France is <strong>deploying aircraft carrier <em>Charles de Gaulle</em> (R91)</strong> to the Eastern Mediterranean for <strong>maritime security and humanitarian protection</strong>. The air wing includes <strong>Rafale M</strong> and <strong>E‑2C</strong> assets; escorts include Forbin, Provence, Alsace, and a Rubis‑class SSN. — Source: <em>French MOD, Mar 1</em></p>
     </div>
   </div>
-  <div class="card" style="border-left:3px solid var(--accent-red);">
+  <div class="card card-red">
     <h3>&#127481;&#127479; Turkey <span style="font-size:11px;color:var(--accent-red);font-weight:700;">&#9658; NEW (Mar 4)</span></h3>
     <p style="color:var(--text-secondary);font-size:14px;">Turkey condemned the strikes as <strong>dangerous and destabilizing</strong>, offered mediation, closed its airspace to mission‑related overflights, and put air defenses on alert along the Iranian border. — Source: <em>Reuters, Mar 1</em></p>
-    <div style="margin-top:10px;padding:10px 14px;background:rgba(255,59,59,0.08);border:1px solid rgba(255,59,59,0.35);border-radius:8px;">
+    <div class="info-box info-box-red">
       <strong style="color:var(--accent-red);">&#128165; IRAN MISSILE STRIKE ON TURKISH TERRITORY — Mar 4, 2026</strong>
       <p style="color:var(--text-secondary);font-size:13px;margin-top:6px;">Iranian ballistic missiles struck Turkish soil near İncirlik Air Base on Mar 4, marking the <strong>first direct Iranian strike on a NATO member</strong>. President Erdoğan <strong>condemned the attack</strong>; NATO invoked <strong>Article 4 consultations</strong>; İncirlik Air Base (host to U.S. B61 nuclear gravity bombs) placed on heightened alert. Turkey reserved its <strong>right of self-defense</strong> and recalled its ambassador to Tehran. — Source: <a href="https://www.reuters.com/world/middle-east/iran-fires-missiles-turkey-triggering-nato-article-4-consultations-2026-03-04/" style="color:var(--accent-blue);">Reuters, Mar 4, 2026</a>; <a href="https://www.nato.int/cps/en/natohq/topics_49187.htm" style="color:var(--accent-cyan);">NATO Article 4 Consultations</a></p>
     </div>
@@ -340,18 +343,18 @@
 
 <div class="callout orange">
   <div class="callout-title">Energy &amp; Shipping Markets Shock — Hormuz Risk Reprices</div>
-  <p style="color:var(--text-secondary);">Global oil and gas shipping costs have <strong>surged to all‑time highs</strong> as war‑risk insurers suspend or limit coverage for Gulf transits. Iran has <strong>claimed the Strait of Hormuz is closed</strong>; even without confirmed physical closure, <strong>price and insurance dynamics</strong> are constraining flows. Analysts warn of <strong>WTI &gt; $100/barrel</strong> if disruption persists. — Sources: <em>Reuters, Mar 2; CNBC, Mar 3</em></p>
+  <p>Global oil and gas shipping costs have <strong>surged to all‑time highs</strong> as war‑risk insurers suspend or limit coverage for Gulf transits. Iran has <strong>claimed the Strait of Hormuz is closed</strong>; even without confirmed physical closure, <strong>price and insurance dynamics</strong> are constraining flows. Analysts warn of <strong>WTI &gt; $100/barrel</strong> if disruption persists. — Sources: <em>Reuters, Mar 2; CNBC, Mar 3</em></p>
 </div>
 
-<div class="card" style="border-left:3px solid var(--accent-orange);">
+<div class="card card-orange">
   <h3>&#127756; UN Security Council — Emergency Session</h3>
   <p style="color:var(--text-secondary);font-size:14px;">Russia and China called an emergency UN Security Council session within hours of the strikes. A draft resolution demanding "immediate cessation of hostilities" was <strong>vetoed by the US</strong>. The UK abstained; France voted in favor. The UN Secretary‑General warned this is <strong>"the most dangerous escalation in the Middle East in decades"</strong>. — Source: <em>UN, Mar 1</em></p>
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
-    <span style="padding:4px 10px;border-radius:4px;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-cyan);">US VETO</span>
-    <span style="padding:4px 10px;border-radius:4px;background:rgba(255,59,59,0.1);border:1px solid rgba(255,59,59,0.3);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-red);">Russia: YES (for resolution)</span>
-    <span style="padding:4px 10px;border-radius:4px;background:rgba(255,59,59,0.1);border:1px solid rgba(255,59,59,0.3);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-red);">China: YES (for resolution)</span>
-    <span style="padding:4px 10px;border-radius:4px;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-gold);">France: YES (for resolution)</span>
-    <span style="padding:4px 10px;border-radius:4px;background:rgba(150,150,150,0.1);border:1px solid rgba(150,150,150,0.3);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);">UK: ABSTAIN</span>
+    <span class="tag tag-cyan">US VETO</span>
+    <span class="tag tag-red">Russia: YES (for resolution)</span>
+    <span class="tag tag-red">China: YES (for resolution)</span>
+    <span class="tag tag-gold">France: YES (for resolution)</span>
+    <span class="tag tag-muted">UK: ABSTAIN</span>
   </div>
 </div>
 <footer>
@@ -363,7 +366,7 @@
 </footer>
 <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>
 <script src="js/map.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/sidebar.js"></script>

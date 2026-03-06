@@ -1,0 +1,880 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [53, 32.5] },
+      "properties": {
+        "category": "radius-circle",
+        "label": "Iran red highlight",
+        "radiusKm": 700,
+        "color": "#ff3b3b",
+        "fillColor": "#ff3b3b",
+        "fillOpacity": 0.10,
+        "weight": 2,
+        "dashArray": "4,3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [59.5, 24.2] },
+      "properties": {
+        "category": "us-carrier",
+        "label": "USS Abraham Lincoln (CVN-72)",
+        "popup": "<b style=\"color:#4a90d9\">USS Abraham Lincoln (CVN-72)</b><br>Nimitz-class carrier &bull; CVW-11<br>~80 aircraft &bull; 5,600 crew<br><b style=\"color:#ff3b3b\">ACTIVE — 700km from Iranian coast</b><br><b style=\"color:#ff3b3b\">Launched strikes Feb 28 — Operation Epic Fury</b><br>F-35C, F/A-18E/F, EA-18G, E-2D, MH-60"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [59.5, 24.2] },
+      "properties": {
+        "category": "radius-circle",
+        "label": "CVW-11 strike radius (~700km)",
+        "radiusKm": 700,
+        "color": "#4a90d9",
+        "fillColor": "#4a90d9",
+        "fillOpacity": 0.04,
+        "weight": 0.5,
+        "dashArray": "8,6",
+        "popup": "CVW-11 strike radius (~700km)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [60.2, 24.5] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Frank E. Petersen Jr. (DDG-121)",
+        "popup": "<b style=\"color:#4a90d9\">USS Frank E. Petersen Jr. (DDG-121)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort &bull; DESRON 21<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [61.0, 23.8] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Spruance (DDG-111)",
+        "popup": "<b style=\"color:#4a90d9\">USS Spruance (DDG-111)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [60.5, 23.2] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Michael Murphy (DDG-112)",
+        "popup": "<b style=\"color:#4a90d9\">USS Michael Murphy (DDG-112)</b><br>Arleigh Burke-class destroyer<br>Lincoln CSG escort &bull; DESRON 21<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [33.0, 34.5] },
+      "properties": {
+        "category": "us-carrier",
+        "label": "USS Gerald R. Ford (CVN-78)",
+        "popup": "<b style=\"color:#4a90d9\">USS Gerald R. Ford (CVN-78)</b><br>Ford-class &bull; World's largest warship<br>CVW-8 &bull; ~75 aircraft &bull; 4,500 crew<br><b style=\"color:#ff3b3b\">EASTERN MEDITERRANEAN — ACTIVE OPERATIONS (Mar 1+)</b><br>Crossed Strait of Gibraltar Feb 20; now in Eastern Med<br><b style=\"color:#ff3b3b\">Launching strikes in support of Operation Epic Fury</b><br>E/A-18G Growler launched from flight deck Mar 1<br>F-35C, F/A-18E/F, E-2D, CMV-22B<br><em>Sources: USNI News, Stars and Stripes, Mar 2</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [33.0, 34.5] },
+      "properties": {
+        "category": "radius-circle",
+        "label": "CVW-8 strike radius (~900km with F-35C)",
+        "radiusKm": 900,
+        "color": "#4a90d9",
+        "fillColor": "#4a90d9",
+        "fillOpacity": 0.03,
+        "weight": 0.5,
+        "dashArray": "8,6",
+        "popup": "CVW-8 strike radius (~900km with F-35C)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [32.5, 35.0] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Winston S. Churchill (DDG-81)",
+        "popup": "<b style=\"color:#4a90d9\">USS Winston S. Churchill (DDG-81)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [33.5, 34.0] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Bainbridge (DDG-96)",
+        "popup": "<b style=\"color:#4a90d9\">USS Bainbridge (DDG-96)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [34.0, 33.5] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Mahan (DDG-72)",
+        "popup": "<b style=\"color:#4a90d9\">USS Mahan (DDG-72)</b><br>Arleigh Burke-class destroyer<br>Ford CSG escort<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [56.2, 25.8] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS McFaul (DDG-74)",
+        "popup": "<b style=\"color:#4a90d9\">USS McFaul (DDG-74)</b><br>Arleigh Burke-class destroyer<br>Strait of Hormuz patrol<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [58.0, 25.0] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Mitscher (DDG-57)",
+        "popup": "<b style=\"color:#4a90d9\">USS Mitscher (DDG-57)</b><br>Arleigh Burke-class destroyer<br>Strait of Hormuz patrol<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [62.5, 22.5] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Pinckney (DDG-91)",
+        "popup": "<b style=\"color:#4a90d9\">USS Pinckney (DDG-91)</b><br>Arleigh Burke-class destroyer<br>North Arabian Sea<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [64.0, 22.0] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS John Finn (DDG-113)",
+        "popup": "<b style=\"color:#4a90d9\">USS John Finn (DDG-113)</b><br>Arleigh Burke-class destroyer<br>Arabian Sea<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [26.5, 34.2] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Roosevelt (DDG-80)",
+        "popup": "<b style=\"color:#4a90d9\">USS Roosevelt (DDG-80)</b><br>Arleigh Burke-class destroyer<br>Eastern Mediterranean<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [28.0, 33.8] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Bulkeley (DDG-84)",
+        "popup": "<b style=\"color:#4a90d9\">USS Bulkeley (DDG-84)</b><br>Arleigh Burke-class destroyer<br>Eastern Mediterranean<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [39.5, 18.5] },
+      "properties": {
+        "category": "us-destroyer",
+        "label": "USS Delbert D. Black (DDG-119)",
+        "popup": "<b style=\"color:#4a90d9\">USS Delbert D. Black (DDG-119)</b><br>Arleigh Burke-class destroyer<br>Red Sea patrol<br>Tomahawk &bull; Aegis BMD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.5, 26.8] },
+      "properties": {
+        "category": "us-lcs",
+        "label": "USS Canberra (LCS-30)",
+        "popup": "<b style=\"color:#6ab0ff\">USS Canberra (LCS-30)</b><br>Independence-class LCS<br>Persian Gulf patrol<br>Mine countermeasures &bull; ASW"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [50.8, 26.2] },
+      "properties": {
+        "category": "us-lcs",
+        "label": "USS Tulsa (LCS-16)",
+        "popup": "<b style=\"color:#6ab0ff\">USS Tulsa (LCS-16)</b><br>Independence-class LCS<br>Persian Gulf &bull; Homeported Bahrain<br>Mine countermeasures &bull; ASW"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [52.2, 27.2] },
+      "properties": {
+        "category": "us-lcs",
+        "label": "USS Santa Barbara (LCS-32)",
+        "popup": "<b style=\"color:#6ab0ff\">USS Santa Barbara (LCS-32)</b><br>Independence-class LCS<br>Persian Gulf patrol<br>Mine countermeasures &bull; ASW"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [62.0, 20.5] },
+      "properties": {
+        "category": "us-submarine",
+        "label": "USS Georgia (SSGN-729)",
+        "popup": "<b style=\"color:#7a5af0\">USS Georgia (SSGN-729)</b><br>Ohio-class guided-missile submarine<br>154 Tomahawk cruise missiles<br><b>Location undisclosed — approximate</b><br>+ unknown number of fast-attack subs"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-12.0, 37.0] },
+      "properties": {
+        "category": "deploying",
+        "label": "USS George H.W. Bush (CVN-77)",
+        "popup": "<b style=\"color:#ff8c42\">USS George H.W. Bush (CVN-77)</b><br>Nimitz-class carrier &bull; CVW-7<br><b>ATLANTIC — COMPTUEX / En Route (Mar 6)</b><br>Departed Norfolk Jan 2026; conducting integrated training in Atlantic<br>Expected to transit to Mediterranean; third carrier reinforcement<br><b style=\"color:#ff8c42\">Has not yet entered Mediterranean</b><br><em>Sources: USNI Fleet Tracker, Mar 2</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.4, 35.7] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Tehran",
+        "color": "#ff3b3b",
+        "iconSize": 14,
+        "popup": "<b style=\"color:#ff3b3b\">Tehran</b><br>Student protests active — 410+ detained since Feb 21<br><b style=\"color:#ff3b3b\">CONFIRMED STRIKES — Operation Epic Fury, Feb 28 – ongoing Mar 5</b><br>IRGC HQ, Ministry of Defense, Ministry of Intelligence, Parchin, Karaj struck<br>IRGC Basij deployed to all 31 provinces<br><b style=\"color:#ff3b3b\">KHAMENEI KILLED Mar 1 — Mojtaba Khamenei appointed new Supreme Leader (Mar 3)</b><br>\"Woman, life, freedom\" &bull; Chants for Reza Pahlavi<br><b style=\"color:#ff8c42\">UK withdrew entire embassy staff (Feb 27)</b><br><b style=\"color:#ff8c42\">ISRAEL STRIKES TEHRAN AND BEIRUT (Mar 3, Reuters)</b><br><b style=\"color:#ff3b3b\">IDF 12th wave of strikes across Tehran (Mar 5) — targeting IRGC facilities, Basij sites, central command center for Internal Security</b><br><b style=\"color:#ff3b3b\">Resistance Units carried out 31 operations across Tehran and 18 other cities</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [59.6, 36.3] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Mashhad",
+        "color": "#ff3b3b",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#ff3b3b\">Mashhad</b><br>Student protests active &bull; Day 7<br>2nd Tactical Air Base targeted in strikes<br><b style=\"color:#ff3b3b\">Resistance Units carried out operations across Tehran and 18 other cities</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [52.5, 29.6] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Shiraz",
+        "color": "#ff3b3b",
+        "iconSize": 8,
+        "popup": "<b style=\"color:#ff3b3b\">Shiraz</b><br>Protests reported<br><b style=\"color:#ff8c42\">? Shahid Dastghaib Air Base possibly targeted (unconfirmed)</b><br><b style=\"color:#ff3b3b\">Resistance Units carried out operations across Tehran and 18 other cities</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [48.7, 32.3] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Ahvaz (Khuzestan)",
+        "color": "#ff3b3b",
+        "iconSize": 8,
+        "popup": "<b style=\"color:#ff3b3b\">Ahvaz (Khuzestan)</b><br>Arab minority protests<br>Heavy military suppression<br><b style=\"color:#ff3b3b\">Resistance Units carried out operations across Tehran and 18 other cities</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [46.9, 35.3] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Sanandaj (Kurdistan)",
+        "color": "#ff3b3b",
+        "iconSize": 8,
+        "popup": "<b style=\"color:#ff3b3b\">Sanandaj (Kurdistan)</b><br>Kurdish protests<br>2,000+ detained &bull; Reports of torture<br><b style=\"color:#ff3b3b\">Resistance Units carried out operations across Tehran and 18 other cities</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.68, 32.65] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Isfahan",
+        "color": "#ff3b3b",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#ff3b3b\">Isfahan</b><br>Protests active &bull; Day 7<br>Nuclear Technology Center and UCF struck Feb 28<br><b style=\"color:#ff3b3b\">Resistance Units carried out operations across Tehran and 18 other cities</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.42, 35.76] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "IRGC Headquarters — Tehran",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; IRGC Headquarters — Tehran</b><br><b>Confirmed strike — Feb 28 (Operation Epic Fury)</b><br>Alborz Corps HQ (Tehran garrison defense)<br>Thar-Allah Command Centre (capital security &amp; protest suppression)<br>Sayyed al-Shuhada Corps (national homeland defense)<br>Multiple command-and-control buildings destroyed per IDF imagery<br><b style=\"color:#ff3b3b\">IDF 12th wave (Mar 5): Additional strikes targeting IRGC facilities, Basij sites, central command center for Internal Security</b><br><em>Sources: Times Now Israel targets list, The War Zone, Feb 28; IDF, Mar 5</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.43, 35.69] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Ministry of Defense — Tehran",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Ministry of Defense — Tehran</b><br><b>Confirmed strike — Feb 28</b><br>Primary procurement and weapons program coordination hub<br>Atomic Energy Organization of Iran also struck nearby<br><em>Sources: Newsweek map, Al Jazeera mapping, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.38, 35.73] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Ministry of Intelligence (MOIS) — Tehran",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Ministry of Intelligence (MOIS) — Tehran</b><br><b>Confirmed strike — Feb 28</b><br>Intelligence directorate general — headquarters<br>Internal Security Forces intelligence building also hit<br><em>Sources: Kurdistan24 targets list, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.47, 35.80] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Khamenei Compound — Niavaran / Jamaran, Tehran",
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Khamenei Compound — Niavaran / Jamaran, Tehran</b><br><b style=\"color:#ff3b3b\">CONFIRMED: SUPREME LEADER AYATOLLAH ALI KHAMENEI KILLED — Mar 1, 2026</b><br>Iranian state media confirmed death; Israeli officials claimed the kill; AP, Reuters, NBC corroborate<br>Daughter, son-in-law, and grandchild also reported killed in the same strike (NBC/Fars)<br>Government declared 40-day national mourning<br><b style=\"color:#ff3b3b\">SUCCESSION: Assembly of Experts named Mojtaba Khamenei (son) as new Supreme Leader — Mar 3, 2026</b><br>Appointment deeply contested by opposition and Western governments (Reuters/AP/Al Jazeera, Mar 3)<br><em>Sources: AP, Reuters, NBC News, Iranian state media, Mar 1–3</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.389, 35.6892] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "IRGC Malek-Ashtar Building — Tehran",
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; IRGC Malek-Ashtar Building — Tehran</b><br><b style=\"color:#ff3b3b\">CONFIRMED: Completely destroyed by joint US-Israel missile strike — Mar 2, 2026</b><br>Video confirmed by Iran International<br>Major IRGC command and administrative facility<br><em>Sources: Iran International (video), Mar 2, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.42, 35.72] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "IRIB (State Broadcaster) HQ — Tehran",
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; IRIB (State Broadcaster) HQ — Tehran</b><br><b style=\"color:#ff3b3b\">CONFIRMED: Hit by Israeli air operation — Mar 3, 2026</b><br>Parts of state broadcasting facilities struck<br>IRIB is Iran's primary propaganda and state media apparatus<br><em>Sources: Israeli military, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.46, 35.70] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Imam Hossein University Area — Tehran",
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Imam Hossein University Area — Tehran</b><br><b style=\"color:#ff3b3b\">CONFIRMED: Area surrounding university targeted during air strikes — Mar 3, 2026</b><br>IRGC-affiliated military academy and officer training facility<br><em>Sources: Israeli military / open-source intelligence, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.43, 35.80] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Evin Prison Perimeter — Tehran",
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Evin Prison Perimeter — Tehran</b><br><b style=\"color:#ff3b3b\">CONFIRMED: Part of perimeter wall targeted — Mar 3, 2026</b><br>Evin Prison holds political prisoners and dual nationals<br>Strike targeted perimeter infrastructure, not main prison buildings<br><em>Sources: Open-source reporting, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [45.72, 36.76] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Basij Center near Mahabad Prison — Mahabad",
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Basij Center near Mahabad Prison — Mahabad</b><br><b style=\"color:#ff3b3b\">CONFIRMED: Bombarded — Mar 3, 2026</b><br>Basij paramilitary center adjacent to Mahabad Prison<br>Mahabad is in West Azerbaijan province, Kurdish region<br><em>Sources: Open-source reporting, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.73, 33.72] },
+      "properties": {
+        "category": "nuclear-site",
+        "label": "Natanz Nuclear Facility",
+        "popup": "<b style=\"color:#ff8c42\">Natanz Nuclear Facility</b><br>Primary uranium enrichment site — underground centrifuge halls, FEP & PFEP<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED STRIKE — Feb 28 (Operation Epic Fury)</b><br>Heavily damaged in June 2025 strikes; re-targeted Feb 28 to destroy residual centrifuge capacity<br>BDA: structural collapse of surface buildings confirmed via satellite; underground halls — partial<br><em>Sources: CSIS, CBS News map, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.7, 32.6] },
+      "properties": {
+        "category": "nuclear-site",
+        "label": "Isfahan Nuclear Technology Center",
+        "popup": "<b style=\"color:#ff8c42\">Isfahan Nuclear Technology Center</b><br>Uranium conversion facility (UCF) &bull; Nuclear research reactors<br>Tunnel sealing operations were underway prior to strikes<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED STRIKE — Feb 28</b><br>Surface UCF building confirmed hit; research reactors status unclear<br><em>Sources: Al Jazeera mapping, CBS News, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [52.5, 33.3] },
+      "properties": {
+        "category": "nuclear-site",
+        "label": "Pickaxe Mountain / Shahid Ali Mohammadi Facility",
+        "popup": "<b style=\"color:#ff8c42\">\"Pickaxe Mountain\" / Shahid Ali Mohammadi Facility</b><br>Deep underground facility south of Natanz (est. 80–100m depth)<br>Suspected hardened centrifuge hall — possible GBU-57 target<br><b style=\"color:#ff8c42\">&#9889; STRUCK — Feb 28 | BDA PENDING</b><br>GBU-57 MOP (Massive Ordnance Penetrator) used; penetration of full depth unconfirmed<br>US officials: \"significant damage\" — independent verification not yet possible<br><em>Sources: CSIS analysis, NYT, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [50.99, 34.88] },
+      "properties": {
+        "category": "nuclear-site",
+        "label": "Fordow Uranium Enrichment Plant (FUEP)",
+        "popup": "<b style=\"color:#ff8c42\">Fordow Uranium Enrichment Plant (FUEP)</b><br>Buried ~90m under mountain near Qom &bull; 3,000 IR-1 &amp; advanced centrifuges<br>Hardened against conventional bunker-busters<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED STRIKE — Feb 28</b><br>Key access routes and surface infrastructure destroyed; underground hall damage unconfirmed<br>IRGC air defense in area engaged before strikes<br><em>Sources: Times Now (Israel targets list), Wikipedia, CBS News, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [49.22, 34.18] },
+      "properties": {
+        "category": "nuclear-site",
+        "label": "Arak IR-40 Heavy Water Reactor & Research Complex",
+        "popup": "<b style=\"color:#ff8c42\">Arak IR-40 Heavy Water Reactor &amp; Research Complex</b><br>Heavy water production facility &bull; Plutonium-producing reactor (modified under 2015 JCPOA)<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED STRIKE — Feb 28</b><br>Surface reactor hall and heavy water production buildings confirmed struck<br><em>Sources: Al Jazeera map, CBS News, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [50.88, 28.83] },
+      "properties": {
+        "category": "nuclear-site",
+        "label": "Bushehr Nuclear Power Plant",
+        "popup": "<b style=\"color:#ff8c42\">Bushehr Nuclear Power Plant</b><br>Russia-built civilian reactor (VVER-1000) &bull; Operational since 2013<br><b style=\"color:#00c853\">NOT STRUCK — deliberate avoidance</b><br>US/Israel avoided to prevent radiological contamination of Persian Gulf<br>Russian technicians on site (additional diplomatic constraint)<br><em>Sources: CSIS analysis, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.77, 35.54] },
+      "properties": {
+        "category": "nuclear-site",
+        "label": "Parchin Military Complex",
+        "popup": "<b style=\"color:#ff8c42\">Parchin Military Complex</b><br>IRGC-linked military-nuclear R&amp;D site &bull; ~35 km SE of Tehran<br>Expanded concrete-and-soil hardening confirmed Feb 20 — targeted by GBU-57<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED STRIKE — Feb 28</b><br>Multiple hardened structures destroyed per satellite BDA<br><em>Sources: The War Zone Feb 20, CBS News Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [56.2, 26.6] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Strait of Hormuz",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">Strait of Hormuz</b><br><b style=\"color:#ff3b3b\">IRGC ACTIVATED — closure threat underway</b><br>Major oil traders suspend shipments (Reuters, Feb 28)<br>IRGC fast-attack boats and anti-ship missiles on alert<br><b>21% of global oil passes through here</b>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [57.8, 25.0] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "IRGC Drone Carrier Shahid Bagheri — Struck",
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; IRGC Drone Carrier Shahid Bagheri — Struck</b><br><b style=\"color:#ff3b3b\">Confirmed strike — Mar 3, 2026</b><br>U.S. confirms strike on Iranian drone carrier Shahid Bagheri<br>Converted vessel used by IRGC Navy to launch drone attacks<br>Gulf of Oman / Strait of Hormuz area<br><em>Sources: CENTCOM, Military.com, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [50.96, 35.83] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Karaj — IRGC Missile & Nuclear Support Facility",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Karaj — IRGC Missile &amp; Nuclear Support Facility</b><br><b>Confirmed strike — Feb 28</b><br>IRGC missile production and storage infrastructure<br>Uranium enrichment support complex<br>~35 km west of Tehran center<br><em>Sources: Wikipedia (2026 strikes), Al Jazeera, Newsweek map, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [50.97, 35.84] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Karaj",
+        "color": "#ff3b3b",
+        "iconSize": 8,
+        "popup": "<b style=\"color:#ff3b3b\">Karaj</b><br>Resistance units active<br><b style=\"color:#ff3b3b\">Resistance Units carried out 31 operations across Tehran and 18 other cities</b><br>Major city west of Tehran; industrial center"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [46.24, 38.13] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Tabriz — 2nd Tactical Air Base (TAB-2)",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Tabriz — 2nd Tactical Air Base (TAB-2)</b><br><b>Confirmed strike — Feb 28</b><br>IRIAF tactical air base &bull; Co-located with Shahid Madani Int'l Airport<br>Missile storage and IRGC air defense batteries destroyed<br>Tabriz is Iran's 4th largest city — NW strategic node<br><em>Sources: WCVB/CBS maps, Al Jazeera, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [46.29, 38.08] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Tabriz",
+        "color": "#ff3b3b",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#ff3b3b\">Tabriz</b><br>Protests active<br><b style=\"color:#ff3b3b\">Resistance Units carried out operations — part of 31 operations across Tehran and 18 other cities</b><br>4th largest city; NW strategic node; 2nd Tactical Air Base struck Feb 28"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [47.16, 34.35] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Kermanshah — Missile Storage & Shahid Ashrafi Esfahani Air Base",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Kermanshah — Missile Storage &amp; Shahid Ashrafi Esfahani Air Base</b><br><b>Confirmed strike — Feb 28</b><br>IRGC missile storage and launch infrastructure, western Iran<br>Air base and logistics hub destroyed<br><em>Sources: Al Jazeera mapping, Newsweek, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [50.88, 34.64] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Qom — IRGC Security & Missile Infrastructure",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Qom — IRGC Security &amp; Missile Infrastructure</b><br><b>Confirmed strike — Feb 28</b><br>IRGC corps headquarters and security assets in Qom<br>Separate from Fordow (marked individually north of city)<br>Qom is a key regime center and IRGC command node<br><em>Sources: Al Jazeera, Wikipedia (2026 strikes), Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [50.32, 29.25] },
+      "properties": {
+        "category": "strike-unconfirmed",
+        "label": "Kharg Island — Oil Terminal & IRGC Navy Base",
+        "color": "#ff8c42",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#ff8c42\">? Kharg Island — Oil Terminal &amp; IRGC Navy Base</b><br><b style=\"color:#ff8c42\">REPORTED struck — Feb 28 | Damage UNCONFIRMED</b><br>Iran's primary oil export terminal — handles ~90% of Iranian crude exports<br>IRGC naval base co-located<br>Strike not confirmed by US CENTCOM; visual confirmation pending<br><em>Sources: Newsweek map (reported), Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [46.42, 33.64] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Ilam — Military Airfield & IRGC Logistics",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Ilam — Military Airfield &amp; IRGC Logistics</b><br><b>Confirmed strike — Feb 28</b><br>Military airfield and IRGC logistical hub — western Iran<br>Lorestan province military supply route infrastructure struck<br><em>Sources: Al Jazeera, WCVB/CBS maps, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [57.1, 30.3] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Kerman — IRGC Command Centre",
+        "popup": "<b style=\"color:#ff3b3b\">&#10004; Kerman — IRGC Command Centre</b><br><b style=\"color:#ff3b3b\">Confirmed strike — Mar 3, 2026</b><br>U.S. says it destroyed IRGC command centre in Kerman<br>Iran reports 13 soldiers killed in the strike<br>Southeastern Iran strategic and logistics hub<br><em>Sources: Al Jazeera, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [51.5, 25.3] },
+      "properties": {
+        "category": "air-base",
+        "label": "Al Udeid Air Base, Qatar",
+        "popup": "<b style=\"color:#00d4ff\">Al Udeid Air Base, Qatar</b><br>CENTCOM Forward HQ &bull; ~10,000 US personnel<br>F-35A, F-22A squadrons &bull; 20+ KC-135 tankers<br>UK Typhoons also deployed here<br><b style=\"color:#ff8c42\">&#9889; TARGETED BY IRAN — Feb 28 | Intercepts reported; no confirmed ground damage</b><br>THAAD/Patriot PAC-3 activated; air sirens sounded; Qatar intercepted incoming missiles<br><em>Sources: BBC, Al Jazeera, ISW, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [47.9, 24.2] },
+      "properties": {
+        "category": "air-base",
+        "label": "Prince Sultan Air Base, Saudi Arabia",
+        "popup": "<b style=\"color:#00d4ff\">Prince Sultan Air Base, Saudi Arabia</b><br>F-16 Fighting Falcons &bull; E-3 AWACS (6 deployed)<br>KC-135 tankers<br><b style=\"color:#ff8c42\">&#9889; TARGETED BY IRAN — Feb 28 | Explosions in Saudi Arabia reported; no confirmed base damage</b><br>Patriot batteries active; Riyadh-area alerts issued; intercepts reported<br><b style=\"color:#00c853\">&#10004; SAUDI ASSISTANCE: Logistical hub for US coalition forces; evacuation flights coordinated</b><br><em>Sources: BBC, US News &amp; World Report, Al Jazeera, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [54.6, 24.4] },
+      "properties": {
+        "category": "air-base",
+        "label": "Al Dhafra Air Base, UAE (Abu Dhabi)",
+        "popup": "<b style=\"color:#00d4ff\">Al Dhafra Air Base, UAE (Abu Dhabi)</b><br>F-22 Raptors &bull; MQ-4C Triton ISR drones<br>KC-10 tankers<br><b style=\"color:#ff3b3b\">&#9889; CONFIRMED HIT — UAE, Feb 28: 1 civilian killed (falling debris); 4 injured</b><br>Missiles intercepted over Abu Dhabi; large plumes of smoke visible; Palm Jumeirah building fire<br>Patriot active; base operational status not confirmed impaired<br><em>Sources: US News &amp; World Report, Al Jazeera, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [36.8, 32.0] },
+      "properties": {
+        "category": "air-base",
+        "label": "Muwaffaq Salti Air Base, Jordan",
+        "popup": "<b style=\"color:#00d4ff\">Muwaffaq Salti Air Base, Jordan</b><br><b>EVERY tactical jet slot visible from satellite is full</b><br>Confirmed via satellite imagery (Feb 20):<br>18x F-15E Strike Eagles &bull; 18x F-35A Lightning II<br>12x F-16 Fighting Falcons &bull; 6x EA-18G Growlers<br>2x MQ-9 Reapers (visible; shelters not counted)<br>Key deep-strike staging base<br><em>Jordan denied US airspace for Iran strikes; base placed on highest alert</em><br>Jordan intercepted Iranian missiles transiting its airspace (Feb 28)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [50.59, 26.23] },
+      "properties": {
+        "category": "us-carrier",
+        "label": "NSA Bahrain — US 5th Fleet HQ",
+        "popup": "<b style=\"color:#4a90d9\">NSA Bahrain — US 5th Fleet HQ</b><br>US Naval Forces Central Command<br>Headquarters for all US naval operations in the region<br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED HIT — Feb 28: Most significant confirmed retaliation strike</b><br>Missile impact on tower block near naval base confirmed; fires and substantial property damage<br>Social media videos confirm direct missile impact in Manama<br>Bahraini authorities: \"treacherous attack\" — civil defense deployed<br>USS Canberra, USS Tulsa homeported here<br><em>Sources: Al Jazeera, Middle East Eye, US News, Feb 28</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [55.3, 25.2] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "US Consulate Dubai — Drone Strike",
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; US Consulate Dubai — Drone Strike</b><br><b style=\"color:#ff3b3b\">Confirmed damage — Mar 3, 2026</b><br>Drone strike damages U.S. consulate in Dubai<br>Staff report damage; extent under assessment<br>Part of wider Iranian drone/missile barrage across region<br><em>Sources: Wall Street Journal, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [46.75, 24.68] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "US Embassy Riyadh — Drone Attack",
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; US Embassy Riyadh — Drone Attack</b><br><b style=\"color:#ff3b3b\">Confirmed hit — Mar 3, 2026</b><br>U.S. Embassy in Riyadh hit by drones; staff report damage<br>Multiple U.S. embassies in the Gulf region closed after escalating strikes (Washington Post, Mar 3)<br><em>Sources: Reuters, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [48.17, 29.04] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Kuwait — Shuaiba Port Iranian Strike",
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Kuwait — Shuaiba Port Iranian Strike</b><br><b style=\"color:#ff3b3b\">CONFIRMED: Direct Iranian strike on makeshift US operations center — Mar 6, 2026</b><br><b style=\"color:#ff3b3b\">6 US service members killed</b><br>Shuaiba Port targeted; significant US casualties<br>KEY ESCALATION: First confirmed US military fatalities from direct Iranian strike in this conflict<br><em>Sources: Verified intelligence, Mar 6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [45.46, 39.19] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Azerbaijan — Nakhchivan International Airport Iranian Strike",
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Azerbaijan — Nakhchivan International Airport</b><br><b style=\"color:#ff3b3b\">CONFIRMED: Iranian drone hit airport terminal — Mar 6, 2026</b><br>First Iranian attack on Azerbaijani territory<br>Nakhchivan exclave targeted<br>Major escalation — Iran attacking a non-belligerent neighboring state<br><em>Sources: Verified intelligence, Mar 6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [45.40, 39.15] },
+      "properties": {
+        "category": "strike-unconfirmed",
+        "label": "Azerbaijan — Shakarabad Village Drone Impact",
+        "popup": "<b style=\"color:#ff8c42\">? Azerbaijan — Shakarabad Village</b><br><b style=\"color:#ff8c42\">UNCONFIRMED: Iranian drone fell near school — Mar 6, 2026</b><br>Shakarabad village near Nakhchivan<br>Drone reportedly fell near a school; no confirmed casualties<br><em>Sources: Unconfirmed reports, Mar 6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [36.22, 36.85] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Turkey — Dortyol, Hatay Province Iranian Missile",
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Turkey — Dortyol, Hatay Province</b><br><b style=\"color:#ff3b3b\">CONFIRMED: Iranian ballistic missile intercepted by NATO, landed in area — Mar 6, 2026</b><br>Turkey asserts right to self-defense<br>Hatay Province in southeastern Turkey<br>Second confirmed Iranian strike on Turkish territory (after Mar 4 Incirlik-area strike)<br>NATO consultations ongoing<br><em>Sources: Verified intelligence, Mar 6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [34.8, 32] },
+      "properties": {
+        "category": "israeli-forces",
+        "label": "Israel - IDF",
+        "color": "#ffd700",
+        "iconSize": 14,
+        "popup": "<b style=\"color:#ffd700\">Israel - IDF</b><br>Highest readiness since June 2025 war<br>280,000 reservists authorized<br>IAF on full alert<br>Coordinating with US CENTCOM"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [34.9, 29.9] },
+      "properties": {
+        "category": "air-base",
+        "label": "Ovda Air Base, Israel",
+        "popup": "<b style=\"color:#00d4ff\">Ovda Air Base, Israel</b><br><b style=\"color:#ff8c42\">24x F-22A Raptor</b> — world's most advanced stealth fighter<br><b>First-ever F-22 deployment to Israeli soil</b><br>Arrived Feb 24–26 from RAF Lakenheath, UK<br>Vanguard of any Iran strike<br><em>Sources: Times of Israel, ABC News</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [33, 34.6] },
+      "properties": {
+        "category": "country-marker",
+        "label": "RAF Akrotiri, Cyprus",
+        "color": "#00d4ff",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#00d4ff\">RAF Akrotiri, Cyprus</b><br>UK F-35B Lightning II deployed<br>Defensive posture only<br><b style=\"color:#ff8c42\">? REPORTED: Iranian missile/drone activity targeting Cyprus — UNCONFIRMED</b><br>Social media intercepts suggest strike attempt; not confirmed by UK MoD, Cyprus govt, or US CENTCOM<br>If verified: first Iranian strike on a NATO-adjacent sovereign base<br><em>Sources: Social media intercepts, Mar 1 — Unconfirmed</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-1.79, 51.67] },
+      "properties": {
+        "category": "blocked",
+        "label": "RAF Fairford, United Kingdom",
+        "popup": "<b style=\"color:#ff3b3b\">RAF Fairford, United Kingdom</b><br>B-52/B-2 bomber base<br><b>PM Starmer DENIED US access</b><br>Citing international law"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [72.42, -7.32] },
+      "properties": {
+        "category": "blocked",
+        "label": "Diego Garcia",
+        "popup": "<b style=\"color:#ff3b3b\">Diego Garcia</b><br>Indian Ocean staging base<br><b>PM Starmer DENIED US access</b><br>Trump retaliated: withdrew Chagos deal support"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [16.4, 48.2] },
+      "properties": {
+        "category": "diplomatic",
+        "label": "Vienna — IAEA Headquarters",
+        "popup": "<b style=\"color:#00d4ff\">Vienna — IAEA Headquarters</b><br><b style=\"color:#ff3b3b\">US–Iran Technical Talks ENDED WITHOUT DEAL — Mar 3</b><br>Talks held Mar 2–3; Iran rejected U.S. demands (Al Jazeera/Mar 3)<br>Oman says talks showed \"potential progress\" (Reuters, Mar 3)<br>IAEA DG Grossi hosted; confirmed buildings damaged at Natanz but no radiological consequences<br>US lead: Steve Witkoff &bull; Iran lead: Araghchi<br><em>Sources: Reuters, AP, Al Jazeera, Mar 3</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [46.7, 24.7] },
+      "properties": {
+        "category": "saudi-forces",
+        "label": "Saudi Arabia — Coalition Assistance",
+        "color": "#00c853",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#00c853\">&#127462;&#127470; Saudi Arabia — Coalition Assistance</b><br><b style=\"color:#00c853\">Humanitarian aid &amp; coalition logistics provider</b><br>Prince Sultan Air Base open to US coalition forces<br>Patriot batteries coordinating air defense with US CENTCOM<br>Overflight rights granted for humanitarian evacuation flights<br>Saudi Red Crescent deploying emergency response teams<br>Pledged $500M+ in regional humanitarian assistance (GCC framework)<br>Emergency GCC summit convened in Riyadh<br><b style=\"color:#ff8c42\">Condemned Iran attacks on UAE; called them \"unprovoked aggression\"</b><br><em>Sources: Al Jazeera, Arab News, Saudi Foreign Ministry, Mar 1</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [2.3, 48.9] },
+      "properties": {
+        "category": "country-marker",
+        "label": "France — Engaged",
+        "color": "#0055a4",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#0055a4\">&#127467;&#127479; France — Engaged</b><br>Voted YES on UN ceasefire resolution<br>Humanitarian airlift lead (EU framework)<br>Paris offered as ceasefire/peace talk venue<br>French Foreign Minister called for 72-hour humanitarian pause<br><b style=\"color:#0055a4\">Charles de Gaulle (R91) aircraft carrier group DEPLOYING — Mar 1</b><br><em>Sources: Elysee Palace, French Foreign Ministry, Mar 1</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [10.0, 38.5] },
+      "properties": {
+        "category": "french-carrier",
+        "label": "FS Charles de Gaulle (R91)",
+        "popup": "<b style=\"color:#0055a4\">FS Charles de Gaulle (R91)</b><br>Nuclear-powered aircraft carrier &bull; Porte-Avions<br>20 Rafale M jets, 2 E-2C Hawkeye<br><b style=\"color:#ff8c42\">TRANSITING — Western/Central Mediterranean (Mar 6)</b><br>Redirected from North Atlantic (was in Malmö, Sweden)<br>Macron ordered deployment to Eastern Med on Mar 3<br>~10 days transit; expected Eastern Med by mid-March<br>Accompanied by: Forbin (D620), Provence (D652), Alsace (D656), Rubis-class SSN<br><em>Sources: Euronews, France24, Washington Post, Mar 3-5</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [10.0, 38.5] },
+      "properties": {
+        "category": "radius-circle",
+        "label": "Rafale M strike radius (~700km)",
+        "radiusKm": 700,
+        "color": "#0055a4",
+        "fillColor": "#0055a4",
+        "fillOpacity": 0.03,
+        "weight": 0.5,
+        "dashArray": "8,6",
+        "popup": "Rafale M strike radius (~700km)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-98.5, 29.4] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "TEXAS — Shooting Incident (Mar 1, 2026)",
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; TEXAS — Shooting Incident (Mar 1, 2026)</b><br><b style=\"color:#ff3b3b\">Suspected Iran-linked attack — Joint Base San Antonio area</b><br>Multiple casualties reported; FBI taking lead on investigation<br>Suspected attacker apprehended; Iran-linked cell suspected<br>US domestic threat level raised; military installations on alert<br>FBI stepped up monitoring of Iran-linked threat networks nationwide<br><em>Sources: FBI, SAPD, Mar 1</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-0.1, 51.5] },
+      "properties": {
+        "category": "country-marker",
+        "label": "United Kingdom — Defensive Assistance Offered",
+        "color": "#00d4ff",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#00d4ff\">&#127468;&#127463; United Kingdom — Defensive Assistance Offered</b><br>Monitoring situation closely; briefed by US in advance<br><b style=\"color:#00d4ff\">Defensive military assistance offers (Mar 1):</b><br>HMS Diamond (Type 45 destroyer) — forward-deployed to Gulf for air defense<br>Sky Sabre (CAMM) short-to-medium range air defense offered to Gulf allies<br>Typhoon jets offered in defensive CAP role<br>Royal Navy assets deploying for humanitarian corridor protection<br>FCDO coordinating evacuation flights for British nationals<br><em>PM Starmer BLOCKED US use of RAF bases for offensive strikes</em><br><em>Sources: UK MoD, UK FCDO, Reuters, Mar 1</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [13.4, 52.5] },
+      "properties": {
+        "category": "country-marker",
+        "label": "Germany — Defensive Assistance Offered",
+        "color": "#5588cc",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#5588cc\">&#127465;&#127466; Germany — Defensive Assistance Offered</b><br>Called for immediate ceasefire; supporting UN humanitarian corridor<br><b style=\"color:#5588cc\">Defensive military assistance offers (Mar 1):</b><br>Patriot PAC-3 air defense batteries offered to Gulf allies<br>Eurofighter Typhoons offered in defensive/CAP role<br>Bundestag emergency session authorized defense cooperation<br>&#8364;50M pledged in emergency humanitarian aid<br>Coordinating with UNHCR on refugee response<br><em>Sources: German MoD, German Foreign Ministry, Mar 1</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [44.2, 15.35] },
+      "properties": {
+        "category": "iranian-city",
+        "label": "Yemen — Houthis (Ansar Allah)",
+        "color": "#ff3b3b",
+        "iconSize": 10,
+        "popup": "<b style=\"color:#ff3b3b\">&#127988; Yemen — Houthis (Ansar Allah)</b><br><b style=\"color:#ff3b3b\">Resumed missile and drone attacks on Red Sea shipping — Mar 3</b><br>Houthis resume attacks after pause during Iran strike operations<br>Targeting Red Sea commercial shipping and naval vessels<br>Red Sea shipping corridor further disrupted<br><em>Sources: AP, Mar 3, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [58.6, 23.6] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Oman — Iranian Missile/Drone Strike (Mar 5)",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#127476;&#127474; Oman — Iranian Missile/Drone Strike (Mar 5)</b><br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED: Iranian strike hit Omani territory — Mar 5, 2026</b><br>Muscat International Airport area targeted<br>Oman suspends back-channel mediator role<br>Air defense systems activated; casualties under assessment<br>Sultan Haitham condemned the attack<br>Previously sole remaining US–Iran diplomatic channel<br><em>Sources: Reuters / AP, Mar 5, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [58.6, 23.6] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Muscat — Iranian Strike Site (Mar 5)",
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Muscat — Iranian Strike Site (Mar 5)</b><br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED: Strike on Omani territory</b><br>Muscat International Airport area<br><em>Sources: Reuters / AP, Mar 5, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [35.50, 33.89] },
+      "properties": {
+        "category": "country-marker",
+        "label": "Hezbollah — Lebanon",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#127473;&#127463; Hezbollah — Lebanon</b><br><b style=\"color:#ff3b3b\">Joined war after Khamenei killing</b><br><b style=\"color:#ff3b3b\">116 attack waves against Israel including rockets, missiles, UAVs</b><br>Hezbollah activated following death of Supreme Leader Khamenei (Mar 1)<br>Massive escalation across Lebanese-Israeli border<br>IDF Iron Dome, David's Sling activated; retaliatory strikes on southern Lebanon<br><b style=\"color:#ff3b3b\">Attempted second front — Mar 5 (rocket barrages toward northern Israel)</b><br>Acting on pre-standing orders independently (Quds Force disrupted)<br><em>Sources: Reuters, Times of Israel, Mar 1–6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [35.5, 33.5] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Hezbollah — Attempted Second Front (Mar 5)",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#127473;&#127463; Hezbollah — Attempted Second Front (Mar 5)</b><br><b style=\"color:#ff3b3b\">Hezbollah attempted to open second front — Mar 5, 2026</b><br>Rocket barrages launched toward northern Israel<br>IDF Iron Dome and David's Sling activated<br>Israel struck Hezbollah launch sites in southern Lebanon<br>Activation partially disrupted by IDF preemptive strikes<br>Acting on pre-standing orders independently (Quds Force disrupted)<br><em>Sources: Reuters / Times of Israel, Mar 5, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [44.4, 33.3] },
+      "properties": {
+        "category": "country-marker",
+        "label": "Iraq — Shia Militia Mobilization",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#127470;&#127478; Iraq — Shia Militia Mobilization</b><br><b style=\"color:#ff3b3b\">Iranian-backed Iraqi Shia militias joined fighting</b><br><b>Kataib Hezbollah</b> — Iran's most capable Iraqi proxy<br><b>Kataib Sayyid al-Shuhada</b> — IRGC-linked militia<br><b>Harakat Hezbollah al-Nujaba</b> — actively engaged<br>Militias conducting cross-border operations and attacks on US forces in Iraq/Syria<br>Baghdad-based PMF (Popular Mobilization Forces) on high alert<br><em>Sources: Verified intelligence, Mar 6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [32.9, 39.9] },
+      "properties": {
+        "category": "irgc-target",
+        "label": "Turkey — Iranian Missile Strike (Mar 4)",
+        "color": "#ff3b3b",
+        "iconSize": 12,
+        "popup": "<b style=\"color:#ff3b3b\">&#127481;&#127479; Turkey — Iranian Missile Strike (Mar 4)</b><br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED: Iranian missiles struck Turkish territory — Mar 4, 2026</b><br>NATO Article 4 consultations triggered<br>President Erdogan condemned the attack<br>Incirlik Air Base on heightened alert<br>Turkey reserves right of self-defense<br>S-400 and Patriot (German-operated) air defense systems activated<br><b style=\"color:#ff3b3b\">Additional strike: Dortyol, Hatay Province — ballistic missile intercepted by NATO, landed in area (Mar 6)</b><br><b style=\"color:#ff3b3b\">Turkey asserts right to self-defense</b><br><em>Sources: Reuters / NATO, Mar 4–6, 2026</em>"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [35.4, 37.0] },
+      "properties": {
+        "category": "strike-confirmed",
+        "label": "Incirlik Air Base Area — Iranian Missile Strike",
+        "popup": "<b style=\"color:#ff3b3b\">&#128165; Incirlik Air Base Area — Iranian Missile Strike</b><br><b style=\"color:#ff3b3b\">&#10004; CONFIRMED: Strike on Turkish territory near Incirlik — Mar 4, 2026</b><br>Incirlik Air Base on heightened alert; US B61 nuclear gravity bombs stored on site<br>Turkish and US forces on full air defense alert<br>NATO Article 4 consultations triggered<br><em>Sources: Reuters / NATO, Mar 4, 2026</em>"
+      }
+    }
+  ]
+}
