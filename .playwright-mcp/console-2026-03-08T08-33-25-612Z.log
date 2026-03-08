@@ -1,0 +1,6 @@
+[  142332ms] [WARNING] Unable to perform style diff: Cannot read properties of undefined (reading '_checkLoaded').  Rebuilding the style from scratch. @ https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:41
+[  142335ms] [ERROR] AbortError: signal is aborted without reason
+    at de._remove (https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:46:134590)
+    at t.Map._updateStyle (https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:46:405240)
+    at t.Map._updateDiff (https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:46:406013)
+    at https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:46:405720 @ https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js:41

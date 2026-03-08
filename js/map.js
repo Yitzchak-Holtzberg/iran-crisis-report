@@ -16,7 +16,34 @@ document.addEventListener('DOMContentLoaded', function(){
   });
   map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
   map.addControl(new maplibregl.FullscreenControl(), 'top-right');
+  map.addControl(new maplibregl.ScaleControl({maxWidth:120, unit:'imperial'}), 'bottom-left');
   window._theaterMap = map;
+
+  // ── 3D Terrain ──
+  var terrainEnabled = false;
+  function enableTerrain() {
+    if (terrainEnabled) return;
+    try {
+      if (!map.getSource('terrain-dem')) {
+        map.addSource('terrain-dem', {
+          type: 'raster-dem',
+          tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
+          encoding: 'terrarium',
+          tileSize: 256,
+          maxzoom: 15
+        });
+      }
+      map.setTerrain({source: 'terrain-dem', exaggeration: 1.5});
+      terrainEnabled = true;
+    } catch(e) { /* terrain not supported in this browser */ }
+  }
+  function disableTerrain() {
+    if (!terrainEnabled) return;
+    try {
+      map.setTerrain(null);
+      terrainEnabled = false;
+    } catch(e) {}
+  }
 
   // ── Hover tooltip popup (lightweight, no close button) ──
   var hoverPopup = new maplibregl.Popup({closeButton:false, closeOnClick:false, className:'hover-tooltip', offset:14, maxWidth:'260px'});
@@ -80,21 +107,6 @@ document.addEventListener('DOMContentLoaded', function(){
     'spinup': {size:22, svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="none" stroke="#ff8c42" stroke-width="2" stroke-dasharray="4,2"/><path d="M11 5 L11 11 L15 14" fill="none" stroke="#ff8c42" stroke-width="1.8" stroke-linecap="round"/></svg>'}
   };
 
-  // ── Register all icons then load data ──
-  function registerIcons() {
-    var promises = [];
-    Object.keys(ICONS).forEach(function(key) {
-      var icon = ICONS[key];
-      promises.push(
-        createIcon(icon.svg, icon.size).then(function(result) {
-          if (result && !map.hasImage('icon-' + key)) {
-            map.addImage('icon-' + key, result.data, {sdf: false});
-          }
-        })
-      );
-    });
-    return Promise.all(promises);
-  }
 
   // ── Category to icon mapping ──
   var CAT_ICON = {};
@@ -109,14 +121,58 @@ document.addEventListener('DOMContentLoaded', function(){
     'israeli-forces':'#ffd700','saudi-forces':'#00c853','radius-circle':'transparent','spinup':'#ff8c42'
   };
 
+  // ── Caches to avoid re-fetching/re-rendering on theme toggle ──
+  var _cachedMarkers = null;
+  var _cachedCorridors = null;
+  var _cachedIconData = null; // {key: {data, size}}
+
+  // Render SVG icons to ImageData once, then just re-register from cache
+  function renderIconsOnce() {
+    if (_cachedIconData) return Promise.resolve(_cachedIconData);
+    var promises = [];
+    var keys = Object.keys(ICONS);
+    keys.forEach(function(key) {
+      var icon = ICONS[key];
+      promises.push(createIcon(icon.svg, icon.size).then(function(result) {
+        return {key: key, result: result};
+      }));
+    });
+    return Promise.all(promises).then(function(results) {
+      _cachedIconData = {};
+      results.forEach(function(r) { if (r.result) _cachedIconData[r.key] = r.result; });
+      return _cachedIconData;
+    });
+  }
+
+  function registerIconsFromCache(cache) {
+    Object.keys(cache).forEach(function(key) {
+      if (map.hasImage('icon-' + key)) map.removeImage('icon-' + key);
+      map.addImage('icon-' + key, cache[key].data, {sdf: false});
+    });
+  }
+
+  var loadGeneration = 0;
   function loadMapData() {
-    Promise.all([
-      fetch('data/markers.geojson').then(function(r){return r.json();}),
-      fetch('data/corridors.geojson').then(function(r){return r.json();}),
-      registerIcons()
-    ]).then(function(data){
-      var markers = data[0];
-      var corridors = data[1];
+    // Re-read current theme (may have changed since initial load)
+    isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    var thisGen = ++loadGeneration;
+
+    // Fetch data + render icons only on first load; use cache after
+    var dataPromise = (_cachedMarkers && _cachedCorridors)
+      ? Promise.resolve([_cachedMarkers, _cachedCorridors])
+      : Promise.all([
+          fetch('data/markers.geojson').then(function(r){return r.json();}),
+          fetch('data/corridors.geojson').then(function(r){return r.json();})
+        ]);
+
+    Promise.all([dataPromise, renderIconsOnce()]).then(function(results){
+      // Skip if a newer load was triggered while we were fetching
+      if (thisGen !== loadGeneration) return;
+      var markers = results[0][0];
+      var corridors = results[0][1];
+      _cachedMarkers = markers;
+      _cachedCorridors = corridors;
+      registerIconsFromCache(results[1]);
 
       // Separate radius circles, strikes, and other point markers
       var STRIKE_CATS = ['strike-confirmed', 'strike-unconfirmed'];
@@ -200,18 +256,20 @@ document.addEventListener('DOMContentLoaded', function(){
               'icon-size': ['interpolate',['linear'],['zoom'], 3,0.6, 5,0.8, 7,1.0, 9,1.3],
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
-              'text-field': ['step',['zoom'], '', 6, ['get','label']],
-              'text-size': 10,
+              'text-field': ['step',['zoom'], '', 5, ['get','label']],
+              'text-size': ['interpolate',['linear'],['zoom'], 5,11, 7,13, 9,14],
               'text-offset': [0, 1.8],
               'text-anchor': 'top',
               'text-allow-overlap': false,
               'text-optional': true,
-              'text-font': ['Open Sans Regular','Arial Unicode MS Regular']
+              'text-font': ['Open Sans Bold','Arial Unicode MS Bold'],
+              'text-max-width': 12,
+              'text-line-height': 1.2
             },
             paint: {
-              'text-color': CAT_COLORS[cat] || '#ccc',
-              'text-halo-color': isLight ? 'rgba(255,255,255,0.85)' : 'rgba(10,10,15,0.85)',
-              'text-halo-width': 1.5
+              'text-color': isLight ? '#1a1a2e' : (CAT_COLORS[cat] || '#ccc'),
+              'text-halo-color': isLight ? 'rgba(255,255,255,0.95)' : 'rgba(10,10,15,0.92)',
+              'text-halo-width': 2.5
             }
           });
         } else {
@@ -272,54 +330,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
       });
 
-      // ── Popups (with category-colored accent) ──
-      var popup = new maplibregl.Popup({offset:12, maxWidth:'340px', closeButton:true});
-
-      Object.keys(CAT_COLORS).forEach(function(cat){
-        if (cat === 'radius-circle') return;
-        var layerId = 'cat-' + cat;
-        map.on('click', layerId, function(e){
-          var f = e.features[0];
-          var content = f.properties.popup || '<b>'+f.properties.label+'</b>';
-          var html = formatPopup(f.properties.category, content);
-          popup.setLngLat(f.geometry.coordinates.slice()).setHTML(html).addTo(map);
-        });
-        map.on('mouseenter', layerId, function(e){
-          map.getCanvas().style.cursor = 'pointer';
-          if (e.features && e.features[0]) {
-            var f = e.features[0];
-            hoverPopup.setLngLat(f.geometry.coordinates.slice()).setHTML('<b>'+f.properties.label+'</b>').addTo(map);
-          }
-        });
-        map.on('mouseleave', layerId, function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
-      });
-
-      map.on('click', 'corridors-line', function(e){
-        var f = e.features[0];
-        if (f.properties.popup) {
-          var html = formatPopup('corridor', f.properties.popup);
-          popup.setLngLat(e.lngLat).setHTML(html).addTo(map);
-        }
-      });
-      map.on('mouseenter', 'corridors-line', function(e){
-        map.getCanvas().style.cursor = 'pointer';
-        if (e.features && e.features[0]) {
-          hoverPopup.setLngLat(e.lngLat).setHTML('<b>'+(e.features[0].properties.label||'Corridor')+'</b>').addTo(map);
-        }
-      });
-      map.on('mouseleave', 'corridors-line', function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
-
-      // ── Cluster click → flyTo (cinematic zoom) ──
-      map.on('click', 'clusters', function(e){
-        var features = map.queryRenderedFeatures(e.point, {layers:['clusters']});
-        var clusterId = features[0].properties.cluster_id;
-        map.getSource('markers').getClusterExpansionZoom(clusterId, function(err, zoom){
-          if (err) return;
-          map.flyTo({center:features[0].geometry.coordinates, zoom:zoom, speed:0.8, curve:1.4});
-        });
-      });
-      map.on('mouseenter', 'clusters', function(){ map.getCanvas().style.cursor = 'pointer'; });
-      map.on('mouseleave', 'clusters', function(){ map.getCanvas().style.cursor = ''; });
+      wireMapEvents();
 
       // ── Strike glow + dot (rendered LAST so they sit on top of clusters) ──
       // Sizes scale with zoom: tiny at overview (z3), full at zoomed-in (z7+)
@@ -353,36 +364,22 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'symbol',
         source: 'strike-dots-src',
         layout: {
-          'text-field': ['step',['zoom'], '', 6, ['get','label']],
-          'text-size': 9,
+          'text-field': ['step',['zoom'], '', 5, ['get','label']],
+          'text-size': ['interpolate',['linear'],['zoom'], 5,10, 7,12, 9,13],
           'text-offset': [0, 1.2],
           'text-anchor': 'top',
           'text-allow-overlap': false,
           'text-optional': true,
-          'text-font': ['Open Sans Regular','Arial Unicode MS Regular']
+          'text-font': ['Open Sans Bold','Arial Unicode MS Bold'],
+          'text-max-width': 12,
+          'text-line-height': 1.2
         },
         paint: {
-          'text-color': '#ff6b6b',
-          'text-halo-color': isLight ? 'rgba(255,255,255,0.85)' : 'rgba(10,10,15,0.85)',
-          'text-halo-width': 1.5
+          'text-color': isLight ? '#6b1a1a' : '#ff6b6b',
+          'text-halo-color': isLight ? 'rgba(255,255,255,0.95)' : 'rgba(10,10,15,0.92)',
+          'text-halo-width': 2.5
         }
       });
-
-      // ── Strike dot popups ──
-      map.on('click', 'strike-dot', function(e){
-        var f = e.features[0];
-        var content = f.properties.popup || '<b>'+f.properties.label+'</b>';
-        var html = formatPopup(f.properties.category, content);
-        popup.setLngLat(f.geometry.coordinates.slice()).setHTML(html).addTo(map);
-      });
-      map.on('mouseenter', 'strike-dot', function(e){
-        map.getCanvas().style.cursor = 'pointer';
-        if (e.features && e.features[0]) {
-          var f = e.features[0];
-          hoverPopup.setLngLat(f.geometry.coordinates.slice()).setHTML('<b>'+f.properties.label+'</b>').addTo(map);
-        }
-      });
-      map.on('mouseleave', 'strike-dot', function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
 
       // Track hidden categories and full point set for cluster filtering
       window._allPoints = points;
@@ -392,7 +389,6 @@ document.addEventListener('DOMContentLoaded', function(){
       // Start gentle pulse on strike glow
       startStrikePulse();
       addHeatmapLayer();
-      startCorridorFlow();
 
       buildToggles();
       updateStats();
@@ -400,25 +396,119 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
-  // ── Gentle breathing pulse on strike glow layer ──
+  // ── Map event listeners (wired once, survive setStyle) ──
+  var eventsWired = false;
+  function wireMapEvents() {
+    if (eventsWired) return;
+    eventsWired = true;
+
+    var popup = new maplibregl.Popup({offset:12, maxWidth:'340px', closeButton:true});
+
+    Object.keys(CAT_COLORS).forEach(function(cat){
+      if (cat === 'radius-circle') return;
+      var layerId = 'cat-' + cat;
+      map.on('click', layerId, function(e){
+        var f = e.features[0];
+        var content = f.properties.popup || '<b>'+f.properties.label+'</b>';
+        var html = formatPopup(f.properties.category, content);
+        popup.setLngLat(f.geometry.coordinates.slice()).setHTML(html).addTo(map);
+      });
+      map.on('mouseenter', layerId, function(e){
+        map.getCanvas().style.cursor = 'pointer';
+        if (e.features && e.features[0]) {
+          var f = e.features[0];
+          hoverPopup.setLngLat(f.geometry.coordinates.slice()).setHTML('<b>'+f.properties.label+'</b>').addTo(map);
+        }
+      });
+      map.on('mouseleave', layerId, function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
+    });
+
+    map.on('click', 'corridors-line', function(e){
+      var f = e.features[0];
+      if (f.properties.popup) {
+        var html = formatPopup('corridor', f.properties.popup);
+        popup.setLngLat(e.lngLat).setHTML(html).addTo(map);
+      }
+    });
+    map.on('mouseenter', 'corridors-line', function(e){
+      map.getCanvas().style.cursor = 'pointer';
+      if (e.features && e.features[0]) {
+        hoverPopup.setLngLat(e.lngLat).setHTML('<b>'+(e.features[0].properties.label||'Corridor')+'</b>').addTo(map);
+      }
+    });
+    map.on('mouseleave', 'corridors-line', function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
+
+    map.on('click', 'clusters', function(e){
+      var features = map.queryRenderedFeatures(e.point, {layers:['clusters']});
+      var clusterId = features[0].properties.cluster_id;
+      map.getSource('markers').getClusterExpansionZoom(clusterId, function(err, zoom){
+        if (err) return;
+        map.flyTo({center:features[0].geometry.coordinates, zoom:zoom, speed:0.8, curve:1.4});
+      });
+    });
+    map.on('mouseenter', 'clusters', function(e){
+      map.getCanvas().style.cursor = 'pointer';
+      var features = map.queryRenderedFeatures(e.point, {layers:['clusters']});
+      if (!features.length) return;
+      var clusterId = features[0].properties.cluster_id;
+      var coords = features[0].geometry.coordinates.slice();
+      map.getSource('markers').getClusterLeaves(clusterId, 100, 0, function(err, leaves) {
+        if (err || !leaves) return;
+        var counts = {};
+        leaves.forEach(function(f) {
+          var name = CAT_DISPLAY[f.properties.category] || f.properties.category;
+          counts[name] = (counts[name] || 0) + 1;
+        });
+        var lines = Object.keys(counts).map(function(k) {
+          return '<b>' + counts[k] + '</b> ' + k;
+        });
+        hoverPopup.setLngLat(coords).setHTML(
+          '<div style="font-size:11px;line-height:1.5;">' +
+          '<b style="color:var(--text-primary);">' + features[0].properties.point_count + ' markers</b><br>' +
+          lines.join('<br>') + '</div>'
+        ).addTo(map);
+      });
+    });
+    map.on('mouseleave', 'clusters', function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
+
+    // Strike dot events
+    map.on('click', 'strike-dot', function(e){
+      var f = e.features[0];
+      var content = f.properties.popup || '<b>'+f.properties.label+'</b>';
+      var html = formatPopup(f.properties.category, content);
+      popup.setLngLat(f.geometry.coordinates.slice()).setHTML(html).addTo(map);
+    });
+    map.on('mouseenter', 'strike-dot', function(e){
+      map.getCanvas().style.cursor = 'pointer';
+      if (e.features && e.features[0]) {
+        var f = e.features[0];
+        hoverPopup.setLngLat(f.geometry.coordinates.slice()).setHTML('<b>'+f.properties.label+'</b>').addTo(map);
+      }
+    });
+    map.on('mouseleave', 'strike-dot', function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
+  }
+
+  // ── Gentle breathing pulse on strike glow layer (throttled) ──
   var pulseRaf;
   function startStrikePulse() {
     if (pulseRaf) cancelAnimationFrame(pulseRaf);
     var start = performance.now();
-    function tick() {
-      // Smooth sine wave: 4s cycle, subtle pulse scaled by zoom
-      var t = Math.sin(((performance.now() - start) % 4000) / 4000 * Math.PI * 2) * 0.5 + 0.5;
+    var lastUpdate = 0;
+    function tick(now) {
+      pulseRaf = requestAnimationFrame(tick);
+      // Throttle to ~20fps (50ms) — no visual difference, big perf gain
+      if (now - lastUpdate < 50) return;
+      lastUpdate = now;
+      var t = Math.sin(((now - start) % 4000) / 4000 * Math.PI * 2) * 0.5 + 0.5;
       var z = map.getZoom();
-      // Base glow radius at current zoom (matches the interpolation in paint)
       var baseR = z < 3 ? 3 : z > 7 ? 8 : 3 + (z - 3) / 4 * 5;
       var baseO = z < 3 ? 0.1 : z > 7 ? 0.25 : 0.1 + (z - 3) / 4 * 0.15;
       if (map.getLayer('strike-glow')) {
         map.setPaintProperty('strike-glow', 'circle-radius', baseR + 2 * t);
         map.setPaintProperty('strike-glow', 'circle-opacity', baseO + 0.1 * t);
       }
-      pulseRaf = requestAnimationFrame(tick);
     }
-    tick();
+    pulseRaf = requestAnimationFrame(tick);
   }
 
   // ── Category display names for stats + popups ──
@@ -502,6 +592,19 @@ document.addEventListener('DOMContentLoaded', function(){
     heatBtn.addEventListener('click', function(){ toggleHeatmap(heatBtn); });
     container.appendChild(heatBtn);
 
+    // ── 3D Terrain toggle button ──
+    var terrainBtn = document.createElement('button');
+    terrainBtn.className = 'layer-toggle-btn';
+    terrainBtn.textContent = '3D Terrain';
+    terrainBtn.title = 'Toggle 3D terrain elevation';
+    terrainBtn.style.setProperty('--toggle-color', '#8b6914');
+    terrainBtn.style.borderStyle = 'dashed';
+    terrainBtn.addEventListener('click', function(){
+      if (terrainEnabled) { disableTerrain(); terrainBtn.classList.remove('active'); }
+      else { enableTerrain(); terrainBtn.classList.add('active'); }
+    });
+    container.appendChild(terrainBtn);
+
     LAYER_GROUPS.forEach(function(group){
       var btn = document.createElement('button');
       btn.className = 'layer-toggle-btn active';
@@ -521,6 +624,52 @@ document.addEventListener('DOMContentLoaded', function(){
       });
       container.appendChild(btn);
     });
+
+    // ── Preset view bookmarks ──
+    // Remove existing preset/legend elements to prevent duplicates on reload
+    var existingPresets = container.parentNode.querySelector('.map-presets');
+    if (existingPresets) existingPresets.remove();
+    var existingLegendBtn = container.parentNode.querySelector('.legend-toggle-btn');
+    if (existingLegendBtn) existingLegendBtn.remove();
+
+    var PRESETS = [
+      {label:'Persian Gulf',    center:[51.5, 26.5], zoom:5.5},
+      {label:'Strait of Hormuz',center:[56.3, 26.5], zoom:7},
+      {label:'E. Mediterranean', center:[33.5, 34],   zoom:5.5},
+      {label:'Iran Interior',   center:[53, 33],     zoom:5},
+      {label:'Red Sea',         center:[40, 20],     zoom:4.5}
+    ];
+    var presetWrap = document.createElement('div');
+    presetWrap.className = 'map-presets';
+    presetWrap.innerHTML = '<span class="map-presets-label">Jump to:</span>';
+    PRESETS.forEach(function(p) {
+      var a = document.createElement('button');
+      a.className = 'map-preset-btn';
+      a.textContent = p.label;
+      a.addEventListener('click', function() {
+        map.flyTo({center:p.center, zoom:p.zoom, speed:0.8, curve:1.2});
+      });
+      presetWrap.appendChild(a);
+    });
+    container.parentNode.insertBefore(presetWrap, container.nextSibling);
+
+    // ── Collapsible legend on mobile ──
+    var legend = document.getElementById('mapLegend');
+    if (legend) {
+      var legendToggle = document.createElement('button');
+      legendToggle.className = 'legend-toggle-btn';
+      legendToggle.innerHTML = 'Legend <span class="legend-arrow">&#9660;</span>';
+      legendToggle.addEventListener('click', function() {
+        legend.classList.toggle('legend-collapsed');
+        legendToggle.querySelector('.legend-arrow').innerHTML = legend.classList.contains('legend-collapsed') ? '&#9654;' : '&#9660;';
+      });
+      legend.parentNode.insertBefore(legendToggle, legend);
+      // Start collapsed on mobile
+      if (window.innerWidth <= 768) {
+        legend.classList.add('legend-collapsed');
+        legendToggle.querySelector('.legend-arrow').innerHTML = '&#9654;';
+      }
+    }
   }
 
   // ── Search / Locate ──
@@ -541,10 +690,12 @@ document.addEventListener('DOMContentLoaded', function(){
     wireSearch();
   }
 
+  var searchWired = false;
   function wireSearch() {
     var input = document.getElementById('mapSearch');
     var results = document.getElementById('mapSearchResults');
-    if (!input || !results) return;
+    if (!input || !results || searchWired) return;
+    searchWired = true;
 
     input.addEventListener('input', function() {
       var q = input.value.trim().toLowerCase();
@@ -570,7 +721,6 @@ document.addEventListener('DOMContentLoaded', function(){
           // Open popup after fly completes
           map.once('moveend', function() {
             var content = match.popup || '<b>'+match.label+'</b>';
-            var accentColor = CAT_GROUP_COLOR[match.category] || '#888';
             var popupHtml = formatPopup(match.category, content);
             new maplibregl.Popup({offset:12, maxWidth:'340px'}).setLngLat(match.coords).setHTML(popupHtml).addTo(map);
           });
@@ -603,28 +753,6 @@ document.addEventListener('DOMContentLoaded', function(){
     var displayName = CAT_DISPLAY[category] || category || '';
     var badge = displayName ? '<span class="map-popup-badge" style="background:'+accentColor+'">'+escapeHtml(displayName)+'</span>' : '';
     return '<div class="map-popup-card">' + badge + '<div style="border-left:3px solid '+accentColor+';padding-left:10px;">'+content+'</div></div>';
-  }
-
-  // ── Animated corridor flow ──
-  var corridorRaf;
-  function startCorridorFlow() {
-    if (corridorRaf) cancelAnimationFrame(corridorRaf);
-    var start = performance.now();
-    function tick() {
-      if (!map.getLayer('corridors-line')) { corridorRaf = requestAnimationFrame(tick); return; }
-      if (map.getLayoutProperty('corridors-line', 'visibility') === 'none') { corridorRaf = requestAnimationFrame(tick); return; }
-      // Shift dash pattern to create flow illusion (1s cycle)
-      var t = ((performance.now() - start) % 1500) / 1500;
-      var offset = Math.round(t * 9); // 5+4 = 9 total dash cycle
-      var d1 = 5 - (offset % 5);
-      var d2 = offset % 5;
-      if (d1 <= 0) d1 = 5;
-      if (d2 <= 0) d2 = 0;
-      // MapLibre requires array of at least 2 values
-      map.setPaintProperty('corridors-line', 'line-dasharray', [d1 || 1, 4, d2 || 1, 0]);
-      corridorRaf = requestAnimationFrame(tick);
-    }
-    tick();
   }
 
   // ── Heatmap toggle ──
@@ -666,5 +794,5 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   window._reloadMapData = loadMapData;
-  map.on('load', loadMapData);
+  map.once('load', loadMapData);
 });

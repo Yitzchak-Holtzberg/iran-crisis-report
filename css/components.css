@@ -232,6 +232,50 @@
 .map-search-empty { cursor:default; color:var(--text-muted); font-style:italic; }
 .map-search-empty:hover { background:transparent; color:var(--text-muted); }
 
+/* ===== MAP PRESET VIEWS ===== */
+.map-presets {
+  display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:4px 0 2px;
+  justify-content:center;
+}
+.map-presets-label {
+  font-size:10px; color:var(--text-muted); text-transform:uppercase;
+  letter-spacing:0.5px; font-weight:600;
+}
+.map-preset-btn {
+  font-size:10px; padding:2px 10px; border-radius:12px; cursor:pointer;
+  border:1px solid var(--border); background:transparent; color:var(--text-muted);
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  transition:all 0.15s ease;
+}
+.map-preset-btn:hover {
+  border-color:var(--accent-blue); color:var(--accent-blue);
+  background:rgba(74,144,217,0.08);
+}
+
+/* ===== COLLAPSIBLE LEGEND ===== */
+.legend-toggle-btn {
+  display:none; width:100%; padding:6px 0; border:none; background:transparent;
+  color:var(--text-muted); font-size:11px; cursor:pointer; text-align:center;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+}
+.legend-toggle-btn:hover { color:var(--text-primary); }
+.legend-arrow { font-size:8px; margin-left:4px; }
+.legend-collapsed { display:none !important; }
+@media (max-width:768px) {
+  .legend-toggle-btn { display:block; }
+}
+
+/* ===== SCALE BAR THEMING ===== */
+.maplibregl-ctrl-scale {
+  background:rgba(0,0,0,0.4) !important; color:#ccc !important;
+  border-color:#888 !important; font-size:10px !important;
+  padding:0 5px !important;
+}
+[data-theme="light"] .maplibregl-ctrl-scale {
+  background:rgba(255,255,255,0.7) !important; color:#333 !important;
+  border-color:#666 !important;
+}
+
 /* ===== MAP POPUP CARD ===== */
 .map-popup-card { position:relative; }
 .map-popup-badge {

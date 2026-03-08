@@ -22,7 +22,10 @@
       "mcp__plugin_playwright_playwright__browser_snapshot",
       "Bash(grep -c \"CNN\" /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/sections/*.html)",
       "Bash(grep -v \":0$\")",
-      "Bash(wc -l /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/*.js /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/css/*.css /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/js/*.js)"
+      "Bash(wc -l /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/*.js /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/css/*.css /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/js/*.js)",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "mcp__plugin_playwright_playwright__browser_wait_for"
     ]
   }
 }

@@ -18,7 +18,7 @@ function toggleTheme() {
       ? 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
       : 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
     window._theaterMap.setStyle(newStyle);
-    window._theaterMap.once('styledata', function() {
+    window._theaterMap.once('idle', function() {
       if (window._reloadMapData) window._reloadMapData();
     });
   }
