@@ -1,0 +1,4 @@
+[     192ms] [ERROR] Target <hr> element not found. @ https://understandingwar.org/research/middle-east/iran-update-morning-special-report-march-7-2026/:1614
+[     232ms] [WARNING] Div for inline form "New Sign Up for Email Updates Inline Web Form - ISW WP" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29
+[     232ms] [WARNING] Div for inline form "Website Email Subscription Form" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29
+[     232ms] [WARNING] Div for inline form "New Press & Media Inline Web Form - ISW WP" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29

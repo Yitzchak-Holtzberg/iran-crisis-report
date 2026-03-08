@@ -1,0 +1,6 @@
+[     780ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.cfr.org/api/livestreams:0
+[     781ms] [ERROR] Failed to load the livestream data. Error: Request for livestream data was not OK.
+    at https://static.cfr.org/cfr/d54d8ed/_next/static/chunks/0cda81deca79de61.js:14:4817 @ https://static.cfr.org/cfr/d54d8ed/_next/static/chunks/0cda81deca79de61.js:13
+[     785ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.cfr.org/api/auth/session:0
+[     785ms] [ERROR] Failed to load the session. Error: Failed to fetch the session: 
+    at a (https://static.cfr.org/cfr/d54d8ed/_next/static/chunks/d4cbb7e6736c1483.js:5:8851) @ https://static.cfr.org/cfr/d54d8ed/_next/static/chunks/d4cbb7e6736c1483.js:4

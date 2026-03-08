@@ -18,7 +18,8 @@
       "Bash(du -sh sections sections/* js css scripts .github)",
       "Bash(mkdir -p data)",
       "Bash(mv corridors.geojson data/)",
-      "Bash(mv markers.geojson data/)"
+      "Bash(mv markers.geojson data/)",
+      "mcp__plugin_playwright_playwright__browser_snapshot"
     ]
   }
 }

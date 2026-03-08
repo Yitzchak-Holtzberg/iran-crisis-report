@@ -1,0 +1,8 @@
+[     739ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://understandingwar.org/research/middle-east:0
+[    1587ms] [WARNING] Div for inline form "New Sign Up for Email Updates Inline Web Form - ISW WP" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29
+[    1588ms] [WARNING] Div for inline form "Website Email Subscription Form" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29
+[    1588ms] [WARNING] Div for inline form "New Press & Media Inline Web Form - ISW WP" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29
+[    6038ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://understandingwar.org/wp-content/uploads/2025/02/Annotation-4.svg:0
+[    6095ms] [WARNING] Div for inline form "New Sign Up for Email Updates Inline Web Form - ISW WP" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29
+[    6095ms] [WARNING] Div for inline form "Website Email Subscription Form" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29
+[    6096ms] [WARNING] Div for inline form "New Press & Media Inline Web Form - ISW WP" is missing. Was inline code installed? @ https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js:29

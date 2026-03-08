@@ -57,6 +57,29 @@
 .info-box-red  { background:rgba(255,59,59,0.08); border:1px solid rgba(255,59,59,0.35); }
 .info-box-blue { background:rgba(0,85,164,0.08); border:1px solid rgba(0,85,164,0.3); }
 
+/* ===== SECTION HEADER ICON BACKGROUNDS ===== */
+.icon-orange { background:rgba(255,140,66,0.15); }
+.icon-cyan   { background:rgba(0,212,255,0.15); }
+.icon-blue   { background:rgba(74,144,217,0.15); }
+.icon-red    { background:rgba(255,59,59,0.15); }
+
+/* ===== CARD ACCENT BORDERS ===== */
+.card-accent-red  { border-left:3px solid var(--accent-red); }
+.card-accent-blue { border-left:3px solid var(--accent-blue); }
+.card-accent-gold { border-left:3px solid var(--accent-gold); }
+
+/* ===== SUBSECTION HEADINGS ===== */
+.subsection-title         { font-size:14px; margin-bottom:8px; }
+.subsection-title.red     { color:var(--accent-red); }
+.subsection-title.blue    { color:var(--accent-blue); }
+.subsection-title.orange  { color:var(--accent-orange); }
+.subsection-title.gold    { color:var(--accent-gold); }
+.subsection-title.primary { color:var(--text-primary); }
+
+/* ===== DETAIL LISTS ===== */
+.detail-list     { color:var(--text-secondary); font-size:13px; margin-left:16px; line-height:1.7; }
+.detail-list-lg  { color:var(--text-secondary); font-size:13px; margin-left:16px; line-height:1.8; }
+
 /* ===== EXISTING COMPONENT CLASSES ===== */
 
 .aircraft-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin:24px 0; }

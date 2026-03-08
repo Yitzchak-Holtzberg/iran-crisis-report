@@ -52,6 +52,9 @@ const GPT_LOG_PATH     = path.join(BASE_DIR, 'logs', 'gpt-calls.jsonl');
 const TODAY_TIMELINE_RE =
   /<!-- ── TODAY ── -->[\s\S]*?<div class="timeline"[^>]*>([\s\S]*?)<!-- ── YESTERDAY ── -->/;
 
+// Matches a single .tl-item block (with optional data-date attribute).
+const TL_ITEM_RE = /<div class="tl-item"[^>]*>[\s\S]*?<\/div>\s*<\/div>\s*<\/div>\s*<\/div>/g;
+
 // Number of recent ticker headlines to include in the page-context snapshot
 // passed to the significance classifier.  10 is enough to cover the last few
 // updates without inflating the prompt token count.
@@ -378,6 +381,174 @@ function appendGptLog(entry) {
  * New items are prepended immediately after the opening <div class="timeline">
  * tag of the first (TODAY) day block.
  */
+// ── Timeline helpers (date-aware rotation system) ────────────────────────────
+
+/** Maximum number of .tl-item entries to keep in TODAY and YESTERDAY blocks. */
+const MAX_TODAY_ITEMS     = 20;
+const MAX_YESTERDAY_ITEMS = 15;
+
+/** Month abbreviation map for date parsing. */
+const MONTH_MAP = {
+  jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+  jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
+  january: 0, february: 1, march: 2, april: 3, june: 5,
+  july: 6, august: 7, september: 8, october: 9, november: 10, december: 11
+};
+
+/**
+ * Parse a human-readable date string like "March 7, 2026" into a Date object
+ * (midnight UTC). Returns null if unparseable.
+ */
+function parseHumanDate(str) {
+  if (!str) return null;
+  const m = str.match(/(\w+)\s+(\d{1,2}),?\s*(\d{4})/);
+  if (!m) return null;
+  const month = MONTH_MAP[m[1].toLowerCase()];
+  if (month === undefined) return null;
+  return new Date(Date.UTC(+m[3], month, +m[2]));
+}
+
+/**
+ * Extract the newest date from an HTML string by scanning source citations
+ * for patterns like "Mar 7, 2026" or "Mar 7". Also checks data-date attribute.
+ * @param {string} html - a single .tl-item block
+ * @param {number} fallbackYear - year to assume if none found in citation
+ * @returns {Date|null}
+ */
+function extractItemDate(html, fallbackYear) {
+  // Prefer explicit data-date attribute (ISO format: YYYY-MM-DD).
+  const attrMatch = html.match(/data-date="(\d{4}-\d{2}-\d{2})"/);
+  if (attrMatch) return new Date(attrMatch[1] + 'T00:00:00Z');
+
+  // Fall back to scanning source citations for date patterns.
+  const dateRe = /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\w*\s+(\d{1,2})(?:,?\s*(\d{4}))?\b/gi;
+  let newest = null;
+  let match;
+  while ((match = dateRe.exec(html)) !== null) {
+    const month = MONTH_MAP[match[1].toLowerCase()];
+    if (month === undefined) continue;
+    const year = match[3] ? +match[3] : fallbackYear;
+    const d = new Date(Date.UTC(year, month, +match[2]));
+    if (!newest || d > newest) newest = d;
+  }
+  return newest;
+}
+
+/** Check if two Date objects represent the same UTC calendar day. */
+function isSameDay(a, b) {
+  return a.getUTCFullYear() === b.getUTCFullYear() &&
+         a.getUTCMonth()    === b.getUTCMonth() &&
+         a.getUTCDate()     === b.getUTCDate();
+}
+
+/**
+ * Extract all .tl-item HTML blocks from a section string.
+ * @returns {string[]} array of complete .tl-item HTML strings.
+ */
+function extractTlItems(section) {
+  return [...section.matchAll(new RegExp(TL_ITEM_RE.source, 'gs'))].map(m => m[0]);
+}
+
+/**
+ * Remove all .tl-item blocks from a section string, leaving the structural HTML
+ * (day header, timeline wrapper div, closing tags).
+ */
+function stripTlItems(section) {
+  return section.replace(new RegExp(TL_ITEM_RE.source, 'gs'), '').replace(/\n{3,}/g, '\n');
+}
+
+/**
+ * Insert an array of .tl-item HTML strings into a section after the first
+ * <div class="timeline"...> opening tag.
+ */
+function injectTlItems(section, items) {
+  if (!items.length) return section;
+  const marker = /<div class="timeline"[^>]*>/;
+  const m = section.match(marker);
+  if (!m) return section;
+  const insertAt = m.index + m[0].length;
+  return section.slice(0, insertAt) + '\n' +
+         items.join('\n') + '\n' +
+         section.slice(insertAt);
+}
+
+/**
+ * Rotate timeline items based on date. Items from today stay in TODAY,
+ * items from yesterday move/stay in YESTERDAY, anything older is discarded.
+ *
+ * This is the core fix for staleness: when the date in data.json advances,
+ * old TODAY items automatically rotate to YESTERDAY, and stale YESTERDAY
+ * items are dropped.
+ *
+ * @param {string} fileContent - full last-24h.html content
+ * @param {string} todayDateStr - the current date from data.json (e.g. "March 7, 2026")
+ * @returns {string} updated file content with items properly distributed
+ */
+function rotateTimelineDays(fileContent, todayDateStr) {
+  const today = parseHumanDate(todayDateStr);
+  if (!today) {
+    console.warn('rotateTimelineDays: could not parse date — skipping rotation.');
+    return fileContent;
+  }
+  const yesterday = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() - 1));
+  const fallbackYear = today.getUTCFullYear();
+
+  const YESTERDAY_MARKER = '<!-- ── YESTERDAY ── -->';
+  const splitIdx = fileContent.indexOf(YESTERDAY_MARKER);
+  if (splitIdx === -1) return fileContent;
+
+  let todaySection    = fileContent.slice(0, splitIdx);
+  let yesterdaySection = fileContent.slice(splitIdx);
+
+  // Extract and classify all items from both sections.
+  const todayItems     = extractTlItems(todaySection);
+  const yesterdayItems = extractTlItems(yesterdaySection);
+
+  const keepToday     = [];
+  const moveToYesterday = [];
+
+  for (const html of todayItems) {
+    const d = extractItemDate(html, fallbackYear);
+    if (!d || isSameDay(d, today)) {
+      keepToday.push(html);
+    } else if (isSameDay(d, yesterday)) {
+      moveToYesterday.push(html);
+    }
+    // else: older than yesterday → discard
+  }
+
+  const keepYesterday = [];
+  for (const html of yesterdayItems) {
+    const d = extractItemDate(html, fallbackYear);
+    if (!d || isSameDay(d, yesterday)) {
+      keepYesterday.push(html);
+    }
+    // else: older → discard
+  }
+
+  // Moved items (previously in TODAY, now yesterday) go before existing yesterday items.
+  const finalYesterday = [...moveToYesterday, ...keepYesterday];
+
+  // Rebuild sections: strip old items, inject classified items.
+  todaySection    = injectTlItems(stripTlItems(todaySection), keepToday.slice(0, MAX_TODAY_ITEMS));
+  yesterdaySection = injectTlItems(stripTlItems(yesterdaySection), finalYesterday.slice(0, MAX_YESTERDAY_ITEMS));
+
+  const rotatedToday = keepToday.length;
+  const rotatedYesterday = finalYesterday.length;
+  const discarded = (todayItems.length + yesterdayItems.length) - rotatedToday - rotatedYesterday;
+  if (discarded > 0 || moveToYesterday.length > 0) {
+    console.log(`Timeline rotation: ${rotatedToday} today, ${moveToYesterday.length} moved to yesterday, ${discarded} discarded.`);
+  }
+
+  return todaySection + yesterdaySection;
+}
+
+/**
+ * Prepend new timeline items to the TODAY section.
+ * @param {string} fileContent - full last-24h.html content
+ * @param {string} newItemsHtml - HTML string of new .tl-item blocks to prepend
+ * @returns {string} updated file content
+ */
 function spliceTimelineItems(fileContent, newItemsHtml) {
   if (!newItemsHtml || !newItemsHtml.trim()) return fileContent;
 
@@ -397,21 +568,11 @@ function spliceTimelineItems(fileContent, newItemsHtml) {
   );
 }
 
-// ── Timeline pruning ─────────────────────────────────────────────────────────
-
-/** Maximum number of .tl-item entries to keep in TODAY and YESTERDAY blocks. */
-const MAX_TODAY_ITEMS     = 20;
-const MAX_YESTERDAY_ITEMS = 15;
-
 /**
- * Prune .tl-item entries in last-24h.html so the file doesn't grow unbounded.
+ * Prune .tl-item entries so the file doesn't grow unbounded.
  * Keeps the first (newest) N items in each day block and removes the rest.
  */
 function pruneTimelineItems(fileContent) {
-  // Each tl-item contains 3 child divs (tl-dot, date, content) then closes.
-  // Match from opening <div class="tl-item"> through the 4th </div> (the outer close).
-  const TL_ITEM_RE = /<div class="tl-item">\s*<div[^>]*>.*?<\/div>\s*<div[^>]*>.*?<\/div>\s*<div[^>]*>[\s\S]*?<\/div>\s*<\/div>/g;
-
   const yesterdayMarker = '<!-- ── YESTERDAY ── -->';
   const splitIdx = fileContent.indexOf(yesterdayMarker);
   if (splitIdx === -1) return fileContent;
@@ -419,25 +580,17 @@ function pruneTimelineItems(fileContent) {
   let todaySection     = fileContent.slice(0, splitIdx);
   let yesterdaySection  = fileContent.slice(splitIdx);
 
-  todaySection    = pruneSection(todaySection, MAX_TODAY_ITEMS, TL_ITEM_RE);
-  yesterdaySection = pruneSection(yesterdaySection, MAX_YESTERDAY_ITEMS, TL_ITEM_RE);
+  const todayItems     = extractTlItems(todaySection);
+  const yesterdayItems = extractTlItems(yesterdaySection);
+
+  if (todayItems.length > MAX_TODAY_ITEMS) {
+    todaySection = injectTlItems(stripTlItems(todaySection), todayItems.slice(0, MAX_TODAY_ITEMS));
+  }
+  if (yesterdayItems.length > MAX_YESTERDAY_ITEMS) {
+    yesterdaySection = injectTlItems(stripTlItems(yesterdaySection), yesterdayItems.slice(0, MAX_YESTERDAY_ITEMS));
+  }
 
   return todaySection + yesterdaySection;
-}
-
-/** Keep only the first `max` tl-item blocks in a section string. */
-function pruneSection(section, max, re) {
-  const items = [...section.matchAll(new RegExp(re.source, 'gs'))];
-  if (items.length <= max) return section;
-
-  const toRemove = items.slice(max);
-  let result = section;
-  for (let i = toRemove.length - 1; i >= 0; i--) {
-    const m = toRemove[i];
-    result = result.slice(0, m.index) + result.slice(m.index + m[0].length);
-  }
-  result = result.replace(/\n{3,}/g, '\n\n');
-  return result;
 }
 
 // ── Zone update helpers ───────────────────────────────────────────────────────
@@ -1159,6 +1312,15 @@ async function main() {
   const currentData  = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
   const current24h   = fs.readFileSync(LAST24H_PATH, 'utf8');
 
+  // Stale-date warning: if data.json date is >48h old, suggest running update-date.js first.
+  const dataDate = parseHumanDate(currentData.date);
+  if (dataDate) {
+    const ageMs = Date.now() - dataDate.getTime();
+    if (ageMs > 48 * 60 * 60 * 1000) {
+      console.warn(`Warning: data.json date "${currentData.date}" is more than 48h from now. Run update-date.js first.`);
+    }
+  }
+
   // 2. Fetch news from all search queries in parallel.
   // Structural runs use 'week' time range for broader context; routine uses 'day'.
   const isStructural = UPDATE_TYPE_INPUT === 'structural';
@@ -1334,21 +1496,41 @@ Rules:
   }
 
   // ── 4. Generate new timeline items for last-24h.html ────────────────────
+  //
+  // Step A: Rotate items by date — moves stale TODAY items to YESTERDAY,
+  //         discards anything older than yesterday. This prevents staleness.
+  // Step B: Determine if TODAY is empty (full rebuild) or has items (incremental).
+  // Step C: Call GPT to generate new items.
+  // Step D: Splice, prune, validate placeholders, and write.
+
+  const currentDate = updatedData.date || currentData.date;
+  console.log(`Timeline rotation: current date is "${currentDate}".`);
+  let rotated24h = rotateTimelineDays(current24h, currentDate);
 
   // Extract the existing TODAY items so the model knows what's already there.
-  const todayMatch = current24h.match(TODAY_TIMELINE_RE);
+  const todayMatch = rotated24h.match(TODAY_TIMELINE_RE);
   const existingTodayItems = todayMatch ? todayMatch[1].trim() : '';
+  const todayIsEmpty = extractTlItems(existingTodayItems).length === 0;
+
+  // Determine max items: full rebuild gets 10, incremental gets 5.
+  const maxNewItems = todayIsEmpty ? 10 : 5;
+  if (todayIsEmpty) {
+    console.log('TODAY section is empty after rotation — using full rebuild prompt.');
+  }
 
   const last24hSystemPrompt = `\
 You are the editor of the Iran Crisis Report dashboard. Generate new timeline
 items for today's "Last 24 Hours" section based on the web search results.
 
 Return a JSON object with exactly ONE key: "newItems" — an array of HTML strings.
-Each string is a complete <div class="tl-item"> … </div> block (no outer wrapper).
+Each string is a complete <div class="tl-item" data-date="YYYY-MM-DD"> … </div>
+block (no outer wrapper).
 
 Rules:
-- Return AT MOST 5 items. Only include events that are GENUINELY NEW and not
+- Return AT MOST ${maxNewItems} items. Only include events that are GENUINELY NEW and not
   already covered by the existing TODAY items shown below.
+${todayIsEmpty ? `- The TODAY section is currently EMPTY (a new day started). Generate up to ${maxNewItems}
+  items covering the most significant developments from today's search results.\n` : ''}\
 - An ESCALATION is NOT a duplicate: if an existing item says a country is
   "considering" or "weighing" joining a military campaign, a confirmed report
   of that country *actively joining* (launching strikes, deploying forces) is a
@@ -1371,8 +1553,9 @@ Rules:
   today, or is it just describing a continuing background situation or a
   media release?" Only include it if the answer is the former.
 - If there are no new events worth adding, return { "newItems": [] }.
-- HTML format for each item:
-    <div class="tl-item">
+- HTML format for each item (CRITICAL: include data-date attribute with today's
+  date in ISO format YYYY-MM-DD on the outer div):
+    <div class="tl-item" data-date="YYYY-MM-DD">
       <div class="tl-dot" style="border-color:var(--COLOR);"></div>
       <div class="date">CATEGORY — SHORT HEADLINE IN UPPER CASE</div>
       <div class="content">1–3 sentence description with <strong>key details bolded</strong>. — Source: <a href="URL" style="color:var(--accent-cyan);" target="_blank" rel="noopener noreferrer">Outlet, Date</a></div>
@@ -1402,36 +1585,36 @@ Rules:
     `EXISTING TODAY ITEMS (do not duplicate these):\n${existingTodayItems}\n\n` +
     `WEB SEARCH RESULTS:\n${searchSummary}`;
 
-  console.log('Generating new timeline items via GPT-5-mini…');
-  let updatedLast24h = current24h;
+  console.log(`Generating new timeline items via GPT-5-mini (max ${maxNewItems})…`);
+  let updatedLast24h = rotated24h;
   try {
     const raw = await callGPT(last24hSystemPrompt, last24hUserContent, true);
     const parsed = JSON.parse(raw);
     let newItems = Array.isArray(parsed.newItems) ? parsed.newItems : [];
-    // Fix #13: Filter out potentially hallucinated items.
+    // Filter out potentially hallucinated items.
     newItems = filterHallucinations(newItems, searchContext);
     if (newItems.length === 0) {
       console.log('No new timeline items to add.');
-      manifest.phases.timeline = { status: 'ok', added: 0 };
+      manifest.phases.timeline = { status: 'ok', added: 0, rotated: !todayIsEmpty ? 0 : 'full-rebuild' };
     } else {
       const newItemsHtml = newItems.map(sanitizeMarkdown).join('\n');
-      let candidate      = spliceTimelineItems(current24h, newItemsHtml);
+      let candidate      = spliceTimelineItems(rotated24h, newItemsHtml);
       // Prune so timeline doesn't grow unbounded.
       candidate = pruneTimelineItems(candidate);
       // Validate the template placeholders are still intact.
       const placeholders = ['{{dayToday}}', '{{dayYesterday}}'];
       const allPresent   = placeholders.every(p => candidate.includes(p));
       if (!allPresent) {
-        console.warn('last-24h.html placeholder check failed — keeping original.');
+        console.warn('last-24h.html placeholder check failed — keeping rotated version.');
         manifest.phases.timeline = { status: 'skipped', reason: 'placeholder check failed' };
       } else {
         updatedLast24h = candidate;
         console.log(`last-24h.html updated with ${newItems.length} new item(s).`);
-        manifest.phases.timeline = { status: 'ok', added: newItems.length };
+        manifest.phases.timeline = { status: 'ok', added: newItems.length, fullRebuild: todayIsEmpty };
       }
     }
   } catch (err) {
-    console.warn(`last-24h.html update failed (${err.message}) — keeping original.`);
+    console.warn(`last-24h.html update failed (${err.message}) — keeping rotated version.`);
     manifest.phases.timeline = { status: 'error', error: err.message };
   }
 
