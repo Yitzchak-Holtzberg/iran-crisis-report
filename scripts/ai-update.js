@@ -81,29 +81,35 @@ if (!TAVILY_KEY || !OPENAI_KEY) {
 // ── Search queries ────────────────────────────────────────────────────────────
 // Targeted queries that cover the dashboard's main topic areas.
 
-// ── Search queries (Fix #6: consolidated, gaps filled, trailing noise removed) ─
+// ── Search queries ────────────────────────────────────────────────────────────
+// 12 focused queries covering all dashboard sections with minimal overlap.
+// Think-tank deep dives are handled separately by per-group RESEARCH_SITES
+// during structural updates.
 const SEARCH_QUERIES = [
-  'Iran military operations conflict developments breaking news',
-  'Iran nuclear enrichment IAEA program talks deal',
-  'Iran protests crackdown IRGC arrests dissidents',
-  'US military Iran strikes operations carrier deployment',
-  'Iran economy rial oil exports sanctions',
-  'Iran Israel Saudi strikes attack military operations regional escalation',
-  'Iran opposition Pahlavi MEK resistance movement',
-  'Strait of Hormuz shipping oil tanker Iran disruption',
-  'Iran proxy Hezbollah Houthi Yemen Iraq militia strikes attack',
-  'Iran IRGC assassination plot cyber espionage covert operations',
-  'Iran supreme leader successor Khamenei Assembly of Experts leadership transition',
-  'US arming Kurdish forces Peshmerga KRG KDPI PJAK SDF Syria Iraq Iran',
-  'Iraq PMF Shia militia US bases attacks Iran influence Baghdad government',
-  'Iran ethnic minority armed resistance Baluchistan Khuzestan Arab Azerbaijani KDPI uprising',
-  'CIA special operations covert arms support anti-Iran opposition proxy groups',
-  // Gap-coverage: maritime/piracy and humanitarian
-  'Iran Houthis Red Sea Yemen maritime piracy shipping blockade',
-  'Iran humanitarian crisis civilians casualties displacement refugees',
-  // Think-tank queries removed — now handled by per-group deep research in structural mode
-  // Horizon-scan
-  'Iran unexpected development technology space cyber bioweapons finance infrastructure',
+  // Core military situation (1 query covers US + Israel + Iran ops)
+  'US Israel Iran military strikes operations sorties targets today',
+  // Nuclear / diplomatic track
+  'Iran nuclear IAEA enrichment diplomatic talks ceasefire UN Security Council',
+  // Internal stability (protests + regime + succession)
+  'Iran protests IRGC crackdown Khamenei succession leadership crisis',
+  // Opposition / resistance movements
+  'Iran opposition Pahlavi Kurdish resistance armed groups uprising',
+  // Proxies & regional escalation
+  'Iran proxy Hezbollah Houthi militia attacks Iraq Syria Lebanon',
+  // Maritime / Hormuz / Red Sea (merged — was 2 overlapping queries)
+  'Strait of Hormuz Red Sea Houthi shipping oil tanker disruption',
+  // Economy + energy markets
+  'Iran economy sanctions oil price energy market rial crisis',
+  // Damage assessment / confirmed vs unconfirmed
+  'Iran bomb damage assessment infrastructure destroyed confirmed strikes',
+  // Civilian impact / humanitarian
+  'Iran civilian casualties humanitarian crisis displacement war crimes',
+  // Covert / cyber / intelligence
+  'Iran IRGC cyber espionage covert operations intelligence',
+  // Regional diplomatic reactions
+  'Iran war regional reactions Saudi China Russia Turkey diplomacy',
+  // Carrier deployments + force posture (feeds stats + naval)
+  'US carrier strike group deployment Iran CENTCOM forces',
 ];
 
 // ── Source Tier Classification ────────────────────────────────────────────────
@@ -280,54 +286,54 @@ async function tavilyExtract(urls, opts = {}) {
 const RESEARCH_SITES = {
   // Analysis / think-tank deep dives
   analysis: [
-    { domain: 'carnegieendowment.org', query: 'Iran war analysis succession' },
-    { domain: 'brookings.edu',         query: 'Iran war after strike assessment' },
-    { domain: 'atlanticcouncil.org',   query: 'Iran experts react escalation' },
-    { domain: 'cfr.org',               query: 'Iran war what next succession' },
-    { domain: 'rand.org',              query: 'Iran supreme leader succession scenarios' },
-    { domain: 'csis.org',              query: 'Iran epic fury nuclear missile cost' },
-    { domain: 'understandingwar.org',  query: 'Iran update morning special report' },
+    { domain: 'carnegieendowment.org', query: 'Iran war succession analysis' },
+    { domain: 'brookings.edu',         query: 'Iran conflict assessment' },
+    { domain: 'atlanticcouncil.org',   query: 'Iran crisis expert analysis' },
+    { domain: 'cfr.org',               query: 'Iran war what happens next' },
+    { domain: 'rand.org',              query: 'Iran leadership succession scenarios' },
+    { domain: 'csis.org',              query: 'Iran strikes nuclear cost assessment' },
+    { domain: 'understandingwar.org',  query: 'Iran situation report' },
   ],
   // Map / theater of operations
   map: [
-    { domain: 'reuters.com',          query: 'Iran war strikes military positions map' },
-    { domain: 'understandingwar.org',  query: 'Iran force positions update' },
-    { domain: 'centcom.mil',          query: 'CENTCOM Iran operations update' },
+    { domain: 'reuters.com',          query: 'Iran strikes military targets locations' },
+    { domain: 'understandingwar.org',  query: 'Iran force positions deployments' },
+    { domain: 'centcom.mil',          query: 'Iran operations press release' },
   ],
   // Scenarios / what-happens-next
   scenarios: [
-    { domain: 'cfr.org',              query: 'Iran scenarios war outcomes' },
-    { domain: 'rand.org',             query: 'Iran conflict scenarios escalation' },
-    { domain: 'brookings.edu',        query: 'Iran after war scenarios' },
-    { domain: 'foreignaffairs.com',   query: 'Iran war future scenarios' },
+    { domain: 'cfr.org',              query: 'Iran war outcomes scenarios' },
+    { domain: 'rand.org',             query: 'Iran conflict escalation scenarios' },
+    { domain: 'brookings.edu',        query: 'Iran post-war scenarios' },
+    { domain: 'foreignaffairs.com',   query: 'Iran war future outlook' },
   ],
   // Reactions / regional
   reactions: [
-    { domain: 'reuters.com',          query: 'Iran war regional reactions allies' },
-    { domain: 'aljazeera.com',        query: 'Iran war reactions Middle East' },
-    { domain: 'atlanticcouncil.org',  query: 'Iran regional reactions allies' },
+    { domain: 'reuters.com',          query: 'Iran war regional reactions' },
+    { domain: 'aljazeera.com',        query: 'Middle East reaction Iran conflict' },
+    { domain: 'atlanticcouncil.org',  query: 'Iran war regional impact analysis' },
   ],
   // Naval / maritime
   naval: [
-    { domain: 'reuters.com',          query: 'Iran navy warships Strait Hormuz' },
-    { domain: 'usni.org',             query: 'US Navy carrier Iran operations' },
-    { domain: 'maritime-executive.com', query: 'Iran strait hormuz shipping' },
+    { domain: 'reuters.com',          query: 'Strait of Hormuz warships Iran navy' },
+    { domain: 'usni.org',             query: 'US Navy carrier group Iran deployment' },
+    { domain: 'maritime-executive.com', query: 'Strait of Hormuz shipping disruption' },
   ],
   // Air power
   'air-power': [
-    { domain: 'reuters.com',          query: 'Iran air strikes USAF sorties' },
-    { domain: 'airforcemag.com',      query: 'USAF Iran operations' },
+    { domain: 'reuters.com',          query: 'Iran air strikes sorties aircraft' },
+    { domain: 'airforcemag.com',      query: 'Air Force Iran operations' },
   ],
   // Military capability
   military: [
-    { domain: 'csis.org',             query: 'Iran military capability missiles air defense' },
-    { domain: 'understandingwar.org',  query: 'Iran military IRGC capability' },
-    { domain: 'iiss.org',             query: 'Iran military balance' },
+    { domain: 'csis.org',             query: 'Iran military missiles air defense assessment' },
+    { domain: 'understandingwar.org',  query: 'Iran IRGC military forces assessment' },
+    { domain: 'iiss.org',             query: 'Iran military capability balance' },
   ],
   // General (used for pass 1 broad structural)
   general: [
-    { domain: 'reuters.com',          query: 'Iran war strikes latest' },
-    { domain: 'ap.com',               query: 'Iran conflict update' },
+    { domain: 'reuters.com',          query: 'Iran war latest developments' },
+    { domain: 'ap.com',               query: 'Iran conflict breaking news' },
   ],
 };
 
@@ -1604,6 +1610,46 @@ async function main() {
   }
   const searchResults = searchSettled.map(r => r.status === 'fulfilled' ? r.value : { results: [], answer: '(search failed)' });
 
+  // ── Gap detection: ask AI what angles the initial searches missed ────────
+  try {
+    // Build a quick summary of what was found
+    const topicsCovered = searchResults.map((sr, i) => {
+      const titles = (sr.results || []).slice(0, 3).map(r => r.title || '').filter(Boolean).join('; ');
+      return `${SEARCH_QUERIES[i]}: ${titles || '(no results)'}`;
+    }).join('\n');
+
+    const gapRaw = await callGPT(
+      `You are a news editor for the Iran Crisis Report dashboard. Given the search topics ` +
+      `and top results below, identify 2-3 important angles about the Iran crisis that are ` +
+      `NOT covered. Think about: unexpected diplomatic moves, new actors, economic ripple ` +
+      `effects, domestic politics in other countries, technology/cyber, humanitarian, ` +
+      `international law, or any breaking development that doesn't fit the existing categories.\n\n` +
+      `Return a JSON object: { "queries": ["query1", "query2", "query3"] }\n` +
+      `Each query should be under 80 characters, focused, and use news-style keywords.\n` +
+      `If the existing coverage is comprehensive, return { "queries": [] }.`,
+      topicsCovered,
+      true, ROUTINE_MODEL, 512, 15000
+    );
+    const gapParsed = JSON.parse(gapRaw);
+    const gapQueries = Array.isArray(gapParsed.queries) ? gapParsed.queries.slice(0, 3) : [];
+
+    if (gapQueries.length > 0) {
+      console.log(`  Gap detection found ${gapQueries.length} missing angles: ${gapQueries.join(' | ')}`);
+      const gapSettled = await Promise.allSettled(gapQueries.map(q => tavilySearch(q, searchOpts)));
+      for (let i = 0; i < gapSettled.length; i++) {
+        if (gapSettled[i].status === 'fulfilled') {
+          searchResults.push(gapSettled[i].value);
+          SEARCH_QUERIES.push(gapQueries[i]); // so the context builder picks up the query label
+        }
+      }
+      console.log(`  Gap searches returned ${gapSettled.filter(r => r.status === 'fulfilled').length} result sets.`);
+    } else {
+      console.log('  Gap detection: existing coverage is comprehensive.');
+    }
+  } catch (err) {
+    console.warn(`Gap detection failed (${err.message}) — continuing with standard queries.`);
+  }
+
   // ── Fix #1: Deduplicate search results across queries by URL ────────────
   const seenUrls = new Set();
   for (const sr of searchResults) {
@@ -1633,7 +1679,8 @@ async function main() {
     return `### Topic ${i + 1}: ${SEARCH_QUERIES[i]}\nSummary: ${sr.answer || '(none)'}\n${lines}`;
   }).join('\n\n');
 
-  manifest.phases.search = { queries: SEARCH_QUERIES.length, uniqueResults: dedupedCount, tierDropped, status: 'ok' };
+  const gapQueryCount = SEARCH_QUERIES.length - 12; // 12 = original fixed queries
+  manifest.phases.search = { queries: SEARCH_QUERIES.length, gapQueries: gapQueryCount, uniqueResults: dedupedCount, tierDropped, status: 'ok' };
 
   // ── Fix #2: Summarize search context once for downstream phases ─────────
   console.log('Extracting key facts from search results…');
