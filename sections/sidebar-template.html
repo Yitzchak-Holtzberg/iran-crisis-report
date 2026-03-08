@@ -1,0 +1,9 @@
+{% include "sections/sidebar-header.html" %}
+  <nav class="sb-nav" aria-label="Page sections">
+    {% for item in sidebarNav %}{% if item.group %}
+    <span class="sb-group">{{ item.group }}</span>
+    {% else %}
+    <a class="sb-link" href="#{{ item.id }}" data-section="{{ item.id }}"><span class="sb-num">{{ item.num }}</span><span class="sb-dot"></span>{{ item.label }}</a>
+    {% endif %}{% endfor %}
+  </nav>
+{% include "sections/sidebar-footer.html" %}

@@ -116,13 +116,18 @@ DATA.tickerHtml = `${tickerSpans}\n${tickerSpans}`;
 
 const HEADER = ['sections/head-base.html', 'sections/masthead.html', 'sections/ticker.html'];
 const FOOTER = ['sections/sources-link.html', 'sections/scripts.html'];
+const SIDEBAR = 'sections/sidebar-template.html';
 
-function page(output, sidebar, content, meta) {
-  return { output, sidebarFile: sidebar, meta, sections: [...HEADER, sidebar, ...content, ...FOOTER] };
+// Sidebar nav helpers — { id, num, label } for links, { group } for group headers.
+const g = (group) => ({ group });
+const n = (num, id, label) => ({ num, id, label });
+
+function page(output, content, meta, sidebarNav) {
+  return { output, meta, sidebarNav, sections: [...HEADER, SIDEBAR, ...content, ...FOOTER] };
 }
 
 const BUILDS = [
-  page('index.html', 'sections/sidebar.html', [
+  page('index.html', [
     'sections/stats.html', 'sections/last-24h.html', 'sections/confirmed-unconfirmed.html',
     'sections/theater.html', 'sections/scenarios-teaser.html', 'sections/analysis-teaser.html',
     'sections/nuclear-teaser.html', 'sections/forces-teaser.html', 'sections/military-teaser.html',
@@ -132,24 +137,34 @@ const BUILDS = [
     pageDescription: 'Live situation report: US\u2013Iran military standoff, nuclear negotiations, protest crackdowns, and economic collapse. Updated multiple times daily.',
     pageOgDescription: 'Live situation report: US\u2013Iran military standoff, nuclear negotiations, protest crackdowns, and economic collapse. Updated multiple times daily.',
     pageOgType: 'website',
-  }),
-  page('diplomatic.html', 'sections/sidebar-diplomatic.html', [
-    'sections/diplomatic.html',
-  ], {
+  }, [
+    g('Situation'),
+    n('01', 'stats', 'Key Statistics'), n('02', 'last-24h', 'The Last 24 Hours'),
+    n('03', 'confirmed-unconfirmed', 'Fog of War'), n('04', 'theater', 'Theater Map'),
+    g('Analysis'),
+    n('05', 'scenarios', 'Scenarios'), n('06', 'analysis', 'Expert Analysis'),
+    n('07', 'nuclear', 'Nuclear Talks'), n('08', 'strike-forces', 'US Strike Forces'),
+    n('09', 'military', 'Iran Military'), n('10', 'inside-iran', 'Inside Iran'),
+    n('11', 'reactions', 'Reactions'), n('12', 'opposition', 'Opposition'),
+  ]),
+  page('diplomatic.html', ['sections/diplomatic.html'], {
     pageTitle: 'Iran Crisis: Diplomatic Track &amp; Nuclear Negotiations \u2014 {{date}}',
     pageDescription: 'Diplomatic track suspended: US-Iran Geneva rounds timeline, deal terms, Mojtaba Khamenei succession, NATO Article 4 consultations after Turkish missile strike, IAEA nuclear access blocked, Gulf states joint condemnation, and Israel\u2019s strikes. Updated daily.',
     pageOgDescription: 'Diplomatic track suspended: US-Iran Geneva rounds timeline, deal terms, Mojtaba Khamenei succession, NATO Article 4 consultations after Turkish missile strike, IAEA nuclear access blocked, and Gulf states joint condemnation.',
     pageOgType: 'article',
-  }),
-  page('scenarios.html', 'sections/sidebar-scenarios.html', [
-    'sections/scenarios.html',
-  ], {
+  }, [
+    n('01', 'nuclear', 'Diplomatic Track'), n('02', 'nuclear-deal-terms', 'Deal Terms'),
+    n('03', 'international-response', 'International Response'),
+  ]),
+  page('scenarios.html', ['sections/scenarios.html'], {
     pageTitle: 'Iran Crisis: Five Scenarios \u2014 {{date}}',
     pageDescription: 'Five active scenarios for the Iran crisis post-Operation Epic Fury: regime collapse/revolution, Pahlavi democratic transition, IRGC junta, Iranian civil war, and regional escalation. Analyst consensus probabilities.',
     pageOgDescription: 'Five active scenarios for the Iran crisis post-Operation Epic Fury: regime collapse/revolution, Pahlavi democratic transition, IRGC junta succession, Iranian civil war/fragmentation, and regional escalation/proxy war spread.',
     pageOgType: 'article',
-  }),
-  page('forces.html', 'sections/sidebar-forces.html', [
+  }, [
+    n('01', 'scenarios', 'Five Scenarios'),
+  ]),
+  page('forces.html', [
     'sections/nation-postures.html', 'sections/air-power.html', 'sections/naval.html',
     'sections/military.html', 'sections/iran-retaliation-playbook.html',
     'sections/iran-retaliation-executed.html', 'sections/hormuz.html',
@@ -158,55 +173,54 @@ const BUILDS = [
     pageDescription: 'Full order of battle: US air and naval forces (160+ aircraft, triple carrier strike groups) vs. Iran\'s remaining military capability — missiles, drones, IRGC Navy, and the Strait of Hormuz threat.',
     pageOgDescription: 'Full order of battle: US strike forces vs. Iran\'s remaining military capability — missiles, drones, IRGC Navy, and the Strait of Hormuz threat.',
     pageOgType: 'article',
-  }),
-  page('inside-iran.html', 'sections/sidebar-inside-iran.html', [
-    'sections/inside-iran.html',
-  ], {
+  }, [
+    g('Overview'), n('00', 'nation-postures', 'All Nations'),
+    g('US Strike Assets'), n('01', 'air-power', 'Air Power'), n('02', 'naval', 'Naval Forces'),
+    g('Iran Assessment'), n('03', 'military', 'Military Status'),
+    n('04', 'iran-retaliation', 'Retaliation Playbook'), n('05', 'iran-retaliation-executed', 'Retaliation Executed'),
+    g('Strategic'), n('06', 'hormuz', 'Hormuz Threat'),
+  ]),
+  page('inside-iran.html', ['sections/inside-iran.html'], {
     pageTitle: 'Iran Crisis: Inside Iran \u2014 {{date}}',
     pageDescription: 'Eight converging crises inside Iran: Operation Epic Fury strikes, Khamenei succession crisis, the January Massacre, student uprising, economic freefall, internet blackout, ethnic crackdowns, water catastrophe, and axis of resistance collapse.',
     pageOgDescription: 'Eight converging crises: Operation Epic Fury direct strikes (Day 2), Khamenei confirmed dead, January Massacre (36,500+ killed), student uprising, economic freefall (rial at 1.7M/USD), digital iron curtain, ethnic crackdowns, water catastrophe, and proxy network collapse.',
     pageOgType: 'article',
-  }),
-  page('reactions.html', 'sections/sidebar-reactions.html', [
-    'sections/reactions.html',
-  ], {
+  }, [
+    n('01', 'inside-iran', 'Inside Iran'),
+  ]),
+  page('reactions.html', ['sections/reactions.html'], {
     pageTitle: 'Iran Crisis: Regional Reactions &amp; Damage Assessments \u2014 {{date}}',
     pageDescription: 'Country-by-country reactions to US-Israel Operation Epic Fury strikes on Iran: Bahrain 5th Fleet hit, Abu Dhabi casualties, Qatar, Saudi Arabia, Israel, and full strike damage assessments.',
     pageOgDescription: 'Country-by-country reactions to Operation Epic Fury and Iran\u2019s retaliatory strikes: Gulf states hit, damage assessments, diplomatic fallout, and casualty reports.',
     pageOgType: 'article',
-  }),
-  page('analysis.html', 'sections/sidebar-analysis.html', [
-    'sections/analysis.html',
-  ], {
+  }, [
+    n('01', 'reactions-iran', 'Iran Damage'), n('02', 'reactions-gulf', 'Gulf States Hit'),
+    n('03', 'reactions-israel', 'Israel'), n('04', 'reactions-global', 'Global Response'),
+  ]),
+  page('analysis.html', ['sections/analysis.html'], {
     pageTitle: 'Iran Crisis: Expert Analysis \u2014 {{date}}',
     pageDescription: 'Leading think-tank assessments on Operation Epic Fury from CSIS, ISW, Carnegie, Brookings, Atlantic Council, CFR, and RAND — costs, escalation risks, and Week 2 outlook.',
     pageOgDescription: 'Leading think-tank assessments on Operation Epic Fury — costs, escalation risks, Hormuz endgame, nuclear implications, and regime survival prospects.',
     pageOgType: 'article',
-  }),
-  page('opposition.html', 'sections/sidebar-opposition.html', [
-    'sections/opposition.html',
-  ], {
+  }, [
+    n('01', 'analysis', 'Expert Analysis'),
+  ]),
+  page('opposition.html', ['sections/opposition.html'], {
     pageTitle: 'Iran Crisis: Reza Pahlavi &amp; the Opposition \u2014 {{date}}',
     pageDescription: 'Reza Pahlavi timeline, opposition landscape (MEK, monarchists, secularists, ethnic movements), and the question of post-regime Iran leadership.',
     pageOgDescription: 'Reza Pahlavi timeline, the fractured opposition landscape, and the question of who leads a post-regime Iran.',
     pageOgType: 'article',
-  }),
-  {
-    output: 'sources.html',
-    sidebarFile: 'sections/sidebar-sources.html',
-    meta: {
-      pageTitle: 'Iran Crisis Report \u2014 Sources &amp; References \u2014 {{date}}',
-      pageDescription: 'Full list of sources and references for the Iran Crisis Report, compiled from 40+ international news outlets, think tanks, and official statements.',
-      pageOgDescription: 'Full list of sources and references for the Iran Crisis Report, compiled from 40+ international news outlets, think tanks, and official statements.',
-      pageOgType: 'website',
-    },
-    sections: [
-      ...HEADER,
-      'sections/sidebar-sources.html',
-      'sections/sources.html',
-      'sections/scripts.html',
-    ],
-  },
+  }, [
+    n('01', 'opposition', 'Opposition'), n('02', 'opposition-landscape', 'Opposition Landscape'),
+  ]),
+  page('sources.html', ['sections/sources.html'], {
+    pageTitle: 'Iran Crisis Report \u2014 Sources &amp; References \u2014 {{date}}',
+    pageDescription: 'Full list of sources and references for the Iran Crisis Report, compiled from 40+ international news outlets, think tanks, and official statements.',
+    pageOgDescription: 'Full list of sources and references for the Iran Crisis Report, compiled from 40+ international news outlets, think tanks, and official statements.',
+    pageOgType: 'website',
+  }, [
+    n('01', 'source-reliability', 'Reliability Guide'), n('02', 'sources', 'All Sources'),
+  ]),
 ];
 
 // ===== VALIDATION FUNCTIONS =====
@@ -247,11 +261,10 @@ function extractHtmlMatches(content, pattern) {
   return matches;
 }
 
-function validateNavigation(output, sidebarFile) {
+function validateNavigation(output) {
   const warnings = [];
-  const sidebarContent = fs.readFileSync(path.join(BASE_DIR, sidebarFile), 'utf8');
   const sectionIds = extractHtmlMatches(output, /\bid=["']([^"']+)["']/g);
-  const sidebarTargets = extractHtmlMatches(sidebarContent, /href=["']#([^"']+)["']/g);
+  const sidebarTargets = extractHtmlMatches(output, /class="sb-link"[^>]*href=["']#([^"']+)["']/g);
   for (const target of sidebarTargets) {
     if (!sectionIds.has(target)) {
       warnings.push(`Navigation: Sidebar links to #${target} but no matching section ID found`);
@@ -292,6 +305,7 @@ const allWarnings = [];
 for (const build of BUILDS) {
   // Inject per-page meta into a copy of DATA, pre-resolving {{key}} references.
   const ctx = Object.assign({}, DATA);
+  ctx.sidebarNav = build.sidebarNav || [];
   for (const [k, v] of Object.entries(build.meta || {})) {
     ctx[k] = v.replace(/\{\{([^}]+)\}\}/g, (_m, key) => (DATA[key] !== undefined ? DATA[key] : _m));
   }
@@ -312,7 +326,7 @@ for (const build of BUILDS) {
   }
 
   // Run global validations.
-  buildWarnings.push(...validateNavigation(output, build.sidebarFile));
+  buildWarnings.push(...validateNavigation(output));
   buildWarnings.push(...checkDuplicateIds(output));
   allWarnings.push(...buildWarnings);
 
