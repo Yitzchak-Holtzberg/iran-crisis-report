@@ -63,12 +63,6 @@ document.addEventListener('DOMContentLoaded', function(){
   var DEFAULT_CENTER = [46, 30];
   var DEFAULT_ZOOM = 3.5;
 
-  // ── Category → group color mapping (for popup accent) ──
-  var CAT_GROUP_COLOR = {};
-  LAYER_GROUPS.forEach(function(g){
-    g.cats.forEach(function(cat){ CAT_GROUP_COLOR[cat] = g.color; });
-  });
-
   // ── Icon SVG templates (rendered to ImageData for MapLibre) ──
   function createIcon(svg, size) {
     return new Promise(function(resolve) {
@@ -112,14 +106,9 @@ document.addEventListener('DOMContentLoaded', function(){
   var CAT_ICON = {};
   Object.keys(ICONS).forEach(function(k){ CAT_ICON[k] = 'icon-' + k; });
 
-  // ── Color map (fallback for categories without icons) ──
-  var CAT_COLORS = {
-    'us-carrier':'#4a90d9','french-carrier':'#0055a4','us-destroyer':'#4a90d9','us-lcs':'#6ab0ff',
-    'us-submarine':'#7a5af0','air-base':'#00d4ff','nuclear-site':'#ff8c42','irgc-target':'#ff3b3b',
-    'strike-confirmed':'#ff3b3b','strike-unconfirmed':'#ff8c42','iranian-city':'#ff3b3b',
-    'deploying':'#4a90d9','blocked':'#ff3b3b','diplomatic':'#00c853','country-marker':'#aaaaaa',
-    'israeli-forces':'#ffd700','saudi-forces':'#00c853','radius-circle':'transparent','spinup':'#ff8c42'
-  };
+  // ── Color map (derived from LAYER_GROUPS) ──
+  var CAT_COLORS = {};
+  LAYER_GROUPS.forEach(function(g){ g.cats.forEach(function(c){ CAT_COLORS[c] = g.color; }); });
 
   // ── Caches to avoid re-fetching/re-rendering on theme toggle ──
   var _cachedMarkers = null;
@@ -404,14 +393,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var popup = new maplibregl.Popup({offset:12, maxWidth:'340px', closeButton:true});
 
-    Object.keys(CAT_COLORS).forEach(function(cat){
-      if (cat === 'radius-circle') return;
-      var layerId = 'cat-' + cat;
+    // Helper: add click + hover events to a point layer
+    function addPointEvents(layerId, getCat) {
       map.on('click', layerId, function(e){
         var f = e.features[0];
         var content = f.properties.popup || '<b>'+f.properties.label+'</b>';
-        var html = formatPopup(f.properties.category, content);
-        popup.setLngLat(f.geometry.coordinates.slice()).setHTML(html).addTo(map);
+        popup.setLngLat(f.geometry.coordinates.slice()).setHTML(formatPopup(getCat ? getCat(f) : f.properties.category, content)).addTo(map);
       });
       map.on('mouseenter', layerId, function(e){
         map.getCanvas().style.cursor = 'pointer';
@@ -421,23 +408,26 @@ document.addEventListener('DOMContentLoaded', function(){
         }
       });
       map.on('mouseleave', layerId, function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
-    });
+    }
 
+    // Category marker layers + strike dots
+    Object.keys(CAT_COLORS).forEach(function(cat){
+      if (cat !== 'radius-circle') addPointEvents('cat-' + cat);
+    });
+    addPointEvents('strike-dot');
+
+    // Corridor lines
     map.on('click', 'corridors-line', function(e){
       var f = e.features[0];
-      if (f.properties.popup) {
-        var html = formatPopup('corridor', f.properties.popup);
-        popup.setLngLat(e.lngLat).setHTML(html).addTo(map);
-      }
+      if (f.properties.popup) popup.setLngLat(e.lngLat).setHTML(formatPopup('corridor', f.properties.popup)).addTo(map);
     });
     map.on('mouseenter', 'corridors-line', function(e){
       map.getCanvas().style.cursor = 'pointer';
-      if (e.features && e.features[0]) {
-        hoverPopup.setLngLat(e.lngLat).setHTML('<b>'+(e.features[0].properties.label||'Corridor')+'</b>').addTo(map);
-      }
+      if (e.features && e.features[0]) hoverPopup.setLngLat(e.lngLat).setHTML('<b>'+(e.features[0].properties.label||'Corridor')+'</b>').addTo(map);
     });
     map.on('mouseleave', 'corridors-line', function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
 
+    // Cluster click → zoom in
     map.on('click', 'clusters', function(e){
       var features = map.queryRenderedFeatures(e.point, {layers:['clusters']});
       var clusterId = features[0].properties.cluster_id;
@@ -459,33 +449,14 @@ document.addEventListener('DOMContentLoaded', function(){
           var name = CAT_DISPLAY[f.properties.category] || f.properties.category;
           counts[name] = (counts[name] || 0) + 1;
         });
-        var lines = Object.keys(counts).map(function(k) {
-          return '<b>' + counts[k] + '</b> ' + k;
-        });
+        var lines = Object.keys(counts).map(function(k) { return '<b>' + counts[k] + '</b> ' + k; });
         hoverPopup.setLngLat(coords).setHTML(
-          '<div style="font-size:11px;line-height:1.5;">' +
-          '<b style="color:var(--text-primary);">' + features[0].properties.point_count + ' markers</b><br>' +
-          lines.join('<br>') + '</div>'
+          '<div style="font-size:11px;line-height:1.5;"><b style="color:var(--text-primary);">' +
+          features[0].properties.point_count + ' markers</b><br>' + lines.join('<br>') + '</div>'
         ).addTo(map);
       });
     });
     map.on('mouseleave', 'clusters', function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
-
-    // Strike dot events
-    map.on('click', 'strike-dot', function(e){
-      var f = e.features[0];
-      var content = f.properties.popup || '<b>'+f.properties.label+'</b>';
-      var html = formatPopup(f.properties.category, content);
-      popup.setLngLat(f.geometry.coordinates.slice()).setHTML(html).addTo(map);
-    });
-    map.on('mouseenter', 'strike-dot', function(e){
-      map.getCanvas().style.cursor = 'pointer';
-      if (e.features && e.features[0]) {
-        var f = e.features[0];
-        hoverPopup.setLngLat(f.geometry.coordinates.slice()).setHTML('<b>'+f.properties.label+'</b>').addTo(map);
-      }
-    });
-    map.on('mouseleave', 'strike-dot', function(){ map.getCanvas().style.cursor = ''; hoverPopup.remove(); });
   }
 
   // ── Gentle breathing pulse on strike glow layer (throttled) ──
@@ -705,7 +676,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }).slice(0, 8);
       if (matches.length === 0) { results.innerHTML = '<div class="map-search-item map-search-empty">No results</div>'; results.style.display = 'block'; return; }
       results.innerHTML = matches.map(function(m, i) {
-        var dotColor = CAT_GROUP_COLOR[m.category] || CAT_COLORS[m.category] || '#888';
+        var dotColor = CAT_COLORS[m.category] || CAT_COLORS[m.category] || '#888';
         return '<div class="map-search-item" data-idx="'+i+'"><span class="dot" style="background:'+dotColor+'"></span>'+escapeHtml(m.label)+'</div>';
       }).join('');
       results.style.display = 'block';
@@ -749,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ── Better popup content: wrap with category badge ──
   function formatPopup(category, content) {
-    var accentColor = CAT_GROUP_COLOR[category] || CAT_COLORS[category] || '#888';
+    var accentColor = CAT_COLORS[category] || CAT_COLORS[category] || '#888';
     var displayName = CAT_DISPLAY[category] || category || '';
     var badge = displayName ? '<span class="map-popup-badge" style="background:'+accentColor+'">'+escapeHtml(displayName)+'</span>' : '';
     return '<div class="map-popup-card">' + badge + '<div style="border-left:3px solid '+accentColor+';padding-left:10px;">'+content+'</div></div>';
