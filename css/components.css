@@ -65,11 +65,6 @@
 .icon-blue   { background:rgba(74,144,217,0.15); }
 .icon-red    { background:rgba(255,59,59,0.15); }
 
-/* ===== CARD ACCENT BORDERS ===== */
-.card-accent-red  { border-left:3px solid var(--accent-red); }
-.card-accent-blue { border-left:3px solid var(--accent-blue); }
-.card-accent-gold { border-left:3px solid var(--accent-gold); }
-
 /* ===== SUBSECTION HEADINGS ===== */
 .subsection-title         { font-size:14px; margin-bottom:8px; }
 .subsection-title.red     { color:var(--accent-red); }
@@ -83,8 +78,7 @@
 .callout.orange { border-color:var(--accent-orange); background:rgba(255,140,66,0.08); }
 
 /* ===== DETAIL LISTS ===== */
-.detail-list     { color:var(--text-secondary); font-size:13px; margin-left:16px; line-height:1.7; }
-.detail-list-lg  { color:var(--text-secondary); font-size:13px; margin-left:16px; line-height:1.8; }
+.detail-list     { color:var(--text-secondary); font-size:13px; margin-left:16px; line-height:1.8; }
 .callout .detail-list { margin-top:10px; line-height:1.9; }
 .callout .detail-list li { margin-bottom:6px; }
 .callout .detail-list li strong { color:var(--text-primary); }
