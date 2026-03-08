@@ -48,18 +48,6 @@
   });
 })();
 
-// ===== LEFT SIDEBAR: collapse toggle (desktop) =====
-function toggleCollapse() {
-  if (window.innerWidth <= 900) { closeSidebar(); return; }
-  var sb = document.getElementById('leftSidebar');
-  var btn = document.getElementById('sbCollapseBtn');
-  var header = document.getElementById('sbHeader');
-  var collapsed = sb.classList.toggle('collapsed');
-  document.body.classList.toggle('sb-collapsed', collapsed);
-  document.body.classList.toggle('sb-expanded', !collapsed);
-  if (btn) btn.innerHTML = collapsed ? '&#9654;' : '&#9668;';
-  if (header) header.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-}
 // ===== LEFT SIDEBAR: mobile toggle =====
 function toggleSidebar() {
   var sb = document.getElementById('leftSidebar');

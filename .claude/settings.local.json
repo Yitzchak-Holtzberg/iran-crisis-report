@@ -19,7 +19,9 @@
       "Bash(mkdir -p data)",
       "Bash(mv corridors.geojson data/)",
       "Bash(mv markers.geojson data/)",
-      "mcp__plugin_playwright_playwright__browser_snapshot"
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "Bash(grep -c \"CNN\" /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/sections/*.html)",
+      "Bash(grep -v \":0$\")"
     ]
   }
 }

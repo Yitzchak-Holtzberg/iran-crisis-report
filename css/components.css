@@ -76,9 +76,16 @@
 .subsection-title.gold    { color:var(--accent-gold); }
 .subsection-title.primary { color:var(--text-primary); }
 
+/* ===== CALLOUT READABILITY ===== */
+.callout p { line-height:1.85; }
+.callout.orange { border-color:var(--accent-orange); background:rgba(255,140,66,0.08); }
+
 /* ===== DETAIL LISTS ===== */
 .detail-list     { color:var(--text-secondary); font-size:13px; margin-left:16px; line-height:1.7; }
 .detail-list-lg  { color:var(--text-secondary); font-size:13px; margin-left:16px; line-height:1.8; }
+.callout .detail-list { margin-top:10px; line-height:1.9; }
+.callout .detail-list li { margin-bottom:6px; }
+.callout .detail-list li strong { color:var(--text-primary); }
 
 /* ===== EXISTING COMPONENT CLASSES ===== */
 

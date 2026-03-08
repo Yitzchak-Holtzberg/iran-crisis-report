@@ -101,6 +101,7 @@ const SEARCH_QUERIES = [
   // Gap-coverage: maritime/piracy and humanitarian
   'Iran Houthis Red Sea Yemen maritime piracy shipping blockade',
   'Iran humanitarian crisis civilians casualties displacement refugees',
+  // Think-tank queries removed — now handled by per-group deep research in structural mode
   // Horizon-scan
   'Iran unexpected development technology space cyber bioweapons finance infrastructure',
 ];
@@ -120,6 +121,9 @@ const SOURCE_TIERS = {
   'understandingwar.org': 3, 'news.usni.org': 3, 'thedrive.com': 3,
   'csis.org': 3, 'defensenews.com': 3, 'armscontrol.org': 3,
   'crisisgroup.org': 3, 'sipri.org': 3, 'janes.com': 3,
+  'carnegieendowment.org': 3, 'brookings.edu': 3, 'atlanticcouncil.org': 3,
+  'cfr.org': 3, 'rand.org': 3, 'iiss.org': 3, 'foreignaffairs.com': 3,
+  'airforcemag.com': 3, 'maritime-executive.com': 3, 'usni.org': 3,
   // Tier 4 — Quality broadsheets / networks
   'nytimes.com': 4, 'washingtonpost.com': 4, 'bbc.com': 4, 'bbc.co.uk': 4,
   'cnn.com': 4, 'npr.org': 4, 'theguardian.com': 4, 'ft.com': 4,
@@ -219,7 +223,7 @@ async function tavilySearch(query, opts = {}) {
       topic: opts.topic || 'news',
       time_range: opts.time_range || 'day',
       search_depth: opts.search_depth || 'basic',
-      max_results: opts.max_results || 6,
+      max_results: opts.max_results || 5,
       include_answer: true,
       include_domains: opts.include_domains || [],
       exclude_domains: opts.exclude_domains || [],
@@ -229,6 +233,232 @@ async function tavilySearch(query, opts = {}) {
     throw new Error(`Tavily error ${res.status} for query "${query}": ${await res.text()}`);
   }
   return res.json();
+}
+
+/**
+ * Use Tavily Extract to pull full article content from URLs.
+ * @param {string[]} urls - Up to 20 URLs to extract
+ * @returns {Promise<Array<{url: string, raw_content: string}>>}
+ */
+/**
+ * Use Tavily Extract to pull article content from URLs.
+ * @param {string[]} urls - Up to 20 URLs to extract
+ * @param {object} [opts]
+ * @param {string} [opts.query] - Rerank extracted chunks by relevance to this query
+ * @param {number} [opts.chunks_per_source] - 1-5, return only top chunks (max 500 chars each)
+ * @param {'basic'|'advanced'} [opts.extract_depth] - 'advanced' for complex layouts (costs more)
+ * @returns {Promise<Array<{url: string, raw_content: string}>>}
+ */
+async function tavilyExtract(urls, opts = {}) {
+  if (!urls.length) return [];
+  const body = {
+    api_key: TAVILY_KEY,
+    urls: urls.slice(0, 20),
+  };
+  if (opts.extract_depth) body.extract_depth = opts.extract_depth;
+  // Use query + chunks_per_source for targeted extraction when provided
+  if (opts.query) {
+    body.query = opts.query;
+    body.chunks_per_source = opts.chunks_per_source || 3;
+  }
+  const res = await fetch('https://api.tavily.com/extract', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    throw new Error(`Tavily Extract error ${res.status}: ${await res.text()}`);
+  }
+  const data = await res.json();
+  return data.results || [];
+}
+
+// ── Per-section deep research sites ──────────────────────────────────────────
+// Each entry drives a targeted Tavily search + optional extract for a specific
+// section or group.  Used by deepResearch() during structural updates.
+
+const RESEARCH_SITES = {
+  // Analysis / think-tank deep dives
+  analysis: [
+    { domain: 'carnegieendowment.org', query: 'Iran war analysis succession' },
+    { domain: 'brookings.edu',         query: 'Iran war after strike assessment' },
+    { domain: 'atlanticcouncil.org',   query: 'Iran experts react escalation' },
+    { domain: 'cfr.org',               query: 'Iran war what next succession' },
+    { domain: 'rand.org',              query: 'Iran supreme leader succession scenarios' },
+    { domain: 'csis.org',              query: 'Iran epic fury nuclear missile cost' },
+    { domain: 'understandingwar.org',  query: 'Iran update morning special report' },
+  ],
+  // Map / theater of operations
+  map: [
+    { domain: 'reuters.com',          query: 'Iran war strikes military positions map' },
+    { domain: 'understandingwar.org',  query: 'Iran force positions update' },
+    { domain: 'centcom.mil',          query: 'CENTCOM Iran operations update' },
+  ],
+  // Scenarios / what-happens-next
+  scenarios: [
+    { domain: 'cfr.org',              query: 'Iran scenarios war outcomes' },
+    { domain: 'rand.org',             query: 'Iran conflict scenarios escalation' },
+    { domain: 'brookings.edu',        query: 'Iran after war scenarios' },
+    { domain: 'foreignaffairs.com',   query: 'Iran war future scenarios' },
+  ],
+  // Reactions / regional
+  reactions: [
+    { domain: 'reuters.com',          query: 'Iran war regional reactions allies' },
+    { domain: 'aljazeera.com',        query: 'Iran war reactions Middle East' },
+    { domain: 'atlanticcouncil.org',  query: 'Iran regional reactions allies' },
+  ],
+  // Naval / maritime
+  naval: [
+    { domain: 'reuters.com',          query: 'Iran navy warships Strait Hormuz' },
+    { domain: 'usni.org',             query: 'US Navy carrier Iran operations' },
+    { domain: 'maritime-executive.com', query: 'Iran strait hormuz shipping' },
+  ],
+  // Air power
+  'air-power': [
+    { domain: 'reuters.com',          query: 'Iran air strikes USAF sorties' },
+    { domain: 'airforcemag.com',      query: 'USAF Iran operations' },
+  ],
+  // Military capability
+  military: [
+    { domain: 'csis.org',             query: 'Iran military capability missiles air defense' },
+    { domain: 'understandingwar.org',  query: 'Iran military IRGC capability' },
+    { domain: 'iiss.org',             query: 'Iran military balance' },
+  ],
+  // General (used for pass 1 broad structural)
+  general: [
+    { domain: 'reuters.com',          query: 'Iran war strikes latest' },
+    { domain: 'ap.com',               query: 'Iran conflict update' },
+  ],
+};
+
+/**
+ * AI triage — ask GPT-5-mini (cheap/fast) which articles from a search are
+ * actually worth spending Tavily Extract credits on.
+ * Returns the subset of urlMeta entries worth extracting.
+ */
+async function triageArticles(urlMeta, sectionLabel) {
+  if (urlMeta.length <= 3) return urlMeta; // too few to bother triaging
+
+  const listing = urlMeta.map((m, i) =>
+    `${i + 1}. [${m.domain}] ${m.title} — ${m.snippet || '(no snippet)'}`
+  ).join('\n');
+
+  const systemPrompt = `You are a research assistant for the Iran Crisis Report dashboard. ` +
+    `Given a list of search result articles, pick only the ones worth reading in full ` +
+    `for updating the "${sectionLabel}" section. Prefer:\n` +
+    `- Tier 1-3 sources (official, wire services, think-tanks)\n` +
+    `- Articles with new facts, data, or analysis (not rehashed summaries)\n` +
+    `- Recent articles (this week) over older ones\n` +
+    `Return a JSON array of article numbers (1-indexed) to extract. ` +
+    `Extract at most 8 articles. If none are worth extracting, return [].`;
+
+  try {
+    const raw = await callGPT(systemPrompt, listing, true, ROUTINE_MODEL, 512, 15000);
+    const picks = JSON.parse(raw);
+    if (!Array.isArray(picks)) return urlMeta.slice(0, 8);
+    const selected = picks
+      .filter(n => typeof n === 'number' && n >= 1 && n <= urlMeta.length)
+      .map(n => urlMeta[n - 1]);
+    console.log(`  AI triage (${sectionLabel}): ${urlMeta.length} candidates → ${selected.length} selected for extraction.`);
+    return selected.length > 0 ? selected : urlMeta.slice(0, 3); // fallback: top 3
+  } catch (err) {
+    console.warn(`  AI triage failed (${err.message}) — extracting top 8 by default.`);
+    return urlMeta.slice(0, 8);
+  }
+}
+
+/**
+ * Run deep research for a specific set of sites.
+ * @param {Array<{domain: string, query: string}>} sites - Sites to search
+ * @param {string} label - Human-readable label for logging
+ * @returns {{articleContext: string, articlesExtracted: number, sitesSearched: number}}
+ */
+async function deepResearch(sites, label = 'general') {
+  if (!sites || sites.length === 0) {
+    return { articleContext: '', articlesExtracted: 0, sitesSearched: 0 };
+  }
+  console.log(`  Deep research (${label}) — ${sites.length} site-specific searches…`);
+
+  // Step 1: Targeted site-specific searches (parallel, max 5 results per site)
+  const siteSearches = await Promise.allSettled(
+    sites.map(site =>
+      tavilySearch(site.query, {
+        search_depth: 'advanced',
+        time_range: 'week',
+        max_results: 5,
+        include_domains: [site.domain],
+      })
+    )
+  );
+
+  // Collect unique article URLs, filtering by relevance score (Tavily best practice: > 0.5)
+  const MIN_RELEVANCE_SCORE = 0.5;
+  const urlSet = new Set();
+  const urlMeta = []; // {url, title, snippet, domain, score}
+  for (let i = 0; i < siteSearches.length; i++) {
+    const settled = siteSearches[i];
+    if (settled.status !== 'fulfilled' || !settled.value.results) continue;
+    for (const r of settled.value.results) {
+      if (r.url && !urlSet.has(r.url) && (r.score || 0) >= MIN_RELEVANCE_SCORE) {
+        urlSet.add(r.url);
+        urlMeta.push({
+          url: r.url,
+          title: r.title || '',
+          snippet: (r.content || '').slice(0, 200),
+          domain: sites[i].domain,
+          score: r.score || 0,
+        });
+      }
+    }
+  }
+
+  console.log(`  Found ${urlMeta.length} articles (score ≥ ${MIN_RELEVANCE_SCORE}) across ${sites.length} sites.`);
+
+  if (urlMeta.length === 0) {
+    return { articleContext: '', articlesExtracted: 0, sitesSearched: sites.length };
+  }
+
+  // Step 2: AI triage — let GPT-5-mini pick which articles are worth extracting
+  const toExtract = await triageArticles(urlMeta, label);
+
+  // Step 3: Extract content with query-based relevance reranking (Tavily best practice)
+  // Build a focused extract query from the section label
+  const extractQuery = `Iran crisis ${label} latest developments analysis`;
+  let extracted = [];
+  try {
+    extracted = await tavilyExtract(toExtract.map(u => u.url), {
+      query: extractQuery,
+      chunks_per_source: 5,  // top 5 relevant chunks per article
+    });
+    console.log(`  Tavily Extract returned ${extracted.length} articles.`);
+  } catch (err) {
+    console.warn(`  Tavily Extract failed (${err.message}) — falling back to search snippets only.`);
+  }
+
+  // Step 4: Build enriched context string
+  const MAX_ARTICLE_LEN = 4000;
+  const articleBlocks = extracted.map(ex => {
+    const meta = urlMeta.find(u => u.url === ex.url);
+    const tier = getSourceTier(ex.url);
+    const tierTag = tier > 0 ? `[Tier ${tier}]` : '';
+    const content = (ex.raw_content || '').slice(0, MAX_ARTICLE_LEN);
+    return `=== ${tierTag} ${meta?.title || 'Article'} (${meta?.domain || ex.url}) ===\nURL: ${ex.url}\n${content}`;
+  });
+
+  // Also include summaries for articles that failed extraction
+  const extractedUrls = new Set(extracted.map(e => e.url));
+  for (const meta of toExtract) {
+    if (!extractedUrls.has(meta.url)) {
+      const tier = getSourceTier(meta.url);
+      const tierTag = tier > 0 ? `[Tier ${tier}]` : '';
+      articleBlocks.push(`=== ${tierTag} ${meta.title} (${meta.domain}) ===\nURL: ${meta.url}\n(extraction failed — title only)`);
+    }
+  }
+
+  const articleContext = `\n\n## DEEP RESEARCH (${label}) — Full Article Content (${extracted.length} articles extracted)\n\n` +
+    articleBlocks.join('\n\n');
+
+  return { articleContext, articlesExtracted: extracted.length, sitesSearched: sites.length };
 }
 
 // Timeout (ms) for each OpenAI HTTPS request.  Built-in fetch uses undici whose
@@ -663,6 +893,11 @@ General rules:
 - Do NOT insert @ai-zone or @/ai-zone comment markers into your output
 - Keep writing style consistent with the existing content
 - Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*)
+- For analysis zones (analysis-csis, analysis-isw, analysis-consensus): break
+  content into a short lead sentence in a <p> tag followed by a
+  <ul class="detail-list"> with each distinct fact as a <li>. End with a
+  <p class="source-cite"> for source attribution. Do NOT pack multiple facts
+  into a single paragraph.
 
 Freshness rules — these OVERRIDE the "return null" default above:
 - If a zone contains a date more than 2 days old AND search results mention the
@@ -685,6 +920,8 @@ Establish new facts from tiers 1–3 whenever possible. Tier-5 attributions must
 Search results are pre-tagged with [Tier N] labels — use these to decide confidence level.
 Exception: Tiers 5 and 6 CAN update unconfirmed/fog-of-war zones (confirmed-unconfirmed sections) — these zones exist specifically to surface unverified claims with appropriate caveats.
 
+Source diversity rule: tier 1–4 sources may be cited freely with no per-outlet limit. Tier 5–6 outlets should not be cited more than twice per zone update — when a tier 5–6 outlet covers the same event as a higher-tier source, cite the higher-tier source instead.
+
 Zone-specific rules:
 - *-subtitle zones: update the section header subtitle if key facts changed
   (counts, status, date, location). Keep under 140 characters.
@@ -700,7 +937,8 @@ Zone-specific rules:
 - iran-crisis2-title: update the day count only (e.g. "Day 6" → "Day 7"). Full
   title format: "Crisis 2: The Student Uprising (Mon DD-DD, Day N)"
 - hormuz-wti-price: the WTI crude spot price only (e.g. "$67.28")
-- military-parchin: the Parchin status update sentence including source and date`;
+- military-parchin: the Parchin status update sentence including source and date
+`;
 
 /**
  * Discover all @ai-zone regions in sections/, ask GPT-5-mini to update them
@@ -1045,32 +1283,38 @@ const DEEP_UPDATE_GROUPS = [
   {
     names:  ['analysis'],
     label:  'analysis',
-    prompt: 'analysis-map',   // uses DEEP_UPDATE_SYSTEM_PROMPT (analysis specific)
+    prompt: 'analysis-map',
+    researchSites: 'analysis',  // key into RESEARCH_SITES
   },
   {
     names:  ['map'],
     label:  'map',
-    prompt: 'analysis-map',   // uses DEEP_UPDATE_SYSTEM_PROMPT (map specific)
+    prompt: 'analysis-map',
+    researchSites: 'map',
   },
   {
     names:  ['scenarios'],
     label:  'scenarios',
-    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+    prompt: 'html',
+    researchSites: 'scenarios',
   },
   {
     names:  ['reactions'],
     label:  'reactions',
-    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+    prompt: 'html',
+    researchSites: 'reactions',
   },
   {
     names:  ['naval', 'air-power'],
     label:  'naval + air-power',
-    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+    prompt: 'html',
+    researchSites: 'naval',     // naval sites cover both naval & air-power
   },
   {
     names:  ['military'],
     label:  'military',
-    prompt: 'html',           // uses DEEP_UPDATE_HTML_SYSTEM_PROMPT
+    prompt: 'html',
+    researchSites: 'military',
   },
 ];
 
@@ -1122,7 +1366,10 @@ ${STRUCTURAL_BASE_RULES}`;
  *   Pass 3 — scenarios + reactions (always updated)
  *   Pass 4 — forces: naval, air-power, military (always updated)
  */
-async function updateStructural(searchContext) {
+async function updateStructural(searchContext, pass1Context) {
+  // pass1Context = searchContext enriched with general deep research (for broad pass)
+  // Per-group deep research is run inline below for each DEEP_UPDATE_GROUPS entry
+  if (!pass1Context) pass1Context = searchContext;
   console.log(`Running STRUCTURAL update phase (model: ${STRUCTURAL_MODEL})…`);
 
   // Sanity-check that every deep-update name exists in STRUCTURAL_FILES.
@@ -1233,7 +1480,7 @@ async function updateStructural(searchContext) {
     `UPDATE TYPE: STRUCTURAL — a major event requires section-level changes.\n\n` +
     (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
     `CURRENT SECTION FILES:\n${pass1Block}\n\n` +
-    `WEB SEARCH RESULTS:\n${searchContext}`;
+    `WEB SEARCH RESULTS:\n${pass1Context}`;
 
   try {
     const raw     = await callGPT(STRUCTURAL_SYSTEM_PROMPT, pass1UserContent, true, STRUCTURAL_MODEL, 32768, STRUCTURAL_GPT_TIMEOUT_MS);
@@ -1250,8 +1497,28 @@ async function updateStructural(searchContext) {
   }
 
   // ── Passes 2-N: dedicated deep-update per group (always runs) ────────
+  // Each group runs its own deep research to get section-relevant articles.
   for (const group of DEEP_UPDATE_GROUPS) {
     console.log(`Running STRUCTURAL deep-update pass (${group.label})…`);
+
+    // Per-group deep research
+    let groupContext = searchContext;
+    const researchKey = group.researchSites;
+    if (researchKey && RESEARCH_SITES[researchKey]) {
+      try {
+        const research = await deepResearch(RESEARCH_SITES[researchKey], group.label);
+        if (research.articleContext) {
+          groupContext = searchContext + research.articleContext;
+          console.log(`  ${group.label} enriched context: ${(groupContext.length / 1024).toFixed(1)}KB`);
+        }
+        passes[group.label + '_research'] = {
+          research: { sitesSearched: research.sitesSearched, articlesExtracted: research.articlesExtracted },
+        };
+      } catch (err) {
+        console.warn(`  Deep research for ${group.label} failed (${err.message}) — using standard context.`);
+      }
+    }
+
     const groupBlock = group.names
       .filter(name => fileContents[name])
       .map(name => {
@@ -1265,7 +1532,7 @@ async function updateStructural(searchContext) {
       `UPDATE TYPE: STRUCTURAL DEEP UPDATE — you MUST return updated content for ALL files below.\n\n` +
       (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
       `FILES TO DEEPLY UPDATE:\n${groupBlock}\n\n` +
-      `WEB SEARCH RESULTS:\n${searchContext}`;
+      `WEB SEARCH RESULTS:\n${groupContext}`;
 
     const systemPrompt = group.prompt === 'analysis-map'
       ? DEEP_UPDATE_SYSTEM_PROMPT
@@ -1579,7 +1846,13 @@ ${todayIsEmpty ? `- The TODAY section is currently EMPTY (a new day started). Ge
 - Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*).
 - Source tier guidance: search results are tagged [Tier N]. Prefer tier 1-3 sources for
   confirmed facts. Tier 4 is acceptable. Tier 5 items need a framing note (e.g. "opposition-aligned").
-  Tier 6 items should NOT appear in the timeline unless corroborated by a higher-tier source.`;
+  Tier 6 items should NOT appear in the timeline unless corroborated by a higher-tier source.
+- Source diversity rule: tier 1–4 sources (official, wire services, defence specialists,
+  quality broadsheets) may be cited freely with no per-outlet limit. Tier 5 regional
+  outlets (Al Jazeera, Iran International, etc.) should not be cited more than twice
+  across all timeline items — when a tier 5 outlet covers the same event as a tier 1–4
+  source, cite the higher-tier source instead. Al Jazeera should only be cited when it
+  has unique on-the-ground reporting not available from higher-tier sources.`;
 
   const last24hUserContent =
     `EXISTING TODAY ITEMS (do not duplicate these):\n${existingTodayItems}\n\n` +
@@ -1631,9 +1904,35 @@ ${todayIsEmpty ? `- The TODAY section is currently EMPTY (a new day started). Ge
   // ── 6. Structural updates (only when effective type is structural) ──────
 
   if (effectiveType === 'structural') {
+    // 6a. General deep research for pass 1 (broad structural)
+    let pass1Context = searchContext;
     try {
-      const { filesChanged, passes } = await updateStructural(searchContext);
+      const generalResearch = await deepResearch(RESEARCH_SITES.general, 'general');
+      if (generalResearch.articleContext) {
+        pass1Context = searchContext + generalResearch.articleContext;
+      }
+      manifest.phases.deepResearch = {
+        status: 'ok',
+        general: { sitesSearched: generalResearch.sitesSearched, articlesExtracted: generalResearch.articlesExtracted },
+        perGroup: {},
+      };
+    } catch (err) {
+      console.warn(`General deep research failed (${err.message}) — continuing with standard search context.`);
+      manifest.phases.deepResearch = { status: 'partial', error: err.message, perGroup: {} };
+    }
+
+    // 6b. Run structural updates — each deep-update group gets its own research
+    try {
+      const { filesChanged, passes } = await updateStructural(searchContext, pass1Context);
       manifest.phases.structural = { status: 'ok', filesChanged, passes };
+      // Merge per-group research stats into manifest
+      if (passes) {
+        for (const [label, passInfo] of Object.entries(passes)) {
+          if (passInfo.research && manifest.phases.deepResearch) {
+            manifest.phases.deepResearch.perGroup[label] = passInfo.research;
+          }
+        }
+      }
     } catch (err) {
       console.warn(`Structural updates failed (${err.message}) — keeping originals.`);
       manifest.phases.structural = { status: 'error', error: err.message };
