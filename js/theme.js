@@ -14,9 +14,10 @@ function toggleTheme() {
   }
   // Swap MapLibre GL style between dark and light
   if (window._theaterMap) {
+    var MAPTILER_KEY = '49tXbjeDRcPMglh4nc1s';
     var newStyle = isLight
-      ? 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
-      : 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
+      ? 'https://api.maptiler.com/maps/hybrid/style.json?key=' + MAPTILER_KEY
+      : 'https://api.maptiler.com/maps/streets/style.json?key=' + MAPTILER_KEY;
     window._theaterMap.setStyle(newStyle);
     window._theaterMap.once('idle', function() {
       if (window._reloadMapData) window._reloadMapData();

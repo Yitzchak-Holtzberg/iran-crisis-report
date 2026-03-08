@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', function(){
   var mapEl = document.getElementById('theater-map');
   if (!mapEl) return;
 
-  var DARK_STYLE  = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
-  var LIGHT_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
+  var MAPTILER_KEY = '49tXbjeDRcPMglh4nc1s';
+  var DARK_STYLE  = 'https://api.maptiler.com/maps/hybrid/style.json?key=' + MAPTILER_KEY;
+  var LIGHT_STYLE = 'https://api.maptiler.com/maps/streets/style.json?key=' + MAPTILER_KEY;
   var isLight = document.documentElement.getAttribute('data-theme') === 'light';
 
   var map = new maplibregl.Map({
@@ -29,10 +30,8 @@ document.addEventListener('DOMContentLoaded', function(){
       if (!map.getSource('terrain-dem')) {
         map.addSource('terrain-dem', {
           type: 'raster-dem',
-          tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
-          encoding: 'terrarium',
-          tileSize: 256,
-          maxzoom: 15
+          url: 'https://api.maptiler.com/tiles/terrain-rgb-v2/tiles.json?key=' + MAPTILER_KEY,
+          tileSize: 256
         });
       }
       map.setTerrain({source: 'terrain-dem', exaggeration: 3});
@@ -585,6 +584,16 @@ document.addEventListener('DOMContentLoaded', function(){
     heatBtn.addEventListener('click', function(){ toggleHeatmap(heatBtn); });
     container.appendChild(heatBtn);
 
+    // ── Measure distance button ──
+    var measureBtn = document.createElement('button');
+    measureBtn.className = 'layer-toggle-btn';
+    measureBtn.textContent = 'Measure';
+    measureBtn.title = 'Click two points to measure distance';
+    measureBtn.style.setProperty('--toggle-color', '#00d4ff');
+    measureBtn.style.borderStyle = 'dashed';
+    measureBtn.addEventListener('click', function(){ toggleMeasure(measureBtn); });
+    container.appendChild(measureBtn);
+
     // ── 3D Terrain toggle button ──
     var terrainBtn = document.createElement('button');
     terrainBtn.className = 'layer-toggle-btn';
@@ -785,6 +794,88 @@ document.addEventListener('DOMContentLoaded', function(){
       map.setLayoutProperty('strike-labels', 'visibility', heatmapActive ? 'none' : 'visible');
     }
   }
+
+  // ── Distance Measurement Tool ──
+  var measureActive = false;
+  var measurePoints = [];
+  var measureMarkers = [];
+  var measurePopup = null;
+
+  function haversine(a, b) {
+    var R = 6371;
+    var dLat = (b[1] - a[1]) * Math.PI / 180;
+    var dLon = (b[0] - a[0]) * Math.PI / 180;
+    var lat1 = a[1] * Math.PI / 180;
+    var lat2 = b[1] * Math.PI / 180;
+    var x = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon/2) * Math.sin(dLon/2);
+    return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1-x));
+  }
+
+  function clearMeasure() {
+    measurePoints = [];
+    measureMarkers.forEach(function(m) { m.remove(); });
+    measureMarkers = [];
+    if (measurePopup) { measurePopup.remove(); measurePopup = null; }
+    if (map.getLayer('measure-line')) map.removeLayer('measure-line');
+    if (map.getSource('measure-line')) map.removeSource('measure-line');
+  }
+
+  function onMeasureClick(e) {
+    if (!measureActive) return;
+    var coord = [e.lngLat.lng, e.lngLat.lat];
+    measurePoints.push(coord);
+
+    var el = document.createElement('div');
+    el.style.cssText = 'width:12px;height:12px;border-radius:50%;background:#00d4ff;border:2px solid #fff;cursor:crosshair;';
+    var marker = new maplibregl.Marker({element: el}).setLngLat(coord).addTo(map);
+    measureMarkers.push(marker);
+
+    if (measurePoints.length === 2) {
+      var km = haversine(measurePoints[0], measurePoints[1]);
+      var mi = km * 0.621371;
+      var nm = km * 0.539957;
+      var label = Math.round(km) + ' km / ' + Math.round(mi) + ' mi / ' + Math.round(nm) + ' nm';
+
+      // Draw line
+      if (map.getLayer('measure-line')) map.removeLayer('measure-line');
+      if (map.getSource('measure-line')) map.removeSource('measure-line');
+      map.addSource('measure-line', {
+        type: 'geojson',
+        data: {type:'Feature', geometry:{type:'LineString', coordinates: measurePoints}}
+      });
+      map.addLayer({
+        id: 'measure-line', type: 'line', source: 'measure-line',
+        paint: {'line-color':'#00d4ff', 'line-width': 2, 'line-dasharray': [4, 3]}
+      });
+
+      // Show label at midpoint
+      var mid = [(measurePoints[0][0]+measurePoints[1][0])/2, (measurePoints[0][1]+measurePoints[1][1])/2];
+      measurePopup = new maplibregl.Popup({closeButton:true, closeOnClick:false, className:'measure-popup', offset:0})
+        .setLngLat(mid)
+        .setHTML('<div style="font-size:13px;font-weight:bold;color:#00d4ff;text-shadow:0 1px 3px rgba(0,0,0,0.8);">' + label + '</div>')
+        .addTo(map);
+      measurePopup.on('close', function() { clearMeasure(); });
+
+      // Reset for next measurement
+      measurePoints = [];
+      measureMarkers.forEach(function(m) { m.remove(); });
+      measureMarkers = [];
+    }
+  }
+
+  function toggleMeasure(btn) {
+    measureActive = !measureActive;
+    btn.classList.toggle('active', measureActive);
+    map.getCanvas().style.cursor = measureActive ? 'crosshair' : '';
+    if (!measureActive) clearMeasure();
+    if (measureActive) {
+      map.on('click', onMeasureClick);
+    } else {
+      map.off('click', onMeasureClick);
+    }
+  }
+
+  window._toggleMeasure = toggleMeasure;
 
   window._reloadMapData = loadMapData;
   map.once('load', loadMapData);
