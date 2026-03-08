@@ -36,6 +36,8 @@
 .teaser-cta-cyan:hover   { background:rgba(0,212,255,0.2); }
 .teaser-cta-orange { background:rgba(255,140,66,0.1); border:1px solid var(--accent-orange); color:var(--accent-orange); }
 .teaser-cta-orange:hover { background:rgba(255,140,66,0.2); }
+.teaser-cta-blue   { background:rgba(74,144,217,0.1); border:1px solid var(--accent-blue); color:var(--accent-blue); }
+.teaser-cta-blue:hover   { background:rgba(74,144,217,0.2); }
 
 /* Teaser bottom card */
 .teaser-bottom { text-align:center; padding:24px 20px; }

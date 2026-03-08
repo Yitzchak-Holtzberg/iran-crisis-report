@@ -8,7 +8,7 @@ Static HTML news dashboard for the Iran crisis, built from modular HTML section 
 
 ## Commands
 
-- **Build all pages:** `npm run build` (runs `node build.js`, generates 7 HTML pages from section templates)
+- **Build all pages:** `npm run build` (runs `node build.js`, generates 9 HTML pages from section templates)
 - **Validate:** `npm run validate` (checks for build warnings: schema errors, unbalanced AI zones, unbalanced HTML tags, broken nav links)
 
 There are no test or lint commands.
@@ -23,7 +23,7 @@ The build script concatenates HTML section fragments into complete pages. It pro
 - `<!-- @ticker -->` — populates ticker from `data.json` array, doubled for CSS scroll loop
 - `{{key}}` — replaced with values from `data.json`
 
-The `BUILDS` array in `build.js` defines 7 output pages (index, diplomatic, scenarios, forces, inside-iran, reactions, sources), each specifying which section files to concatenate and per-page meta values.
+The `BUILDS` array in `build.js` defines 9 output pages (index, diplomatic, scenarios, forces, inside-iran, reactions, analysis, opposition, sources), each specifying which section files to concatenate and per-page meta values.
 
 ### Data Flow
 
@@ -54,7 +54,7 @@ Runs every 6 hours. Steps: update date → AI content update (Tavily search + Op
 
 ## Key Constraints
 
-- Generated HTML files (`index.html`, `diplomatic.html`, `scenarios.html`, `forces.html`, `inside-iran.html`, `reactions.html`, `sources.html`) should never be edited directly — edit the source sections in `sections/` and rebuild.
+- Generated HTML files (`index.html`, `diplomatic.html`, `scenarios.html`, `forces.html`, `inside-iran.html`, `reactions.html`, `analysis.html`, `opposition.html`, `sources.html`) should never be edited directly — edit the source sections in `sections/` and rebuild.
 - Section header `id` attributes must be preserved (sidebar navigation depends on them).
 - `{{placeholder}}` templates and `@ai-zone` markers in section files must not be removed.
 - AI zone replacements must not shrink content below 30% of original size (guardrail in `ai-update.js`).

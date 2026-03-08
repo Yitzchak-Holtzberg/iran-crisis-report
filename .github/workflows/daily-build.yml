@@ -79,8 +79,8 @@ jobs:
             echo "::error::Build validation failed — blocking deployment"
             exit 1
           fi
-          # Verify all 7 output files exist and are non-empty.
-          for f in index.html diplomatic.html scenarios.html forces.html inside-iran.html reactions.html sources.html; do
+          # Verify all 9 output files exist and are non-empty.
+          for f in index.html diplomatic.html scenarios.html forces.html inside-iran.html reactions.html analysis.html opposition.html sources.html; do
             if [ ! -s "$f" ]; then
               echo "::error::$f is missing or empty"
               exit 1
