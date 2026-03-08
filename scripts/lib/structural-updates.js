@@ -40,6 +40,7 @@ const STRUCTURAL_BASE_RULES = `\
   for the most significant developments
 - Do NOT use markdown — use HTML tags (<strong>, <em>, etc.)
 - Do NOT change <script> tags, inline JavaScript, or SVG diagrams
+- Preserve ALL Nunjucks directives exactly as they are ({% include %}, {% for %}, {% if %}, {{ var | safe }}, etc.)
 - Do NOT fabricate facts, dates, URLs, or attribution — if unsure, keep existing content
 - Search results are pre-tagged with [Tier N] source reliability labels:
   Tiers 1-3: trusted for facts. Tier 4: good for confirmed events. Tier 5: include framing note.

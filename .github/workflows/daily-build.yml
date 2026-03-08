@@ -50,6 +50,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm install
+
       # Update data.json → date and lastUpdated to today's UTC date/time.
       - name: Update date in data.json
         run: node scripts/update-date.js
@@ -115,6 +118,7 @@ jobs:
           git add data.json data/update-manifest.json \
                  index.html diplomatic.html scenarios.html forces.html \
                  inside-iran.html reactions.html sources.html \
+                 analysis.html opposition.html \
                  sections/ logs/ 2>/dev/null || true
 
           # Commit only if there are changes

@@ -52,6 +52,7 @@ General rules:
 - Return null for any zone where the search results contain no clearly newer
   confirmed information — do NOT fabricate facts
 - Preserve all HTML tags exactly — only update facts, dates, numbers, names
+- Preserve all Nunjucks directives exactly ({% include %}, {% for %}, {% if %}, {{ var }}, etc.)
 - Do NOT insert @ai-zone or @/ai-zone comment markers into your output
 - Keep writing style consistent with the existing content
 - Do NOT use markdown formatting — use HTML tags instead (e.g. <strong>bold</strong> not **bold**, <em>italic</em> not *italic*)
