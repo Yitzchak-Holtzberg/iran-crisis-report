@@ -35,8 +35,11 @@ function toggleTheme() {
   // Attach touchend listener so the toggle fires immediately on mobile
   // (prevents the 300ms click delay and fixes tap-target issues on iOS Safari)
   var btn = document.getElementById('themeToggle');
-  if (btn) btn.addEventListener('touchend', function(e) {
-    e.preventDefault();
-    toggleTheme();
-  }, {passive: false});
+  if (btn) {
+    btn.addEventListener('click', toggleTheme);
+    btn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      toggleTheme();
+    }, {passive: false});
+  }
 })();

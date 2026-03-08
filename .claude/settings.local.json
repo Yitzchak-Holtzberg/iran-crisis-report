@@ -25,7 +25,12 @@
       "Bash(wc -l /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/*.js /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/css/*.css /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/js/*.js)",
       "mcp__plugin_playwright_playwright__browser_click",
       "mcp__plugin_playwright_playwright__browser_console_messages",
-      "mcp__plugin_playwright_playwright__browser_wait_for"
+      "mcp__plugin_playwright_playwright__browser_wait_for",
+      "Bash(git checkout -b simplify-codebase)",
+      "Bash(git add .gitignore)",
+      "Bash(git rm atlantic-council-article.md brookings-article.md)",
+      "Bash(git rm *.png)",
+      "Bash(git commit:*)"
     ]
   }
 }

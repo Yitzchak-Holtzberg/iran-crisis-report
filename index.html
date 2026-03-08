@@ -12,13 +12,15 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Iran Crisis Report — March 8, 2026"/>
 <meta name="twitter:description" content="Live situation report: US–Iran military standoff, nuclear negotiations, protest crackdowns, and economic collapse. Updated multiple times daily."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"/>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous"/>
 <link rel="stylesheet" href="css/variables.css"/>
 <link rel="stylesheet" href="css/base.css"/>
 <link rel="stylesheet" href="css/components.css"/>
 <link rel="stylesheet" href="css/sidebar.css"/>
 <link rel="stylesheet" href="css/responsive.css"/>
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4S1QZPSNZD"></script>
 <script>
@@ -29,8 +31,9 @@
 </script>
 </head>
 <body>
+
 <header class="masthead">
-  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
     <span class="toggle-icon" id="toggleIcon">☀️</span>
     <span id="toggleLabel">Light</span>
   </button>
@@ -38,6 +41,7 @@
   <h1>Iran on the Brink:<br>A Nation at War With Itself</h1>
   <div class="dateline">March 8, 2026 &nbsp;|&nbsp; Compiled from 40+ international sources &nbsp;|&nbsp; Last updated 12:00 UTC</div>
 </header>
+
 
 <div class="ticker-wrap">
   <div class="ticker-live">LIVE</div>
@@ -95,7 +99,7 @@
     </div>
   </div>
 </div>
-<!-- ===== LEFT SIDEBAR ===== -->
+
 <aside class="left-sidebar" id="leftSidebar" aria-label="Page navigation">
   <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
   <div class="sb-header" id="sbHeader">
@@ -115,27 +119,45 @@
     <a class="sb-page-pill" href="opposition.html" data-page="opposition">Opposition</a>
     <a class="sb-page-pill" href="sources.html" data-page="sources">Sources</a>
   </div>
+
   <nav class="sb-nav" aria-label="Page sections">
+    
     <span class="sb-group">Situation</span>
+    
     <a class="sb-link" href="#stats" data-section="stats"><span class="sb-num">01</span><span class="sb-dot"></span>Key Statistics</a>
+    
     <a class="sb-link" href="#last-24h" data-section="last-24h"><span class="sb-num">02</span><span class="sb-dot"></span>The Last 24 Hours</a>
+    
     <a class="sb-link" href="#confirmed-unconfirmed" data-section="confirmed-unconfirmed"><span class="sb-num">03</span><span class="sb-dot"></span>Fog of War</a>
+    
     <a class="sb-link" href="#theater" data-section="theater"><span class="sb-num">04</span><span class="sb-dot"></span>Theater Map</a>
+    
     <span class="sb-group">Analysis</span>
+    
     <a class="sb-link" href="#scenarios" data-section="scenarios"><span class="sb-num">05</span><span class="sb-dot"></span>Scenarios</a>
+    
     <a class="sb-link" href="#analysis" data-section="analysis"><span class="sb-num">06</span><span class="sb-dot"></span>Expert Analysis</a>
+    
     <a class="sb-link" href="#nuclear" data-section="nuclear"><span class="sb-num">07</span><span class="sb-dot"></span>Nuclear Talks</a>
+    
     <a class="sb-link" href="#strike-forces" data-section="strike-forces"><span class="sb-num">08</span><span class="sb-dot"></span>US Strike Forces</a>
+    
     <a class="sb-link" href="#military" data-section="military"><span class="sb-num">09</span><span class="sb-dot"></span>Iran Military</a>
+    
     <a class="sb-link" href="#inside-iran" data-section="inside-iran"><span class="sb-num">10</span><span class="sb-dot"></span>Inside Iran</a>
+    
     <a class="sb-link" href="#reactions" data-section="reactions"><span class="sb-num">11</span><span class="sb-dot"></span>Reactions</a>
+    
     <a class="sb-link" href="#opposition" data-section="opposition"><span class="sb-num">12</span><span class="sb-dot"></span>Opposition</a>
+    
   </nav>
 </aside>
-<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
-<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
+<div class="sb-overlay" id="sbOverlay"></div>
+<button class="sb-toggle" id="sbToggle" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
 
 <div class="container">
+
+
 
 <!-- ======== TOP STATS ======== -->
 <div class="stats-grid" id="stats" style="margin-top:40px;">
@@ -168,6 +190,7 @@
     <div class="label">US Service Members<br>Killed (CNBC/CBS)</div>
   </div>
 </div>
+
 
 <!-- ======== LAST 24 HOURS ======== -->
 <div class="section-header" id="last-24h">
@@ -294,6 +317,7 @@
   <button class="tl-show-more" onclick="var tl=document.getElementById('tl-yesterday');tl.classList.remove('collapsed');this.style.display='none';">&#9660; Show all yesterday</button>
 
 </div>
+
 <!-- ======== FOG OF WAR ======== -->
 <div class="section-header" id="confirmed-unconfirmed">
   <div class="icon" style="background:rgba(255,140,66,0.15);">&#127787;</div>
@@ -392,6 +416,7 @@
     </div>
   </div>
 </div>
+
 <!-- ======== THEATER MAP ======== -->
 <!-- @last-updated:2026-03-06 -->
 <div class="section-header" id="theater">
@@ -429,6 +454,7 @@
 <div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:4px;">Click any marker for details &bull; Scroll to zoom disabled — use +/- buttons &bull; Dashed red lines = Iranian missile corridors &bull; Dashed blue = US strike corridors</div>
 </div>
 </div>
+
 <!-- ======== SCENARIOS (TEASER) ======== -->
 <div class="section-header" id="scenarios">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#127758;</div>
@@ -452,6 +478,7 @@
   <a href="scenarios.html" class="teaser-cta teaser-cta-gold">Read Full Analysis &#8599;</a>
 </div>
 
+
 <!-- ======== EXPERT ANALYSIS (TEASER) ======== -->
 <div class="section-header" id="analysis">
   <div class="icon" style="background:rgba(74,144,217,0.15);">&#128203;</div>
@@ -463,6 +490,7 @@
   <p>In-depth assessments from seven leading think tanks on the trajectory of Operation Epic Fury — costs, escalation risks, Hormuz endgame, nuclear implications, and the regime's survival prospects as the war enters its second week.</p>
   <a href="analysis.html" class="teaser-cta teaser-cta-blue">Read Expert Analysis &#8599;</a>
 </div>
+
 <!-- ======== DIPLOMATIC TRACK (TEASER) ======== -->
 <!-- @last-updated:2026-03-06 -->
 <div class="section-header" id="nuclear">
@@ -482,6 +510,7 @@
   <p>Full diplomatic timeline (all rounds), deal terms breakdown, UK-US rift, and Israel's strike calculus.</p>
   <a href="diplomatic.html" class="teaser-cta teaser-cta-orange">Full Diplomatic Briefing &#8599;</a>
 </div>
+
 <!-- ======== US STRIKE FORCES (TEASER) ======== -->
 <div class="section-header" id="strike-forces">
   <div class="icon icon-cyan">&#9992;</div>
@@ -512,6 +541,7 @@
   <a href="forces.html" class="teaser-cta teaser-cta-cyan">Full Order of Battle &#8599;</a>
 </div>
 
+
 <!-- ======== IRAN MILITARY CAPABILITY (TEASER) ======== -->
 <div class="section-header" id="military">
   <div class="icon icon-orange">&#127942;</div>
@@ -539,6 +569,7 @@
   <p>Full battle damage assessment, command vacuum analysis, Iran's retaliation playbook, and detailed Feb 28–Mar 1 strike-by-strike accounting across all five theaters.</p>
   <a href="forces.html#military" class="teaser-cta teaser-cta-orange">Iran Military Assessment &#8599;</a>
 </div>
+
 <!-- ======== INSIDE IRAN (TEASER) ======== -->
 <div class="section-header" id="inside-iran">
   <div class="icon" style="background:rgba(255,59,59,0.15);">&#127470;&#127479;</div>
@@ -565,6 +596,7 @@
   <p>+ 4 more crises: Economic Freefall (rial at ~1.7M/USD, Hormuz closed, oil +35.6%), the Uprising (190 cities, January Massacre + student protests + ethnic periphery), the Water Catastrophe (Tehran "Day Zero" accelerating, infrastructure collapse), and Regional Escalation (6 US soldiers killed in Kuwait, Iraqi militia attacks, Houthi threats).</p>
   <a href="inside-iran.html" class="teaser-cta teaser-cta-red">Full Briefing (6 Crises) &#8599;</a>
 </div>
+
 <!-- ======== REACTIONS (TEASER) ======== -->
 <div class="section-header" id="reactions">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#127758;</div>
@@ -587,6 +619,7 @@
   <p>Full country-by-country breakdown: Qatar (Al Udeid targeted), Saudi Arabia (air defense activated), Kuwait, Israel's home front, plus global diplomatic reactions — UN Security Council veto, Russia, China, EU positions.</p>
   <a href="reactions.html" class="teaser-cta teaser-cta-gold">Full Reactions &amp; Damage &#8599;</a>
 </div>
+
 <!-- ======== OPPOSITION (TEASER) ======== -->
 <div class="section-header" id="opposition">
   <div class="icon" style="background:rgba(255,215,0,0.15);">&#128081;</div>
@@ -597,6 +630,7 @@
   <p>Reza Pahlavi's timeline from Washington Post op-ed to open letter to IRGC generals, the opposition landscape (MEK, monarchists, secularists, ethnic movements), and the question of who leads a post-regime Iran.</p>
   <a href="opposition.html" class="teaser-cta teaser-cta-gold">Full Opposition Briefing &#8599;</a>
 </div>
+
 <footer>
   <div class="container" style="text-align:center;">
     <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-secondary);margin-bottom:12px;">Sources &amp; References</p>
@@ -604,6 +638,7 @@
     <a href="sources.html" style="display:inline-block;padding:8px 24px;background:var(--accent);color:#fff;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;">View All Sources &rarr;</a>
   </div>
 </footer>
+
 <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>

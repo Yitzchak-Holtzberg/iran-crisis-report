@@ -115,7 +115,10 @@
 .faction-stat-num { font-family:'Space Mono','Courier New',monospace; font-size:13px; font-weight:700; color:var(--faction-color); }
 .faction-stat-lbl { font-size:9px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-top:2px; }
 .faction-tags { display:flex; gap:6px; flex-wrap:wrap; }
-.faction-tag { font-size:10px; font-family:'Space Mono','Courier New',monospace; padding:3px 8px; border-radius:4px; background:color-mix(in srgb, var(--faction-color) 10%, transparent); border:1px solid color-mix(in srgb, var(--faction-color) 25%, transparent); color:var(--faction-color); }
+.faction-tag { font-size:10px; font-family:'Space Mono','Courier New',monospace; padding:3px 8px; border-radius:4px; background:rgba(128,128,128,0.1); border:1px solid rgba(128,128,128,0.25); color:var(--faction-color); }
+@supports (background: color-mix(in srgb, red 10%, transparent)) {
+  .faction-tag { background:color-mix(in srgb, var(--faction-color) 10%, transparent); border-color:color-mix(in srgb, var(--faction-color) 25%, transparent); }
+}
 .crisis-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; padding:24px; }
 .crisis-card h4 { font-size:16px; font-weight:700; margin-bottom:8px; }
 .crisis-card p { font-size:13px; color:var(--text-secondary); margin-bottom:8px; }

@@ -12,13 +12,15 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Iran Crisis: Order of Battle — March 8, 2026"/>
 <meta name="twitter:description" content="Full order of battle: US strike forces vs. Iran's remaining military capability — missiles, drones, IRGC Navy, and the Strait of Hormuz threat."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"/>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous"/>
 <link rel="stylesheet" href="css/variables.css"/>
 <link rel="stylesheet" href="css/base.css"/>
 <link rel="stylesheet" href="css/components.css"/>
 <link rel="stylesheet" href="css/sidebar.css"/>
 <link rel="stylesheet" href="css/responsive.css"/>
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4S1QZPSNZD"></script>
 <script>
@@ -29,8 +31,9 @@
 </script>
 </head>
 <body>
+
 <header class="masthead">
-  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
     <span class="toggle-icon" id="toggleIcon">☀️</span>
     <span id="toggleLabel">Light</span>
   </button>
@@ -38,6 +41,7 @@
   <h1>Iran on the Brink:<br>A Nation at War With Itself</h1>
   <div class="dateline">March 8, 2026 &nbsp;|&nbsp; Compiled from 40+ international sources &nbsp;|&nbsp; Last updated 12:00 UTC</div>
 </header>
+
 
 <div class="ticker-wrap">
   <div class="ticker-live">LIVE</div>
@@ -95,7 +99,7 @@
     </div>
   </div>
 </div>
-<!-- ===== LEFT SIDEBAR — FORCES SUB-PAGE ===== -->
+
 <aside class="left-sidebar" id="leftSidebar" aria-label="Page navigation">
   <div class="sb-progress"><div class="sb-progress-fill" id="sbProgressFill"></div></div>
   <div class="sb-header" id="sbHeader">
@@ -115,24 +119,39 @@
     <a class="sb-page-pill" href="opposition.html" data-page="opposition">Opposition</a>
     <a class="sb-page-pill" href="sources.html" data-page="sources">Sources</a>
   </div>
+
   <nav class="sb-nav" aria-label="Page sections">
+    
     <span class="sb-group">Overview</span>
+    
     <a class="sb-link" href="#nation-postures" data-section="nation-postures"><span class="sb-num">00</span><span class="sb-dot"></span>All Nations</a>
+    
     <span class="sb-group">US Strike Assets</span>
+    
     <a class="sb-link" href="#air-power" data-section="air-power"><span class="sb-num">01</span><span class="sb-dot"></span>Air Power</a>
+    
     <a class="sb-link" href="#naval" data-section="naval"><span class="sb-num">02</span><span class="sb-dot"></span>Naval Forces</a>
+    
     <span class="sb-group">Iran Assessment</span>
+    
     <a class="sb-link" href="#military" data-section="military"><span class="sb-num">03</span><span class="sb-dot"></span>Military Status</a>
+    
     <a class="sb-link" href="#iran-retaliation" data-section="iran-retaliation"><span class="sb-num">04</span><span class="sb-dot"></span>Retaliation Playbook</a>
+    
     <a class="sb-link" href="#iran-retaliation-executed" data-section="iran-retaliation-executed"><span class="sb-num">05</span><span class="sb-dot"></span>Retaliation Executed</a>
+    
     <span class="sb-group">Strategic</span>
+    
     <a class="sb-link" href="#hormuz" data-section="hormuz"><span class="sb-num">06</span><span class="sb-dot"></span>Hormuz Threat</a>
+    
   </nav>
 </aside>
-<div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
-<button class="sb-toggle" id="sbToggle" onclick="toggleSidebar()" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
+<div class="sb-overlay" id="sbOverlay"></div>
+<button class="sb-toggle" id="sbToggle" aria-label="Toggle navigation"><span class="sb-toggle-icon">&#x2630;</span><span class="sb-toggle-label">Menu</span></button>
 
 <div class="container">
+
+
 <!-- ======== THEATER FORCE POSTURES ======== -->
 <div class="section-header" id="nation-postures">
   <div class="icon icon-orange">&#127758;</div>
@@ -292,6 +311,7 @@
     </tbody>
   </table>
 </div>
+
 <!-- ======== AIRCRAFT PROFILES ======== -->
 <div class="section-header" id="air-power">
   <div class="icon icon-cyan">&#9992;</div>
@@ -350,6 +370,8 @@
   <div class="bar-row"><div class="bar-label">C-17/C-5 Cargo</div><div class="bar-track"><div class="bar-fill" style="width:95%;background:linear-gradient(90deg,#6a6a8a,#8a8aaa);">170+ sorties</div></div></div>
   <div style="font-size:12px;color:var(--text-muted);margin-top:12px;">Total: <strong>150+ combat & support aircraft</strong> surged in the past week — Source: <a href="https://www.washingtonpost.com/investigations/2026/02/24/united-states-iran-buildup/" target="_blank">Washington Post</a></div>
 </div>
+
+
 
 <!-- ======== CARRIER STRIKE GROUPS ======== -->
 <!-- @last-updated:2026-03-08 -->
@@ -804,6 +826,7 @@
     </tbody>
   </table>
 </div>
+
 <!-- ======== IRAN MILITARY CAPABILITY ======== -->
 <!-- @last-updated:2026-03-06 -->
 <div class="section-header" id="military">
@@ -823,7 +846,7 @@
 </div>
 
 <!-- POST-STRIKE BATTLE DAMAGE ASSESSMENT -->
-<div class="card card-accent-red">
+<div class="card card-red">
   <h3 style="color:var(--accent-red);">&#128270; Post-Strike Battle Damage Assessment (BDA) — Updated Mar 4 (per Cooper briefing)</h3>
   <p>The following assessment reflects confirmed and reported strike effects through Day 5 (Mar 4). Figures updated per Admiral Cooper's CENTCOM video statement. BDA in active strike environments is inherently uncertain; the figures below represent the commander's public unclassified assessment.</p>
 
@@ -861,7 +884,7 @@
 </div>
 
 <!-- COMMAND VACUUM CARD -->
-<div class="card card-accent-red" style="margin-top:0;">
+<div class="card card-red" style="margin-top:0;">
   <h3>&#9888;&#65039; The Command Vacuum: Iran Without Khamenei</h3>
   <p>Khamenei's death removes the singular authority that has controlled Iran's nuclear trigger, proxy activation orders, and all strategic military decisions for 35 years. This is not merely a symbolic loss — it creates a genuine and dangerous command vacuum over a still-armed state with ballistic missiles and drones. Iran's naval forces have been <strong>declared destroyed by CENTCOM (Mar 3)</strong>, but the remaining missile and drone arsenal — and the proxy network — still represent serious threats.</p>
 
@@ -939,8 +962,9 @@
   </div>
 </div>
 
+
 <!-- ======== IRAN ASYMMETRIC RESPONSE PLAYBOOK ======== -->
-<div class="card card-accent-red" id="iran-retaliation">
+<div class="card card-red" id="iran-retaliation">
   <h3>&#9889; Iran's Asymmetric Response Playbook — Activated</h3>
   <p>Iran has spent 40 years developing an asymmetric deterrence doctrine designed to impose devastating costs on a superior conventional force. That doctrine is now being executed. The Feb 28–Mar 5 retaliatory salvos represent Phase 1 — the pre-planned ballistic strike. Phases 2 through 5 remain in reserve or are being activated now, potentially without central coordination following Khamenei's death. Iran has notably <strong>withheld its most advanced Fattah-1 hypersonic-maneuvering missiles</strong> in reserve, per reporting as of Mar 5. — <em>Chosun, Mar 5, 2026</em></p>
 
@@ -985,8 +1009,9 @@
     <p>Iran's IRGC Navy had represented the most immediately dangerous surviving force — the <strong>Noor anti-ship missile</strong> (Chinese C-802 derivative, range 170km), the <strong>Qader</strong> (200km), and the <strong>Khalij Fars</strong> anti-ship ballistic missile (300km), combined with swarm tactics and China's Feb 24 anti-ship missile supply agreement. <strong>However, on March 3, Pentagon/CENTCOM announced the IRGC Navy and IRIN have been effectively destroyed</strong>, with most surface combatants sunk or disabled and the fleet no longer posing a coherent maritime threat. Admiral Cooper confirmed 17 Iranian naval vessels destroyed, including a submarine. Residual coastal missile batteries and mines may remain; full mine-clearance of the Strait of Hormuz is expected to take days to weeks. — <em>CENTCOM, Mar 3, 2026; Admiral Cooper CENTCOM briefing, Mar 4, 2026; Bloomberg, Mar 3, 2026</em></p>
   </div>
 </div>
+
 <!-- ======== IRAN RETALIATION — EXECUTED (FEB 28) ======== -->
-<div class="card card-accent-red" id="iran-retaliation-executed" style="margin-top:0;">
+<div class="card card-red" id="iran-retaliation-executed" style="margin-top:0;">
   <h3 style="color:var(--accent-red);">&#128165; Iran's Retaliation — Who Was Attacked &amp; How (Feb 28–Mar 1)</h3>
   <p>Within hours of the Operation Epic Fury strikes, Iran activated its pre-planned asymmetric retaliation doctrine — designating its response <strong>"True Promise 4."</strong> The response was simultaneous and multi-front — triggering the largest simultaneous air defense activation in regional history across five theaters. Per Critical Threats/ISW, the initial barrages targeting Israel involved fewer than 100 ballistic missiles; broader combined attacks (missiles and drones) across the region totaled "hundreds" of projectiles. — <em>Critical Threats/ISW, Feb 28, 2026; Stars &amp; Stripes, Mar 1, 2026</em></p>
 
@@ -998,7 +1023,7 @@
   <div class="two-col" style="margin:16px 0;">
     <div>
       <h4 class="subsection-title red">Targets Struck / Targeted</h4>
-      <ul class="detail-list-lg">
+      <ul class="detail-list">
         <li>
           <strong style="color:var(--text-primary);">Israel — Cities &amp; Military Sites</strong><br>
           Ballistic missile barrage toward Israeli population centers and IDF installations. Arrow 3 (exo-atmospheric), David's Sling (medium-range), and Iron Dome (short-range) all activated. Multiple interceptions reported; explosions heard across Israel. <em>(Confirmed — BBC, Reuters, Feb 28)</em>
@@ -1023,7 +1048,7 @@
     </div>
     <div>
       <h4 class="subsection-title orange">Weapons Identified in Salvo</h4>
-      <ul class="detail-list-lg">
+      <ul class="detail-list">
         <li>
           <strong style="color:var(--text-primary);">Shahab-3 / Ghadr-110</strong><br>
           Range: ~2,000 km. Liquid-fueled. Reaches all Gulf bases and Israel. Pre-positioned in mountain tunnels; fired from mobile TEL launchers concealed before the initial US strike.
@@ -1047,7 +1072,7 @@
       </ul>
 
       <h4 class="subsection-title blue" style="margin-top:16px;">Air Defense Responses</h4>
-      <ul class="detail-list-lg">
+      <ul class="detail-list">
         <li><strong>Israel:</strong> Arrow 3 (exo-atmospheric), Iron Dome (short-range), David's Sling (medium-range) — all activated; interceptions reported</li>
         <li><strong>Qatar / UAE / Saudi / Bahrain:</strong> Patriot PAC-3 batteries on full alert; THAAD at Al Udeid activated; all four Gulf theaters simultaneously engaged</li>
         <li><strong>US Navy:</strong> Aegis BMD-equipped destroyers and cruisers in the Arabian Sea, Persian Gulf, and Eastern Mediterranean tracking and engaging inbound ballistic threats</li>
@@ -1061,6 +1086,7 @@
     <p>Precise interception rates, confirmed ground damage at targeted bases, US/Israeli/Gulf casualty figures, and whether Houthi and Iraqi PMF attacks were launched simultaneously are all <strong>not yet confirmed</strong> as of March 8, 2026. The critical unknown is whether Iran has already initiated — or is planning — a second ballistic-missile wave. IRGC doctrine from the 2024 Israel barrages called for a follow-on salvo 24–48 hours after the first, specifically targeting repair crews and taking advantage of partially-depleted interceptor magazines. With Khamenei now dead and the IRGC command structure fragmented, <strong>authorization for a second wave may rest with corps-level commanders operating under pre-delegated authority</strong> — making it simultaneously harder to predict and harder to deter through conventional diplomatic signaling. The additional strategic wildcard: Iran has been <strong>withholding its Fattah-1 hypersonic-maneuvering missiles in reserve</strong> — if a successor authority deploys them in a second wave, current air defense systems face their most difficult intercept challenge of the conflict. — <em>Chosun, Mar 5, 2026; ISW; Critical Threats</em></p>
   </div>
 </div>
+
 <!-- ======== STRAIT OF HORMUZ ======== -->
 <!-- @last-updated:2026-03-06 -->
 <div class="section-header" id="hormuz">
@@ -1125,6 +1151,7 @@
     <p>Goldman Sachs estimates a full Hormuz closure would push oil above <strong>$100/barrel within days</strong>, triggering a global recession. Even a <strong>partial disruption</strong> — mine threats forcing tanker insurance rates up, naval escorts slowing transit — could add $15-20/barrel. WTI crude has already risen from $60 to $67.28 on tensions alone. Every $10 increase costs the US economy ~$70B annually.</p>
   </div>
 </div>
+
 <footer>
   <div class="container" style="text-align:center;">
     <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-secondary);margin-bottom:12px;">Sources &amp; References</p>
@@ -1132,6 +1159,7 @@
     <a href="sources.html" style="display:inline-block;padding:8px 24px;background:var(--accent);color:#fff;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;">View All Sources &rarr;</a>
   </div>
 </footer>
+
 <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>

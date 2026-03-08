@@ -70,6 +70,9 @@ function setSidebarToggleState(open) {
   if (icon) icon.textContent = open ? '\u2715' : '\u2630';
   if (label) label.textContent = open ? 'Close' : 'Menu';
 }
+// Wire up sidebar toggle and overlay click handlers
+document.getElementById('sbToggle').addEventListener('click', toggleSidebar);
+document.getElementById('sbOverlay').addEventListener('click', closeSidebar);
 // Close sidebar when a link is clicked on mobile
 document.querySelectorAll('.sb-link').forEach(function(a) {
   a.addEventListener('click', function() {

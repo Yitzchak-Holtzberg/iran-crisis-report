@@ -21,9 +21,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ── 3D Terrain ──
   var terrainEnabled = false;
+  var preterrainView = null;
   function enableTerrain() {
     if (terrainEnabled) return;
     try {
+      preterrainView = {center: map.getCenter(), zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing()};
       if (!map.getSource('terrain-dem')) {
         map.addSource('terrain-dem', {
           type: 'raster-dem',
@@ -33,7 +35,24 @@ document.addEventListener('DOMContentLoaded', function(){
           maxzoom: 15
         });
       }
-      map.setTerrain({source: 'terrain-dem', exaggeration: 1.5});
+      map.setTerrain({source: 'terrain-dem', exaggeration: 3});
+      if (!map.getLayer('hillshade-layer')) {
+        map.addLayer({
+          id: 'hillshade-layer',
+          type: 'hillshade',
+          source: 'terrain-dem',
+          paint: {
+            'hillshade-exaggeration': 0.6,
+            'hillshade-shadow-color': '#000000',
+            'hillshade-highlight-color': '#ffffff',
+            'hillshade-accent-color': '#444444'
+          }
+        }, map.getLayer('clusters') ? 'clusters' : undefined);
+      } else {
+        map.setLayoutProperty('hillshade-layer', 'visibility', 'visible');
+      }
+      var targetZoom = Math.max(map.getZoom(), 5.5);
+      map.easeTo({pitch: 55, zoom: targetZoom, duration: 800});
       terrainEnabled = true;
     } catch(e) { /* terrain not supported in this browser */ }
   }
@@ -41,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function(){
     if (!terrainEnabled) return;
     try {
       map.setTerrain(null);
+      if (map.getLayer('hillshade-layer')) map.setLayoutProperty('hillshade-layer', 'visibility', 'none');
+      var restore = preterrainView || {pitch: 0};
+      map.easeTo({pitch: restore.pitch, zoom: restore.zoom, duration: 800});
       terrainEnabled = false;
     } catch(e) {}
   }
@@ -75,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function(){
         ctx.drawImage(img, 0, 0, size, size);
         resolve({data: ctx.getImageData(0, 0, size, size), size: size});
       };
-      img.onerror = function() { resolve(null); };
+      img.onerror = function() { console.warn('Map: failed to render icon SVG'); resolve(null); };
       img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
     });
   }
