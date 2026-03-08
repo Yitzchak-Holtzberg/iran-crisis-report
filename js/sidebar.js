@@ -1,7 +1,10 @@
 // ===== NAVIGATION: mobile toggle =====
 // ===== LEFT SIDEBAR: active section + progress on scroll =====
 (function() {
-  var sectionIds = ['stats','last-24h','confirmed-unconfirmed','theater','scenarios','analysis','nuclear','strike-forces','military','inside-iran','reactions','opposition','opposition-landscape'];
+  var sectionIds = Array.prototype.map.call(
+    document.querySelectorAll('.sb-link[data-section]'),
+    function(a) { return a.getAttribute('data-section'); }
+  );
   var sbLinks = document.querySelectorAll('.sb-link');
   function onScroll() {
     var scrollY = window.scrollY + 60;

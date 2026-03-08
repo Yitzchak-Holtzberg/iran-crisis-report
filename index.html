@@ -429,12 +429,17 @@
   <span class="severity critical" style="margin-left:auto;">ACTIVE</span>
 </div>
 
-<div class="map-container" style="padding:0;overflow:hidden;">
+<div class="map-container" style="padding:0;overflow:hidden;position:relative;">
+<div class="map-search-wrap">
+  <input type="text" id="mapSearch" placeholder="Search ships, bases, sites..." class="map-search-input" autocomplete="off">
+  <div id="mapSearchResults" class="map-search-results"></div>
+</div>
 <div id="theater-map" style="height:580px;width:100%;border-radius:12px;"></div>
 <div style="padding:8px 20px;">
 <div class="layer-toggles" id="layerToggles">
   <!-- Populated dynamically by map.js -->
 </div>
+<div id="mapStats" class="map-stats"></div>
 <div class="map-legend" id="mapLegend">
   <div class="map-legend-item"><div class="dot" style="background:#4a90d9;"></div>US Carriers (CVN)</div>
   <div class="map-legend-item"><div class="dot" style="background:#0055a4;"></div>French Carrier (PA)</div>
