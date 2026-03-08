@@ -56,6 +56,10 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Plu
 .tl-item .content { font-size:14px; color:var(--text-secondary); }
 .tl-item .content strong { color:var(--text-primary); }
 .tl-item .content em { color:var(--text-muted); font-size:12px; font-style:italic; }
+.timeline.collapsed .tl-item:nth-child(n+6) { display:none; }
+.tl-show-more { display:none; background:none; border:1px solid var(--border); border-radius:6px; padding:8px 18px; color:var(--accent-cyan); font-family:var(--font-mono); font-size:12px; cursor:pointer; margin:8px auto 0; letter-spacing:0.5px; }
+.tl-show-more:hover { border-color:var(--accent-cyan); background:rgba(0,200,255,0.06); }
+.timeline.collapsed + .tl-show-more { display:block; }
 .two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 @media(max-width:768px){ .two-col{grid-template-columns:1fr;} }
 .callout { border-left:4px solid; padding:18px 22px; margin:20px 0; border-radius:0 8px 8px 0; font-size:14px; }

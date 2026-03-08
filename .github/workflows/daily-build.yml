@@ -74,8 +74,8 @@ jobs:
       - name: Validate build output
         run: |
           node build.js 2>&1 | tee /tmp/build-output.txt
-          # Fail on critical issues: unresolved placeholders or unbalanced zones.
-          if grep -qE 'unresolved placeholders|Unbalanced AI zone' /tmp/build-output.txt; then
+          # Fail on critical issues: unresolved placeholders, unbalanced zones, or unbalanced HTML tags.
+          if grep -qE 'unresolved placeholders|Unbalanced AI zone|Unbalanced HTML tags' /tmp/build-output.txt; then
             echo "::error::Build validation failed — blocking deployment"
             exit 1
           fi

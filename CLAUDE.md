@@ -9,7 +9,7 @@ Static HTML news dashboard for the Iran crisis, built from modular HTML section 
 ## Commands
 
 - **Build all pages:** `npm run build` (runs `node build.js`, generates 7 HTML pages from section templates)
-- **Validate:** `npm run validate` (checks for build warnings: schema errors, unbalanced AI zones, broken nav links)
+- **Validate:** `npm run validate` (checks for build warnings: schema errors, unbalanced AI zones, unbalanced HTML tags, broken nav links)
 
 There are no test or lint commands.
 
@@ -48,7 +48,7 @@ Runs every 6 hours. Steps: update date → AI content update (Tavily search + Op
 ### Client-Side Code
 
 - `js/theme.js` — dark/light toggle via `data-theme` attribute, persisted to localStorage
-- `js/sidebar.js` — mobile sidebar navigation
+- `js/sidebar.js` — mobile sidebar navigation, back-to-top button
 - `js/map.js` — Leaflet.js interactive map, swaps tile style on theme change
 - `css/variables.css` — CSS custom properties defining the theme
 
@@ -58,3 +58,4 @@ Runs every 6 hours. Steps: update date → AI content update (Tavily search + Op
 - Section header `id` attributes must be preserved (sidebar navigation depends on them).
 - `{{placeholder}}` templates and `@ai-zone` markers in section files must not be removed.
 - AI zone replacements must not shrink content below 30% of original size (guardrail in `ai-update.js`).
+- HTML tag balance (opening vs closing `<div>`/`<section>`/`<article>`) is enforced at four levels: structural update rejection (`scripts/lib/structural-updates.js`), AI self-repair with GPT fallback (`scripts/ai-update.js`), build-time warning (`build.js`), and deployment blocking (`.github/workflows/daily-build.yml`).

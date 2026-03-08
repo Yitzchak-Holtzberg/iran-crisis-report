@@ -21,7 +21,8 @@
       "Bash(mv markers.geojson data/)",
       "mcp__plugin_playwright_playwright__browser_snapshot",
       "Bash(grep -c \"CNN\" /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/sections/*.html)",
-      "Bash(grep -v \":0$\")"
+      "Bash(grep -v \":0$\")",
+      "Bash(wc -l /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/*.js /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/css/*.css /c/Users/yholtzberg/Documents/iran-crisis-report-master/iran-crisis-report-master/js/*.js)"
     ]
   }
 }

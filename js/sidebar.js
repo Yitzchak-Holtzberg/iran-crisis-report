@@ -79,15 +79,35 @@ document.querySelectorAll('.sb-link').forEach(function(a) {
   var backToTopBtn = document.getElementById('backToTop');
   if (!backToTopBtn) return;
 
+  var scrollingToTop = false;
+  var scrollCheckInterval = null;
+  var scrollCheckTimeout = null;
+
   function toggleBackToTop() {
+    if (scrollingToTop) return;
     backToTopBtn.classList.toggle('visible', window.scrollY > 300);
   }
 
   function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    if (scrollCheckInterval) clearInterval(scrollCheckInterval);
+    if (scrollCheckTimeout) clearTimeout(scrollCheckTimeout);
+    scrollingToTop = true;
+    backToTopBtn.classList.remove('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollCheckInterval = setInterval(function() {
+      if (window.scrollY <= 5) {
+        clearInterval(scrollCheckInterval);
+        scrollCheckInterval = null;
+        scrollingToTop = false;
+        toggleBackToTop();
+      }
+    }, 100);
+    scrollCheckTimeout = setTimeout(function() {
+      if (scrollCheckInterval) clearInterval(scrollCheckInterval);
+      scrollCheckInterval = null;
+      scrollingToTop = false;
+      toggleBackToTop();
+    }, 2000);
   }
 
   var bttTicking = false;

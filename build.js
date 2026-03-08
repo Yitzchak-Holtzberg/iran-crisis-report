@@ -289,6 +289,17 @@ function validateAIZones(content, filename) {
   return warnings;
 }
 
+/** Check for unbalanced HTML container tags (div, section, article) */
+function validateTagBalance(content, filename) {
+  const warnings = [];
+  const openTags = (content.match(/<(div|section|article)\b/gi) || []).length;
+  const closeTags = (content.match(/<\/(div|section|article)>/gi) || []).length;
+  if (openTags !== closeTags) {
+    warnings.push(`${filename}: Unbalanced HTML tags (${openTags} opening vs ${closeTags} closing div/section/article)`);
+  }
+  return warnings;
+}
+
 /** Check for oversized section files */
 function checkFileSize(content, filename) {
   const lineCount = content.split('\n').length;
@@ -391,6 +402,7 @@ for (const build of BUILDS) {
 
     // Run validations on each file (only once, for the first build that uses it)
     buildWarnings.push(...validateAIZones(content, file));
+    buildWarnings.push(...validateTagBalance(content, file));
     buildWarnings.push(...checkFileSize(content, file));
 
     return applyData(processTicker(processIncludes(content)), unknownKeys);

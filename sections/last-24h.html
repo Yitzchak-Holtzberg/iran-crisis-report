@@ -13,7 +13,7 @@
     <span class="last24-day-tag">TODAY</span>
   </div>
 
-  <div class="timeline" style="margin-top:0;margin-bottom:0;">
+  <div class="timeline collapsed" id="tl-today" style="margin-top:0;margin-bottom:0;">
     <div class="tl-item" data-date="2026-03-07">
       <div class="tl-dot" style="border-color:var(--accent-red);"></div>
       <div class="date">IRAN — NEW WAVE OF AIRSTRIKES POUNDS TEHRAN; DEATH TOLL PASSES 1,300</div>
@@ -65,6 +65,7 @@
       <div class="content">Iran formally <strong>apologised to neighbouring Gulf states</strong> for missiles and debris from its retaliatory salvoes that struck targets in the UAE, Qatar, and Bahrain, a diplomatic gesture aimed at preventing further regional escalation. — Source: <a href="https://www.cnn.com/" style="color:var(--accent-cyan);" target="_blank" rel="noopener noreferrer">CNN, Mar 7, 2026</a></div>
     </div>
   </div>
+  <button class="tl-show-more" onclick="var tl=document.getElementById('tl-today');tl.classList.remove('collapsed');this.style.display='none';">&#9660; Show all today</button>
 
   <!-- ── YESTERDAY ── -->
   <div class="last24-day-header">
@@ -72,7 +73,7 @@
     <span class="last24-day-tag">YESTERDAY</span>
   </div>
 
-  <div class="timeline" style="margin-top:0;margin-bottom:0;">
+  <div class="timeline collapsed" id="tl-yesterday" style="margin-top:0;margin-bottom:0;">
     <div class="tl-item" data-date="2026-03-06">
       <div class="tl-dot" style="border-color:var(--accent-red);"></div>
       <div class="date">IRAN — HEAVY BOMBING HITS TEHRAN ON DAY SEVEN</div>
@@ -119,6 +120,6 @@
       <div class="content">BBC aired extensive footage showing <strong>the scale of strikes and widespread damage in Tehran</strong> and other Iranian cities, with destroyed buildings, cratered roads, and overwhelmed hospitals. — Source: <a href="https://www.bbc.com/" style="color:var(--accent-cyan);" target="_blank" rel="noopener noreferrer">BBC, Mar 6, 2026</a></div>
     </div>
   </div>
-
+  <button class="tl-show-more" onclick="var tl=document.getElementById('tl-yesterday');tl.classList.remove('collapsed');this.style.display='none';">&#9660; Show all yesterday</button>
 
 </div>
