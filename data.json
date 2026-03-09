@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 9, 2026",
-  "lastUpdated": "13:23 UTC",
+  "lastUpdated": "19:04 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "1,138+",
@@ -14,13 +14,17 @@
   "statUsCasualtiesSource": "CNBC/CBS",
   "scenarioDealPct": 0,
   "scenarioStrikesPct": 0,
-  "scenarioRevolutionPct": 30,
+  "scenarioRevolutionPct": 25,
   "scenarioPahlaviPct": 8,
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 7,
   "scenarioCivilWarPct": 10,
-  "scenarioRegionalEscalationPct": 45,
+  "scenarioRegionalEscalationPct": 50,
   "ticker": [
+    "IRAN CASUALTIES: Iran Deputy Health Minister reports 1,255 killed and 12,000 wounded in nine days of U.S.-Israeli attacks (Al Jazeera, Mar 9, 2026)",
+    "IDF CLAIMS: IDF says more than 1,900 Iranian soldiers and commanders killed since onset of war (ynetnews, Mar 9, 2026)",
+    "US STRIKES IRAQ: U.S. forces conduct strikes in Iraq against militias tied to Iran, widening the campaign (Wall Street Journal, Mar 9, 2026)",
+    "US AIRBASE ACCESS: U.S. aircraft use UK airbases with British permission to support operations against Iran (Jerusalem Post/HuffPost, Mar 9, 2026)",
     "IRAN REJECTS CEASEFIRE: Tehran rejects ceasefire talks, vows to continue fighting (Politico/NBC, Mar 8-9, 2026)",
     "KURDISH NO-FLY ZONE: Kurdish opposition urges US-enforced no-fly zone to protect Kurdish areas (Politico, Mar 8, 2026)",
     "OIL PRICE SPIKE: Oil futures surge above $100–$110/bbl after Strait of Hormuz standstill; analysts warn stagflation risk (CNBC/Guardian/Bloomberg, Mar 8-9, 2026)",
@@ -41,10 +45,6 @@
     "U.S. MILITARY: Two aircraft carriers including USS Abraham Lincoln deployed to region with 90+ strike fighters (FlightGlobal, Mar 2-4, 2026)",
     "IRAN INTERIM: Iran forms three-member interim leadership council to run state until Assembly names successor (al24news/CNBC, Mar 3, 2026)",
     "MEDIA: Footage from across Iran shows scale of strikes and widespread damage in Tehran (BBC, Mar 6, 2026)",
-    "NAVY: Iranian warship reportedly sunk amid U.S.-Israeli strikes, footage circulated (BBC, Mar 5, 2026)",
-    "PROXIES: Houthi leaders say they intend to resume missile and drone attacks on Red Sea shipping (Foreign Policy/AP, Mar 2, 2026)",
-    "GULF: Saudi Arabia and UAE publicly condemn Iran’s missile strikes, signaling regional diplomatic shift (FDD/Reuters, Mar 3, 2026)",
-    "U.S. MILITARY: B-2 strikes on Iran said to cut Iranian missile attacks ~90% (Al Jazeera, Mar 4, 2026)",
-    "IRAN: Mojtaba Khamenei emerges as leading candidate to be next supreme leader (CNBC, Mar 2, 2026)"
+    "NAVY: Iranian warship reportedly sunk amid U.S.-Israeli strikes, footage circulated (BBC, Mar 5, 2026)"
   ]
 }
