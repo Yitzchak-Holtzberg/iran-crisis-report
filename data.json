@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 9, 2026",
-  "lastUpdated": "07:13 UTC",
+  "lastUpdated": "13:23 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "1,138+",
@@ -14,13 +14,17 @@
   "statUsCasualtiesSource": "CNBC/CBS",
   "scenarioDealPct": 0,
   "scenarioStrikesPct": 0,
-  "scenarioRevolutionPct": 35,
+  "scenarioRevolutionPct": 30,
   "scenarioPahlaviPct": 8,
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 7,
   "scenarioCivilWarPct": 10,
-  "scenarioRegionalEscalationPct": 40,
+  "scenarioRegionalEscalationPct": 45,
   "ticker": [
+    "IRAN REJECTS CEASEFIRE: Tehran rejects ceasefire talks, vows to continue fighting (Politico/NBC, Mar 8-9, 2026)",
+    "KURDISH NO-FLY ZONE: Kurdish opposition urges US-enforced no-fly zone to protect Kurdish areas (Politico, Mar 8, 2026)",
+    "OIL PRICE SPIKE: Oil futures surge above $100–$110/bbl after Strait of Hormuz standstill; analysts warn stagflation risk (CNBC/Guardian/Bloomberg, Mar 8-9, 2026)",
+    "SPECIAL OPS DISCUSSION: Bloomberg reports US considering special operation to seize Iran’s uranium/WMD sites (Bloomberg, Mar 8, 2026)",
     "IRAN ATTACKS: Iran launches missiles at Israel and Gulf states after Mojtaba Khamenei named supreme leader (Avery Journal-Times, Mar 9, 2026)",
     "U.S. POLICY: President Trump says deploying U.S. ground forces in Iran remains 'possible' / 'on the table' (Haaretz, Mar 8, 2026)",
     "DISPLACEMENT: More than 500,000 people registered as displaced in Lebanon after renewed Israel-Hezbollah fighting (Al Jazeera, Mar 8, 2026)",
@@ -41,10 +45,6 @@
     "PROXIES: Houthi leaders say they intend to resume missile and drone attacks on Red Sea shipping (Foreign Policy/AP, Mar 2, 2026)",
     "GULF: Saudi Arabia and UAE publicly condemn Iran’s missile strikes, signaling regional diplomatic shift (FDD/Reuters, Mar 3, 2026)",
     "U.S. MILITARY: B-2 strikes on Iran said to cut Iranian missile attacks ~90% (Al Jazeera, Mar 4, 2026)",
-    "IRAN: Mojtaba Khamenei emerges as leading candidate to be next supreme leader (CNBC, Mar 2, 2026)",
-    "IRAQ: Iran-aligned militias escalate attacks on U.S. bases, turning Iraq into a new frontline (Middle-East Online/JPost, Mar 5, 2026)",
-    "IRAN: Explosions rock Tehran as Israel intensifies strikes (Al Jazeera, Mar 6, 2026)",
-    "IRAN: Widespread arrests roil country after crackdown on protests (AP, Mar 5, 2026)",
-    "STRAIT OF HORMUZ: 112 crude tankers remain in Persian Gulf after closure (Riviera, Mar 3, 2026)"
+    "IRAN: Mojtaba Khamenei emerges as leading candidate to be next supreme leader (CNBC, Mar 2, 2026)"
   ]
 }
