@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 10, 2026",
-  "lastUpdated": "02:44 UTC",
+  "lastUpdated": "07:03 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "1,138+",
@@ -21,6 +21,10 @@
   "scenarioCivilWarPct": 10,
   "scenarioRegionalEscalationPct": 50,
   "ticker": [
+    "ISRAEL STRIKES: Israeli military carried out several wide-scale waves of strikes across Iran (BBC, Mar 9, 2026)",
+    "SHIPPING TRANSIT: Ship-tracking shows Greek-operated tanker with Saudi oil transited the Strait of Hormuz, indicating limited commercial passages (Reuters, Mar 9, 2026)",
+    "TURKEY AIRSPACE: Turkey says it will not allow its airspace to be used against Iran (Axios, Mar 9, 2026)",
+    "COMMERCIAL VESSELS HIT: At least eight commercial vessels struck since conflict began, forcing reroutes around Cape of Good Hope (Marine News/Windward, Mar 6-9, 2026)",
     "US BOMBERS: B-1, B-2 and B-52 bombers from RAF Fairford carried out pinpoint strikes on missile sites deep inside Iran (Defense News, Mar 9, 2026)",
     "OIL DISRUPTION: ~17 million barrels per day of exports disrupted as Strait of Hormuz effectively closed, hitting global markets (World Oil/S&P Global, Mar 9, 2026)",
     "US STAFF OUT: U.S. orders non-emergency government employees to leave Saudi Arabia amid widening risks (CNBC, Mar 9, 2026)",
@@ -41,10 +45,6 @@
     "U.S. CASUALTIES: CENTCOM reports 7th U.S. service member killed in the conflict (The Hill/CENTCOM, Mar 8-9, 2026)",
     "STRIKES: U.S. and Israeli strikes continue targeting oil depots, refineries and naval bases across Iran (Al Jazeera/New York Times, Mar 8, 2026)",
     "IDF OPERATIONS: IDF says it struck IRGC space command (Khayyam satellite control) and dozens of Tehran military sites (ynetnews, Mar 8, 2026)",
-    "MARKETS: Brent crude and U.S. futures surge above $100/bbl as shipping shutdown and tanker rates spike (Bloomberg/Seatrade, Mar 8-9, 2026)",
-    "UAE DEFENSE: UAE MoD says Iran launched more than 1,000 UAVs/missiles at UAE; most intercepted (Janes, Mar 3, 2026)",
-    "IAEA: Agency cannot verify Iran suspended uranium enrichment; calls for full access for verification (IAEA/Times of Israel, Mar 2026)",
-    "U.S. MILITARY: CENTCOM says Precision Strike Missile used in combat; over 20 Iranian navy vessels struck or sunk (FlightGlobal/Jerusalem Post/CENTCOM, Mar 2026)",
-    "U.S. MILITARY: Two aircraft carriers including USS Abraham Lincoln deployed to region with 90+ strike fighters (FlightGlobal, Mar 2-4, 2026)"
+    "MARKETS: Brent crude and U.S. futures surge above $100/bbl as shipping shutdown and tanker rates spike (Bloomberg/Seatrade, Mar 8-9, 2026)"
   ]
 }
