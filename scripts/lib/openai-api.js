@@ -4,8 +4,8 @@ const https = require('https');
 const fs    = require('fs');
 const path  = require('path');
 
-const GPT_TIMEOUT_MS = 120_000;            // 2 minutes — routine calls
-const STRUCTURAL_GPT_TIMEOUT_MS = 300_000; // 5 minutes — structural deep-update calls
+const GPT_TIMEOUT_MS = 180_000;            // 3 minutes — routine calls (flex tier may queue)
+const STRUCTURAL_GPT_TIMEOUT_MS = 420_000; // 7 minutes — structural deep-update calls (flex tier may queue)
 const MAX_GPT_ATTEMPTS = 3;
 const GPT_LOG_MAX_BYTES = 10 * 1024 * 1024;
 
@@ -93,6 +93,7 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
   const body = {
     model,
     max_completion_tokens: maxTokens,
+    service_tier: 'flex',
     messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user',   content: userContent  },
@@ -146,4 +147,27 @@ async function callGPT(systemPrompt, userContent, jsonMode = false, model = 'gpt
   throw lastErr;
 }
 
-module.exports = { init, callGPT, GPT_TIMEOUT_MS, STRUCTURAL_GPT_TIMEOUT_MS };
+/**
+ * Parse JSON from GPT output, handling truncation and markdown fences.
+ */
+function safeParseJSON(raw) {
+  let s = raw.trim();
+  // Strip markdown fences
+  s = s.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '');
+  try { return JSON.parse(s); } catch { /* try repairs */ }
+  // Truncated array: close open brackets
+  let repaired = s;
+  if ((repaired.match(/\[/g) || []).length > (repaired.match(/\]/g) || []).length) {
+    repaired = repaired.replace(/,?\s*$/, '') + ']';
+    try { return JSON.parse(repaired); } catch { /* continue */ }
+  }
+  // Truncated object: close open braces
+  repaired = s.replace(/,?\s*$/, '') + '}';
+  try { return JSON.parse(repaired); } catch { /* continue */ }
+  // Truncated object inside array
+  repaired = s.replace(/,?\s*$/, '') + '"}]';
+  try { return JSON.parse(repaired); } catch { /* continue */ }
+  throw new SyntaxError(`Cannot parse GPT JSON (${s.length} chars): ${s.slice(0, 100)}…`);
+}
+
+module.exports = { init, callGPT, safeParseJSON, GPT_TIMEOUT_MS, STRUCTURAL_GPT_TIMEOUT_MS };

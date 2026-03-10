@@ -63,7 +63,7 @@ function stripTlItems(section) {
 
 function injectTlItems(section, items) {
   if (!items.length) return section;
-  const marker = /<div class="timeline"[^>]*>/;
+  const marker = /<div class="timeline[^"]*"[^>]*>/;
   const m = section.match(marker);
   if (!m) return section;
   const insertAt = m.index + m[0].length;
@@ -134,7 +134,7 @@ function rotateTimelineDays(fileContent, todayDateStr) {
 function spliceTimelineItems(fileContent, newItemsHtml) {
   if (!newItemsHtml || !newItemsHtml.trim()) return fileContent;
 
-  const marker = /<div class="timeline"[^>]*>/;
+  const marker = /<div class="timeline[^"]*"[^>]*>/;
   const match  = fileContent.match(marker);
   if (!match) {
     console.warn('Could not find TODAY timeline div — skipping last-24h.html update.');

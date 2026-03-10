@@ -36,7 +36,7 @@ const { readManifest, writeManifest, stampFreshness, diffSummary } = require('./
 const { assessSignificance }                      = require('./lib/significance');
 const { RESEARCH_SITES, deepResearch }            = require('./lib/deep-research');
 const { STRUCTURAL_FILES, updateStructural }      = require('./lib/structural-updates');
-const { callGPT, STRUCTURAL_GPT_TIMEOUT_MS }      = openai;
+const { callGPT, safeParseJSON, STRUCTURAL_GPT_TIMEOUT_MS } = openai;
 
 // ── Paths ────────────────────────────────────────────────────────────────────
 
@@ -58,7 +58,7 @@ const TAVILY_KEY  = process.env.TAVILY_API_KEY;
 const OPENAI_KEY  = process.env.OPENAI_API_KEY;
 const UPDATE_TYPE_INPUT = (process.env.UPDATE_TYPE || 'auto').toLowerCase();
 const ROUTINE_MODEL     = process.env.OPENAI_ROUTINE_MODEL    || 'gpt-5-mini';
-const STRUCTURAL_MODEL  = process.env.OPENAI_STRUCTURAL_MODEL || 'gpt-5';
+const STRUCTURAL_MODEL  = process.env.OPENAI_STRUCTURAL_MODEL || 'gpt-5-mini';
 
 if (!['auto', 'routine', 'structural'].includes(UPDATE_TYPE_INPUT)) {
   console.error(`Error: UPDATE_TYPE must be "auto", "routine" or "structural" (got "${UPDATE_TYPE_INPUT}").`);
@@ -143,9 +143,9 @@ async function main() {
       `Each query should be under 80 characters, focused, and use news-style keywords.\n` +
       `If the existing coverage is comprehensive, return { "queries": [] }.`,
       topicsCovered,
-      true, ROUTINE_MODEL, 512, 15000
+      true, ROUTINE_MODEL, 2048, 15000
     );
-    const gapParsed = JSON.parse(gapRaw);
+    const gapParsed = safeParseJSON(gapRaw);
     const gapQueries = Array.isArray(gapParsed.queries) ? gapParsed.queries.slice(0, 3) : [];
 
     if (gapQueries.length > 0) {
@@ -235,13 +235,26 @@ async function main() {
     (recentStructural ? `Recent structural updates:\n${recentStructural}` : '');
 
   if (UPDATE_TYPE_INPUT === 'auto') {
-    const assessment = await assessSignificance(searchContext, pageContext, { callGPT });
-    manifest.phases.significance = { ...assessment, status: 'ok' };
-    if (assessment.structural) {
-      effectiveType = 'structural';
-      console.log(`  ⚡ Promoted to STRUCTURAL: ${assessment.reason}`);
+    // ── Cooldown: skip structural promotion if one happened in the last 24h ──
+    const STRUCTURAL_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+    const lastStructural = recentManifest.updates
+      .filter(u => u.effectiveType === 'structural')
+      .slice(-1)[0];
+    const cooldownActive = lastStructural &&
+      (Date.now() - new Date(lastStructural.timestamp).getTime()) < STRUCTURAL_COOLDOWN_MS;
+
+    if (cooldownActive) {
+      console.log(`  → Cooldown active (last structural: ${lastStructural.timestamp}) — forcing ROUTINE.`);
+      manifest.phases.significance = { structural: false, reason: 'cooldown: structural <24h ago', status: 'cooldown' };
     } else {
-      console.log(`  → Staying ROUTINE: ${assessment.reason}`);
+      const assessment = await assessSignificance(searchContext, pageContext, { callGPT });
+      manifest.phases.significance = { ...assessment, status: 'ok' };
+      if (assessment.structural) {
+        effectiveType = 'structural';
+        console.log(`  ⚡ Promoted to STRUCTURAL: ${assessment.reason}`);
+      } else {
+        console.log(`  → Staying ROUTINE: ${assessment.reason}`);
+      }
     }
     manifest.effectiveType = effectiveType;
   }

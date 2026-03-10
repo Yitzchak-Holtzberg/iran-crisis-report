@@ -29,18 +29,12 @@ const RESEARCH_SITES = {
     { domain: 'atlanticcouncil.org',  query: 'Iran war regional impact analysis' },
   ],
   naval: [
-    { domain: 'reuters.com',          query: 'Strait of Hormuz warships Iran navy' },
-    { domain: 'usni.org',             query: 'US Navy carrier group Iran deployment' },
+    { domain: 'reuters.com',           query: 'Strait of Hormuz warships Iran navy' },
+    { domain: 'usni.org',              query: 'US Navy carrier group Iran deployment' },
     { domain: 'maritime-executive.com', query: 'Strait of Hormuz shipping disruption' },
-  ],
-  'air-power': [
-    { domain: 'reuters.com',          query: 'Iran air strikes sorties aircraft' },
-    { domain: 'airforcemag.com',      query: 'Air Force Iran operations' },
-  ],
-  military: [
-    { domain: 'csis.org',             query: 'Iran military missiles air defense assessment' },
-    { domain: 'understandingwar.org',  query: 'Iran IRGC military forces assessment' },
-    { domain: 'iiss.org',             query: 'Iran military capability balance' },
+    { domain: 'reuters.com',           query: 'Iran air strikes sorties aircraft' },
+    { domain: 'csis.org',              query: 'Iran military missiles air defense assessment' },
+    { domain: 'iiss.org',              query: 'Iran military capability balance' },
   ],
   general: [
     { domain: 'reuters.com',          query: 'Iran war latest developments' },
@@ -52,7 +46,7 @@ const RESEARCH_SITES = {
  * AI triage — ask GPT-5-mini which articles from a search are worth extracting.
  */
 async function triageArticles(urlMeta, sectionLabel, { callGPT, routineModel }) {
-  if (urlMeta.length <= 3) return urlMeta;
+  if (urlMeta.length <= 3) return urlMeta.slice(0, 5);
 
   const listing = urlMeta.map((m, i) =>
     `${i + 1}. [${m.domain}] ${m.title} — ${m.snippet || '(no snippet)'}`
@@ -65,11 +59,12 @@ async function triageArticles(urlMeta, sectionLabel, { callGPT, routineModel }) 
     `- Articles with new facts, data, or analysis (not rehashed summaries)\n` +
     `- Recent articles (this week) over older ones\n` +
     `Return a JSON array of article numbers (1-indexed) to extract. ` +
-    `Extract at most 8 articles. If none are worth extracting, return [].`;
+    `Extract at most 5 articles. If none are worth extracting, return [].`;
 
   try {
-    const raw = await callGPT(systemPrompt, listing, true, routineModel, 512, 15000);
-    const picks = JSON.parse(raw);
+    const raw = await callGPT(systemPrompt, listing, true, routineModel, 2048, 15000);
+    const { safeParseJSON } = require('./openai-api');
+    const picks = safeParseJSON(raw);
     if (!Array.isArray(picks)) return urlMeta.slice(0, 8);
     const selected = picks
       .filter(n => typeof n === 'number' && n >= 1 && n <= urlMeta.length)
@@ -77,8 +72,8 @@ async function triageArticles(urlMeta, sectionLabel, { callGPT, routineModel }) 
     console.log(`  AI triage (${sectionLabel}): ${urlMeta.length} candidates → ${selected.length} selected for extraction.`);
     return selected.length > 0 ? selected : urlMeta.slice(0, 3);
   } catch (err) {
-    console.warn(`  AI triage failed (${err.message}) — extracting top 8 by default.`);
-    return urlMeta.slice(0, 8);
+    console.warn(`  AI triage failed (${err.message}) — extracting top 5 by default.`);
+    return urlMeta.slice(0, 5);
   }
 }
 
@@ -147,7 +142,7 @@ async function deepResearch(sites, label, deps) {
     console.warn(`  Tavily Extract failed (${err.message}) — falling back to search snippets only.`);
   }
 
-  const MAX_ARTICLE_LEN = 4000;
+  const MAX_ARTICLE_LEN = 2000;
   const articleBlocks = extracted.map(ex => {
     const meta = urlMeta.find(u => u.url === ex.url);
     const tier = getSourceTier(ex.url);

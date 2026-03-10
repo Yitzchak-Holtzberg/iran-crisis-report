@@ -22,14 +22,18 @@ campaign, confirmed reports that the same country has now *actively joined*
 NEW structural development and must be treated as NOT already covered.
 
 Examples of events that ARE structural:
-- A military operation is launched or concluded
-- A regime change or leadership transition occurs
+- A BRAND NEW military operation is launched (not continued strikes in an
+  ongoing campaign — those are routine)
+- A regime change or leadership transition occurs (new leader confirmed, not
+  ongoing succession speculation)
 - A new scenario emerges that doesn't fit existing categories
 - A ceasefire or peace deal is signed
 - A nuclear test or confirmed weapons-grade enrichment
-- A major new front opens (e.g. ground invasion, new country enters conflict)
+- A genuinely new front opens (e.g. ground invasion, new country enters conflict
+  for the FIRST TIME — not continued proxy attacks from groups already involved)
 - A country moves from diplomatic support / condemnation to active military
-  participation (strikes, deployments, or formal coalition entry)
+  participation (strikes, deployments, or formal coalition entry) for the
+  FIRST TIME
 - A significant development in a domain NOT currently covered by the dashboard
   (e.g. space/satellite warfare, bioweapons, AI-enabled weapons, attacks on
   global financial systems, a completely new country or actor entering the
@@ -43,6 +47,12 @@ Examples of events that are NOT structural (routine updates handle these):
 - Sanctions additions or removals
 - Rhetoric or threats without concrete action
 - A country reiterating condemnation or diplomatic support it already expressed
+- Continued airstrikes or missile exchanges within an ONGOING campaign/operation
+  (e.g. Day N+1 of the same military operation is routine, not structural)
+- Escalation within an existing theater (more intense bombing, new targets hit
+  within the same country, higher casualty numbers)
+- New weapons used within the same campaign (unless it is a nuclear weapon or
+  WMD first-use)
 
 Return a JSON object with exactly two keys:
   "structural": true or false

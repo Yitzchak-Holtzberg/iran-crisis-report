@@ -4,6 +4,7 @@ const fs   = require('fs');
 const path = require('path');
 const { sanitizeMarkdown } = require('./zones');
 const { RESEARCH_SITES, deepResearch } = require('./deep-research');
+const { safeParseJSON } = require('./openai-api');
 
 // ── Structural update config ────────────────────────────────────────────────
 
@@ -79,6 +80,8 @@ const DEEP_UPDATE_GROUPS = [
     label:  'map',
     prompt: 'analysis-map',
     researchSites: 'map',
+    useRoutineModel: true,   // map.js is coordinate/marker data — GPT-5-mini suffices
+    skipGuidelines: true,    // map.js doesn't use HTML card templates
   },
   {
     names:  ['scenarios'],
@@ -93,16 +96,10 @@ const DEEP_UPDATE_GROUPS = [
     researchSites: 'reactions',
   },
   {
-    names:  ['naval', 'air-power'],
-    label:  'naval + air-power',
+    names:  ['naval', 'air-power', 'military'],
+    label:  'naval + air-power + military',
     prompt: 'html',
     researchSites: 'naval',
-  },
-  {
-    names:  ['military'],
-    label:  'military',
-    prompt: 'html',
-    researchSites: 'military',
   },
 ];
 
@@ -274,7 +271,7 @@ async function updateStructural(searchContext, pass1Context, deps) {
 
   try {
     const raw     = await callGPT(STRUCTURAL_SYSTEM_PROMPT, pass1UserContent, true, structuralModel, 32768, structuralTimeout);
-    const updates = JSON.parse(raw);
+    const updates = safeParseJSON(raw);
     const pass1Changed = [];
     for (const [name, newContent] of Object.entries(updates)) {
       const applied = applyUpdate(name, newContent);
@@ -319,9 +316,10 @@ async function updateStructural(searchContext, pass1Context, deps) {
       })
       .join('\n\n');
 
+    const includeGuidelines = !group.skipGuidelines && guidelines;
     const groupUserContent =
       `UPDATE TYPE: STRUCTURAL DEEP UPDATE — you MUST return updated content for ALL files below.\n\n` +
-      (guidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
+      (includeGuidelines ? `EDITORIAL GUIDELINES:\n${guidelines}\n\n` : '') +
       `FILES TO DEEPLY UPDATE:\n${groupBlock}\n\n` +
       `WEB SEARCH RESULTS:\n${groupContext}`;
 
@@ -329,9 +327,12 @@ async function updateStructural(searchContext, pass1Context, deps) {
       ? DEEP_UPDATE_SYSTEM_PROMPT
       : DEEP_UPDATE_HTML_SYSTEM_PROMPT;
 
+    const groupModel   = group.useRoutineModel ? routineModel : structuralModel;
+    const groupTimeout = group.useRoutineModel ? 120_000      : structuralTimeout;
+
     try {
-      const raw     = await callGPT(systemPrompt, groupUserContent, true, structuralModel, 32768, structuralTimeout);
-      const updates = JSON.parse(raw);
+      const raw     = await callGPT(systemPrompt, groupUserContent, true, groupModel, 32768, groupTimeout);
+      const updates = safeParseJSON(raw);
       const groupChanged = [];
       for (const name of group.names) {
         const newContent = updates[name];
