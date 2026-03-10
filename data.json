@@ -1,15 +1,15 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "March 9, 2026",
-  "lastUpdated": "19:04 UTC",
+  "date": "March 10, 2026",
+  "lastUpdated": "02:44 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "1,138+",
   "statMissilesFiredSource": "CENTCOM/Reuters, Mar 7",
   "statCarrierGroups": "2",
-  "statOilAtRisk": "20M",
+  "statOilAtRisk": "17M",
   "statCitizensOffline": "92M",
-  "statIrgcKilled": "1,332+",
+  "statIrgcKilled": "1,900+",
   "statUsCasualties": "6",
   "statUsCasualtiesSource": "CNBC/CBS",
   "scenarioDealPct": 0,
@@ -21,6 +21,9 @@
   "scenarioCivilWarPct": 10,
   "scenarioRegionalEscalationPct": 50,
   "ticker": [
+    "US BOMBERS: B-1, B-2 and B-52 bombers from RAF Fairford carried out pinpoint strikes on missile sites deep inside Iran (Defense News, Mar 9, 2026)",
+    "OIL DISRUPTION: ~17 million barrels per day of exports disrupted as Strait of Hormuz effectively closed, hitting global markets (World Oil/S&P Global, Mar 9, 2026)",
+    "US STAFF OUT: U.S. orders non-emergency government employees to leave Saudi Arabia amid widening risks (CNBC, Mar 9, 2026)",
     "IRAN CASUALTIES: Iran Deputy Health Minister reports 1,255 killed and 12,000 wounded in nine days of U.S.-Israeli attacks (Al Jazeera, Mar 9, 2026)",
     "IDF CLAIMS: IDF says more than 1,900 Iranian soldiers and commanders killed since onset of war (ynetnews, Mar 9, 2026)",
     "US STRIKES IRAQ: U.S. forces conduct strikes in Iraq against militias tied to Iran, widening the campaign (Wall Street Journal, Mar 9, 2026)",
@@ -42,9 +45,6 @@
     "UAE DEFENSE: UAE MoD says Iran launched more than 1,000 UAVs/missiles at UAE; most intercepted (Janes, Mar 3, 2026)",
     "IAEA: Agency cannot verify Iran suspended uranium enrichment; calls for full access for verification (IAEA/Times of Israel, Mar 2026)",
     "U.S. MILITARY: CENTCOM says Precision Strike Missile used in combat; over 20 Iranian navy vessels struck or sunk (FlightGlobal/Jerusalem Post/CENTCOM, Mar 2026)",
-    "U.S. MILITARY: Two aircraft carriers including USS Abraham Lincoln deployed to region with 90+ strike fighters (FlightGlobal, Mar 2-4, 2026)",
-    "IRAN INTERIM: Iran forms three-member interim leadership council to run state until Assembly names successor (al24news/CNBC, Mar 3, 2026)",
-    "MEDIA: Footage from across Iran shows scale of strikes and widespread damage in Tehran (BBC, Mar 6, 2026)",
-    "NAVY: Iranian warship reportedly sunk amid U.S.-Israeli strikes, footage circulated (BBC, Mar 5, 2026)"
+    "U.S. MILITARY: Two aircraft carriers including USS Abraham Lincoln deployed to region with 90+ strike fighters (FlightGlobal, Mar 2-4, 2026)"
   ]
 }
