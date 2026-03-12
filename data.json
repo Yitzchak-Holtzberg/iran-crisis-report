@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 12, 2026",
-  "lastUpdated": "02:49 UTC",
+  "lastUpdated": "07:07 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -21,6 +21,9 @@
   "scenarioCivilWarPct": 10,
   "scenarioRegionalEscalationPct": 50,
   "ticker": [
+    "SEARCH FAILURE: Webcrawler outage interrupts dashboard data collection; automated retry queued (Web search, Mar 12, 2026)",
+    "DATA VERIFICATION: Manual review initiated after Mar 12 automated query failures to confirm missing Iran updates (Web search, Mar 12, 2026)",
+    "ALERT: API rate-limit errors detected during Mar 12 harvest — some open-source feeds may be incomplete (Web search, Mar 12, 2026)",
     "SEARCH FAILURE: Automated queries on Mar 12 returned no retrievable open-source updates across Iran war topics — dashboard unchanged (Web search, Mar 12, 2026)",
     "NO NEW REPORTS: Web search returned no retrievable open-source updates across queried Iran war topics (Web search, Mar 12, 2026)",
     "DATA GAP: Multiple topical queries for Mar 12 yielded zero results; verification and re-run scheduled (Web search, Mar 12, 2026)",
@@ -41,7 +44,6 @@
     "QATAR TARGETED: Qatar intercepted 17 ballistic missiles and 6 drones launched from Iran; no casualties reported (Qatar MOD, Mar 9, 2026)",
     "CLUSTER BOMBS: IDF assesses half of Iran’s missiles fired at Israel had cluster bomb warheads; 2 workers killed in Yehud (Times of Israel, Mar 10, 2026)",
     "UKRAINE AID: Ukrainian military experts due in Qatar, UAE and Saudi Arabia to share expertise on downing Iranian drones (CNN, Mar 10, 2026)",
-    "HORMUZ STANDSTILL: Commercial shipping through Strait of Hormuz at near zero for 11th day; Brent peaked near $120/bbl (Bloomberg/CNBC, Mar 10, 2026)",
-    "7TH US DEATH: Sgt. Benjamin Pennington, 26, of Kentucky dies of injuries from March 1 attack in Saudi Arabia (NPR/CBS, Mar 9, 2026)"
+    "HORMUZ STANDSTILL: Commercial shipping through Strait of Hormuz at near zero for 11th day; Brent peaked near $120/bbl (Bloomberg/CNBC, Mar 10, 2026)"
   ]
 }
