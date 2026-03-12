@@ -1,39 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-01T06:58:03.914Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 7,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Reports say US-Israel strikes killed Supreme Leader Khamenei — regime leadership change and major military operation.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 2
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "scenarios",
-            "inside-iran"
-          ]
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-01T12:13:43.196Z",
       "type": "auto",
       "effectiveType": "structural",
@@ -2505,6 +2472,50 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 29
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-12T19:05:09.769Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 0,
+          "tierDropped": 0,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "No retrievable new reporting; existing major events (regime change, Israel strikes, Hezbollah front) already covered.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 0,
+          "rotated": "full-rebuild"
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [],
+          "filesUpdated": []
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "sizeChange": 152
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 12, 2026",
-  "lastUpdated": "13:21 UTC",
+  "lastUpdated": "19:05 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -21,6 +21,10 @@
   "scenarioCivilWarPct": 10,
   "scenarioRegionalEscalationPct": 50,
   "ticker": [
+    "SEARCH OUTAGE: Multiple search engines return zero Iran-related results; automated harvest halted (Web search, Mar 12, 2026)",
+    "SYSTEM ALERT: Dashboard scheduled for manual data harvest and cross-check after Mar 12 search failures (Operations, Mar 12, 2026)",
+    "API RATE LIMIT: Additional API endpoints returning 429 errors during Mar 12 collection; partial feed blackout suspected (Web search, Mar 12, 2026)",
+    "DATA INTEGRITY: Team confirms no credible open-source updates found on Mar 12; preserving last verified reports (Operations, Mar 12, 2026)",
     "SEARCH FAILURE: Central web search on Mar 12 returned zero retrievable results for all Iran-related queries; no dashboard updates applied (Web search, Mar 12, 2026)",
     "DATA VERIFICATION: Team notified of total query failure on Mar 12 and scheduled manual harvest and cross-check with backups (Web search, Mar 12, 2026)",
     "ALERT: Absence of open-source reporting on Mar 12 confirmed by multiple engines; prior verified reporting remains authoritative (Web search, Mar 12, 2026)",
@@ -41,9 +45,6 @@
     "US WOUNDED: Pentagon reveals ~140 US service members injured since start of war, 8 severely; 108 have returned to duty (CNN/Axios/Chicago Tribune, Mar 10, 2026)",
     "TRUMP: President Trump says Iran war will be over ‘very soon’ but not this week; claims US military ahead of schedule (Axios/Euronews, Mar 10, 2026)",
     "IRGC DEFIANT: Iran’s IRGC says ‘Iran will determine when the war ends,’ rejecting Trump’s timeline (NBC/Al Jazeera, Mar 10, 2026)",
-    "OIL CRASH: Brent crude drops 11.28% to $87.80/bbl after Trump’s ‘very soon’ comments; had nearly hit $120 earlier (CNBC/CNN, Mar 10, 2026)",
-    "IRAN VOWS: Tehran warns it will block oil exports until attacks end; vows ‘eye for an eye’ (NBC/Euronews, Mar 10, 2026)",
-    "CASUALTIES: Hengaw documents 4,300 killed in first 10 days — 3,900 military, 390 civilians including schoolchildren (Hengaw, Mar 10, 2026)",
-    "QATAR TARGETED: Qatar intercepted 17 ballistic missiles and 6 drones launched from Iran; no casualties reported (Qatar MOD, Mar 9, 2026)"
+    "OIL CRASH: Brent crude drops 11.28% to $87.80/bbl after Trump’s ‘very soon’ comments; had nearly hit $120 earlier (CNBC/CNN, Mar 10, 2026)"
   ]
 }
