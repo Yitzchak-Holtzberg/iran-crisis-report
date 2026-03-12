@@ -116,6 +116,14 @@ function rotateTimelineDays(fileContent, todayDateStr) {
 
   const finalYesterday = [...moveToYesterday, ...keepYesterday];
 
+  // Guard: if rotation would empty both sections, preserve original content
+  // so the pipeline doesn't silently wipe items it can't replace.
+  if (keepToday.length === 0 && finalYesterday.length === 0 &&
+      (todayItems.length > 0 || yesterdayItems.length > 0)) {
+    console.warn('Timeline rotation: all items are older than yesterday — preserving as-is to avoid empty section.');
+    return fileContent;
+  }
+
   todaySection    = injectTlItems(stripTlItems(todaySection), keepToday.slice(0, MAX_TODAY_ITEMS));
   yesterdaySection = injectTlItems(stripTlItems(yesterdaySection), finalYesterday.slice(0, MAX_YESTERDAY_ITEMS));
 

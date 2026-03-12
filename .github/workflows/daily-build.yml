@@ -1,11 +1,11 @@
 name: Periodic Build & Deploy
 
-# Runs every 6 hours so breaking news is caught within 6 hours rather than
-# waiting up to 24 hours for the next nightly run.  Can also be triggered
-# manually from the Actions tab ("Run workflow").
+# Runs at 7 AM and 5 PM ET (twice daily) to balance freshness with API
+# credit usage.  Cron uses UTC: 11:05 and 21:05 (EDT; shift to 12:05/22:05
+# when EST resumes in November).  Can also be triggered manually.
 on:
   schedule:
-    - cron: '5 0,6,12,18 * * *'
+    - cron: '5 11,21 * * *'
   workflow_dispatch:
     inputs:
       update_type:
