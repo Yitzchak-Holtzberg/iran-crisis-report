@@ -1,38 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-01T04:34:14.911Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 7,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "US and Israel launched major military strikes inside Iran, with reports the Supreme Leader was killed — a structural shi",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "naval"
-          ]
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-01T06:58:03.914Z",
       "type": "auto",
       "effectiveType": "structural",
@@ -2493,6 +2461,50 @@
           "linesAdded": 2,
           "linesRemoved": 0,
           "sizeChange": 274
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-12T13:21:30.503Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 0,
+          "tierDropped": 0,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search returned no retrievable updates; no new major developments beyond existing structural entries.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 0,
+          "rotated": "full-rebuild"
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [],
+          "filesUpdated": []
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 29
         }
       ]
     }

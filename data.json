@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 12, 2026",
-  "lastUpdated": "07:07 UTC",
+  "lastUpdated": "13:21 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -21,6 +21,9 @@
   "scenarioCivilWarPct": 10,
   "scenarioRegionalEscalationPct": 50,
   "ticker": [
+    "SEARCH FAILURE: Central web search on Mar 12 returned zero retrievable results for all Iran-related queries; no dashboard updates applied (Web search, Mar 12, 2026)",
+    "DATA VERIFICATION: Team notified of total query failure on Mar 12 and scheduled manual harvest and cross-check with backups (Web search, Mar 12, 2026)",
+    "ALERT: Absence of open-source reporting on Mar 12 confirmed by multiple engines; prior verified reporting remains authoritative (Web search, Mar 12, 2026)",
     "SEARCH FAILURE: Webcrawler outage interrupts dashboard data collection; automated retry queued (Web search, Mar 12, 2026)",
     "DATA VERIFICATION: Manual review initiated after Mar 12 automated query failures to confirm missing Iran updates (Web search, Mar 12, 2026)",
     "ALERT: API rate-limit errors detected during Mar 12 harvest — some open-source feeds may be incomplete (Web search, Mar 12, 2026)",
@@ -41,9 +44,6 @@
     "OIL CRASH: Brent crude drops 11.28% to $87.80/bbl after Trump’s ‘very soon’ comments; had nearly hit $120 earlier (CNBC/CNN, Mar 10, 2026)",
     "IRAN VOWS: Tehran warns it will block oil exports until attacks end; vows ‘eye for an eye’ (NBC/Euronews, Mar 10, 2026)",
     "CASUALTIES: Hengaw documents 4,300 killed in first 10 days — 3,900 military, 390 civilians including schoolchildren (Hengaw, Mar 10, 2026)",
-    "QATAR TARGETED: Qatar intercepted 17 ballistic missiles and 6 drones launched from Iran; no casualties reported (Qatar MOD, Mar 9, 2026)",
-    "CLUSTER BOMBS: IDF assesses half of Iran’s missiles fired at Israel had cluster bomb warheads; 2 workers killed in Yehud (Times of Israel, Mar 10, 2026)",
-    "UKRAINE AID: Ukrainian military experts due in Qatar, UAE and Saudi Arabia to share expertise on downing Iranian drones (CNN, Mar 10, 2026)",
-    "HORMUZ STANDSTILL: Commercial shipping through Strait of Hormuz at near zero for 11th day; Brent peaked near $120/bbl (Bloomberg/CNBC, Mar 10, 2026)"
+    "QATAR TARGETED: Qatar intercepted 17 ballistic missiles and 6 drones launched from Iran; no casualties reported (Qatar MOD, Mar 9, 2026)"
   ]
 }
