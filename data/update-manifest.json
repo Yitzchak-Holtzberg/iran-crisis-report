@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-01T03:33:02.087Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 7,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Reported death of Supreme Leader Khamenei and US–Israeli strikes signal leadership change and major military operations.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": []
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-01T04:08:07.151Z",
       "type": "auto",
       "effectiveType": "structural",
@@ -2468,6 +2438,50 @@
           "linesAdded": 2,
           "linesRemoved": 0,
           "sizeChange": 302
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-12T02:49:42.685Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 0,
+          "tierDropped": 0,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Automated searches returned no retrievable updates; no new structural development beyond current page content.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 0,
+          "rotated": "full-rebuild"
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [],
+          "filesUpdated": []
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -4
         }
       ]
     }
