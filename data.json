@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "March 12, 2026",
-  "lastUpdated": "21:44 UTC",
+  "date": "March 13, 2026",
+  "lastUpdated": "11:40 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -14,13 +14,18 @@
   "statUsCasualtiesSource": "Pentagon/NPR, Mar 10",
   "scenarioDealPct": 0,
   "scenarioStrikesPct": 0,
-  "scenarioRevolutionPct": 25,
+  "scenarioRevolutionPct": 22,
   "scenarioPahlaviPct": 8,
   "scenarioFrozenPct": 0,
   "scenarioJuntaPct": 7,
-  "scenarioCivilWarPct": 10,
-  "scenarioRegionalEscalationPct": 50,
+  "scenarioCivilWarPct": 8,
+  "scenarioRegionalEscalationPct": 55,
   "ticker": [
+    "ISRAEL STRIKES: IDF reports 20 strike waves, 200+ regime sites hit including missile launchers and air‑defense systems (The Jerusalem Post, Mar 13, 2026)",
+    "US/ISRAEL STRIKES: Coalition carries out strikes on Tehran and other Iranian targets; strikes reported Mar 13 (Al Jazeera/Sky News, Mar 13, 2026)",
+    "LEBANON CASUALTIES: Heavy Israeli operations reportedly kill at least 634 and injure 1,586 in Lebanon (The Guardian, Mar 13, 2026)",
+    "DISPLACEMENT: UN agencies report up to 3.2 million people displaced inside Iran since the war began (Al Jazeera, Mar 12–13, 2026)",
+    "US NAVY: Gerald R. Ford and Abraham Lincoln carrier strike groups operating; US fired on Iranian vessel after close approach (Maritime Executive/CBS, Mar 12–13, 2026)",
     "UN SECURITY COUNCIL: Draft resolution condemning Iran’s attacks adopted 13–0; Russia and China abstained (Al Jazeera/UN, Mar 12, 2026)",
     "IRAN TARGETS TECH: State-affiliated media names Microsoft, Google, Palantir, IBM, Nvidia, Oracle and Amazon as new targets over ties to US/Israel operations (Gizmodo, Mar 12, 2026)",
     "US PROBE: U.S. military investigating missile strike on school that reportedly killed ~165 civilians (many children); preliminary findings point to possible U.S. munition (NBC/NPR/AP, Mar 12, 2026)",
@@ -40,11 +45,6 @@
     "NO NEW REPORTS: Web search returned no retrievable open-source updates across queried Iran war topics (Web search, Mar 12, 2026)",
     "DATA GAP: Multiple topical queries for Mar 12 yielded zero results; verification and re-run scheduled (Web search, Mar 12, 2026)",
     "SEARCH UPDATE: Automated queries on Mar 11 returned no retrievable open-source updates across Iran war topics — dashboard unchanged (Web search, Mar 11, 2026)",
-    "DATA GAP: Multiple topical queries for Mar 11 yielded zero results; verification and re-run scheduled (Web search, Mar 11, 2026)",
-    "NO NEW REPORTS: Web search returned no retrievable open-source updates across queried Iran war topics (Web search, Mar 11, 2026)",
-    "SEARCH FAILURE: Automated queries yielded zero retrievable articles for Mar 11 — verification and re-run pending (Web search, Mar 11, 2026)",
-    "MOST INTENSE DAY: Hegseth warns March 10 will be ‘our most intense day of strikes inside Iran — the most fighters, the most bombers, the most strikes’ (Al Jazeera/PBS/CNBC, Mar 10, 2026)",
-    "5,000 TARGETS: CENTCOM says US forces have struck more than 5,000 targets across Iran and destroyed 50+ warships in first 10 days of Operation Epic Fury (CENTCOM/Epoch Times, Mar 10, 2026)",
-    "IRAN DRONES: Iran fires barrages of drones at Saudi Arabia and Kuwait; 2 killed in Al-Kharj, Saudi Arabia; 1 woman killed in Bahrain (NBC/Fox/Euronews/Al Jazeera, Mar 10, 2026)"
+    "DATA GAP: Multiple topical queries for Mar 11 yielded zero results; verification and re-run scheduled (Web search, Mar 11, 2026)"
   ]
 }
