@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-01T20:54:13.825Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results reiterate events already on the page (strikes, Khamenei's death, missile barrages, US casualties, shippin",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 4
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-02T00:13:54.378Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2695,6 +2665,62 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 7125
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-13T21:46:08.885Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 58,
+          "tierDropped": 0,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "No new paradigm shift; strikes, force deployments, and sanctions are intensifications of events already on the page.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "airpower-subtitle",
+            "analysis-consensus"
+          ],
+          "filesUpdated": [
+            "air-power.html",
+            "analysis.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 1,
+          "sizeChange": -90
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 6440
         }
       ]
     }

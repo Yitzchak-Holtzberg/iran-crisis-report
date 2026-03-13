@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 13, 2026",
-  "lastUpdated": "11:40 UTC",
+  "lastUpdated": "21:46 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -14,13 +14,18 @@
   "statUsCasualtiesSource": "Pentagon/NPR, Mar 10",
   "scenarioDealPct": 0,
   "scenarioStrikesPct": 0,
-  "scenarioRevolutionPct": 22,
-  "scenarioPahlaviPct": 8,
+  "scenarioRevolutionPct": 20,
+  "scenarioPahlaviPct": 6,
   "scenarioFrozenPct": 0,
-  "scenarioJuntaPct": 7,
-  "scenarioCivilWarPct": 8,
-  "scenarioRegionalEscalationPct": 55,
+  "scenarioJuntaPct": 6,
+  "scenarioCivilWarPct": 6,
+  "scenarioRegionalEscalationPct": 62,
   "ticker": [
+    "US/ISRAEL STRIKES: U.S. Defense Secretary says coalition struck 15,000+ targets in Iran; vows to destroy Iran’s defense industries (ynetnews, Mar 13, 2026)",
+    "FORCE DEPLOYMENT: B-2 stealth bombers, F-35s and ~2,200 Marines (31st MEU) sent to Middle East under Operation Epic Fury (The Jerusalem Post/Forbes, Mar 13, 2026)",
+    "US AIR CRASH: USAF KC-135 tanker crashed in western Iraq, killing six crewmembers on combat mission (Aviation Week/USCENTCOM, Mar 12, 2026)",
+    "CHINA MOVES: China redeployed warships, missiles and air defenses toward Middle East, redirected carrier group from South China Sea (New York Times, Mar 13, 2026)",
+    "USS TRIPOLI DEPLOYED: USS Tripoli and thousands of additional Marines, warships and F-35s en route to region (Axios, Mar 13, 2026)",
     "ISRAEL STRIKES: IDF reports 20 strike waves, 200+ regime sites hit including missile launchers and air‑defense systems (The Jerusalem Post, Mar 13, 2026)",
     "US/ISRAEL STRIKES: Coalition carries out strikes on Tehran and other Iranian targets; strikes reported Mar 13 (Al Jazeera/Sky News, Mar 13, 2026)",
     "LEBANON CASUALTIES: Heavy Israeli operations reportedly kill at least 634 and injure 1,586 in Lebanon (The Guardian, Mar 13, 2026)",
@@ -39,12 +44,6 @@
     "DATA VERIFICATION: Team notified of total query failure on Mar 12 and scheduled manual harvest and cross-check with backups (Web search, Mar 12, 2026)",
     "ALERT: Absence of open-source reporting on Mar 12 confirmed by multiple engines; prior verified reporting remains authoritative (Web search, Mar 12, 2026)",
     "SEARCH FAILURE: Webcrawler outage interrupts dashboard data collection; automated retry queued (Web search, Mar 12, 2026)",
-    "DATA VERIFICATION: Manual review initiated after Mar 12 automated query failures to confirm missing Iran updates (Web search, Mar 12, 2026)",
-    "ALERT: API rate-limit errors detected during Mar 12 harvest — some open-source feeds may be incomplete (Web search, Mar 12, 2026)",
-    "SEARCH FAILURE: Automated queries on Mar 12 returned no retrievable open-source updates across Iran war topics — dashboard unchanged (Web search, Mar 12, 2026)",
-    "NO NEW REPORTS: Web search returned no retrievable open-source updates across queried Iran war topics (Web search, Mar 12, 2026)",
-    "DATA GAP: Multiple topical queries for Mar 12 yielded zero results; verification and re-run scheduled (Web search, Mar 12, 2026)",
-    "SEARCH UPDATE: Automated queries on Mar 11 returned no retrievable open-source updates across Iran war topics — dashboard unchanged (Web search, Mar 11, 2026)",
-    "DATA GAP: Multiple topical queries for Mar 11 yielded zero results; verification and re-run scheduled (Web search, Mar 11, 2026)"
+    "DATA VERIFICATION: Manual review initiated after Mar 12 automated query failures to confirm missing Iran updates (Web search, Mar 12, 2026)"
   ]
 }
