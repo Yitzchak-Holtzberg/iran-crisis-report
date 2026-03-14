@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-02T00:13:54.378Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Duplicate of existing coverage (strikes, carrier moves, Khamenei death/transition, shipping disruptions) - no restructur",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-02T02:49:22.092Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2721,6 +2691,189 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6440
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-14T11:34:50.892Z",
+      "type": "auto",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 68,
+          "tierDropped": 0,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": true,
+          "reason": "US strikes on Kharg Island and threats to Iran’s oil infrastructure/Strait create a new energy‑infrastructure front not ",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 10,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "airpower-subtitle",
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "iran-crisis1-epicfury",
+            "iran-crisis2-succession",
+            "iran-crisis3-economic",
+            "iran-crisis4-uprising",
+            "iran-crisis6-regional",
+            "military-parchin",
+            "naval-subtitle",
+            "nuclear-subtitle"
+          ],
+          "filesUpdated": [
+            "air-power.html",
+            "analysis.html",
+            "inside-iran.html",
+            "military.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html"
+          ]
+        },
+        "deepResearch": {
+          "status": "ok",
+          "general": {
+            "sitesSearched": 2,
+            "articlesExtracted": 4
+          },
+          "perGroup": {
+            "analysis_research": {
+              "sitesSearched": 7,
+              "articlesExtracted": 8
+            },
+            "map_research": {
+              "sitesSearched": 3,
+              "articlesExtracted": 2
+            },
+            "scenarios_research": {
+              "sitesSearched": 4,
+              "articlesExtracted": 5
+            },
+            "reactions_research": {
+              "sitesSearched": 3,
+              "articlesExtracted": 6
+            },
+            "naval + air-power + military_research": {
+              "sitesSearched": 6,
+              "articlesExtracted": 7
+            }
+          }
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "inside-iran",
+            "confirmed-unconfirmed",
+            "last-24h",
+            "analysis",
+            "map",
+            "scenarios",
+            "reactions",
+            "naval",
+            "air-power",
+            "military"
+          ],
+          "passes": {
+            "pass1": {
+              "status": "ok",
+              "filesChanged": [
+                "inside-iran",
+                "confirmed-unconfirmed",
+                "last-24h"
+              ]
+            },
+            "analysis_research": {
+              "research": {
+                "sitesSearched": 7,
+                "articlesExtracted": 8
+              }
+            },
+            "analysis": {
+              "status": "ok",
+              "filesChanged": [
+                "analysis"
+              ]
+            },
+            "map_research": {
+              "research": {
+                "sitesSearched": 3,
+                "articlesExtracted": 2
+              }
+            },
+            "map": {
+              "status": "ok",
+              "filesChanged": [
+                "map"
+              ]
+            },
+            "scenarios_research": {
+              "research": {
+                "sitesSearched": 4,
+                "articlesExtracted": 5
+              }
+            },
+            "scenarios": {
+              "status": "ok",
+              "filesChanged": [
+                "scenarios"
+              ]
+            },
+            "reactions_research": {
+              "research": {
+                "sitesSearched": 3,
+                "articlesExtracted": 6
+              }
+            },
+            "reactions": {
+              "status": "ok",
+              "filesChanged": [
+                "reactions"
+              ]
+            },
+            "naval + air-power + military_research": {
+              "research": {
+                "sitesSearched": 6,
+                "articlesExtracted": 7
+              }
+            },
+            "naval + air-power + military": {
+              "status": "ok",
+              "filesChanged": [
+                "naval",
+                "air-power",
+                "military"
+              ]
+            }
+          }
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 3,
+          "sizeChange": -575
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 51,
+          "linesRemoved": 0,
+          "sizeChange": 7316
         }
       ]
     }
