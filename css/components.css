@@ -65,6 +65,10 @@
 .icon-cyan   { background:rgba(0,212,255,0.15); }
 .icon-blue   { background:rgba(74,144,217,0.15); }
 .icon-red    { background:rgba(255,59,59,0.15); }
+.icon-gold   { background:rgba(255,215,0,0.15); }
+
+/* Stacked stat boxes */
+.stat-box + .stat-box { margin-top:10px; }
 
 /* ===== SUBSECTION HEADINGS ===== */
 .subsection-title         { font-size:14px; margin-bottom:8px; }
@@ -75,7 +79,7 @@
 .subsection-title.primary { color:var(--text-primary); }
 
 /* ===== CALLOUT READABILITY ===== */
-.callout p { line-height:1.85; }
+.callout p { line-height:1.85; color:var(--text-secondary); }
 .callout.orange { border-color:var(--accent-orange); background:rgba(255,140,66,0.08); }
 
 /* ===== DETAIL LISTS ===== */
@@ -361,4 +365,16 @@
 .agree-label { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:1.5px; margin:14px 0 8px; }
 .agree-label.agree { color:var(--accent-green); }
 .agree-label.differ { color:var(--accent-orange); }
+
+/* Heatmap grid */
+.hm-hdr { padding:10px 4px;text-align:center;font-weight:700;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted); }
+.hm-label { padding:10px 8px;font-size:11px;color:var(--text-secondary);display:flex;align-items:center; }
+.hm-cell { border-radius:4px;padding:8px 4px;text-align:center;font-size:9px;font-weight:600;text-transform:uppercase;display:flex;align-items:center;justify-content:center;transition:opacity 0.15s; }
+.hm-cell:hover { opacity:0.8; }
+.hm-green  { background:rgba(0,200,83,0.25);color:var(--accent-green); }
+.hm-gold   { background:rgba(255,215,0,0.2);color:var(--accent-gold); }
+.hm-orange { background:rgba(255,140,66,0.2);color:var(--accent-orange); }
+.hm-red    { background:rgba(255,59,59,0.2);color:var(--accent-red); }
+.hm-none   { background:rgba(150,150,150,0.05);color:transparent; }
+.hm-swatch { display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin-right:4px; }
 

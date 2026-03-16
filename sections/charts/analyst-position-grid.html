@@ -1,0 +1,90 @@
+<div class="chart-container">
+  <h4>Analyst Position Grid &mdash; Key Questions ({{date}})</h4>
+  <div style="overflow-x:auto;">
+  <div class="heatmap" style="display:grid;grid-template-columns:180px repeat(8,1fr);gap:3px;min-width:680px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.5px;">
+    <!-- Header row -->
+    <div style="padding:8px 6px;"></div>
+    <div class="hm-hdr">CSIS</div>
+    <div class="hm-hdr">ISW</div>
+    <div class="hm-hdr">Carnegie</div>
+    <div class="hm-hdr">Brookings</div>
+    <div class="hm-hdr">CFR</div>
+    <div class="hm-hdr">RAND</div>
+    <div class="hm-hdr">Atl.C</div>
+    <div class="hm-hdr">JINSA</div>
+
+    <!-- Row 1: Regime fragments -->
+    <div class="hm-label">Regime will fragment</div>
+    <div class="hm-cell hm-gold">Unlikely</div>
+    <div class="hm-cell hm-gold">Fractures</div>
+    <div class="hm-cell hm-orange">No</div>
+    <div class="hm-cell hm-orange">No</div>
+    <div class="hm-cell hm-gold">Unlikely</div>
+    <div class="hm-cell hm-gold">If defections</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-none"></div>
+
+    <!-- Row 2: Iran's military neutralized -->
+    <div class="hm-label">Iran military neutralized</div>
+    <div class="hm-cell hm-green">Degraded</div>
+    <div class="hm-cell hm-green">Degraded</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-gold">Partly</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-gold">Partly</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-green">Near-gone</div>
+
+    <!-- Row 3: Diplomacy -->
+    <div class="hm-label">Diplomatic off-ramp exists</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-red">No talks</div>
+    <div class="hm-cell hm-orange">Stalled</div>
+    <div class="hm-cell hm-gold">Possible</div>
+    <div class="hm-cell hm-orange">Narrowing</div>
+    <div class="hm-cell hm-gold">Possible</div>
+    <div class="hm-cell hm-gold">Urgent</div>
+    <div class="hm-cell hm-none"></div>
+
+    <!-- Row 4: Nuclear threat eliminated -->
+    <div class="hm-label">Nuclear threat eliminated</div>
+    <div class="hm-cell hm-gold">6&ndash;18 mo</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-orange">Risk rises</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-gold">Delayed</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-red">400kg missing</div>
+
+    <!-- Row 5: Hormuz reopens -->
+    <div class="hm-label">Hormuz reopens soon</div>
+    <div class="hm-cell hm-orange">No</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-orange">Unlikely</div>
+    <div class="hm-cell hm-red">No</div>
+    <div class="hm-cell hm-red">No</div>
+    <div class="hm-cell hm-orange">Unlikely</div>
+    <div class="hm-cell hm-none"></div>
+
+    <!-- Row 6: Campaign sustainable -->
+    <div class="hm-label">Campaign sustainable</div>
+    <div class="hm-cell hm-orange">$16.5B+</div>
+    <div class="hm-cell hm-green">Yes</div>
+    <div class="hm-cell hm-orange">No plan</div>
+    <div class="hm-cell hm-red">Costly</div>
+    <div class="hm-cell hm-orange">Strained</div>
+    <div class="hm-cell hm-orange">Attrition</div>
+    <div class="hm-cell hm-none"></div>
+    <div class="hm-cell hm-green">Yes</div>
+  </div>
+  </div>
+  <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:10px;color:var(--text-muted);margin-top:14px;font-family:var(--font-mono);letter-spacing:0.5px;">
+    <span><span class="hm-swatch" style="background:rgba(0,200,83,0.25);"></span> Affirm</span>
+    <span><span class="hm-swatch" style="background:rgba(255,215,0,0.2);"></span> Conditional</span>
+    <span><span class="hm-swatch" style="background:rgba(255,140,66,0.2);"></span> Skeptical</span>
+    <span><span class="hm-swatch" style="background:rgba(255,59,59,0.2);"></span> Negative</span>
+    <span><span class="hm-swatch" style="background:rgba(150,150,150,0.05);"></span> No position</span>
+  </div>
+</div>

@@ -82,8 +82,8 @@ jobs:
             echo "::error::Build validation failed — blocking deployment"
             exit 1
           fi
-          # Verify all 9 output files exist and are non-empty.
-          for f in index.html diplomatic.html scenarios.html forces.html inside-iran.html reactions.html analysis.html opposition.html sources.html; do
+          # Verify all 11 output files exist and are non-empty.
+          for f in index.html diplomatic.html scenarios.html forces.html iran-military.html inside-iran.html reactions.html analysis.html opposition.html background.html sources.html; do
             if [ ! -s "$f" ]; then
               echo "::error::$f is missing or empty"
               exit 1
@@ -117,8 +117,8 @@ jobs:
           # Stage only known build outputs and data files
           git add data.json data/update-manifest.json \
                  index.html diplomatic.html scenarios.html forces.html \
-                 inside-iran.html reactions.html sources.html \
-                 analysis.html opposition.html \
+                 iran-military.html inside-iran.html reactions.html sources.html \
+                 analysis.html opposition.html background.html \
                  sections/ logs/ 2>/dev/null || true
 
           # Commit only if there are changes

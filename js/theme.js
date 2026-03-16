@@ -3,13 +3,13 @@ function toggleTheme() {
   var isLight = html.getAttribute('data-theme') === 'light';
   if (isLight) {
     html.removeAttribute('data-theme');
-    document.getElementById('toggleIcon').textContent = '☀️';
-    document.getElementById('toggleLabel').textContent = 'Light';
+    document.getElementById('toggleIcon').textContent = 'Light';
+    document.getElementById('toggleLabel').textContent = '';
     try { localStorage.setItem('theme', 'dark'); } catch(e) {}
   } else {
     html.setAttribute('data-theme', 'light');
-    document.getElementById('toggleIcon').textContent = '🌙';
-    document.getElementById('toggleLabel').textContent = 'Dark';
+    document.getElementById('toggleIcon').textContent = 'Dark';
+    document.getElementById('toggleLabel').textContent = '';
     try { localStorage.setItem('theme', 'light'); } catch(e) {}
   }
   // Swap MapLibre GL style between dark and light
@@ -29,8 +29,8 @@ function toggleTheme() {
     var saved = localStorage.getItem('theme');
     if (saved === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
-      document.getElementById('toggleIcon').textContent = '🌙';
-      document.getElementById('toggleLabel').textContent = 'Dark';
+      document.getElementById('toggleIcon').textContent = 'Dark';
+      document.getElementById('toggleLabel').textContent = '';
     }
   } catch(e) {}
   // Attach touchend listener so the toggle fires immediately on mobile

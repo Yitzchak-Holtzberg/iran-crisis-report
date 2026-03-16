@@ -65,6 +65,45 @@ Vienna technical talks begin Monday Mar 2 — expert working groups...
 - **Updated**: Daily
 - **Script**: scripts/ai-update.js
 
+### sections/background.html
+```html
+<!-- @ai-zone:bg-us-iran-timeline -->
+  <div class="tl-item">...</div>
+  ...
+<!-- @/ai-zone:bg-us-iran-timeline -->
+```
+- **Purpose**: Updates US-Iran relations timeline (1953–2020)
+- **Updated**: As needed
+- **Script**: scripts/ai-update.js
+
+```html
+<!-- @ai-zone:bg-nuclear-timeline -->
+  <div class="tl-item">...</div>
+  ...
+<!-- @/ai-zone:bg-nuclear-timeline -->
+```
+- **Purpose**: Updates nuclear program timeline (2002–2026)
+- **Updated**: As needed
+- **Script**: scripts/ai-update.js
+
+```html
+<!-- @ai-zone:bg-january-protests -->
+  Content about protest waves and January Massacre
+<!-- @/ai-zone:bg-january-protests -->
+```
+- **Purpose**: Updates January Massacre and protest movement details
+- **Updated**: As needed
+- **Script**: scripts/ai-update.js
+
+```html
+<!-- @ai-zone:bg-path-to-war -->
+  Escalation timeline and Operation Epic Fury countdown
+<!-- @/ai-zone:bg-path-to-war -->
+```
+- **Purpose**: Updates the path-to-war escalation timeline
+- **Updated**: As needed
+- **Script**: scripts/ai-update.js
+
 ## Build Validation
 
 The build script (`build.js`) validates AI zones during the build process:
@@ -167,6 +206,91 @@ The AI update pipeline (`scripts/ai-update.js`) enforces:
 - Structural updates rejected if `human-verified` claims are altered
 - Evidence domains cross-referenced against actual Tavily search results
 
+### sections/reactions-iran.html
+```html
+<!-- @ai-zone:reactions-iran-callouts -->
+  Top callout stack (latest strike reports and breaking developments)
+<!-- @/ai-zone:reactions-iran-callouts -->
+```
+- **Purpose**: Updates the latest Iran strike callouts (newest-first)
+- **Updated**: Daily / on major strike events
+- **Script**: scripts/ai-update.js
+
+```html
+<!-- @ai-zone:reactions-iran-casualties -->
+  Casualties card with stat boxes and displacement figures
+<!-- @/ai-zone:reactions-iran-casualties -->
+```
+- **Purpose**: Updates casualty and displacement figures
+- **Updated**: Daily
+- **Script**: scripts/ai-update.js
+
+### sections/reactions-gulf.html
+```html
+<!-- @ai-zone:reactions-gulf-callouts -->
+  Top callouts on Gulf-area retaliation developments
+<!-- @/ai-zone:reactions-gulf-callouts -->
+```
+- **Purpose**: Updates Gulf retaliation callouts
+- **Updated**: Daily / on major retaliation events
+- **Script**: scripts/ai-update.js
+
+```html
+<!-- @ai-zone:reactions-gulf-shipping -->
+  Shipping & insurance disruption card
+<!-- @/ai-zone:reactions-gulf-shipping -->
+```
+- **Purpose**: Updates shipping and insurance market status
+- **Updated**: Daily
+- **Script**: scripts/ai-update.js
+
+### sections/reactions-israel.html
+```html
+<!-- @ai-zone:reactions-israel-callouts -->
+  Top callouts on Israeli home-front impacts
+<!-- @/ai-zone:reactions-israel-callouts -->
+```
+- **Purpose**: Updates latest Israel-related strike and retaliation callouts
+- **Updated**: Daily
+- **Script**: scripts/ai-update.js
+
+```html
+<!-- @ai-zone:reactions-israel-homefront -->
+  Israeli home front impact card with stat boxes
+<!-- @/ai-zone:reactions-israel-homefront -->
+```
+- **Purpose**: Updates Israeli home-front statistics and impact summary
+- **Updated**: Daily
+- **Script**: scripts/ai-update.js
+
+### sections/reactions-global.html
+```html
+<!-- @ai-zone:reactions-global-callouts -->
+  Top callouts on US domestic political developments
+<!-- @/ai-zone:reactions-global-callouts -->
+```
+- **Purpose**: Updates US political/congressional reaction callouts
+- **Updated**: Daily / on major political developments
+- **Script**: scripts/ai-update.js
+
+```html
+<!-- @ai-zone:reactions-global-energy -->
+  Energy & shipping markets callout
+<!-- @/ai-zone:reactions-global-energy -->
+```
+- **Purpose**: Updates energy/shipping market status and Hormuz transit
+- **Updated**: Daily
+- **Script**: scripts/ai-update.js
+
+```html
+<!-- @ai-zone:reactions-global-mediation -->
+  Regional mediation efforts card
+<!-- @/ai-zone:reactions-global-mediation -->
+```
+- **Purpose**: Updates diplomatic mediation status
+- **Updated**: Daily / on diplomatic developments
+- **Script**: scripts/ai-update.js
+
 ## Files Without AI Zones
 
 The following files are **NOT** AI-managed via zone markers and should remain human-curated in **routine** updates:
@@ -221,7 +345,10 @@ When a major event occurs (e.g. military operation launched, regime change, new 
 | opposition | `sections/opposition.html` | Opposition & Reza Pahlavi |
 | hormuz | `sections/hormuz.html` | Strait of Hormuz |
 | military | `sections/military.html` | Iran military capability |
-| reactions | `sections/reactions.html` | Regional reactions & damage assessments |
+| reactions-iran | `sections/reactions-iran.html` | Iran strike damage assessment |
+| reactions-gulf | `sections/reactions-gulf.html` | Gulf states retaliation damage |
+| reactions-israel | `sections/reactions-israel.html` | Israel strike outcomes & response |
+| reactions-global | `sections/reactions-global.html` | Global diplomatic response |
 | confirmed-unconfirmed | `sections/confirmed-unconfirmed.html` | Fog of war: confirmed vs unconfirmed |
 
 ### When to use structural updates
@@ -322,6 +449,6 @@ Each phase has a `status` field (`ok`, `skipped`, or `error`) and relevant detai
 
 ---
 
-**Last Updated:** March 1, 2026
+**Last Updated:** March 16, 2026
 **Maintained By:** Repository maintainers
 **Related Files:** `build.js`, `scripts/ai-update.js`, `update-manifest.json`

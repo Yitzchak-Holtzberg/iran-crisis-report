@@ -133,7 +133,8 @@ const BUILDS = [
     'sections/stats.html', 'sections/last-24h.html', 'sections/confirmed-unconfirmed.html',
     'sections/theater.html', 'sections/scenarios-teaser.html', 'sections/analysis-teaser.html',
     'sections/nuclear-teaser.html', 'sections/forces-teaser.html', 'sections/military-teaser.html',
-    'sections/inside-iran-teaser.html', 'sections/reactions-teaser.html', 'sections/opposition-teaser.html',
+    'sections/inside-iran-teaser.html', 'sections/reactions-teaser.html',
+    'sections/background-teaser.html', 'sections/opposition-teaser.html',
   ], {
     pageTitle: 'Iran Crisis Report — {{date}}',
     pageDescription: 'Live situation report: US\u2013Iran military standoff, nuclear negotiations, protest crackdowns, and economic collapse. Updated multiple times daily.',
@@ -147,7 +148,8 @@ const BUILDS = [
     n('05', 'scenarios', 'Scenarios'), n('06', 'analysis', 'Expert Analysis'),
     n('07', 'nuclear', 'Nuclear Talks'), n('08', 'strike-forces', 'US Strike Forces'),
     n('09', 'military', 'Iran Military'), n('10', 'inside-iran', 'Inside Iran'),
-    n('11', 'reactions', 'Reactions'), n('12', 'opposition', 'Opposition'),
+    n('11', 'reactions', 'Reactions'), n('12', 'background', 'Background'),
+    n('13', 'opposition', 'Opposition'),
   ]),
   page('diplomatic.html', ['sections/diplomatic.html'], {
     pageTitle: 'Iran Crisis: Diplomatic Track &amp; Nuclear Negotiations \u2014 {{date}}',
@@ -168,19 +170,27 @@ const BUILDS = [
   ]),
   page('forces.html', [
     'sections/nation-postures.html', 'sections/air-power.html', 'sections/naval.html',
-    'sections/military.html', 'sections/iran-retaliation-playbook.html',
-    'sections/iran-retaliation-executed.html', 'sections/hormuz.html',
   ], {
-    pageTitle: 'Iran Crisis: Order of Battle \u2014 {{date}}',
-    pageDescription: 'Full order of battle: US air and naval forces (160+ aircraft, triple carrier strike groups) vs. Iran\'s remaining military capability — missiles, drones, IRGC Navy, and the Strait of Hormuz threat.',
-    pageOgDescription: 'Full order of battle: US strike forces vs. Iran\'s remaining military capability — missiles, drones, IRGC Navy, and the Strait of Hormuz threat.',
+    pageTitle: 'Iran Crisis: US & Coalition Strike Forces \u2014 {{date}}',
+    pageDescription: 'US and coalition strike forces: theater postures, 160+ aircraft, triple carrier strike groups, 25+ warships deployed to the Persian Gulf.',
+    pageOgDescription: 'US and coalition strike forces: theater postures, 160+ aircraft, triple carrier strike groups, and 25+ warships.',
     pageOgType: 'article',
   }, [
     g('Overview'), n('00', 'nation-postures', 'All Nations'),
     g('US Strike Assets'), n('01', 'air-power', 'Air Power'), n('02', 'naval', 'Naval Forces'),
-    g('Iran Assessment'), n('03', 'military', 'Military Status'),
-    n('04', 'iran-retaliation', 'Retaliation Playbook'), n('05', 'iran-retaliation-executed', 'Retaliation Executed'),
-    g('Strategic'), n('06', 'hormuz', 'Hormuz Threat'),
+  ]),
+  page('iran-military.html', [
+    'sections/military.html', 'sections/iran-retaliation-playbook.html',
+    'sections/iran-retaliation-executed.html', 'sections/hormuz.html',
+  ], {
+    pageTitle: 'Iran Crisis: Iran Military Assessment \u2014 {{date}}',
+    pageDescription: 'Iran\'s remaining military capability: battle damage assessment, asymmetric retaliation doctrine, Feb 28 strike accounting, and the Strait of Hormuz threat.',
+    pageOgDescription: 'Iran\'s remaining military capability: missiles, drones, cyber, retaliation doctrine, and the Strait of Hormuz chokepoint.',
+    pageOgType: 'article',
+  }, [
+    g('Assessment'), n('01', 'military', 'Military Status'),
+    g('Retaliation'), n('02', 'iran-retaliation', 'Playbook'), n('03', 'iran-retaliation-executed', 'Executed'),
+    g('Strategic'), n('04', 'hormuz', 'Hormuz Threat'),
   ]),
   page('inside-iran.html', ['sections/inside-iran.html'], {
     pageTitle: 'Iran Crisis: Inside Iran \u2014 {{date}}',
@@ -190,7 +200,7 @@ const BUILDS = [
   }, [
     n('01', 'inside-iran', 'Inside Iran'),
   ]),
-  page('reactions.html', ['sections/reactions.html'], {
+  page('reactions.html', ['sections/reactions-iran.html', 'sections/reactions-gulf.html', 'sections/reactions-israel.html', 'sections/reactions-global.html'], {
     pageTitle: 'Iran Crisis: Regional Reactions &amp; Damage Assessments \u2014 {{date}}',
     pageDescription: 'Country-by-country reactions to US-Israel Operation Epic Fury strikes on Iran: Bahrain 5th Fleet hit, Abu Dhabi casualties, Qatar, Saudi Arabia, Israel, and full strike damage assessments.',
     pageOgDescription: 'Country-by-country reactions to Operation Epic Fury and Iran\u2019s retaliatory strikes: Gulf states hit, damage assessments, diplomatic fallout, and casualty reports.',
@@ -205,7 +215,12 @@ const BUILDS = [
     pageOgDescription: 'Leading think-tank assessments on Operation Epic Fury — costs, escalation risks, Hormuz endgame, nuclear implications, and regime survival prospects.',
     pageOgType: 'article',
   }, [
-    n('01', 'analysis', 'Expert Analysis'),
+    n('01', 'analysis', 'Overview'),
+    n('02', 'analysis-military', 'Military Ops'),
+    n('03', 'analysis-succession', 'Succession'),
+    n('04', 'analysis-energy', 'Energy & Maritime'),
+    n('05', 'analysis-civilian', 'Civilian Impact'),
+    n('06', 'analysis-consensus', 'Consensus'),
   ]),
   page('opposition.html', ['sections/opposition.html'], {
     pageTitle: 'Iran Crisis: Reza Pahlavi &amp; the Opposition \u2014 {{date}}',
@@ -214,6 +229,16 @@ const BUILDS = [
     pageOgType: 'article',
   }, [
     n('01', 'opposition', 'Opposition'), n('02', 'opposition-landscape', 'Opposition Landscape'),
+  ]),
+  page('background.html', ['sections/background.html'], {
+    pageTitle: 'Iran Crisis: Background &amp; History \u2014 {{date}}',
+    pageDescription: 'Historical context for the Iran crisis: US-Iran relations from the 1953 coup to the JCPOA collapse, the January Massacre, and the path to Operation Epic Fury.',
+    pageOgDescription: 'From the 1953 CIA coup through the JCPOA collapse, the January Massacre, and the countdown to Operation Epic Fury \u2014 the full historical context.',
+    pageOgType: 'article',
+  }, [
+    n('01', 'background', 'Overview'), n('02', 'bg-us-iran', 'US-Iran Relations'),
+    n('03', 'bg-nuclear', 'Nuclear Program'), n('04', 'bg-january', 'January Massacre'),
+    n('05', 'bg-epic-fury', 'Path to War'),
   ]),
   page('sources.html', ['sections/sources.html'], {
     pageTitle: 'Iran Crisis Report \u2014 Sources &amp; References \u2014 {{date}}',
@@ -319,11 +344,17 @@ for (const build of BUILDS) {
   const output = nunjucks.renderString(template, ctx);
 
   // Run validations on individual section files.
+  // Skip tag-balance checks on shared infrastructure files (HEADER/FOOTER/SIDEBAR)
+  // because they intentionally have cross-file tag spans (e.g. sidebar-footer opens
+  // <div class="container"> which sources-link.html closes).
+  const INFRA = new Set([...HEADER, ...FOOTER, SIDEBAR]);
   const buildWarnings = [];
   for (const file of build.sections) {
     const content = fs.readFileSync(path.join(BASE_DIR, file), 'utf8');
     buildWarnings.push(...validateAIZones(content, file));
-    buildWarnings.push(...validateTagBalance(content, file));
+    if (!INFRA.has(file)) {
+      buildWarnings.push(...validateTagBalance(content, file));
+    }
     buildWarnings.push(...checkFileSize(content, file));
     buildWarnings.push(...validateProvenanceBuild(content, file));
   }
