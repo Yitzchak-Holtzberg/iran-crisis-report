@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-02T17:27:10.985Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results mainly repeat strikes on nuclear sites, Hormuz shipping damage, and diplomatic moves already on the page.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-02T19:00:41.494Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3044,6 +3014,43 @@
           "structural": false,
           "reason": "cooldown: structural <24h ago",
           "status": "cooldown"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 0,
+          "rotated": "full-rebuild"
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [],
+          "filesUpdated": []
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-03-16T11:54:38.504Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 0,
+          "tierDropped": 0,
+          "status": "ok"
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results show no new major developments beyond items already on the page.",
+          "status": "ok"
         },
         "dataJson": {
           "status": "ok"
