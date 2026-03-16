@@ -48,6 +48,10 @@
   footer { padding:24px 12px; font-size:10px; }
   footer div[style*="grid-template-columns"] { grid-template-columns:1fr !important; gap:4px !important; }
   .scenarios-grid { grid-template-columns:1fr !important; }
+  .treemap-row { flex-direction:column; }
+  .treemap-cell { min-height:90px; padding:16px 12px; }
+  .treemap-cell-pct { font-size:26px; }
+  .treemap-cell-label { font-size:13px; }
   .opposition-grid { grid-template-columns:1fr; }
   .scenario-header { flex-wrap:wrap; }
   .scenario-header h3 { flex:1 1 100%; margin-top:4px !important; }

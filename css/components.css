@@ -9,7 +9,7 @@
 .scenario-badge-green  { background:rgba(0,200,83,0.15); color:var(--accent-green); }
 .scenario-badge-cyan   { background:rgba(0,212,255,0.15); color:var(--accent-cyan); }
 .scenario-badge-orange { background:rgba(255,140,0,0.15); color:var(--accent-orange); }
-.scenario-badge-purple { background:rgba(200,80,192,0.15); color:#c850c0; }
+/* .scenario-badge-purple removed — no longer used in 2x2 matrix layout */
 
 /* Scenario header layout */
 .scenario-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
@@ -23,6 +23,7 @@
 .tag-green  { background:rgba(0,200,83,0.1); border:1px solid rgba(0,200,83,0.3); color:var(--accent-green); }
 .tag-red    { background:rgba(255,59,59,0.1); border:1px solid rgba(255,59,59,0.3); color:var(--accent-red); }
 .tag-blue   { background:rgba(74,144,217,0.1); border:1px solid rgba(74,144,217,0.3); color:var(--accent-blue); }
+.tag-purple { background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.3); color:var(--accent-purple); }
 .tag-muted  { background:rgba(150,150,150,0.1); border:1px solid rgba(150,150,150,0.3); color:var(--text-muted); }
 
 /* Teaser CTA button */
@@ -346,4 +347,18 @@
     font-size: 18px;
   }
 }
+
+/* ===== ANALYSIS THEME CARDS ===== */
+.analysis-detail.collapsed { display:none; }
+.analysis-toggle {
+  display:block; background:none; border:1px solid var(--border);
+  border-radius:6px; padding:8px 18px; color:var(--accent-cyan);
+  font-family:var(--font-mono); font-size:12px; cursor:pointer;
+  margin:12px auto 0; letter-spacing:0.5px; text-align:center;
+}
+.analysis-toggle:hover { border-color:var(--accent-cyan); background:rgba(0,200,255,0.06); }
+.inst-tags { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 14px; }
+.agree-label { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:1.5px; margin:14px 0 8px; }
+.agree-label.agree { color:var(--accent-green); }
+.agree-label.differ { color:var(--accent-orange); }
 

@@ -1,0 +1,37 @@
+<div class="chart-container treemap-container">
+  <h4>Scenario Treemap &mdash; Analyst Consensus ({{date}})</h4>
+  <div class="treemap">
+    <!-- Row 1: Declared Victory (35%) + Negotiated Deal (20%) -->
+    <div class="treemap-row" style="flex:55;">
+      <div class="treemap-cell treemap-cell-victory" style="flex:35;">
+        <div class="treemap-cell-label">Declared Victory</div>
+        <div class="treemap-cell-pct">{{scenarioDeclaredVictoryPct}}%</div>
+        <div class="treemap-cell-tag">Regime weakened, US draws down</div>
+      </div>
+      <div class="treemap-cell treemap-cell-deal" style="flex:20;">
+        <div class="treemap-cell-label">Negotiated Deal</div>
+        <div class="treemap-cell-pct">{{scenarioNegotiatedDealPct}}%</div>
+        <div class="treemap-cell-tag">Ceasefire + concessions</div>
+      </div>
+    </div>
+    <!-- Row 2: Democratic Revolution (18%) + Managed Transition (15%) + Regime Collapse (12%) -->
+    <div class="treemap-row" style="flex:45;">
+      <div class="treemap-cell treemap-cell-revolution" style="flex:18;">
+        <div class="treemap-cell-label">Democratic Revolution</div>
+        <div class="treemap-cell-pct">{{scenarioDemocraticRevolutionPct}}%</div>
+        <div class="treemap-cell-tag">Popular uprising + Pahlavi</div>
+      </div>
+      <div class="treemap-cell treemap-cell-transition" style="flex:15;">
+        <div class="treemap-cell-label">Managed Transition</div>
+        <div class="treemap-cell-pct">{{scenarioManagedTransitionPct}}%</div>
+        <div class="treemap-cell-tag">Venezuela model</div>
+      </div>
+      <div class="treemap-cell treemap-cell-collapse" style="flex:12;">
+        <div class="treemap-cell-label">Regime Collapse</div>
+        <div class="treemap-cell-pct">{{scenarioRegimeCollapsePct}}%</div>
+        <div class="treemap-cell-tag">Chaotic implosion</div>
+      </div>
+    </div>
+  </div>
+  <div class="treemap-footnote">Cell area proportional to analyst consensus probability. Reassessed {{date}}. Aligned with Axios/CSIS scenario frameworks. Percentages sum to 100%.</div>
+</div>

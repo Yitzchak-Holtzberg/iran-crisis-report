@@ -21,7 +21,7 @@
 /* Content pushed right by sidebar — always expanded on desktop */
 body { padding-left:200px; }
 /* Page switcher — modern vertical nav (Linear/Notion style) */
-.sb-pages { padding:6px 8px; border-bottom:1px solid var(--border); flex-shrink:0; display:flex; flex-direction:column; gap:1px; }
+.sb-pages { padding:6px 8px; border-bottom:1px solid var(--border); flex-shrink:0; display:flex; flex-direction:column; gap:1px; overflow-y:auto; max-height:40vh; }
 .sb-page-pill { font-family:var(--font-mono); font-size:11px; letter-spacing:0.3px; text-decoration:none; padding:6px 10px; border-radius:6px; color:var(--text-muted); transition:all 0.12s ease; }
 .sb-page-pill:hover { color:var(--text-primary); background:rgba(255,255,255,0.05); text-decoration:none; }
 .sb-page-pill.active { color:var(--text-primary); background:rgba(255,255,255,0.08); font-weight:600; }

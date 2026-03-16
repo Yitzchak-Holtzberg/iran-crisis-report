@@ -2,6 +2,7 @@
 
 const fs   = require('fs');
 const path = require('path');
+const { parseClaims, validatePromotion, enforceHumanVerified, validateClaimBalance } = require('./provenance');
 
 // ── Zone update helpers ───────────────────────────────────────────────────────
 
@@ -101,6 +102,30 @@ Zone-specific rules:
   title format: "Crisis 2: The Student Uprising (Mon DD-DD, Day N)"
 - hormuz-wti-price: the WTI crude spot price only (e.g. "$67.28")
 - military-parchin: the Parchin status update sentence including source and date
+
+PROVENANCE TRACKING — ANTI-HALLUCINATION RULES:
+Content wrapped in <!-- @claim:ID confidence=LEVEL ... --> markers carries provenance metadata.
+You MUST preserve these markers and follow these rules:
+
+- NEVER change confidence=human-verified claims. Pass them through EXACTLY as-is,
+  including the markers. Modifying human-verified content will cause the update to be rejected.
+- NEVER promote a claim by more than ONE confidence level per update:
+  speculative → reported-unconfirmed → confirmed (never skip a level).
+- To promote a claim, you MUST have evidence from the search results:
+  • speculative → reported-unconfirmed: requires a Tier 4-6 source
+  • reported-unconfirmed → confirmed: requires a Tier 1-3 source
+  Update the evidence= field with the domain(s) that justify the promotion.
+- When you write NEW factual claims, wrap them in @claim markers:
+  • Claims from Tier 1-3 search results: confidence=confirmed
+  • Claims from Tier 4-5 search results: confidence=reported-unconfirmed
+  • Your own analysis/predictions: confidence=speculative
+  Set origin=ai-${new Date().toISOString().slice(0, 10)} and evidence= to source domains with tier (e.g. reuters.com/t2).
+- NEVER fabricate evidence. The evidence= field must reference domains that actually
+  appear in the search results provided to you.
+- Existing speculative content is NOT fact. Do NOT treat it as confirmed unless the
+  current search results independently verify it.
+- Claims at confidence=speculative older than 7 days should be removed unless fresh
+  search evidence supports them.
 `;
 
 /**
@@ -158,6 +183,37 @@ async function updateZones(searchContext, { baseDir, callGPT }) {
 
       if (newContent.length < zone.innerContent.length * 0.3) {
         console.warn(`Zone "${zoneId}" replacement is too small (${newContent.length} vs ${zone.innerContent.length} chars) — skipping.`);
+        continue;
+      }
+
+      // Provenance: reject if human-verified claims were altered
+      const hvCheck = enforceHumanVerified(zone.innerContent, newContent);
+      if (!hvCheck.valid) {
+        console.warn(`Zone "${zoneId}" modified human-verified claims: ${hvCheck.violations.join('; ')} — skipping.`);
+        continue;
+      }
+
+      // Provenance: enforce one-level-max promotion rule
+      const oldClaims = parseClaims(zone.innerContent);
+      const newClaims = parseClaims(newContent);
+      let promoViolation = false;
+      for (const nc of newClaims) {
+        const oc = oldClaims.find(c => c.id === nc.id);
+        if (oc) {
+          const check = validatePromotion(oc, nc);
+          if (!check.valid) {
+            console.warn(`Zone "${zoneId}" claim "${nc.id}": ${check.reason} — skipping zone.`);
+            promoViolation = true;
+            break;
+          }
+        }
+      }
+      if (promoViolation) continue;
+
+      // Provenance: reject if claim markers are unbalanced
+      const claimWarnings = validateClaimBalance(newContent, zoneId);
+      if (claimWarnings.length > 0) {
+        console.warn(`Zone "${zoneId}" has unbalanced @claim markers — skipping.`);
         continue;
       }
 

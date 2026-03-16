@@ -111,6 +111,62 @@ When adding a new AI-managed content region:
 - ✗ Create zones that span multiple logical sections
 - ✗ Forget to update scripts/ai-update.js when adding zones
 
+## Provenance Tracking (`@claim` markers)
+
+### Overview
+
+Provenance markers track the origin and confidence level of factual claims within AI zones. They prevent **LLM self-reinforcement hallucination** — where the AI reads its own prior speculation and promotes it to "confirmed" with fabricated sources.
+
+### Marker Syntax
+
+```html
+<!-- @claim:claim-id confidence=LEVEL origin=ORIGIN date=YYYY-MM-DD evidence=REFS -->
+Factual claim content here
+<!-- @/claim:claim-id -->
+```
+
+### Confidence Levels
+
+| Level | Meaning | Who can set | Evidence required |
+|---|---|---|---|
+| `speculative` | AI prediction/analysis | AI only | None |
+| `reported-unconfirmed` | Tier 4-6 source reported it | AI or human | At least one domain |
+| `confirmed` | Tier 1-3 source corroborates | AI (with evidence) or human | Tier 1-3 domain |
+| `human-verified` | Human editor confirmed | Human only | Preserved from prior level |
+
+### Promotion Rules
+
+- **Max one level per AI pass**: `speculative` -> `reported-unconfirmed` -> `confirmed` (never skip)
+- **Evidence required**: promotions must include source domains in the `evidence=` field
+- **`human-verified` is immutable**: the AI cannot modify, downgrade, or remove these claims
+- **Stale speculative claims**: removed after 7 days without fresh evidence
+
+### Human Verification
+
+To mark a claim as human-verified (protecting it from AI modification):
+
+```bash
+node scripts/verify-claim.js sections/scenarios.html claim-id
+```
+
+Or manually edit the marker to set `confidence=human-verified origin=human`.
+
+### Build Validation
+
+The build script checks:
+- Balanced `@claim` open/close markers
+- `confirmed` claims have evidence (warns if missing)
+- `confirmed` claims have Tier 1-3 evidence (warns if only lower tiers)
+- `speculative` claims older than 7 days (warns as stale)
+
+### Pipeline Enforcement
+
+The AI update pipeline (`scripts/ai-update.js`) enforces:
+- Zone updates rejected if `human-verified` claims are modified
+- Zone updates rejected if confidence is promoted by more than one level
+- Structural updates rejected if `human-verified` claims are altered
+- Evidence domains cross-referenced against actual Tavily search results
+
 ## Files Without AI Zones
 
 The following files are **NOT** AI-managed via zone markers and should remain human-curated in **routine** updates:

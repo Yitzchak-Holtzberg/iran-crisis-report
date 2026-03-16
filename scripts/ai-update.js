@@ -123,6 +123,15 @@ async function main() {
   const failedCount = searchSettled.filter(r => r.status === 'rejected').length;
   if (failedCount > 0) {
     console.warn(`${failedCount}/${SEARCH_QUERIES.length} search queries failed — continuing with ${SEARCH_QUERIES.length - failedCount} results.`);
+    for (const [i, r] of searchSettled.entries()) {
+      if (r.status === 'rejected') {
+        console.warn(`  ✗ Query ${i + 1} ("${SEARCH_QUERIES[i].slice(0, 50)}"): ${r.reason?.message || r.reason}`);
+      }
+    }
+  }
+  if (failedCount === SEARCH_QUERIES.length) {
+    console.error('FATAL: All Tavily search queries failed — aborting update. Check TAVILY_API_KEY and billing.');
+    process.exit(1);
   }
   const searchResults = searchSettled.map(r => r.status === 'fulfilled' ? r.value : { results: [], answer: '(search failed)' });
 
@@ -193,8 +202,13 @@ async function main() {
     return `### Topic ${i + 1}: ${SEARCH_QUERIES[i]}\nSummary: ${sr.answer || '(none)'}\n${lines}`;
   }).join('\n\n');
 
+  // Build evidence domain registry for provenance tracking.
+  const { extractSearchDomains } = require('./lib/provenance');
+  const searchDomains = extractSearchDomains(searchResults);
+  console.log(`  Evidence registry: ${searchDomains.size} unique domains from search results.`);
+
   const gapQueryCount = SEARCH_QUERIES.length - 12;
-  manifest.phases.search = { queries: SEARCH_QUERIES.length, gapQueries: gapQueryCount, uniqueResults: dedupedCount, tierDropped, status: 'ok' };
+  manifest.phases.search = { queries: SEARCH_QUERIES.length, gapQueries: gapQueryCount, uniqueResults: dedupedCount, tierDropped, status: 'ok', evidenceDomains: searchDomains.size };
 
   // ── Summarize search context ────────────────────────────────────────────
   console.log('Extracting key facts from search results…');
@@ -278,18 +292,19 @@ Rules:
 - Stat keys (statUsTroops, statMissilesFired, statCarrierGroups, statOilAtRisk,
   statCitizensOffline, statIrgcKilled): update ONLY if the search results contain a clearly
   newer confirmed figure with a credible source.
-- Scenario percentages (scenarioRevolutionPct, scenarioPahlaviPct, scenarioJuntaPct,
-  scenarioCivilWarPct, scenarioRegionalEscalationPct): adjust ONLY if
-  a major development materially changes the outlook. Values must be integers
-  that sum to exactly 100. Keep eliminated scenarios (scenarioDealPct,
-  scenarioFrozenPct) and the in-progress scenario (scenarioStrikesPct) at 0.`;
+- Scenario percentages (scenarioDeclaredVictoryPct, scenarioNegotiatedDealPct,
+  scenarioDemocraticRevolutionPct, scenarioManagedTransitionPct,
+  scenarioRegimeCollapsePct): adjust ONLY if a major development materially
+  changes the outlook. Values must be integers that sum to exactly 100.
+  Five scenarios: declared victory, negotiated deal, democratic revolution,
+  managed transition, and regime collapse.`;
 
   const MUTABLE_DATA_KEYS = [
     'ticker', 'statUsTroops', 'statMissilesFired', 'statCarrierGroups',
     'statOilAtRisk', 'statCitizensOffline', 'statIrgcKilled',
-    'scenarioRevolutionPct', 'scenarioPahlaviPct', 'scenarioJuntaPct',
-    'scenarioCivilWarPct', 'scenarioRegionalEscalationPct',
-    'scenarioDealPct', 'scenarioFrozenPct', 'scenarioStrikesPct',
+    'scenarioDeclaredVictoryPct', 'scenarioNegotiatedDealPct',
+    'scenarioDemocraticRevolutionPct', 'scenarioManagedTransitionPct',
+    'scenarioRegimeCollapsePct',
   ];
   const mutableData = {};
   for (const k of MUTABLE_DATA_KEYS) {
@@ -310,7 +325,7 @@ Rules:
       console.warn(`data.json response missing mutable keys: ${missingMutable.join(', ')} — keeping original.`);
       manifest.phases.dataJson = { status: 'skipped', reason: 'missing keys' };
     } else {
-      const scenarioKeys = MUTABLE_DATA_KEYS.filter(k => k.startsWith('scenario') && k.endsWith('Pct') && k !== 'scenarioStrikesPct');
+      const scenarioKeys = MUTABLE_DATA_KEYS.filter(k => k.startsWith('scenario') && k.endsWith('Pct'));
       const scenarioSum = scenarioKeys.reduce((s, k) => s + (parseInt(parsed[k], 10) || 0), 0);
       if (scenarioSum !== 100) {
         console.warn(`data.json: scenario percentages sum to ${scenarioSum} (expected 100) — keeping original scenarios.`);
@@ -466,9 +481,12 @@ ${todayIsEmpty ? `- The TODAY section is currently EMPTY (a new day started). Ge
     };
 
     // 6a. General deep research for pass 1 (broad structural)
+    const MIN_DEEP_RESEARCH_ARTICLES = 5;
     let pass1Context = searchContext;
+    let deepResearchArticleTotal = 0;
     try {
       const generalResearch = await deepResearch(RESEARCH_SITES.general, 'general', researchDeps);
+      deepResearchArticleTotal += generalResearch.articlesExtracted || 0;
       if (generalResearch.articleContext) {
         pass1Context = searchContext + generalResearch.articleContext;
       }
@@ -482,28 +500,39 @@ ${todayIsEmpty ? `- The TODAY section is currently EMPTY (a new day started). Ge
       manifest.phases.deepResearch = { status: 'partial', error: err.message, perGroup: {} };
     }
 
-    // 6b. Run structural updates
-    const structuralDeps = {
-      baseDir: BASE_DIR,
-      callGPT,
-      structuralModel: STRUCTURAL_MODEL,
-      structuralTimeout: STRUCTURAL_GPT_TIMEOUT_MS,
-      guidelinesPath: GUIDELINES_PATH,
-      ...researchDeps,
-    };
-    try {
-      const { filesChanged, passes } = await updateStructural(searchContext, pass1Context, structuralDeps);
-      manifest.phases.structural = { status: 'ok', filesChanged, passes };
-      if (passes) {
-        for (const [label, passInfo] of Object.entries(passes)) {
-          if (passInfo.research && manifest.phases.deepResearch) {
-            manifest.phases.deepResearch.perGroup[label] = passInfo.research;
+    // Guard: if deep research extracted too few articles, the structural
+    // passes would be running on thin data.  Downgrade to routine instead.
+    if (deepResearchArticleTotal < MIN_DEEP_RESEARCH_ARTICLES) {
+      console.warn(`Deep research extracted only ${deepResearchArticleTotal} articles (minimum ${MIN_DEEP_RESEARCH_ARTICLES}) — downgrading to ROUTINE to avoid low-quality structural changes.`);
+      effectiveType = 'routine';
+      manifest.effectiveType = 'routine';
+      manifest.phases.structural = { status: 'skipped', reason: `deep research insufficient (${deepResearchArticleTotal}/${MIN_DEEP_RESEARCH_ARTICLES} articles)` };
+    }
+
+    // 6b. Run structural updates (only if still structural after guard)
+    if (effectiveType === 'structural') {
+      const structuralDeps = {
+        baseDir: BASE_DIR,
+        callGPT,
+        structuralModel: STRUCTURAL_MODEL,
+        structuralTimeout: STRUCTURAL_GPT_TIMEOUT_MS,
+        guidelinesPath: GUIDELINES_PATH,
+        ...researchDeps,
+      };
+      try {
+        const { filesChanged, passes } = await updateStructural(searchContext, pass1Context, structuralDeps);
+        manifest.phases.structural = { status: 'ok', filesChanged, passes };
+        if (passes) {
+          for (const [label, passInfo] of Object.entries(passes)) {
+            if (passInfo.research && manifest.phases.deepResearch) {
+              manifest.phases.deepResearch.perGroup[label] = passInfo.research;
+            }
           }
         }
+      } catch (err) {
+        console.warn(`Structural updates failed (${err.message}) — keeping originals.`);
+        manifest.phases.structural = { status: 'error', error: err.message };
       }
-    } catch (err) {
-      console.warn(`Structural updates failed (${err.message}) — keeping originals.`);
-      manifest.phases.structural = { status: 'error', error: err.message };
     }
   } else {
     manifest.phases.structural = { status: 'skipped', reason: 'routine update' };
@@ -519,13 +548,13 @@ ${todayIsEmpty ? `- The TODAY section is currently EMPTY (a new day started). Ge
       // Informational check only.
     }
   }
-  if (updatedData.scenarioRevolutionPct !== undefined) {
+  if (updatedData.scenarioDeclaredVictoryPct !== undefined) {
     const scenariosPath = path.join(BASE_DIR, 'sections', 'scenarios.html');
     if (fs.existsSync(scenariosPath)) {
       const scenariosContent = fs.readFileSync(scenariosPath, 'utf8');
-      const pctInHtml = scenariosContent.match(/\{\{scenarioRevolutionPct\}\}/);
+      const pctInHtml = scenariosContent.match(/\{\{scenarioDeclaredVictoryPct\}\}/);
       if (!pctInHtml) {
-        consistencyWarnings.push('scenarios.html: {{scenarioRevolutionPct}} placeholder missing — percentages may not render');
+        consistencyWarnings.push('scenarios.html: {{scenarioDeclaredVictoryPct}} placeholder missing — percentages may not render');
       }
     }
   }

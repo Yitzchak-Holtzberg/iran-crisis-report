@@ -17,14 +17,11 @@
     "statIrgcKilled",
     "statUsCasualties",
     "statUsCasualtiesSource",
-    "scenarioDealPct",
-    "scenarioStrikesPct",
-    "scenarioRevolutionPct",
-    "scenarioPahlaviPct",
-    "scenarioFrozenPct",
-    "scenarioJuntaPct",
-    "scenarioCivilWarPct",
-    "scenarioRegionalEscalationPct",
+    "scenarioDeclaredVictoryPct",
+    "scenarioNegotiatedDealPct",
+    "scenarioDemocraticRevolutionPct",
+    "scenarioManagedTransitionPct",
+    "scenarioRegimeCollapsePct",
     "ticker"
   ],
   "properties": {
@@ -90,51 +87,33 @@
       "type": "string",
       "description": "Source for US casualties count (e.g., 'CNBC/CBS')"
     },
-    "scenarioDealPct": {
+    "scenarioDeclaredVictoryPct": {
       "type": "integer",
-      "description": "Likelihood percentage for Diplomatic Deal scenario (eliminated — keep at 0)",
+      "description": "Likelihood percentage for Declared Victory scenario — Trump claims mission accomplished, draws down; regime weakened but intact (0-100)",
       "minimum": 0,
       "maximum": 100
     },
-    "scenarioStrikesPct": {
+    "scenarioNegotiatedDealPct": {
       "type": "integer",
-      "description": "Likelihood percentage for Military Strikes (standalone) scenario (in progress / excluded from sum — keep at 0)",
+      "description": "Likelihood percentage for Negotiated Deal scenario — ceasefire + nuclear/missile concessions via diplomacy (0-100)",
       "minimum": 0,
       "maximum": 100
     },
-    "scenarioRevolutionPct": {
+    "scenarioDemocraticRevolutionPct": {
       "type": "integer",
-      "description": "Likelihood percentage for Scenario 1: Regime Collapse / Revolution (0-100)",
+      "description": "Likelihood percentage for Democratic Revolution scenario — popular uprising + Pahlavi framework; ordered transition to democracy (0-100)",
       "minimum": 0,
       "maximum": 100
     },
-    "scenarioPahlaviPct": {
+    "scenarioManagedTransitionPct": {
       "type": "integer",
-      "description": "Likelihood percentage for Scenario 2: Pahlavi Returns — Democratic Transition (0-100)",
+      "description": "Likelihood percentage for Managed Transition scenario — Venezuela model; US deals with successor regime for concessions (0-100)",
       "minimum": 0,
       "maximum": 100
     },
-    "scenarioFrozenPct": {
+    "scenarioRegimeCollapsePct": {
       "type": "integer",
-      "description": "Likelihood percentage for Prolonged Standoff / Frozen Conflict scenario (eliminated — keep at 0)",
-      "minimum": 0,
-      "maximum": 100
-    },
-    "scenarioJuntaPct": {
-      "type": "integer",
-      "description": "Likelihood percentage for Scenario 3: IRGC Junta — Succession Council (0-100)",
-      "minimum": 0,
-      "maximum": 100
-    },
-    "scenarioCivilWarPct": {
-      "type": "integer",
-      "description": "Likelihood percentage for Scenario 4: Iranian Civil War / State Fragmentation (0-100)",
-      "minimum": 0,
-      "maximum": 100
-    },
-    "scenarioRegionalEscalationPct": {
-      "type": "integer",
-      "description": "Likelihood percentage for Scenario 5: Regional Escalation / Proxy War Spread (0-100)",
+      "description": "Likelihood percentage for Regime Collapse scenario — chaotic implosion; IRGC fractures, fragmentation, civil war risk (0-100)",
       "minimum": 0,
       "maximum": 100
     },

@@ -5,6 +5,7 @@ const path = require('path');
 const { sanitizeMarkdown } = require('./zones');
 const { RESEARCH_SITES, deepResearch } = require('./deep-research');
 const { safeParseJSON } = require('./openai-api');
+const { enforceHumanVerified, validateClaimBalance } = require('./provenance');
 
 // ── Structural update config ────────────────────────────────────────────────
 
@@ -46,7 +47,12 @@ const STRUCTURAL_BASE_RULES = `\
 - Search results are pre-tagged with [Tier N] source reliability labels:
   Tiers 1-3: trusted for facts. Tier 4: good for confirmed events. Tier 5: include framing note.
   Tier 6: only for unconfirmed/fog-of-war content, must note "requires corroboration".
-  Tiers 5 and 6 CAN update confirmed-unconfirmed sections (fog of war) with appropriate caveats.`;
+  Tiers 5 and 6 CAN update confirmed-unconfirmed sections (fog of war) with appropriate caveats.
+- PROVENANCE: Content in <!-- @claim:ID ... --> markers carries provenance metadata.
+  NEVER modify human-verified claims. NEVER promote confidence by more than one level.
+  Carry forward ALL @claim markers from the original content. New factual claims must
+  have @claim markers (confirmed for Tier 1-3, reported-unconfirmed for Tier 4-5,
+  speculative for analysis). Existing speculative content is NOT fact.`;
 
 const STRUCTURAL_SYSTEM_PROMPT = `\
 You are the editor of the Iran Crisis Report dashboard. A MAJOR development has
@@ -227,6 +233,20 @@ async function updateStructural(searchContext, pass1Context, deps) {
       );
       if (missingZones.length > 0) {
         console.warn(`Structural: ${name} — missing AI zones: ${missingZones.join(', ')} — skipping.`);
+        return null;
+      }
+
+      // Provenance: reject if claim markers are unbalanced
+      const claimWarnings = validateClaimBalance(newContent, name);
+      if (claimWarnings.length > 0) {
+        console.warn(`Structural: ${name} — unbalanced @claim markers — skipping.`);
+        return null;
+      }
+
+      // Provenance: reject if human-verified claims were altered
+      const hvCheck = enforceHumanVerified(original, newContent);
+      if (!hvCheck.valid) {
+        console.warn(`Structural: ${name} — modified human-verified claims: ${hvCheck.violations.join('; ')} — skipping.`);
         return null;
       }
     }

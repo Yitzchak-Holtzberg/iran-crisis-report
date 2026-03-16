@@ -17,6 +17,8 @@ const path   = require('path');
 const crypto = require('crypto');
 const nunjucks = require('nunjucks');
 
+const { validateProvenanceBuild } = require('./scripts/lib/provenance');
+
 const BASE_DIR = __dirname;
 
 // Configure Nunjucks — project root as template base, no autoescape (raw HTML).
@@ -73,7 +75,7 @@ function validateDataJson(data, schema) {
   }
 
   // Scenario percentages (excluding scenarioStrikesPct) must sum to 100.
-  const scenarioKeys = Object.keys(data).filter(k => k.startsWith('scenario') && k.endsWith('Pct') && k !== 'scenarioStrikesPct');
+  const scenarioKeys = Object.keys(data).filter(k => k.startsWith('scenario') && k.endsWith('Pct'));
   if (scenarioKeys.length > 0) {
     const sum = scenarioKeys.reduce((s, k) => s + (parseInt(data[k], 10) || 0), 0);
     if (sum !== 100) {
@@ -157,12 +159,12 @@ const BUILDS = [
     n('03', 'international-response', 'International Response'),
   ]),
   page('scenarios.html', ['sections/scenarios.html'], {
-    pageTitle: 'Iran Crisis: Five Scenarios \u2014 {{date}}',
-    pageDescription: 'Five active scenarios for the Iran crisis post-Operation Epic Fury: regime collapse/revolution, Pahlavi democratic transition, IRGC junta, Iranian civil war, and regional escalation. Analyst consensus probabilities.',
-    pageOgDescription: 'Five active scenarios for the Iran crisis post-Operation Epic Fury: regime collapse/revolution, Pahlavi democratic transition, IRGC junta succession, Iranian civil war/fragmentation, and regional escalation/proxy war spread.',
+    pageTitle: 'Iran Crisis: Scenario Matrix \u2014 {{date}}',
+    pageDescription: 'Five scenarios for how the Iran crisis ends: declared victory, negotiated deal, democratic revolution, managed transition, and regime collapse. Analyst consensus probabilities with interactive treemap.',
+    pageOgDescription: 'Five scenarios for how the Iran war ends — declared victory, negotiated deal, democratic revolution, managed transition, and regime collapse — with analyst consensus probabilities.',
     pageOgType: 'article',
   }, [
-    n('01', 'scenarios', 'Five Scenarios'),
+    n('01', 'scenarios', 'Scenario Matrix'),
   ]),
   page('forces.html', [
     'sections/nation-postures.html', 'sections/air-power.html', 'sections/naval.html',
@@ -323,6 +325,7 @@ for (const build of BUILDS) {
     buildWarnings.push(...validateAIZones(content, file));
     buildWarnings.push(...validateTagBalance(content, file));
     buildWarnings.push(...checkFileSize(content, file));
+    buildWarnings.push(...validateProvenanceBuild(content, file));
   }
 
   // Run global validations.

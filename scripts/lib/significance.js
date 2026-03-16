@@ -14,12 +14,15 @@ ticker headlines and today's timeline items). Only return structural:true if the
 major development is NOT already covered by that existing content. If the event
 is already represented in the page, a routine zone-level update is sufficient.
 
-ESCALATION RULE: A country or actor *escalating* from a lesser action to a
-more serious one is a NEW structural event, not a duplicate — e.g. if the page
-already says a country is "considering" or "weighing" joining a military
-campaign, confirmed reports that the same country has now *actively joined*
-(launched strikes, deployed forces, or formally entered the coalition) is a
-NEW structural development and must be treated as NOT already covered.
+ESCALATION RULE: Escalation is structural ONLY when it represents a
+fundamentally new TYPE of military engagement — e.g. a major power shifting
+from airstrikes to a ground invasion, a new country entering the conflict
+militarily for the first time, or first use of a new weapon class (WMD,
+nuclear). Escalation that is more of the same (expanding an existing ground
+operation, hitting new targets in a theater already under attack, moving from
+"planning" to "launching" something already reported on the page) is NOT
+structural — routine updates handle intensity changes within existing
+engagement types.
 
 Examples of events that ARE structural:
 - A BRAND NEW military operation is launched (not continued strikes in an

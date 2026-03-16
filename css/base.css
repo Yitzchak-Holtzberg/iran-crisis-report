@@ -68,6 +68,7 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Plu
 .callout.gold { border-color:var(--accent-gold); background:rgba(255,215,0,0.07); }
 .callout.green { border-color:var(--accent-green); background:rgba(0,200,83,0.07); }
 .callout.cyan { border-color:var(--accent-cyan); background:rgba(0,212,255,0.07); }
+.callout + .callout { margin-top: 10px; }
 .callout p { color:var(--text-secondary); }
 .callout .callout-title { font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
 .force-table { width:100%; border-collapse:separate; border-spacing:0; margin:20px 0; font-size:13px; }
@@ -82,4 +83,35 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Plu
 a { color:var(--accent-cyan); text-decoration:none; }
 a:hover { text-decoration:underline; }
 footer { text-align:center; padding:48px 20px; border-top:1px solid var(--border); margin-top:60px; font-size:12px; color:var(--text-muted); background:linear-gradient(0deg,var(--bg-secondary) 0%,transparent 100%); }
+/* Scenario Treemap */
+.treemap-container { padding:28px; }
+.treemap { display:flex; flex-direction:column; gap:3px; min-height:360px; }
+.treemap-row { display:flex; gap:3px; }
+.treemap-cell { border-radius:10px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px 16px; transition:transform 0.2s, box-shadow 0.2s; cursor:default; min-height:120px; }
+.treemap-cell:hover { transform:scale(1.015); box-shadow:0 4px 24px rgba(0,0,0,0.35); z-index:1; }
+.treemap-cell-pct { font-family:var(--font-mono); font-size:36px; font-weight:700; line-height:1; margin:8px 0 6px; }
+.treemap-cell-label { font-size:15px; font-weight:700; line-height:1.3; }
+.treemap-cell-tag { font-family:var(--font-mono); font-size:9px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-top:2px; }
+.treemap-footnote { font-size:11px; color:var(--text-muted); margin-top:14px; }
+/* Declared Victory — orange */
+.treemap-cell-victory { background:rgba(255,140,0,0.18); }
+.treemap-cell-victory .treemap-cell-pct { color:var(--accent-orange); }
+.treemap-cell-victory .treemap-cell-label { color:var(--accent-orange); }
+/* Negotiated Deal — cyan */
+.treemap-cell-deal { background:rgba(0,212,255,0.15); }
+.treemap-cell-deal .treemap-cell-pct { color:var(--accent-cyan); }
+.treemap-cell-deal .treemap-cell-label { color:var(--accent-cyan); }
+/* Democratic Revolution — green */
+.treemap-cell-revolution { background:rgba(0,200,83,0.15); }
+.treemap-cell-revolution .treemap-cell-pct { color:var(--accent-green); }
+.treemap-cell-revolution .treemap-cell-label { color:var(--accent-green); }
+/* Managed Transition — blue */
+.treemap-cell-transition { background:rgba(74,144,217,0.15); }
+.treemap-cell-transition .treemap-cell-pct { color:var(--accent-blue); }
+.treemap-cell-transition .treemap-cell-label { color:var(--accent-blue); }
+/* Regime Collapse — red */
+.treemap-cell-collapse { background:rgba(255,59,59,0.18); }
+.treemap-cell-collapse .treemap-cell-pct { color:var(--accent-red); }
+.treemap-cell-collapse .treemap-cell-label { color:var(--accent-red); }
+
 .svg-graphic { display:block; margin:0 auto; max-width:100%; }
