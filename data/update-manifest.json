@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-02T19:56:22.987Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "False — results reiterate events already on the page (strikes, Khamenei death, missile barrages, shipping/oil shocks).",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-02T20:53:24.653Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3109,6 +3079,69 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6075
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-17T21:50:48.888Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 54,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 36
+        },
+        "significance": {
+          "structural": true,
+          "reason": "Israeli strikes reportedly killed Iran’s national security chief Ali Larijani and Basij commander — a leadership decapit",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis2-succession"
+          ],
+          "filesUpdated": [
+            "inside-iran.html"
+          ]
+        },
+        "deepResearch": {
+          "status": "ok",
+          "general": {
+            "sitesSearched": 2,
+            "articlesExtracted": 3
+          },
+          "perGroup": {}
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "deep research insufficient (3/5 articles)"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "sizeChange": 187
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 7265
         }
       ]
     }
