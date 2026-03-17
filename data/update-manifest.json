@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-02T19:00:41.494Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "No new paradigm-shifting event — results duplicate items already on the page (strikes, nuclear site hits, Hormuz disrupt",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-02T19:56:22.987Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3071,6 +3041,76 @@
         }
       },
       "changelog": []
+    },
+    {
+      "timestamp": "2026-03-17T12:14:40.922Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 52,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 33
+        },
+        "significance": {
+          "structural": false,
+          "reason": "No—reports show intensified strikes, oil/strait tension and proxy attacks but no new conflict type or actor.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis1-epicfury",
+            "iran-crisis2-succession",
+            "iran-crisis3-economic",
+            "iran-crisis4-uprising",
+            "iran-crisis6-regional",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position",
+            "nuclear-subtitle",
+            "reactions-global-energy",
+            "reactions-iran-casualties"
+          ],
+          "filesUpdated": [
+            "inside-iran.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html",
+            "reactions-global.html",
+            "reactions-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 3,
+          "linesRemoved": 0,
+          "sizeChange": 435
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 6075
+        }
+      ]
     }
   ]
 }
