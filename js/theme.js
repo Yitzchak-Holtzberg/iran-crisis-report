@@ -1,17 +1,23 @@
+function setThemeIcons(isLight) {
+  var sun = document.getElementById('toggleIconSun');
+  var moon = document.getElementById('toggleIconMoon');
+  if (sun && moon) {
+    sun.style.display = isLight ? 'block' : 'none';
+    moon.style.display = isLight ? 'none' : 'block';
+  }
+}
+
 function toggleTheme() {
   var html = document.documentElement;
   var isLight = html.getAttribute('data-theme') === 'light';
   if (isLight) {
     html.removeAttribute('data-theme');
-    document.getElementById('toggleIcon').textContent = 'Light';
-    document.getElementById('toggleLabel').textContent = '';
     try { localStorage.setItem('theme', 'dark'); } catch(e) {}
   } else {
     html.setAttribute('data-theme', 'light');
-    document.getElementById('toggleIcon').textContent = 'Dark';
-    document.getElementById('toggleLabel').textContent = '';
     try { localStorage.setItem('theme', 'light'); } catch(e) {}
   }
+  setThemeIcons(!isLight);
   // Swap MapLibre GL style between dark and light
   if (window._theaterMap) {
     var MAPTILER_KEY = '49tXbjeDRcPMglh4nc1s';
@@ -29,12 +35,9 @@ function toggleTheme() {
     var saved = localStorage.getItem('theme');
     if (saved === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
-      document.getElementById('toggleIcon').textContent = 'Dark';
-      document.getElementById('toggleLabel').textContent = '';
+      setThemeIcons(true);
     }
   } catch(e) {}
-  // Attach touchend listener so the toggle fires immediately on mobile
-  // (prevents the 300ms click delay and fixes tap-target issues on iOS Safari)
   var btn = document.getElementById('themeToggle');
   if (btn) {
     btn.addEventListener('click', toggleTheme);
