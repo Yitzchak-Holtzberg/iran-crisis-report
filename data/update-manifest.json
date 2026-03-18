@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-02T23:35:40.418Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results largely repeat covered developments (strikes, Hormuz/Hormuz closure, carrier moves, diplomacy); no new pa",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-03T02:52:16.126Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3185,6 +3155,43 @@
           "sizeChange": -633
         }
       ]
+    },
+    {
+      "timestamp": "2026-03-18T21:47:07.050Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 56,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 33
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Search results show continued strikes/retaliation and energy targeting already on the page; no verified new front or lea",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "error",
+          "error": "OpenAI error 500: {\n  \"error\": {\n    \"message\": \"The server had an error while processing your request. Sorry about that!\",\n    \"type\": \"server_error\",\n    \"param\": null,\n    \"code\": null\n  }\n}"
+        },
+        "timeline": {
+          "status": "error",
+          "error": "Request timeout after 180000 ms"
+        },
+        "zones": {
+          "status": "error",
+          "error": "OpenAI error 500: {\n  \"error\": {\n    \"message\": \"The server had an error while processing your request. Sorry about that!\",\n    \"type\": \"server_error\",\n    \"param\": null,\n    \"code\": null\n  }\n}"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": []
     }
   ]
 }
