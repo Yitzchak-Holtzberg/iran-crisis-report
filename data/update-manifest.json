@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-02T20:53:24.653Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Results report updated casualty and maritime details already on the page; no new paradigm-shifting event.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 2
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-02T23:35:40.418Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3142,6 +3112,77 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 7265
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-18T11:54:41.757Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 55,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 36
+        },
+        "significance": {
+          "structural": true,
+          "reason": "UN/IAEA reported a projectile struck the Bushehr nuclear power plant—new nuclear/radiological risk not yet on the page.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 0,
+          "rotated": "full-rebuild"
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "bg-nuclear-timeline",
+            "hormuz-wti-price",
+            "iran-crisis2-succession",
+            "naval-subtitle",
+            "carrier-ford-position",
+            "nuclear-subtitle"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "background.html",
+            "hormuz.html",
+            "inside-iran.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html"
+          ]
+        },
+        "deepResearch": {
+          "status": "ok",
+          "general": {
+            "sitesSearched": 2,
+            "articlesExtracted": 4
+          },
+          "perGroup": {}
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "deep research insufficient (4/5 articles)"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 5,
+          "sizeChange": -633
         }
       ]
     }
