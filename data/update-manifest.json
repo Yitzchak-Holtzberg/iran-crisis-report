@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-03T02:52:16.126Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results report additional strikes and energy/shipping impacts already reflected in timeline (Hormuz closure, Gulf",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 4
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-03T07:04:19.403Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3192,6 +3162,83 @@
         }
       },
       "changelog": []
+    },
+    {
+      "timestamp": "2026-03-19T11:47:34.158Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 62,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 36
+        },
+        "significance": {
+          "structural": true,
+          "reason": "IAEA revealed a new underground enrichment site at Isfahan, creating a new nuclear‑program front not covered by the page",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "bg-nuclear-timeline",
+            "iran-crisis2-succession",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-badge",
+            "carrier-ford-position",
+            "nuclear-subtitle"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "background.html",
+            "inside-iran.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html"
+          ]
+        },
+        "deepResearch": {
+          "status": "ok",
+          "general": {
+            "sitesSearched": 2,
+            "articlesExtracted": 4
+          },
+          "perGroup": {}
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "deep research insufficient (4/5 articles)"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 4,
+          "linesRemoved": 0,
+          "sizeChange": 603
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 6069
+        }
+      ]
     }
   ]
 }
