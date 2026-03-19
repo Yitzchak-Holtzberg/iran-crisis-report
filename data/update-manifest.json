@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-03T07:04:19.403Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results repeat events already on the page (Hormuz closure, Saudi refinery hit, Riyadh embassy strike, carrier dep",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-03T13:17:57.147Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3237,6 +3207,64 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6069
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-19T21:47:20.388Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 55,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 30
+        },
+        "significance": {
+          "structural": true,
+          "reason": "IDF struck Iranian navy in the Caspian Sea for the first time, opening a new northern maritime front not on the page.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Request timeout after 180000 ms"
+        },
+        "deepResearch": {
+          "status": "ok",
+          "general": {
+            "sitesSearched": 2,
+            "articlesExtracted": 3
+          },
+          "perGroup": {}
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "deep research insufficient (3/5 articles)"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 20
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 5808
         }
       ]
     }

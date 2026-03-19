@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 19, 2026",
-  "lastUpdated": "11:47 UTC",
+  "lastUpdated": "21:47 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,6 +18,10 @@
   "scenarioManagedTransitionPct": 15,
   "scenarioRegimeCollapsePct": 14,
   "ticker": [
+    "IAEA: Director-General Grossi discusses Iranian safeguards and enrichment monitoring in interview (CBS/Face the Nation, Mar 22, 2026)",
+    "CASPIAN STRIKES: Israel says it destroyed five missile ships and other naval assets at Bandar Anzali in the Caspian Sea (Jerusalem Post, Mar 19, 2026)",
+    "IDF STRIKES: IDF reports hitting 200+ regime targets in western and central Iran, including missile storage, air defenses and weapons production (Ynet/Jerusalem Post, Mar 19, 2026)",
+    "US URANIUM OP: White House weighing deployment to seize ~970 lbs (~440 kg) of enriched uranium in Iran (AP, Mar 2026)",
     "NUCLEAR: IAEA reports new underground enrichment site at Isfahan and estimates ~440 kg of 60% enriched uranium (The National/IAEA, Mar 18, 2026)",
     "IRGC INTEL KILLED: Iran’s intelligence minister Esmaeil Khatib reported killed in airstrike; interim leadership changes underway (BBC/NYT, Mar 18–19, 2026)",
     "CARRIER STATUS: USS Gerald R. Ford withdraws to Souda Bay, Crete for repairs after onboard fire, shifting carrier posture (CNN, Mar 18, 2026)",
@@ -37,10 +41,6 @@
     "OIL SHIPPING: Satellite imagery shows two Iranian tankers loading ~2.7M barrels; Kharg Island storage tanks appear intact (CNN, Mar 16, 2026)",
     "GROUND WAR: Israel launches ‘limited and targeted’ ground operation in southern Lebanon against Hezbollah (Al Jazeera, Mar 16, 2026)",
     "IRAN MISSILES: Iran fires 4 missile salvos at Israel including cluster munitions; one injured (Times of Israel, Mar 16, 2026)",
-    "OIL SURGE: Oil hits $106/bbl as Trump threatens NATO allies over refusal to send warships to Hormuz (Fortune, Mar 16, 2026)",
-    "STRAIT ACCESS: Iran selectively allowing some nations’ vessels through Hormuz; Australia and Japan refuse warship requests (Al Jazeera/Fortune, Mar 16, 2026)",
-    "CEASEFIRE REJECTED: Iran’s FM Araghchi says ‘we never asked for a ceasefire’; ready to defend ‘as long as it takes’ (NPR, Mar 15, 2026)",
-    "ISFAHAN STRIKES: U.S.-Israel strikes hit Isfahan IRGC airbase, killing at least 15; strikes across 8 Iranian cities (Al Jazeera, Mar 15, 2026)",
-    "MOJTABA STATUS: Trump says he’s hearing Iran’s new supreme leader Mojtaba Khamenei may ‘not be alive’ (Fox News, Mar 15, 2026)"
+    "OIL SURGE: Oil hits $106/bbl as Trump threatens NATO allies over refusal to send warships to Hormuz (Fortune, Mar 16, 2026)"
   ]
 }
