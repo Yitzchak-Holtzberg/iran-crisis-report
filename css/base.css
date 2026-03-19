@@ -35,7 +35,8 @@ body { background:var(--bg-primary); color:var(--text-primary); font-family:'Plu
 .card.card-cyan { border-left:3px solid var(--accent-cyan); }
 .card.card-green { border-left:3px solid var(--accent-green); }
 .card.card-purple { border-left:3px solid var(--accent-purple); }
-.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; margin:24px 0; }
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; margin:24px 0; align-items:stretch; }
+.stats-grid .stat-box + .stat-box { margin-top:0; }
 #stats.stats-grid { grid-template-columns:repeat(7,1fr); }
 .stat-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:20px; text-align:center; transition:border-color 0.2s, box-shadow 0.2s; overflow:hidden; position:relative; min-width:0; }
 .stat-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:currentColor; opacity:0; transition:opacity 0.2s; }

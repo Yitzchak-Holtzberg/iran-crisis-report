@@ -14,7 +14,7 @@
   .card { padding:18px 14px; border-radius:8px; margin-bottom:14px; }
   .card h3 { font-size:17px; }
   .card p { font-size:13px; }
-  .stats-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .stats-grid, #stats.stats-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
   .stat-box { padding:14px 10px; }
   .stat-box .number { font-size:22px; }
   .stat-box .label { font-size:9px; letter-spacing:1px; }
@@ -62,7 +62,7 @@
 /* Small phones */
 @media(max-width:400px){
   .masthead h1 { font-size:20px; }
-  .stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .stats-grid, #stats.stats-grid { grid-template-columns:1fr 1fr; gap:8px; }
   .stat-box .number { font-size:18px; }
   .stat-box .label { font-size:8px; }
   .section-header h2 { font-size:17px; }
