@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 20, 2026",
-  "lastUpdated": "11:40 UTC",
+  "lastUpdated": "21:40 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,6 +18,9 @@
   "scenarioManagedTransitionPct": 15,
   "scenarioRegimeCollapsePct": 15,
   "ticker": [
+    "U.S. TROOP DEPLOYMENT: U.S. deploys additional ~2,500 Marines to Middle East amid escalating strikes (Military.com, Mar 20, 2026)",
+    "IAEA WARNING: IAEA DG Grossi warns parts of Iran's nuclear program could be revived despite damage from strikes (CBS News, Mar 20, 2026)",
+    "IRAN EXECUTIONS: Iran executes three men tied to January protest‑era killings, including a teenager (BBC, Mar 20, 2026)",
     "IDF STRIKES: IDF says it struck 130+ targets across Iran in past day (Sky News Australia / Jerusalem Post, Mar 19–20, 2026)",
     "COMBINED STRIKES: Ynet reports IDF and U.S. struck >15,000 targets and killed 50+ senior Iranian officials (Ynet, Mar 19–20, 2026)",
     "U.S. OIL RELEASE: U.S. may free ~140M barrels of sanctioned Iranian crude to stabilize markets (BBC / CNBC, Mar 19–20, 2026)",
@@ -39,9 +42,6 @@
     "DRONE LOSSES: U.S. officials say more than a dozen MQ-9 Reaper drones destroyed in operations related to Iran (ABC News, Mar 17, 2026)",
     "STRIKES: IDF launches new waves of strikes across Tehran and Lebanon; drone activity reported in Iraq and UAE (The Jerusalem Post/DW, Mar 17, 2026)",
     "KILLED: Israel says it killed Ali Larijani and Gholamreza Soleimani in Tehran strikes (Haaretz/Times of Israel, Mar 17, 2026)",
-    "DRONES: Drones strike U.S. embassy in Baghdad and UAE Oil Industry Zone; anti-missile batteries engaged (The Jerusalem Post/Sky News, Mar 17, 2026)",
-    "SATELLITE: Planet Labs imagery shows ships ablaze in Iranian ports and damage at a U.S. base (Planet Labs/Forbes/Chicago Tribune, Mar 17, 2026)",
-    "DEPLOYMENT: ~5,000 U.S. sailors and marines deploying to Middle East for maritime security and operations (NBC/Meet the Press, Mar 16–17, 2026)",
-    "STRIKES: U.S. says ~7,000 targets in Iran struck since Feb. 28; Trump claims >100 Iranian naval vessels destroyed (NewsNation/CENTCOM, Mar 17, 2026)"
+    "DRONES: Drones strike U.S. embassy in Baghdad and UAE Oil Industry Zone; anti-missile batteries engaged (The Jerusalem Post/Sky News, Mar 17, 2026)"
   ]
 }

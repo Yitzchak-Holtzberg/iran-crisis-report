@@ -1,34 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-03T13:43:58.344Z",
-      "type": "structural",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "reactions",
-            "hormuz"
-          ]
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-03T15:55:23.249Z",
       "type": "structural",
       "effectiveType": "structural",
@@ -3308,6 +3280,65 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 83
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-20T21:40:31.019Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 66,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 42
+        },
+        "significance": {
+          "structural": false,
+          "reason": "Reports show continued strikes, troop deployments, and energy‑infrastructure attacks/ground planning — developments alre",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "airpower-subtitle",
+            "reactions-iran-casualties",
+            "scenario-democratic-revolution"
+          ],
+          "filesUpdated": [
+            "air-power.html",
+            "reactions-iran.html",
+            "scenarios.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -50
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 6847
         }
       ]
     }
