@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-03T13:17:57.147Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results describe events already on the page (missile/drone strikes, Riyadh embassy hit, Hormuz/tanker attacks), s",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 2
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-03T13:43:58.344Z",
       "type": "structural",
       "effectiveType": "structural",
@@ -3265,6 +3235,79 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 5808
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-20T11:40:21.788Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 55,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 35
+        },
+        "significance": {
+          "structural": true,
+          "reason": "Widespread Iran-linked destructive cyberattacks and US DOJ/FBI domain seizures create a new cyber‑warfare front not on t",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 0,
+          "rotated": "full-rebuild"
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "bg-january-protests",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position",
+            "nuclear-subtitle",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-iran-casualties"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "background.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html",
+            "reactions-global.html",
+            "reactions-iran.html"
+          ]
+        },
+        "deepResearch": {
+          "status": "ok",
+          "general": {
+            "sitesSearched": 2,
+            "articlesExtracted": 3
+          },
+          "perGroup": {}
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "deep research insufficient (3/5 articles)"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 83
         }
       ]
     }
