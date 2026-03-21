@@ -1,13 +1,13 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "March 20, 2026",
-  "lastUpdated": "21:40 UTC",
+  "date": "March 21, 2026",
+  "lastUpdated": "11:33 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
   "statMissilesFiredSource": "CENTCOM/Wikipedia, Mar 10",
   "statCarrierGroups": "3",
-  "statOilAtRisk": "17M",
+  "statOilAtRisk": "140M",
   "statCitizensOffline": "92M",
   "statIrgcKilled": "3,900+",
   "statUsCasualties": "13",
@@ -18,6 +18,9 @@
   "scenarioManagedTransitionPct": 15,
   "scenarioRegimeCollapsePct": 15,
   "ticker": [
+    "U.S. WAIVER: U.S. issues 30-day waiver to allow sale of ~140M barrels of Iranian oil at sea (CNN/NYT, Mar 20–21, 2026)",
+    "NATANZ STRIKE: Reported U.S.-Israeli strike hits Natanz enrichment facility with bunker-busters; Iran reports damage, no radiation leak (Reuters/Times of Israel, Mar 21, 2026)",
+    "DIEGO GARCIA ATTACK: Iran fires ballistic missiles toward Diego Garcia; base reportedly not hit (Times of Israel, Mar 21, 2026)",
     "U.S. TROOP DEPLOYMENT: U.S. deploys additional ~2,500 Marines to Middle East amid escalating strikes (Military.com, Mar 20, 2026)",
     "IAEA WARNING: IAEA DG Grossi warns parts of Iran's nuclear program could be revived despite damage from strikes (CBS News, Mar 20, 2026)",
     "IRAN EXECUTIONS: Iran executes three men tied to January protest‑era killings, including a teenager (BBC, Mar 20, 2026)",
@@ -38,10 +41,6 @@
     "IRAN RETALIATION: Iran launches retaliatory strikes against Israel and U.S. assets after killing of Ali Larijani (CNBC/AP/CNN, Mar 18, 2026)",
     "U.S. STRIKES: CENTCOM says U.S. forces struck Iranian missile sites along Strait of Hormuz with 5,000‑lb munitions (The Jerusalem Post/CENTCOM, Mar 18, 2026)",
     "NUCLEAR SITE: Projectile strikes grounds at Bushehr nuclear plant — Iranian and IAEA report no damage (AFP/AP, Mar 18, 2026)",
-    "CARRIER DEPLOYMENT: USS Gerald R. Ford carrier strike group deploys to region for Operation Epic Fury (Reuters, Mar 17, 2026)",
-    "DRONE LOSSES: U.S. officials say more than a dozen MQ-9 Reaper drones destroyed in operations related to Iran (ABC News, Mar 17, 2026)",
-    "STRIKES: IDF launches new waves of strikes across Tehran and Lebanon; drone activity reported in Iraq and UAE (The Jerusalem Post/DW, Mar 17, 2026)",
-    "KILLED: Israel says it killed Ali Larijani and Gholamreza Soleimani in Tehran strikes (Haaretz/Times of Israel, Mar 17, 2026)",
-    "DRONES: Drones strike U.S. embassy in Baghdad and UAE Oil Industry Zone; anti-missile batteries engaged (The Jerusalem Post/Sky News, Mar 17, 2026)"
+    "CARRIER DEPLOYMENT: USS Gerald R. Ford carrier strike group deploys to region for Operation Epic Fury (Reuters, Mar 17, 2026)"
   ]
 }

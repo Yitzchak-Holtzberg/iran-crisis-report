@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-03T15:55:23.249Z",
-      "type": "structural",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 1
-        },
-        "zones": {
-          "status": "ok"
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "nuclear",
-            "confirmed-unconfirmed",
-            "scenarios",
-            "reactions"
-          ]
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-03T16:26:14.291Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3339,6 +3309,76 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6847
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-21T11:33:33.576Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 64,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 33
+        },
+        "significance": {
+          "structural": true,
+          "reason": "Confirmed US/Israeli strike on Natanz nuclear enrichment facility — new direct attack on Iran’s nuclear infrastructure.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 0,
+          "rotated": "full-rebuild"
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "bg-nuclear-timeline",
+            "iran-crisis2-succession",
+            "iran-crisis3-economic",
+            "iran-crisis4-uprising",
+            "iran-crisis6-regional",
+            "nuclear-subtitle",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "background.html",
+            "inside-iran.html",
+            "nuclear-teaser.html",
+            "nuclear.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "deepResearch": {
+          "status": "ok",
+          "general": {
+            "sitesSearched": 2,
+            "articlesExtracted": 4
+          },
+          "perGroup": {}
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "deep research insufficient (4/5 articles)"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 1,
+          "sizeChange": -140
         }
       ]
     }
