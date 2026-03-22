@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
   "date": "March 22, 2026",
-  "lastUpdated": "11:34 UTC",
+  "lastUpdated": "21:37 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -12,12 +12,15 @@
   "statIrgcKilled": "3,900+",
   "statUsCasualties": "13",
   "statUsCasualtiesSource": "Pentagon/NPR, Mar 15",
-  "scenarioDeclaredVictoryPct": 35,
-  "scenarioNegotiatedDealPct": 15,
+  "scenarioDeclaredVictoryPct": 30,
+  "scenarioNegotiatedDealPct": 20,
   "scenarioDemocraticRevolutionPct": 20,
   "scenarioManagedTransitionPct": 15,
   "scenarioRegimeCollapsePct": 15,
   "ticker": [
+    "CASUALTY UPDATE: BBC reports 160+ wounded in missile strikes near Dimona and Arad, higher than earlier counts (BBC, Mar 22, 2026)",
+    "US-IRAN TALKS: U.S. exploring framework for talks including reopening Strait of Hormuz and limits on highly enriched uranium stockpile (Anadolu/Axios, Mar 22, 2026)",
+    "STRAIT POLICY: Iran says Strait of Hormuz 'open to all' except 'enemy' states and allows transits for countries it deems friendly (Reuters/Haaretz, Mar 22, 2026)",
     "IRAN MISSILES: Ballistic strikes near Dimona and Arad injure 100+ civilians and damage homes (Al Jazeera, Mar 21–22, 2026)",
     "CENTCOM: CENTCOM chief says more than 8,000 targets have been struck and Iran's navy largely neutralized (The Hill, Mar 21–22, 2026)",
     "U.S. PRESIDENT: Trump says he is 'considering winding down' operations but threatens to 'obliterate' Iran power plants if Strait of Hormuz not reopened in 48 hours (Al Jazeera/Guardian, Mar 21–22, 2026)",
@@ -39,8 +42,6 @@
     "U.S. NAVAL BUILDUP: USS Abraham Lincoln (F-35s operating), USS Tripoli (2,000+ Marines) and USS Boxer join Mideast tasking (FlightGlobal / USA Today / Maritime Executive, Mar 18–19, 2026)",
     "UN: UN Security Council held urgent closed meeting on Iran attacks; EU calls moratorium on strikes on energy/water (Times of Israel / EU statements, Mar 20, 2026)",
     "STRAVA LEAK: French Navy officer's deck jog on Strava (Mar 13) accidentally revealed Charles de Gaulle carrier position — confirmed south of Limassol, Cyprus; French Armed Forces General Staff acknowledged OPSEC breach (Daily Caller / Le Monde, Mar 19, 2026)",
-    "IAEA: Director-General Grossi discusses Iranian safeguards and enrichment monitoring in interview (CBS/Face the Nation, Mar 22, 2026)",
-    "CASPIAN STRIKES: Israel says it destroyed five missile ships and other naval assets at Bandar Anzali in the Caspian Sea (Jerusalem Post, Mar 19, 2026)",
-    "IDF STRIKES: IDF reports hitting 200+ regime targets in western and central Iran, including missile storage, air defenses and weapons production (Ynet/Jerusalem Post, Mar 19, 2026)"
+    "IAEA: Director-General Grossi discusses Iranian safeguards and enrichment monitoring in interview (CBS/Face the Nation, Mar 22, 2026)"
   ]
 }

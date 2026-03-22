@@ -1,67 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-03T19:03:44.160Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Multiple reports claim Iran’s Supreme Leader Ali Khamenei was killed—an unrepresented regime‑change event requiring page",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "hormuz",
-            "confirmed-unconfirmed",
-            "scenarios",
-            "reactions"
-          ],
-          "passes": {
-            "pass1": {
-              "status": "ok",
-              "filesChanged": [
-                "hormuz",
-                "confirmed-unconfirmed"
-              ]
-            },
-            "analysis + map": {
-              "status": "error",
-              "error": "fetch failed (cause: Headers Timeout Error)"
-            },
-            "scenarios + reactions": {
-              "status": "ok",
-              "filesChanged": [
-                "scenarios",
-                "reactions"
-              ]
-            },
-            "forces (naval, air-power, military)": {
-              "status": "error",
-              "error": "fetch failed (cause: Headers Timeout Error)"
-            }
-          }
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-03T23:05:58.885Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3549,6 +3488,169 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6582
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-22T21:37:00.364Z",
+      "type": "auto",
+      "effectiveType": "structural",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 62,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 31
+        },
+        "significance": {
+          "structural": true,
+          "reason": "Reports of an Israeli strike on Iranian ships in the Caspian Sea open a new northern maritime front not yet covered.",
+          "status": "ok"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "bg-january-protests",
+            "iran-crisis1-epicfury",
+            "iran-crisis4-uprising",
+            "military-parchin"
+          ],
+          "filesUpdated": [
+            "background.html",
+            "inside-iran.html",
+            "military.html"
+          ]
+        },
+        "deepResearch": {
+          "status": "ok",
+          "general": {
+            "sitesSearched": 2,
+            "articlesExtracted": 5
+          },
+          "perGroup": {
+            "analysis_research": {
+              "sitesSearched": 7,
+              "articlesExtracted": 8
+            },
+            "map_research": {
+              "sitesSearched": 3,
+              "articlesExtracted": 8
+            },
+            "scenarios_research": {
+              "sitesSearched": 4,
+              "articlesExtracted": 6
+            },
+            "reactions_research": {
+              "sitesSearched": 3,
+              "articlesExtracted": 6
+            },
+            "naval + air-power + military_research": {
+              "sitesSearched": 6,
+              "articlesExtracted": 0
+            }
+          }
+        },
+        "structural": {
+          "status": "ok",
+          "filesChanged": [
+            "inside-iran",
+            "nuclear",
+            "reactions-iran",
+            "analysis",
+            "naval",
+            "air-power",
+            "military"
+          ],
+          "passes": {
+            "pass1": {
+              "status": "ok",
+              "filesChanged": [
+                "inside-iran",
+                "nuclear",
+                "reactions-iran"
+              ]
+            },
+            "analysis_research": {
+              "research": {
+                "sitesSearched": 7,
+                "articlesExtracted": 8
+              }
+            },
+            "analysis": {
+              "status": "ok",
+              "filesChanged": [
+                "analysis"
+              ]
+            },
+            "map_research": {
+              "research": {
+                "sitesSearched": 3,
+                "articlesExtracted": 8
+              }
+            },
+            "map": {
+              "status": "error",
+              "error": "Request timeout after 120000 ms"
+            },
+            "scenarios_research": {
+              "research": {
+                "sitesSearched": 4,
+                "articlesExtracted": 6
+              }
+            },
+            "scenarios": {
+              "status": "ok",
+              "filesChanged": []
+            },
+            "reactions_research": {
+              "research": {
+                "sitesSearched": 3,
+                "articlesExtracted": 6
+              }
+            },
+            "reactions": {
+              "status": "ok",
+              "filesChanged": []
+            },
+            "naval + air-power + military_research": {
+              "research": {
+                "sitesSearched": 6,
+                "articlesExtracted": 0
+              }
+            },
+            "naval + air-power + military": {
+              "status": "ok",
+              "filesChanged": [
+                "naval",
+                "air-power",
+                "military"
+              ]
+            }
+          }
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "sizeChange": 132
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 6554
         }
       ]
     }
