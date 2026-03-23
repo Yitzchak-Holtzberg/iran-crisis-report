@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "March 22, 2026",
-  "lastUpdated": "21:37 UTC",
+  "date": "March 23, 2026",
+  "lastUpdated": "11:51 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -12,12 +12,17 @@
   "statIrgcKilled": "3,900+",
   "statUsCasualties": "13",
   "statUsCasualtiesSource": "Pentagon/NPR, Mar 15",
-  "scenarioDeclaredVictoryPct": 30,
-  "scenarioNegotiatedDealPct": 20,
+  "scenarioDeclaredVictoryPct": 25,
+  "scenarioNegotiatedDealPct": 30,
   "scenarioDemocraticRevolutionPct": 20,
   "scenarioManagedTransitionPct": 15,
-  "scenarioRegimeCollapsePct": 15,
+  "scenarioRegimeCollapsePct": 10,
   "ticker": [
+    "PAUSE ON STRIKES: U.S. announces five‑day pause on strikes against Iranian energy infrastructure amid talks (Politico, Mar 23, 2026)",
+    "IEA WARNING: IEA chief says energy shock equals 1970s twin oil shocks plus Ukraine war; world leaders considering emergency releases (The Guardian/CNN, Mar 23, 2026)",
+    "IEA DAMAGE: IEA says 40+ Middle East energy assets have been 'severely damaged' in the conflict (CNBC/IEA, Mar 23, 2026)",
+    "ADNOC ADJUST: ADNOC Gas temporarily cuts/adjusts LNG production and exports due to Strait of Hormuz disruption (Reuters, Mar 23, 2026)",
+    "US OPERATION PLAN: U.S. planning a weeks‑long operation to reopen the Strait of Hormuz (Times of Israel, Mar 22–23, 2026)",
     "CASUALTY UPDATE: BBC reports 160+ wounded in missile strikes near Dimona and Arad, higher than earlier counts (BBC, Mar 22, 2026)",
     "US-IRAN TALKS: U.S. exploring framework for talks including reopening Strait of Hormuz and limits on highly enriched uranium stockpile (Anadolu/Axios, Mar 22, 2026)",
     "STRAIT POLICY: Iran says Strait of Hormuz 'open to all' except 'enemy' states and allows transits for countries it deems friendly (Reuters/Haaretz, Mar 22, 2026)",
@@ -37,11 +42,6 @@
     "IAEA WARNING: IAEA DG Grossi warns parts of Iran's nuclear program could be revived despite damage from strikes (CBS News, Mar 20, 2026)",
     "IRAN EXECUTIONS: Iran executes three men tied to January protest‑era killings, including a teenager (BBC, Mar 20, 2026)",
     "IDF STRIKES: IDF says it struck 130+ targets across Iran in past day (Sky News Australia / Jerusalem Post, Mar 19–20, 2026)",
-    "COMBINED STRIKES: Ynet reports IDF and U.S. struck >15,000 targets and killed 50+ senior Iranian officials (Ynet, Mar 19–20, 2026)",
-    "U.S. OIL RELEASE: U.S. may free ~140M barrels of sanctioned Iranian crude to stabilize markets (BBC / CNBC, Mar 19–20, 2026)",
-    "U.S. NAVAL BUILDUP: USS Abraham Lincoln (F-35s operating), USS Tripoli (2,000+ Marines) and USS Boxer join Mideast tasking (FlightGlobal / USA Today / Maritime Executive, Mar 18–19, 2026)",
-    "UN: UN Security Council held urgent closed meeting on Iran attacks; EU calls moratorium on strikes on energy/water (Times of Israel / EU statements, Mar 20, 2026)",
-    "STRAVA LEAK: French Navy officer's deck jog on Strava (Mar 13) accidentally revealed Charles de Gaulle carrier position — confirmed south of Limassol, Cyprus; French Armed Forces General Staff acknowledged OPSEC breach (Daily Caller / Le Monde, Mar 19, 2026)",
-    "IAEA: Director-General Grossi discusses Iranian safeguards and enrichment monitoring in interview (CBS/Face the Nation, Mar 22, 2026)"
+    "COMBINED STRIKES: Ynet reports IDF and U.S. struck >15,000 targets and killed 50+ senior Iranian officials (Ynet, Mar 19–20, 2026)"
   ]
 }

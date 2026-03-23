@@ -1,42 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-03T23:05:58.885Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 11,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results reiterate strikes, Khamenei's death, and regional escalation already reflected on the page.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 4
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "iran-crisis2-title"
-          ],
-          "filesUpdated": [
-            "inside-iran.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-04T02:45:13.922Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3651,6 +3615,67 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6554
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-03-23T11:51:52.848Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 50,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 25
+        },
+        "significance": {
+          "structural": false,
+          "reason": "cooldown: structural <24h ago",
+          "status": "cooldown"
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-global-mediation"
+          ],
+          "filesUpdated": [
+            "naval.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -192
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 6039
         }
       ]
     }
