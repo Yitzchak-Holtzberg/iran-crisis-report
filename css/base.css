@@ -1,4 +1,10 @@
 * { margin:0; padding:0; box-sizing:border-box; }
+/* Global scrollbar styling */
+::-webkit-scrollbar { width:6px; height:6px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:var(--text-muted); }
+html { scrollbar-width:thin; scrollbar-color:var(--border) transparent; }
 body { background:var(--bg-primary); color:var(--text-primary); font-family:'Plus Jakarta Sans',system-ui,sans-serif; line-height:1.7; overflow-x:hidden; }
 .masthead { text-align:center; padding:72px 20px 52px; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
 .masthead::before { content:''; position:absolute; inset:0; background:linear-gradient(rgba(255,59,59,0.018) 1px,transparent 1px) 0 0 / 36px 36px,linear-gradient(90deg,rgba(255,59,59,0.018) 1px,transparent 1px) 0 0 / 36px 36px; pointer-events:none; }
