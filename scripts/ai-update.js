@@ -5,7 +5,7 @@
  * Automatically updates page content with the latest Iran-related news.
  *
  * Update types (set via UPDATE_TYPE env var, default "auto"):
- *   auto       — runs a significance assessment; may promote to "structural"
+ *   auto       — alias for "routine" (structural must be triggered manually)
  *   routine    — daily refresh: data.json values, timeline items, AI zone content
  *   structural — major events: all routine updates PLUS section-level HTML changes
  *
@@ -33,10 +33,9 @@ const { parseHumanDate, extractTlItems, rotateTimelineDays, spliceTimelineItems,
         pruneTimelineItems, filterHallucinations } = require('./lib/timeline');
 const { sanitizeMarkdown, updateZones }           = require('./lib/zones');
 const { readManifest, writeManifest, stampFreshness, diffSummary } = require('./lib/manifest');
-const { assessSignificance }                      = require('./lib/significance');
 const { RESEARCH_SITES, deepResearch }            = require('./lib/deep-research');
 const { STRUCTURAL_FILES, updateStructural }      = require('./lib/structural-updates');
-const { callGPT, safeParseJSON, STRUCTURAL_GPT_TIMEOUT_MS } = openai;
+const { callGPT, STRUCTURAL_GPT_TIMEOUT_MS } = openai;
 
 // ── Paths ────────────────────────────────────────────────────────────────────
 
@@ -49,8 +48,6 @@ const GPT_LOG_PATH     = path.join(BASE_DIR, 'logs', 'gpt-calls.jsonl');
 
 const TODAY_TIMELINE_RE =
   /<!-- ── TODAY ── -->[\s\S]*?<div class="timeline"[^>]*>([\s\S]*?)<!-- ── YESTERDAY ── -->/;
-
-const PAGE_CONTEXT_TICKER_LIMIT = 10;
 
 // ── Environment ──────────────────────────────────────────────────────────────
 
@@ -75,7 +72,7 @@ tavily.init(TAVILY_KEY);
 openai.init(OPENAI_KEY, GPT_LOG_PATH);
 
 // ── Search queries ───────────────────────────────────────────────────────────
-// 12 focused queries covering all dashboard sections with minimal overlap.
+// 8 focused queries covering all dashboard sections with minimal overlap.
 // Think-tank deep dives are handled by per-group RESEARCH_SITES in structural mode.
 const SEARCH_QUERIES = [
   'US Israel Iran military strikes operations sorties targets today',
@@ -83,13 +80,9 @@ const SEARCH_QUERIES = [
   'Iran protests IRGC crackdown Khamenei succession leadership crisis',
   'Iran opposition Pahlavi Kurdish resistance armed groups uprising',
   'Iran proxy Hezbollah Houthi militia attacks Iraq Syria Lebanon',
-  'Strait of Hormuz Red Sea Houthi shipping oil tanker disruption',
+  'Strait of Hormuz Red Sea shipping oil tanker disruption',
   'Iran economy sanctions oil price energy market rial crisis',
-  'Iran bomb damage assessment infrastructure destroyed confirmed strikes',
-  'Iran civilian casualties humanitarian crisis displacement war crimes',
-  'Iran IRGC cyber espionage covert operations intelligence',
   'Iran war regional reactions Saudi China Russia Turkey diplomacy',
-  'US carrier strike group deployment Iran CENTCOM forces',
 ];
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -135,45 +128,6 @@ async function main() {
   }
   const searchResults = searchSettled.map(r => r.status === 'fulfilled' ? r.value : { results: [], answer: '(search failed)' });
 
-  // ── Gap detection: ask AI what angles the initial searches missed ────────
-  try {
-    const topicsCovered = searchResults.map((sr, i) => {
-      const titles = (sr.results || []).slice(0, 3).map(r => r.title || '').filter(Boolean).join('; ');
-      return `${SEARCH_QUERIES[i]}: ${titles || '(no results)'}`;
-    }).join('\n');
-
-    const gapRaw = await callGPT(
-      `You are a news editor for the Iran Crisis Report dashboard. Given the search topics ` +
-      `and top results below, identify 2-3 important angles about the Iran crisis that are ` +
-      `NOT covered. Think about: unexpected diplomatic moves, new actors, economic ripple ` +
-      `effects, domestic politics in other countries, technology/cyber, humanitarian, ` +
-      `international law, or any breaking development that doesn't fit the existing categories.\n\n` +
-      `Return a JSON object: { "queries": ["query1", "query2", "query3"] }\n` +
-      `Each query should be under 80 characters, focused, and use news-style keywords.\n` +
-      `If the existing coverage is comprehensive, return { "queries": [] }.`,
-      topicsCovered,
-      true, ROUTINE_MODEL, 2048, 15000
-    );
-    const gapParsed = safeParseJSON(gapRaw);
-    const gapQueries = Array.isArray(gapParsed.queries) ? gapParsed.queries.slice(0, 3) : [];
-
-    if (gapQueries.length > 0) {
-      console.log(`  Gap detection found ${gapQueries.length} missing angles: ${gapQueries.join(' | ')}`);
-      const gapSettled = await Promise.allSettled(gapQueries.map(q => tavily.tavilySearch(q, searchOpts)));
-      for (let i = 0; i < gapSettled.length; i++) {
-        if (gapSettled[i].status === 'fulfilled') {
-          searchResults.push(gapSettled[i].value);
-          SEARCH_QUERIES.push(gapQueries[i]);
-        }
-      }
-      console.log(`  Gap searches returned ${gapSettled.filter(r => r.status === 'fulfilled').length} result sets.`);
-    } else {
-      console.log('  Gap detection: existing coverage is comprehensive.');
-    }
-  } catch (err) {
-    console.warn(`Gap detection failed (${err.message}) — continuing with standard queries.`);
-  }
-
   // ── Deduplicate search results across queries by URL ────────────────────
   const seenUrls = new Set();
   for (const sr of searchResults) {
@@ -207,71 +161,10 @@ async function main() {
   const searchDomains = extractSearchDomains(searchResults);
   console.log(`  Evidence registry: ${searchDomains.size} unique domains from search results.`);
 
-  const gapQueryCount = SEARCH_QUERIES.length - 12;
-  manifest.phases.search = { queries: SEARCH_QUERIES.length, gapQueries: gapQueryCount, uniqueResults: dedupedCount, tierDropped, status: 'ok', evidenceDomains: searchDomains.size };
+  manifest.phases.search = { queries: SEARCH_QUERIES.length, uniqueResults: dedupedCount, tierDropped, status: 'ok', evidenceDomains: searchDomains.size };
 
-  // ── Summarize search context ────────────────────────────────────────────
-  console.log('Extracting key facts from search results…');
-  let searchSummary = searchContext;
-  try {
-    const summaryRaw = await callGPT(
-      `You are a news summarizer. Extract the key facts from these search results into a concise bullet-point summary. Group by topic. Include dates, numbers, source names, and attribution. Max 3000 chars. Do NOT add commentary or analysis — only extract facts. Return a JSON object: { "summary": "..." }`,
-      searchContext,
-      true
-    );
-    const parsed = JSON.parse(summaryRaw);
-    if (parsed.summary && parsed.summary.length > 100) {
-      searchSummary = parsed.summary;
-      console.log(`  Search summary: ${(searchSummary.length / 1024).toFixed(1)}KB (down from ${(searchContext.length / 1024).toFixed(1)}KB)`);
-    }
-  } catch (err) {
-    console.warn(`Search summarization failed (${err.message}) — using full context.`);
-  }
-
-  // ── Significance assessment (auto mode only) ─────────────────────────────
-
-  const todayMatchEarly = current24h.match(TODAY_TIMELINE_RE);
-  const existingTodayItemsEarly = todayMatchEarly ? todayMatchEarly[1].trim() : '';
-  const YESTERDAY_TIMELINE_RE =
-    /<!-- ── YESTERDAY ── -->[\s\S]*?<div class="timeline"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/;
-  const yesterdayMatch = current24h.match(YESTERDAY_TIMELINE_RE);
-  const existingYesterdayItems = yesterdayMatch ? yesterdayMatch[1].trim().slice(0, 3000) : '';
-  const recentManifest = readManifest(MANIFEST_PATH);
-  const recentStructural = recentManifest.updates
-    .filter(u => u.effectiveType === 'structural')
-    .slice(-3)
-    .map(u => `${u.timestamp}: ${u.phases?.significance?.reason || 'manual structural'}`)
-    .join('\n');
-  const pageContext =
-    `Ticker headlines:\n${(currentData.ticker || []).slice(0, PAGE_CONTEXT_TICKER_LIMIT).join('\n')}\n\n` +
-    `Today's timeline items:\n${existingTodayItemsEarly}\n\n` +
-    `Yesterday's timeline items (truncated):\n${existingYesterdayItems}\n\n` +
-    (recentStructural ? `Recent structural updates:\n${recentStructural}` : '');
-
-  if (UPDATE_TYPE_INPUT === 'auto') {
-    // ── Cooldown: skip structural promotion if one happened in the last 24h ──
-    const STRUCTURAL_COOLDOWN_MS = 24 * 60 * 60 * 1000;
-    const lastStructural = recentManifest.updates
-      .filter(u => u.effectiveType === 'structural')
-      .slice(-1)[0];
-    const cooldownActive = lastStructural &&
-      (Date.now() - new Date(lastStructural.timestamp).getTime()) < STRUCTURAL_COOLDOWN_MS;
-
-    if (cooldownActive) {
-      console.log(`  → Cooldown active (last structural: ${lastStructural.timestamp}) — forcing ROUTINE.`);
-      manifest.phases.significance = { structural: false, reason: 'cooldown: structural <24h ago', status: 'cooldown' };
-    } else {
-      const assessment = await assessSignificance(searchContext, pageContext, { callGPT });
-      manifest.phases.significance = { ...assessment, status: 'ok' };
-      if (assessment.structural) {
-        effectiveType = 'structural';
-        console.log(`  ⚡ Promoted to STRUCTURAL: ${assessment.reason}`);
-      } else {
-        console.log(`  → Staying ROUTINE: ${assessment.reason}`);
-      }
-    }
-    manifest.effectiveType = effectiveType;
-  }
+  // Use search context directly for downstream updates.
+  const searchSummary = searchContext;
 
   // ── 3. Update data.json ─────────────────────────────────────────────────
 

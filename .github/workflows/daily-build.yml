@@ -1,11 +1,9 @@
 name: Periodic Build & Deploy
 
-# Runs at 7 AM and 5 PM ET (twice daily) to balance freshness with API
-# credit usage.  Cron uses UTC: 11:05 and 21:05 (EDT; shift to 12:05/22:05
-# when EST resumes in November).  Can also be triggered manually.
+# Runs once daily at 11:05 UTC (7 AM ET).  Can also be triggered manually.
 on:
   schedule:
-    - cron: '5 11,21 * * *'
+    - cron: '5 11 * * *'
   workflow_dispatch:
     inputs:
       update_type:
