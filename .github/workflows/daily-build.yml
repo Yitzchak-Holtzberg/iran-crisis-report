@@ -55,14 +55,14 @@ jobs:
       - name: Update date in data.json
         run: node scripts/update-date.js
 
-      # Pull the latest news with Tavily and update data.json + last-24h.html
+      # Pull the latest news with Brave Search and update data.json + last-24h.html
       # via GPT-5-mini.  Uses continue-on-error so a quota or network issue
       # never blocks the date-refresh and rebuild from completing.
-      - name: AI content update (Tavily + GPT-5-mini)
+      - name: AI content update (Brave Search + GPT-5-mini)
         id: ai_update
         continue-on-error: true
         env:
-          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UPDATE_TYPE: ${{ github.event.inputs.update_type || 'auto' }}
         run: node scripts/ai-update.js

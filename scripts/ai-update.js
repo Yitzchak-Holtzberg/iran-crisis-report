@@ -51,7 +51,7 @@ const TODAY_TIMELINE_RE =
 
 // ── Environment ──────────────────────────────────────────────────────────────
 
-const TAVILY_KEY  = process.env.TAVILY_API_KEY;
+const TAVILY_KEY  = process.env.BRAVE_API_KEY;
 const OPENAI_KEY  = process.env.OPENAI_API_KEY;
 const UPDATE_TYPE_INPUT = (process.env.UPDATE_TYPE || 'auto').toLowerCase();
 const ROUTINE_MODEL     = process.env.OPENAI_ROUTINE_MODEL    || 'gpt-5-mini';
@@ -63,7 +63,7 @@ if (!['auto', 'routine', 'structural'].includes(UPDATE_TYPE_INPUT)) {
 }
 
 if (!TAVILY_KEY || !OPENAI_KEY) {
-  console.error('Error: TAVILY_API_KEY and OPENAI_API_KEY environment variables must be set.');
+  console.error('Error: BRAVE_API_KEY and OPENAI_API_KEY environment variables must be set.');
   process.exit(1);
 }
 
