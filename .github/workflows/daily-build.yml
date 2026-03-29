@@ -1,11 +1,9 @@
 name: Periodic Build & Deploy
 
-# Runs at 7 AM and 5 PM ET (twice daily) to balance freshness with API
-# credit usage.  Cron uses UTC: 11:05 and 21:05 (EDT; shift to 12:05/22:05
-# when EST resumes in November).  Can also be triggered manually.
+# Runs once daily at 11:05 UTC (7 AM ET).  Can also be triggered manually.
 on:
   schedule:
-    - cron: '5 11,21 * * *'
+    - cron: '5 11 * * *'
   workflow_dispatch:
     inputs:
       update_type:
@@ -57,14 +55,14 @@ jobs:
       - name: Update date in data.json
         run: node scripts/update-date.js
 
-      # Pull the latest news with Tavily and update data.json + last-24h.html
+      # Pull the latest news with Brave Search and update data.json + last-24h.html
       # via GPT-5-mini.  Uses continue-on-error so a quota or network issue
       # never blocks the date-refresh and rebuild from completing.
-      - name: AI content update (Tavily + GPT-5-mini)
+      - name: AI content update (Brave Search + GPT-5-mini)
         id: ai_update
         continue-on-error: true
         env:
-          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UPDATE_TYPE: ${{ github.event.inputs.update_type || 'auto' }}
         run: node scripts/ai-update.js

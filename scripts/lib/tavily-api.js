@@ -1,70 +1,120 @@
 'use strict';
 
 /**
- * Tavily API wrappers (search + extract).
- * Requires TAVILY_KEY to be passed via init().
+ * Brave Web Search wrappers — drop-in replacement for the Tavily client.
+ * Exports the same { init, tavilySearch, tavilyExtract } interface so all
+ * callers are unchanged.
+ *
+ * Free tier: 2,000 requests/month (routine runs use ~8/day ≈ 240/month).
+ * Docs: https://api.search.brave.com/app/documentation/web-search
  */
 
-let TAVILY_KEY;
+let BRAVE_KEY;
 
 function init(key) {
-  TAVILY_KEY = key;
+  BRAVE_KEY = key;
 }
 
 /**
- * Run a single Tavily search and return the result object.
+ * Run a Brave Web Search and return a Tavily-compatible result object.
+ *
+ * Supported opts:
+ *   time_range     'day' | 'week' | 'month'  → Brave freshness pd/pw/pm
+ *   max_results    number (default 5)
+ *   include_domains string[]  → appended as site: operators in the query
+ *   search_depth   ignored (no Brave equivalent)
+ *   topic          ignored
  */
 async function tavilySearch(query, opts = {}) {
-  const res = await fetch('https://api.tavily.com/search', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      api_key: TAVILY_KEY,
-      query,
-      topic: opts.topic || 'news',
-      time_range: opts.time_range || 'day',
-      search_depth: opts.search_depth || 'basic',
-      max_results: opts.max_results || 5,
-      include_answer: true,
-      include_domains: opts.include_domains || [],
-      exclude_domains: opts.exclude_domains || [],
-    }),
+  // Map include_domains → site: operators (deep-research passes one domain per call)
+  const domains = opts.include_domains || [];
+  const siteFilter = domains.length
+    ? domains.map(d => `site:${d}`).join(' OR ')
+    : '';
+  const fullQuery = siteFilter ? `${query} (${siteFilter})` : query;
+
+  // Map time_range → Brave freshness parameter
+  const freshnessMap = { day: 'pd', week: 'pw', month: 'pm' };
+  const freshness = freshnessMap[opts.time_range] || 'pd';
+
+  const count = opts.max_results || 5;
+
+  const params = new URLSearchParams({
+    q:       fullQuery,
+    count:   String(Math.min(count, 20)),
+    freshness,
   });
+
+  // Use the dedicated news endpoint for general queries — it returns focused,
+  // up-to-the-hour news articles in a flat `results` array.
+  // Fall back to the web endpoint for domain-specific deep-research queries
+  // (include_domains), where broader web coverage matters more.
+  const useNewsEndpoint = domains.length === 0;
+  const endpoint = useNewsEndpoint
+    ? `https://api.search.brave.com/res/v1/news/search?${params}`
+    : `https://api.search.brave.com/res/v1/web/search?${params}&result_filter=web`;
+
+  const res = await fetch(endpoint, {
+    headers: {
+      'Accept':               'application/json',
+      'Accept-Encoding':      'gzip',
+      'X-Subscription-Token': BRAVE_KEY,
+    },
+  });
+
   if (!res.ok) {
-    throw new Error(`Tavily error ${res.status} for query "${query}": ${await res.text()}`);
+    throw new Error(`Brave Search error ${res.status} for query "${query}": ${await res.text()}`);
   }
-  return res.json();
+
+  const data = await res.json();
+
+  // Normalise to Tavily-compatible { url, title, content, score } shape.
+  // News endpoint → flat `data.results`; web endpoint → `data.web.results`.
+  const raw = useNewsEndpoint ? (data.results || []) : (data.web?.results || []);
+  const results = raw.map(r => ({
+    url:     r.url,
+    title:   r.title || '',
+    content: r.description || '',
+    score:   1.0,
+  }));
+
+  return {
+    results: results.slice(0, count),
+    answer:  '',   // Tavily synthesises an AI answer; Brave does not
+  };
 }
 
 /**
- * Use Tavily Extract to pull article content from URLs.
- * @param {string[]} urls - Up to 20 URLs to extract
- * @param {object} [opts]
- * @param {string} [opts.query] - Rerank extracted chunks by relevance to this query
- * @param {number} [opts.chunks_per_source] - 1-5, return only top chunks (max 500 chars each)
- * @param {'basic'|'advanced'} [opts.extract_depth] - 'advanced' for complex layouts (costs more)
+ * Extract full article text from URLs (used in structural deep-research mode only).
+ * Brave has no extract API — fetches pages directly instead.
+ * Returns an empty array on total failure; callers already handle this gracefully
+ * with "falling back to search snippets only".
  */
 async function tavilyExtract(urls, opts = {}) {
   if (!urls.length) return [];
-  const body = {
-    api_key: TAVILY_KEY,
-    urls: urls.slice(0, 20),
-  };
-  if (opts.extract_depth) body.extract_depth = opts.extract_depth;
-  if (opts.query) {
-    body.query = opts.query;
-    body.chunks_per_source = opts.chunks_per_source || 3;
-  }
-  const res = await fetch('https://api.tavily.com/extract', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    throw new Error(`Tavily Extract error ${res.status}: ${await res.text()}`);
-  }
-  const data = await res.json();
-  return data.results || [];
+
+  const results = await Promise.allSettled(
+    urls.slice(0, 10).map(async url => {
+      const res = await fetch(url, {
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; NewsBot/1.0)' },
+        signal: AbortSignal.timeout(10_000),
+      });
+      if (!res.ok) return null;
+      const html = await res.text();
+      const text = html
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[\s\S]*?<\/style>/gi, '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, 5000);
+      return text.length > 100 ? { url, raw_content: text } : null;
+    })
+  );
+
+  return results
+    .filter(r => r.status === 'fulfilled' && r.value !== null)
+    .map(r => r.value);
 }
 
 module.exports = { init, tavilySearch, tavilyExtract };
