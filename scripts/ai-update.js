@@ -83,6 +83,7 @@ const SEARCH_QUERIES = [
   'Strait of Hormuz Red Sea shipping oil tanker disruption',
   'Iran economy sanctions oil price energy market rial crisis',
   'Iran war regional reactions Saudi China Russia Turkey diplomacy',
+  'Iran war battle damage assessment CENTCOM equipment losses aircraft vessels destroyed',
 ];
 
 // ── Main ──────────────────────────────────────────────────────────────────────
