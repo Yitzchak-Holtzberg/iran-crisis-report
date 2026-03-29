@@ -10,13 +10,13 @@
  *   structural — major events: all routine updates PLUS section-level HTML changes
  *
  * Required environment variables:
- *   TAVILY_API_KEY   — https://tavily.com
- *   OPENAI_API_KEY   — https://platform.openai.com
+ *   BRAVE_API_KEY      — https://api.search.brave.com (free tier: 2000 req/month)
+ *   ANTHROPIC_API_KEY  — https://console.anthropic.com
  *
  * Optional environment variables:
- *   UPDATE_TYPE              — "auto" (default), "routine", or "structural"
- *   OPENAI_ROUTINE_MODEL     — model for routine updates (default: "gpt-5-mini")
- *   OPENAI_STRUCTURAL_MODEL  — model for structural updates (default: "gpt-5")
+ *   UPDATE_TYPE           — "auto" (default), "routine", or "structural"
+ *   AI_ROUTINE_MODEL      — model for routine updates (default: "claude-haiku-4-5-20251001")
+ *   AI_STRUCTURAL_MODEL   — model for structural updates (default: "claude-haiku-4-5-20251001")
  */
 
 'use strict';
@@ -51,25 +51,25 @@ const TODAY_TIMELINE_RE =
 
 // ── Environment ──────────────────────────────────────────────────────────────
 
-const TAVILY_KEY  = process.env.TAVILY_API_KEY;
-const OPENAI_KEY  = process.env.OPENAI_API_KEY;
+const BRAVE_KEY     = process.env.BRAVE_API_KEY;
+const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY;
 const UPDATE_TYPE_INPUT = (process.env.UPDATE_TYPE || 'auto').toLowerCase();
-const ROUTINE_MODEL     = process.env.OPENAI_ROUTINE_MODEL    || 'gpt-5-mini';
-const STRUCTURAL_MODEL  = process.env.OPENAI_STRUCTURAL_MODEL || 'gpt-5-mini';
+const ROUTINE_MODEL     = process.env.AI_ROUTINE_MODEL     || 'claude-haiku-4-5-20251001';
+const STRUCTURAL_MODEL  = process.env.AI_STRUCTURAL_MODEL  || 'claude-haiku-4-5-20251001';
 
 if (!['auto', 'routine', 'structural'].includes(UPDATE_TYPE_INPUT)) {
   console.error(`Error: UPDATE_TYPE must be "auto", "routine" or "structural" (got "${UPDATE_TYPE_INPUT}").`);
   process.exit(1);
 }
 
-if (!TAVILY_KEY || !OPENAI_KEY) {
-  console.error('Error: TAVILY_API_KEY and OPENAI_API_KEY environment variables must be set.');
+if (!BRAVE_KEY || !ANTHROPIC_KEY) {
+  console.error('Error: BRAVE_API_KEY and ANTHROPIC_API_KEY environment variables must be set.');
   process.exit(1);
 }
 
 // Initialise library modules with credentials.
-tavily.init(TAVILY_KEY);
-openai.init(OPENAI_KEY, GPT_LOG_PATH);
+tavily.init(BRAVE_KEY);
+openai.init(ANTHROPIC_KEY, GPT_LOG_PATH);
 
 // ── Search queries ───────────────────────────────────────────────────────────
 // 8 focused queries covering all dashboard sections with minimal overlap.
