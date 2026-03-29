@@ -40,13 +40,21 @@ async function tavilySearch(query, opts = {}) {
   const count = opts.max_results || 5;
 
   const params = new URLSearchParams({
-    q:             fullQuery,
-    count:         String(Math.min(count, 20)),
+    q:       fullQuery,
+    count:   String(Math.min(count, 20)),
     freshness,
-    result_filter: 'web,news',
   });
 
-  const res = await fetch(`https://api.search.brave.com/res/v1/web/search?${params}`, {
+  // Use the dedicated news endpoint for general queries — it returns focused,
+  // up-to-the-hour news articles in a flat `results` array.
+  // Fall back to the web endpoint for domain-specific deep-research queries
+  // (include_domains), where broader web coverage matters more.
+  const useNewsEndpoint = domains.length === 0;
+  const endpoint = useNewsEndpoint
+    ? `https://api.search.brave.com/res/v1/news/search?${params}`
+    : `https://api.search.brave.com/res/v1/web/search?${params}&result_filter=web`;
+
+  const res = await fetch(endpoint, {
     headers: {
       'Accept':               'application/json',
       'Accept-Encoding':      'gzip',
@@ -61,26 +69,17 @@ async function tavilySearch(query, opts = {}) {
   const data = await res.json();
 
   // Normalise to Tavily-compatible { url, title, content, score } shape.
-  const normalize = r => ({
+  // News endpoint → flat `data.results`; web endpoint → `data.web.results`.
+  const raw = useNewsEndpoint ? (data.results || []) : (data.web?.results || []);
+  const results = raw.map(r => ({
     url:     r.url,
     title:   r.title || '',
     content: r.description || '',
     score:   1.0,
-  });
-
-  const newsResults = (data.news?.results || []).map(normalize);
-  const webResults  = (data.web?.results  || []).map(normalize);
-
-  // Merge news first (more timely), deduplicate by URL.
-  const seen = new Set();
-  const combined = [...newsResults, ...webResults].filter(r => {
-    if (!r.url || seen.has(r.url)) return false;
-    seen.add(r.url);
-    return true;
-  });
+  }));
 
   return {
-    results: combined.slice(0, count),
+    results: results.slice(0, count),
     answer:  '',   // Tavily synthesises an AI answer; Brave does not
   };
 }
