@@ -2,16 +2,51 @@ document.addEventListener('DOMContentLoaded', function(){
   var mapEl = document.getElementById('theater-map');
   if (!mapEl) return;
 
+  // ── Consolidated map configuration ──
+  var MAP_CONFIG = {
+    container: 'theater-map',
+    center: [46, 30],
+    zoom: 3.5,
+    clusterRadius: 50,
+    clusterMaxZoom: 7
+  };
+
+  // ── Consolidated category registry ──
+  var CATEGORIES = {
+    'us-carrier':          { display: 'Carriers',             color: '#4a90d9', icon: 'icon-us-carrier' },
+    'french-carrier':      { display: 'Carriers',             color: '#4a90d9', icon: 'icon-french-carrier' },
+    'us-destroyer':        { display: 'Destroyers',           color: '#4a90d9', icon: 'icon-us-destroyer' },
+    'us-lcs':              { display: 'LCS',                  color: '#4a90d9', icon: 'icon-us-lcs' },
+    'us-submarine':        { display: 'Submarines',           color: '#4a90d9', icon: 'icon-us-submarine' },
+    'air-base':            { display: 'Air Bases',            color: '#00d4ff', icon: 'icon-air-base' },
+    'nuclear-site':        { display: 'Nuclear Sites',        color: '#ff8c42', icon: 'icon-nuclear-site' },
+    'irgc-target':         { display: 'IRGC Targets',         color: '#ff8c42', icon: 'icon-irgc-target' },
+    'strike-confirmed':    { display: 'Confirmed Strikes',    color: '#ff3b3b', icon: 'icon-strike-confirmed' },
+    'strike-unconfirmed':  { display: 'Unconfirmed Strikes',  color: '#ff3b3b', icon: 'icon-strike-unconfirmed' },
+    'iranian-city':        { display: 'Protests',             color: '#e84040', icon: 'icon-iranian-city' },
+    'deploying':           { display: 'Deploying',            color: '#aaa',    icon: 'icon-deploying' },
+    'blocked':             { display: 'Blocked',              color: '#aaa',    icon: 'icon-blocked' },
+    'diplomatic':          { display: 'Diplomatic',           color: '#aaa',    icon: 'icon-diplomatic' },
+    'country-marker':      { display: 'Locations',            color: '#aaa',    icon: 'icon-country-marker' },
+    'israeli-forces':      { display: 'Israeli Forces',       color: '#aaa',    icon: 'icon-israeli-forces' },
+    'saudi-forces':        { display: 'Saudi Forces',         color: '#aaa',    icon: 'icon-saudi-forces' },
+    'spinup':              { display: 'Spinup',               color: '#aaa',    icon: 'icon-spinup' },
+    'radius-circle':       { display: 'Radius',               color: '#aaa',    icon: null },
+    'missile-corridor':    { display: 'Missile Corridor',     color: '#ff5555', icon: null },
+    'strike-corridor':     { display: 'Strike Corridor',      color: '#ff5555', icon: null },
+    'transit-route':       { display: 'Transit Route',        color: '#ff5555', icon: null }
+  };
+
   var MAPTILER_KEY = '49tXbjeDRcPMglh4nc1s';
   var DARK_STYLE  = 'https://api.maptiler.com/maps/hybrid/style.json?key=' + MAPTILER_KEY;
   var LIGHT_STYLE = 'https://api.maptiler.com/maps/streets/style.json?key=' + MAPTILER_KEY;
   var isLight = document.documentElement.getAttribute('data-theme') === 'light';
 
   var map = new maplibregl.Map({
-    container: 'theater-map',
+    container: MAP_CONFIG.container,
     style: isLight ? LIGHT_STYLE : DARK_STYLE,
-    center: [46, 30],
-    zoom: 3.5,
+    center: MAP_CONFIG.center,
+    zoom: MAP_CONFIG.zoom,
     attributionControl: false,
     scrollZoom: false
   });
@@ -80,9 +115,6 @@ document.addEventListener('DOMContentLoaded', function(){
     {id:'other',   label:'Other',         color:'#aaa',    cats:['deploying','blocked','diplomatic','country-marker','israeli-forces','saudi-forces','radius-circle','spinup']}
   ];
 
-  // ── Default map center/zoom for reset button ──
-  var DEFAULT_CENTER = [46, 30];
-  var DEFAULT_ZOOM = 3.5;
 
   // ── Icon SVG templates (rendered to ImageData for MapLibre) ──
   function createIcon(svg, size) {
@@ -123,13 +155,10 @@ document.addEventListener('DOMContentLoaded', function(){
   };
 
 
-  // ── Category to icon mapping ──
-  var CAT_ICON = {};
-  Object.keys(ICONS).forEach(function(k){ CAT_ICON[k] = 'icon-' + k; });
-
-  // ── Color map (derived from LAYER_GROUPS) ──
-  var CAT_COLORS = {};
-  LAYER_GROUPS.forEach(function(g){ g.cats.forEach(function(c){ CAT_COLORS[c] = g.color; }); });
+  // ── Helper accessors for consolidated CATEGORIES registry ──
+  function catIcon(cat)    { var c = CATEGORIES[cat]; return c ? c.icon : null; }
+  function catColor(cat)   { var c = CATEGORIES[cat]; return c ? c.color : '#888'; }
+  function catDisplay(cat) { var c = CATEGORIES[cat]; return c ? c.display : cat; }
 
   // ── Caches to avoid re-fetching/re-rendering on theme toggle ──
   var _cachedMarkers = null;
@@ -201,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function(){
       });
 
       var layersToRemove = ['clusters','cluster-count','corridors-line','strike-glow','strike-dot','strike-labels','strike-heatmap'];
-      Object.keys(CAT_COLORS).forEach(function(cat){ layersToRemove.push('cat-'+cat); });
+      Object.keys(CATEGORIES).forEach(function(cat){ layersToRemove.push('cat-'+cat); });
       for (var ri = 0; ri < 20; ri++) {
         layersToRemove.push('radius-fill-'+ri, 'radius-fill-'+ri+'-stroke');
       }
@@ -213,8 +242,8 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'geojson',
         data: points,
         cluster: true,
-        clusterRadius: 50,
-        clusterMaxZoom: 7
+        clusterRadius: MAP_CONFIG.clusterRadius,
+        clusterMaxZoom: MAP_CONFIG.clusterMaxZoom
       });
 
       map.addSource('corridors', {
@@ -252,17 +281,17 @@ document.addEventListener('DOMContentLoaded', function(){
       });
 
       // ── Individual marker layers (symbol layers with icons) ──
-      Object.keys(CAT_COLORS).forEach(function(cat){
+      Object.keys(CATEGORIES).forEach(function(cat){
         if (cat === 'radius-circle') return;
         var layerId = 'cat-' + cat;
-        if (CAT_ICON[cat]) {
+        if (catIcon(cat)) {
           map.addLayer({
             id: layerId,
             type: 'symbol',
             source: 'markers',
             filter: ['all', ['!', ['has', 'point_count']], ['==', ['get','category'], cat]],
             layout: {
-              'icon-image': CAT_ICON[cat],
+              'icon-image': catIcon(cat),
               'icon-size': ['interpolate',['linear'],['zoom'], 3,0.6, 5,0.8, 7,1.0, 9,1.3],
               'icon-allow-overlap': true,
               'icon-ignore-placement': true,
@@ -277,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function(){
               'text-line-height': 1.2
             },
             paint: {
-              'text-color': isLight ? '#1a1a2e' : (CAT_COLORS[cat] || '#ccc'),
+              'text-color': isLight ? '#1a1a2e' : catColor(cat),
               'text-halo-color': isLight ? 'rgba(255,255,255,0.95)' : 'rgba(10,10,15,0.92)',
               'text-halo-width': 2.5
             }
@@ -289,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function(){
             source: 'markers',
             filter: ['all', ['!', ['has', 'point_count']], ['==', ['get','category'], cat]],
             paint: {
-              'circle-color': CAT_COLORS[cat] || '#888',
+              'circle-color': catColor(cat),
               'circle-radius': 6,
               'circle-stroke-width': 2,
               'circle-stroke-color': 'rgba(255,255,255,0.5)',
@@ -432,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     // Category marker layers + strike dots
-    Object.keys(CAT_COLORS).forEach(function(cat){
+    Object.keys(CATEGORIES).forEach(function(cat){
       if (cat !== 'radius-circle') addPointEvents('cat-' + cat);
     });
     addPointEvents('strike-dot');
@@ -467,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function(){
         if (err || !leaves) return;
         var counts = {};
         leaves.forEach(function(f) {
-          var name = CAT_DISPLAY[f.properties.category] || f.properties.category;
+          var name = catDisplay(f.properties.category);
           counts[name] = (counts[name] || 0) + 1;
         });
         var lines = Object.keys(counts).map(function(k) { return '<b>' + counts[k] + '</b> ' + k; });
@@ -503,16 +532,6 @@ document.addEventListener('DOMContentLoaded', function(){
     pulseRaf = requestAnimationFrame(tick);
   }
 
-  // ── Category display names for stats + popups ──
-  var CAT_DISPLAY = {
-    'us-carrier':'Carriers','french-carrier':'Carriers','us-destroyer':'Destroyers',
-    'us-lcs':'LCS','us-submarine':'Submarines','air-base':'Air Bases',
-    'nuclear-site':'Nuclear Sites','irgc-target':'IRGC Targets',
-    'strike-confirmed':'Confirmed Strikes','strike-unconfirmed':'Unconfirmed Strikes',
-    'iranian-city':'Protests','deploying':'Deploying','blocked':'Blocked',
-    'diplomatic':'Diplomatic','country-marker':'Locations',
-    'israeli-forces':'Israeli Forces','saudi-forces':'Saudi Forces','spinup':'Spinup'
-  };
 
   // ── Stats bar: live counts per layer group ──
   function updateStats() {
@@ -570,7 +589,7 @@ document.addEventListener('DOMContentLoaded', function(){
     resetBtn.style.setProperty('--toggle-color', '#666');
     resetBtn.style.borderStyle = 'dashed';
     resetBtn.addEventListener('click', function(){
-      map.flyTo({center: DEFAULT_CENTER, zoom: DEFAULT_ZOOM, speed: 0.8, curve: 1.2});
+      map.flyTo({center: MAP_CONFIG.center, zoom: MAP_CONFIG.zoom, speed: 0.8, curve: 1.2});
     });
     container.appendChild(resetBtn);
 
@@ -707,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }).slice(0, 8);
       if (matches.length === 0) { results.innerHTML = '<div class="map-search-item map-search-empty">No results</div>'; results.style.display = 'block'; return; }
       results.innerHTML = matches.map(function(m, i) {
-        var dotColor = CAT_COLORS[m.category] || CAT_COLORS[m.category] || '#888';
+        var dotColor = catColor(m.category);
         return '<div class="map-search-item" data-idx="'+i+'"><span class="dot" style="background:'+dotColor+'"></span>'+escapeHtml(m.label)+'</div>';
       }).join('');
       results.style.display = 'block';
@@ -751,8 +770,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ── Better popup content: wrap with category badge ──
   function formatPopup(category, content) {
-    var accentColor = CAT_COLORS[category] || CAT_COLORS[category] || '#888';
-    var displayName = CAT_DISPLAY[category] || category || '';
+    var accentColor = catColor(category);
+    var displayName = catDisplay(category);
     var badge = displayName ? '<span class="map-popup-badge" style="background:'+accentColor+'">'+escapeHtml(displayName)+'</span>' : '';
     return '<div class="map-popup-card">' + badge + '<div style="border-left:3px solid '+accentColor+';padding-left:10px;">'+content+'</div></div>';
   }

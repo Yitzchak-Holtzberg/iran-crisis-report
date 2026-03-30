@@ -72,14 +72,11 @@ jobs:
         run: npm run build
 
       # Fix #7: Validate build output before deployment.
+      # build.js exits with code 1 on errors (unbalanced AI zones, unbalanced
+      # HTML tags, broken nav links, duplicate IDs, schema failures).
       - name: Validate build output
         run: |
-          node build.js 2>&1 | tee /tmp/build-output.txt
-          # Fail on critical issues: unresolved placeholders, unbalanced zones, or unbalanced HTML tags.
-          if grep -qE 'unresolved placeholders|Unbalanced AI zone|Unbalanced HTML tags' /tmp/build-output.txt; then
-            echo "::error::Build validation failed — blocking deployment"
-            exit 1
-          fi
+          node build.js
           # Verify all 11 output files exist and are non-empty.
           for f in index.html diplomatic.html scenarios.html forces.html iran-military.html inside-iran.html reactions.html analysis.html opposition.html background.html sources.html; do
             if [ ! -s "$f" ]; then

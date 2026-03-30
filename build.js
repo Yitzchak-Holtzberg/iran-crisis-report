@@ -24,7 +24,7 @@ const BASE_DIR = __dirname;
 // Configure Nunjucks — project root as template base, no autoescape (raw HTML).
 nunjucks.configure(BASE_DIR, {
   autoescape: false,
-  throwOnUndefined: false,
+  throwOnUndefined: true,
   noCache: true,
 });
 
@@ -86,12 +86,7 @@ function validateDataJson(data, schema) {
   return warnings;
 }
 
-const dataWarnings = validateDataJson(DATA, SCHEMA);
-if (dataWarnings.length > 0) {
-  process.stderr.write('\ndata.json Validation:\n');
-  dataWarnings.forEach(w => process.stderr.write(`  ⚠ ${w}\n`));
-  process.stderr.write('\n');
-}
+const dataErrors = validateDataJson(DATA, SCHEMA);
 
 // Derive day-label helpers from the "date" field.
 (function injectDayLabels() {
@@ -318,6 +313,7 @@ function checkDuplicateIds(output) {
 // ===== BUILD PROCESS =====
 
 const INCREMENTAL = process.argv.includes('--incremental');
+const WARN_ONLY   = process.argv.includes('--warn-only');
 const BUILD_HASH_PATH = path.join(BASE_DIR, '.build-hashes.json');
 
 function computeHash(content) {
@@ -329,7 +325,8 @@ if (INCREMENTAL) {
   try { prevHashes = JSON.parse(fs.readFileSync(BUILD_HASH_PATH, 'utf8')); } catch { /* first run */ }
 }
 const newHashes = {};
-const allWarnings = [];
+const allErrors   = [];   // Block deployment
+const allWarnings = [];   // Informational only
 
 for (const build of BUILDS) {
   // Inject per-page meta into a copy of DATA, pre-resolving {{key}} references.
@@ -350,21 +347,19 @@ for (const build of BUILDS) {
   // because they intentionally have cross-file tag spans (e.g. sidebar-footer opens
   // <div class="container"> which sources-link.html closes).
   const INFRA = new Set([...HEADER, ...FOOTER, SIDEBAR]);
-  const buildWarnings = [];
   for (const file of build.sections) {
     const content = fs.readFileSync(path.join(BASE_DIR, file), 'utf8');
-    buildWarnings.push(...validateAIZones(content, file));
+    allErrors.push(...validateAIZones(content, file));          // ERROR
     if (!INFRA.has(file)) {
-      buildWarnings.push(...validateTagBalance(content, file));
+      allErrors.push(...validateTagBalance(content, file));     // ERROR
     }
-    buildWarnings.push(...checkFileSize(content, file));
-    buildWarnings.push(...validateProvenanceBuild(content, file));
+    allWarnings.push(...checkFileSize(content, file));          // WARNING
+    allWarnings.push(...validateProvenanceBuild(content, file)); // WARNING
   }
 
   // Run global validations.
-  buildWarnings.push(...validateNavigation(output));
-  buildWarnings.push(...checkDuplicateIds(output));
-  allWarnings.push(...buildWarnings);
+  allErrors.push(...validateNavigation(output));                // ERROR
+  allErrors.push(...checkDuplicateIds(output));                 // ERROR
 
   // Incremental: skip write if output hash matches previous build.
   const outputHash = computeHash(output);
@@ -382,12 +377,30 @@ if (INCREMENTAL) {
   fs.writeFileSync(BUILD_HASH_PATH, JSON.stringify(newHashes, null, 2));
 }
 
-if (allWarnings.length > 0) {
-  process.stderr.write('\nBuild Warnings:\n');
-  allWarnings.forEach(w => process.stderr.write(`  ⚠ ${w}\n`));
+// Combine schema errors with build errors.
+const combinedErrors = [...dataErrors, ...allErrors];
+
+// De-duplicate (same section may appear in multiple pages).
+const uniqueErrors   = [...new Set(combinedErrors)];
+const uniqueWarnings = [...new Set(allWarnings)];
+
+if (uniqueErrors.length > 0) {
+  process.stderr.write('\nBuild Errors:\n');
+  uniqueErrors.forEach(e => process.stderr.write(`  ✖ ${e}\n`));
   process.stderr.write('\n');
 }
 
-if (allWarnings.length === 0) {
+if (uniqueWarnings.length > 0) {
+  process.stderr.write('Build Warnings:\n');
+  uniqueWarnings.forEach(w => process.stderr.write(`  ⚠ ${w}\n`));
+  process.stderr.write('\n');
+}
+
+if (uniqueErrors.length > 0) {
+  process.stderr.write(`✖ Build failed with ${uniqueErrors.length} error(s)\n`);
+  if (!WARN_ONLY) {
+    process.exit(1);
+  }
+} else if (uniqueErrors.length === 0 && uniqueWarnings.length === 0) {
   console.log('✓ All validation checks passed');
 }

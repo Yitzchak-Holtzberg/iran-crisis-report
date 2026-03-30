@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="css/variables.css"/>
 <link rel="stylesheet" href="css/base.css"/>
 <link rel="stylesheet" href="css/components.css"/>
+<link rel="stylesheet" href="css/utilities.css"/>
 <link rel="stylesheet" href="css/sidebar.css"/>
 <link rel="stylesheet" href="css/responsive.css"/>
 <!-- Google tag (gtag.js) -->
@@ -643,7 +644,7 @@
 </div>
 
   </div>
-  <button class="tl-show-more" onclick="var tl=document.getElementById('tl-today');tl.classList.remove('collapsed');this.style.display='none';">&#9660; Show all today</button>
+  <button class="tl-show-more" data-expand="tl-today">&#9660; Show all today</button>
 
   <!-- ── YESTERDAY ── -->
   <div class="last24-day-header">
@@ -703,7 +704,7 @@
       <div class="content">The Wall Street Journal reported that <strong>China is buying nearly all of Iran&#8217;s crude oil exports</strong>, helping Tehran maintain revenue flows and skirt international sanctions despite the ongoing conflict. The report raises questions about the effectiveness of economic pressure on Iran and China&#8217;s tacit support for the regime. &#8212; Source: <a href="https://www.wsj.com/" style="color:var(--accent-cyan);" target="_blank" rel="noopener noreferrer">WSJ/OilPrice, Mar 18, 2026</a></div>
     </div>
   </div>
-  <button class="tl-show-more" onclick="var tl=document.getElementById('tl-yesterday');tl.classList.remove('collapsed');this.style.display='none';">&#9660; Show all yesterday</button>
+  <button class="tl-show-more" data-expand="tl-yesterday">&#9660; Show all yesterday</button>
 
 </div>
 

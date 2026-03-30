@@ -80,6 +80,30 @@ document.querySelectorAll('.sb-link').forEach(function(a) {
   });
 });
 
+// ===== TOGGLE BUTTONS (replaces inline onclick handlers) =====
+(function() {
+  // Timeline "show more" buttons: data-expand="timeline-id"
+  document.querySelectorAll('.tl-show-more[data-expand]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var tl = document.getElementById(btn.getAttribute('data-expand'));
+      if (tl) { tl.classList.remove('collapsed'); btn.style.display = 'none'; }
+    });
+  });
+
+  // Analysis collapsible sections: data-toggle-section
+  document.querySelectorAll('.analysis-toggle[data-toggle]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var detail = btn.previousElementSibling;
+      if (!detail) return;
+      detail.classList.toggle('collapsed');
+      var labels = (btn.getAttribute('data-toggle') || '').split('|');
+      btn.textContent = detail.classList.contains('collapsed')
+        ? '\u25BC ' + (labels[0] || 'Show')
+        : '\u25B2 ' + (labels[1] || 'Collapse');
+    });
+  });
+})();
+
 // ===== BACK TO TOP BUTTON =====
 (function() {
   var btn = document.getElementById('backToTop');

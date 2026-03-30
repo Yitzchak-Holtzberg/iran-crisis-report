@@ -1,0 +1,208 @@
+/* ============================================================
+   UTILITIES.CSS
+   Composable utility classes to replace inline styles
+   across section HTML files.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   TEXT COLORS
+   ------------------------------------------------------------ */
+.text-accent-red    { color: var(--accent-red); }
+.text-accent-orange { color: var(--accent-orange); }
+.text-accent-gold   { color: var(--accent-gold); }
+.text-accent-blue   { color: var(--accent-blue); }
+.text-accent-cyan   { color: var(--accent-cyan); }
+.text-accent-green  { color: var(--accent-green); }
+.text-accent-purple { color: var(--accent-purple); }
+.text-primary       { color: var(--text-primary); }
+.text-secondary     { color: var(--text-secondary); }
+.text-muted         { color: var(--text-muted); }
+
+/* ------------------------------------------------------------
+   TEXT SIZING + WEIGHT
+   ------------------------------------------------------------ */
+.text-xs       { font-size: 10px; }
+.text-sm       { font-size: 11px; }
+.text-md       { font-size: 12px; }
+.text-base     { font-size: 13px; }
+.text-lg       { font-size: 14px; }
+.text-xl       { font-size: 15px; }
+.text-2xl      { font-size: 16px; }
+.font-bold     { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-mono     { font-family: var(--font-mono); }
+.font-italic   { font-style: italic; }
+.uppercase     { text-transform: uppercase; }
+.tracking-wide   { letter-spacing: 1px; }
+.tracking-wider  { letter-spacing: 1.5px; }
+.tracking-widest { letter-spacing: 2px; }
+.leading-relaxed { line-height: 1.7; }
+.leading-loose   { line-height: 1.9; }
+.text-center     { text-align: center; }
+
+/* ------------------------------------------------------------
+   SPACING — Margins
+   ------------------------------------------------------------ */
+.mt-0  { margin-top: 0; }
+.mt-1  { margin-top: 4px; }
+.mt-2  { margin-top: 8px; }
+.mt-3  { margin-top: 10px; }
+.mt-4  { margin-top: 12px; }
+.mt-5  { margin-top: 14px; }
+.mt-6  { margin-top: 16px; }
+.mt-8  { margin-top: 20px; }
+.mt-10 { margin-top: 24px; }
+.mt-12 { margin-top: 40px; }
+.mb-0  { margin-bottom: 0; }
+.mb-1  { margin-bottom: 4px; }
+.mb-2  { margin-bottom: 8px; }
+.mb-3  { margin-bottom: 12px; }
+.mb-4  { margin-bottom: 16px; }
+.mb-5  { margin-bottom: 20px; }
+.mb-6  { margin-bottom: 24px; }
+.ml-4  { margin-left: 16px; }
+.ml-5  { margin-left: 20px; }
+.ml-auto { margin-left: auto; }
+.mx-0  { margin-left: 0; margin-right: 0; }
+.my-0  { margin-top: 0; margin-bottom: 0; }
+.my-3  { margin-top: 12px; margin-bottom: 12px; }
+.my-4  { margin-top: 16px; margin-bottom: 16px; }
+.my-6  { margin-top: 24px; margin-bottom: 24px; }
+
+/* ------------------------------------------------------------
+   SPACING — Padding
+   ------------------------------------------------------------ */
+.p-0  { padding: 0; }
+.p-4  { padding: 16px; }
+.p-5  { padding: 20px; }
+.px-5 { padding-left: 20px; padding-right: 20px; }
+.py-2 { padding-top: 8px; padding-bottom: 8px; }
+.pb-4 { padding-bottom: 16px; }
+.pl-4 { padding-left: 14px; }
+
+/* ------------------------------------------------------------
+   BORDER UTILITIES
+   ------------------------------------------------------------ */
+
+/* Border-left colored accents (callout-style quotes) */
+.bl-3-red    { border-left: 3px solid var(--accent-red); }
+.bl-3-orange { border-left: 3px solid var(--accent-orange); }
+.bl-3-gold   { border-left: 3px solid var(--accent-gold); }
+.bl-3-blue   { border-left: 3px solid var(--accent-blue); }
+.bl-3-cyan   { border-left: 3px solid var(--accent-cyan); }
+.bl-3-green  { border-left: 3px solid var(--accent-green); }
+
+.bl-4-red    { border-left: 4px solid var(--accent-red); }
+.bl-4-orange { border-left: 4px solid var(--accent-orange); }
+.bl-4-gold   { border-left: 4px solid var(--accent-gold); }
+.bl-4-blue   { border-left: 4px solid var(--accent-blue); }
+.bl-4-cyan   { border-left: 4px solid var(--accent-cyan); }
+.bl-4-green  { border-left: 4px solid var(--accent-green); }
+
+/* Border-top colored accents */
+.bt-2-red    { border-top: 2px solid var(--accent-red); }
+.bt-2-orange { border-top: 2px solid var(--accent-orange); }
+.bt-2-gold   { border-top: 2px solid var(--accent-gold); }
+.bt-2-blue   { border-top: 2px solid var(--accent-blue); }
+.bt-2-cyan   { border-top: 2px solid var(--accent-cyan); }
+.bt-2-green  { border-top: 2px solid var(--accent-green); }
+.bt-2-purple { border-top: 2px solid var(--accent-purple); }
+
+/* Border-color (for timeline dots etc) */
+.border-red    { border-color: var(--accent-red); }
+.border-orange { border-color: var(--accent-orange); }
+.border-gold   { border-color: var(--accent-gold); }
+.border-blue   { border-color: var(--accent-blue); }
+.border-cyan   { border-color: var(--accent-cyan); }
+.border-green  { border-color: var(--accent-green); }
+.border-muted  { border-color: var(--text-muted); }
+
+/* ------------------------------------------------------------
+   BACKGROUND UTILITIES (subtle fills for badges, labels, boxes)
+   ------------------------------------------------------------ */
+.bg-red-subtle    { background: rgba(255,59,59,0.15); }
+.bg-orange-subtle { background: rgba(255,140,66,0.15); }
+.bg-gold-subtle   { background: rgba(255,215,0,0.15); }
+.bg-blue-subtle   { background: rgba(74,144,217,0.15); }
+.bg-cyan-subtle   { background: rgba(0,212,255,0.15); }
+.bg-green-subtle  { background: rgba(0,200,83,0.15); }
+.bg-gray-subtle   { background: rgba(150,150,150,0.05); }
+
+.bg-red-medium    { background: rgba(255,59,59,0.2); }
+.bg-orange-medium { background: rgba(255,140,66,0.2); }
+.bg-gold-medium   { background: rgba(255,215,0,0.2); }
+.bg-blue-medium   { background: rgba(74,144,217,0.2); }
+
+/* ------------------------------------------------------------
+   ALERT BOXES (border-left + background + padding + radius combo)
+   ------------------------------------------------------------ */
+.alert-box        { padding: 12px 16px; border-radius: 0 6px 6px 0; border-left: 4px solid; }
+.alert-box-red    { border-color: var(--accent-red); background: rgba(255,59,59,0.05); }
+.alert-box-orange { border-color: var(--accent-orange); background: rgba(255,140,66,0.05); }
+.alert-box-gold   { border-color: var(--accent-gold); background: rgba(255,215,0,0.05); }
+.alert-box-blue   { border-color: var(--accent-blue); background: rgba(74,144,217,0.05); }
+.alert-box-cyan   { border-color: var(--accent-cyan); background: rgba(0,212,255,0.05); }
+.alert-box-green  { border-color: var(--accent-green); background: rgba(0,200,83,0.05); }
+.alert-box-gray   { border-color: #9898a8; background: rgba(152,152,168,0.05); }
+
+/* ------------------------------------------------------------
+   LABEL BADGES (mono font, small, uppercase, rounded)
+   ------------------------------------------------------------ */
+.label-badge        { border-radius: 4px; padding: 2px 8px; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 1px; }
+.label-badge-red    { background: rgba(255,59,59,0.15); color: var(--accent-red); }
+.label-badge-orange { background: rgba(255,140,66,0.15); color: var(--accent-orange); }
+.label-badge-gold   { background: rgba(255,215,0,0.15); color: var(--accent-gold); }
+.label-badge-blue   { background: rgba(74,144,217,0.15); color: var(--accent-blue); }
+.label-badge-cyan   { background: rgba(0,212,255,0.15); color: var(--accent-cyan); }
+.label-badge-green  { background: rgba(0,200,83,0.15); color: var(--accent-green); }
+.label-badge-gray   { background: rgba(152,152,168,0.15); color: #9898a8; }
+
+/* ------------------------------------------------------------
+   SUBHEADING / SECTION LABELS (mono, uppercase, letter-spaced)
+   ------------------------------------------------------------ */
+.section-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 12px; }
+
+/* ------------------------------------------------------------
+   FLEX LAYOUTS
+   ------------------------------------------------------------ */
+.flex        { display: flex; }
+.flex-wrap   { flex-wrap: wrap; }
+.flex-center { align-items: center; }
+.gap-2       { gap: 8px; }
+.gap-3       { gap: 12px; }
+.gap-4       { gap: 16px; }
+
+/* ------------------------------------------------------------
+   DISPLAY
+   ------------------------------------------------------------ */
+.hidden          { display: none; }
+.overflow-x-auto { overflow-x: auto; }
+.block           { display: block; }
+.inline-block    { display: inline-block; }
+
+/* ------------------------------------------------------------
+   FACTION COLORS (CSS custom property assignment for faction cards)
+   ------------------------------------------------------------ */
+.faction-blue   { --faction-color: var(--accent-blue); }
+.faction-cyan   { --faction-color: var(--accent-cyan); }
+.faction-orange { --faction-color: var(--accent-orange); }
+.faction-red    { --faction-color: var(--accent-red); }
+
+/* ------------------------------------------------------------
+   SPECIAL EFFECTS
+   ------------------------------------------------------------ */
+.glow-cyan { box-shadow: 0 0 8px rgba(0,212,255,0.5); }
+.glow-red  { box-shadow: 0 0 6px rgba(255,59,59,0.4); }
+
+/* ------------------------------------------------------------
+   HEADER BARS (absolute position gradient top bars)
+   ------------------------------------------------------------ */
+.header-bar           { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 12px 12px 0 0; }
+.header-bar-blue      { background: linear-gradient(90deg, #1e6aa2, #3f89c2); }
+.header-bar-blue-dark { background: linear-gradient(90deg, #2a6ab8, #4a8ad0); }
+
+/* ------------------------------------------------------------
+   BUTTON STYLES
+   ------------------------------------------------------------ */
+.btn-primary      { display: inline-block; padding: 8px 24px; background: var(--accent); color: #fff; border-radius: 4px; font-size: 13px; font-weight: 600; text-decoration: none; }
+.btn-outline-blue { display: inline-block; background: rgba(74,144,217,0.1); border: 1px solid rgba(74,144,217,0.3); border-radius: 8px; padding: 10px 20px; font-family: var(--font-mono); font-weight: 700; color: #4a90d9; font-size: 13px; }
