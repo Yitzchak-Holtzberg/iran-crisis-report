@@ -32,7 +32,7 @@ const openai                                      = require('./lib/openai-api');
 const { parseHumanDate, extractTlItems, rotateTimelineDays, spliceTimelineItems,
         pruneTimelineItems, filterHallucinations } = require('./lib/timeline');
 const { sanitizeMarkdown, updateZones }           = require('./lib/zones');
-const { readManifest, writeManifest, stampFreshness, diffSummary } = require('./lib/manifest');
+const { writeManifest, stampFreshness, diffSummary } = require('./lib/manifest');
 const { RESEARCH_SITES, deepResearch }            = require('./lib/deep-research');
 const { STRUCTURAL_FILES, updateStructural }      = require('./lib/structural-updates');
 const { callGPT, STRUCTURAL_GPT_TIMEOUT_MS } = openai;
