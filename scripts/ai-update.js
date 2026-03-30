@@ -10,7 +10,7 @@
  *   structural — major events: all routine updates PLUS section-level HTML changes
  *
  * Required environment variables:
- *   TAVILY_API_KEY   — https://tavily.com
+ *   BRAVE_API_KEY    — https://api.search.brave.com/app/keys
  *   OPENAI_API_KEY   — https://platform.openai.com
  *
  * Optional environment variables:
@@ -51,24 +51,24 @@ const TODAY_TIMELINE_RE =
 
 // ── Environment ──────────────────────────────────────────────────────────────
 
-const TAVILY_KEY  = process.env.BRAVE_API_KEY;
-const OPENAI_KEY  = process.env.OPENAI_API_KEY;
+const BRAVE_KEY         = process.env.BRAVE_API_KEY;
+const OPENAI_KEY        = process.env.OPENAI_API_KEY;
 const UPDATE_TYPE_INPUT = (process.env.UPDATE_TYPE || 'auto').toLowerCase();
 const ROUTINE_MODEL     = process.env.OPENAI_ROUTINE_MODEL    || 'gpt-5-mini';
-const STRUCTURAL_MODEL  = process.env.OPENAI_STRUCTURAL_MODEL || 'gpt-5-mini';
+const STRUCTURAL_MODEL  = process.env.OPENAI_STRUCTURAL_MODEL || 'gpt-5';
 
 if (!['auto', 'routine', 'structural'].includes(UPDATE_TYPE_INPUT)) {
   console.error(`Error: UPDATE_TYPE must be "auto", "routine" or "structural" (got "${UPDATE_TYPE_INPUT}").`);
   process.exit(1);
 }
 
-if (!TAVILY_KEY || !OPENAI_KEY) {
+if (!BRAVE_KEY || !OPENAI_KEY) {
   console.error('Error: BRAVE_API_KEY and OPENAI_API_KEY environment variables must be set.');
   process.exit(1);
 }
 
 // Initialise library modules with credentials.
-tavily.init(TAVILY_KEY);
+tavily.init(BRAVE_KEY);
 openai.init(OPENAI_KEY, GPT_LOG_PATH);
 
 // ── Search queries ───────────────────────────────────────────────────────────
@@ -124,7 +124,7 @@ async function main() {
     }
   }
   if (failedCount === SEARCH_QUERIES.length) {
-    console.error('FATAL: All Tavily search queries failed — aborting update. Check TAVILY_API_KEY and billing.');
+    console.error('FATAL: All Brave Search queries failed — aborting update. Check BRAVE_API_KEY and quota.');
     process.exit(1);
   }
   const searchResults = searchSettled.map(r => r.status === 'fulfilled' ? r.value : { results: [], answer: '(search failed)' });

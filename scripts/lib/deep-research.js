@@ -102,6 +102,8 @@ async function deepResearch(sites, label, deps) {
     )
   );
 
+  // Brave normalises all result scores to 1.0, so this threshold always passes.
+  // Kept so switching back to Tavily (which has real scores) doesn't break filtering.
   const MIN_RELEVANCE_SCORE = 0.5;
   const urlSet = new Set();
   const urlMeta = [];
@@ -137,9 +139,9 @@ async function deepResearch(sites, label, deps) {
       query: extractQuery,
       chunks_per_source: 5,
     });
-    console.log(`  Tavily Extract returned ${extracted.length} articles.`);
+    console.log(`  Article extraction returned ${extracted.length} articles.`);
   } catch (err) {
-    console.warn(`  Tavily Extract failed (${err.message}) — falling back to search snippets only.`);
+    console.warn(`  Article extraction failed (${err.message}) — falling back to search snippets only.`);
   }
 
   const MAX_ARTICLE_LEN = 2000;
