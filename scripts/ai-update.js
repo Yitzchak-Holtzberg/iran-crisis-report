@@ -35,7 +35,7 @@ const { sanitizeMarkdown, updateZones }           = require('./lib/zones');
 const { writeManifest, stampFreshness, diffSummary } = require('./lib/manifest');
 const { RESEARCH_SITES, deepResearch }            = require('./lib/deep-research');
 const { STRUCTURAL_FILES, updateStructural }      = require('./lib/structural-updates');
-const { callGPT, STRUCTURAL_GPT_TIMEOUT_MS } = openai;
+const { callGPT, safeParseJSON, STRUCTURAL_GPT_TIMEOUT_MS } = openai;
 
 // ── Paths ────────────────────────────────────────────────────────────────────
 
@@ -72,8 +72,8 @@ tavily.init(BRAVE_KEY);
 openai.init(OPENAI_KEY, GPT_LOG_PATH);
 
 // ── Search queries ───────────────────────────────────────────────────────────
-// 8 focused queries covering all dashboard sections with minimal overlap.
-// Think-tank deep dives are handled by per-group RESEARCH_SITES in structural mode.
+// 12 focused queries covering all dashboard sections. Gap detection may add up
+// to 3 more at runtime. Think-tank deep dives handled by RESEARCH_SITES in structural mode.
 const SEARCH_QUERIES = [
   'US Israel Iran military strikes operations sorties targets today',
   'Iran nuclear IAEA enrichment diplomatic talks ceasefire UN Security Council',
@@ -84,6 +84,9 @@ const SEARCH_QUERIES = [
   'Iran economy sanctions oil price energy market rial crisis',
   'Iran war regional reactions Saudi China Russia Turkey diplomacy',
   'Iran war battle damage assessment CENTCOM equipment losses aircraft vessels destroyed',
+  'Iran civilian casualties humanitarian crisis displacement war crimes',
+  'Iran IRGC cyber espionage covert operations intelligence',
+  'US carrier strike group deployment Iran CENTCOM forces',
 ];
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -129,6 +132,48 @@ async function main() {
   }
   const searchResults = searchSettled.map(r => r.status === 'fulfilled' ? r.value : { results: [], answer: '(search failed)' });
 
+  // ── Gap detection: ask AI what angles the initial searches missed ────────
+  // One cheap GPT-mini call that may add up to 3 bonus searches, providing
+  // corroborating sources for fact-checking claims in under-covered domains.
+  const BASE_QUERY_COUNT = SEARCH_QUERIES.length;
+  try {
+    const topicsCovered = searchResults.map((sr, i) => {
+      const titles = (sr.results || []).slice(0, 3).map(r => r.title || '').filter(Boolean).join('; ');
+      return `${SEARCH_QUERIES[i]}: ${titles || '(no results)'}`;
+    }).join('\n');
+
+    const gapRaw = await callGPT(
+      `You are a news editor for the Iran Crisis Report dashboard. Given the search topics ` +
+      `and top results below, identify 2-3 important angles about the Iran crisis that are ` +
+      `NOT covered. Think about: unexpected diplomatic moves, new actors, economic ripple ` +
+      `effects, domestic politics in other countries, technology/cyber, humanitarian, ` +
+      `international law, or any breaking development that doesn't fit the existing categories.\n\n` +
+      `Return a JSON object: { "queries": ["query1", "query2", "query3"] }\n` +
+      `Each query should be under 80 characters, focused, and use news-style keywords.\n` +
+      `If the existing coverage is comprehensive, return { "queries": [] }.`,
+      topicsCovered,
+      true, ROUTINE_MODEL, 2048, 15000
+    );
+    const gapParsed = safeParseJSON(gapRaw);
+    const gapQueries = Array.isArray(gapParsed.queries) ? gapParsed.queries.slice(0, 3) : [];
+
+    if (gapQueries.length > 0) {
+      console.log(`  Gap detection found ${gapQueries.length} missing angles: ${gapQueries.join(' | ')}`);
+      const gapSettled = await Promise.allSettled(gapQueries.map(q => tavily.tavilySearch(q, searchOpts)));
+      for (let i = 0; i < gapSettled.length; i++) {
+        if (gapSettled[i].status === 'fulfilled') {
+          searchResults.push(gapSettled[i].value);
+          SEARCH_QUERIES.push(gapQueries[i]);
+        }
+      }
+      console.log(`  Gap searches returned ${gapSettled.filter(r => r.status === 'fulfilled').length} result sets.`);
+    } else {
+      console.log('  Gap detection: existing coverage is comprehensive.');
+    }
+  } catch (err) {
+    console.warn(`Gap detection failed (${err.message}) — continuing with standard queries.`);
+  }
+
   // ── Deduplicate search results across queries by URL ────────────────────
   const seenUrls = new Set();
   for (const sr of searchResults) {
@@ -162,7 +207,8 @@ async function main() {
   const searchDomains = extractSearchDomains(searchResults);
   console.log(`  Evidence registry: ${searchDomains.size} unique domains from search results.`);
 
-  manifest.phases.search = { queries: SEARCH_QUERIES.length, uniqueResults: dedupedCount, tierDropped, status: 'ok', evidenceDomains: searchDomains.size };
+  const gapQueryCount = SEARCH_QUERIES.length - BASE_QUERY_COUNT;
+  manifest.phases.search = { queries: SEARCH_QUERIES.length, gapQueries: gapQueryCount, uniqueResults: dedupedCount, tierDropped, status: 'ok', evidenceDomains: searchDomains.size };
 
   // Use search context directly for downstream updates.
   const searchSummary = searchContext;
