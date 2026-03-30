@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       update_type:
-        description: 'Update type: "auto" (assess significance first), "routine" (data/zones only), or "structural" (force section-level changes)'
+        description: 'Update type: "auto" (alias for routine), "routine" (data/zones only), or "structural" (force section-level changes)'
         required: false
         default: 'auto'
         type: choice
@@ -163,7 +163,7 @@ jobs:
               failures.push('The **build-and-deploy** job failed (a required step exited with an error).');
             }
             if (aiUpdateFailed) {
-              failures.push('The **AI content update** step failed (Tavily/OpenAI quota or network issue).');
+              failures.push('The **AI content update** step failed (Brave Search/OpenAI quota or network issue).');
             }
 
             const body = [

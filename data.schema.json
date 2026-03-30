@@ -17,6 +17,12 @@
     "statIrgcKilled",
     "statUsCasualties",
     "statUsCasualtiesSource",
+    "statIranVesselsDestroyed",
+    "statIranVesselsSource",
+    "statIranAircraftDestroyed",
+    "statIranAircraftSource",
+    "statCoalitionCostBn",
+    "statCoalitionCostSource",
     "scenarioDeclaredVictoryPct",
     "scenarioNegotiatedDealPct",
     "scenarioDemocraticRevolutionPct",
@@ -86,6 +92,30 @@
     "statUsCasualtiesSource": {
       "type": "string",
       "description": "Source for US casualties count (e.g., 'CNBC/CBS')"
+    },
+    "statIranVesselsDestroyed": {
+      "type": "string",
+      "description": "Iranian naval vessels destroyed (e.g., '50+')"
+    },
+    "statIranVesselsSource": {
+      "type": "string",
+      "description": "Source for Iranian vessels destroyed count"
+    },
+    "statIranAircraftDestroyed": {
+      "type": "string",
+      "description": "Iranian manned aircraft destroyed (e.g., '~15')"
+    },
+    "statIranAircraftSource": {
+      "type": "string",
+      "description": "Source for Iranian aircraft destroyed count"
+    },
+    "statCoalitionCostBn": {
+      "type": "string",
+      "description": "Estimated coalition campaign cost in USD billions (e.g., '~$4–6B')"
+    },
+    "statCoalitionCostSource": {
+      "type": "string",
+      "description": "Source for campaign cost estimate"
     },
     "scenarioDeclaredVictoryPct": {
       "type": "integer",

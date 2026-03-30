@@ -1,6 +1,11 @@
 'use strict';
 
-// ── Significance assessment ──────────────────────────────────────────────────
+// ── Significance assessment (UNUSED — retained for reference) ────────────────
+//
+// This module is no longer called from ai-update.js. "auto" mode is now a
+// direct alias for "routine"; structural updates must be dispatched manually
+// via UPDATE_TYPE=structural. The assessSignificance() function below is
+// preserved for potential future use but has no callers in the current pipeline.
 
 const SIGNIFICANCE_SYSTEM_PROMPT = `\
 You are a news significance classifier for the Iran Crisis Report dashboard.

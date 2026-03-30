@@ -133,6 +133,7 @@ const BUILDS = [
     'sections/stats.html', 'sections/last-24h.html', 'sections/confirmed-unconfirmed.html',
     'sections/theater.html', 'sections/scenarios-teaser.html', 'sections/analysis-teaser.html',
     'sections/nuclear-teaser.html', 'sections/forces-teaser.html', 'sections/military-teaser.html',
+    'sections/materiel-losses-teaser.html',
     'sections/inside-iran-teaser.html', 'sections/reactions-teaser.html',
     'sections/background-teaser.html', 'sections/opposition-teaser.html',
   ], {
@@ -147,9 +148,9 @@ const BUILDS = [
     g('Analysis'),
     n('05', 'scenarios', 'Scenarios'), n('06', 'analysis', 'Expert Analysis'),
     n('07', 'nuclear', 'Nuclear Talks'), n('08', 'strike-forces', 'US Strike Forces'),
-    n('09', 'military', 'Iran Military'), n('10', 'inside-iran', 'Inside Iran'),
-    n('11', 'reactions', 'Reactions'), n('12', 'background', 'Background'),
-    n('13', 'opposition', 'Opposition'),
+    n('09', 'military', 'Iran Military'), n('10', 'materiel-losses', 'Losses Ledger'), n('11', 'inside-iran', 'Inside Iran'),
+    n('12', 'reactions', 'Reactions'), n('13', 'background', 'Background'),
+    n('14', 'opposition', 'Opposition'),
   ]),
   page('diplomatic.html', ['sections/diplomatic.html'], {
     pageTitle: 'Iran Crisis: Diplomatic Track &amp; Nuclear Negotiations \u2014 {{date}}',
@@ -180,17 +181,18 @@ const BUILDS = [
     g('US Strike Assets'), n('01', 'air-power', 'Air Power'), n('02', 'naval', 'Naval Forces'),
   ]),
   page('iran-military.html', [
-    'sections/military.html', 'sections/iran-retaliation-playbook.html',
+    'sections/military.html', 'sections/materiel-losses.html',
+    'sections/iran-retaliation-playbook.html',
     'sections/iran-retaliation-executed.html', 'sections/hormuz.html',
   ], {
     pageTitle: 'Iran Crisis: Iran Military Assessment \u2014 {{date}}',
-    pageDescription: 'Iran\'s remaining military capability: battle damage assessment, asymmetric retaliation doctrine, Feb 28 strike accounting, and the Strait of Hormuz threat.',
-    pageOgDescription: 'Iran\'s remaining military capability: missiles, drones, cyber, retaliation doctrine, and the Strait of Hormuz chokepoint.',
+    pageDescription: 'Iran\'s remaining military capability: battle damage assessment, materiel losses ledger, asymmetric retaliation doctrine, and the Strait of Hormuz threat.',
+    pageOgDescription: 'Iran\'s remaining military capability: missiles, drones, losses ledger, cyber, retaliation doctrine, and the Strait of Hormuz chokepoint.',
     pageOgType: 'article',
   }, [
-    g('Assessment'), n('01', 'military', 'Military Status'),
-    g('Retaliation'), n('02', 'iran-retaliation', 'Playbook'), n('03', 'iran-retaliation-executed', 'Executed'),
-    g('Strategic'), n('04', 'hormuz', 'Hormuz Threat'),
+    g('Assessment'), n('01', 'military', 'Military Status'), n('02', 'materiel-losses', 'Losses Ledger'),
+    g('Retaliation'), n('03', 'iran-retaliation', 'Playbook'), n('04', 'iran-retaliation-executed', 'Executed'),
+    g('Strategic'), n('05', 'hormuz', 'Hormuz Threat'),
   ]),
   page('inside-iran.html', ['sections/inside-iran.html'], {
     pageTitle: 'Iran Crisis: Inside Iran \u2014 {{date}}',
