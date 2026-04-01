@@ -1,44 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-04T13:16:55.517Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results reiterate strikes, leadership succession, and proxy attacks already represented on the page; no new parad",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 2
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "iran-crisis2-title",
-            "nuclear-track"
-          ],
-          "filesUpdated": [
-            "inside-iran.html",
-            "nuclear.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-04T19:03:01.245Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3713,6 +3675,62 @@
           "linesAdded": 31,
           "linesRemoved": 0,
           "sizeChange": 4290
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-01T11:58:56.965Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 65,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 49
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 6,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "iran-crisis2-succession",
+            "reactions-global-callouts"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "inside-iran.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 3,
+          "linesRemoved": 0,
+          "sizeChange": 316
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 31,
+          "linesRemoved": 0,
+          "sizeChange": 4114
         }
       ]
     }
