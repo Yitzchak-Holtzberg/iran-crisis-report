@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 1, 2026",
-  "lastUpdated": "11:58 UTC",
+  "date": "April 2, 2026",
+  "lastUpdated": "11:54 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,11 @@
   "scenarioManagedTransitionPct": 15,
   "scenarioRegimeCollapsePct": 12,
   "ticker": [
+    "U.S. PRESIDENT: Trump says US will hit Iran 'extremely hard' over next 2–3 weeks, expects war to end soon (NYT/CNN, Apr 1, 2026)",
+    "US LOSSES: U.S. military losses near $5B; at least 25 aircraft and 12 radar components destroyed (Anadolu, Apr 1, 2026)",
+    "CARRIER DEPLOYMENT: Another U.S. carrier strike group deploys from San Diego toward Middle East (NBC, Apr 1, 2026)",
+    "IRAN STRIKES INFRASTRUCTURE: Iranian strikes hit radar, SATCOM and logistics sites across Gulf bases (DefenseNews, Apr 1, 2026)",
+    "OIL PRICES: Brent and WTI ease toward ~$100 after Trump signals war could end in weeks (CNBC, Apr 1, 2026)",
     "GULF ATTACK: Giant oil tanker off Dubai struck, blaze reported (Reuters, Mar 31, 2026)",
     "IRGC CYBER THREAT: IRGC names major U.S. tech firms as military targets (Politico/WIRED, Mar 31, 2026)",
     "DIPLOMACY: China and Pakistan call for immediate ceasefire and peace talks; urge Hormuz reopening (Reuters, Mar 31, 2026)",
@@ -42,11 +47,6 @@
     "ADNOC ADJUST: ADNOC Gas temporarily cuts/adjusts LNG production and exports due to Strait of Hormuz disruption (Reuters, Mar 23, 2026)",
     "US OPERATION PLAN: U.S. planning a weeks‑long operation to reopen the Strait of Hormuz (Times of Israel, Mar 22–23, 2026)",
     "CASUALTY UPDATE: BBC reports 160+ wounded in missile strikes near Dimona and Arad, higher than earlier counts (BBC, Mar 22, 2026)",
-    "US-IRAN TALKS: U.S. exploring framework for talks including reopening Strait of Hormuz and limits on highly enriched uranium stockpile (Anadolu/Axios, Mar 22, 2026)",
-    "STRAIT POLICY: Iran says Strait of Hormuz 'open to all' except 'enemy' states and allows transits for countries it deems friendly (Reuters/Haaretz, Mar 22, 2026)",
-    "IRAN MISSILES: Ballistic strikes near Dimona and Arad injure 100+ civilians and damage homes (Al Jazeera, Mar 21–22, 2026)",
-    "CENTCOM: CENTCOM chief says more than 8,000 targets have been struck and Iran's navy largely neutralized (The Hill, Mar 21–22, 2026)",
-    "U.S. PRESIDENT: Trump says he is 'considering winding down' operations but threatens to 'obliterate' Iran power plants if Strait of Hormuz not reopened in 48 hours (Al Jazeera/Guardian, Mar 21–22, 2026)",
-    "MARKETS: Brent crude up ~50% as Strait of Hormuz disruptions and insurance/rerouting costs spike (Los Angeles Times/WSJ, Mar 2026)"
+    "US-IRAN TALKS: U.S. exploring framework for talks including reopening Strait of Hormuz and limits on highly enriched uranium stockpile (Anadolu/Axios, Mar 22, 2026)"
   ]
 }

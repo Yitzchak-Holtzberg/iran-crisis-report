@@ -1,45 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-04T19:03:01.245Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "New reports (e.g., US killing an Iranian official) fit under existing US strikes/operations coverage and can be handled ",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "iran-crisis2-title",
-            "nuclear-subtitle"
-          ],
-          "filesUpdated": [
-            "inside-iran.html",
-            "nuclear-teaser.html",
-            "nuclear.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-04T20:58:11.049Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3731,6 +3692,61 @@
           "linesAdded": 31,
           "linesRemoved": 0,
           "sizeChange": 4114
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-02T11:54:31.231Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 67,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 52
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "carrier-lincoln-position",
+            "carrier-ford-position"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -153
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 5719
         }
       ]
     }
