@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 2, 2026",
-  "lastUpdated": "11:54 UTC",
+  "date": "April 4, 2026",
+  "lastUpdated": "11:38 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,9 @@
   "scenarioManagedTransitionPct": 15,
   "scenarioRegimeCollapsePct": 12,
   "ticker": [
+    "US LOSSES: U.S. F-15E shot down over Iran; one crew rescued, one missing (The Guardian/New York Times/CNN, Apr 3, 2026)",
+    "US LOSSES: Second U.S. combat aircraft (A-10) downed in Gulf region; crew rescued, search ongoing (AP/CNN, Apr 3, 2026)",
+    "STRAIT OF HORMUZ: French container ship and Japanese gas carrier — plus Omani-operated tankers — transit Hormuz, first crossings since blockade (Bloomberg/Reuters, Apr 3, 2026)",
     "U.S. PRESIDENT: Trump says US will hit Iran 'extremely hard' over next 2–3 weeks, expects war to end soon (NYT/CNN, Apr 1, 2026)",
     "US LOSSES: U.S. military losses near $5B; at least 25 aircraft and 12 radar components destroyed (Anadolu, Apr 1, 2026)",
     "CARRIER DEPLOYMENT: Another U.S. carrier strike group deploys from San Diego toward Middle East (NBC, Apr 1, 2026)",
@@ -44,9 +47,6 @@
     "PAUSE ON STRIKES: U.S. announces five‑day pause on strikes against Iranian energy infrastructure amid talks (Politico, Mar 23, 2026)",
     "IEA WARNING: IEA chief says energy shock equals 1970s twin oil shocks plus Ukraine war; world leaders considering emergency releases (The Guardian/CNN, Mar 23, 2026)",
     "IEA DAMAGE: IEA says 40+ Middle East energy assets have been 'severely damaged' in the conflict (CNBC/IEA, Mar 23, 2026)",
-    "ADNOC ADJUST: ADNOC Gas temporarily cuts/adjusts LNG production and exports due to Strait of Hormuz disruption (Reuters, Mar 23, 2026)",
-    "US OPERATION PLAN: U.S. planning a weeks‑long operation to reopen the Strait of Hormuz (Times of Israel, Mar 22–23, 2026)",
-    "CASUALTY UPDATE: BBC reports 160+ wounded in missile strikes near Dimona and Arad, higher than earlier counts (BBC, Mar 22, 2026)",
-    "US-IRAN TALKS: U.S. exploring framework for talks including reopening Strait of Hormuz and limits on highly enriched uranium stockpile (Anadolu/Axios, Mar 22, 2026)"
+    "ADNOC ADJUST: ADNOC Gas temporarily cuts/adjusts LNG production and exports due to Strait of Hormuz disruption (Reuters, Mar 23, 2026)"
   ]
 }
