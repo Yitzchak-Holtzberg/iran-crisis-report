@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 4, 2026",
-  "lastUpdated": "11:38 UTC",
+  "date": "April 5, 2026",
+  "lastUpdated": "11:40 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 15,
   "scenarioRegimeCollapsePct": 12,
   "ticker": [
+    "RESCUE: U.S. commandos rescue downed airman deep inside Iran; search continues for second crew member (New York Times/BBC, Apr 4, 2026)",
+    "IRAN CLAIMS: Tehran says several 'enemy aircraft' destroyed during U.S. pilot rescue mission (Reuters, Apr 5, 2026)",
+    "MUNITIONS DEPLOYMENT: U.S. deploys bulk of JASSM-ER long-range missiles for Iran campaign (Bloomberg/Fortune, Apr 4, 2026)",
+    "HORMUZ EXEMPTION: Iranian military exempts Iraqi oil shipments from Strait of Hormuz restrictions (Bloomberg, Apr 4, 2026)",
     "US LOSSES: U.S. F-15E shot down over Iran; one crew rescued, one missing (The Guardian/New York Times/CNN, Apr 3, 2026)",
     "US LOSSES: Second U.S. combat aircraft (A-10) downed in Gulf region; crew rescued, search ongoing (AP/CNN, Apr 3, 2026)",
     "STRAIT OF HORMUZ: French container ship and Japanese gas carrier — plus Omani-operated tankers — transit Hormuz, first crossings since blockade (Bloomberg/Reuters, Apr 3, 2026)",
@@ -43,10 +47,6 @@
     "PROXY ESCALATION: Houthis launch missile and drone barrages at Israel, joining Iran-aligned attacks (The Guardian/Bloomberg, Mar 29, 2026)",
     "ISRAEL STRIKES: Israeli airstrikes reported in Tehran and on Iranian port infrastructure (New York Times/The Guardian, Mar 29, 2026)",
     "MARKETS: Oil jumps and global stocks slide as Houthis enter conflict and US troop arrivals raise escalation fears (Bloomberg/NYT, Mar 29, 2026)",
-    "REGIONAL DIPLOMACY: Pakistan to host talks with Turkey, Saudi Arabia, Egypt on Iran war response (The Hill/NPR, Mar 29, 2026)",
-    "PAUSE ON STRIKES: U.S. announces five‑day pause on strikes against Iranian energy infrastructure amid talks (Politico, Mar 23, 2026)",
-    "IEA WARNING: IEA chief says energy shock equals 1970s twin oil shocks plus Ukraine war; world leaders considering emergency releases (The Guardian/CNN, Mar 23, 2026)",
-    "IEA DAMAGE: IEA says 40+ Middle East energy assets have been 'severely damaged' in the conflict (CNBC/IEA, Mar 23, 2026)",
-    "ADNOC ADJUST: ADNOC Gas temporarily cuts/adjusts LNG production and exports due to Strait of Hormuz disruption (Reuters, Mar 23, 2026)"
+    "REGIONAL DIPLOMACY: Pakistan to host talks with Turkey, Saudi Arabia, Egypt on Iran war response (The Hill/NPR, Mar 29, 2026)"
   ]
 }
