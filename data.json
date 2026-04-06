@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 5, 2026",
-  "lastUpdated": "11:40 UTC",
+  "date": "April 6, 2026",
+  "lastUpdated": "11:56 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,17 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 23,
-  "scenarioNegotiatedDealPct": 31,
-  "scenarioDemocraticRevolutionPct": 19,
+  "scenarioDeclaredVictoryPct": 20,
+  "scenarioNegotiatedDealPct": 37,
+  "scenarioDemocraticRevolutionPct": 17,
   "scenarioManagedTransitionPct": 15,
-  "scenarioRegimeCollapsePct": 12,
+  "scenarioRegimeCollapsePct": 11,
   "ticker": [
+    "CEASEFIRE PROPOSAL: Iran and U.S. receive plan for immediate ceasefire and reopening of Strait of Hormuz (Reuters, Apr 6, 2026)",
+    "IRAN RESPONSE: Tehran says it has formulated its response to ceasefire proposals, calls negotiations 'incompatible with ultimatums' (Reuters, Apr 6, 2026)",
+    "TANKER TRANSIT: Petronas‑chartered Suezmax carrying ~1M barrels of Iraqi crude transits Strait of Hormuz (Reuters/Bloomberg, Apr 5, 2026)",
+    "AIRCRAFT LOSSES: Reports say two U.S. MC‑130J special‑operations aircraft destroyed during Iran rescue mission, each worth >$100M (Anadolu/SimpleFlying, Apr 5, 2026)",
+    "CEASEFIRE TALKS: Mediators report US and Iran reviewing a two‑step / potential 45‑day ceasefire framework (Axios/India Today, Apr 6, 2026)",
     "RESCUE: U.S. commandos rescue downed airman deep inside Iran; search continues for second crew member (New York Times/BBC, Apr 4, 2026)",
     "IRAN CLAIMS: Tehran says several 'enemy aircraft' destroyed during U.S. pilot rescue mission (Reuters, Apr 5, 2026)",
     "MUNITIONS DEPLOYMENT: U.S. deploys bulk of JASSM-ER long-range missiles for Iran campaign (Bloomberg/Fortune, Apr 4, 2026)",
@@ -42,11 +47,6 @@
     "IRAN LEADERSHIP: Supreme Leader Mojtaba Khamenei avoiding public appearances, Russian envoy says (Reuters, Mar 31, 2026)",
     "MILITARY LOSS: US E-3 Sentry AWACS heavily damaged/destroyed in Iranian strike on Saudi airbase (NBC News/CNN, Mar 30, 2026)",
     "CARRIER DEPLOYMENT: USS George H.W. Bush to deploy to CENTCOM area, may join Iran campaign (CBS News/WTKR, Mar 30, 2026)",
-    "TROOP BUILDUP: Thousands of US Army paratroopers arrive in Middle East as regional buildup intensifies (Military Times, Mar 30, 2026)",
-    "DIPLOMACY: U.S. says it is negotiating with Iran amid renewed threats to energy infrastructure (AP News, Mar 30, 2026)",
-    "PROXY ESCALATION: Houthis launch missile and drone barrages at Israel, joining Iran-aligned attacks (The Guardian/Bloomberg, Mar 29, 2026)",
-    "ISRAEL STRIKES: Israeli airstrikes reported in Tehran and on Iranian port infrastructure (New York Times/The Guardian, Mar 29, 2026)",
-    "MARKETS: Oil jumps and global stocks slide as Houthis enter conflict and US troop arrivals raise escalation fears (Bloomberg/NYT, Mar 29, 2026)",
-    "REGIONAL DIPLOMACY: Pakistan to host talks with Turkey, Saudi Arabia, Egypt on Iran war response (The Hill/NPR, Mar 29, 2026)"
+    "TROOP BUILDUP: Thousands of US Army paratroopers arrive in Middle East as regional buildup intensifies (Military Times, Mar 30, 2026)"
   ]
 }

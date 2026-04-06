@@ -1,38 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-05T07:04:23.138Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results duplicate items already on the page (strikes, naval losses, sanctions, Kurds, nuclear/CB threats); no new",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-05T13:20:03.956Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3790,6 +3758,63 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4960
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-06T11:56:15.442Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 67,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 47
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 6,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position",
+            "reactions-global-energy",
+            "reactions-global-mediation",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 65
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 31,
+          "linesRemoved": 0,
+          "sizeChange": 4275
         }
       ]
     }
