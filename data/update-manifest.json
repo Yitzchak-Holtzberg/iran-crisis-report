@@ -1,38 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-05T13:20:03.956Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results largely duplicate events already on the page (missile strikes, naval hits, sanctions, IAEA, proxy attacks",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-05T19:23:18.777Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3815,6 +3783,64 @@
           "linesAdded": 31,
           "linesRemoved": 0,
           "sizeChange": 4275
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-07T11:59:58.810Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 67,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 45
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "hormuz-wti-price",
+            "reactions-global-callouts",
+            "reactions-iran-callouts"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "hormuz.html",
+            "reactions-global.html",
+            "reactions-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 67
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5135
         }
       ]
     }

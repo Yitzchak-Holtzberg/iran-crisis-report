@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 6, 2026",
-  "lastUpdated": "11:56 UTC",
+  "date": "April 7, 2026",
+  "lastUpdated": "11:59 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,9 @@
   "scenarioManagedTransitionPct": 15,
   "scenarioRegimeCollapsePct": 11,
   "ticker": [
+    "IRGC INTEL CHIEF KILLED: Iran's Revolutionary Guards intelligence chief reportedly killed in a strike, state media say (Reuters, Apr 6, 2026)",
+    "CEASEFIRE REJECTION: Iran rejects 45‑day ceasefire proposal, demanding permanent end to hostilities and sanctions relief (CNN/Reuters, Apr 6, 2026)",
+    "IRAN PROPOSAL: Tehran transmits 10‑point plan calling for lifting sanctions and safe passage through the Strait of Hormuz (New York Times/IRNA, Apr 6, 2026)",
     "CEASEFIRE PROPOSAL: Iran and U.S. receive plan for immediate ceasefire and reopening of Strait of Hormuz (Reuters, Apr 6, 2026)",
     "IRAN RESPONSE: Tehran says it has formulated its response to ceasefire proposals, calls negotiations 'incompatible with ultimatums' (Reuters, Apr 6, 2026)",
     "TANKER TRANSIT: Petronas‑chartered Suezmax carrying ~1M barrels of Iraqi crude transits Strait of Hormuz (Reuters/Bloomberg, Apr 5, 2026)",
@@ -44,9 +47,6 @@
     "GULF ATTACK: Giant oil tanker off Dubai struck, blaze reported (Reuters, Mar 31, 2026)",
     "IRGC CYBER THREAT: IRGC names major U.S. tech firms as military targets (Politico/WIRED, Mar 31, 2026)",
     "DIPLOMACY: China and Pakistan call for immediate ceasefire and peace talks; urge Hormuz reopening (Reuters, Mar 31, 2026)",
-    "IRAN LEADERSHIP: Supreme Leader Mojtaba Khamenei avoiding public appearances, Russian envoy says (Reuters, Mar 31, 2026)",
-    "MILITARY LOSS: US E-3 Sentry AWACS heavily damaged/destroyed in Iranian strike on Saudi airbase (NBC News/CNN, Mar 30, 2026)",
-    "CARRIER DEPLOYMENT: USS George H.W. Bush to deploy to CENTCOM area, may join Iran campaign (CBS News/WTKR, Mar 30, 2026)",
-    "TROOP BUILDUP: Thousands of US Army paratroopers arrive in Middle East as regional buildup intensifies (Military Times, Mar 30, 2026)"
+    "IRAN LEADERSHIP: Supreme Leader Mojtaba Khamenei avoiding public appearances, Russian envoy says (Reuters, Mar 31, 2026)"
   ]
 }
