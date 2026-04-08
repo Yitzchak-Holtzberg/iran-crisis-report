@@ -1,38 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-05T19:23:18.777Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "No new paradigm-shifting event beyond those already on the page (strikes, sanctions, Kurds, proxies, IAEA).",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 2
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-05T21:57:25.073Z",
       "type": "structural",
       "effectiveType": "structural",
@@ -3841,6 +3809,67 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5135
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-08T12:00:36.070Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 70,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 45
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "carrier-lincoln-position",
+            "carrier-ford-position",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-global-mediation",
+            "reactions-iran-callouts"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "sizeChange": 258
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5721
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 7, 2026",
-  "lastUpdated": "11:59 UTC",
+  "date": "April 8, 2026",
+  "lastUpdated": "12:00 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 20,
-  "scenarioNegotiatedDealPct": 37,
-  "scenarioDemocraticRevolutionPct": 17,
-  "scenarioManagedTransitionPct": 15,
-  "scenarioRegimeCollapsePct": 11,
+  "scenarioDeclaredVictoryPct": 15,
+  "scenarioNegotiatedDealPct": 50,
+  "scenarioDemocraticRevolutionPct": 15,
+  "scenarioManagedTransitionPct": 12,
+  "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "CEASEFIRE AGREEMENT: U.S. and Iran agree to two‑week ceasefire contingent on reopening Strait of Hormuz; Trump suspends wider strikes (AP/NYT/NPR, Apr 7, 2026)",
+    "US STRIKES KHARG ISLAND: U.S. conducts strikes on military targets on Kharg Island, with >90 restrikes reported (Reuters/NYT, Apr 7, 2026)",
+    "RUSSIA CYBER SUPPORT: Ukraine says Russia supplied Iran with satellite imagery and cyber support to hone attacks on regional targets (Reuters, Apr 7, 2026)",
+    "IRANIAN HACKERS: U.S. agencies warn Iranian‑linked hackers have escalated targeting of U.S. critical infrastructure (Reuters/NYT, Apr 7, 2026)",
     "IRGC INTEL CHIEF KILLED: Iran's Revolutionary Guards intelligence chief reportedly killed in a strike, state media say (Reuters, Apr 6, 2026)",
     "CEASEFIRE REJECTION: Iran rejects 45‑day ceasefire proposal, demanding permanent end to hostilities and sanctions relief (CNN/Reuters, Apr 6, 2026)",
     "IRAN PROPOSAL: Tehran transmits 10‑point plan calling for lifting sanctions and safe passage through the Strait of Hormuz (New York Times/IRNA, Apr 6, 2026)",
@@ -44,9 +48,6 @@
     "CARRIER DEPLOYMENT: Another U.S. carrier strike group deploys from San Diego toward Middle East (NBC, Apr 1, 2026)",
     "IRAN STRIKES INFRASTRUCTURE: Iranian strikes hit radar, SATCOM and logistics sites across Gulf bases (DefenseNews, Apr 1, 2026)",
     "OIL PRICES: Brent and WTI ease toward ~$100 after Trump signals war could end in weeks (CNBC, Apr 1, 2026)",
-    "GULF ATTACK: Giant oil tanker off Dubai struck, blaze reported (Reuters, Mar 31, 2026)",
-    "IRGC CYBER THREAT: IRGC names major U.S. tech firms as military targets (Politico/WIRED, Mar 31, 2026)",
-    "DIPLOMACY: China and Pakistan call for immediate ceasefire and peace talks; urge Hormuz reopening (Reuters, Mar 31, 2026)",
-    "IRAN LEADERSHIP: Supreme Leader Mojtaba Khamenei avoiding public appearances, Russian envoy says (Reuters, Mar 31, 2026)"
+    "GULF ATTACK: Giant oil tanker off Dubai struck, blaze reported (Reuters, Mar 31, 2026)"
   ]
 }
