@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 8, 2026",
-  "lastUpdated": "12:00 UTC",
+  "date": "April 9, 2026",
+  "lastUpdated": "12:01 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 12,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "ISRAEL STRIKES LEBANON: Israel launches heaviest bombing wave in month, killing ~250 as US‑Iran ceasefire said not to cover Lebanon (Reuters/NYT, Apr 8, 2026)",
+    "PAKISTAN MEDIATES: Pakistan credited with brokering US‑Iran two‑week truce that paused large‑scale strikes (Al Jazeera/Reuters, Apr 8, 2026)",
+    "HORMUZ TOLLS: Reports say Iran may demand cryptocurrency tolls (up to ~$2M per tanker) for Strait transit during truce (FT/Coindesk, Apr 8, 2026)",
+    "MARKET REACTION: Global energy stocks plunge and oil war premium falls after US‑Iran ceasefire; Brent eases (Reuters/CNBC, Apr 8, 2026)",
     "CEASEFIRE AGREEMENT: U.S. and Iran agree to two‑week ceasefire contingent on reopening Strait of Hormuz; Trump suspends wider strikes (AP/NYT/NPR, Apr 7, 2026)",
     "US STRIKES KHARG ISLAND: U.S. conducts strikes on military targets on Kharg Island, with >90 restrikes reported (Reuters/NYT, Apr 7, 2026)",
     "RUSSIA CYBER SUPPORT: Ukraine says Russia supplied Iran with satellite imagery and cyber support to hone attacks on regional targets (Reuters, Apr 7, 2026)",
@@ -44,10 +48,6 @@
     "US LOSSES: Second U.S. combat aircraft (A-10) downed in Gulf region; crew rescued, search ongoing (AP/CNN, Apr 3, 2026)",
     "STRAIT OF HORMUZ: French container ship and Japanese gas carrier — plus Omani-operated tankers — transit Hormuz, first crossings since blockade (Bloomberg/Reuters, Apr 3, 2026)",
     "U.S. PRESIDENT: Trump says US will hit Iran 'extremely hard' over next 2–3 weeks, expects war to end soon (NYT/CNN, Apr 1, 2026)",
-    "US LOSSES: U.S. military losses near $5B; at least 25 aircraft and 12 radar components destroyed (Anadolu, Apr 1, 2026)",
-    "CARRIER DEPLOYMENT: Another U.S. carrier strike group deploys from San Diego toward Middle East (NBC, Apr 1, 2026)",
-    "IRAN STRIKES INFRASTRUCTURE: Iranian strikes hit radar, SATCOM and logistics sites across Gulf bases (DefenseNews, Apr 1, 2026)",
-    "OIL PRICES: Brent and WTI ease toward ~$100 after Trump signals war could end in weeks (CNBC, Apr 1, 2026)",
-    "GULF ATTACK: Giant oil tanker off Dubai struck, blaze reported (Reuters, Mar 31, 2026)"
+    "US LOSSES: U.S. military losses near $5B; at least 25 aircraft and 12 radar components destroyed (Anadolu, Apr 1, 2026)"
   ]
 }

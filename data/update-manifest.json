@@ -1,60 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-05T21:57:25.073Z",
-      "type": "structural",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 3
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "nuclear-subtitle"
-          ],
-          "filesUpdated": [
-            "nuclear-teaser.html",
-            "nuclear.html"
-          ]
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "confirmed-unconfirmed"
-          ],
-          "passes": {
-            "pass1": {
-              "status": "ok",
-              "filesChanged": [
-                "confirmed-unconfirmed"
-              ]
-            },
-            "analysis + map": {
-              "status": "error",
-              "error": "Request timeout after 120000 ms"
-            },
-            "scenarios + reactions": {
-              "status": "error",
-              "error": "Request timeout after 120000 ms"
-            },
-            "forces (naval, air-power, military)": {
-              "status": "error",
-              "error": "Request timeout after 120000 ms"
-            }
-          }
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-06T02:45:32.187Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3870,6 +3816,62 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5721
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-09T12:01:32.867Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 66,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 46
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "military-parchin",
+            "naval-subtitle",
+            "reactions-global-callouts",
+            "reactions-israel-callouts"
+          ],
+          "filesUpdated": [
+            "military.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-israel.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 145
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5374
         }
       ]
     }
