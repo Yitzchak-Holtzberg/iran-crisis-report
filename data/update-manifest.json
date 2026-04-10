@@ -1,42 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-06T02:45:32.187Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results largely repeat coverage already on the page (strikes, Hormuz closure, CIA arming Kurds, IAEA/nuclear issu",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 1
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "iran-crisis2-title"
-          ],
-          "filesUpdated": [
-            "inside-iran.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-06T07:02:23.858Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3872,6 +3836,64 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5374
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-10T11:57:17.779Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 68,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 48
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "naval.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 3,
+          "sizeChange": -433
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4902
         }
       ]
     }
