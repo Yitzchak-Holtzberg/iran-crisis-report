@@ -1,38 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-06T07:02:23.858Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results reiterate already‑covered major events (strikes, Hormuz closure, leadership change, CIA arming Kurds), so",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 1
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-06T13:15:57.660Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3894,6 +3862,62 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4902
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-11T11:40:03.539Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 66,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 46
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-global-mediation"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 3,
+          "linesRemoved": 0,
+          "sizeChange": 400
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 6148
         }
       ]
     }
