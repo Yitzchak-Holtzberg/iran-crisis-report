@@ -1,38 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-06T13:15:57.660Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 18,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "No new paradigm-shift — results reiterate strikes, Hormuz closure, CIA arming Kurds and leadership succession already on",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 1
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      }
-    },
-    {
       "timestamp": "2026-03-06T18:58:58.469Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3918,6 +3886,69 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 6148
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-12T11:45:57.673Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 63,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 44
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "hormuz-wti-price",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position",
+            "reactions-global-callouts",
+            "reactions-global-mediation",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "hormuz.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 3,
+          "sizeChange": -452
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5009
         }
       ]
     }

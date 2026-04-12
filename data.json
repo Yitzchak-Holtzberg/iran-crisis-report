@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 11, 2026",
-  "lastUpdated": "11:40 UTC",
+  "date": "April 12, 2026",
+  "lastUpdated": "11:45 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,15 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 15,
-  "scenarioNegotiatedDealPct": 50,
-  "scenarioDemocraticRevolutionPct": 15,
-  "scenarioManagedTransitionPct": 12,
-  "scenarioRegimeCollapsePct": 8,
+  "scenarioDeclaredVictoryPct": 20,
+  "scenarioNegotiatedDealPct": 30,
+  "scenarioDemocraticRevolutionPct": 18,
+  "scenarioManagedTransitionPct": 18,
+  "scenarioRegimeCollapsePct": 14,
   "ticker": [
+    "NEGOTIATIONS FAIL: U.S. and Iran end Islamabad talks without agreement after 21-hour session, Vance says (AP/Reuters/NPR, Apr 11, 2026)",
+    "MILITARY: U.S. says two warships transited Strait of Hormuz to begin mine-clearing operations (Reuters, Apr 11, 2026)",
+    "SHIPPING: Three supertankers exit Strait of Hormuz - first tankers to leave Gulf since ceasefire (Reuters/Al Jazeera, Apr 11, 2026)",
     "DIPLOMACY: US and Iranian teams in Islamabad for peace talks amid doubts over Lebanon inclusion and sanctions (Reuters, Apr 11, 2026)",
     "SHIPPING: Shipping in Strait of Hormuz at a standstill despite US‑Iran ceasefire (Al Jazeera, Apr 10, 2026)",
     "U.S. WARNING: President Trump warns Iran to 'stop now' and demands reopening of Strait of Hormuz ahead of talks (CNN/CNBC, Apr 10, 2026)",
@@ -42,12 +45,6 @@
     "CEASEFIRE REJECTION: Iran rejects 45‑day ceasefire proposal, demanding permanent end to hostilities and sanctions relief (CNN/Reuters, Apr 6, 2026)",
     "IRAN PROPOSAL: Tehran transmits 10‑point plan calling for lifting sanctions and safe passage through the Strait of Hormuz (New York Times/IRNA, Apr 6, 2026)",
     "CEASEFIRE PROPOSAL: Iran and U.S. receive plan for immediate ceasefire and reopening of Strait of Hormuz (Reuters, Apr 6, 2026)",
-    "IRAN RESPONSE: Tehran says it has formulated its response to ceasefire proposals, calls negotiations 'incompatible with ultimatums' (Reuters, Apr 6, 2026)",
-    "TANKER TRANSIT: Petronas‑chartered Suezmax carrying ~1M barrels of Iraqi crude transits Strait of Hormuz (Reuters/Bloomberg, Apr 5, 2026)",
-    "AIRCRAFT LOSSES: Reports say two U.S. MC‑130J special‑operations aircraft destroyed during Iran rescue mission, each worth >$100M (Anadolu/SimpleFlying, Apr 5, 2026)",
-    "CEASEFIRE TALKS: Mediators report US and Iran reviewing a two‑step / potential 45‑day ceasefire framework (Axios/India Today, Apr 6, 2026)",
-    "RESCUE: U.S. commandos rescue downed airman deep inside Iran; search continues for second crew member (New York Times/BBC, Apr 4, 2026)",
-    "IRAN CLAIMS: Tehran says several 'enemy aircraft' destroyed during U.S. pilot rescue mission (Reuters, Apr 5, 2026)",
-    "MUNITIONS DEPLOYMENT: U.S. deploys bulk of JASSM-ER long-range missiles for Iran campaign (Bloomberg/Fortune, Apr 4, 2026)"
+    "IRAN RESPONSE: Tehran says it has formulated its response to ceasefire proposals, calls negotiations 'incompatible with ultimatums' (Reuters, Apr 6, 2026)"
   ]
 }
