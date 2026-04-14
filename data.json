@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 13, 2026",
-  "lastUpdated": "12:08 UTC",
+  "date": "April 14, 2026",
+  "lastUpdated": "12:06 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,9 @@
   "scenarioManagedTransitionPct": 18,
   "scenarioRegimeCollapsePct": 14,
   "ticker": [
+    "MILITARY: U.S. military blockade of Iranian ports begins at 10 a.m. ET; Iran vows retaliation (CNN, Apr 13, 2026)",
+    "SHIPPING: Sanctioned China-linked tanker transits Strait of Hormuz despite U.S. blockade (Reuters, Apr 14, 2026)",
+    "MARKET: U.S. crude rises to $104.24/bbl after blockade begins (CBS, Apr 13, 2026)",
     "BLOCKADE ORDER: President Trump orders U.S. Navy to blockade Strait of Hormuz and interdict ships paying Iran tolls (AP/PBS/CNN, Apr 12, 2026)",
     "MILITARY: U.S. Central Command says blockade of Iranian ports will begin Monday; Vance departs Islamabad after talks fail (Guardian/AP, Apr 12, 2026)",
     "SHIPPING: Two supertankers make last-minute U-turns near Strait of Hormuz as US‑Iran talks collapse (Bloomberg, Apr 12, 2026)",
