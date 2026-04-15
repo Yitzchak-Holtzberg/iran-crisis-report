@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 14, 2026",
-  "lastUpdated": "12:06 UTC",
+  "date": "April 15, 2026",
+  "lastUpdated": "12:03 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 18,
   "scenarioRegimeCollapsePct": 14,
   "ticker": [
+    "INTELLIGENCE: Iran used Chinese spy satellite to target U.S. bases, FT reports; Beijing denies (Reuters, Apr 15, 2026)",
+    "ECONOMY: IEA warns Iran war is largest oil supply shock in history, will cut supply and shrink demand (Reuters, Apr 14, 2026)",
+    "DIPLOMACY: U.S., Iran seek second round of ceasefire talks as Hormuz blockade continues (Bloomberg, Apr 14, 2026)",
+    "ECONOMY: IMF warns Iran war could trigger global recession and cuts growth forecasts (The Guardian, Apr 14, 2026)",
     "MILITARY: U.S. military blockade of Iranian ports begins at 10 a.m. ET; Iran vows retaliation (CNN, Apr 13, 2026)",
     "SHIPPING: Sanctioned China-linked tanker transits Strait of Hormuz despite U.S. blockade (Reuters, Apr 14, 2026)",
     "MARKET: U.S. crude rises to $104.24/bbl after blockade begins (CBS, Apr 13, 2026)",
@@ -44,10 +48,6 @@
     "PAKISTAN MEDIATES: Pakistan credited with brokering US‑Iran two‑week truce that paused large‑scale strikes (Al Jazeera/Reuters, Apr 8, 2026)",
     "HORMUZ TOLLS: Reports say Iran may demand cryptocurrency tolls (up to ~$2M per tanker) for Strait transit during truce (FT/Coindesk, Apr 8, 2026)",
     "MARKET REACTION: Global energy stocks plunge and oil war premium falls after US‑Iran ceasefire; Brent eases (Reuters/CNBC, Apr 8, 2026)",
-    "CEASEFIRE AGREEMENT: U.S. and Iran agree to two‑week ceasefire contingent on reopening Strait of Hormuz; Trump suspends wider strikes (AP/NYT/NPR, Apr 7, 2026)",
-    "US STRIKES KHARG ISLAND: U.S. conducts strikes on military targets on Kharg Island, with >90 restrikes reported (Reuters/NYT, Apr 7, 2026)",
-    "RUSSIA CYBER SUPPORT: Ukraine says Russia supplied Iran with satellite imagery and cyber support to hone attacks on regional targets (Reuters, Apr 7, 2026)",
-    "IRANIAN HACKERS: U.S. agencies warn Iranian‑linked hackers have escalated targeting of U.S. critical infrastructure (Reuters/NYT, Apr 7, 2026)",
-    "IRGC INTEL CHIEF KILLED: Iran's Revolutionary Guards intelligence chief reportedly killed in a strike, state media say (Reuters, Apr 6, 2026)"
+    "CEASEFIRE AGREEMENT: U.S. and Iran agree to two‑week ceasefire contingent on reopening Strait of Hormuz; Trump suspends wider strikes (AP/NYT/NPR, Apr 7, 2026)"
   ]
 }

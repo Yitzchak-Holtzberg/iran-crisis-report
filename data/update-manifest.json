@@ -1,168 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-09T03:50:48.428Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 55,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Assembly of Experts has selected Mojtaba Khamenei as Iran’s new Supreme Leader — a confirmed regime succession not yet o",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Request timeout after 120000 ms"
-        },
-        "deepResearch": {
-          "status": "ok",
-          "general": {
-            "sitesSearched": 2,
-            "articlesExtracted": 5
-          },
-          "perGroup": {
-            "analysis_research": {
-              "sitesSearched": 7,
-              "articlesExtracted": 8
-            },
-            "map_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 6
-            },
-            "scenarios_research": {
-              "sitesSearched": 4,
-              "articlesExtracted": 8
-            },
-            "reactions_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 6
-            },
-            "naval + air-power_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 7
-            },
-            "military_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 8
-            }
-          }
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "last-24h",
-            "hormuz",
-            "confirmed-unconfirmed",
-            "analysis",
-            "scenarios",
-            "reactions",
-            "military"
-          ],
-          "passes": {
-            "pass1": {
-              "status": "ok",
-              "filesChanged": [
-                "last-24h",
-                "hormuz",
-                "confirmed-unconfirmed"
-              ]
-            },
-            "analysis_research": {
-              "research": {
-                "sitesSearched": 7,
-                "articlesExtracted": 8
-              }
-            },
-            "analysis": {
-              "status": "ok",
-              "filesChanged": [
-                "analysis"
-              ]
-            },
-            "map_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 6
-              }
-            },
-            "map": {
-              "status": "error",
-              "error": "Request timeout after 300000 ms"
-            },
-            "scenarios_research": {
-              "research": {
-                "sitesSearched": 4,
-                "articlesExtracted": 8
-              }
-            },
-            "scenarios": {
-              "status": "ok",
-              "filesChanged": [
-                "scenarios"
-              ]
-            },
-            "reactions_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 6
-              }
-            },
-            "reactions": {
-              "status": "ok",
-              "filesChanged": [
-                "reactions"
-              ]
-            },
-            "naval + air-power_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 7
-              }
-            },
-            "naval + air-power": {
-              "status": "error",
-              "error": "read ECONNRESET"
-            },
-            "military_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 8
-              }
-            },
-            "military": {
-              "status": "ok",
-              "filesChanged": [
-                "military"
-              ]
-            }
-          }
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 4,
-          "sizeChange": -437
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-09T07:13:24.191Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3941,6 +3779,58 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5218
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-15T12:03:44.999Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 67,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 41
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 6,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position"
+          ],
+          "filesUpdated": [
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -107
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 31,
+          "linesRemoved": 0,
+          "sizeChange": 3978
         }
       ]
     }
