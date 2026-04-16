@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 15, 2026",
-  "lastUpdated": "12:03 UTC",
+  "date": "April 16, 2026",
+  "lastUpdated": "12:07 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 18,
   "scenarioRegimeCollapsePct": 14,
   "ticker": [
+    "SHIPPING: Sanctioned China-linked tanker Rich Starry turned back to Strait of Hormuz after U.S. blockade (Reuters, Apr 15, 2026)",
+    "ECONOMY: Iran war brings U.S. close to becoming net crude exporter for first time since WWII (Reuters, Apr 16, 2026)",
+    "DIPLOMACY: U.S. warns buyers of Iranian oil could face sanctions amid blockade (Reuters, Apr 15, 2026)",
+    "EQUIPMENT LOSS: U.S. Navy confirms $240M MQ-4C Triton surveillance drone crashed near Strait of Hormuz (Business Insider, Apr 15, 2026)",
     "INTELLIGENCE: Iran used Chinese spy satellite to target U.S. bases, FT reports; Beijing denies (Reuters, Apr 15, 2026)",
     "ECONOMY: IEA warns Iran war is largest oil supply shock in history, will cut supply and shrink demand (Reuters, Apr 14, 2026)",
     "DIPLOMACY: U.S., Iran seek second round of ceasefire talks as Hormuz blockade continues (Bloomberg, Apr 14, 2026)",
@@ -43,11 +47,6 @@
     "U.S. WARNING: President Trump warns Iran to 'stop now' and demands reopening of Strait of Hormuz ahead of talks (CNN/CNBC, Apr 10, 2026)",
     "STRAIT TRAFFIC HALTED: Ship traffic through Strait of Hormuz at well below 10% of normal as Iran warns ships to keep to its waters (Reuters, Apr 9, 2026)",
     "RUSSIA OIL WINDFALL: Iran war doubles Russia's main oil revenue to $9B in April (Reuters, Apr 9, 2026)",
-    "STRAIT CLOSED: UAE oil CEO says Strait of Hormuz 'not open' as Iran controls access after ceasefire (CNBC, Apr 9, 2026)",
-    "ISRAEL STRIKES LEBANON: Israel launches heaviest bombing wave in month, killing ~250 as US‑Iran ceasefire said not to cover Lebanon (Reuters/NYT, Apr 8, 2026)",
-    "PAKISTAN MEDIATES: Pakistan credited with brokering US‑Iran two‑week truce that paused large‑scale strikes (Al Jazeera/Reuters, Apr 8, 2026)",
-    "HORMUZ TOLLS: Reports say Iran may demand cryptocurrency tolls (up to ~$2M per tanker) for Strait transit during truce (FT/Coindesk, Apr 8, 2026)",
-    "MARKET REACTION: Global energy stocks plunge and oil war premium falls after US‑Iran ceasefire; Brent eases (Reuters/CNBC, Apr 8, 2026)",
-    "CEASEFIRE AGREEMENT: U.S. and Iran agree to two‑week ceasefire contingent on reopening Strait of Hormuz; Trump suspends wider strikes (AP/NYT/NPR, Apr 7, 2026)"
+    "STRAIT CLOSED: UAE oil CEO says Strait of Hormuz 'not open' as Iran controls access after ceasefire (CNBC, Apr 9, 2026)"
   ]
 }
