@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 16, 2026",
-  "lastUpdated": "12:07 UTC",
+  "date": "April 17, 2026",
+  "lastUpdated": "12:01 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,17 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 30,
-  "scenarioNegotiatedDealPct": 20,
+  "scenarioDeclaredVictoryPct": 24,
+  "scenarioNegotiatedDealPct": 32,
   "scenarioDemocraticRevolutionPct": 18,
   "scenarioManagedTransitionPct": 18,
-  "scenarioRegimeCollapsePct": 14,
+  "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "DIPLOMACY: Israel and Lebanon begin 10-day ceasefire (Reuters, Apr 16, 2026)",
+    "DIPLOMACY: U.S. and Iran narrow differences, seek interim memorandum to prevent return to fighting (Reuters, Apr 16, 2026)",
+    "SHIPPING: U.S.-sanctioned supertankers enter Gulf despite blockade (Reuters, Apr 16, 2026)",
+    "MILITARY: Defense Secretary Hegseth says U.S. forces 'locked and loaded' to strike Iran energy infrastructure if ordered (Reuters, Apr 16, 2026)",
+    "MILITARY: U.S. will target Iran-linked ships worldwide, broadening blockade enforcement (Los Angeles Times, Apr 16, 2026)",
     "SHIPPING: Sanctioned China-linked tanker Rich Starry turned back to Strait of Hormuz after U.S. blockade (Reuters, Apr 15, 2026)",
     "ECONOMY: Iran war brings U.S. close to becoming net crude exporter for first time since WWII (Reuters, Apr 16, 2026)",
     "DIPLOMACY: U.S. warns buyers of Iranian oil could face sanctions amid blockade (Reuters, Apr 15, 2026)",
@@ -38,15 +43,6 @@
     "BLOCKADE ORDER: President Trump orders U.S. Navy to blockade Strait of Hormuz and interdict ships paying Iran tolls (AP/PBS/CNN, Apr 12, 2026)",
     "MILITARY: U.S. Central Command says blockade of Iranian ports will begin Monday; Vance departs Islamabad after talks fail (Guardian/AP, Apr 12, 2026)",
     "SHIPPING: Two supertankers make last-minute U-turns near Strait of Hormuz as US‑Iran talks collapse (Bloomberg, Apr 12, 2026)",
-    "MARKET: Oil jumps above $102 as U.S.-Iran talks collapse and blockade looms (Reuters, Apr 12, 2026)",
-    "NEGOTIATIONS FAIL: U.S. and Iran end Islamabad talks without agreement after 21-hour session, Vance says (AP/Reuters/NPR, Apr 11, 2026)",
-    "MILITARY: U.S. says two warships transited Strait of Hormuz to begin mine-clearing operations (Reuters, Apr 11, 2026)",
-    "SHIPPING: Three supertankers exit Strait of Hormuz - first tankers to leave Gulf since ceasefire (Reuters/Al Jazeera, Apr 11, 2026)",
-    "DIPLOMACY: US and Iranian teams in Islamabad for peace talks amid doubts over Lebanon inclusion and sanctions (Reuters, Apr 11, 2026)",
-    "SHIPPING: Shipping in Strait of Hormuz at a standstill despite US‑Iran ceasefire (Al Jazeera, Apr 10, 2026)",
-    "U.S. WARNING: President Trump warns Iran to 'stop now' and demands reopening of Strait of Hormuz ahead of talks (CNN/CNBC, Apr 10, 2026)",
-    "STRAIT TRAFFIC HALTED: Ship traffic through Strait of Hormuz at well below 10% of normal as Iran warns ships to keep to its waters (Reuters, Apr 9, 2026)",
-    "RUSSIA OIL WINDFALL: Iran war doubles Russia's main oil revenue to $9B in April (Reuters, Apr 9, 2026)",
-    "STRAIT CLOSED: UAE oil CEO says Strait of Hormuz 'not open' as Iran controls access after ceasefire (CNBC, Apr 9, 2026)"
+    "MARKET: Oil jumps above $102 as U.S.-Iran talks collapse and blockade looms (Reuters, Apr 12, 2026)"
   ]
 }
