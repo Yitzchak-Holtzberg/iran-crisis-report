@@ -1,179 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-09T19:04:15.352Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 56,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Israel has launched a new wide-scale strike campaign inside Iran (including Tehran and oil sites), a major escalation no",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-isw",
-            "analysis-consensus",
-            "iran-crisis1-epicfury"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "inside-iran.html"
-          ]
-        },
-        "deepResearch": {
-          "status": "ok",
-          "general": {
-            "sitesSearched": 2,
-            "articlesExtracted": 5
-          },
-          "perGroup": {
-            "analysis_research": {
-              "sitesSearched": 7,
-              "articlesExtracted": 8
-            },
-            "map_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 6
-            },
-            "scenarios_research": {
-              "sitesSearched": 4,
-              "articlesExtracted": 5
-            },
-            "reactions_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 6
-            },
-            "naval + air-power_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 6
-            },
-            "military_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 7
-            }
-          }
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "nuclear",
-            "hormuz",
-            "nuclear-teaser",
-            "analysis",
-            "map",
-            "scenarios",
-            "reactions",
-            "military"
-          ],
-          "passes": {
-            "pass1": {
-              "status": "ok",
-              "filesChanged": [
-                "nuclear",
-                "hormuz",
-                "nuclear-teaser"
-              ]
-            },
-            "analysis_research": {
-              "research": {
-                "sitesSearched": 7,
-                "articlesExtracted": 8
-              }
-            },
-            "analysis": {
-              "status": "ok",
-              "filesChanged": [
-                "analysis"
-              ]
-            },
-            "map_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 6
-              }
-            },
-            "map": {
-              "status": "ok",
-              "filesChanged": [
-                "map"
-              ]
-            },
-            "scenarios_research": {
-              "research": {
-                "sitesSearched": 4,
-                "articlesExtracted": 5
-              }
-            },
-            "scenarios": {
-              "status": "ok",
-              "filesChanged": [
-                "scenarios"
-              ]
-            },
-            "reactions_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 6
-              }
-            },
-            "reactions": {
-              "status": "ok",
-              "filesChanged": [
-                "reactions"
-              ]
-            },
-            "naval + air-power_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 6
-              }
-            },
-            "naval + air-power": {
-              "status": "error",
-              "error": "Request timeout after 300000 ms"
-            },
-            "military_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 7
-              }
-            },
-            "military": {
-              "status": "ok",
-              "filesChanged": [
-                "military"
-              ]
-            }
-          }
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 95
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-10T02:44:35.046Z",
       "type": "auto",
       "effectiveType": "structural",
@@ -3718,6 +3545,61 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5467
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-18T11:47:12.231Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 66,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 46
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "hormuz-wti-price",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "hormuz.html",
+            "naval.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 5,
+          "linesRemoved": 0,
+          "sizeChange": 681
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 5362
         }
       ]
     }
