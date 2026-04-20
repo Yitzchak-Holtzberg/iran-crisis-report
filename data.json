@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 19, 2026",
-  "lastUpdated": "11:48 UTC",
+  "date": "April 20, 2026",
+  "lastUpdated": "12:11 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,8 @@
   "scenarioManagedTransitionPct": 18,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "MILITARY: U.S. Navy fires on and seizes Iranian-flagged cargo ship Touska; Marines board after six-hour standoff (The New York Times, Apr 19, 2026)",
+    "DIPLOMACY: Allies warn rushed US–Iran framework could backfire, leaving technical deadlock (Reuters, Apr 19, 2026)",
     "MILITARY: Iran reimposes 'strict control' over Strait of Hormuz as IRGC gunboats fire on tankers (Reuters, Apr 18, 2026)",
     "SHIPPING: Three sanctioned tankers crossed the Strait of Hormuz before Iranian restrictions and shots, ship-tracking data shows (Reuters, Apr 18, 2026)",
     "SHIPPING: Two Indian tankers reported fired on in the Strait of Hormuz after Iran reasserted control; New Delhi protests (NBC, Apr 18, 2026)",

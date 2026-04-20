@@ -1,174 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-10T07:03:17.675Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 57,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Iran has undergone a regime leadership transition: Mojtaba Khamenei named supreme leader after Ali Khamenei’s killing.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 10,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "deepResearch": {
-          "status": "ok",
-          "general": {
-            "sitesSearched": 2,
-            "articlesExtracted": 0
-          },
-          "perGroup": {
-            "analysis_research": {
-              "sitesSearched": 7,
-              "articlesExtracted": 0
-            },
-            "map_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 0
-            },
-            "scenarios_research": {
-              "sitesSearched": 4,
-              "articlesExtracted": 0
-            },
-            "reactions_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 0
-            },
-            "naval + air-power_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 0
-            },
-            "military_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 0
-            }
-          }
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "nuclear",
-            "hormuz",
-            "confirmed-unconfirmed",
-            "analysis",
-            "scenarios",
-            "reactions",
-            "naval",
-            "air-power",
-            "military"
-          ],
-          "passes": {
-            "pass1": {
-              "status": "ok",
-              "filesChanged": [
-                "nuclear",
-                "hormuz",
-                "confirmed-unconfirmed"
-              ]
-            },
-            "analysis_research": {
-              "research": {
-                "sitesSearched": 7,
-                "articlesExtracted": 0
-              }
-            },
-            "analysis": {
-              "status": "ok",
-              "filesChanged": [
-                "analysis"
-              ]
-            },
-            "map_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 0
-              }
-            },
-            "map": {
-              "status": "error",
-              "error": "Request timeout after 300000 ms"
-            },
-            "scenarios_research": {
-              "research": {
-                "sitesSearched": 4,
-                "articlesExtracted": 0
-              }
-            },
-            "scenarios": {
-              "status": "ok",
-              "filesChanged": [
-                "scenarios"
-              ]
-            },
-            "reactions_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 0
-              }
-            },
-            "reactions": {
-              "status": "ok",
-              "filesChanged": [
-                "reactions"
-              ]
-            },
-            "naval + air-power_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 0
-              }
-            },
-            "naval + air-power": {
-              "status": "ok",
-              "filesChanged": [
-                "naval",
-                "air-power"
-              ]
-            },
-            "military_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 0
-              }
-            },
-            "military": {
-              "status": "ok",
-              "filesChanged": [
-                "military"
-              ]
-            }
-          }
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 1
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-11T02:43:57.155Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3495,6 +3327,66 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4882
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-20T12:11:35.900Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 61,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 44
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 2,
+          "linesRemoved": 0,
+          "sizeChange": 277
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4869
         }
       ]
     }
