@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 20, 2026",
-  "lastUpdated": "12:11 UTC",
+  "date": "April 21, 2026",
+  "lastUpdated": "12:07 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 24,
-  "scenarioNegotiatedDealPct": 32,
+  "scenarioDeclaredVictoryPct": 28,
+  "scenarioNegotiatedDealPct": 28,
   "scenarioDemocraticRevolutionPct": 18,
   "scenarioManagedTransitionPct": 18,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "DIPLOMACY: Fate of U.S.–Iran peace talks uncertain as Iran demands release of seized vessel and ceasefire deadline looms (Reuters, Apr 20, 2026)",
+    "MILITARY: Seized Iranian container ship Touska likely carrying dual‑use items, U.S. sources say (Reuters, Apr 20, 2026)",
+    "SHIPPING: Strait of Hormuz shipping near standstill after weekend shots and U.S. seizure, AIS data shows (Reuters, Apr 20, 2026)",
+    "DIPLOMACY: China’s Xi urges Saudi crown prince to keep Strait of Hormuz open amid crisis (Reuters, Apr 20, 2026)",
     "MILITARY: U.S. Navy fires on and seizes Iranian-flagged cargo ship Touska; Marines board after six-hour standoff (The New York Times, Apr 19, 2026)",
     "DIPLOMACY: Allies warn rushed US–Iran framework could backfire, leaving technical deadlock (Reuters, Apr 19, 2026)",
     "MILITARY: Iran reimposes 'strict control' over Strait of Hormuz as IRGC gunboats fire on tankers (Reuters, Apr 18, 2026)",
@@ -43,10 +47,6 @@
     "ECONOMY: Iran war brings U.S. close to becoming net crude exporter for first time since WWII (Reuters, Apr 16, 2026)",
     "DIPLOMACY: U.S. warns buyers of Iranian oil could face sanctions amid blockade (Reuters, Apr 15, 2026)",
     "EQUIPMENT LOSS: U.S. Navy confirms $240M MQ-4C Triton surveillance drone crashed near Strait of Hormuz (Business Insider, Apr 15, 2026)",
-    "INTELLIGENCE: Iran used Chinese spy satellite to target U.S. bases, FT reports; Beijing denies (Reuters, Apr 15, 2026)",
-    "ECONOMY: IEA warns Iran war is largest oil supply shock in history, will cut supply and shrink demand (Reuters, Apr 14, 2026)",
-    "DIPLOMACY: U.S., Iran seek second round of ceasefire talks as Hormuz blockade continues (Bloomberg, Apr 14, 2026)",
-    "ECONOMY: IMF warns Iran war could trigger global recession and cuts growth forecasts (The Guardian, Apr 14, 2026)",
-    "MILITARY: U.S. military blockade of Iranian ports begins at 10 a.m. ET; Iran vows retaliation (CNN, Apr 13, 2026)"
+    "INTELLIGENCE: Iran used Chinese spy satellite to target U.S. bases, FT reports; Beijing denies (Reuters, Apr 15, 2026)"
   ]
 }
