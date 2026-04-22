@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 21, 2026",
-  "lastUpdated": "12:07 UTC",
+  "date": "April 22, 2026",
+  "lastUpdated": "12:06 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 18,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "MILITARY: U.S. military stops and boards M/T Tifani tanker carrying Iranian oil (The New York Times, Apr 21, 2026)",
+    "ECONOMY: IEA says Iran war is causing 'biggest energy crisis in history' (Reuters, Apr 21, 2026)",
+    "ECONOMY: India launches Bharat Maritime Insurance Pool to insure Gulf trade amid Hormuz risks (Economic Times, Apr 21, 2026)",
+    "MILITARY: USS Abraham Lincoln enforcing naval blockade near Iranian ports (CENTCOM/ANI, Apr 21, 2026)",
     "DIPLOMACY: Fate of U.S.–Iran peace talks uncertain as Iran demands release of seized vessel and ceasefire deadline looms (Reuters, Apr 20, 2026)",
     "MILITARY: Seized Iranian container ship Touska likely carrying dual‑use items, U.S. sources say (Reuters, Apr 20, 2026)",
     "SHIPPING: Strait of Hormuz shipping near standstill after weekend shots and U.S. seizure, AIS data shows (Reuters, Apr 20, 2026)",
@@ -43,10 +47,6 @@
     "SHIPPING: U.S.-sanctioned supertankers enter Gulf despite blockade (Reuters, Apr 16, 2026)",
     "MILITARY: Defense Secretary Hegseth says U.S. forces 'locked and loaded' to strike Iran energy infrastructure if ordered (Reuters, Apr 16, 2026)",
     "MILITARY: U.S. will target Iran-linked ships worldwide, broadening blockade enforcement (Los Angeles Times, Apr 16, 2026)",
-    "SHIPPING: Sanctioned China-linked tanker Rich Starry turned back to Strait of Hormuz after U.S. blockade (Reuters, Apr 15, 2026)",
-    "ECONOMY: Iran war brings U.S. close to becoming net crude exporter for first time since WWII (Reuters, Apr 16, 2026)",
-    "DIPLOMACY: U.S. warns buyers of Iranian oil could face sanctions amid blockade (Reuters, Apr 15, 2026)",
-    "EQUIPMENT LOSS: U.S. Navy confirms $240M MQ-4C Triton surveillance drone crashed near Strait of Hormuz (Business Insider, Apr 15, 2026)",
-    "INTELLIGENCE: Iran used Chinese spy satellite to target U.S. bases, FT reports; Beijing denies (Reuters, Apr 15, 2026)"
+    "SHIPPING: Sanctioned China-linked tanker Rich Starry turned back to Strait of Hormuz after U.S. blockade (Reuters, Apr 15, 2026)"
   ]
 }
