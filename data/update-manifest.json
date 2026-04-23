@@ -1,43 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-11T13:21:12.690Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 0,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "No new retrievable open-source updates or major developments beyond items already on the page; routine update only.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 0,
-          "rotated": "full-rebuild"
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": []
-    },
-    {
       "timestamp": "2026-03-11T19:04:53.207Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3414,6 +3377,51 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5069
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-23T12:06:32.940Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 49,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 36
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Request timeout after 180000 ms"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 4,
+          "sizeChange": -546
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4608
         }
       ]
     }
