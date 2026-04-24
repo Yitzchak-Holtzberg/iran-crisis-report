@@ -1,50 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-11T19:04:53.207Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 0,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "No new retrievable reports; existing page already reflects recent major developments (Israel strikes, Hezbollah front, r",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 0,
-          "rotated": "full-rebuild"
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 2,
-          "linesRemoved": 0,
-          "sizeChange": 302
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-12T02:49:42.685Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3422,6 +3378,66 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4608
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-24T12:02:45.792Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 68,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 52
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "hormuz-wti-price",
+            "military-parchin",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "hormuz.html",
+            "military.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 5,
+          "linesRemoved": 0,
+          "sizeChange": 693
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 6067
         }
       ]
     }

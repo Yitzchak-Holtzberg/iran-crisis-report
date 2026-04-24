@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 23, 2026",
-  "lastUpdated": "12:06 UTC",
+  "date": "April 24, 2026",
+  "lastUpdated": "12:02 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,11 @@
   "scenarioManagedTransitionPct": 18,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "MILITARY: THIRD CARRIER: USS George H.W. Bush arrives in Middle East, bringing U.S. carrier total to 3 (Business Insider, Apr 24, 2026)",
+    "MILITARY: U.S. president orders 'shoot and kill' directive for Iranian small boats laying mines in Strait of Hormuz (Associated Press, Apr 23, 2026)",
+    "SHIPPING: U.S. seizes three Iran-linked oil tankers including M/T Majestic X in Indian Ocean (The Hill, Apr 23, 2026)",
+    "DIPLOMACY: Israel–Lebanon ceasefire extended three weeks after U.S. talks, Trump says (The New York Times, Apr 23, 2026)",
+    "MARKET: Oil rises above $106 per barrel as Strait of Hormuz traffic remains choked amid U.S.–Iran standoff (Al Jazeera, Apr 24, 2026)",
     "DIPLOMACY: U.S. announces indefinite extension of ceasefire in Iran conflict (Reuters, Apr 22, 2026)",
     "MILITARY: Iran seizes two ships near Strait of Hormuz after U.S. extends truce (The New York Times, Apr 22, 2026)",
     "MILITARY: Iran Revolutionary Guard fires on three ships in the Strait of Hormuz (Associated Press, Apr 22, 2026)",
