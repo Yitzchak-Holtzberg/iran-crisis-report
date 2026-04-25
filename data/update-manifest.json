@@ -1,50 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-12T02:49:42.685Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 0,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Automated searches returned no retrievable updates; no new structural development beyond current page content.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 0,
-          "rotated": "full-rebuild"
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -4
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-12T07:07:45.887Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3438,6 +3394,59 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6067
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-25T11:49:48.553Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 63,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 51
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 5,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "reactions-global-mediation"
+          ],
+          "filesUpdated": [
+            "naval.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 1,
+          "sizeChange": -85
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 6,
+          "linesRemoved": 0,
+          "sizeChange": 3934
         }
       ]
     }
