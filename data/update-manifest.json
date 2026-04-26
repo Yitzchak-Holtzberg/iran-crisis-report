@@ -1,50 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-12T07:07:45.887Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 0,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Web searches returned no retrievable updates; no new major developments beyond existing structural items on the page.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 0,
-          "rotated": "full-rebuild"
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 2,
-          "linesRemoved": 0,
-          "sizeChange": 274
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-12T13:21:30.503Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3447,6 +3403,61 @@
           "linesAdded": 6,
           "linesRemoved": 0,
           "sizeChange": 3934
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-26T11:51:08.320Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 64,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 53
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "reactions-global-callouts",
+            "reactions-global-mediation"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "sizeChange": 151
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5894
         }
       ]
     }

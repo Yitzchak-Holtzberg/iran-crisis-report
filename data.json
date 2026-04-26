@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 25, 2026",
-  "lastUpdated": "11:49 UTC",
+  "date": "April 26, 2026",
+  "lastUpdated": "11:51 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,15 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 28,
-  "scenarioNegotiatedDealPct": 28,
+  "scenarioDeclaredVictoryPct": 32,
+  "scenarioNegotiatedDealPct": 22,
   "scenarioDemocraticRevolutionPct": 18,
   "scenarioManagedTransitionPct": 18,
-  "scenarioRegimeCollapsePct": 8,
+  "scenarioRegimeCollapsePct": 10,
   "ticker": [
+    "DIPLOMACY: Trump cancels Steve Witkoff and Jared Kushner trip to Pakistan, halting planned U.S.–Iran indirect talks (BBC, Apr 25, 2026)",
+    "MILITARY: U.S. probe finds Iran caused more extensive damage to U.S. bases than previously disclosed, raising repair cost concerns (NBC News, Apr 25, 2026)",
+    "SANCTIONS: U.S. sanctions 19 vessels linked to Iran's 'shadow fleet' as ports blockade intensifies (Newsweek, Apr 25, 2026)",
     "DIPLOMACY: U.S. dispatches envoys Steve Witkoff and Jared Kushner to Pakistan to revive Iran ceasefire talks (Associated Press, Apr 24, 2026)",
     "DIPLOMACY: Iran foreign minister Abbas Araghchi arrives in Islamabad ahead of negotiations with U.S. envoys (The New York Times, Apr 24, 2026)",
     "SANCTIONS: U.S. Treasury sanctions China-based Hengli Dalian refinery and 40 shippers over Iranian oil network (U.S. Department of the Treasury, Apr 24, 2026)",
@@ -45,8 +48,6 @@
     "SHIPPING: Strait of Hormuz shipping near standstill after weekend shots and U.S. seizure, AIS data shows (Reuters, Apr 20, 2026)",
     "DIPLOMACY: China’s Xi urges Saudi crown prince to keep Strait of Hormuz open amid crisis (Reuters, Apr 20, 2026)",
     "MILITARY: U.S. Navy fires on and seizes Iranian-flagged cargo ship Touska; Marines board after six-hour standoff (The New York Times, Apr 19, 2026)",
-    "DIPLOMACY: Allies warn rushed US–Iran framework could backfire, leaving technical deadlock (Reuters, Apr 19, 2026)",
-    "MILITARY: Iran reimposes 'strict control' over Strait of Hormuz as IRGC gunboats fire on tankers (Reuters, Apr 18, 2026)",
-    "SHIPPING: Three sanctioned tankers crossed the Strait of Hormuz before Iranian restrictions and shots, ship-tracking data shows (Reuters, Apr 18, 2026)"
+    "DIPLOMACY: Allies warn rushed US–Iran framework could backfire, leaving technical deadlock (Reuters, Apr 19, 2026)"
   ]
 }
