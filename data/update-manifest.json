@@ -1,50 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-12T13:21:30.503Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 0,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search returned no retrievable updates; no new major developments beyond existing structural entries.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 0,
-          "rotated": "full-rebuild"
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 29
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-12T19:05:09.769Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3458,6 +3414,62 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5894
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-27T12:22:53.806Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 62,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 50
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "hormuz-wti-price",
+            "carrier-lincoln-position"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "hormuz.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 1,
+          "sizeChange": -192
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5117
         }
       ]
     }
