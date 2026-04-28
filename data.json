@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 27, 2026",
-  "lastUpdated": "12:22 UTC",
+  "date": "April 28, 2026",
+  "lastUpdated": "12:56 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 18,
   "scenarioRegimeCollapsePct": 10,
   "ticker": [
+    "DIPLOMACY: US, Iran clash at UN after Tehran wins vice‑president role at NPT review conference (Reuters, Apr 27, 2026)",
+    "DIPLOMACY: Iran offers plan to reopen Strait of Hormuz if U.S. postpones nuclear talks (The New York Times, Apr 27, 2026)",
+    "MILITARY: ISW says Iran exploiting leverage over Strait of Hormuz to pressure US blockade (ISW, Apr 27, 2026)",
+    "DIPLOMACY: Iran FM Abbas Araghchi meets Putin in Saint Petersburg to seek backing amid stalled US talks (Arab News, Apr 27, 2026)",
     "DIPLOMACY: Trump scraps Pakistan talks, says Iran 'can phone' if it wants to talk (Reuters, Apr 26, 2026)",
     "MILITARY: U.S. CENTCOM says 38 vessels turned back under maritime blockade (CENTCOM/SANA, Apr 27, 2026)",
     "SHIPPING: U.S. Navy intercepts sanctioned tanker M/V Sevan, forces it to retreat toward Iran (ANI, Apr 26, 2026)",
@@ -39,14 +43,10 @@
     "SHIPPING: U.S. seizes three Iran-linked oil tankers including M/T Majestic X in Indian Ocean (The Hill, Apr 23, 2026)",
     "DIPLOMACY: Israel–Lebanon ceasefire extended three weeks after U.S. talks, Trump says (The New York Times, Apr 23, 2026)",
     "MARKET: Oil rises above $106 per barrel as Strait of Hormuz traffic remains choked amid U.S.–Iran standoff (Al Jazeera, Apr 24, 2026)",
-    "DIPLOMACY: U.S. announces indefinite extension of ceasefire in Iran conflict (Reuters, Apr 22, 2026)",
     "MILITARY: Iran seizes two ships near Strait of Hormuz after U.S. extends truce (The New York Times, Apr 22, 2026)",
     "MILITARY: Iran Revolutionary Guard fires on three ships in the Strait of Hormuz (Associated Press, Apr 22, 2026)",
     "SHIPPING: U.S. intercepts three Iranian oil tankers in Asian waters, sources say (Reuters, Apr 22, 2026)",
     "MILITARY: U.S. military stops and boards M/T Tifani tanker carrying Iranian oil (The New York Times, Apr 21, 2026)",
-    "ECONOMY: IEA says Iran war is causing 'biggest energy crisis in history' (Reuters, Apr 21, 2026)",
-    "ECONOMY: India launches Bharat Maritime Insurance Pool to insure Gulf trade amid Hormuz risks (Economic Times, Apr 21, 2026)",
-    "MILITARY: USS Abraham Lincoln enforcing naval blockade near Iranian ports (CENTCOM/ANI, Apr 21, 2026)",
-    "DIPLOMACY: Fate of U.S.–Iran peace talks uncertain as Iran demands release of seized vessel and ceasefire deadline looms (Reuters, Apr 20, 2026)"
+    "SANCTIONS: U.S. Treasury sanctions China-based Hengli Dalian refinery and 40 shippers over Iranian oil network (U.S. Department of the Treasury, Apr 24, 2026)"
   ]
 }

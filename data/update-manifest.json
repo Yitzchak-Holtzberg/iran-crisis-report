@@ -1,50 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-12T19:05:09.769Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 0,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": false,
-          "reason": "No retrievable new reporting; existing major events (regime change, Israel strikes, Hezbollah front) already covered.",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 0,
-          "rotated": "full-rebuild"
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [],
-          "filesUpdated": []
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 152
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-12T21:44:48.966Z",
       "type": "auto",
       "effectiveType": "structural",
@@ -3470,6 +3426,64 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5117
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-28T12:56:38.451Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 65,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 55
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "nuclear-subtitle",
+            "reactions-global-callouts",
+            "reactions-global-mediation"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "nuclear-teaser.html",
+            "nuclear.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 70
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5033
         }
       ]
     }
