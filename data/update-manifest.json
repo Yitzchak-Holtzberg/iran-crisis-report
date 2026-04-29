@@ -1,186 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-12T21:44:48.966Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 66,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Iran publicly named US tech giants as legitimate kinetic targets, expanding the conflict to global corporate infrastruct",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-isw",
-            "analysis-consensus",
-            "hormuz-wti-price",
-            "iran-crisis1-epicfury",
-            "iran-crisis2-succession",
-            "iran-crisis3-economic",
-            "iran-crisis4-uprising",
-            "iran-crisis6-regional",
-            "military-parchin",
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-badge",
-            "carrier-ford-position",
-            "nuclear-subtitle"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "hormuz.html",
-            "inside-iran.html",
-            "military.html",
-            "naval.html",
-            "nuclear-teaser.html",
-            "nuclear.html"
-          ]
-        },
-        "deepResearch": {
-          "status": "ok",
-          "general": {
-            "sitesSearched": 2,
-            "articlesExtracted": 2
-          },
-          "perGroup": {
-            "analysis_research": {
-              "sitesSearched": 7,
-              "articlesExtracted": 8
-            },
-            "map_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 4
-            },
-            "scenarios_research": {
-              "sitesSearched": 4,
-              "articlesExtracted": 5
-            },
-            "reactions_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 6
-            },
-            "naval + air-power + military_research": {
-              "sitesSearched": 6,
-              "articlesExtracted": 4
-            }
-          }
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "inside-iran",
-            "confirmed-unconfirmed",
-            "analysis",
-            "scenarios",
-            "reactions",
-            "naval",
-            "air-power",
-            "military"
-          ],
-          "passes": {
-            "pass1": {
-              "status": "ok",
-              "filesChanged": [
-                "inside-iran",
-                "confirmed-unconfirmed"
-              ]
-            },
-            "analysis_research": {
-              "research": {
-                "sitesSearched": 7,
-                "articlesExtracted": 8
-              }
-            },
-            "analysis": {
-              "status": "ok",
-              "filesChanged": [
-                "analysis"
-              ]
-            },
-            "map_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 4
-              }
-            },
-            "map": {
-              "status": "error",
-              "error": "Request timeout after 120000 ms"
-            },
-            "scenarios_research": {
-              "research": {
-                "sitesSearched": 4,
-                "articlesExtracted": 5
-              }
-            },
-            "scenarios": {
-              "status": "ok",
-              "filesChanged": [
-                "scenarios"
-              ]
-            },
-            "reactions_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 6
-              }
-            },
-            "reactions": {
-              "status": "ok",
-              "filesChanged": [
-                "reactions"
-              ]
-            },
-            "naval + air-power + military_research": {
-              "research": {
-                "sitesSearched": 6,
-                "articlesExtracted": 4
-              }
-            },
-            "naval + air-power + military": {
-              "status": "ok",
-              "filesChanged": [
-                "naval",
-                "air-power",
-                "military"
-              ]
-            }
-          }
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -15
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5411
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-13T11:40:21.593Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3484,6 +3304,63 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5033
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-29T12:21:56.907Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 57,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 40
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "bg-us-iran-timeline",
+            "carrier-lincoln-position",
+            "carrier-ford-position"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "background.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -75
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5667
         }
       ]
     }
