@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "April 30, 2026",
-  "lastUpdated": "12:21 UTC",
+  "date": "May 1, 2026",
+  "lastUpdated": "12:04 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 20,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "POLITICAL: Iran's Supreme Leader Mojtaba Khamenei announces 'new management' of Strait of Hormuz to 'bring calm' (Reuters, Apr 30, 2026)",
+    "SHIPPING: Strait of Hormuz traffic drops by over 90%, fewer than 10 ships daily (Economic Times, Apr 30, 2026)",
+    "HUMAN RIGHTS: U.N. says Iran executed 21 and arrested over 4,000 people since war began (NewArab/UN, Apr 30, 2026)",
+    "DIPLOMACY: Tehran says U.S. ports siege 'intolerable' as Trump mulls action (Al Jazeera, May 1, 2026)",
     "MILITARY: U.S. aircraft carrier USS Gerald R. Ford set to leave Middle East, reducing U.S. carrier presence (Washington Post, Apr 29, 2026)",
     "DIPLOMACY: U.S. seeks international coalition to reopen Strait of Hormuz as crude prices surge (Reuters, Apr 29, 2026)",
     "MILITARY: Pentagon says Iran war has cost $25 billion so far (Reuters, Apr 29, 2026)",
@@ -43,10 +47,6 @@
     "MILITARY: U.S. probe finds Iran caused more extensive damage to U.S. bases than previously disclosed, raising repair cost concerns (NBC News, Apr 25, 2026)",
     "SANCTIONS: U.S. sanctions 19 vessels linked to Iran's 'shadow fleet' as ports blockade intensifies (Newsweek, Apr 25, 2026)",
     "DIPLOMACY: U.S. dispatches envoys Steve Witkoff and Jared Kushner to Pakistan to revive Iran ceasefire talks (Associated Press, Apr 24, 2026)",
-    "DIPLOMACY: Iran foreign minister Abbas Araghchi arrives in Islamabad ahead of negotiations with U.S. envoys (The New York Times, Apr 24, 2026)",
-    "SANCTIONS: U.S. Treasury sanctions China-based Hengli Dalian refinery and 40 shippers over Iranian oil network (U.S. Department of the Treasury, Apr 24, 2026)",
-    "MILITARY: U.S. president orders 'shoot and kill' directive for Iranian small boats laying mines in Strait of Hormuz (Associated Press, Apr 23, 2026)",
-    "SHIPPING: U.S. seizes three Iran-linked oil tankers including M/T Majestic X in Indian Ocean (The Hill, Apr 23, 2026)",
-    "DIPLOMACY: Israel–Lebanon ceasefire extended three weeks after U.S. talks, Trump says (The New York Times, Apr 23, 2026)"
+    "DIPLOMACY: Iran foreign minister Abbas Araghchi arrives in Islamabad ahead of negotiations with U.S. envoys (The New York Times, Apr 24, 2026)"
   ]
 }
