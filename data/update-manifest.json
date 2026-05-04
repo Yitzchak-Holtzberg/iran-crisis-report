@@ -1,189 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-15T11:36:22.015Z",
-      "type": "auto",
-      "effectiveType": "structural",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 54,
-          "tierDropped": 0,
-          "status": "ok"
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Reports Israel is expanding a ground campaign into southern Lebanon (south of the Litani), opening a new ground front no",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 10,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "iran-crisis1-epicfury",
-            "iran-crisis2-succession",
-            "iran-crisis3-economic",
-            "iran-crisis4-uprising",
-            "iran-crisis6-regional",
-            "military-parchin",
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position",
-            "nuclear-subtitle"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "inside-iran.html",
-            "military.html",
-            "naval.html",
-            "nuclear-teaser.html",
-            "nuclear.html"
-          ]
-        },
-        "deepResearch": {
-          "status": "ok",
-          "general": {
-            "sitesSearched": 2,
-            "articlesExtracted": 0
-          },
-          "perGroup": {
-            "analysis_research": {
-              "sitesSearched": 7,
-              "articlesExtracted": 0
-            },
-            "map_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 0
-            },
-            "scenarios_research": {
-              "sitesSearched": 4,
-              "articlesExtracted": 0
-            },
-            "reactions_research": {
-              "sitesSearched": 3,
-              "articlesExtracted": 0
-            },
-            "naval + air-power + military_research": {
-              "sitesSearched": 6,
-              "articlesExtracted": 0
-            }
-          }
-        },
-        "structural": {
-          "status": "ok",
-          "filesChanged": [
-            "last-24h",
-            "inside-iran",
-            "theater",
-            "analysis",
-            "map",
-            "scenarios",
-            "reactions",
-            "naval",
-            "air-power",
-            "military"
-          ],
-          "passes": {
-            "pass1": {
-              "status": "ok",
-              "filesChanged": [
-                "last-24h",
-                "inside-iran",
-                "theater"
-              ]
-            },
-            "analysis_research": {
-              "research": {
-                "sitesSearched": 7,
-                "articlesExtracted": 0
-              }
-            },
-            "analysis": {
-              "status": "ok",
-              "filesChanged": [
-                "analysis"
-              ]
-            },
-            "map_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 0
-              }
-            },
-            "map": {
-              "status": "ok",
-              "filesChanged": [
-                "map"
-              ]
-            },
-            "scenarios_research": {
-              "research": {
-                "sitesSearched": 4,
-                "articlesExtracted": 0
-              }
-            },
-            "scenarios": {
-              "status": "ok",
-              "filesChanged": [
-                "scenarios"
-              ]
-            },
-            "reactions_research": {
-              "research": {
-                "sitesSearched": 3,
-                "articlesExtracted": 0
-              }
-            },
-            "reactions": {
-              "status": "ok",
-              "filesChanged": [
-                "reactions"
-              ]
-            },
-            "naval + air-power + military_research": {
-              "research": {
-                "sitesSearched": 6,
-                "articlesExtracted": 0
-              }
-            },
-            "naval + air-power + military": {
-              "status": "ok",
-              "filesChanged": [
-                "naval",
-                "air-power",
-                "military"
-              ]
-            }
-          }
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 4,
-          "sizeChange": -697
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 51,
-          "linesRemoved": 0,
-          "sizeChange": 6491
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-15T21:38:53.891Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3218,6 +3035,67 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5656
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-04T12:23:55.384Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 68,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 51
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "carrier-lincoln-position",
+            "carrier-ford-badge",
+            "carrier-ford-position",
+            "nuclear-subtitle",
+            "reactions-global-callouts"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 1,
+          "sizeChange": -87
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5000
         }
       ]
     }

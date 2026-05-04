@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 3, 2026",
-  "lastUpdated": "11:54 UTC",
+  "date": "May 4, 2026",
+  "lastUpdated": "12:23 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 27,
   "scenarioRegimeCollapsePct": 7,
   "ticker": [
+    "MILITARY: U.S. launches 'Project Freedom' to guide stranded commercial ships through Strait of Hormuz (The New York Times, May 3, 2026)",
+    "MILITARY: Iran says it turned back U.S. warship; U.S. denies Iranian strike on its vessel (Reuters, May 4, 2026)",
+    "DIPLOMACY: Trump rejects Iran's 14‑point peace proposal as 'not acceptable' after review (India Today, May 4, 2026)",
+    "DIPLOMACY: China blocks U.S. sanctions on five 'teapot' refineries accused of buying Iranian oil (Al Jazeera, May 3, 2026)",
     "DIPLOMACY: Iran submits 14‑point peace proposal; Trump says he is reviewing but skeptical (AP, May 2, 2026)",
     "MILITARY: U.S. fast‑tracks $8B arms sales to Israel and Gulf allies amid Iran war (CNN, May 2, 2026)",
     "SHIPPING: Supertanker appears to have crossed Strait of Hormuz, potentially bypassing U.S. blockade (Bloomberg, May 2, 2026)",
@@ -42,11 +46,6 @@
     "MILITARY: Pentagon says Iran war has cost $25 billion so far (Reuters, Apr 29, 2026)",
     "MARKET: EU greenlights subsidies to firms hit by Iran war fuel and fertilizer price spikes (Reuters, Apr 29, 2026)",
     "MILITARY: Iran Revolutionary Guard seizes wartime powers, blunting Supreme Leader's role (Reuters, Apr 28, 2026)",
-    "SHIPPING: Idemitsu Maru tanker crosses Strait of Hormuz carrying 2 million barrels of Saudi oil (Reuters, Apr 28, 2026)",
-    "DIPLOMACY: United Arab Emirates to quit OPEC amid Iran war fallout (CNN, Apr 28, 2026)",
-    "DIPLOMACY: US, Iran clash at UN after Tehran wins vice‑president role at NPT review conference (Reuters, Apr 27, 2026)",
-    "DIPLOMACY: Iran offers plan to reopen Strait of Hormuz if U.S. postpones nuclear talks (The New York Times, Apr 27, 2026)",
-    "MILITARY: ISW says Iran exploiting leverage over Strait of Hormuz to pressure US blockade (ISW, Apr 27, 2026)",
-    "DIPLOMACY: Iran FM Abbas Araghchi meets Putin in Saint Petersburg to seek backing amid stalled US talks (Arab News, Apr 27, 2026)"
+    "SHIPPING: Idemitsu Maru tanker crosses Strait of Hormuz carrying 2 million barrels of Saudi oil (Reuters, Apr 28, 2026)"
   ]
 }
