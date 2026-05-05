@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 4, 2026",
-  "lastUpdated": "12:23 UTC",
+  "date": "May 5, 2026",
+  "lastUpdated": "12:10 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 27,
   "scenarioRegimeCollapsePct": 7,
   "ticker": [
+    "MILITARY: U.S. destroys six Iranian small boats, shoots down missiles and drones in Strait of Hormuz (Reuters, May 4, 2026)",
+    "HUMAN RIGHTS: Iran says U.S. attacks killed five civilians on passenger boats (Al Jazeera, May 5, 2026)",
+    "MILITARY: UAE intercepts Iranian missiles and drones after strikes on Fujairah (Al Jazeera, May 4, 2026)",
+    "MARKET: Oil prices retreat but remain above $100 after fighting flares in Strait of Hormuz (AP, May 5, 2026)",
     "MILITARY: U.S. launches 'Project Freedom' to guide stranded commercial ships through Strait of Hormuz (The New York Times, May 3, 2026)",
     "MILITARY: Iran says it turned back U.S. warship; U.S. denies Iranian strike on its vessel (Reuters, May 4, 2026)",
     "DIPLOMACY: Trump rejects Iran's 14‑point peace proposal as 'not acceptable' after review (India Today, May 4, 2026)",
@@ -44,8 +48,6 @@
     "MILITARY: U.S. aircraft carrier USS Gerald R. Ford set to leave Middle East, reducing U.S. carrier presence (Washington Post, Apr 29, 2026)",
     "DIPLOMACY: U.S. seeks international coalition to reopen Strait of Hormuz as crude prices surge (Reuters, Apr 29, 2026)",
     "MILITARY: Pentagon says Iran war has cost $25 billion so far (Reuters, Apr 29, 2026)",
-    "MARKET: EU greenlights subsidies to firms hit by Iran war fuel and fertilizer price spikes (Reuters, Apr 29, 2026)",
-    "MILITARY: Iran Revolutionary Guard seizes wartime powers, blunting Supreme Leader's role (Reuters, Apr 28, 2026)",
-    "SHIPPING: Idemitsu Maru tanker crosses Strait of Hormuz carrying 2 million barrels of Saudi oil (Reuters, Apr 28, 2026)"
+    "MARKET: EU greenlights subsidies to firms hit by Iran war fuel and fertilizer price spikes (Reuters, Apr 29, 2026)"
   ]
 }
