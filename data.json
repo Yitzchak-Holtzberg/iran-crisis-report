@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 6, 2026",
-  "lastUpdated": "13:00 UTC",
+  "date": "May 7, 2026",
+  "lastUpdated": "13:01 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,17 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 24,
-  "scenarioNegotiatedDealPct": 36,
+  "scenarioDeclaredVictoryPct": 18,
+  "scenarioNegotiatedDealPct": 46,
   "scenarioDemocraticRevolutionPct": 9,
-  "scenarioManagedTransitionPct": 26,
+  "scenarioManagedTransitionPct": 22,
   "scenarioRegimeCollapsePct": 5,
   "ticker": [
+    "MILITARY: U.S. fires on and disables Iranian-flagged tanker M/T Hasna after blockade breach attempt (AP, May 6, 2026)",
+    "SHIPPING: UAE sails hidden tankers through Strait of Hormuz with transponders off to move crude (Reuters, May 7, 2026)",
+    "BATTLE DAMAGE: Satellite imagery shows damage to 228 structures/equipment at U.S. Gulf bases after strikes (Washington Post, May 6, 2026)",
+    "PROXIES: Iranian proxies in Lebanon and Iraq threaten tenuous ceasefire with renewed attacks (Bloomberg, May 6, 2026)",
+    "DIPLOMACY: Pakistan says U.S. and Iran close to one-page memo to begin nuclear talks and end war (News18, May 6, 2026)",
     "DIPLOMACY: Trump pauses 'Project Freedom' in Strait of Hormuz, citing progress on Iran deal (NBC News, May 5, 2026)",
     "DIPLOMACY: U.S.-Iran ceasefire holding for now as talks progress, U.S. officials say (CBS News, May 5, 2026)",
     "MILITARY: Iran warns it may strike European military bases amid Hormuz escalation (Euronews, May 5, 2026)",
@@ -43,8 +48,6 @@
     "DIPLOMACY: Trump declares Iran hostilities 'terminated' as 60‑day War Powers deadline arrives (Reuters, May 1, 2026)",
     "SANCTIONS: U.S. sanctions three Iranian currency exchanges and a Chinese oil terminal over Strait purchases (Bloomberg, May 1, 2026)",
     "SHIPPING: Traffic through Strait of Hormuz at near‑standstill after weeks of disruption, global shipments crippled (NBC News, May 1, 2026)",
-    "MILITARY: USS Gerald R. Ford to return to Norfolk, reducing U.S. carrier presence in Middle East (ABC News, May 1, 2026)",
-    "POLITICAL: Iran's Supreme Leader Mojtaba Khamenei announces 'new management' of Strait of Hormuz to 'bring calm' (Reuters, Apr 30, 2026)",
-    "SHIPPING: Strait of Hormuz traffic drops by over 90%, fewer than 10 ships daily (Economic Times, Apr 30, 2026)"
+    "MILITARY: USS Gerald R. Ford to return to Norfolk, reducing U.S. carrier presence in Middle East (ABC News, May 1, 2026)"
   ]
 }
