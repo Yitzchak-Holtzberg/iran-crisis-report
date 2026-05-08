@@ -1,69 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-17T21:50:48.888Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 54,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 36
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Israeli strikes reportedly killed Iran’s national security chief Ali Larijani and Basij commander — a leadership decapit",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "iran-crisis2-succession"
-          ],
-          "filesUpdated": [
-            "inside-iran.html"
-          ]
-        },
-        "deepResearch": {
-          "status": "ok",
-          "general": {
-            "sitesSearched": 2,
-            "articlesExtracted": 3
-          },
-          "perGroup": {}
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "deep research insufficient (3/5 articles)"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 187
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 46,
-          "linesRemoved": 0,
-          "sizeChange": 7265
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-18T11:54:41.757Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3114,6 +3051,51 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6566
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-08T12:16:23.639Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 54,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 37
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Request timeout after 180000 ms"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -9
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5448
         }
       ]
     }

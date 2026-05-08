@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 7, 2026",
-  "lastUpdated": "13:01 UTC",
+  "date": "May 8, 2026",
+  "lastUpdated": "12:16 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 18,
-  "scenarioNegotiatedDealPct": 46,
+  "scenarioDeclaredVictoryPct": 20,
+  "scenarioNegotiatedDealPct": 42,
   "scenarioDemocraticRevolutionPct": 9,
-  "scenarioManagedTransitionPct": 22,
+  "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 5,
   "ticker": [
+    "MILITARY: U.S. carries out retaliatory strikes on Iranian sites after attacks on three U.S. destroyers in Strait of Hormuz (Reuters, May 7, 2026)",
+    "CENTCOM: U.S. says it intercepted unprovoked Iranian attacks and responded with self-defense strikes (CENTCOM, May 7, 2026)",
+    "MILITARY: U.S. and Iran exchange fire amid declared truce, raising ceasefire doubts (The New York Times, May 7, 2026)",
+    "MARKET: Oil prices fall below $100 after U.S.-Iran exchange of fire despite ceasefire claims (CNBC, May 8, 2026)",
     "MILITARY: U.S. fires on and disables Iranian-flagged tanker M/T Hasna after blockade breach attempt (AP, May 6, 2026)",
     "SHIPPING: UAE sails hidden tankers through Strait of Hormuz with transponders off to move crude (Reuters, May 7, 2026)",
     "BATTLE DAMAGE: Satellite imagery shows damage to 228 structures/equipment at U.S. Gulf bases after strikes (Washington Post, May 6, 2026)",
@@ -44,10 +48,6 @@
     "MILITARY: U.S. fast‑tracks $8B arms sales to Israel and Gulf allies amid Iran war (CNN, May 2, 2026)",
     "SHIPPING: Supertanker appears to have crossed Strait of Hormuz, potentially bypassing U.S. blockade (Bloomberg, May 2, 2026)",
     "ECONOMY: Spirit Airlines shuts down, cited as first aviation casualty of Iran war (Globe and Mail, May 3, 2026)",
-    "DIPLOMACY: Trump warns U.S. could strike Iran again as diplomacy stalls (CNN, May 2, 2026)",
-    "DIPLOMACY: Trump declares Iran hostilities 'terminated' as 60‑day War Powers deadline arrives (Reuters, May 1, 2026)",
-    "SANCTIONS: U.S. sanctions three Iranian currency exchanges and a Chinese oil terminal over Strait purchases (Bloomberg, May 1, 2026)",
-    "SHIPPING: Traffic through Strait of Hormuz at near‑standstill after weeks of disruption, global shipments crippled (NBC News, May 1, 2026)",
-    "MILITARY: USS Gerald R. Ford to return to Norfolk, reducing U.S. carrier presence in Middle East (ABC News, May 1, 2026)"
+    "DIPLOMACY: Trump warns U.S. could strike Iran again as diplomacy stalls (CNN, May 2, 2026)"
   ]
 }
