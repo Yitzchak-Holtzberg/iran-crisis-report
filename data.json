@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 8, 2026",
-  "lastUpdated": "12:16 UTC",
+  "date": "May 9, 2026",
+  "lastUpdated": "11:57 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 5,
   "ticker": [
+    "MILITARY: U.S. disables two Iranian-flagged tankers attempting to breach blockade (Reuters, May 8, 2026)",
+    "SHIPPING: China confirms earlier attack on oil tanker in Strait of Hormuz (Reuters, May 8, 2026)",
+    "SANCTIONS: U.S. sanctions 10 individuals and companies aiding Iran's weapons sector (U.S. Treasury/Reuters, May 8, 2026)",
+    "INTELLIGENCE: CIA says Iran could withstand U.S. blockade for four months (Reuters, May 8, 2026)",
     "MILITARY: U.S. carries out retaliatory strikes on Iranian sites after attacks on three U.S. destroyers in Strait of Hormuz (Reuters, May 7, 2026)",
     "CENTCOM: U.S. says it intercepted unprovoked Iranian attacks and responded with self-defense strikes (CENTCOM, May 7, 2026)",
     "MILITARY: U.S. and Iran exchange fire amid declared truce, raising ceasefire doubts (The New York Times, May 7, 2026)",
@@ -40,14 +44,6 @@
     "HUMAN RIGHTS: Iran says U.S. attacks killed five civilians on passenger boats (Al Jazeera, May 5, 2026)",
     "MILITARY: UAE intercepts Iranian missiles and drones after strikes on Fujairah (Al Jazeera, May 4, 2026)",
     "MARKET: Oil prices retreat but remain above $100 after fighting flares in Strait of Hormuz (AP, May 5, 2026)",
-    "MILITARY: U.S. launches 'Project Freedom' to guide stranded commercial ships through Strait of Hormuz (The New York Times, May 3, 2026)",
-    "MILITARY: Iran says it turned back U.S. warship; U.S. denies Iranian strike on its vessel (Reuters, May 4, 2026)",
-    "DIPLOMACY: Trump rejects Iran's 14‑point peace proposal as 'not acceptable' after review (India Today, May 4, 2026)",
-    "DIPLOMACY: China blocks U.S. sanctions on five 'teapot' refineries accused of buying Iranian oil (Al Jazeera, May 3, 2026)",
-    "DIPLOMACY: Iran submits 14‑point peace proposal; Trump says he is reviewing but skeptical (AP, May 2, 2026)",
-    "MILITARY: U.S. fast‑tracks $8B arms sales to Israel and Gulf allies amid Iran war (CNN, May 2, 2026)",
-    "SHIPPING: Supertanker appears to have crossed Strait of Hormuz, potentially bypassing U.S. blockade (Bloomberg, May 2, 2026)",
-    "ECONOMY: Spirit Airlines shuts down, cited as first aviation casualty of Iran war (Globe and Mail, May 3, 2026)",
-    "DIPLOMACY: Trump warns U.S. could strike Iran again as diplomacy stalls (CNN, May 2, 2026)"
+    "MILITARY: U.S. launches 'Project Freedom' to guide stranded commercial ships through Strait of Hormuz (The New York Times, May 3, 2026)"
   ]
 }
