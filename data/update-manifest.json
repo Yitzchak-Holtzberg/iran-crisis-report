@@ -1,43 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-18T21:47:07.050Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 56,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 33
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Search results show continued strikes/retaliation and energy targeting already on the page; no verified new front or lea",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "error",
-          "error": "OpenAI error 500: {\n  \"error\": {\n    \"message\": \"The server had an error while processing your request. Sorry about that!\",\n    \"type\": \"server_error\",\n    \"param\": null,\n    \"code\": null\n  }\n}"
-        },
-        "timeline": {
-          "status": "error",
-          "error": "Request timeout after 180000 ms"
-        },
-        "zones": {
-          "status": "error",
-          "error": "OpenAI error 500: {\n  \"error\": {\n    \"message\": \"The server had an error while processing your request. Sorry about that!\",\n    \"type\": \"server_error\",\n    \"param\": null,\n    \"code\": null\n  }\n}"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": []
-    },
-    {
       "timestamp": "2026-03-19T11:47:34.158Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3083,6 +3046,59 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 6000
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-10T11:59:52.526Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 55,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 43
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "military-parchin",
+            "carrier-lincoln-position",
+            "carrier-ford-position"
+          ],
+          "filesUpdated": [
+            "military.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 4,
+          "linesRemoved": 0,
+          "sizeChange": 479
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 6124
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 9, 2026",
-  "lastUpdated": "11:57 UTC",
+  "date": "May 10, 2026",
+  "lastUpdated": "11:59 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 5,
   "ticker": [
+    "MILITARY: U.S. strikes at least two locations inside Iran, U.S. official says (NBC News, May 9, 2026)",
+    "STRAIT OF HORMUZ: Strait remains effectively blocked after U.S. Navy blockade intercepts ships (The New York Times, May 9, 2026)",
+    "DIPLOMACY: U.S. awaits Iran's response to ceasefire/peace proposal as tanker crosses Strait (Reuters, May 9, 2026)",
+    "SANCTIONS: U.S. sanctions 11 entities and 3 individuals for aiding Iran's war effort (CNBC, May 9, 2026)",
     "MILITARY: U.S. disables two Iranian-flagged tankers attempting to breach blockade (Reuters, May 8, 2026)",
     "SHIPPING: China confirms earlier attack on oil tanker in Strait of Hormuz (Reuters, May 8, 2026)",
     "SANCTIONS: U.S. sanctions 10 individuals and companies aiding Iran's weapons sector (U.S. Treasury/Reuters, May 8, 2026)",
