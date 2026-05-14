@@ -1,79 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-20T11:40:21.788Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 55,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 35
-        },
-        "significance": {
-          "structural": true,
-          "reason": "Widespread Iran-linked destructive cyberattacks and US DOJ/FBI domain seizures create a new cyber‑warfare front not on t",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 0,
-          "rotated": "full-rebuild"
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "bg-january-protests",
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position",
-            "nuclear-subtitle",
-            "reactions-global-callouts",
-            "reactions-global-energy",
-            "reactions-iran-casualties"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "background.html",
-            "naval.html",
-            "nuclear-teaser.html",
-            "nuclear.html",
-            "reactions-global.html",
-            "reactions-iran.html"
-          ]
-        },
-        "deepResearch": {
-          "status": "ok",
-          "general": {
-            "sitesSearched": 2,
-            "articlesExtracted": 3
-          },
-          "perGroup": {}
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "deep research insufficient (3/5 articles)"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 83
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-20T21:40:31.019Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3093,6 +3020,62 @@
           "linesAdded": 31,
           "linesRemoved": 0,
           "sizeChange": 4043
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-14T13:01:56.219Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 65,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 51
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-csis",
+            "analysis-isw",
+            "analysis-consensus",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 4,
+          "sizeChange": -509
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 5702
         }
       ]
     }

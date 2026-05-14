@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 13, 2026",
-  "lastUpdated": "13:25 UTC",
+  "date": "May 14, 2026",
+  "lastUpdated": "13:01 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 26,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "DIPLOMACY: Trump meets Xi in Beijing seeking China leverage on Iran, talks may require concessions (The New York Times, May 13, 2026)",
+    "ENERGY: IEA warns global oil supply will fall short of demand this year due to Iran war (Reuters, May 13, 2026)",
+    "SHIPPING: Chinese supertanker exits Strait of Hormuz after months, heads for Zhoushan with nearly 2M barrels (Reuters, May 13, 2026)",
+    "ECONOMY: India moves to shield economy from Iran-war driven oil shock and capital stress (Reuters, May 13, 2026)",
     "REGIONAL: Saudi Arabia launched covert strikes on Iran, widening regional war (Reuters, May 12, 2026)",
     "ENERGY: Iraq and Pakistan sign energy deals to import Iranian oil/LNG as Tehran flexes control of Strait of Hormuz (Reuters, May 12, 2026)",
     "NUCLEAR: Iranian lawmaker warns Tehran could enrich uranium to weapons-grade if attacked (Reuters, May 12, 2026)",
@@ -40,14 +44,6 @@
     "SANCTIONS: U.S. sanctions 11 entities and 3 individuals for aiding Iran's war effort (CNBC, May 9, 2026)",
     "MILITARY: U.S. disables two Iranian-flagged tankers attempting to breach blockade (Reuters, May 8, 2026)",
     "SHIPPING: China confirms earlier attack on oil tanker in Strait of Hormuz (Reuters, May 8, 2026)",
-    "SANCTIONS: U.S. sanctions 10 individuals and companies aiding Iran's weapons sector (U.S. Treasury/Reuters, May 8, 2026)",
-    "INTELLIGENCE: CIA says Iran could withstand U.S. blockade for four months (Reuters, May 8, 2026)",
-    "MILITARY: U.S. carries out retaliatory strikes on Iranian sites after attacks on three U.S. destroyers in Strait of Hormuz (Reuters, May 7, 2026)",
-    "CENTCOM: U.S. says it intercepted unprovoked Iranian attacks and responded with self-defense strikes (CENTCOM, May 7, 2026)",
-    "MILITARY: U.S. and Iran exchange fire amid declared truce, raising ceasefire doubts (The New York Times, May 7, 2026)",
-    "MARKET: Oil prices fall below $100 after U.S.-Iran exchange of fire despite ceasefire claims (CNBC, May 8, 2026)",
-    "MILITARY: U.S. fires on and disables Iranian-flagged tanker M/T Hasna after blockade breach attempt (AP, May 6, 2026)",
-    "SHIPPING: UAE sails hidden tankers through Strait of Hormuz with transponders off to move crude (Reuters, May 7, 2026)",
-    "BATTLE DAMAGE: Satellite imagery shows damage to 228 structures/equipment at U.S. Gulf bases after strikes (Washington Post, May 6, 2026)"
+    "SANCTIONS: U.S. sanctions 10 individuals and companies aiding Iran's weapons sector (U.S. Treasury/Reuters, May 8, 2026)"
   ]
 }
