@@ -1,65 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-20T21:40:31.019Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 66,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 42
-        },
-        "significance": {
-          "structural": false,
-          "reason": "Reports show continued strikes, troop deployments, and energy‑infrastructure attacks/ground planning — developments alre",
-          "status": "ok"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "airpower-subtitle",
-            "reactions-iran-casualties",
-            "scenario-democratic-revolution"
-          ],
-          "filesUpdated": [
-            "air-power.html",
-            "reactions-iran.html",
-            "scenarios.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -50
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 46,
-          "linesRemoved": 0,
-          "sizeChange": 6847
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-21T11:33:33.576Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -3076,6 +3017,51 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 5702
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-15T13:02:00.831Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 61,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 54
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Unexpected end of JSON input"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 4,
+          "linesRemoved": 0,
+          "sizeChange": 543
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4814
         }
       ]
     }
