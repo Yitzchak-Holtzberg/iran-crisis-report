@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 15, 2026",
-  "lastUpdated": "13:02 UTC",
+  "date": "May 16, 2026",
+  "lastUpdated": "12:01 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 26,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "DIPLOMACY: Israel and Lebanon extend ceasefire by 45 days after Washington talks (Reuters, May 15, 2026)",
+    "DIPLOMACY: Iran's top diplomat says lack of trust is impeding talks to end war with U.S. (Washington Post, May 15, 2026)",
+    "ENERGY: Oil prices climb more than 3% on fears of renewed US-Iran combat (Reuters, May 15, 2026)",
+    "SHIPPING: Four supertankers (~2M barrels each) exit Strait of Hormuz since May 10 as flows creep higher (Japan Times, May 15, 2026)",
     "MILITARY: CENTCOM chief says Iran's military 'severely degraded' after US-Israeli campaign, Adm. Brad Cooper testimony (CBS News, May 14, 2026)",
     "SHIPPING: Japan-linked ENEOS crude tanker passes through Strait of Hormuz, second Japan-related ship to cross (Reuters, May 14, 2026)",
     "MARITIME: Ship seized off UAE coast being brought toward Iranian waters amid renewed tensions (NPR, May 15, 2026)",
@@ -44,10 +48,6 @@
     "HUMAN RIGHTS: Iran executes aerospace engineering graduate convicted of spying, state media says (Diplomat.so, May 11, 2026)",
     "MILITARY: U.S. strikes at least two locations inside Iran, U.S. official says (NBC News, May 9, 2026)",
     "STRAIT OF HORMUZ: Strait remains effectively blocked after U.S. Navy blockade intercepts ships (The New York Times, May 9, 2026)",
-    "DIPLOMACY: U.S. awaits Iran's response to ceasefire/peace proposal as tanker crosses Strait (Reuters, May 9, 2026)",
-    "SANCTIONS: U.S. sanctions 11 entities and 3 individuals for aiding Iran's war effort (CNBC, May 9, 2026)",
-    "MILITARY: U.S. disables two Iranian-flagged tankers attempting to breach blockade (Reuters, May 8, 2026)",
-    "SHIPPING: China confirms earlier attack on oil tanker in Strait of Hormuz (Reuters, May 8, 2026)",
-    "SANCTIONS: U.S. sanctions 10 individuals and companies aiding Iran's weapons sector (U.S. Treasury/Reuters, May 8, 2026)"
+    "DIPLOMACY: U.S. awaits Iran's response to ceasefire/peace proposal as tanker crosses Strait (Reuters, May 9, 2026)"
   ]
 }
