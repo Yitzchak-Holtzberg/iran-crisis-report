@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 16, 2026",
-  "lastUpdated": "12:01 UTC",
+  "date": "May 17, 2026",
+  "lastUpdated": "12:03 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 26,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "LAW-ENFORCEMENT: U.S. charges Iraqi national accused of aiding Iran-backed militias plotting attacks in U.S. and Europe (Reuters, May 16, 2026)",
+    "MILITARY: USS Gerald R. Ford carrier strike group returns to Norfolk after historic 11-month deployment (U.S. Navy/DVIDS, May 16, 2026)",
+    "CYBER: Iranian-linked hackers suspected in breaches of U.S. gas-station tank-monitoring systems, authorities investigating (CNN/Economic Times, May 16, 2026)",
+    "LEGAL: ICC denies report it issued new arrest warrants against Israeli officials, calls claims inaccurate (Reuters, May 17, 2026)",
     "DIPLOMACY: Israel and Lebanon extend ceasefire by 45 days after Washington talks (Reuters, May 15, 2026)",
     "DIPLOMACY: Iran's top diplomat says lack of trust is impeding talks to end war with U.S. (Washington Post, May 15, 2026)",
     "ENERGY: Oil prices climb more than 3% on fears of renewed US-Iran combat (Reuters, May 15, 2026)",
@@ -40,14 +44,6 @@
     "ENERGY: Iraq and Pakistan sign energy deals to import Iranian oil/LNG as Tehran flexes control of Strait of Hormuz (Reuters, May 12, 2026)",
     "NUCLEAR: Iranian lawmaker warns Tehran could enrich uranium to weapons-grade if attacked (Reuters, May 12, 2026)",
     "DIPLOMACY: Trump heads to China seeking diplomatic wins amid faltering ceasefire with Iran (Reuters, May 12, 2026)",
-    "COSTS: Pentagon says U.S. war in Iran has cost $29 billion so far (Reuters, May 12, 2026)",
-    "DIPLOMACY: Trump says Iran ceasefire is 'on life support' after Tehran rejects U.S. proposal (Reuters, May 11, 2026)",
-    "SANCTIONS: U.S. announces new sanctions on three people and nine companies over Iran oil shipments to China (Reuters, May 11, 2026)",
-    "ENERGY: Saudi Aramco CEO warns oil market recovery could be delayed until 2027 if Strait of Hormuz disruption persists (CNBC, May 11, 2026)",
-    "MARITIME: South Korea condemns attack on Korean-operated cargo ship in Strait of Hormuz, vows response (Reuters, May 11, 2026)",
-    "HUMAN RIGHTS: Iran executes aerospace engineering graduate convicted of spying, state media says (Diplomat.so, May 11, 2026)",
-    "MILITARY: U.S. strikes at least two locations inside Iran, U.S. official says (NBC News, May 9, 2026)",
-    "STRAIT OF HORMUZ: Strait remains effectively blocked after U.S. Navy blockade intercepts ships (The New York Times, May 9, 2026)",
-    "DIPLOMACY: U.S. awaits Iran's response to ceasefire/peace proposal as tanker crosses Strait (Reuters, May 9, 2026)"
+    "COSTS: Pentagon says U.S. war in Iran has cost $29 billion so far (Reuters, May 12, 2026)"
   ]
 }
