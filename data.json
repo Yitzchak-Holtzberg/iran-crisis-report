@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 18, 2026",
-  "lastUpdated": "14:37 UTC",
+  "date": "May 19, 2026",
+  "lastUpdated": "14:05 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,15 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 27,
-  "scenarioNegotiatedDealPct": 30,
+  "scenarioDeclaredVictoryPct": 22,
+  "scenarioNegotiatedDealPct": 35,
   "scenarioDemocraticRevolutionPct": 9,
   "scenarioManagedTransitionPct": 26,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "MILITARY/DIPLOMACY: U.S. pauses planned strike on Iran as 'serious negotiations' continue (CBS News, May 18, 2026)",
+    "LAW-ENFORCEMENT: Europol disrupts 14,200 IRGC-linked posts/accounts across 19 countries, suspends primary X account in EU (Euronews/Europol, May 19, 2026)",
+    "CONFLICT: Death toll in Lebanon passes 3,000 despite ceasefire extension; Israeli strikes continue (Reuters, May 18, 2026)",
     "MILITARY: New York Times reveals Israel maintained covert outposts in Iraq used against Iran (NYT, May 17, 2026)",
     "SHIPPING: Strait of Hormuz shipping largely stalled while US-blocked supertanker resumes voyage (Bloomberg, May 17, 2026)",
     "REGIONAL: UAE says drone strike sparked fire at nuclear plant; Saudi Arabia intercepted three drones (CNBC, May 17, 2026)",
@@ -42,12 +45,6 @@
     "LAW-ENFORCEMENT: FBI offers $200,000 reward for Monica Witt, accused of spying for Iran (FBI/Economic Times, May 15, 2026)",
     "DIPLOMACY: Trump meets Xi in Beijing seeking China leverage on Iran, talks may require concessions (The New York Times, May 13, 2026)",
     "ENERGY: IEA warns global oil supply will fall short of demand this year due to Iran war (Reuters, May 13, 2026)",
-    "SHIPPING: Chinese supertanker exits Strait of Hormuz after months, heads for Zhoushan with nearly 2M barrels (Reuters, May 13, 2026)",
-    "ECONOMY: India moves to shield economy from Iran-war driven oil shock and capital stress (Reuters, May 13, 2026)",
-    "REGIONAL: Saudi Arabia launched covert strikes on Iran, widening regional war (Reuters, May 12, 2026)",
-    "ENERGY: Iraq and Pakistan sign energy deals to import Iranian oil/LNG as Tehran flexes control of Strait of Hormuz (Reuters, May 12, 2026)",
-    "NUCLEAR: Iranian lawmaker warns Tehran could enrich uranium to weapons-grade if attacked (Reuters, May 12, 2026)",
-    "DIPLOMACY: Trump heads to China seeking diplomatic wins amid faltering ceasefire with Iran (Reuters, May 12, 2026)",
-    "COSTS: Pentagon says U.S. war in Iran has cost $29 billion so far (Reuters, May 12, 2026)"
+    "SHIPPING: Chinese supertanker exits Strait of Hormuz after months, heads for Zhoushan with nearly 2M barrels (Reuters, May 13, 2026)"
   ]
 }
