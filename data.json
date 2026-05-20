@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 19, 2026",
-  "lastUpdated": "14:05 UTC",
+  "date": "May 20, 2026",
+  "lastUpdated": "12:03 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 26,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "SHIPPING: Tankers exit Strait of Hormuz carrying about 6 million barrels of crude as flows resume (Reuters, May 20, 2026)",
+    "DIPLOMACY/MILITARY: Iran warns it could spread war 'beyond the region' if US attacks resume (Reuters, May 20, 2026)",
+    "SECURITY: NATO says it is not drawing up plans for a Strait of Hormuz mission and would need a political decision (Reuters, May 19, 2026)",
+    "MILITARY/DIPLOMACY: Trump says US was 'an hour away' from striking Iran but paused as talks continue (CBS News, May 20, 2026)",
     "MILITARY/DIPLOMACY: U.S. pauses planned strike on Iran as 'serious negotiations' continue (CBS News, May 18, 2026)",
     "LAW-ENFORCEMENT: Europol disrupts 14,200 IRGC-linked posts/accounts across 19 countries, suspends primary X account in EU (Euronews/Europol, May 19, 2026)",
     "CONFLICT: Death toll in Lebanon passes 3,000 despite ceasefire extension; Israeli strikes continue (Reuters, May 18, 2026)",
@@ -41,10 +45,6 @@
     "SHIPPING: Four supertankers (~2M barrels each) exit Strait of Hormuz since May 10 as flows creep higher (Japan Times, May 15, 2026)",
     "MILITARY: CENTCOM chief says Iran's military 'severely degraded' after US-Israeli campaign, Adm. Brad Cooper testimony (CBS News, May 14, 2026)",
     "SHIPPING: Japan-linked ENEOS crude tanker passes through Strait of Hormuz, second Japan-related ship to cross (Reuters, May 14, 2026)",
-    "MARITIME: Ship seized off UAE coast being brought toward Iranian waters amid renewed tensions (NPR, May 15, 2026)",
-    "LAW-ENFORCEMENT: FBI offers $200,000 reward for Monica Witt, accused of spying for Iran (FBI/Economic Times, May 15, 2026)",
-    "DIPLOMACY: Trump meets Xi in Beijing seeking China leverage on Iran, talks may require concessions (The New York Times, May 13, 2026)",
-    "ENERGY: IEA warns global oil supply will fall short of demand this year due to Iran war (Reuters, May 13, 2026)",
-    "SHIPPING: Chinese supertanker exits Strait of Hormuz after months, heads for Zhoushan with nearly 2M barrels (Reuters, May 13, 2026)"
+    "MARITIME: Ship seized off UAE coast being brought toward Iranian waters amid renewed tensions (NPR, May 15, 2026)"
   ]
 }

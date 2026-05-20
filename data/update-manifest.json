@@ -1,67 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-03-23T11:51:52.848Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 50,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 25
-        },
-        "significance": {
-          "structural": false,
-          "reason": "cooldown: structural <24h ago",
-          "status": "cooldown"
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position",
-            "reactions-global-callouts",
-            "reactions-global-energy",
-            "reactions-global-mediation"
-          ],
-          "filesUpdated": [
-            "naval.html",
-            "reactions-global.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -192
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 46,
-          "linesRemoved": 0,
-          "sizeChange": 6039
-        }
-      ]
-    },
-    {
       "timestamp": "2026-03-30T12:02:40.081Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2818,6 +2757,65 @@
           "linesAdded": 31,
           "linesRemoved": 0,
           "sizeChange": 3912
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-20T12:03:44.160Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 65,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 46
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-isw",
+            "analysis-consensus",
+            "carrier-lincoln-position",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-global-mediation",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 0
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5571
         }
       ]
     }
