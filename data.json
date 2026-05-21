@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 20, 2026",
-  "lastUpdated": "12:03 UTC",
+  "date": "May 21, 2026",
+  "lastUpdated": "12:12 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 22,
-  "scenarioNegotiatedDealPct": 35,
+  "scenarioDeclaredVictoryPct": 20,
+  "scenarioNegotiatedDealPct": 40,
   "scenarioDemocraticRevolutionPct": 9,
-  "scenarioManagedTransitionPct": 26,
+  "scenarioManagedTransitionPct": 23,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "DIPLOMACY: Trump says US in 'final stages' of deal-making with Iran; talks could conclude in days (Reuters, May 20, 2026)",
+    "INTELLIGENCE/MILITARY: US intel assesses Iran restarting drone production during ceasefire (CNN, May 21, 2026)",
+    "MILITARY: Congressional report finds ~42 U.S. aircraft lost in Operation Epic Fury (USNI/Congressional Research Service, May 20, 2026)",
+    "LEGAL/HUMAN RIGHTS: Iran secretly executed four this week, pushing global death-sentence tally higher (Euronews, May 21, 2026)",
     "SHIPPING: Tankers exit Strait of Hormuz carrying about 6 million barrels of crude as flows resume (Reuters, May 20, 2026)",
     "DIPLOMACY/MILITARY: Iran warns it could spread war 'beyond the region' if US attacks resume (Reuters, May 20, 2026)",
     "SECURITY: NATO says it is not drawing up plans for a Strait of Hormuz mission and would need a political decision (Reuters, May 19, 2026)",
@@ -43,8 +47,6 @@
     "DIPLOMACY: Iran's top diplomat says lack of trust is impeding talks to end war with U.S. (Washington Post, May 15, 2026)",
     "ENERGY: Oil prices climb more than 3% on fears of renewed US-Iran combat (Reuters, May 15, 2026)",
     "SHIPPING: Four supertankers (~2M barrels each) exit Strait of Hormuz since May 10 as flows creep higher (Japan Times, May 15, 2026)",
-    "MILITARY: CENTCOM chief says Iran's military 'severely degraded' after US-Israeli campaign, Adm. Brad Cooper testimony (CBS News, May 14, 2026)",
-    "SHIPPING: Japan-linked ENEOS crude tanker passes through Strait of Hormuz, second Japan-related ship to cross (Reuters, May 14, 2026)",
-    "MARITIME: Ship seized off UAE coast being brought toward Iranian waters amid renewed tensions (NPR, May 15, 2026)"
+    "MILITARY: CENTCOM chief says Iran's military 'severely degraded' after US-Israeli campaign, Adm. Brad Cooper testimony (CBS News, May 14, 2026)"
   ]
 }
