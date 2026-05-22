@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 21, 2026",
-  "lastUpdated": "12:12 UTC",
+  "date": "May 22, 2026",
+  "lastUpdated": "12:01 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 20,
-  "scenarioNegotiatedDealPct": 40,
+  "scenarioDeclaredVictoryPct": 15,
+  "scenarioNegotiatedDealPct": 45,
   "scenarioDemocraticRevolutionPct": 9,
   "scenarioManagedTransitionPct": 23,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "SHIPPING: Japan to receive first oil tanker to exit Strait of Hormuz since war began (Bloomberg, May 22, 2026)",
+    "SHIPPING: Iran tightens grip on Strait of Hormuz with new transit regime (ABC News, May 22, 2026)",
+    "MILITARY: CENTCOM says Abraham Lincoln carrier strike group maintaining peak readiness amid US-Iran talks (CENTCOM/Economic Times, May 22, 2026)",
+    "CONFLICT: Lebanese bury victims of deadliest Israeli strike since ceasefire, mourning continues (Reuters, May 21, 2026)",
     "DIPLOMACY: Trump says US in 'final stages' of deal-making with Iran; talks could conclude in days (Reuters, May 20, 2026)",
     "INTELLIGENCE/MILITARY: US intel assesses Iran restarting drone production during ceasefire (CNN, May 21, 2026)",
     "MILITARY: Congressional report finds ~42 U.S. aircraft lost in Operation Epic Fury (USNI/Congressional Research Service, May 20, 2026)",
@@ -44,9 +48,6 @@
     "CYBER: Iranian-linked hackers suspected in breaches of U.S. gas-station tank-monitoring systems, authorities investigating (CNN/Economic Times, May 16, 2026)",
     "LEGAL: ICC denies report it issued new arrest warrants against Israeli officials, calls claims inaccurate (Reuters, May 17, 2026)",
     "DIPLOMACY: Israel and Lebanon extend ceasefire by 45 days after Washington talks (Reuters, May 15, 2026)",
-    "DIPLOMACY: Iran's top diplomat says lack of trust is impeding talks to end war with U.S. (Washington Post, May 15, 2026)",
-    "ENERGY: Oil prices climb more than 3% on fears of renewed US-Iran combat (Reuters, May 15, 2026)",
-    "SHIPPING: Four supertankers (~2M barrels each) exit Strait of Hormuz since May 10 as flows creep higher (Japan Times, May 15, 2026)",
-    "MILITARY: CENTCOM chief says Iran's military 'severely degraded' after US-Israeli campaign, Adm. Brad Cooper testimony (CBS News, May 14, 2026)"
+    "DIPLOMACY: Iran's top diplomat says lack of trust is impeding talks to end war with U.S. (Washington Post, May 15, 2026)"
   ]
 }
