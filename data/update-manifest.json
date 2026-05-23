@@ -1,62 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-01T11:58:56.965Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 65,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 49
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "iran-crisis2-succession",
-            "reactions-global-callouts"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "inside-iran.html",
-            "reactions-global.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 3,
-          "linesRemoved": 0,
-          "sizeChange": 316
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 4114
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-02T11:54:31.231Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2808,6 +2752,63 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 5786
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T11:34:50.723Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 60,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 47
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "bg-us-iran-timeline",
+            "losses-us-aircraft",
+            "naval-subtitle",
+            "nuclear-subtitle"
+          ],
+          "filesUpdated": [
+            "background.html",
+            "materiel-losses.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 3,
+          "sizeChange": -388
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5020
         }
       ]
     }
