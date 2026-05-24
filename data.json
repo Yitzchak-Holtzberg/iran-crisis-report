@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 23, 2026",
-  "lastUpdated": "11:34 UTC",
+  "date": "May 24, 2026",
+  "lastUpdated": "11:37 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 15,
-  "scenarioNegotiatedDealPct": 45,
-  "scenarioDemocraticRevolutionPct": 9,
-  "scenarioManagedTransitionPct": 23,
-  "scenarioRegimeCollapsePct": 8,
+  "scenarioDeclaredVictoryPct": 12,
+  "scenarioNegotiatedDealPct": 55,
+  "scenarioDemocraticRevolutionPct": 7,
+  "scenarioManagedTransitionPct": 20,
+  "scenarioRegimeCollapsePct": 6,
   "ticker": [
+    "DIPLOMACY: Trump says deal with Iran 'largely negotiated,' includes reopening Strait of Hormuz (AP, May 23, 2026)",
+    "NUCLEAR: New York Times reports Iran agreed to give up enriched uranium as part of deal announced by Trump (NYT, May 23, 2026)",
+    "MILITARY/SHIPPING: CENTCOM says U.S. blockade has redirected more than 100 commercial vessels (CENTCOM, May 23, 2026)",
+    "ANALYSIS/INTELLIGENCE: ISW says Iran's regime believes it is winning the war and is in a position of strength (ISW, May 23, 2026)",
     "CYBER: Iranian hackers target aviation, oil and gas companies via recruiter-phishing campaign, researchers warn (CNN, May 22, 2026)",
     "ANALYSIS: Bloomberg warns of upside risk to oil prices if Strait of Hormuz remains closed (Bloomberg Opinion, May 23, 2026)",
     "FINANCE: Report - $850M moved through Binance to help Iran skirt sanctions, WSJ/Times of Israel says (Times of Israel/Wall Street Journal, May 22, 2026)",
@@ -43,8 +47,6 @@
     "MILITARY/DIPLOMACY: U.S. pauses planned strike on Iran as 'serious negotiations' continue (CBS News, May 18, 2026)",
     "LAW-ENFORCEMENT: Europol disrupts 14,200 IRGC-linked posts/accounts across 19 countries, suspends primary X account in EU (Euronews/Europol, May 19, 2026)",
     "CONFLICT: Death toll in Lebanon passes 3,000 despite ceasefire extension; Israeli strikes continue (Reuters, May 18, 2026)",
-    "MILITARY: New York Times reveals Israel maintained covert outposts in Iraq used against Iran (NYT, May 17, 2026)",
-    "SHIPPING: Strait of Hormuz shipping largely stalled while US-blocked supertanker resumes voyage (Bloomberg, May 17, 2026)",
-    "REGIONAL: UAE says drone strike sparked fire at nuclear plant; Saudi Arabia intercepted three drones (CNBC, May 17, 2026)"
+    "MILITARY: New York Times reveals Israel maintained covert outposts in Iraq used against Iran (NYT, May 17, 2026)"
   ]
 }
