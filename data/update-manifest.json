@@ -1,69 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-04T11:38:48.126Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 68,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 49
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 4,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "losses-us-aircraft",
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position",
-            "reactions-global-callouts",
-            "reactions-global-energy",
-            "reactions-gulf-shipping"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "materiel-losses.html",
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 0
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 21,
-          "linesRemoved": 0,
-          "sizeChange": 3599
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-05T11:40:06.870Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2799,6 +2736,64 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4587
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-25T12:15:12.383Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 60,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 41
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-consensus",
+            "hormuz-wti-price",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "nuclear-subtitle"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "hormuz.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 58
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5123
         }
       ]
     }
