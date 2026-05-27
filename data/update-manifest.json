@@ -1,60 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-05T11:40:06.870Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 68,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 54
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "reactions-global-callouts"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "reactions-global.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -57
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 4960
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-06T11:56:15.442Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2794,6 +2740,51 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5123
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-05-27T12:14:18.778Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 61,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 45
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 6,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Unexpected end of JSON input"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "sizeChange": 159
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 31,
+          "linesRemoved": 0,
+          "sizeChange": 4660
         }
       ]
     }
