@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "May 29, 2026",
-  "lastUpdated": "12:12 UTC",
+  "date": "May 30, 2026",
+  "lastUpdated": "11:39 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 12,
   "ticker": [
+    "POLITICS: Trump holds White House Situation Room meeting to decide on Iran ceasefire extension (NYT/ABC, May 29, 2026)",
+    "SHIPPING: U.S. provides navigation advice as Strait of Hormuz transits rise (Bloomberg, May 29, 2026)",
+    "OIL: Oil futures fall on hopes for US‑Iran ceasefire (Reuters, May 29, 2026)",
+    "MILITARY/ISRAEL: Israeli forces cross Litani River in expanded ground offensive (Reuters, May 29, 2026)",
     "DIPLOMACY/CEASEFIRE: U.S. and Iran negotiators reach tentative 60‑day ceasefire extension and agree to start new nuclear talks (AP, May 28, 2026)",
     "SHIPPING: Three oil and LNG tankers exit Strait of Hormuz with transponders off, tracked to India and China (Reuters, May 28, 2026)",
     "MILITARY/CLAIM: U.S. military denies Iranian state TV claim that U.S. aircraft were shot down near Bushehr (Reuters, May 28, 2026)",
@@ -44,9 +48,6 @@
     "INTELLIGENCE: FT reports Iran’s Guards used UAE company to buy Chinese satellite equipment tied to later strikes (FT, May 24, 2026)",
     "DIPLOMACY: Trump says deal with Iran 'largely negotiated,' includes reopening Strait of Hormuz (AP, May 23, 2026)",
     "NUCLEAR: New York Times reports Iran agreed to give up enriched uranium as part of deal announced by Trump (NYT, May 23, 2026)",
-    "MILITARY/SHIPPING: CENTCOM says U.S. blockade has redirected more than 100 commercial vessels (CENTCOM, May 23, 2026)",
-    "ANALYSIS/INTELLIGENCE: ISW says Iran's regime believes it is winning the war and is in a position of strength (ISW, May 23, 2026)",
-    "CYBER: Iranian hackers target aviation, oil and gas companies via recruiter-phishing campaign, researchers warn (CNN, May 22, 2026)",
-    "ANALYSIS: Bloomberg warns of upside risk to oil prices if Strait of Hormuz remains closed (Bloomberg Opinion, May 23, 2026)"
+    "MILITARY/SHIPPING: CENTCOM says U.S. blockade has redirected more than 100 commercial vessels (CENTCOM, May 23, 2026)"
   ]
 }
