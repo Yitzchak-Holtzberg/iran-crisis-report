@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 1, 2026",
-  "lastUpdated": "13:01 UTC",
+  "date": "June 2, 2026",
+  "lastUpdated": "12:26 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 13,
-  "scenarioNegotiatedDealPct": 43,
+  "scenarioDeclaredVictoryPct": 17,
+  "scenarioNegotiatedDealPct": 36,
   "scenarioDemocraticRevolutionPct": 7,
   "scenarioManagedTransitionPct": 24,
-  "scenarioRegimeCollapsePct": 13,
+  "scenarioRegimeCollapsePct": 16,
   "ticker": [
+    "DIPLOMACY/PAUSE: Iran suspends talks with U.S., halts ceasefire negotiations over Israeli attacks in Lebanon (Washington Post/NPR, Jun 1, 2026)",
+    "SHIPPING/HORMUZ: Strait of Hormuz remains choked after 94 days; commercial traffic largely halted (CNN, Jun 2, 2026)",
+    "CYBER/AI: Reports Iran using ChatGPT and Gemini to develop malware and phishing campaigns targeting U.S. and Israel (India Today, Jun 1, 2026)",
+    "REGIONAL/CEASEFIRE: Trump says Israel and Hezbollah have agreed to dial back fighting after U.S. mediation (AP/NPR, Jun 1, 2026)",
     "MILITARY/STRIKES: U.S. strikes Iranian drone radar and control sites on Goruk and Qeshm Island in self‑defense (Reuters, Jun 1, 2026)",
     "MILITARY/RESPONSE: Iran says it struck a U.S. air base in response to recent U.S. strikes (Reuters, Jun 1, 2026)",
     "MILITARY/DEFENSE: U.S. intercepts two Iranian missiles overnight, no personnel harmed (CENTCOM/NYT, Jun 1, 2026)",
@@ -43,11 +47,6 @@
     "MILITARY/STRIKES: U.S. shoots down four Iranian attack drones and strikes a Bandar Abbas drone ground-control station (Reuters, May 27, 2026)",
     "MILITARY/RESPONSE: Iran says it struck a U.S. air base in retaliation for recent U.S. strikes (BBC, May 27, 2026)",
     "SHIPPING/ATTACK: South Korea says Iranian missile likely involved in attack on ship in the Strait of Hormuz (Reuters, May 27, 2026)",
-    "SHIPPING/TRAFFIC: COSCO products tanker crosses Strait of Hormuz as overall oil traffic remains limited (Reuters, May 27, 2026)",
-    "MILITARY/STRIKES: U.S. launches self‑defense strikes on Iranian missile sites and mine‑laying boats in southern Iran (CENTCOM, May 26, 2026)",
-    "DIPLOMACY/CEASEFIRE: Iran says U.S. strikes violate fragile ceasefire and warns it will 'leave no act of hostility unanswered' (Reuters, May 26, 2026)",
-    "ENERGY/OIL: Global oil prices spike above $100 after U.S. strikes cloud prospects for reopening Strait of Hormuz (New York Times, May 26, 2026)",
-    "INTERNET: Iran partially restores internet after an 87–88 day blackout amid talks (ABC7, May 26, 2026)",
-    "CASUALTIES: U.S. military casualties in Iran war reported at 423, per The Intercept (The Intercept, May 26, 2026)"
+    "SHIPPING/TRAFFIC: COSCO products tanker crosses Strait of Hormuz as overall oil traffic remains limited (Reuters, May 27, 2026)"
   ]
 }
