@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 2, 2026",
-  "lastUpdated": "12:26 UTC",
+  "date": "June 3, 2026",
+  "lastUpdated": "12:41 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 16,
   "ticker": [
+    "MILITARY/ATTACK: Iran strikes Kuwait International Airport passenger terminal, at least one killed and several injured (BBC, Jun 3, 2026)",
+    "SANCTIONS/FINANCE: U.S. sanctions Iran's largest crypto exchange Nobitex over alleged IRGC links (Reuters, Jun 2, 2026)",
+    "SHIPPING/SAILORS: Sailors trapped in the Gulf report exhaustion and stress after months in the Iran war zone (BBC, Jun 2, 2026)",
+    "NAVAL/CENTCOM: CENTCOM says it has redirected hundreds of vessels and disabled several attempting to reach Iranian ports (JNS, Jun 3, 2026)",
     "DIPLOMACY/PAUSE: Iran suspends talks with U.S., halts ceasefire negotiations over Israeli attacks in Lebanon (Washington Post/NPR, Jun 1, 2026)",
     "SHIPPING/HORMUZ: Strait of Hormuz remains choked after 94 days; commercial traffic largely halted (CNN, Jun 2, 2026)",
     "CYBER/AI: Reports Iran using ChatGPT and Gemini to develop malware and phishing campaigns targeting U.S. and Israel (India Today, Jun 1, 2026)",
@@ -43,10 +47,6 @@
     "SHIPPING: Three oil and LNG tankers exit Strait of Hormuz with transponders off, tracked to India and China (Reuters, May 28, 2026)",
     "MILITARY/CLAIM: U.S. military denies Iranian state TV claim that U.S. aircraft were shot down near Bushehr (Reuters, May 28, 2026)",
     "SHIPPING/TRAFFIC: Commercial shipping nearly halts through Strait of Hormuz amid renewed U.S. strikes (Economic Times, May 28, 2026)",
-    "DIPLOMACY/CEASEFIRE: Trump says no single country will control the Strait of Hormuz amid talks, warning raised over Oman (Reuters, May 28, 2026)",
-    "MILITARY/STRIKES: U.S. shoots down four Iranian attack drones and strikes a Bandar Abbas drone ground-control station (Reuters, May 27, 2026)",
-    "MILITARY/RESPONSE: Iran says it struck a U.S. air base in retaliation for recent U.S. strikes (BBC, May 27, 2026)",
-    "SHIPPING/ATTACK: South Korea says Iranian missile likely involved in attack on ship in the Strait of Hormuz (Reuters, May 27, 2026)",
-    "SHIPPING/TRAFFIC: COSCO products tanker crosses Strait of Hormuz as overall oil traffic remains limited (Reuters, May 27, 2026)"
+    "DIPLOMACY/CEASEFIRE: Trump says no single country will control the Strait of Hormuz amid talks, warning raised over Oman (Reuters, May 28, 2026)"
   ]
 }
