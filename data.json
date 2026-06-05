@@ -1,13 +1,13 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 4, 2026",
-  "lastUpdated": "12:09 UTC",
+  "date": "June 5, 2026",
+  "lastUpdated": "12:11 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
   "statMissilesFiredSource": "CENTCOM/Wikipedia, Mar 10",
   "statCarrierGroups": "2",
-  "statOilAtRisk": "1,000M+",
+  "statOilAtRisk": "1,100M+",
   "statCitizensOffline": "90M",
   "statIrgcKilled": "3,900+",
   "statUsCasualties": "13",
@@ -24,6 +24,11 @@
   "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 16,
   "ticker": [
+    "ENERGY/EXPORTS: Iranian oil exports fall to lowest level in six years, below 300,000 bpd in May (Reuters, Jun 4, 2026)",
+    "ENERGY/TRADE: Trafigura warns conflict has removed more than 1.1 billion barrels from global markets (Trafigura/gCaptain, Jun 4, 2026)",
+    "MILITANT/HEZBOLLAH: Hezbollah rejects Israel-Lebanon ceasefire agreement and continues strikes (AP/NPR/NYT, Jun 4, 2026)",
+    "DIPLOMACY/KHAMENEI: Iran's new Supreme Leader Mojtaba Khamenei declares 'decisive blow' against enemy, framing military gains as victory (Euronews, Jun 4, 2026)",
+    "SHIPPING/TRANSITS: Ships stranded in Persian Gulf coordinate with U.S. Navy to exit Hormuz as transits slowly resume (CNBC, Jun 4, 2026)",
     "GOVERNMENT/CONGRESS: U.S. House votes to end authorization for the Iran war in bipartisan rebuke to Trump (USA Today, Jun 3, 2026)",
     "UN/DIPLOMACY: UN Secretary-General António Guterres urges restraint after exchanges of fire between the U.S. and Iran (UN News, Jun 3, 2026)",
     "MILITARY/CENTCOM: U.S. Central Command denies Iranian claim it struck Fifth Fleet HQ, says interceptions thwarted attacks (NBC/CENTCOM, Jun 3, 2026)",
@@ -43,10 +48,6 @@
     "MILITARY/SHIP: U.S. disables Gambia‑flagged merchant vessel Lian Star with missile after more than 20 warnings (Reuters, May 30, 2026)",
     "MILITARY/BLOCKADE: CENTCOM says it turned away a blockade‑runner trying to reach an Iranian port (CENTCOM/Reuters, May 30, 2026)",
     "ENERGY/OIL: Oil exports through the Strait of Hormuz may not return to pre‑war levels, analysts warn (CNBC, May 30, 2026)",
-    "POLITICS: Trump holds White House Situation Room meeting to decide on Iran ceasefire extension (NYT/ABC, May 29, 2026)",
-    "SHIPPING: U.S. provides navigation advice as Strait of Hormuz transits rise (Bloomberg, May 29, 2026)",
-    "OIL: Oil futures fall on hopes for US‑Iran ceasefire (Reuters, May 29, 2026)",
-    "MILITARY/ISRAEL: Israeli forces cross Litani River in expanded ground offensive (Reuters, May 29, 2026)",
-    "DIPLOMACY/CEASEFIRE: U.S. and Iran negotiators reach tentative 60‑day ceasefire extension and agree to start new nuclear talks (AP, May 28, 2026)"
+    "POLITICS: Trump holds White House Situation Room meeting to decide on Iran ceasefire extension (NYT/ABC, May 29, 2026)"
   ]
 }
