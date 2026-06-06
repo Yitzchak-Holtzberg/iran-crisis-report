@@ -1,58 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-15T12:03:44.999Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 67,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 41
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position"
-          ],
-          "filesUpdated": [
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -107
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 3978
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-16T12:07:11.438Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2743,6 +2691,62 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4908
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-06T11:40:07.450Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 58,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 47
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 6,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-consensus",
+            "naval-subtitle",
+            "reactions-global-mediation",
+            "reactions-gulf-callouts"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 13
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 31,
+          "linesRemoved": 0,
+          "sizeChange": 3595
         }
       ]
     }
