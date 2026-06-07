@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 6, 2026",
-  "lastUpdated": "11:40 UTC",
+  "date": "June 7, 2026",
+  "lastUpdated": "11:43 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,9 @@
   "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 16,
   "ticker": [
+    "MILITARY/INTERCEPTS: CENTCOM says it shot down four Iranian one‑way attack drones headed for the Strait of Hormuz and struck coastal radar sites on Goruk and Qeshm (CENTCOM/Reuters, Jun 6, 2026)",
+    "CIVILIAN/DEATHS: Indian national reported killed in Iranian drone strike on Kuwait International Airport, latest foreign casualty (Indian Express, Jun 6, 2026)",
+    "SHIPPING/TRAFFIC: Strait of Hormuz tanker traffic plunges 90–95% below pre‑war levels as many vessels switch off transponders and go 'dark' (OilPrice, Jun 6, 2026)",
     "DIPLOMACY/IAEA: U.S. preparing draft resolution condemning Iran at IAEA Board of Governors (Reuters, Jun 5, 2026)",
     "MILITARY/COOPERATION: Israel deployed elite troops to Azerbaijan during the war, sources say (CNN, Jun 5, 2026)",
     "MILITARY/DRONES: Iran launched multiple drones toward the Strait of Hormuz; U.S. shot down at least four (Reuters, Jun 5, 2026)",
@@ -45,9 +48,6 @@
     "DIPLOMACY/PAUSE: Iran suspends talks with U.S., halts ceasefire negotiations over Israeli attacks in Lebanon (Washington Post/NPR, Jun 1, 2026)",
     "SHIPPING/HORMUZ: Strait of Hormuz remains choked after 94 days; commercial traffic largely halted (CNN, Jun 2, 2026)",
     "CYBER/AI: Reports Iran using ChatGPT and Gemini to develop malware and phishing campaigns targeting U.S. and Israel (India Today, Jun 1, 2026)",
-    "REGIONAL/CEASEFIRE: Trump says Israel and Hezbollah have agreed to dial back fighting after U.S. mediation (AP/NPR, Jun 1, 2026)",
-    "MILITARY/STRIKES: U.S. strikes Iranian drone radar and control sites on Goruk and Qeshm Island in self‑defense (Reuters, Jun 1, 2026)",
-    "MILITARY/RESPONSE: Iran says it struck a U.S. air base in response to recent U.S. strikes (Reuters, Jun 1, 2026)",
-    "MILITARY/DEFENSE: U.S. intercepts two Iranian missiles overnight, no personnel harmed (CENTCOM/NYT, Jun 1, 2026)"
+    "REGIONAL/CEASEFIRE: Trump says Israel and Hezbollah have agreed to dial back fighting after U.S. mediation (AP/NPR, Jun 1, 2026)"
   ]
 }
