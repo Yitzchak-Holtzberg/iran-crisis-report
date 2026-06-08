@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 7, 2026",
-  "lastUpdated": "11:43 UTC",
+  "date": "June 8, 2026",
+  "lastUpdated": "12:40 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,9 @@
   "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 16,
   "ticker": [
+    "MILITARY/MISSILES: Iran launches ballistic missiles at Israel in first such attack since April ceasefire; missiles prompt Israeli defensive alerts (NYT/Reuters, Jun 7, 2026)",
+    "MILITARY/STRIKES: Israel strikes military targets inside Iran after missile barrage, IDF says (Axios/AP, Jun 7–8, 2026)",
+    "DIPLOMACY/CEASEFIRE: Iran signals it has halted the latest round of attacks after hours of exchanges; US pushes for immediate ceasefire (Reuters/NYT, Jun 8, 2026)",
     "MILITARY/INTERCEPTS: CENTCOM says it shot down four Iranian one‑way attack drones headed for the Strait of Hormuz and struck coastal radar sites on Goruk and Qeshm (CENTCOM/Reuters, Jun 6, 2026)",
     "CIVILIAN/DEATHS: Indian national reported killed in Iranian drone strike on Kuwait International Airport, latest foreign casualty (Indian Express, Jun 6, 2026)",
     "SHIPPING/TRAFFIC: Strait of Hormuz tanker traffic plunges 90–95% below pre‑war levels as many vessels switch off transponders and go 'dark' (OilPrice, Jun 6, 2026)",
@@ -44,10 +47,6 @@
     "MILITARY/ATTACK: Iran strikes Kuwait International Airport passenger terminal, at least one killed and several injured (BBC, Jun 3, 2026)",
     "SANCTIONS/FINANCE: U.S. sanctions Iran's largest crypto exchange Nobitex over alleged IRGC links (Reuters, Jun 2, 2026)",
     "SHIPPING/SAILORS: Sailors trapped in the Gulf report exhaustion and stress after months in the Iran war zone (BBC, Jun 2, 2026)",
-    "NAVAL/CENTCOM: CENTCOM says it has redirected hundreds of vessels and disabled several attempting to reach Iranian ports (JNS, Jun 3, 2026)",
-    "DIPLOMACY/PAUSE: Iran suspends talks with U.S., halts ceasefire negotiations over Israeli attacks in Lebanon (Washington Post/NPR, Jun 1, 2026)",
-    "SHIPPING/HORMUZ: Strait of Hormuz remains choked after 94 days; commercial traffic largely halted (CNN, Jun 2, 2026)",
-    "CYBER/AI: Reports Iran using ChatGPT and Gemini to develop malware and phishing campaigns targeting U.S. and Israel (India Today, Jun 1, 2026)",
-    "REGIONAL/CEASEFIRE: Trump says Israel and Hezbollah have agreed to dial back fighting after U.S. mediation (AP/NPR, Jun 1, 2026)"
+    "NAVAL/CENTCOM: CENTCOM says it has redirected hundreds of vessels and disabled several attempting to reach Iranian ports (JNS, Jun 3, 2026)"
   ]
 }
