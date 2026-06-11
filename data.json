@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 10, 2026",
-  "lastUpdated": "12:13 UTC",
+  "date": "June 11, 2026",
+  "lastUpdated": "12:27 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 24,
   "scenarioRegimeCollapsePct": 16,
   "ticker": [
+    "MILITARY/US STRIKES: U.S. forces complete additional self‑defense strikes against multiple Iranian targets, CENTCOM says (CENTCOM, Jun 10, 2026)",
+    "MILITARY/RETALIATION: U.S. launches second day of strikes on Iran; Tehran fires back at Gulf states including Kuwait, Bahrain and Jordan (AP/NPR, Jun 10, 2026)",
+    "DIPLOMACY/IAEA: IAEA Board passes resolution demanding Iran fully account for unverified enriched uranium and grant inspectors access (IAEA/AP, Jun 10, 2026)",
+    "ENERGY/OIL: Brent tops $92/bbl as fresh U.S.-Iran clashes raise fears of extended supply disruptions (CNBC, Jun 11, 2026)",
     "MILITARY/US STRIKES: U.S. launches strikes on Iranian targets after Apache helicopter downed near Strait of Hormuz; CENTCOM says crew rescued (CENTCOM/NBC, Jun 9, 2026)",
     "MILITARY/IRAN RETALIATION: Iran reportedly strikes U.S. bases after American strikes, CENTCOM says (NBC, Jun 9, 2026)",
     "ECONOMY/OIL: Oil prices fall to seven-week low as Iran and Israel halt attacks, easing immediate supply fears (Reuters, Jun 9, 2026)",
@@ -43,10 +47,6 @@
     "SHIPPING/TRANSITS: U.S. counted nearly 1,000 commercial vessel transits through the Strait of Hormuz in the last two months (Bloomberg, Jun 5, 2026)",
     "MILITARY/INTERCEPTS: U.S. intercepts Iranian attacks as seven ballistic missiles were fired toward Kuwait and Bahrain, CENTCOM says (Al Jazeera, Jun 6, 2026)",
     "ENERGY/EXPORTS: Iranian oil exports fall to lowest level in six years, below 300,000 bpd in May (Reuters, Jun 4, 2026)",
-    "ENERGY/TRADE: Trafigura warns conflict has removed more than 1.1 billion barrels from global markets (Trafigura/gCaptain, Jun 4, 2026)",
-    "MILITANT/HEZBOLLAH: Hezbollah rejects Israel-Lebanon ceasefire agreement and continues strikes (AP/NPR/NYT, Jun 4, 2026)",
-    "DIPLOMACY/KHAMENEI: Iran's new Supreme Leader Mojtaba Khamenei declares 'decisive blow' against enemy, framing military gains as victory (Euronews, Jun 4, 2026)",
-    "SHIPPING/TRANSITS: Ships stranded in Persian Gulf coordinate with U.S. Navy to exit Hormuz as transits slowly resume (CNBC, Jun 4, 2026)",
-    "GOVERNMENT/CONGRESS: U.S. House votes to end authorization for the Iran war in bipartisan rebuke to Trump (USA Today, Jun 3, 2026)"
+    "ENERGY/TRADE: Trafigura warns conflict has removed more than 1.1 billion barrels from global markets (Trafigura/gCaptain, Jun 4, 2026)"
   ]
 }
