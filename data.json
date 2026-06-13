@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 12, 2026",
-  "lastUpdated": "12:13 UTC",
+  "date": "June 13, 2026",
+  "lastUpdated": "11:44 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,17 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 14,
-  "scenarioNegotiatedDealPct": 42,
-  "scenarioDemocraticRevolutionPct": 7,
-  "scenarioManagedTransitionPct": 21,
-  "scenarioRegimeCollapsePct": 16,
+  "scenarioDeclaredVictoryPct": 8,
+  "scenarioNegotiatedDealPct": 60,
+  "scenarioDemocraticRevolutionPct": 6,
+  "scenarioManagedTransitionPct": 18,
+  "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "DIPLOMACY/AGREEMENT: U.S. and Iran have agreed wording of a deal to end the war, Pakistan's prime minister says; 'final text' reached (AP, Jun 12, 2026)",
+    "DIPLOMACY/PAKISTAN: Pakistan PM says 'electronic signing' of U.S.-Iran ceasefire could occur within 24 hours (NBC, Jun 12, 2026)",
+    "ENERGY/OIL: Oil prices fall sharply after reports a U.S.-Iran deal may be near; Brent and WTI slide on diplomacy hopes (CNBC, Jun 12, 2026)",
+    "MILITARY/INTERCEPTS: U.S. military shoots down two Iranian drones attempting to strike commercial vessels in the Strait of Hormuz, U.S. says (ABC, Jun 12, 2026)",
+    "MILITARY/ESCORTS: U.S. military escorting growing number of oil tankers through the Strait of Hormuz, Energy secretary says (Politico, Jun 12, 2026)",
     "MILITARY/US STRIKES: U.S. forces disable third oil tanker violating blockade in Gulf of Oman, CENTCOM says (CENTCOM, Jun 10, 2026)",
     "CIVILIAN/DEATHS: Three Indian seafarers killed in strike on oil tanker near Strait of Hormuz; India lodges strong protest (UN/CBS, Jun 11, 2026)",
     "DIPLOMACY/TRUMP: President Trump says he cancelled further strikes and claims a peace deal is near; Tehran says nothing finalized (NYT/CBS/Reuters, Jun 11, 2026)",
@@ -42,12 +47,6 @@
     "MILITARY/MISSILES: Iran launches ballistic missiles at Israel in first such attack since April ceasefire; missiles prompt Israeli defensive alerts (NYT/Reuters, Jun 7, 2026)",
     "MILITARY/STRIKES: Israel strikes military targets inside Iran after missile barrage, IDF says (Axios/AP, Jun 7–8, 2026)",
     "DIPLOMACY/CEASEFIRE: Iran signals it has halted the latest round of attacks after hours of exchanges; US pushes for immediate ceasefire (Reuters/NYT, Jun 8, 2026)",
-    "MILITARY/INTERCEPTS: CENTCOM says it shot down four Iranian one‑way attack drones headed for the Strait of Hormuz and struck coastal radar sites on Goruk and Qeshm (CENTCOM/Reuters, Jun 6, 2026)",
-    "CIVILIAN/DEATHS: Indian national reported killed in Iranian drone strike on Kuwait International Airport, latest foreign casualty (Indian Express, Jun 6, 2026)",
-    "SHIPPING/TRAFFIC: Strait of Hormuz tanker traffic plunges 90–95% below pre‑war levels as many vessels switch off transponders and go 'dark' (OilPrice, Jun 6, 2026)",
-    "DIPLOMACY/IAEA: U.S. preparing draft resolution condemning Iran at IAEA Board of Governors (Reuters, Jun 5, 2026)",
-    "MILITARY/COOPERATION: Israel deployed elite troops to Azerbaijan during the war, sources say (CNN, Jun 5, 2026)",
-    "MILITARY/DRONES: Iran launched multiple drones toward the Strait of Hormuz; U.S. shot down at least four (Reuters, Jun 5, 2026)",
-    "SHIPPING/TRANSITS: U.S. counted nearly 1,000 commercial vessel transits through the Strait of Hormuz in the last two months (Bloomberg, Jun 5, 2026)"
+    "MILITARY/INTERCEPTS: CENTCOM says it shot down four Iranian one‑way attack drones headed for the Strait of Hormuz and struck coastal radar sites on Goruk and Qeshm (CENTCOM/Reuters, Jun 6, 2026)"
   ]
 }

@@ -1,61 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-22T12:06:38.784Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 67,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 51
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "naval-subtitle",
-            "carrier-lincoln-position"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -36
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5069
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-23T12:06:32.940Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2727,6 +2672,61 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 6076
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-13T11:44:14.621Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 56,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 45
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-consensus",
+            "bg-nuclear-timeline",
+            "reactions-global-callouts",
+            "reactions-global-mediation"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "background.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 1,
+          "sizeChange": -104
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4885
         }
       ]
     }
