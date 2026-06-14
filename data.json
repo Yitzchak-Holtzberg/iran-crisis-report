@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 13, 2026",
-  "lastUpdated": "11:44 UTC",
+  "date": "June 14, 2026",
+  "lastUpdated": "11:47 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,15 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 8,
-  "scenarioNegotiatedDealPct": 60,
-  "scenarioDemocraticRevolutionPct": 6,
-  "scenarioManagedTransitionPct": 18,
-  "scenarioRegimeCollapsePct": 8,
+  "scenarioDeclaredVictoryPct": 6,
+  "scenarioNegotiatedDealPct": 45,
+  "scenarioDemocraticRevolutionPct": 10,
+  "scenarioManagedTransitionPct": 25,
+  "scenarioRegimeCollapsePct": 14,
   "ticker": [
+    "POLITICAL/LEADERSHIP: Funeral for Iran's late Supreme Leader Khamenei set to begin July 4, burial July 9 (Reuters, Jun 13, 2026)",
+    "DIPLOMACY/DEAL TIMELINE: Trump says US-Iran peace deal will be signed Sunday; Iran disputes timeline (NYT, Jun 13, 2026)",
+    "CYBER/FINANCE: Iran reports disruptions at multiple banks after suspected cyberattack, state media says (ISNA, Jun 13, 2026)",
     "DIPLOMACY/AGREEMENT: U.S. and Iran have agreed wording of a deal to end the war, Pakistan's prime minister says; 'final text' reached (AP, Jun 12, 2026)",
     "DIPLOMACY/PAKISTAN: Pakistan PM says 'electronic signing' of U.S.-Iran ceasefire could occur within 24 hours (NBC, Jun 12, 2026)",
     "ENERGY/OIL: Oil prices fall sharply after reports a U.S.-Iran deal may be near; Brent and WTI slide on diplomacy hopes (CNBC, Jun 12, 2026)",
@@ -45,8 +48,6 @@
     "MILITANT/HOUTHI: Houthis announce ban on ships linked to Israel in the Red Sea, threatening Bab al‑Mandeb shipping routes (Houthi statement/GCaptain, Jun 8, 2026)",
     "SHIPPING/STRAIT: Ships finding alternative routes and some transits through the Strait of Hormuz resume despite disruptions, U.S. says (ABC/CNN, Jun 9, 2026)",
     "MILITARY/MISSILES: Iran launches ballistic missiles at Israel in first such attack since April ceasefire; missiles prompt Israeli defensive alerts (NYT/Reuters, Jun 7, 2026)",
-    "MILITARY/STRIKES: Israel strikes military targets inside Iran after missile barrage, IDF says (Axios/AP, Jun 7–8, 2026)",
-    "DIPLOMACY/CEASEFIRE: Iran signals it has halted the latest round of attacks after hours of exchanges; US pushes for immediate ceasefire (Reuters/NYT, Jun 8, 2026)",
-    "MILITARY/INTERCEPTS: CENTCOM says it shot down four Iranian one‑way attack drones headed for the Strait of Hormuz and struck coastal radar sites on Goruk and Qeshm (CENTCOM/Reuters, Jun 6, 2026)"
+    "MILITARY/STRIKES: Israel strikes military targets inside Iran after missile barrage, IDF says (Axios/AP, Jun 7–8, 2026)"
   ]
 }

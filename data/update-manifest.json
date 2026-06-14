@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-23T12:06:32.940Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 49,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 36
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Request timeout after 180000 ms"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 4,
-          "sizeChange": -546
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 4608
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-24T12:02:45.792Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2727,6 +2682,62 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4885
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-14T11:47:03.998Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 53,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 41
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "bg-nuclear-timeline",
+            "iran-crisis2-succession",
+            "naval-subtitle",
+            "reactions-global-mediation"
+          ],
+          "filesUpdated": [
+            "background.html",
+            "inside-iran.html",
+            "naval.html",
+            "reactions-global.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "sizeChange": 26
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4662
         }
       ]
     }
