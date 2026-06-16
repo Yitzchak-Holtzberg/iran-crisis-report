@@ -1,59 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-25T11:49:48.553Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 63,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 51
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 5,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "reactions-global-mediation"
-          ],
-          "filesUpdated": [
-            "naval.html",
-            "reactions-global.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 1,
-          "sizeChange": -85
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 6,
-          "linesRemoved": 0,
-          "sizeChange": 3934
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-26T11:51:08.320Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2718,6 +2665,64 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4448
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-16T12:44:10.337Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 67,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 46
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "analysis-consensus",
+            "bg-nuclear-timeline",
+            "hormuz-wti-price",
+            "military-parchin",
+            "naval-subtitle"
+          ],
+          "filesUpdated": [
+            "analysis.html",
+            "background.html",
+            "hormuz.html",
+            "military.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 1,
+          "sizeChange": -148
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 6367
         }
       ]
     }
