@@ -1,61 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-26T11:51:08.320Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 64,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 53
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "reactions-global-callouts",
-            "reactions-global-mediation"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "reactions-global.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 151
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5894
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-27T12:22:53.806Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2723,6 +2668,62 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 6367
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-17T12:31:26.193Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 50,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 38
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "bg-january-protests",
+            "hormuz-wti-price",
+            "naval-subtitle",
+            "reactions-iran-casualties"
+          ],
+          "filesUpdated": [
+            "background.html",
+            "hormuz.html",
+            "naval.html",
+            "reactions-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 2,
+          "sizeChange": -239
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 5689
         }
       ]
     }

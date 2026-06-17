@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 16, 2026",
-  "lastUpdated": "12:44 UTC",
+  "date": "June 17, 2026",
+  "lastUpdated": "12:31 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -19,11 +19,14 @@
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
   "scenarioDeclaredVictoryPct": 4,
-  "scenarioNegotiatedDealPct": 72,
-  "scenarioDemocraticRevolutionPct": 6,
-  "scenarioManagedTransitionPct": 12,
-  "scenarioRegimeCollapsePct": 6,
+  "scenarioNegotiatedDealPct": 78,
+  "scenarioDemocraticRevolutionPct": 5,
+  "scenarioManagedTransitionPct": 8,
+  "scenarioRegimeCollapsePct": 5,
   "ticker": [
+    "HUMAN RIGHTS/EXECUTION: Iran executes two men over role in January 2026 protests, judiciary news outlet Mizan says (Reuters, Jun 16, 2026)",
+    "MILITARY/LOGISTICS: U.S. overseeing secret ship-to-ship oil transfer network to bypass Hormuz; at least 92 vessels involved, sources say (India Today, Jun 16, 2026)",
+    "SHIPPING/STRAIT: Largest tanker operator says transit through Strait of Hormuz unlikely to resume for 'weeks' despite U.S.-Iran deal (Reuters, Jun 16, 2026)",
     "DIPLOMACY/DEAL SIGNED: U.S. and Iran sign preliminary memorandum; terms not yet released, signing expected to open Strait of Hormuz (NYT, Jun 15, 2026)",
     "DIPLOMACY/SIGNING CEREMONY: Pakistan PM says document signing will take place Friday, with pre‑implementation discussions to follow (NBC, Jun 15, 2026)",
     "SHIPPING/HORMUZ: Shippers remain cautious as one LNG tanker transits after U.S.-Iran deal; wider resumption of regular traffic may take weeks (Reuters, Jun 15, 2026)",
@@ -42,11 +45,6 @@
     "SHIPPING/STRAIT: Iran's IRGC declares Strait of Hormuz closed to all vessels after U.S. strikes, citing security risks (IRGC/Business Standard, Jun 10, 2026)",
     "MILITARY/US STRIKES: U.S. forces complete additional self‑defense strikes against multiple Iranian targets, CENTCOM says (CENTCOM, Jun 10, 2026)",
     "MILITARY/RETALIATION: U.S. launches second day of strikes on Iran; Tehran fires back at Gulf states including Kuwait, Bahrain and Jordan (AP/NPR, Jun 10, 2026)",
-    "DIPLOMACY/IAEA: IAEA Board passes resolution demanding Iran fully account for unverified enriched uranium and grant inspectors access (IAEA/AP, Jun 10, 2026)",
-    "ENERGY/OIL: Brent tops $92/bbl as fresh U.S.-Iran clashes raise fears of extended supply disruptions (CNBC, Jun 11, 2026)",
-    "MILITARY/US STRIKES: U.S. launches strikes on Iranian targets after Apache helicopter downed near Strait of Hormuz; CENTCOM says crew rescued (CENTCOM/NBC, Jun 9, 2026)",
-    "MILITARY/IRAN RETALIATION: Iran reportedly strikes U.S. bases after American strikes, CENTCOM says (NBC, Jun 9, 2026)",
-    "ECONOMY/OIL: Oil prices fall to seven-week low as Iran and Israel halt attacks, easing immediate supply fears (Reuters, Jun 9, 2026)",
-    "DIPLOMACY/IAEA: IAEA chief urges Iran to re-engage with inspectors as U.S. pushes resolution at Board of Governors (IAEA/Reuters, Jun 8, 2026)"
+    "DIPLOMACY/IAEA: IAEA Board passes resolution demanding Iran fully account for unverified enriched uranium and grant inspectors access (IAEA/AP, Jun 10, 2026)"
   ]
 }
