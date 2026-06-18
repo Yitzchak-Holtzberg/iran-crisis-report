@@ -1,62 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-27T12:22:53.806Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 62,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 50
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "hormuz-wti-price",
-            "carrier-lincoln-position"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "hormuz.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 1,
-          "sizeChange": -192
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5117
-        }
-      ]
-    },
-    {
       "timestamp": "2026-04-28T12:56:38.451Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2724,6 +2668,51 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 5689
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-18T12:14:44.159Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 47,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 39
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Request timeout after 180000 ms"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 2,
+          "linesRemoved": 0,
+          "sizeChange": 276
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4888
         }
       ]
     }
