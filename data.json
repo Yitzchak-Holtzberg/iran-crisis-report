@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 19, 2026",
-  "lastUpdated": "12:28 UTC",
+  "date": "June 20, 2026",
+  "lastUpdated": "11:46 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 6,
   "scenarioRegimeCollapsePct": 2,
   "ticker": [
+    "DIPLOMACY/POSTPONED: U.S. envoy cancels Switzerland trip as opening round of U.S.-Iran talks is called off after Lebanon escalation (Reuters, Jun 19, 2026)",
+    "MILITARY/CEASEFIRE: Israel and Hezbollah agree to a cease-fire, easing an immediate threat to U.S.-Iran peace talks (AP, Jun 19, 2026)",
+    "SHIPPING/HORMUZ: Oil tanker traffic through the Strait of Hormuz jumps after U.S.-Iran deal as more transits are recorded (CNBC, Jun 19, 2026)",
+    "SHIPPING/MINES: Trade body warns normal shipping unlikely to resume until some 80 mines blocking center of the Strait of Hormuz are cleared (The Guardian, Jun 19, 2026)",
     "MILITARY/IRGC: Iran's Revolutionary Guard sets up covert Iraqi cells to mount attacks on Gulf neighbors, sources say (Reuters, Jun 19, 2026)",
     "MILITARY/LEBANON: Israel-Hezbollah fighting intensifies in southern Lebanon as U.S.-Iran talks are postponed (AP, Jun 19, 2026)",
     "MILITARY/BLOCKADE: CENTCOM lifts naval blockade on the Strait of Hormuz; U.S. Navy ends blockade of Iranian ports (CENTCOM/CNBC, Jun 18, 2026)",
@@ -43,10 +47,6 @@
     "DIPLOMACY/AGREEMENT: U.S. and Iran have agreed wording of a deal to end the war, Pakistan's prime minister says; 'final text' reached (AP, Jun 12, 2026)",
     "DIPLOMACY/PAKISTAN: Pakistan PM says 'electronic signing' of U.S.-Iran ceasefire could occur within 24 hours (NBC, Jun 12, 2026)",
     "ENERGY/OIL: Oil prices fall sharply after reports a U.S.-Iran deal may be near; Brent and WTI slide on diplomacy hopes (CNBC, Jun 12, 2026)",
-    "MILITARY/INTERCEPTS: U.S. military shoots down two Iranian drones attempting to strike commercial vessels in the Strait of Hormuz, U.S. says (ABC, Jun 12, 2026)",
-    "MILITARY/ESCORTS: U.S. military escorting growing number of oil tankers through the Strait of Hormuz, Energy secretary says (Politico, Jun 12, 2026)",
-    "MILITARY/US STRIKES: U.S. forces disable third oil tanker violating blockade in Gulf of Oman, CENTCOM says (CENTCOM, Jun 10, 2026)",
-    "CIVILIAN/DEATHS: Three Indian seafarers killed in strike on oil tanker near Strait of Hormuz; India lodges strong protest (UN/CBS, Jun 11, 2026)",
-    "DIPLOMACY/TRUMP: President Trump says he cancelled further strikes and claims a peace deal is near; Tehran says nothing finalized (NYT/CBS/Reuters, Jun 11, 2026)"
+    "MILITARY/INTERCEPTS: U.S. military shoots down two Iranian drones attempting to strike commercial vessels in the Strait of Hormuz, U.S. says (ABC, Jun 12, 2026)"
   ]
 }
