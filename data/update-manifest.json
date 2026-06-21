@@ -1,57 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-04-30T12:21:14.012Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 55,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 41
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "naval-subtitle",
-            "carrier-ford-position"
-          ],
-          "filesUpdated": [
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -39
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 46,
-          "linesRemoved": 0,
-          "sizeChange": 5511
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-01T12:04:15.310Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2720,6 +2669,59 @@
           "linesAdded": 26,
           "linesRemoved": 0,
           "sizeChange": 3880
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-21T11:58:31.044Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 48,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 38
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "naval.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -10
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5553
         }
       ]
     }
