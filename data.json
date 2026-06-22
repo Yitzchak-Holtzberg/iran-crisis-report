@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 21, 2026",
-  "lastUpdated": "11:58 UTC",
+  "date": "June 22, 2026",
+  "lastUpdated": "13:05 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,11 @@
   "scenarioManagedTransitionPct": 6,
   "scenarioRegimeCollapsePct": 2,
   "ticker": [
+    "DIPLOMACY/ROADMAP: U.S. and Iran agree to a 'roadmap' toward a final deal, mediators say (NPR, Jun 21, 2026)",
+    "DIPLOMACY/IAEA: U.S. VP Vance says Iran will readmit IAEA nuclear inspectors as talks make progress (Haaretz, Jun 22, 2026)",
+    "OIL/MARKET: Oil prices fall after U.S.-Iran talks signal easing supply risks (Reuters, Jun 21, 2026)",
+    "MILITARY/LEBANON: Israel directs military to limit actions in Lebanon amid persistent tensions (New York Times, Jun 21, 2026)",
+    "DIPLOMACY/REGION: Pakistan, Saudi Arabia, Egypt and Turkey call for a permanent U.S.-Iran deal (The National, Jun 21, 2026)",
     "MILITARY/HORMUZ: Iran's military says it has closed the Strait of Hormuz citing Israeli strikes in Lebanon (BBC, Jun 20, 2026)",
     "DIPLOMACY/VANCE: U.S. Vice‑President JD Vance travels to Switzerland to join technical U.S.-Iran talks as Iranian delegation arrives (NBC, Jun 20, 2026)",
     "SHIPPING/TRAFFIC: CENTCOM says 55 ships transited the Strait of Hormuz on Saturday despite Iran's closure claim (New York Times, Jun 20, 2026)",
@@ -42,11 +47,6 @@
     "MILITARY/LOGISTICS: U.S. overseeing secret ship-to-ship oil transfer network to bypass Hormuz; at least 92 vessels involved, sources say (India Today, Jun 16, 2026)",
     "SHIPPING/STRAIT: Largest tanker operator says transit through Strait of Hormuz unlikely to resume for 'weeks' despite U.S.-Iran deal (Reuters, Jun 16, 2026)",
     "DIPLOMACY/DEAL SIGNED: U.S. and Iran sign preliminary memorandum; terms not yet released, signing expected to open Strait of Hormuz (NYT, Jun 15, 2026)",
-    "DIPLOMACY/SIGNING CEREMONY: Pakistan PM says document signing will take place Friday, with pre‑implementation discussions to follow (NBC, Jun 15, 2026)",
-    "SHIPPING/HORMUZ: Shippers remain cautious as one LNG tanker transits after U.S.-Iran deal; wider resumption of regular traffic may take weeks (Reuters, Jun 15, 2026)",
-    "ENERGY/OIL: Oil prices fall to three‑month low after U.S.-Iran framework deal as markets cheer hopes of Hormuz reopening (The Guardian, Jun 15, 2026)",
-    "POLITICAL/LEADERSHIP: Funeral for Iran's late Supreme Leader Khamenei set to begin July 4, burial July 9 (Reuters, Jun 13, 2026)",
-    "DIPLOMACY/DEAL TIMELINE: Trump says US-Iran peace deal will be signed Sunday; Iran disputes timeline (NYT, Jun 13, 2026)",
-    "CYBER/FINANCE: Iran reports disruptions at multiple banks after suspected cyberattack, state media says (ISNA, Jun 13, 2026)"
+    "DIPLOMACY/SIGNING CEREMONY: Pakistan PM says document signing will take place Friday, with pre‑implementation discussions to follow (NBC, Jun 15, 2026)"
   ]
 }

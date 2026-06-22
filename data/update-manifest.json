@@ -1,68 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-01T12:04:15.310Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 67,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 46
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "hormuz-wti-price",
-            "military-parchin",
-            "naval-subtitle",
-            "carrier-lincoln-badge",
-            "carrier-lincoln-position",
-            "carrier-ford-badge",
-            "carrier-ford-position"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "hormuz.html",
-            "military.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -82
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5275
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-02T11:55:11.988Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2722,6 +2660,51 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5553
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-22T13:05:04.639Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 51,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 42
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Request timeout after 180000 ms"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -107
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5101
         }
       ]
     }
