@@ -1,58 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-02T11:55:11.988Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 67,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 50
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position"
-          ],
-          "filesUpdated": [
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 108
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5326
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-03T11:54:53.543Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2705,6 +2653,65 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5101
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-23T12:10:39.300Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 52,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 44
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 5,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "bg-nuclear-timeline",
+            "nuclear-subtitle",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-global-mediation",
+            "reactions-iran-callouts"
+          ],
+          "filesUpdated": [
+            "background.html",
+            "nuclear-teaser.html",
+            "nuclear.html",
+            "reactions-global.html",
+            "reactions-iran.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 4,
+          "sizeChange": -683
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 26,
+          "linesRemoved": 0,
+          "sizeChange": 3929
         }
       ]
     }

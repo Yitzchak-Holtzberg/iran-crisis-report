@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 22, 2026",
-  "lastUpdated": "13:05 UTC",
+  "date": "June 23, 2026",
+  "lastUpdated": "12:10 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 6,
   "scenarioRegimeCollapsePct": 2,
   "ticker": [
+    "DIPLOMACY/SANCTIONS WAIVER: U.S. issues sweeping Iran oil sanctions waivers, unlocking billions in revenue for Tehran (CNBC, Jun 23, 2026)",
+    "DIPLOMACY/FUNDS: U.S. to release frozen Iranian funds worth $12bn as part of negotiations (Al Jazeera, Jun 23, 2026)",
+    "SHIPPING/HORMUZ: Strait of Hormuz tanker traffic slowly picks up but war‑risk premiums remain elevated (The Insurer, Jun 23, 2026)",
+    "DIPLOMACY/VANCE: Vance says talks with Iranian officials set 'good foundation' for a deal to end the war (AP, Jun 22, 2026)",
     "DIPLOMACY/ROADMAP: U.S. and Iran agree to a 'roadmap' toward a final deal, mediators say (NPR, Jun 21, 2026)",
     "DIPLOMACY/IAEA: U.S. VP Vance says Iran will readmit IAEA nuclear inspectors as talks make progress (Haaretz, Jun 22, 2026)",
     "OIL/MARKET: Oil prices fall after U.S.-Iran talks signal easing supply risks (Reuters, Jun 21, 2026)",
@@ -39,14 +43,6 @@
     "SHIPPING/MINES: Trade body warns normal shipping unlikely to resume until some 80 mines blocking center of the Strait of Hormuz are cleared (The Guardian, Jun 19, 2026)",
     "MILITARY/IRGC: Iran's Revolutionary Guard sets up covert Iraqi cells to mount attacks on Gulf neighbors, sources say (Reuters, Jun 19, 2026)",
     "MILITARY/LEBANON: Israel-Hezbollah fighting intensifies in southern Lebanon as U.S.-Iran talks are postponed (AP, Jun 19, 2026)",
-    "MILITARY/BLOCKADE: CENTCOM lifts naval blockade on the Strait of Hormuz; U.S. Navy ends blockade of Iranian ports (CENTCOM/CNBC, Jun 18, 2026)",
-    "SHIPPING/OIL: Three Saudi oil tankers carrying ~6 million barrels transit the Strait of Hormuz after the US-Iran deal (CNBC, Jun 18, 2026)",
-    "DIPLOMACY/SIGNING: President Trump formally signs US-Iran memorandum at Versailles; White House says deal in effect (CNN/CBS, Jun 17, 2026)",
-    "SHIPPING/HORMUZ: Three Iranian tankers exit U.S. blockade amid US-Iran deal, ship-tracking shows (BBC/CNBC, Jun 17, 2026)",
-    "HUMAN RIGHTS/EXECUTION: Iran executes two men over role in January 2026 protests, judiciary news outlet Mizan says (Reuters, Jun 16, 2026)",
-    "MILITARY/LOGISTICS: U.S. overseeing secret ship-to-ship oil transfer network to bypass Hormuz; at least 92 vessels involved, sources say (India Today, Jun 16, 2026)",
-    "SHIPPING/STRAIT: Largest tanker operator says transit through Strait of Hormuz unlikely to resume for 'weeks' despite U.S.-Iran deal (Reuters, Jun 16, 2026)",
-    "DIPLOMACY/DEAL SIGNED: U.S. and Iran sign preliminary memorandum; terms not yet released, signing expected to open Strait of Hormuz (NYT, Jun 15, 2026)",
-    "DIPLOMACY/SIGNING CEREMONY: Pakistan PM says document signing will take place Friday, with pre‑implementation discussions to follow (NBC, Jun 15, 2026)"
+    "MILITARY/BLOCKADE: CENTCOM lifts naval blockade on the Strait of Hormuz; U.S. Navy ends blockade of Iranian ports (CENTCOM/CNBC, Jun 18, 2026)"
   ]
 }
