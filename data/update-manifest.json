@@ -1,61 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-03T11:54:53.543Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 55,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 40
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position",
-            "nuclear-subtitle"
-          ],
-          "filesUpdated": [
-            "naval.html",
-            "nuclear-teaser.html",
-            "nuclear.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 1,
-          "sizeChange": -184
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5656
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-04T12:23:55.384Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2712,6 +2657,60 @@
           "linesAdded": 26,
           "linesRemoved": 0,
           "sizeChange": 3929
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-24T12:02:01.202Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 44,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 35
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "bg-nuclear-timeline",
+            "military-parchin",
+            "carrier-lincoln-position"
+          ],
+          "filesUpdated": [
+            "background.html",
+            "military.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 4,
+          "linesRemoved": 0,
+          "sizeChange": 551
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4882
         }
       ]
     }

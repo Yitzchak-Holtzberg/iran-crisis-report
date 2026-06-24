@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 23, 2026",
-  "lastUpdated": "12:10 UTC",
+  "date": "June 24, 2026",
+  "lastUpdated": "12:02 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 6,
   "scenarioRegimeCollapsePct": 2,
   "ticker": [
+    "DIPLOMACY/NUCLEAR INSPECTIONS: Iran denies agreeing to IAEA inspections, contradicting U.S. VP Vance (Washington Post, Jun 23, 2026)",
+    "CYBER: Major cyberattack disrupts card services at Bank Melli, Saderat and Tejarat; restoration underway (India Today, Jun 23, 2026)",
+    "DIPLOMACY/US LEGISLATION: U.S. Senate approves war powers resolution to limit Trump administration military action on Iran (AP, Jun 23, 2026)",
+    "MILITARY/FUNDING: Pentagon requests roughly $80 billion from Congress to cover Iran war costs (WHSV, Jun 23, 2026)",
     "DIPLOMACY/SANCTIONS WAIVER: U.S. issues sweeping Iran oil sanctions waivers, unlocking billions in revenue for Tehran (CNBC, Jun 23, 2026)",
     "DIPLOMACY/FUNDS: U.S. to release frozen Iranian funds worth $12bn as part of negotiations (Al Jazeera, Jun 23, 2026)",
     "SHIPPING/HORMUZ: Strait of Hormuz tanker traffic slowly picks up but war‑risk premiums remain elevated (The Insurer, Jun 23, 2026)",
