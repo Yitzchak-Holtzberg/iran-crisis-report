@@ -1,67 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-04T12:23:55.384Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 68,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 51
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "carrier-lincoln-position",
-            "carrier-ford-badge",
-            "carrier-ford-position",
-            "nuclear-subtitle",
-            "reactions-global-callouts"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "naval.html",
-            "nuclear-teaser.html",
-            "nuclear.html",
-            "reactions-global.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 1,
-          "sizeChange": -87
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5000
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-05T12:10:45.468Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2711,6 +2650,64 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4882
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-25T11:59:17.659Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 12,
+          "gapQueries": 0,
+          "uniqueResults": 44,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 37
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 5,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "hormuz-wti-price",
+            "iran-crisis3-economic",
+            "naval-subtitle",
+            "carrier-ford-position",
+            "nuclear-subtitle"
+          ],
+          "filesUpdated": [
+            "hormuz.html",
+            "inside-iran.html",
+            "naval.html",
+            "nuclear-teaser.html",
+            "nuclear.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 4,
+          "sizeChange": -588
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 26,
+          "linesRemoved": 0,
+          "sizeChange": 3874
         }
       ]
     }
