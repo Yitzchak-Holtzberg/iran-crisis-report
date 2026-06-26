@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 25, 2026",
-  "lastUpdated": "11:59 UTC",
+  "date": "June 26, 2026",
+  "lastUpdated": "11:57 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 6,
   "scenarioRegimeCollapsePct": 2,
   "ticker": [
+    "SHIPPING/ATTACK: Cargo ship struck off Oman as it left the Strait of Hormuz; U.S. officials attribute the strike to Iran’s IRGC (New York Times, Jun 25, 2026)",
+    "SHIPPING/EVACUATION: International Maritime Organization pauses Strait of Hormuz evacuation after vessel hit off Oman (AP, Jun 25, 2026)",
+    "DIPLOMACY/DECONFLICTION: U.S. and Iran set up direct CENTCOM–IRGC military channel in Doha to reduce escalation risks (The Jerusalem Post, Jun 25, 2026)",
+    "OIL/PRICE: Brent crude jumps after attack halts shipping and pauses Hormuz evacuation before markets later eased (New York Times, Jun 25, 2026)",
     "IAEA/INSPECTIONS: U.N. nuclear agency chief says inspectors will visit Iran nuclear sites as part of interim U.S.-Iran deal (AP, Jun 24, 2026)",
     "SHIPPING/HORMUZ: Ships start sailing through Strait of Hormuz under U.N. evacuation scheme, moving hundreds of stranded seafarers (NBC News, Jun 24, 2026)",
     "SHIPPING/OIL: Oil tankers carrying about 35 million barrels stuck in the Persian Gulf have exited the Strait of Hormuz since U.S.-Iran deal (CNBC, Jun 24, 2026)",

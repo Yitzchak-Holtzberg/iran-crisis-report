@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-05T12:10:45.468Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 50,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 38
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Request timeout after 180000 ms"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 2,
-          "linesRemoved": 0,
-          "sizeChange": 223
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5719
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-06T13:00:03.360Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2708,6 +2663,61 @@
           "linesAdded": 26,
           "linesRemoved": 0,
           "sizeChange": 3874
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-26T11:57:42.153Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 68,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 46
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 6,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "carrier-lincoln-position",
+            "reactions-global-energy",
+            "reactions-gulf-callouts",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 4,
+          "linesRemoved": 0,
+          "sizeChange": 621
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 31,
+          "linesRemoved": 0,
+          "sizeChange": 4426
         }
       ]
     }
