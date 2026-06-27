@@ -1,64 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-06T13:00:03.360Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 47,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 33
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position",
-            "reactions-global-callouts"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "naval.html",
-            "reactions-global.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 3,
-          "sizeChange": -367
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5891
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-07T13:01:27.266Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2718,6 +2660,65 @@
           "linesAdded": 31,
           "linesRemoved": 0,
           "sizeChange": 4426
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-27T11:40:11.494Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 62,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 38
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis6-regional",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-gulf-callouts",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "inside-iran.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 6
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5529
         }
       ]
     }
