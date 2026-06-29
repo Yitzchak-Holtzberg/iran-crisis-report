@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-08T12:16:23.639Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 54,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 37
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Request timeout after 180000 ms"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -9
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5448
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-09T11:57:29.221Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2722,6 +2677,51 @@
           "linesAdded": 46,
           "linesRemoved": 0,
           "sizeChange": 6697
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-06-29T12:40:04.861Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 53,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 36
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 5,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Unexpected end of JSON input"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "sizeChange": 217
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 26,
+          "linesRemoved": 0,
+          "sizeChange": 4016
         }
       ]
     }

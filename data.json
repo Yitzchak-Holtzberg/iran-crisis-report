@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 28, 2026",
-  "lastUpdated": "11:43 UTC",
+  "date": "June 29, 2026",
+  "lastUpdated": "12:40 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,15 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 5,
-  "scenarioNegotiatedDealPct": 80,
+  "scenarioDeclaredVictoryPct": 6,
+  "scenarioNegotiatedDealPct": 75,
   "scenarioDemocraticRevolutionPct": 4,
-  "scenarioManagedTransitionPct": 6,
-  "scenarioRegimeCollapsePct": 5,
+  "scenarioManagedTransitionPct": 7,
+  "scenarioRegimeCollapsePct": 8,
   "ticker": [
+    "DIPLOMACY/CEASEFIRE FRACTURE: U.S. says it agreed to suspend attacks in Strait of Hormuz to allow vessel movement; Iran has not confirmed (New York Times, Jun 28, 2026)",
+    "MILITARY/CENTCOM CLAIM: CENTCOM says it struck 10 targets in and near the Strait of Hormuz in fresh strikes (Reuters, Jun 28, 2026)",
+    "DIPLOMACY/DOHA MEETING: Reports say U.S. and Iran to meet in Doha to resume peace talks after renewed strikes (The Independent, Jun 28, 2026)",
     "MILITARY/US STRIKES: U.S. conducts additional strikes on Iranian military sites after another tanker hit (Reuters, Jun 28, 2026)",
     "MILITARY/IRGC RETALIATION: IRGC says it struck U.S. military positions in Kuwait and Bahrain, warns of broader responses (Al Jazeera, Jun 28, 2026)",
     "MARITIME/THREAT LEVEL: UK maritime agency raises Strait of Hormuz threat level after reports an oil tanker was struck (Euronews, Jun 27, 2026)",
@@ -45,8 +48,6 @@
     "MILITARY/FUNDING: Pentagon requests roughly $80 billion from Congress to cover Iran war costs (WHSV, Jun 23, 2026)",
     "DIPLOMACY/SANCTIONS WAIVER: U.S. issues sweeping Iran oil sanctions waivers, unlocking billions in revenue for Tehran (CNBC, Jun 23, 2026)",
     "DIPLOMACY/FUNDS: U.S. to release frozen Iranian funds worth $12bn as part of negotiations (Al Jazeera, Jun 23, 2026)",
-    "SHIPPING/HORMUZ: Strait of Hormuz tanker traffic slowly picks up but war‑risk premiums remain elevated (The Insurer, Jun 23, 2026)",
-    "DIPLOMACY/VANCE: Vance says talks with Iranian officials set 'good foundation' for a deal to end the war (AP, Jun 22, 2026)",
-    "DIPLOMACY/ROADMAP: U.S. and Iran agree to a 'roadmap' toward a final deal, mediators say (NPR, Jun 21, 2026)"
+    "SHIPPING/HORMUZ: Strait of Hormuz tanker traffic slowly picks up but war‑risk premiums remain elevated (The Insurer, Jun 23, 2026)"
   ]
 }
