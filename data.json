@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 29, 2026",
-  "lastUpdated": "12:40 UTC",
+  "date": "June 30, 2026",
+  "lastUpdated": "11:57 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,7 +24,10 @@
   "scenarioManagedTransitionPct": 7,
   "scenarioRegimeCollapsePct": 8,
   "ticker": [
-    "DIPLOMACY/CEASEFIRE FRACTURE: U.S. says it agreed to suspend attacks in Strait of Hormuz to allow vessel movement; Iran has not confirmed (New York Times, Jun 28, 2026)",
+    "DIPLOMACY/DOHA ENVOY: U.S. envoy Witkoff heads to Doha as President says talks set; Iran denies U.S.-Iran meetings scheduled (CNN, Jun 29, 2026)",
+    "DIPLOMACY/STAND-DOWN: U.S. and Iran agree to 'stand down' and pause strikes to allow Strait of Hormuz traffic; parties dispute next steps (AP, Jun 29, 2026)",
+    "MILITARY/REGIONAL LIAISON: CENTCOM chief Adm. Brad Cooper meets Lebanon's military chief in Beirut to discuss security and deconfliction (Times of Israel, Jun 29, 2026)",
+    "OIL/PRICE RISE: Brent and WTI climb after reports of a U.S.-Iran stand-down and resumed talks; markets watch Hormuz shipping (CNBC, Jun 29, 2026)",
     "MILITARY/CENTCOM CLAIM: CENTCOM says it struck 10 targets in and near the Strait of Hormuz in fresh strikes (Reuters, Jun 28, 2026)",
     "DIPLOMACY/DOHA MEETING: Reports say U.S. and Iran to meet in Doha to resume peace talks after renewed strikes (The Independent, Jun 28, 2026)",
     "MILITARY/US STRIKES: U.S. conducts additional strikes on Iranian military sites after another tanker hit (Reuters, Jun 28, 2026)",
@@ -44,10 +47,6 @@
     "OIL/PRICE: Global oil prices fall to pre-war levels as tanker traffic doubles and mines-clearing remains a challenge (The Guardian, Jun 25, 2026)",
     "DIPLOMACY/NUCLEAR INSPECTIONS: Iran denies agreeing to IAEA inspections, contradicting U.S. VP Vance (Washington Post, Jun 23, 2026)",
     "CYBER: Major cyberattack disrupts card services at Bank Melli, Saderat and Tejarat; restoration underway (India Today, Jun 23, 2026)",
-    "DIPLOMACY/US LEGISLATION: U.S. Senate approves war powers resolution to limit Trump administration military action on Iran (AP, Jun 23, 2026)",
-    "MILITARY/FUNDING: Pentagon requests roughly $80 billion from Congress to cover Iran war costs (WHSV, Jun 23, 2026)",
-    "DIPLOMACY/SANCTIONS WAIVER: U.S. issues sweeping Iran oil sanctions waivers, unlocking billions in revenue for Tehran (CNBC, Jun 23, 2026)",
-    "DIPLOMACY/FUNDS: U.S. to release frozen Iranian funds worth $12bn as part of negotiations (Al Jazeera, Jun 23, 2026)",
-    "SHIPPING/HORMUZ: Strait of Hormuz tanker traffic slowly picks up but war‑risk premiums remain elevated (The Insurer, Jun 23, 2026)"
+    "DIPLOMACY/US LEGISLATION: U.S. Senate approves war powers resolution to limit Trump administration military action on Iran (AP, Jun 23, 2026)"
   ]
 }
