@@ -1,59 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-10T11:59:52.526Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 55,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 43
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "military-parchin",
-            "carrier-lincoln-position",
-            "carrier-ford-position"
-          ],
-          "filesUpdated": [
-            "military.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 4,
-          "linesRemoved": 0,
-          "sizeChange": 479
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 6124
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-12T13:10:00.292Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2722,6 +2669,58 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5223
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T12:10:44.122Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 63,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 47
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "hormuz-wti-price",
+            "carrier-lincoln-position"
+          ],
+          "filesUpdated": [
+            "hormuz.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -7
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5633
         }
       ]
     }

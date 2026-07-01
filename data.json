@@ -1,13 +1,13 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "June 30, 2026",
-  "lastUpdated": "11:57 UTC",
+  "date": "July 1, 2026",
+  "lastUpdated": "12:10 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
   "statMissilesFiredSource": "CENTCOM/Wikipedia, Mar 10",
   "statCarrierGroups": "2",
-  "statOilAtRisk": "1,100M+",
+  "statOilAtRisk": "40M+",
   "statCitizensOffline": "90M",
   "statIrgcKilled": "3,900+",
   "statUsCasualties": "13",
@@ -19,11 +19,15 @@
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
   "scenarioDeclaredVictoryPct": 6,
-  "scenarioNegotiatedDealPct": 75,
+  "scenarioNegotiatedDealPct": 70,
   "scenarioDemocraticRevolutionPct": 4,
-  "scenarioManagedTransitionPct": 7,
-  "scenarioRegimeCollapsePct": 8,
+  "scenarioManagedTransitionPct": 9,
+  "scenarioRegimeCollapsePct": 11,
   "ticker": [
+    "DIPLOMACY/DOHA MEETINGS: U.S. envoys Steve Witkoff and Jared Kushner meet Qatari PM; Qatar says no high-level U.S.-Iran meeting occurred (CNN, Jun 30, 2026)",
+    "OIL/PRICE: Oil prices wobble as Iran says it will not meet U.S. delegates in Doha, raising supply concerns (CNBC, Jul 1, 2026)",
+    "SHIPPING/HORMUZ: Shipping traffic rebounds with 40 vessels transiting after weekend strikes, Kpler reports (The Hill, Jun 30, 2026)",
+    "DIPLOMACY/OMAN PROPOSAL: Oman proposes charging fees for Strait of Hormuz transits under post-war plan (New York Times, Jul 1, 2026)",
     "DIPLOMACY/DOHA ENVOY: U.S. envoy Witkoff heads to Doha as President says talks set; Iran denies U.S.-Iran meetings scheduled (CNN, Jun 29, 2026)",
     "DIPLOMACY/STAND-DOWN: U.S. and Iran agree to 'stand down' and pause strikes to allow Strait of Hormuz traffic; parties dispute next steps (AP, Jun 29, 2026)",
     "MILITARY/REGIONAL LIAISON: CENTCOM chief Adm. Brad Cooper meets Lebanon's military chief in Beirut to discuss security and deconfliction (Times of Israel, Jun 29, 2026)",
@@ -43,10 +47,6 @@
     "OIL/PRICE: Brent crude jumps after attack halts shipping and pauses Hormuz evacuation before markets later eased (New York Times, Jun 25, 2026)",
     "IAEA/INSPECTIONS: U.N. nuclear agency chief says inspectors will visit Iran nuclear sites as part of interim U.S.-Iran deal (AP, Jun 24, 2026)",
     "SHIPPING/HORMUZ: Ships start sailing through Strait of Hormuz under U.N. evacuation scheme, moving hundreds of stranded seafarers (NBC News, Jun 24, 2026)",
-    "SHIPPING/OIL: Oil tankers carrying about 35 million barrels stuck in the Persian Gulf have exited the Strait of Hormuz since U.S.-Iran deal (CNBC, Jun 24, 2026)",
-    "OIL/PRICE: Global oil prices fall to pre-war levels as tanker traffic doubles and mines-clearing remains a challenge (The Guardian, Jun 25, 2026)",
-    "DIPLOMACY/NUCLEAR INSPECTIONS: Iran denies agreeing to IAEA inspections, contradicting U.S. VP Vance (Washington Post, Jun 23, 2026)",
-    "CYBER: Major cyberattack disrupts card services at Bank Melli, Saderat and Tejarat; restoration underway (India Today, Jun 23, 2026)",
-    "DIPLOMACY/US LEGISLATION: U.S. Senate approves war powers resolution to limit Trump administration military action on Iran (AP, Jun 23, 2026)"
+    "SHIPPING/OIL: Oil tankers carrying about 35 million barrels stuck in the Persian Gulf have exited the Strait of Hormuz since U.S.-Iran deal (CNBC, Jun 24, 2026)"
   ]
 }
