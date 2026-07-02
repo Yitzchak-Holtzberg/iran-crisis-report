@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 1, 2026",
-  "lastUpdated": "12:10 UTC",
+  "date": "July 2, 2026",
+  "lastUpdated": "11:54 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,9 @@
   "scenarioManagedTransitionPct": 9,
   "scenarioRegimeCollapsePct": 11,
   "ticker": [
+    "DIPLOMACY/DOHA TALKS: U.S. and Iranian delegations hold separate meetings in Doha and agree to continue indirect discussions, Qatar says (AP, Jul 2, 2026)",
+    "MILITARY/US HELICOPTER INCIDENT: U.S. Navy MH-60S Sea Hawk makes emergency water landing in Arabian Sea; one crew member missing, search-and-rescue underway (ABC News, Jul 2, 2026)",
+    "OIL/PRICE: Oil prices fall after Doha talks conclude amid signs of progress in U.S.-Iran negotiations (CNBC, Jul 2, 2026)",
     "DIPLOMACY/DOHA MEETINGS: U.S. envoys Steve Witkoff and Jared Kushner meet Qatari PM; Qatar says no high-level U.S.-Iran meeting occurred (CNN, Jun 30, 2026)",
     "OIL/PRICE: Oil prices wobble as Iran says it will not meet U.S. delegates in Doha, raising supply concerns (CNBC, Jul 1, 2026)",
     "SHIPPING/HORMUZ: Shipping traffic rebounds with 40 vessels transiting after weekend strikes, Kpler reports (The Hill, Jun 30, 2026)",
@@ -44,9 +47,6 @@
     "SHIPPING/ATTACK: Cargo ship struck off Oman as it left the Strait of Hormuz; U.S. officials attribute the strike to Iran’s IRGC (New York Times, Jun 25, 2026)",
     "SHIPPING/EVACUATION: International Maritime Organization pauses Strait of Hormuz evacuation after vessel hit off Oman (AP, Jun 25, 2026)",
     "DIPLOMACY/DECONFLICTION: U.S. and Iran set up direct CENTCOM–IRGC military channel in Doha to reduce escalation risks (The Jerusalem Post, Jun 25, 2026)",
-    "OIL/PRICE: Brent crude jumps after attack halts shipping and pauses Hormuz evacuation before markets later eased (New York Times, Jun 25, 2026)",
-    "IAEA/INSPECTIONS: U.N. nuclear agency chief says inspectors will visit Iran nuclear sites as part of interim U.S.-Iran deal (AP, Jun 24, 2026)",
-    "SHIPPING/HORMUZ: Ships start sailing through Strait of Hormuz under U.N. evacuation scheme, moving hundreds of stranded seafarers (NBC News, Jun 24, 2026)",
-    "SHIPPING/OIL: Oil tankers carrying about 35 million barrels stuck in the Persian Gulf have exited the Strait of Hormuz since U.S.-Iran deal (CNBC, Jun 24, 2026)"
+    "OIL/PRICE: Brent crude jumps after attack halts shipping and pauses Hormuz evacuation before markets later eased (New York Times, Jun 25, 2026)"
   ]
 }

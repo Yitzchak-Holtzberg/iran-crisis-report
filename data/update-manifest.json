@@ -1,64 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-12T13:10:00.292Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 63,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 48
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-csis",
-            "analysis-isw",
-            "analysis-consensus",
-            "naval-subtitle",
-            "reactions-global-callouts",
-            "reactions-global-energy",
-            "reactions-global-mediation"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "naval.html",
-            "reactions-global.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 5,
-          "sizeChange": -540
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5092
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-13T13:25:00.350Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2721,6 +2663,61 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5633
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-02T11:54:31.077Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 66,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 52
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "reactions-global-callouts",
+            "reactions-global-energy",
+            "reactions-global-mediation",
+            "reactions-gulf-callouts",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -1
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 4859
         }
       ]
     }
