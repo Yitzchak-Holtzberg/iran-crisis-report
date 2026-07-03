@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 2, 2026",
-  "lastUpdated": "11:54 UTC",
+  "date": "July 3, 2026",
+  "lastUpdated": "11:52 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 9,
   "scenarioRegimeCollapsePct": 11,
   "ticker": [
+    "DOMESTIC/FUNERAL: Massive state funeral for Ayatollah Ali Khamenei begins; millions expected and Iran pauses diplomacy ahead of multi-day ceremonies (NBC News, Jul 2, 2026)",
+    "MARITIME/HORMUZ THREAT: Iran's joint military command warns all tankers must follow Tehran-approved routes or face a 'forceful response' (AP, Jul 2, 2026)",
+    "OIL/EXPORTS: Saudi Arabia rushes crude exports through reopened Strait of Hormuz, dispatching multiple supertankers to Asia (CNBC, Jul 3, 2026)",
+    "SHIPPING/FEES: European governments now see some Strait-of-Hormuz transit fees as 'inevitable', Bloomberg reports (Bloomberg, Jul 2, 2026)",
     "DIPLOMACY/DOHA TALKS: U.S. and Iranian delegations hold separate meetings in Doha and agree to continue indirect discussions, Qatar says (AP, Jul 2, 2026)",
     "MILITARY/US HELICOPTER INCIDENT: U.S. Navy MH-60S Sea Hawk makes emergency water landing in Arabian Sea; one crew member missing, search-and-rescue underway (ABC News, Jul 2, 2026)",
     "OIL/PRICE: Oil prices fall after Doha talks conclude amid signs of progress in U.S.-Iran negotiations (CNBC, Jul 2, 2026)",
@@ -43,10 +47,6 @@
     "INSURANCE/PRICING: War-risk insurance premiums for transits through the Strait of Hormuz surge, reportedly tripling after attacks (CryptoBriefing, Jun 27, 2026)",
     "MILITARY/US STRIKES: U.S. strikes Iranian missile, drone and coastal radar sites in retaliation for drone attack on cargo ship (AP, Jun 26, 2026)",
     "MILITARY/IRAN RESPONSE: Iran's IRGC says it struck U.S. positions after American strikes, warning of broader responses (Ynet, Jun 26, 2026)",
-    "MILITARY/CENTCOM VIDEO: CENTCOM releases video of U.S. strikes on Iran, says operations lasted about 90 minutes (New York Times, Jun 26, 2026)",
-    "SHIPPING/ATTACK: Cargo ship struck off Oman as it left the Strait of Hormuz; U.S. officials attribute the strike to Iran’s IRGC (New York Times, Jun 25, 2026)",
-    "SHIPPING/EVACUATION: International Maritime Organization pauses Strait of Hormuz evacuation after vessel hit off Oman (AP, Jun 25, 2026)",
-    "DIPLOMACY/DECONFLICTION: U.S. and Iran set up direct CENTCOM–IRGC military channel in Doha to reduce escalation risks (The Jerusalem Post, Jun 25, 2026)",
-    "OIL/PRICE: Brent crude jumps after attack halts shipping and pauses Hormuz evacuation before markets later eased (New York Times, Jun 25, 2026)"
+    "MILITARY/CENTCOM VIDEO: CENTCOM releases video of U.S. strikes on Iran, says operations lasted about 90 minutes (New York Times, Jun 26, 2026)"
   ]
 }
