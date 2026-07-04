@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 3, 2026",
-  "lastUpdated": "11:52 UTC",
+  "date": "July 4, 2026",
+  "lastUpdated": "11:39 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,11 @@
   "scenarioManagedTransitionPct": 9,
   "scenarioRegimeCollapsePct": 11,
   "ticker": [
+    "OIL/SALES: Iran exploring oil sales to Japan as buyers seek longer sanctions waivers (Reuters, Jul 3, 2026)",
+    "MARITIME/HORMUZ: Sailors remain trapped in Strait of Hormuz despite ceasefire; thousands still waiting to sail (Bloomberg, Jul 3, 2026)",
+    "MILITARY/IRGC: IRGC warns U.S. and Israel of 'crushing response' during Khamenei funeral ceremonies (IranWire, Jul 3, 2026)",
+    "DIPLOMACY/CHINA: China calls for unimpeded passage through Strait of Hormuz amid talk of transit fees (gCaptain, Jul 3, 2026)",
+    "INTELLIGENCE/WARNING: U.S. warned Iran Israel might try to assassinate negotiators including Ghalibaf and Araghchi (Washington Post, Jul 2, 2026)",
     "DOMESTIC/FUNERAL: Massive state funeral for Ayatollah Ali Khamenei begins; millions expected and Iran pauses diplomacy ahead of multi-day ceremonies (NBC News, Jul 2, 2026)",
     "MARITIME/HORMUZ THREAT: Iran's joint military command warns all tankers must follow Tehran-approved routes or face a 'forceful response' (AP, Jul 2, 2026)",
     "OIL/EXPORTS: Saudi Arabia rushes crude exports through reopened Strait of Hormuz, dispatching multiple supertankers to Asia (CNBC, Jul 3, 2026)",
@@ -42,11 +47,6 @@
     "MILITARY/CENTCOM CLAIM: CENTCOM says it struck 10 targets in and near the Strait of Hormuz in fresh strikes (Reuters, Jun 28, 2026)",
     "DIPLOMACY/DOHA MEETING: Reports say U.S. and Iran to meet in Doha to resume peace talks after renewed strikes (The Independent, Jun 28, 2026)",
     "MILITARY/US STRIKES: U.S. conducts additional strikes on Iranian military sites after another tanker hit (Reuters, Jun 28, 2026)",
-    "MILITARY/IRGC RETALIATION: IRGC says it struck U.S. military positions in Kuwait and Bahrain, warns of broader responses (Al Jazeera, Jun 28, 2026)",
-    "MARITIME/THREAT LEVEL: UK maritime agency raises Strait of Hormuz threat level after reports an oil tanker was struck (Euronews, Jun 27, 2026)",
-    "INSURANCE/PRICING: War-risk insurance premiums for transits through the Strait of Hormuz surge, reportedly tripling after attacks (CryptoBriefing, Jun 27, 2026)",
-    "MILITARY/US STRIKES: U.S. strikes Iranian missile, drone and coastal radar sites in retaliation for drone attack on cargo ship (AP, Jun 26, 2026)",
-    "MILITARY/IRAN RESPONSE: Iran's IRGC says it struck U.S. positions after American strikes, warning of broader responses (Ynet, Jun 26, 2026)",
-    "MILITARY/CENTCOM VIDEO: CENTCOM releases video of U.S. strikes on Iran, says operations lasted about 90 minutes (New York Times, Jun 26, 2026)"
+    "MILITARY/IRGC RETALIATION: IRGC says it struck U.S. military positions in Kuwait and Bahrain, warns of broader responses (Al Jazeera, Jun 28, 2026)"
   ]
 }
