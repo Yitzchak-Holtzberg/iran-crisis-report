@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 4, 2026",
-  "lastUpdated": "11:39 UTC",
+  "date": "July 5, 2026",
+  "lastUpdated": "11:40 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 9,
   "scenarioRegimeCollapsePct": 11,
   "ticker": [
+    "PROXY/ALLIES: Hezbollah, Hamas and Houthi officials attend Khamenei funeral in Tehran (France 24, Jul 4, 2026)",
+    "MARITIME/HORMUZ: At least eight tankers make U-turns or hug Iran route as safe passage through Strait remains uncertain (Bloomberg, Jul 4, 2026)",
+    "MARITIME/RED SEA: Cargo ship reports being attacked in the Red Sea; UKMTO warns vessels to transit with caution (Euronews, Jul 5, 2026)",
+    "DIPLOMACY/HORMUZ FEES: Iranian diplomat says Iran will 'definitely' collect Strait of Hormuz transit fees, defying U.S. objections (Times of Israel, Jul 4, 2026)",
     "OIL/SALES: Iran exploring oil sales to Japan as buyers seek longer sanctions waivers (Reuters, Jul 3, 2026)",
     "MARITIME/HORMUZ: Sailors remain trapped in Strait of Hormuz despite ceasefire; thousands still waiting to sail (Bloomberg, Jul 3, 2026)",
     "MILITARY/IRGC: IRGC warns U.S. and Israel of 'crushing response' during Khamenei funeral ceremonies (IranWire, Jul 3, 2026)",
@@ -41,12 +45,6 @@
     "SHIPPING/HORMUZ: Shipping traffic rebounds with 40 vessels transiting after weekend strikes, Kpler reports (The Hill, Jun 30, 2026)",
     "DIPLOMACY/OMAN PROPOSAL: Oman proposes charging fees for Strait of Hormuz transits under post-war plan (New York Times, Jul 1, 2026)",
     "DIPLOMACY/DOHA ENVOY: U.S. envoy Witkoff heads to Doha as President says talks set; Iran denies U.S.-Iran meetings scheduled (CNN, Jun 29, 2026)",
-    "DIPLOMACY/STAND-DOWN: U.S. and Iran agree to 'stand down' and pause strikes to allow Strait of Hormuz traffic; parties dispute next steps (AP, Jun 29, 2026)",
-    "MILITARY/REGIONAL LIAISON: CENTCOM chief Adm. Brad Cooper meets Lebanon's military chief in Beirut to discuss security and deconfliction (Times of Israel, Jun 29, 2026)",
-    "OIL/PRICE RISE: Brent and WTI climb after reports of a U.S.-Iran stand-down and resumed talks; markets watch Hormuz shipping (CNBC, Jun 29, 2026)",
-    "MILITARY/CENTCOM CLAIM: CENTCOM says it struck 10 targets in and near the Strait of Hormuz in fresh strikes (Reuters, Jun 28, 2026)",
-    "DIPLOMACY/DOHA MEETING: Reports say U.S. and Iran to meet in Doha to resume peace talks after renewed strikes (The Independent, Jun 28, 2026)",
-    "MILITARY/US STRIKES: U.S. conducts additional strikes on Iranian military sites after another tanker hit (Reuters, Jun 28, 2026)",
-    "MILITARY/IRGC RETALIATION: IRGC says it struck U.S. military positions in Kuwait and Bahrain, warns of broader responses (Al Jazeera, Jun 28, 2026)"
+    "DIPLOMACY/STAND-DOWN: U.S. and Iran agree to 'stand down' and pause strikes to allow Strait of Hormuz traffic; parties dispute next steps (AP, Jun 29, 2026)"
   ]
 }
