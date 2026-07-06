@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 5, 2026",
-  "lastUpdated": "11:40 UTC",
+  "date": "July 6, 2026",
+  "lastUpdated": "12:25 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 9,
   "scenarioRegimeCollapsePct": 11,
   "ticker": [
+    "DOMESTIC/FUNERAL: Iran's top officials attend funeral prayers for late Supreme Leader as massive mourning continues (AP, Jul 5, 2026)",
+    "MILITARY/LEBANON: IDF says it established control over Hezbollah tunnel networks near Beaufort Castle (ISW, Jul 5, 2026)",
+    "MARITIME/HORMUZ: Tanker operators profit from Hormuz shuttle runs as covert exports rise (Bloomberg, Jul 5, 2026)",
+    "MARITIME/HORMUZ: Ships detour along Oman coast after unexplained U-turns, reducing central-Strait transit (Bloomberg, Jul 5, 2026)",
     "PROXY/ALLIES: Hezbollah, Hamas and Houthi officials attend Khamenei funeral in Tehran (France 24, Jul 4, 2026)",
     "MARITIME/HORMUZ: At least eight tankers make U-turns or hug Iran route as safe passage through Strait remains uncertain (Bloomberg, Jul 4, 2026)",
     "MARITIME/RED SEA: Cargo ship reports being attacked in the Red Sea; UKMTO warns vessels to transit with caution (Euronews, Jul 5, 2026)",
@@ -42,9 +46,6 @@
     "OIL/PRICE: Oil prices fall after Doha talks conclude amid signs of progress in U.S.-Iran negotiations (CNBC, Jul 2, 2026)",
     "DIPLOMACY/DOHA MEETINGS: U.S. envoys Steve Witkoff and Jared Kushner meet Qatari PM; Qatar says no high-level U.S.-Iran meeting occurred (CNN, Jun 30, 2026)",
     "OIL/PRICE: Oil prices wobble as Iran says it will not meet U.S. delegates in Doha, raising supply concerns (CNBC, Jul 1, 2026)",
-    "SHIPPING/HORMUZ: Shipping traffic rebounds with 40 vessels transiting after weekend strikes, Kpler reports (The Hill, Jun 30, 2026)",
-    "DIPLOMACY/OMAN PROPOSAL: Oman proposes charging fees for Strait of Hormuz transits under post-war plan (New York Times, Jul 1, 2026)",
-    "DIPLOMACY/DOHA ENVOY: U.S. envoy Witkoff heads to Doha as President says talks set; Iran denies U.S.-Iran meetings scheduled (CNN, Jun 29, 2026)",
-    "DIPLOMACY/STAND-DOWN: U.S. and Iran agree to 'stand down' and pause strikes to allow Strait of Hormuz traffic; parties dispute next steps (AP, Jun 29, 2026)"
+    "SHIPPING/HORMUZ: Shipping traffic rebounds with 40 vessels transiting after weekend strikes, Kpler reports (The Hill, Jun 30, 2026)"
   ]
 }
