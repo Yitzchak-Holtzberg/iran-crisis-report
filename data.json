@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 7, 2026",
-  "lastUpdated": "12:07 UTC",
+  "date": "July 8, 2026",
+  "lastUpdated": "11:42 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,16 +18,18 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 7,
-  "scenarioNegotiatedDealPct": 65,
+  "scenarioDeclaredVictoryPct": 10,
+  "scenarioNegotiatedDealPct": 45,
   "scenarioDemocraticRevolutionPct": 4,
-  "scenarioManagedTransitionPct": 10,
-  "scenarioRegimeCollapsePct": 14,
+  "scenarioManagedTransitionPct": 13,
+  "scenarioRegimeCollapsePct": 28,
   "ticker": [
+    "MILITARY/US STRIKES: U.S. launches strikes on Iran, says it hit 80+ military targets in response to attacks on three commercial vessels (AP, Jul 7, 2026)",
+    "DIPLOMACY/SANCTIONS: U.S. revokes authorization for Iranian oil sales, rescinds sanctions waiver after tanker attacks (Politico, Jul 7, 2026)",
+    "HUMANITARIAN/STRIKE: CNN reports U.S. strike hit a school in Iran, killing dozens in initial accounts (CNN, Jul 7, 2026)",
     "MARITIME/HORMUZ: Oil tanker struck by 'unknown projectile' in Strait of Hormuz off Oman, British military reports (Euronews, Jul 7, 2026)",
     "MARITIME/HORMUZ: UK military says tanker hit east of Limah, Oman, caught fire; no casualties reported (DW, Jul 7, 2026)",
     "MARITIME/HORMUZ: US officials say Iran has resumed attacks on ships in Strait of Hormuz, threatening recent MOU (Axios, Jul 7, 2026)",
-    "ECONOMY/OIL: Oil prices rise after reported Iranian attack on commercial vessels in Strait of Hormuz (CNBC, Jul 7, 2026)",
     "MILITARY/IRGC: NHK reports IRGC fired missiles at commercial ships near the Strait of Hormuz (NHK World, Jul 7, 2026)",
     "DOMESTIC/FUNERAL: Iran's top officials attend funeral prayers for late Supreme Leader as massive mourning continues (AP, Jul 5, 2026)",
     "MILITARY/LEBANON: IDF says it established control over Hezbollah tunnel networks near Beaufort Castle (ISW, Jul 5, 2026)",
@@ -45,8 +47,6 @@
     "DOMESTIC/FUNERAL: Massive state funeral for Ayatollah Ali Khamenei begins; millions expected and Iran pauses diplomacy ahead of multi-day ceremonies (NBC News, Jul 2, 2026)",
     "MARITIME/HORMUZ THREAT: Iran's joint military command warns all tankers must follow Tehran-approved routes or face a 'forceful response' (AP, Jul 2, 2026)",
     "OIL/EXPORTS: Saudi Arabia rushes crude exports through reopened Strait of Hormuz, dispatching multiple supertankers to Asia (CNBC, Jul 3, 2026)",
-    "SHIPPING/FEES: European governments now see some Strait-of-Hormuz transit fees as 'inevitable', Bloomberg reports (Bloomberg, Jul 2, 2026)",
-    "DIPLOMACY/DOHA TALKS: U.S. and Iranian delegations hold separate meetings in Doha and agree to continue indirect discussions, Qatar says (AP, Jul 2, 2026)",
-    "OIL/PRICE: Oil prices fall after Doha talks conclude amid signs of progress in U.S.-Iran negotiations (CNBC, Jul 2, 2026)"
+    "SHIPPING/FEES: European governments now see some Strait-of-Hormuz transit fees as 'inevitable', Bloomberg reports (Bloomberg, Jul 2, 2026)"
   ]
 }

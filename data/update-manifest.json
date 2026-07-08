@@ -1,66 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-18T14:37:12.327Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 48,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 38
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-isw",
-            "analysis-consensus",
-            "military-parchin",
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "reactions-global-energy",
-            "reactions-gulf-shipping"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "military.html",
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 4,
-          "linesRemoved": 0,
-          "sizeChange": 494
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 4379
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-19T14:05:35.670Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2694,6 +2634,67 @@
           "linesAdded": 26,
           "linesRemoved": 0,
           "sizeChange": 4343
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-08T11:42:54.176Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 62,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 43
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "hormuz-wti-price",
+            "iran-crisis1-epicfury",
+            "iran-crisis6-regional",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "reactions-global-energy",
+            "reactions-gulf-callouts",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "hormuz.html",
+            "inside-iran.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 20
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5910
         }
       ]
     }
