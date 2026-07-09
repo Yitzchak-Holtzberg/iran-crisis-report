@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 8, 2026",
-  "lastUpdated": "11:42 UTC",
+  "date": "July 9, 2026",
+  "lastUpdated": "12:10 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 10,
-  "scenarioNegotiatedDealPct": 45,
+  "scenarioDeclaredVictoryPct": 18,
+  "scenarioNegotiatedDealPct": 25,
   "scenarioDemocraticRevolutionPct": 4,
-  "scenarioManagedTransitionPct": 13,
-  "scenarioRegimeCollapsePct": 28,
+  "scenarioManagedTransitionPct": 17,
+  "scenarioRegimeCollapsePct": 36,
   "ticker": [
+    "MILITARY/US STRIKES: U.S. completes another round of strikes against Iran, CENTCOM says (CENTCOM, Jul 8, 2026)",
+    "MILITARY/US STRIKES: U.S. says it struck about 90 Iranian targets as Trump declares ceasefire 'over' (NBC News, Jul 8, 2026)",
+    "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Kuwait and Qatar in retaliation, Iran reports (AP, Jul 8, 2026)",
+    "MILITARY/IRGC CLAIM: Iran's IRGC says it struck 85 U.S. military targets in the Gulf (bne IntelliNews, Jul 8, 2026)",
     "MILITARY/US STRIKES: U.S. launches strikes on Iran, says it hit 80+ military targets in response to attacks on three commercial vessels (AP, Jul 7, 2026)",
     "DIPLOMACY/SANCTIONS: U.S. revokes authorization for Iranian oil sales, rescinds sanctions waiver after tanker attacks (Politico, Jul 7, 2026)",
     "HUMANITARIAN/STRIKE: CNN reports U.S. strike hit a school in Iran, killing dozens in initial accounts (CNN, Jul 7, 2026)",
@@ -43,10 +47,6 @@
     "MARITIME/HORMUZ: Sailors remain trapped in Strait of Hormuz despite ceasefire; thousands still waiting to sail (Bloomberg, Jul 3, 2026)",
     "MILITARY/IRGC: IRGC warns U.S. and Israel of 'crushing response' during Khamenei funeral ceremonies (IranWire, Jul 3, 2026)",
     "DIPLOMACY/CHINA: China calls for unimpeded passage through Strait of Hormuz amid talk of transit fees (gCaptain, Jul 3, 2026)",
-    "INTELLIGENCE/WARNING: U.S. warned Iran Israel might try to assassinate negotiators including Ghalibaf and Araghchi (Washington Post, Jul 2, 2026)",
-    "DOMESTIC/FUNERAL: Massive state funeral for Ayatollah Ali Khamenei begins; millions expected and Iran pauses diplomacy ahead of multi-day ceremonies (NBC News, Jul 2, 2026)",
-    "MARITIME/HORMUZ THREAT: Iran's joint military command warns all tankers must follow Tehran-approved routes or face a 'forceful response' (AP, Jul 2, 2026)",
-    "OIL/EXPORTS: Saudi Arabia rushes crude exports through reopened Strait of Hormuz, dispatching multiple supertankers to Asia (CNBC, Jul 3, 2026)",
-    "SHIPPING/FEES: European governments now see some Strait-of-Hormuz transit fees as 'inevitable', Bloomberg reports (Bloomberg, Jul 2, 2026)"
+    "INTELLIGENCE/WARNING: U.S. warned Iran Israel might try to assassinate negotiators including Ghalibaf and Araghchi (Washington Post, Jul 2, 2026)"
   ]
 }

@@ -1,60 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-19T14:05:35.670Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 51,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 39
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "reactions-global-mediation",
-            "reactions-iran-callouts",
-            "reactions-israel-callouts"
-          ],
-          "filesUpdated": [
-            "reactions-global.html",
-            "reactions-iran.html",
-            "reactions-israel.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 3,
-          "sizeChange": -300
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 3912
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-20T12:03:44.160Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2695,6 +2641,59 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5910
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-09T12:10:36.183Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 64,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 32
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 6,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "hormuz-wti-price",
+            "carrier-lincoln-position",
+            "carrier-ford-position"
+          ],
+          "filesUpdated": [
+            "hormuz.html",
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -129
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 31,
+          "linesRemoved": 0,
+          "sizeChange": 4672
         }
       ]
     }
