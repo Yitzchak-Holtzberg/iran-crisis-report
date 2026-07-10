@@ -1,65 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-20T12:03:44.160Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 65,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 46
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-isw",
-            "analysis-consensus",
-            "carrier-lincoln-position",
-            "reactions-global-callouts",
-            "reactions-global-energy",
-            "reactions-global-mediation",
-            "reactions-gulf-shipping"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 0
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5571
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-21T12:12:35.506Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2694,6 +2635,44 @@
           "linesAdded": 31,
           "linesRemoved": 0,
           "sizeChange": 4672
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-10T12:07:03.119Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 66,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 46
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "error",
+          "error": "Request timeout after 180000 ms"
+        },
+        "zones": {
+          "status": "error",
+          "error": "Unexpected end of JSON input"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 43
         }
       ]
     }
