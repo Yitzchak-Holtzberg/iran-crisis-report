@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 10, 2026",
-  "lastUpdated": "12:07 UTC",
+  "date": "July 11, 2026",
+  "lastUpdated": "11:28 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 16,
   "scenarioRegimeCollapsePct": 45,
   "ticker": [
+    "MILITARY/US STRIKES: U.S. forces hit more than 170 Iranian targets, including air defenses, drone/missile storage and speedboats (The New York Times, Jul 10, 2026)",
+    "DIPLOMACY/CEASEFIRE: Trump says ceasefire 'OVER' but U.S. and Iran to continue talks via mediators in Oman (Politico, Jul 10, 2026)",
+    "DIPLOMACY/US DEMAND: U.S. demands Iran publicly state Strait of Hormuz is open and will stop attacking ships (AP, Jul 10, 2026)",
+    "MARITIME/OIL MARKETS: IEA warns renewed U.S.-Iran conflict could upend global oil surplus forecast (IEA/OilPrice, Jul 10, 2026)",
     "MILITARY/US STRIKES: U.S. conducts fresh strikes on Iran for second consecutive night, CENTCOM says (CENTCOM, Jul 9, 2026)",
     "MILITARY/IRAN RETALIATION: Iran attacks Bahrain, Kuwait, Qatar and Jordan after U.S. strikes, multiple Gulf bases targeted (The National/AP, Jul 9, 2026)",
     "MARITIME/HORMUZ: Tanker traffic through Strait of Hormuz grinds to a halt as insurance costs surge and oil rallies (CNBC/Bloomberg, Jul 9, 2026)",
@@ -43,10 +47,6 @@
     "DOMESTIC/FUNERAL: Iran's top officials attend funeral prayers for late Supreme Leader as massive mourning continues (AP, Jul 5, 2026)",
     "MILITARY/LEBANON: IDF says it established control over Hezbollah tunnel networks near Beaufort Castle (ISW, Jul 5, 2026)",
     "MARITIME/HORMUZ: Tanker operators profit from Hormuz shuttle runs as covert exports rise (Bloomberg, Jul 5, 2026)",
-    "MARITIME/HORMUZ: Ships detour along Oman coast after unexplained U-turns, reducing central-Strait transit (Bloomberg, Jul 5, 2026)",
-    "PROXY/ALLIES: Hezbollah, Hamas and Houthi officials attend Khamenei funeral in Tehran (France 24, Jul 4, 2026)",
-    "MARITIME/HORMUZ: At least eight tankers make U-turns or hug Iran route as safe passage through Strait remains uncertain (Bloomberg, Jul 4, 2026)",
-    "MARITIME/RED SEA: Cargo ship reports being attacked in the Red Sea; UKMTO warns vessels to transit with caution (Euronews, Jul 5, 2026)",
-    "DIPLOMACY/HORMUZ FEES: Iranian diplomat says Iran will 'definitely' collect Strait of Hormuz transit fees, defying U.S. objections (Times of Israel, Jul 4, 2026)"
+    "MARITIME/HORMUZ: Ships detour along Oman coast after unexplained U-turns, reducing central-Strait transit (Bloomberg, Jul 5, 2026)"
   ]
 }
