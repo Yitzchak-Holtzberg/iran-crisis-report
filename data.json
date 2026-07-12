@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 11, 2026",
-  "lastUpdated": "11:28 UTC",
+  "date": "July 12, 2026",
+  "lastUpdated": "11:32 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 16,
   "scenarioRegimeCollapsePct": 45,
   "ticker": [
+    "MILITARY/US STRIKES: U.S. forces finish latest round of strikes against Iran, CENTCOM says (CENTCOM, Jul 11, 2026)",
+    "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Qatar, UAE and Kuwait; Gulf defenses report multiple intercepts (CNN/The National, Jul 11-12, 2026)",
+    "MARITIME/HORMUZ: Iran again declares Strait of Hormuz closed; tanker traffic halted and war-risk insurance rates spike (CNN/Xinhua, Jul 11, 2026)",
+    "UN/SECURITY COUNCIL: UN Security Council holds emergency meeting as China and Russia criticize U.S. and UK over Iran conflict (Economic Times, Jul 11, 2026)",
     "MILITARY/US STRIKES: U.S. forces hit more than 170 Iranian targets, including air defenses, drone/missile storage and speedboats (The New York Times, Jul 10, 2026)",
     "DIPLOMACY/CEASEFIRE: Trump says ceasefire 'OVER' but U.S. and Iran to continue talks via mediators in Oman (Politico, Jul 10, 2026)",
     "DIPLOMACY/US DEMAND: U.S. demands Iran publicly state Strait of Hormuz is open and will stop attacking ships (AP, Jul 10, 2026)",
@@ -44,9 +48,6 @@
     "MARITIME/HORMUZ: UK military says tanker hit east of Limah, Oman, caught fire; no casualties reported (DW, Jul 7, 2026)",
     "MARITIME/HORMUZ: US officials say Iran has resumed attacks on ships in Strait of Hormuz, threatening recent MOU (Axios, Jul 7, 2026)",
     "MILITARY/IRGC: NHK reports IRGC fired missiles at commercial ships near the Strait of Hormuz (NHK World, Jul 7, 2026)",
-    "DOMESTIC/FUNERAL: Iran's top officials attend funeral prayers for late Supreme Leader as massive mourning continues (AP, Jul 5, 2026)",
-    "MILITARY/LEBANON: IDF says it established control over Hezbollah tunnel networks near Beaufort Castle (ISW, Jul 5, 2026)",
-    "MARITIME/HORMUZ: Tanker operators profit from Hormuz shuttle runs as covert exports rise (Bloomberg, Jul 5, 2026)",
-    "MARITIME/HORMUZ: Ships detour along Oman coast after unexplained U-turns, reducing central-Strait transit (Bloomberg, Jul 5, 2026)"
+    "DOMESTIC/FUNERAL: Iran's top officials attend funeral prayers for late Supreme Leader as massive mourning continues (AP, Jul 5, 2026)"
   ]
 }
