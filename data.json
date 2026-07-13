@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 12, 2026",
-  "lastUpdated": "11:32 UTC",
+  "date": "July 13, 2026",
+  "lastUpdated": "12:11 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 16,
   "scenarioRegimeCollapsePct": 45,
   "ticker": [
+    "MILITARY/US STRIKES: U.S. launches new wave of strikes on Iran, CENTCOM says (The Guardian, Jul 13, 2026)",
+    "MILITARY/CENTCOM: U.S. says it hit about 140 Iranian military targets in latest strikes (CENTCOM/NPR, Jul 12, 2026)",
+    "MARITIME/STRAIT: CENTCOM says Strait of Hormuz remains open to lawful transit despite IRGC closure (CENTCOM, Jul 12, 2026)",
+    "ECONOMY/OIL: Brent crude jumps ~4% as U.S.-Iran exchanges threaten Hormuz shipping (Al Jazeera/NYTimes, Jul 13, 2026)",
     "MILITARY/US STRIKES: U.S. forces finish latest round of strikes against Iran, CENTCOM says (CENTCOM, Jul 11, 2026)",
     "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Qatar, UAE and Kuwait; Gulf defenses report multiple intercepts (CNN/The National, Jul 11-12, 2026)",
     "MARITIME/HORMUZ: Iran again declares Strait of Hormuz closed; tanker traffic halted and war-risk insurance rates spike (CNN/Xinhua, Jul 11, 2026)",
@@ -44,10 +48,6 @@
     "MILITARY/US STRIKES: U.S. launches strikes on Iran, says it hit 80+ military targets in response to attacks on three commercial vessels (AP, Jul 7, 2026)",
     "DIPLOMACY/SANCTIONS: U.S. revokes authorization for Iranian oil sales, rescinds sanctions waiver after tanker attacks (Politico, Jul 7, 2026)",
     "HUMANITARIAN/STRIKE: CNN reports U.S. strike hit a school in Iran, killing dozens in initial accounts (CNN, Jul 7, 2026)",
-    "MARITIME/HORMUZ: Oil tanker struck by 'unknown projectile' in Strait of Hormuz off Oman, British military reports (Euronews, Jul 7, 2026)",
-    "MARITIME/HORMUZ: UK military says tanker hit east of Limah, Oman, caught fire; no casualties reported (DW, Jul 7, 2026)",
-    "MARITIME/HORMUZ: US officials say Iran has resumed attacks on ships in Strait of Hormuz, threatening recent MOU (Axios, Jul 7, 2026)",
-    "MILITARY/IRGC: NHK reports IRGC fired missiles at commercial ships near the Strait of Hormuz (NHK World, Jul 7, 2026)",
-    "DOMESTIC/FUNERAL: Iran's top officials attend funeral prayers for late Supreme Leader as massive mourning continues (AP, Jul 5, 2026)"
+    "MARITIME/HORMUZ: Oil tanker struck by 'unknown projectile' in Strait of Hormuz off Oman, British military reports (Euronews, Jul 7, 2026)"
   ]
 }

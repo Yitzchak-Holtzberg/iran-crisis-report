@@ -1,63 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-23T11:34:50.723Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 60,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 47
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "bg-us-iran-timeline",
-            "losses-us-aircraft",
-            "naval-subtitle",
-            "nuclear-subtitle"
-          ],
-          "filesUpdated": [
-            "background.html",
-            "materiel-losses.html",
-            "naval.html",
-            "nuclear-teaser.html",
-            "nuclear.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 3,
-          "sizeChange": -388
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5020
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-24T11:37:46.818Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2676,6 +2619,65 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5748
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-13T12:11:35.777Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 60,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 37
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis6-regional",
+            "naval-subtitle",
+            "carrier-lincoln-position",
+            "carrier-ford-position",
+            "reactions-global-energy",
+            "reactions-gulf-callouts",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "inside-iran.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -42
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5213
         }
       ]
     }
