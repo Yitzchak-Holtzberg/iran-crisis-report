@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 13, 2026",
-  "lastUpdated": "12:11 UTC",
+  "date": "July 14, 2026",
+  "lastUpdated": "11:39 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,10 @@
   "scenarioManagedTransitionPct": 16,
   "scenarioRegimeCollapsePct": 45,
   "ticker": [
+    "MILITARY/SEABORNE DRONES: U.S. uses Corsair unmanned surface attack drones to strike Bandar Abbas submarine/port facility (USNI/The Hill, Jul 13, 2026)",
+    "DIPLOMACY/HORMUZ TOLL: Trump proposes 20% fee on cargo through Strait of Hormuz and says U.S. reinstates blockade (CNBC/The Guardian, Jul 13, 2026)",
+    "DIPLOMACY/UK: U.K. moves to list Iran's IRGC as a 'terror' / national security threat (The Guardian/NBC, Jul 13, 2026)",
+    "ECONOMY/OIL: Oil surges more than 9% after Trump reimposes Iran blockade and U.S.-Iran strikes escalate (NBC/Bloomberg, Jul 13, 2026)",
     "MILITARY/US STRIKES: U.S. launches new wave of strikes on Iran, CENTCOM says (The Guardian, Jul 13, 2026)",
     "MILITARY/CENTCOM: U.S. says it hit about 140 Iranian military targets in latest strikes (CENTCOM/NPR, Jul 12, 2026)",
     "MARITIME/STRAIT: CENTCOM says Strait of Hormuz remains open to lawful transit despite IRGC closure (CENTCOM, Jul 12, 2026)",
@@ -43,11 +47,6 @@
     "HUMANITARIAN/CIVCASUALTIES: At least 14 killed in southern Iran after strikes, residents and local officials report (The National, Jul 9, 2026)",
     "MILITARY/US STRIKES: U.S. completes another round of strikes against Iran, CENTCOM says (CENTCOM, Jul 8, 2026)",
     "MILITARY/US STRIKES: U.S. says it struck about 90 Iranian targets as Trump declares ceasefire 'over' (NBC News, Jul 8, 2026)",
-    "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Kuwait and Qatar in retaliation, Iran reports (AP, Jul 8, 2026)",
-    "MILITARY/IRGC CLAIM: Iran's IRGC says it struck 85 U.S. military targets in the Gulf (bne IntelliNews, Jul 8, 2026)",
-    "MILITARY/US STRIKES: U.S. launches strikes on Iran, says it hit 80+ military targets in response to attacks on three commercial vessels (AP, Jul 7, 2026)",
-    "DIPLOMACY/SANCTIONS: U.S. revokes authorization for Iranian oil sales, rescinds sanctions waiver after tanker attacks (Politico, Jul 7, 2026)",
-    "HUMANITARIAN/STRIKE: CNN reports U.S. strike hit a school in Iran, killing dozens in initial accounts (CNN, Jul 7, 2026)",
-    "MARITIME/HORMUZ: Oil tanker struck by 'unknown projectile' in Strait of Hormuz off Oman, British military reports (Euronews, Jul 7, 2026)"
+    "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Kuwait and Qatar in retaliation, Iran reports (AP, Jul 8, 2026)"
   ]
 }

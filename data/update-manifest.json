@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-24T11:37:46.818Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 60,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 48
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Unexpected end of JSON input"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 2,
-          "linesRemoved": 0,
-          "sizeChange": 259
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 4587
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-25T12:15:12.383Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2678,6 +2633,59 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5213
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-14T11:39:18.900Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 59,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 38
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "iran-crisis1-epicfury",
+            "iran-crisis3-economic",
+            "losses-iran-naval"
+          ],
+          "filesUpdated": [
+            "inside-iran.html",
+            "materiel-losses.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 1,
+          "sizeChange": -125
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 7265
         }
       ]
     }
