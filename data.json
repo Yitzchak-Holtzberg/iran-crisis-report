@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 14, 2026",
-  "lastUpdated": "11:39 UTC",
+  "date": "July 15, 2026",
+  "lastUpdated": "11:40 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 20,
-  "scenarioNegotiatedDealPct": 15,
+  "scenarioDeclaredVictoryPct": 25,
+  "scenarioNegotiatedDealPct": 10,
   "scenarioDemocraticRevolutionPct": 4,
   "scenarioManagedTransitionPct": 16,
   "scenarioRegimeCollapsePct": 45,
   "ticker": [
+    "MILITARY/BLOCKADE REIMPOSED: U.S. naval blockade of Iranian ports goes into effect (CNN/AP, Jul 14, 2026)",
+    "MILITARY/STRIKES: U.S. launches fresh strikes on Iran as CENTCOM resumes naval blockade (Fox News/The Guardian, Jul 14, 2026)",
+    "REGIONAL/HOUTHI STRIKE: Iran-backed Houthis strike Saudi Arabia with ballistic missiles/drones in major escalation (Bloomberg, Jul 14, 2026)",
+    "POLICY/TOLL BACKTRACK: Trump backtracks on 20% Hormuz cargo fee; says revenue to be replaced by Gulf investments (Times of Israel/Hindustan Times, Jul 14, 2026)",
     "MILITARY/SEABORNE DRONES: U.S. uses Corsair unmanned surface attack drones to strike Bandar Abbas submarine/port facility (USNI/The Hill, Jul 13, 2026)",
     "DIPLOMACY/HORMUZ TOLL: Trump proposes 20% fee on cargo through Strait of Hormuz and says U.S. reinstates blockade (CNBC/The Guardian, Jul 13, 2026)",
     "DIPLOMACY/UK: U.K. moves to list Iran's IRGC as a 'terror' / national security threat (The Guardian/NBC, Jul 13, 2026)",
@@ -44,9 +48,6 @@
     "MILITARY/IRAN RETALIATION: Iran attacks Bahrain, Kuwait, Qatar and Jordan after U.S. strikes, multiple Gulf bases targeted (The National/AP, Jul 9, 2026)",
     "MARITIME/HORMUZ: Tanker traffic through Strait of Hormuz grinds to a halt as insurance costs surge and oil rallies (CNBC/Bloomberg, Jul 9, 2026)",
     "MILITARY/ISRAEL: Israel warns it is ready to strike Iran again 'with even greater force' (The Guardian, Jul 9, 2026)",
-    "HUMANITARIAN/CIVCASUALTIES: At least 14 killed in southern Iran after strikes, residents and local officials report (The National, Jul 9, 2026)",
-    "MILITARY/US STRIKES: U.S. completes another round of strikes against Iran, CENTCOM says (CENTCOM, Jul 8, 2026)",
-    "MILITARY/US STRIKES: U.S. says it struck about 90 Iranian targets as Trump declares ceasefire 'over' (NBC News, Jul 8, 2026)",
-    "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Kuwait and Qatar in retaliation, Iran reports (AP, Jul 8, 2026)"
+    "HUMANITARIAN/CIVCASUALTIES: At least 14 killed in southern Iran after strikes, residents and local officials report (The National, Jul 9, 2026)"
   ]
 }
