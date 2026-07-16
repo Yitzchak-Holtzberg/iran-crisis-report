@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-27T12:14:18.778Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 61,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 45
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Unexpected end of JSON input"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 159
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 4660
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-28T12:15:50.045Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2691,6 +2646,56 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5700
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-16T11:41:03.822Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 61,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 41
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 9,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "carrier-lincoln-position"
+          ],
+          "filesUpdated": [
+            "naval.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 4,
+          "sizeChange": -507
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 46,
+          "linesRemoved": 0,
+          "sizeChange": 6606
         }
       ]
     }
