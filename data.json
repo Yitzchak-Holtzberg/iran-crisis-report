@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 17, 2026",
-  "lastUpdated": "11:37 UTC",
+  "date": "July 18, 2026",
+  "lastUpdated": "11:27 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,9 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 50,
   "ticker": [
+    "MILITARY/SEVENTH NIGHT: U.S. completes seventh straight night of strikes on Iran, CENTCOM says; strikes hit bridges and port facilities (CNN/Al Jazeera, Jul 17, 2026)",
+    "MARITIME/ATTACK: One seafarer killed and three injured in attack on tanker Al Bahyah off Oman coast (CNBC, Jul 17, 2026)",
+    "DIPLOMACY/UN CALL: UN Secretary-General calls for a new diplomatic push after attacks on civilian areas (UN News, Jul 17, 2026)",
     "MARITIME/BOARDING: U.S. Marines board vessel in Gulf of Oman, redirect three others enforcing blockade (CNN/Rediff, Jul 17, 2026)",
     "MILITARY/US STRIKES: U.S. launches sixth consecutive day of strikes including near Tehran; Iran reports civilian casualties (Al Jazeera, Jul 16, 2026)",
     "HUMANITARIAN/CIVILIANS HIT: Reports US strikes hit children's cancer hospital and a school evacuated; Iran reports multiple civilian deaths/injuries (The Guardian/CNN, Jul 16, 2026)",
@@ -44,9 +47,6 @@
     "MARITIME/STRAIT: CENTCOM says Strait of Hormuz remains open to lawful transit despite IRGC closure (CENTCOM, Jul 12, 2026)",
     "ECONOMY/OIL: Brent crude jumps ~4% as U.S.-Iran exchanges threaten Hormuz shipping (Al Jazeera/NYTimes, Jul 13, 2026)",
     "MILITARY/US STRIKES: U.S. forces finish latest round of strikes against Iran, CENTCOM says (CENTCOM, Jul 11, 2026)",
-    "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Qatar, UAE and Kuwait; Gulf defenses report multiple intercepts (CNN/The National, Jul 11-12, 2026)",
-    "MARITIME/HORMUZ: Iran again declares Strait of Hormuz closed; tanker traffic halted and war-risk insurance rates spike (CNN/Xinhua, Jul 11, 2026)",
-    "UN/SECURITY COUNCIL: UN Security Council holds emergency meeting as China and Russia criticize U.S. and UK over Iran conflict (Economic Times, Jul 11, 2026)",
-    "MILITARY/US STRIKES: U.S. forces hit more than 170 Iranian targets, including air defenses, drone/missile storage and speedboats (The New York Times, Jul 10, 2026)"
+    "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Qatar, UAE and Kuwait; Gulf defenses report multiple intercepts (CNN/The National, Jul 11-12, 2026)"
   ]
 }
