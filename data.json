@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 18, 2026",
-  "lastUpdated": "11:27 UTC",
+  "date": "July 19, 2026",
+  "lastUpdated": "11:32 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 30,
-  "scenarioNegotiatedDealPct": 6,
+  "scenarioDeclaredVictoryPct": 32,
+  "scenarioNegotiatedDealPct": 4,
   "scenarioDemocraticRevolutionPct": 4,
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 50,
   "ticker": [
+    "MILITARY/US TROOPS KILLED: Two U.S. service members killed, one missing after Iranian attack in Jordan (CENTCOM/CNN, Jul 18, 2026)",
+    "MILITARY/US STRIKES: U.S. launches fresh strikes on Iran after deaths of U.S. troops; CENTCOM says strikes targeted infrastructure (NYTimes/Bloomberg, Jul 18, 2026)",
+    "CASUALTIES/US TOTAL: U.S. military reports 16 service members killed and 430+ wounded since conflict began (PBS, Jul 18, 2026)",
+    "POLICY/IRAN WARNING: Iran's Supreme Leader warns of 'unforgettable lessons' if U.S. continues attacks (Al-Monitor/BBC, Jul 18, 2026)",
     "MILITARY/SEVENTH NIGHT: U.S. completes seventh straight night of strikes on Iran, CENTCOM says; strikes hit bridges and port facilities (CNN/Al Jazeera, Jul 17, 2026)",
     "MARITIME/ATTACK: One seafarer killed and three injured in attack on tanker Al Bahyah off Oman coast (CNBC, Jul 17, 2026)",
     "DIPLOMACY/UN CALL: UN Secretary-General calls for a new diplomatic push after attacks on civilian areas (UN News, Jul 17, 2026)",
@@ -39,14 +43,6 @@
     "REGIONAL/HOUTHI STRIKE: Iran-backed Houthis strike Saudi Arabia with ballistic missiles/drones in major escalation (Bloomberg, Jul 14, 2026)",
     "POLICY/TOLL BACKTRACK: Trump backtracks on 20% Hormuz cargo fee; says revenue to be replaced by Gulf investments (Times of Israel/Hindustan Times, Jul 14, 2026)",
     "MILITARY/SEABORNE DRONES: U.S. uses Corsair unmanned surface attack drones to strike Bandar Abbas submarine/port facility (USNI/The Hill, Jul 13, 2026)",
-    "DIPLOMACY/HORMUZ TOLL: Trump proposes 20% fee on cargo through Strait of Hormuz and says U.S. reinstates blockade (CNBC/The Guardian, Jul 13, 2026)",
-    "DIPLOMACY/UK: U.K. moves to list Iran's IRGC as a 'terror' / national security threat (The Guardian/NBC, Jul 13, 2026)",
-    "ECONOMY/OIL: Oil surges more than 9% after Trump reimposes Iran blockade and U.S.-Iran strikes escalate (NBC/Bloomberg, Jul 13, 2026)",
-    "MILITARY/US STRIKES: U.S. launches new wave of strikes on Iran, CENTCOM says (The Guardian, Jul 13, 2026)",
-    "MILITARY/CENTCOM: U.S. says it hit about 140 Iranian military targets in latest strikes (CENTCOM/NPR, Jul 12, 2026)",
-    "MARITIME/STRAIT: CENTCOM says Strait of Hormuz remains open to lawful transit despite IRGC closure (CENTCOM, Jul 12, 2026)",
-    "ECONOMY/OIL: Brent crude jumps ~4% as U.S.-Iran exchanges threaten Hormuz shipping (Al Jazeera/NYTimes, Jul 13, 2026)",
-    "MILITARY/US STRIKES: U.S. forces finish latest round of strikes against Iran, CENTCOM says (CENTCOM, Jul 11, 2026)",
-    "MILITARY/IRAN RETALIATION: Iran fires missiles/drones at Bahrain, Qatar, UAE and Kuwait; Gulf defenses report multiple intercepts (CNN/The National, Jul 11-12, 2026)"
+    "DIPLOMACY/HORMUZ TOLL: Trump proposes 20% fee on cargo through Strait of Hormuz and says U.S. reinstates blockade (CNBC/The Guardian, Jul 13, 2026)"
   ]
 }

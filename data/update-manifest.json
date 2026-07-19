@@ -1,60 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-05-30T11:39:12.533Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 61,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 47
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-consensus",
-            "bg-us-iran-timeline",
-            "carrier-lincoln-position"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "background.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 23
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5672
-        }
-      ]
-    },
-    {
       "timestamp": "2026-05-31T11:41:28.478Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2700,6 +2646,61 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 4964
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-19T11:32:15.056Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 55,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 42
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "losses-us-personnel",
+            "reactions-global-energy",
+            "reactions-gulf-callouts",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "materiel-losses.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 4,
+          "sizeChange": -469
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5774
         }
       ]
     }
