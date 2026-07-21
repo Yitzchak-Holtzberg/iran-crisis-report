@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 20, 2026",
-  "lastUpdated": "11:59 UTC",
+  "date": "July 21, 2026",
+  "lastUpdated": "11:42 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -19,11 +19,15 @@
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
   "scenarioDeclaredVictoryPct": 32,
-  "scenarioNegotiatedDealPct": 4,
+  "scenarioNegotiatedDealPct": 10,
   "scenarioDemocraticRevolutionPct": 4,
   "scenarioManagedTransitionPct": 10,
-  "scenarioRegimeCollapsePct": 50,
+  "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "MILITARY/TENTH NIGHT: U.S. launches 10th consecutive night of strikes on Iran, CENTCOM says (The Guardian/CNN, Jul 20, 2026)",
+    "MARITIME/BAB AL-MANDEB BLOCKADE: Houthi rebels declare naval blockade of Saudi Arabia at Bab al-Mandeb, threaten Red Sea shipping (AP/NPR, Jul 20, 2026)",
+    "DIPLOMACY/10-DAY CEASEFIRE PROPOSAL: Mediators present 10-day ceasefire plan to the U.S. and Iran as talks continue (Axios, Jul 21, 2026)",
+    "MARITIME/TANKER ATTACK: Another tanker hit in Strait of Hormuz amid renewed strikes; crew abandoned, reports say (AP/The Guardian, Jul 20, 2026)",
     "MILITARY/US CASUALTIES RISE: CENTCOM confirms three U.S. service members killed after Iranian attacks in Jordan and Iraq (AP/CNBC, Jul 19, 2026)",
     "MILITARY/NINTH NIGHT: U.S. launches ninth consecutive night of strikes on Iran, CENTCOM says (Times of Israel/Al Jazeera, Jul 19, 2026)",
     "NUCLEAR/IAEA INVESTIGATION: IAEA probing reported attack on Iran's Darkhovin nuclear construction site; agency says no nuclear material present (Outlook India/IAEA, Jul 19, 2026)",
@@ -44,9 +48,6 @@
     "ECONOMY/EVASION: Iran's 'dark fleet' maneuvers to evade U.S. naval blockade; tankers head to Pakistan for safe harbour (SCMP/Gulf News, Jul 15, 2026)",
     "ECONOMY/IMF: IMF warns global oil reserves 'spent', raising risk of sharp price shocks amid renewed U.S.-Iran clashes (ABC/IMF, Jul 15, 2026)",
     "MILITARY/BLOCKADE REIMPOSED: U.S. naval blockade of Iranian ports goes into effect (CNN/AP, Jul 14, 2026)",
-    "MILITARY/STRIKES: U.S. launches fresh strikes on Iran as CENTCOM resumes naval blockade (Fox News/The Guardian, Jul 14, 2026)",
-    "REGIONAL/HOUTHI STRIKE: Iran-backed Houthis strike Saudi Arabia with ballistic missiles/drones in major escalation (Bloomberg, Jul 14, 2026)",
-    "POLICY/TOLL BACKTRACK: Trump backtracks on 20% Hormuz cargo fee; says revenue to be replaced by Gulf investments (Times of Israel/Hindustan Times, Jul 14, 2026)",
-    "MILITARY/SEABORNE DRONES: U.S. uses Corsair unmanned surface attack drones to strike Bandar Abbas submarine/port facility (USNI/The Hill, Jul 13, 2026)"
+    "MILITARY/STRIKES: U.S. launches fresh strikes on Iran as CENTCOM resumes naval blockade (Fox News/The Guardian, Jul 14, 2026)"
   ]
 }
