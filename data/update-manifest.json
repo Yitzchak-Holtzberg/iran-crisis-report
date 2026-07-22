@@ -1,64 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-02T12:26:07.836Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 65,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 50
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-consensus",
-            "bg-us-iran-timeline",
-            "hormuz-wti-price",
-            "reactions-global-mediation",
-            "reactions-iran-callouts"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "background.html",
-            "hormuz.html",
-            "reactions-global.html",
-            "reactions-iran.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 1,
-          "sizeChange": -127
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 6080
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-03T12:41:59.131Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2694,6 +2636,51 @@
           "linesAdded": 31,
           "linesRemoved": 0,
           "sizeChange": 4654
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-22T11:42:42.703Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 64,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 41
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "error",
+          "error": "Unexpected end of JSON input"
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 4,
+          "sizeChange": -548
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5045
         }
       ]
     }
