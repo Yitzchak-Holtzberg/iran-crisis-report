@@ -24,7 +24,11 @@
     if (!menuButton || !globalNav) return;
     body.classList.toggle('atlas-menu-open', open);
     menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.textContent = open ? 'Close' : 'Menu';
+    menuButton.setAttribute('aria-label', open ? 'Close report menu' : 'Open report menu');
+    const label = menuButton.querySelector('span');
+    const icon = menuButton.querySelector('i');
+    if (label) label.textContent = open ? 'Close' : 'Menu';
+    if (icon) icon.className = open ? 'ph ph-x' : 'ph ph-list';
   }
 
   function enhanceLatestTimeline() {
@@ -280,7 +284,7 @@
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 900) setMenu(false);
+    if (window.innerWidth > 1040) setMenu(false);
   });
 
   window.addEventListener('scroll', () => {
@@ -291,6 +295,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  setMenu(false);
   mountOverviewMap();
   updateThemeLabel();
   enhanceLatestTimeline();

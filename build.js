@@ -469,6 +469,7 @@ for (const build of BUILDS) {
   // Inject per-page meta into a copy of DATA, pre-resolving {{key}} references.
   const ctx = Object.assign({}, DATA);
   ctx.sidebarNav = build.sidebarNav || [];
+  ctx.legacyHomeHref = 'classic.html';
   for (const [k, v] of Object.entries(build.meta || {})) {
     ctx[k] = v.replace(/\{\{([^}]+)\}\}/g, (_m, key) => (DATA[key] !== undefined ? DATA[key] : _m));
   }
@@ -501,15 +502,16 @@ for (const build of BUILDS) {
   allWarnings.push(...buildWarnings);
 
   // Incremental: skip write if output hash matches previous build.
+  const legacyOutput = build.output === 'index.html' ? 'classic.html' : build.output;
   const outputHash = computeHash(output);
-  newHashes[build.output] = outputHash;
-  if (INCREMENTAL && prevHashes[build.output] === outputHash) {
-    console.log(`Skipped ${build.output} (unchanged).`);
+  newHashes[legacyOutput] = outputHash;
+  if (INCREMENTAL && prevHashes[legacyOutput] === outputHash) {
+    console.log(`Skipped ${legacyOutput} (unchanged).`);
     continue;
   }
 
-  fs.writeFileSync(path.join(BASE_DIR, build.output), output);
-  console.log(`Built ${build.output} from ${build.sections.length} sections.`);
+  fs.writeFileSync(path.join(BASE_DIR, legacyOutput), output);
+  console.log(`Built ${legacyOutput} from ${build.sections.length} sections.`);
 }
 
 const atlasDir = path.join(BASE_DIR, 'atlas');
@@ -532,7 +534,7 @@ for (const build of BUILDS) {
     atlasNext: navIndex >= 0 && navIndex < ATLAS_GLOBAL_NAV.length - 1
       ? ATLAS_GLOBAL_NAV[navIndex + 1]
       : null,
-    originalHref: `../${build.output}`,
+    originalHref: build.output === 'index.html' ? '../classic.html' : `../${build.output}`,
     sidebarNav: build.sidebarNav || [],
   });
 
@@ -558,6 +560,42 @@ for (const build of BUILDS) {
 
   fs.writeFileSync(path.join(BASE_DIR, atlasOutput), output);
   console.log(`Built ${atlasOutput} from ${atlasSections.length} sections.`);
+}
+
+const mainEntry = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="0; url=atlas/index.html">
+<link rel="canonical" href="atlas/index.html">
+<title>Iran Crisis Report</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #071a22; color: #f1eee4; font: 16px/1.5 system-ui, sans-serif; }
+  main { max-width: 36rem; padding: 2rem; }
+  a { color: #72bed7; }
+</style>
+<script>
+  const target = 'atlas/index.html' + window.location.search + window.location.hash;
+  window.location.replace(target);
+</script>
+</head>
+<body>
+  <main>
+    <h1>Iran Crisis Report</h1>
+    <p>Opening the whole-situation briefing. <a href="atlas/index.html">Continue to the report</a>.</p>
+    <p>The previous interface remains available at <a href="classic.html">classic.html</a>.</p>
+  </main>
+</body>
+</html>
+`;
+const mainEntryHash = computeHash(mainEntry);
+newHashes['index.html'] = mainEntryHash;
+if (!INCREMENTAL || prevHashes['index.html'] !== mainEntryHash) {
+  fs.writeFileSync(path.join(BASE_DIR, 'index.html'), mainEntry);
+  console.log('Built index.html as the Atlas entry point.');
+} else {
+  console.log('Skipped index.html (unchanged).');
 }
 
 if (INCREMENTAL) {

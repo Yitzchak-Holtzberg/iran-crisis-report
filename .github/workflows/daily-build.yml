@@ -97,7 +97,7 @@ jobs:
           # updater cannot stage or mutate CSS, JavaScript, build composition,
           # the Atlas shell, map presentation, or standing synthesis.
           git add data.json data/update-manifest.json \
-                 index.html diplomatic.html scenarios.html forces.html \
+                 index.html classic.html diplomatic.html scenarios.html forces.html \
                  iran-military.html inside-iran.html reactions.html sources.html \
                  analysis.html opposition.html background.html \
                  atlas/index.html atlas/diplomatic.html atlas/scenarios.html \

@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/components.css">
 <link rel="stylesheet" href="../css/responsive.css">
-<link rel="stylesheet" href="../css/atlas.css?v=area-map-2">
+<link rel="stylesheet" href="../css/atlas.css?v=atlas-primary-1">
 <script>
   document.documentElement.dataset.atlasRuntimeErrors = '[]';
   function recordAtlasRuntimeError(message) {
@@ -54,29 +54,80 @@
     </a>
 
     <nav class="atlas-global-nav" id="atlasGlobalNav" aria-label="Situation areas">
-      
-      <a href="index.html">Overview</a>
-      
-      <a href="iran-military.html" class="is-current" aria-current="page">Iran Military</a>
-      
-      <a href="forces.html">Regional Forces</a>
-      
-      <a href="diplomatic.html">Diplomacy</a>
-      
-      <a href="inside-iran.html">Inside Iran</a>
-      
-      <a href="reactions.html">Reactions</a>
-      
-      <a href="analysis.html">Analysis</a>
-      
-      <a href="scenarios.html">Scenarios</a>
-      
-      <a href="opposition.html">Opposition</a>
-      
-      <a href="background.html">Background</a>
-      
-      <a href="sources.html">Sources</a>
-      
+      <div class="atlas-global-nav-intro">
+        <span>Explore the report</span>
+        <small>One crisis, eleven connected views</small>
+      </div>
+      <div class="atlas-global-nav-list">
+
+        <a href="index.html">
+          <span class="atlas-global-nav-index">01</span>
+          <span class="atlas-global-nav-label">Overview</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="iran-military.html" class="is-current" aria-current="page">
+          <span class="atlas-global-nav-index">02</span>
+          <span class="atlas-global-nav-label">Iran Military</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="forces.html">
+          <span class="atlas-global-nav-index">03</span>
+          <span class="atlas-global-nav-label">Regional Forces</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="diplomatic.html">
+          <span class="atlas-global-nav-index">04</span>
+          <span class="atlas-global-nav-label">Diplomacy</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="inside-iran.html">
+          <span class="atlas-global-nav-index">05</span>
+          <span class="atlas-global-nav-label">Inside Iran</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="reactions.html">
+          <span class="atlas-global-nav-index">06</span>
+          <span class="atlas-global-nav-label">Reactions</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="analysis.html">
+          <span class="atlas-global-nav-index">07</span>
+          <span class="atlas-global-nav-label">Analysis</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="scenarios.html">
+          <span class="atlas-global-nav-index">08</span>
+          <span class="atlas-global-nav-label">Scenarios</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="opposition.html">
+          <span class="atlas-global-nav-index">09</span>
+          <span class="atlas-global-nav-label">Opposition</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="background.html">
+          <span class="atlas-global-nav-index">10</span>
+          <span class="atlas-global-nav-label">Background</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <a href="sources.html">
+          <span class="atlas-global-nav-index">11</span>
+          <span class="atlas-global-nav-label">Sources</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+      </div>
+      <p class="atlas-global-nav-note">Move between the military, political, regional, and human dimensions without losing the whole picture.</p>
     </nav>
 
     <div class="atlas-header-actions">
@@ -85,7 +136,10 @@
         <i class="ph ph-sun" aria-hidden="true"></i>
         <span class="atlas-visually-hidden">Light theme</span>
       </button>
-      <button class="atlas-menu-toggle" id="atlasMenuToggle" type="button" aria-expanded="false" aria-controls="atlasGlobalNav">Menu</button>
+      <button class="atlas-menu-toggle" id="atlasMenuToggle" type="button" aria-expanded="false" aria-controls="atlasGlobalNav">
+        <span>Menu</span>
+        <i class="ph ph-list" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 </header>
@@ -573,6 +627,6 @@
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>
 <script src="../js/atlas-areas.js?v=area-map-5"></script>
 <script src="../js/map.js?v=area-map-5"></script>
-<script src="../js/atlas.js?v=area-map-5"></script>
+<script src="../js/atlas.js?v=atlas-primary-1"></script>
 </body>
 </html>

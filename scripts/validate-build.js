@@ -12,8 +12,10 @@ const PAGE_NAMES = [
   'iran-military.html', 'inside-iran.html', 'reactions.html', 'analysis.html',
   'opposition.html', 'background.html', 'sources.html',
 ];
+const LEGACY_PAGE_NAMES = ['classic.html', ...PAGE_NAMES.slice(1)];
 const EXPECTED_OUTPUTS = [
-  ...PAGE_NAMES,
+  'index.html',
+  ...LEGACY_PAGE_NAMES,
   ...PAGE_NAMES.map((name) => path.join('atlas', name)),
 ];
 
@@ -45,9 +47,20 @@ for (const output of EXPECTED_OUTPUTS) {
     continue;
   }
   const stat = fs.statSync(fullPath);
-  if (stat.size < 1500) fail(`${output} is unexpectedly small (${stat.size} bytes)`);
+  const minimumSize = output === 'index.html' ? 500 : 1500;
+  if (stat.size < minimumSize) fail(`${output} is unexpectedly small (${stat.size} bytes)`);
   const html = fs.readFileSync(fullPath, 'utf8');
   if (/\{\{\s*\w+|\{%\s*/.test(html)) fail(`${output} contains an unresolved template directive`);
+}
+
+const mainEntry = read('index.html');
+if (!mainEntry.includes('url=atlas/index.html') || !mainEntry.includes('classic.html')) {
+  fail('index.html does not promote Atlas while preserving the classic interface');
+}
+
+const classicHome = read('classic.html');
+if (!classicHome.includes('class="masthead"') || !classicHome.includes('href="classic.html"')) {
+  fail('classic.html does not preserve the previous interface and its home navigation');
 }
 
 for (const page of PAGE_NAMES) {
@@ -103,4 +116,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`\n✓ Validated ${EXPECTED_OUTPUTS.length} generated pages, compact latest feed, Atlas menus, and editorial update safeguards`);
+console.log(`\n✓ Validated ${EXPECTED_OUTPUTS.length} generated pages, Atlas entry routing, compact latest feed, menus, and editorial update safeguards`);

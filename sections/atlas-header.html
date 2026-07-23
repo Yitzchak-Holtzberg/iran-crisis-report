@@ -9,9 +9,20 @@
     </a>
 
     <nav class="atlas-global-nav" id="atlasGlobalNav" aria-label="Situation areas">
-      {% for item in atlasGlobalNav %}
-      <a href="{{item.href}}"{% if item.slug == atlasSlug %} class="is-current" aria-current="page"{% endif %}>{{item.label}}</a>
-      {% endfor %}
+      <div class="atlas-global-nav-intro">
+        <span>Explore the report</span>
+        <small>One crisis, eleven connected views</small>
+      </div>
+      <div class="atlas-global-nav-list">
+{% for item in atlasGlobalNav %}
+        <a href="{{item.href}}"{% if item.slug == atlasSlug %} class="is-current" aria-current="page"{% endif %}>
+          <span class="atlas-global-nav-index">{% if loop.index < 10 %}0{% endif %}{{loop.index}}</span>
+          <span class="atlas-global-nav-label">{{item.label}}</span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+{% endfor %}
+      </div>
+      <p class="atlas-global-nav-note">Move between the military, political, regional, and human dimensions without losing the whole picture.</p>
     </nav>
 
     <div class="atlas-header-actions">
@@ -20,7 +31,10 @@
         <i class="ph ph-sun" aria-hidden="true"></i>
         <span class="atlas-visually-hidden">Light theme</span>
       </button>
-      <button class="atlas-menu-toggle" id="atlasMenuToggle" type="button" aria-expanded="false" aria-controls="atlasGlobalNav">Menu</button>
+      <button class="atlas-menu-toggle" id="atlasMenuToggle" type="button" aria-expanded="false" aria-controls="atlasGlobalNav">
+        <span>Menu</span>
+        <i class="ph ph-list" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 </header>

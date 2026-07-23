@@ -3,8 +3,10 @@
 A whole-situation briefing on the 2026 Iran crisis. The site has two generated
 front ends:
 
-- the original interface at the repository root;
-- the Atlas interface under `atlas/`.
+- the primary Atlas interface, opened from the repository root and generated
+  under `atlas/`;
+- the previous interface at `classic.html`, with its deep-dive pages preserved
+  at their existing root paths.
 
 Both are generated from shared source sections. Do not edit generated page HTML
 directly.
@@ -37,10 +39,11 @@ npm run build
 npm run validate
 ```
 
-`npm run build` generates 22 pages:
+`npm run build` generates 23 pages:
 
-- 11 root pages;
-- the same 11 pages in `atlas/`.
+- the root Atlas entry page;
+- 11 previous-interface pages;
+- 11 Atlas pages.
 
 `npm run validate` is cross-platform and checks:
 
@@ -62,14 +65,15 @@ sections/                   human-owned source sections
 sections/last-24h.html      compact automated Latest Developments table
 css/                        original and Atlas styling
 js/                         map and interface behavior
-atlas/                      generated Atlas pages
+atlas/                      generated primary Atlas pages
 research/                   research corpus, fact registers, and review proposals
 scripts/ai-update.js        evidence-gated editorial update pipeline
 scripts/validate-build.js   cross-platform build and architecture validator
 ```
 
-Root and Atlas pages share the same source content. Atlas-specific shell,
-navigation, and page metadata are assembled by `build.js`.
+The previous and Atlas pages share the same source content. Atlas-specific
+shell, navigation, and page metadata are assembled by `build.js`; `index.html`
+opens Atlas and `classic.html` preserves the previous home page.
 
 ## Automated update
 
@@ -84,7 +88,7 @@ The routine pipeline:
 4. rejects homepage URLs, unsupported confidence, low-tier anchors, duplicates,
    missing dates, and oversized copy;
 5. updates only `data.json:ticker` and `sections/last-24h.html`;
-6. builds and validates all 22 pages;
+6. builds and validates all 23 pages;
 7. commits expected data and generated outputs;
 8. deploys to GitHub Pages.
 
