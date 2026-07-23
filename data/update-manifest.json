@@ -1,65 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-03T12:41:59.131Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 62,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 43
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-consensus",
-            "iran-crisis6-regional",
-            "reactions-global-callouts",
-            "reactions-global-mediation",
-            "reactions-gulf-callouts",
-            "reactions-iran-callouts"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "inside-iran.html",
-            "reactions-global.html",
-            "reactions-gulf.html",
-            "reactions-iran.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 10
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 4055
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-04T12:09:40.931Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2681,6 +2622,67 @@
           "linesAdded": 36,
           "linesRemoved": 0,
           "sizeChange": 5045
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-23T11:43:40.789Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 64,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 42
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 8,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "hormuz-wti-price",
+            "iran-crisis1-epicfury",
+            "losses-us-cost",
+            "carrier-lincoln-position",
+            "reactions-global-energy",
+            "reactions-gulf-callouts",
+            "reactions-gulf-shipping"
+          ],
+          "filesUpdated": [
+            "hormuz.html",
+            "inside-iran.html",
+            "materiel-losses.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 3,
+          "linesRemoved": 0,
+          "sizeChange": 456
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 41,
+          "linesRemoved": 0,
+          "sizeChange": 5807
         }
       ]
     }

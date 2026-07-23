@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 22, 2026",
-  "lastUpdated": "11:42 UTC",
+  "date": "July 23, 2026",
+  "lastUpdated": "11:43 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,6 +24,9 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "MILITARY/TWELFTH NIGHT: U.S. launches 12th consecutive night of strikes on Iran, CENTCOM says (AP, Jul 22, 2026)",
+    "MARITIME/HOUTHIS: Yemen's Houthi rebels claim strikes on two Saudi oil tankers in the Red Sea, escalation risks Bab al-Mandeb closure (Al Jazeera, Jul 22, 2026)",
+    "POLICY/INFRASTRUCTURE THREATS: President Trump warns U.S. will strike Iranian bridges, power plants for any Strait of Hormuz attack (PBS/Politico, Jul 22, 2026)",
     "MILITARY/ELEVENTH NIGHT: U.S. launches 11th consecutive night of strikes on Iran, CENTCOM says (The Guardian/NYTimes, Jul 22, 2026)",
     "MARITIME/STRAIT TRAFFIC COLLAPSE: Ship traffic through Strait of Hormuz down ~90% as attacks continue, ship trackers show (National Security Journal/NYTimes, Jul 21, 2026)",
     "POLICY/PICKAXE MOUNTAIN THREAT: President Trump warns U.S. will strike Pickaxe Mountain nuclear site 'probably pretty soon' (Fox News/The Guardian, Jul 21, 2026)",
