@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       update_type:
-        description: 'Update type: "auto" (alias for routine), "routine" (data/zones only), or "structural" (force section-level changes)'
+        description: 'Update type: routine refresh, or structural research proposal (never direct page rewrites)'
         required: false
         default: 'auto'
         type: choice
@@ -49,16 +49,15 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Update data.json → date and lastUpdated to today's UTC date/time.
       - name: Update date in data.json
         run: node scripts/update-date.js
 
-      # Pull the latest news with Brave Search and update data.json + last-24h.html
-      # via GPT-5-mini.  Uses continue-on-error so a quota or network issue
-      # never blocks the date-refresh and rebuild from completing.
-      - name: AI content update (Brave Search + GPT-5-mini)
+      # Refresh only the five-item material-change feed. Standing synthesis,
+      # page architecture, Atlas design, and map presentation are protected.
+      - name: Editorial latest-feed update
         id: ai_update
         continue-on-error: true
         env:
@@ -71,23 +70,11 @@ jobs:
       - name: Build index.html
         run: npm run build
 
-      # Fix #7: Validate build output before deployment.
+      # Cross-platform validation covers all 11 original and 11 Atlas outputs,
+      # the compact latest feed, navigation, unresolved templates, and the
+      # editorial automation locks.
       - name: Validate build output
-        run: |
-          node build.js 2>&1 | tee /tmp/build-output.txt
-          # Fail on critical issues: unresolved placeholders, unbalanced zones, or unbalanced HTML tags.
-          if grep -qE 'unresolved placeholders|Unbalanced AI zone|Unbalanced HTML tags' /tmp/build-output.txt; then
-            echo "::error::Build validation failed — blocking deployment"
-            exit 1
-          fi
-          # Verify all 11 output files exist and are non-empty.
-          for f in index.html diplomatic.html scenarios.html forces.html iran-military.html inside-iran.html reactions.html analysis.html opposition.html background.html sources.html; do
-            if [ ! -s "$f" ]; then
-              echo "::error::$f is missing or empty"
-              exit 1
-            fi
-          done
-          echo "✓ Build validation passed"
+        run: npm run validate
 
       # Fix #10: Tag the pre-update state for easy rollback.
       - name: Tag pre-update state for rollback
@@ -106,18 +93,21 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Ensure we are up to date before generating new commits.
-          # --autostash temporarily shelves any local changes so the rebase
-          # succeeds even when prior steps (date update, AI update, build)
-          # have left modified files in the working tree.
-          git pull --rebase --autostash
-
-          # Stage only known build outputs and data files
+          # Stage only expected editorial data and generated outputs. The
+          # updater cannot stage or mutate CSS, JavaScript, build composition,
+          # the Atlas shell, map presentation, or standing synthesis.
           git add data.json data/update-manifest.json \
                  index.html diplomatic.html scenarios.html forces.html \
                  iran-military.html inside-iran.html reactions.html sources.html \
                  analysis.html opposition.html background.html \
-                 sections/ logs/ 2>/dev/null || true
+                 atlas/index.html atlas/diplomatic.html atlas/scenarios.html \
+                 atlas/forces.html atlas/iran-military.html atlas/inside-iran.html \
+                 atlas/reactions.html atlas/sources.html atlas/analysis.html \
+                 atlas/opposition.html atlas/background.html \
+                 sections/last-24h.html
+          if [ -d research/proposals ]; then
+            git add research/proposals/
+          fi
 
           # Commit only if there are changes
           git diff --staged --quiet || git commit -m "chore: daily rebuild $(date -u +'%Y-%m-%d')"
@@ -163,7 +153,7 @@ jobs:
               failures.push('The **build-and-deploy** job failed (a required step exited with an error).');
             }
             if (aiUpdateFailed) {
-              failures.push('The **AI content update** step failed (Brave Search/OpenAI quota or network issue).');
+              failures.push('The **editorial latest-feed update** failed (Brave Search/OpenAI quota, network, or evidence-gate issue).');
             }
 
             const body = [

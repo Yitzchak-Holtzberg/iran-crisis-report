@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{atlasTitle}} — Iran Crisis Report</title>
+<meta name="description" content="{{atlasSummary}}">
+<meta property="og:title" content="{{atlasTitle}} — Iran Crisis Report">
+<meta property="og:description" content="{{atlasSummary}}">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/atlas.css?v=area-map-2">
+<script>
+  document.documentElement.dataset.atlasRuntimeErrors = '[]';
+  function recordAtlasRuntimeError(message) {
+    var errors = JSON.parse(document.documentElement.dataset.atlasRuntimeErrors || '[]');
+    errors.push(message);
+    document.documentElement.dataset.atlasRuntimeErrors = JSON.stringify(errors);
+  }
+  window.addEventListener('error', function (event) {
+    recordAtlasRuntimeError(event.message || 'Unknown page error');
+  });
+  window.addEventListener('unhandledrejection', function (event) {
+    recordAtlasRuntimeError(String(event.reason || 'Unhandled promise rejection'));
+  });
+  try {
+    if (localStorage.getItem('atlas-theme') === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  } catch (_) {}
+  window.IRAN_REPORT_ASSET_PREFIX = '../';
+  window.IRAN_REPORT_MAP_MODE = 'atlas-hero';
+</script>
+</head>
+<body class="atlas-page atlas-page-{{atlasSlug}}" data-page="{{atlasSlug}}">
+<a class="atlas-skip-link" href="#main-content">Skip to the report</a>

@@ -1,10 +1,11 @@
 {
   "name": "iran-crisis-report",
   "version": "1.0.0",
-  "description": "Iran Crisis Report — interactive news dashboard",
+  "description": "Iran Crisis Report — whole-situation briefing",
   "scripts": {
     "build": "node build.js",
-    "validate": "node build.js 2>&1 | grep -E '⚠|Warning|error' || echo '✓ No issues found'"
+    "validate": "node scripts/validate-build.js",
+    "validate:update": "node scripts/ai-update.js --validate-config"
   },
   "private": true,
   "dependencies": {

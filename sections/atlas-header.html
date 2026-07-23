@@ -1,0 +1,95 @@
+<header class="atlas-site-header">
+  <div class="atlas-header-bar">
+    <a class="atlas-brand" href="index.html" aria-label="Iran Crisis Report overview">
+      <span class="atlas-brand-mark" aria-hidden="true">IR</span>
+      <span class="atlas-brand-copy">
+        <strong>Iran Crisis Report</strong>
+        <small>Whole-situation briefing</small>
+      </span>
+    </a>
+
+    <nav class="atlas-global-nav" id="atlasGlobalNav" aria-label="Situation areas">
+      {% for item in atlasGlobalNav %}
+      <a href="{{item.href}}"{% if item.slug == atlasSlug %} class="is-current" aria-current="page"{% endif %}>{{item.label}}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="atlas-header-actions">
+      <a class="atlas-original-link" href="{{originalHref}}">Original</a>
+      <button class="atlas-theme-toggle" id="atlasThemeToggle" type="button">
+        <i class="ph ph-sun" aria-hidden="true"></i>
+        <span class="atlas-visually-hidden">Light theme</span>
+      </button>
+      <button class="atlas-menu-toggle" id="atlasMenuToggle" type="button" aria-expanded="false" aria-controls="atlasGlobalNav">Menu</button>
+    </div>
+  </div>
+</header>
+
+<div class="atlas-page-frame">
+  <aside class="atlas-local-nav" aria-label="On this page">
+    <div class="atlas-local-nav-inner">
+      <p>On this page</p>
+      <nav>
+        {% for item in sidebarNav %}{% if item.group %}
+        <span class="atlas-local-group">{{item.group}}</span>
+        {% else %}
+        <a class="atlas-local-link" href="#{{item.id}}" data-section="{{item.id}}">
+          <span>{{item.num}}</span>{{item.label}}
+        </a>
+        {% endif %}{% endfor %}
+      </nav>
+    </div>
+  </aside>
+
+  <main class="atlas-main" id="main-content">
+    {% if atlasSlug == "index" %}
+    <section class="atlas-overview-stage" aria-labelledby="atlas-page-title">
+      <div class="atlas-briefing-rail">
+        <p class="atlas-eyebrow">{{atlasKicker}}</p>
+        <h1 id="atlas-page-title">
+          <span>The whole</span>
+          <strong>Situation</strong>
+        </h1>
+        <hr>
+        <p class="atlas-summary">{{atlasSummary}}</p>
+
+        <p class="atlas-lens-label">Situation lenses</p>
+        <nav class="atlas-domain-briefings" aria-label="Situation lenses">
+          {% for item in atlasBriefingItems %}
+          <a class="atlas-domain-briefing atlas-domain-briefing-{{item.tone}}" href="{{item.href}}">
+            <span class="atlas-domain-index">0{{loop.index}}</span>
+            <i class="ph {{item.icon}}" aria-hidden="true"></i>
+            <span class="atlas-domain-copy">
+              <span class="atlas-domain-heading">
+                <strong>{{item.label}}</strong>
+                <small>{{item.status}}</small>
+              </span>
+              <span>{{item.summary}}</span>
+            </span>
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
+
+      <div class="atlas-map-stage">
+        <div class="atlas-map-slot" id="atlasOverviewMapSlot">
+          <p>Loading the theater map…</p>
+        </div>
+      </div>
+    </section>
+    {% else %}
+    <section class="atlas-intro" aria-labelledby="atlas-page-title">
+      <div>
+        <p class="atlas-eyebrow">{{atlasKicker}}</p>
+        <h1 id="atlas-page-title">{{atlasTitle}}</h1>
+      </div>
+      <p class="atlas-summary">{{atlasSummary}}</p>
+    </section>
+    {% endif %}
+
+    <section class="atlas-latest" aria-label="Latest development">
+      <strong>Latest</strong>
+      <p>{{ticker[0]}}</p>
+    </section>
+
+    <div class="container atlas-article">

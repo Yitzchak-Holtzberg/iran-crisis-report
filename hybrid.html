@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iran Crisis Report — Hybrid Briefing</title>
+  <meta name="description" content="An evidence-first hybrid briefing for the Iran Crisis Report.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/hybrid.css">
+  <script defer src="js/hybrid.js"></script>
+</head>
+<body class="hybrid-page">
+  <a class="skip-link" href="#briefing">Skip to briefing</a>
+
+  <header class="hybrid-header">
+    <div class="hybrid-shell hybrid-header-inner">
+      <a class="hybrid-brand" href="hybrid.html" aria-label="Iran Crisis Report hybrid briefing home">
+        <span class="hybrid-brand-mark" aria-hidden="true">IR</span>
+        <span>
+          <strong>Iran Crisis Report</strong>
+          <small>Evidence-first briefing</small>
+        </span>
+      </a>
+
+      <nav class="hybrid-nav" aria-label="Primary navigation">
+        <a class="is-active" href="#briefing">Briefing</a>
+        <a href="#developments">Developments</a>
+        <a href="#outlook">Outlook</a>
+        <a href="#method">Method</a>
+      </nav>
+
+      <div class="hybrid-header-actions">
+        <a class="hybrid-text-link" href="index.html">Original interface</a>
+        <button class="hybrid-theme-button" id="hybridThemeToggle" type="button">Light theme</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hybrid-shell hybrid-hero" id="briefing">
+      <div class="hybrid-hero-copy">
+        <div class="hybrid-kicker">
+          <span class="hybrid-live-dot" aria-hidden="true"></span>
+          <span>Situation briefing</span>
+          <span aria-hidden="true">·</span>
+          <time id="reportDateline">Loading latest update…</time>
+        </div>
+        <h1 id="briefingHeadline">A calmer way to understand a fast-moving crisis.</h1>
+        <p class="hybrid-dek" id="briefingSummary">
+          The latest verified developments, source health, and forward indicators are separated so facts, assessments, and forecasts do not blur together.
+        </p>
+        <div class="hybrid-hero-links">
+          <a class="hybrid-primary-link" href="#developments">Read latest developments</a>
+          <a class="hybrid-secondary-link" href="sources.html">Open full source ledger</a>
+        </div>
+      </div>
+
+      <aside class="hybrid-assessment" aria-labelledby="assessmentTitle">
+        <span class="hybrid-overline">Current assessment</span>
+        <h2 id="assessmentTitle">Escalation risk remains elevated</h2>
+        <p>Confidence reflects the health of the automated research pipeline, not certainty about every reported claim.</p>
+        <div class="hybrid-confidence">
+          <span class="hybrid-confidence-dot" id="confidenceDot" aria-hidden="true"></span>
+          <span id="confidenceLabel">Checking update pipeline…</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="hybrid-shell hybrid-stats" aria-label="Briefing status">
+      <article>
+        <span>Last updated</span>
+        <strong id="statUpdated">—</strong>
+        <small id="statUpdatedContext">From data.json</small>
+      </article>
+      <article>
+        <span>Search results reviewed</span>
+        <strong id="statResults">—</strong>
+        <small>Latest automated pass</small>
+      </article>
+      <article>
+        <span>Evidence domains</span>
+        <strong id="statDomains">—</strong>
+        <small>Distinct domains surfaced</small>
+      </article>
+    </section>
+
+    <section class="hybrid-shell hybrid-main-grid" id="developments">
+      <div class="hybrid-feed-panel">
+        <div class="hybrid-section-heading">
+          <div>
+            <span class="hybrid-overline">Live reporting layer</span>
+            <h2>Latest developments</h2>
+          </div>
+          <span id="developmentCount">Loading…</span>
+        </div>
+
+        <div class="hybrid-filters" role="group" aria-label="Filter developments">
+          <button class="is-selected" type="button" data-filter="ALL" aria-pressed="true">All</button>
+          <button type="button" data-filter="MILITARY" aria-pressed="false">Military</button>
+          <button type="button" data-filter="MARITIME" aria-pressed="false">Maritime</button>
+          <button type="button" data-filter="DIPLOMACY" aria-pressed="false">Diplomacy</button>
+          <button type="button" data-filter="OTHER" aria-pressed="false">Other</button>
+        </div>
+
+        <div class="hybrid-feed" id="developmentFeed" aria-live="polite">
+          <div class="hybrid-loading">Loading latest report data…</div>
+        </div>
+      </div>
+
+      <aside class="hybrid-evidence-panel">
+        <div class="hybrid-section-heading">
+          <div>
+            <span class="hybrid-overline">System transparency</span>
+            <h2>Update health</h2>
+          </div>
+        </div>
+        <div class="hybrid-ledger" id="updateLedger">
+          <div class="hybrid-ledger-row"><span>Search</span><strong>Checking</strong></div>
+          <div class="hybrid-ledger-row"><span>Data refresh</span><strong>Checking</strong></div>
+          <div class="hybrid-ledger-row"><span>Timeline</span><strong>Checking</strong></div>
+          <div class="hybrid-ledger-row"><span>Analysis zones</span><strong>Checking</strong></div>
+        </div>
+
+        <div class="hybrid-side-section">
+          <span class="hybrid-overline">What to watch</span>
+          <ul>
+            <li>Verified change in Strait of Hormuz vessel flow</li>
+            <li>A sustained pause or acceleration in strike activity</li>
+            <li>Public terms from active mediation channels</li>
+            <li>Independent imagery confirming damage claims</li>
+          </ul>
+        </div>
+
+        <div class="hybrid-side-section">
+          <span class="hybrid-overline">Source discipline</span>
+          <p>Named sources are displayed with each development. Full claim-level confidence remains a separate editorial review step.</p>
+          <a href="sources.html">Review methodology and sources</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="hybrid-shell hybrid-outlook" id="outlook">
+      <div class="hybrid-section-heading">
+        <div>
+          <span class="hybrid-overline">Forecast layer</span>
+          <h2>Scenario outlook</h2>
+        </div>
+        <span>Probabilities from current data.json</span>
+      </div>
+      <div class="hybrid-scenarios" id="scenarioChart" aria-label="Current scenario probabilities">
+        <div class="hybrid-loading">Loading scenario data…</div>
+      </div>
+      <p class="hybrid-chart-note">These are assessments, not observed facts. They should move only when new evidence changes the underlying case.</p>
+    </section>
+
+    <section class="hybrid-shell hybrid-deep-dives" aria-label="Deep-dive sections">
+      <a href="iran-military.html">
+        <span>Military</span>
+        <h3>Strike cycle and remaining capability</h3>
+        <p>Targets, force posture, verified losses, and unresolved damage claims.</p>
+      </a>
+      <a href="diplomatic.html">
+        <span>Diplomacy</span>
+        <h3>Mediation and negotiation track</h3>
+        <p>Positions, intermediaries, and the terms blocking an agreement.</p>
+      </a>
+      <a href="forces.html">
+        <span>Regional posture</span>
+        <h3>Forces and maritime pressure</h3>
+        <p>Military deployments, shipping exposure, and regional response.</p>
+      </a>
+      <a href="inside-iran.html">
+        <span>Human picture</span>
+        <h3>Inside Iran</h3>
+        <p>Casualties, infrastructure, connectivity, politics, and daily life.</p>
+      </a>
+    </section>
+  </main>
+
+  <footer class="hybrid-footer" id="method">
+    <div class="hybrid-shell">
+      <p>Facts, assessments, and forecasts are labeled as separate layers.</p>
+      <div>
+        <a href="sources.html">Methodology</a>
+        <a href="sources.html#sources">Sources</a>
+        <a href="index.html">Original interface</a>
+      </div>
+    </div>
+  </footer>
+
+  <template id="developmentTemplate">
+    <article class="hybrid-development">
+      <div class="hybrid-development-meta">
+        <span class="hybrid-category"></span>
+        <span class="hybrid-item-date"></span>
+      </div>
+      <h3></h3>
+      <div class="hybrid-development-footer">
+        <span class="hybrid-source"></span>
+        <span class="hybrid-source-state">Named-source report</span>
+      </div>
+    </article>
+  </template>
+</body>
+</html>

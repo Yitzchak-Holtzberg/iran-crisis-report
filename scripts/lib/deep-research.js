@@ -3,6 +3,21 @@
 // ── Per-section deep research sites ──────────────────────────────────────────
 
 const RESEARCH_SITES = {
+  structural: [
+    { domain: 'csis.org',               query: 'Iran war latest analysis reconstitution diplomacy Hormuz' },
+    { domain: 'rand.org',               query: 'Iran war strategy escalation termination latest' },
+    { domain: 'iiss.org',               query: 'Iran war military maritime nuclear latest analysis' },
+    { domain: 'rusi.org',               query: 'Iran war Hormuz military political latest analysis' },
+    { domain: 'carnegieendowment.org',  query: 'Iran war Gulf state society latest analysis' },
+    { domain: 'chathamhouse.org',       query: 'Iran war political settlement nuclear latest' },
+    { domain: 'brookings.edu',          query: 'Iran Hormuz energy diplomacy latest analysis' },
+    { domain: 'cfr.org',                query: 'Iran war deal Hormuz latest analysis' },
+    { domain: 'atlanticcouncil.org',    query: 'Iran war Israel Gulf energy latest analysis' },
+    { domain: 'criticalthreats.org',    query: 'Iran update latest operational assessment' },
+    { domain: 'iaea.org',               query: 'Iran safeguards inspection latest report' },
+    { domain: 'un.org',                 query: 'Iran humanitarian OCHA latest update' },
+    { domain: 'iea.org',                query: 'Iran Hormuz oil market latest report' },
+  ],
   analysis: [
     { domain: 'carnegieendowment.org', query: 'Iran war succession analysis' },
     { domain: 'brookings.edu',         query: 'Iran conflict assessment' },
@@ -10,7 +25,7 @@ const RESEARCH_SITES = {
     { domain: 'cfr.org',               query: 'Iran war what happens next' },
     { domain: 'rand.org',              query: 'Iran leadership succession scenarios' },
     { domain: 'csis.org',              query: 'Iran strikes nuclear cost assessment' },
-    { domain: 'understandingwar.org',  query: 'Iran situation report' },
+    { domain: 'criticalthreats.org',   query: 'Iran situation report' },
   ],
   map: [
     { domain: 'reuters.com',          query: 'Iran strikes military targets locations' },
@@ -38,15 +53,15 @@ const RESEARCH_SITES = {
   ],
   general: [
     { domain: 'reuters.com',          query: 'Iran war latest developments' },
-    { domain: 'ap.com',               query: 'Iran conflict breaking news' },
+    { domain: 'apnews.com',           query: 'Iran conflict breaking news' },
   ],
 };
 
 /**
  * AI triage — ask GPT-5-mini which articles from a search are worth extracting.
  */
-async function triageArticles(urlMeta, sectionLabel, { callGPT, routineModel }) {
-  if (urlMeta.length <= 3) return urlMeta.slice(0, 5);
+async function triageArticles(urlMeta, sectionLabel, { callGPT, routineModel, maxArticles = 5 }) {
+  if (urlMeta.length <= maxArticles) return urlMeta.slice(0, maxArticles);
 
   const listing = urlMeta.map((m, i) =>
     `${i + 1}. [${m.domain}] ${m.title} — ${m.snippet || '(no snippet)'}`
@@ -59,21 +74,21 @@ async function triageArticles(urlMeta, sectionLabel, { callGPT, routineModel }) 
     `- Articles with new facts, data, or analysis (not rehashed summaries)\n` +
     `- Recent articles (this week) over older ones\n` +
     `Return a JSON array of article numbers (1-indexed) to extract. ` +
-    `Extract at most 5 articles. If none are worth extracting, return [].`;
+    `Extract at most ${maxArticles} articles. If none are worth extracting, return [].`;
 
   try {
     const raw = await callGPT(systemPrompt, listing, true, routineModel, 2048, 15000);
     const { safeParseJSON } = require('./openai-api');
     const picks = safeParseJSON(raw);
-    if (!Array.isArray(picks)) return urlMeta.slice(0, 8);
+    if (!Array.isArray(picks)) return urlMeta.slice(0, maxArticles);
     const selected = picks
       .filter(n => typeof n === 'number' && n >= 1 && n <= urlMeta.length)
       .map(n => urlMeta[n - 1]);
     console.log(`  AI triage (${sectionLabel}): ${urlMeta.length} candidates → ${selected.length} selected for extraction.`);
-    return selected.length > 0 ? selected : urlMeta.slice(0, 3);
+    return selected.length > 0 ? selected.slice(0, maxArticles) : urlMeta.slice(0, Math.min(3, maxArticles));
   } catch (err) {
     console.warn(`  AI triage failed (${err.message}) — extracting top 5 by default.`);
-    return urlMeta.slice(0, 5);
+    return urlMeta.slice(0, maxArticles);
   }
 }
 
@@ -84,7 +99,7 @@ async function triageArticles(urlMeta, sectionLabel, { callGPT, routineModel }) 
  * @param {object} deps - { tavilySearch, tavilyExtract, getSourceTier, callGPT, routineModel }
  */
 async function deepResearch(sites, label, deps) {
-  const { tavilySearch, tavilyExtract, getSourceTier, callGPT, routineModel } = deps;
+  const { tavilySearch, tavilyExtract, getSourceTier, callGPT, routineModel, maxArticles = 5 } = deps;
 
   if (!sites || sites.length === 0) {
     return { articleContext: '', articlesExtracted: 0, sitesSearched: 0 };
@@ -130,7 +145,7 @@ async function deepResearch(sites, label, deps) {
     return { articleContext: '', articlesExtracted: 0, sitesSearched: sites.length };
   }
 
-  const toExtract = await triageArticles(urlMeta, label, { callGPT, routineModel });
+  const toExtract = await triageArticles(urlMeta, label, { callGPT, routineModel, maxArticles });
 
   const extractQuery = `Iran crisis ${label} latest developments analysis`;
   let extracted = [];

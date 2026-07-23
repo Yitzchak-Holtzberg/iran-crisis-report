@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How We Got Here — Iran Crisis Report</title>
+<meta name="description" content="How U.S.–Iran hostility, a failed nuclear bargain, regional deterrence, and domestic repression converged into the 2026 war.">
+<meta property="og:title" content="How We Got Here — Iran Crisis Report">
+<meta property="og:description" content="How U.S.–Iran hostility, a failed nuclear bargain, regional deterrence, and domestic repression converged into the 2026 war.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/atlas.css?v=area-map-2">
+<script>
+  document.documentElement.dataset.atlasRuntimeErrors = '[]';
+  function recordAtlasRuntimeError(message) {
+    var errors = JSON.parse(document.documentElement.dataset.atlasRuntimeErrors || '[]');
+    errors.push(message);
+    document.documentElement.dataset.atlasRuntimeErrors = JSON.stringify(errors);
+  }
+  window.addEventListener('error', function (event) {
+    recordAtlasRuntimeError(event.message || 'Unknown page error');
+  });
+  window.addEventListener('unhandledrejection', function (event) {
+    recordAtlasRuntimeError(String(event.reason || 'Unhandled promise rejection'));
+  });
+  try {
+    if (localStorage.getItem('atlas-theme') === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  } catch (_) {}
+  window.IRAN_REPORT_ASSET_PREFIX = '../';
+  window.IRAN_REPORT_MAP_MODE = 'atlas-hero';
+</script>
+</head>
+<body class="atlas-page atlas-page-background" data-page="background">
+<a class="atlas-skip-link" href="#main-content">Skip to the report</a>
+
+<header class="atlas-site-header">
+  <div class="atlas-header-bar">
+    <a class="atlas-brand" href="index.html" aria-label="Iran Crisis Report overview">
+      <span class="atlas-brand-mark" aria-hidden="true">IR</span>
+      <span class="atlas-brand-copy">
+        <strong>Iran Crisis Report</strong>
+        <small>Whole-situation briefing</small>
+      </span>
+    </a>
+
+    <nav class="atlas-global-nav" id="atlasGlobalNav" aria-label="Situation areas">
+      
+      <a href="index.html">Overview</a>
+      
+      <a href="iran-military.html">Iran Military</a>
+      
+      <a href="forces.html">Regional Forces</a>
+      
+      <a href="diplomatic.html">Diplomacy</a>
+      
+      <a href="inside-iran.html">Inside Iran</a>
+      
+      <a href="reactions.html">Reactions</a>
+      
+      <a href="analysis.html">Analysis</a>
+      
+      <a href="scenarios.html">Scenarios</a>
+      
+      <a href="opposition.html">Opposition</a>
+      
+      <a href="background.html" class="is-current" aria-current="page">Background</a>
+      
+      <a href="sources.html">Sources</a>
+      
+    </nav>
+
+    <div class="atlas-header-actions">
+      <a class="atlas-original-link" href="../background.html">Original</a>
+      <button class="atlas-theme-toggle" id="atlasThemeToggle" type="button">
+        <i class="ph ph-sun" aria-hidden="true"></i>
+        <span class="atlas-visually-hidden">Light theme</span>
+      </button>
+      <button class="atlas-menu-toggle" id="atlasMenuToggle" type="button" aria-expanded="false" aria-controls="atlasGlobalNav">Menu</button>
+    </div>
+  </div>
+</header>
+
+<div class="atlas-page-frame">
+  <aside class="atlas-local-nav" aria-label="On this page">
+    <div class="atlas-local-nav-inner">
+      <p>On this page</p>
+      <nav>
+        
+        <a class="atlas-local-link" href="#background" data-section="background">
+          <span>01</span>Overview
+        </a>
+        
+        <a class="atlas-local-link" href="#bg-us-iran" data-section="bg-us-iran">
+          <span>02</span>US-Iran Relations
+        </a>
+        
+        <a class="atlas-local-link" href="#bg-nuclear" data-section="bg-nuclear">
+          <span>03</span>Nuclear Program
+        </a>
+        
+        <a class="atlas-local-link" href="#bg-january" data-section="bg-january">
+          <span>04</span>Legitimacy Crisis
+        </a>
+        
+        <a class="atlas-local-link" href="#bg-epic-fury" data-section="bg-epic-fury">
+          <span>05</span>Path to War
+        </a>
+        
+      </nav>
+    </div>
+  </aside>
+
+  <main class="atlas-main" id="main-content">
+    
+    <section class="atlas-intro" aria-labelledby="atlas-page-title">
+      <div>
+        <p class="atlas-eyebrow">Historical context</p>
+        <h1 id="atlas-page-title">How We Got Here</h1>
+      </div>
+      <p class="atlas-summary">How U.S.–Iran hostility, a failed nuclear bargain, regional deterrence, and domestic repression converged into the 2026 war.</p>
+    </section>
+    
+
+    <section class="atlas-latest" aria-label="Latest development">
+      <strong>Latest</strong>
+      <p>Sustained U.S. strikes and Iranian retaliation continue while mediation remains active</p>
+    </section>
+
+    <div class="container atlas-article">
+
+<!-- ======== BACKGROUND ======== -->
+<!-- @last-updated:2026-07-23 -->
+<div class="section-header" id="background">
+  <div class="icon icon-blue">&#8987;</div>
+  <div>
+    <h2>How This Crisis Was Built</h2>
+    <div class="section-subtitle">Four histories converged: U.S.–Iranian hostility, a failed nuclear settlement, regional deterrence by proxy, and a domestic legitimacy crisis</div>
+  </div>
+</div>
+
+<div class="callout blue">
+  <div class="callout-title">The war did not begin with one decision</div>
+  <p>The February 2026 attack was a discrete choice. The conditions that made it thinkable accumulated over decades: the 1953 coup and 1979 revolution; hostage-taking and sanctions; the Iran–Iraq War; U.S. military dominance in the Gulf; Iran's partner networks; the rise and collapse of the JCPOA; the post-October 2023 regional wars; nuclear opacity after the 2025 strikes; and severe repression inside Iran.</p>
+</div>
+
+<div class="section-header" id="bg-us-iran">
+  <div class="icon icon-orange">01</div>
+  <div><h2>U.S.–Iran Relations</h2><div class="section-subtitle">A cycle of intervention, revolution, coercion, and failed accommodation</div></div>
+</div>
+
+<div class="timeline">
+  <!-- @ai-zone:bg-us-iran-timeline -->
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-blue);"></div><div class="date">1953</div><div class="content">The CIA and MI6 help overthrow Prime Minister Mohammad Mossadegh after the nationalization of oil. The event becomes a durable symbol of foreign intervention in Iranian political memory.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-red);"></div><div class="date">1979–1981</div><div class="content">The revolution removes the Shah and creates the Islamic Republic. The U.S. Embassy hostage crisis transforms mutual suspicion into a foundational political relationship.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-orange);"></div><div class="date">1980s</div><div class="content">The Iran–Iraq War, U.S. support for Iraq, attacks on Gulf shipping, and direct U.S.–Iranian naval clashes shape Tehran's emphasis on missiles, irregular warfare, and strategic depth.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-blue);"></div><div class="date">2001–2014</div><div class="content">Limited tactical overlap in Afghanistan gives way to renewed hostility, sanctions, covert action, regional competition, and escalating nuclear concern.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-green);"></div><div class="date">2015</div><div class="content">The JCPOA trades verifiable nuclear limits for sanctions relief. It narrows the nuclear risk without resolving missiles, regional forces, or the wider U.S.–Iran conflict.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-red);"></div><div class="date">2018–2024</div><div class="content">The U.S. leaves the agreement and restores “maximum pressure.” Iran expands enrichment and regional coercion; both sides use calibrated attacks while avoiding full war.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-red);"></div><div class="date">2025–FEBRUARY 2026</div><div class="content">Strikes, reduced inspection access, weakened partner networks, a U.S. force buildup, failed last-minute negotiations, and Iranian domestic repression create an unstable prewar environment.</div></div>
+  <!-- @/ai-zone:bg-us-iran-timeline -->
+</div>
+
+<div class="section-header" id="bg-nuclear">
+  <div class="icon icon-gold">02</div>
+  <div><h2>The Nuclear File</h2><div class="section-subtitle">A verification problem became a coercion problem, then a war aim</div></div>
+</div>
+
+<div class="timeline">
+  <!-- @ai-zone:bg-nuclear-timeline -->
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-orange);"></div><div class="date">2002–2013</div><div class="content">Previously undeclared facilities, safeguards disputes, enrichment growth, sanctions, and sabotage turn the program into an international crisis.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-green);"></div><div class="date">2015–2018</div><div class="content">The JCPOA caps enrichment, reduces stockpiles, modifies facilities, and expands monitoring in exchange for relief.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-red);"></div><div class="date">2019–2024</div><div class="content">After the U.S. withdrawal, Iran exceeds the agreement's limits and progressively reduces transparency. Efforts to restore the bargain fail.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-red);"></div><div class="date">2025 STRIKES</div><div class="content">U.S. and Israeli attacks damage declared nuclear facilities. The strikes do not produce a verified accounting of enriched material or end the technical and political dispute.</div></div>
+  <div class="tl-item"><div class="tl-dot" style="border-color:var(--accent-orange);"></div><div class="date">2026 WAR</div><div class="content">Further physical damage occurs while inspection continuity deteriorates. The central present problem is incomplete knowledge: facilities, material, activity, expertise, intent, and weaponization cannot be collapsed into one claim.</div></div>
+  <!-- @/ai-zone:bg-nuclear-timeline -->
+</div>
+
+<div class="section-header" id="bg-january">
+  <div class="icon icon-red">03</div>
+  <div><h2>The Domestic Legitimacy Crisis</h2><div class="section-subtitle">The war arrived after years of protest and an exceptionally violent prewar crackdown</div></div>
+</div>
+
+<!-- @ai-zone:bg-january-protests -->
+<div class="two-col" style="margin-bottom:20px;">
+  <div class="card">
+    <h3>Long roots</h3>
+    <p>The 2009 Green Movement, economic protests in 2017–18 and 2019, and the 2022 Woman, Life, Freedom uprising broadened opposition to coercive rule. Labor, student, women's, minority, and professional networks developed overlapping but decentralized forms of resistance.</p>
+  </div>
+  <div class="card">
+    <h3>Late 2025–January 2026</h3>
+    <p>A renewed nationwide protest wave met mass arrests, lethal force, and a sweeping communications shutdown. Casualty claims vary widely and remain difficult to verify. What is clear is that the state entered the war with a severe unresolved legitimacy problem and a strengthened coercive apparatus.</p>
+  </div>
+</div>
+<!-- @/ai-zone:bg-january-protests -->
+
+<div class="section-header" id="bg-epic-fury">
+  <div class="icon icon-orange">04</div>
+  <div><h2>The Path to Operation Epic Fury</h2><div class="section-subtitle">Deterrence failed because each side believed time and pressure favored action</div></div>
+</div>
+
+<!-- @ai-zone:bg-path-to-war -->
+<div class="chart-container" style="margin-bottom:20px;">
+  <table class="force-table">
+    <thead><tr><th>Pressure</th><th>U.S.–Israeli reading</th><th>Iranian reading</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Nuclear uncertainty</strong></td><td>Delay increased the risk of a harder, less visible program</td><td>Retained capability was leverage and insurance against attack</td></tr>
+      <tr><td><strong>Regional balance</strong></td><td>Iran's weakened partners created a temporary operational opportunity</td><td>Missiles, drones, and Hormuz could still deter or punish a campaign</td></tr>
+      <tr><td><strong>Negotiations</strong></td><td>Threat of force was required to compel acceptable limits</td><td>Concessions under threat would invite more demands</td></tr>
+      <tr><td><strong>Domestic politics</strong></td><td>Iranian vulnerability could reduce resistance or accelerate change</td><td>External attack could consolidate the state and discredit opponents</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>CENTCOM says Operation Epic Fury began at 01:15 on 28 February 2026. The opening strikes targeted leadership, air defense, missile, drone, naval, security, and supporting infrastructure. Ali Khamenei was killed. Iran retaliated across the region and at sea. The campaign achieved major operational effects, but it did not settle the nuclear, maritime, regional, or political questions that produced it.</p>
+<!-- @/ai-zone:bg-path-to-war -->
+
+<p class="source-cite">Sources include the <a href="https://www.centcom.mil/Portals/6/Documents/Publications/260406-FactSheet.pdf" target="_blank" rel="noopener noreferrer">CENTCOM opening-campaign fact sheet</a>, IAEA safeguards history, and institutional analysis from <a href="https://www.iiss.org/online-analysis/" target="_blank" rel="noopener noreferrer">IISS</a>, <a href="https://www.rand.org/topics/iran.html" target="_blank" rel="noopener noreferrer">RAND</a>, and <a href="https://www.csis.org/programs/latest-analysis-war-iran" target="_blank" rel="noopener noreferrer">CSIS</a>. This page uses history to explain causal structure, not to assign a single origin or moral equivalence.</p>
+
+    </div>
+
+    <nav class="atlas-sequence" aria-label="Continue through the report">
+      
+      <a href="opposition.html" class="atlas-sequence-previous">
+        <span>Previous</span>
+        <strong>Opposition</strong>
+      </a>
+      
+      
+      <a href="sources.html" class="atlas-sequence-next">
+        <span>Continue</span>
+        <strong>Sources</strong>
+      </a>
+      
+    </nav>
+  </main>
+</div>
+
+<footer class="atlas-footer">
+  <div>
+    <p>Facts, assessments, forecasts, and source material remain separated throughout the report.</p>
+    <nav aria-label="Report utilities">
+      <a href="sources.html">Sources</a>
+      <a href="sources.html#source-reliability">Method</a>
+      <a href="../background.html">Original interface</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="atlas-back-to-top" id="atlasBackToTop" type="button" aria-label="Back to top">Top</button>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>
+<script src="../js/atlas-areas.js?v=area-map-5"></script>
+<script src="../js/map.js?v=area-map-5"></script>
+<script src="../js/atlas.js?v=area-map-5"></script>
+</body>
+</html>

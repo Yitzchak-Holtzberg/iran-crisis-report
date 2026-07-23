@@ -5,13 +5,17 @@ document.addEventListener('DOMContentLoaded', function(){
   var MAPTILER_KEY = '49tXbjeDRcPMglh4nc1s';
   var DARK_STYLE  = 'https://api.maptiler.com/maps/hybrid/style.json?key=' + MAPTILER_KEY;
   var LIGHT_STYLE = 'https://api.maptiler.com/maps/streets/style.json?key=' + MAPTILER_KEY;
+  var ATLAS_STYLE = 'https://api.maptiler.com/maps/streets-v2/style.json?key=' + MAPTILER_KEY;
   var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  var isAtlasHero = window.IRAN_REPORT_MAP_MODE === 'atlas-hero';
+  var initialCenter = isAtlasHero ? [50.8, 30.4] : [46, 30];
+  var initialZoom = isAtlasHero ? 4.35 : 3.5;
 
   var map = new maplibregl.Map({
     container: 'theater-map',
-    style: isLight ? LIGHT_STYLE : DARK_STYLE,
-    center: [46, 30],
-    zoom: 3.5,
+    style: isAtlasHero ? ATLAS_STYLE : (isLight ? LIGHT_STYLE : DARK_STYLE),
+    center: initialCenter,
+    zoom: initialZoom,
     attributionControl: false,
     scrollZoom: false
   });
@@ -81,8 +85,334 @@ document.addEventListener('DOMContentLoaded', function(){
   ];
 
   // ── Default map center/zoom for reset button ──
-  var DEFAULT_CENTER = [46, 30];
-  var DEFAULT_ZOOM = 3.5;
+  var DEFAULT_CENTER = initialCenter;
+  var DEFAULT_ZOOM = initialZoom;
+
+  function applyAtlasMapTreatment() {
+    if (!isAtlasHero) return;
+    var style = map.getStyle();
+    if (!style || !Array.isArray(style.layers)) return;
+
+    function setPaint(layerId, property, value) {
+      try { map.setPaintProperty(layerId, property, value); } catch(e) {}
+    }
+
+    function setLayout(layerId, property, value) {
+      try { map.setLayoutProperty(layerId, property, value); } catch(e) {}
+    }
+
+    style.layers.forEach(function(layer) {
+      var id = layer.id;
+      var normalizedId = id.toLowerCase();
+      var sourceLayer = layer['source-layer'] || '';
+
+      if (layer.type === 'background') {
+        setPaint(id, 'background-color', '#98a18e');
+        return;
+      }
+
+      if (sourceLayer === 'water' && layer.type === 'fill') {
+        setPaint(id, 'fill-color', '#0a3a49');
+        setPaint(id, 'fill-opacity', normalizedId.indexOf('intermittent') !== -1 ? 0.58 : 1);
+        return;
+      }
+
+      if ((sourceLayer === 'waterway' || sourceLayer === 'water') && layer.type === 'line') {
+        setPaint(id, 'line-color', '#2f6672');
+        setPaint(id, 'line-opacity', 0.72);
+        return;
+      }
+
+      if (sourceLayer === 'globallandcover' || sourceLayer === 'landcover' || sourceLayer === 'landuse') {
+        if (layer.type === 'fill') {
+          setPaint(id, 'fill-color', normalizedId.indexOf('sand') !== -1 ? '#b7ad91' : '#8f9886');
+          setPaint(id, 'fill-opacity', 0.36);
+        }
+        return;
+      }
+
+      if (sourceLayer === 'boundary' && layer.type === 'line') {
+        setPaint(id, 'line-color', normalizedId.indexOf('country') !== -1 ? '#eee8d9' : '#d0d1c4');
+        setPaint(id, 'line-opacity', normalizedId.indexOf('country') !== -1 ? 0.78 : 0.34);
+        setPaint(id, 'line-width', normalizedId.indexOf('country') !== -1 ? 1.05 : 0.55);
+        return;
+      }
+
+      if (sourceLayer === 'transportation' && layer.type === 'line') {
+        setPaint(id, 'line-color', '#c4c1ae');
+        setPaint(id, 'line-opacity', normalizedId.indexOf('major') !== -1 || normalizedId.indexOf('highway') !== -1 ? 0.2 : 0.08);
+        return;
+      }
+
+      if (sourceLayer === 'building' || sourceLayer === 'poi' || sourceLayer === 'housenumber' ||
+          sourceLayer === 'transportation_name' || sourceLayer === 'aerodrome_label') {
+        setLayout(id, 'visibility', 'none');
+        return;
+      }
+
+      if (layer.type === 'symbol') {
+        if (normalizedId.indexOf('town') !== -1 || normalizedId.indexOf('state') !== -1 ||
+            normalizedId.indexOf('river') !== -1 || normalizedId.indexOf('lake') !== -1 ||
+            normalizedId.indexOf('road') !== -1 || normalizedId.indexOf('highway') !== -1 ||
+            normalizedId.indexOf('station') !== -1 || normalizedId.indexOf('airport') !== -1 ||
+            normalizedId === 'city labels' || normalizedId === 'place labels') {
+          setLayout(id, 'visibility', 'none');
+          return;
+        }
+
+        if (normalizedId.indexOf('ocean') !== -1) {
+          setPaint(id, 'text-color', '#c2d2d0');
+          setPaint(id, 'text-halo-color', '#0a3a49');
+          setPaint(id, 'text-halo-width', 1.2);
+          return;
+        }
+
+        if (normalizedId.indexOf('country') !== -1 || normalizedId.indexOf('capital') !== -1 ||
+            normalizedId.indexOf('city') !== -1 || normalizedId.indexOf('place') !== -1) {
+          setPaint(id, 'text-color', '#17242a');
+          setPaint(id, 'text-halo-color', 'rgba(235, 229, 211, .78)');
+          setPaint(id, 'text-halo-width', 1.4);
+          setPaint(id, 'text-halo-blur', 0.2);
+          if (normalizedId.indexOf('country') !== -1) {
+            setLayout(id, 'text-size', ['interpolate', ['linear'], ['zoom'], 3, 12, 5, 16, 7, 19]);
+          } else if (normalizedId.indexOf('capital') !== -1) {
+            setLayout(id, 'text-size', ['interpolate', ['linear'], ['zoom'], 4, 10, 7, 13]);
+          }
+        }
+      }
+    });
+  }
+
+  function addAtlasAreaLayers() {
+    if (!isAtlasHero || map.getSource('atlas-areas')) return;
+    var areas = window.IRAN_REPORT_ATLAS_AREAS || [];
+    if (!areas.length) return;
+
+    var areaFeatures = areas.map(function(area) {
+      return {
+        type: 'Feature',
+        id: area.id,
+        properties: {
+          id: area.id,
+          number: area.number,
+          label: area.label,
+          color: area.color,
+          fillColor: area.fillColor || area.color,
+          opacity: area.opacity,
+          hoverOpacity: area.id === 'iran-interior' ? 0.84 : Math.min(0.28, area.opacity + 0.08),
+          selectedOpacity: area.id === 'iran-interior' ? 0.9 : Math.min(0.36, area.opacity + 0.14)
+        },
+        geometry: {
+          type: 'Polygon',
+          coordinates: [area.polygon]
+        }
+      };
+    });
+
+    var labelFeatures = areas.map(function(area) {
+      return {
+        type: 'Feature',
+        id: area.id,
+        properties: {
+          id: area.id,
+          number: area.number,
+          label: area.label,
+          color: area.color
+        },
+        geometry: {
+          type: 'Point',
+          coordinates: area.labelPoint
+        }
+      };
+    });
+
+    map.addSource('atlas-areas', {
+      type: 'geojson',
+      data: {type: 'FeatureCollection', features: areaFeatures}
+    });
+    map.addSource('atlas-area-labels', {
+      type: 'geojson',
+      data: {type: 'FeatureCollection', features: labelFeatures}
+    });
+
+    var beforeCountryLabels = map.getLayer('Country labels') ? 'Country labels' : undefined;
+
+    map.addLayer({
+      id: 'atlas-area-fill',
+      type: 'fill',
+      source: 'atlas-areas',
+      paint: {
+        'fill-color': ['get', 'fillColor'],
+        // Keep the broad geographic hit areas interactive without covering the
+        // map with coarse shapes. Selection is communicated by the numbered
+        // marker, map motion, dock state, and briefing panel.
+        'fill-opacity': 0.001
+      }
+    }, beforeCountryLabels);
+
+    map.addLayer({
+      id: 'atlas-area-line',
+      type: 'line',
+      source: 'atlas-areas',
+      paint: {
+        'line-color': ['get', 'color'],
+        'line-width': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false], 3,
+          ['boolean', ['feature-state', 'hover'], false], 2.2,
+          1.15
+        ],
+        'line-opacity': 0
+      }
+    }, beforeCountryLabels);
+
+    map.addLayer({
+      id: 'atlas-area-label-dot',
+      type: 'circle',
+      source: 'atlas-area-labels',
+      paint: {
+        'circle-color': ['get', 'color'],
+        'circle-radius': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false], 16,
+          ['boolean', ['feature-state', 'hover'], false], 15,
+          13
+        ],
+        'circle-stroke-color': '#f4efe2',
+        'circle-stroke-width': 1.5,
+        'circle-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'dimmed'], false], 0.08,
+          0.98
+        ]
+      }
+    });
+
+    map.addLayer({
+      id: 'atlas-area-label-number',
+      type: 'symbol',
+      source: 'atlas-area-labels',
+      layout: {
+        'text-field': ['get', 'number'],
+        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+        'text-size': 11,
+        'text-allow-overlap': true
+      },
+      paint: {
+        'text-color': '#102b34',
+        'text-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'dimmed'], false], 0.08,
+          1
+        ]
+      }
+    });
+
+    map.addLayer({
+      id: 'atlas-area-label',
+      type: 'symbol',
+      source: 'atlas-area-labels',
+      layout: {
+        'text-field': ['get', 'label'],
+        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+        'text-size': ['interpolate', ['linear'], ['zoom'], 4, 11.5, 6, 13.5],
+        'text-anchor': 'left',
+        'text-offset': [1.45, 0],
+        'text-max-width': 13,
+        'text-line-height': 1.08,
+        'text-allow-overlap': false,
+        'text-optional': true
+      },
+      paint: {
+        'text-color': '#10252d',
+        'text-halo-color': 'rgba(240, 235, 220, .94)',
+        'text-halo-width': 2.2,
+        'text-halo-blur': 0.25,
+        'text-opacity': [
+          'case',
+          ['boolean', ['feature-state', 'dimmed'], false], 0.06,
+          1
+        ]
+      }
+    });
+
+    var selectedAreaId = null;
+    var hoveredAreaId = null;
+    var clickableLayers = ['atlas-area-fill', 'atlas-area-line', 'atlas-area-label-dot', 'atlas-area-label-number', 'atlas-area-label'];
+    var areaLabelLayers = ['atlas-area-label-dot', 'atlas-area-label-number', 'atlas-area-label'];
+
+    function findArea(id) {
+      return areas.find(function(area) { return area.id === id; });
+    }
+
+    function setState(id, state) {
+      if (!id) return;
+      try { map.setFeatureState({source: 'atlas-areas', id: id}, state); } catch(e) {}
+      try { map.setFeatureState({source: 'atlas-area-labels', id: id}, state); } catch(e) {}
+    }
+
+    function selectArea(id, shouldFly) {
+      var area = findArea(id);
+      if (!area) return;
+      areas.forEach(function(item) {
+        setState(item.id, {
+          selected: item.id === id,
+          dimmed: item.id !== id
+        });
+      });
+      areaLabelLayers.forEach(function(layerId) {
+        if (map.getLayer(layerId)) map.setFilter(layerId, ['==', ['get', 'id'], id]);
+      });
+      selectedAreaId = id;
+      if (shouldFly !== false) {
+        map.flyTo({center: area.center, zoom: area.zoom, speed: 0.75, curve: 1.15, essential: true});
+      }
+      document.dispatchEvent(new CustomEvent('atlas:area-selected', {detail: area}));
+    }
+
+    function resetAreas(shouldFly) {
+      areas.forEach(function(item) {
+        setState(item.id, {selected: false, dimmed: false});
+      });
+      areaLabelLayers.forEach(function(layerId) {
+        if (map.getLayer(layerId)) map.setFilter(layerId, null);
+      });
+      selectedAreaId = null;
+      if (shouldFly !== false) {
+        map.flyTo({center: DEFAULT_CENTER, zoom: DEFAULT_ZOOM, speed: 0.75, curve: 1.15, essential: true});
+      }
+      document.dispatchEvent(new CustomEvent('atlas:area-reset'));
+    }
+
+    clickableLayers.forEach(function(layerId) {
+      map.on('click', layerId, function(event) {
+        var feature = event.features && event.features[0];
+        if (feature) selectArea(feature.properties.id, true);
+      });
+      map.on('mouseenter', layerId, function(event) {
+        map.getCanvas().style.cursor = 'pointer';
+        var feature = event.features && event.features[0];
+        if (!feature || hoveredAreaId === feature.properties.id) return;
+        if (hoveredAreaId) setState(hoveredAreaId, {hover: false});
+        hoveredAreaId = feature.properties.id;
+        setState(hoveredAreaId, {hover: true});
+      });
+      map.on('mouseleave', layerId, function() {
+        map.getCanvas().style.cursor = '';
+        if (hoveredAreaId) setState(hoveredAreaId, {hover: false});
+        hoveredAreaId = null;
+      });
+    });
+
+    window._selectAtlasArea = selectArea;
+    window._resetAtlasAreas = resetAreas;
+    document.dispatchEvent(new CustomEvent('atlas:areas-ready', {detail: areas}));
+
+    if (window._pendingAtlasAreaId) {
+      selectArea(window._pendingAtlasAreaId, true);
+      window._pendingAtlasAreaId = null;
+    }
+  }
 
   // ── Icon SVG templates (rendered to ImageData for MapLibre) ──
   function createIcon(svg, size) {
@@ -165,14 +495,15 @@ document.addEventListener('DOMContentLoaded', function(){
   function loadMapData() {
     // Re-read current theme (may have changed since initial load)
     isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    var assetPrefix = window.IRAN_REPORT_ASSET_PREFIX || '';
     var thisGen = ++loadGeneration;
 
     // Fetch data + render icons only on first load; use cache after
     var dataPromise = (_cachedMarkers && _cachedCorridors)
       ? Promise.resolve([_cachedMarkers, _cachedCorridors])
       : Promise.all([
-          fetch('data/markers.geojson').then(function(r){return r.json();}),
-          fetch('data/corridors.geojson').then(function(r){return r.json();})
+          fetch(assetPrefix + 'data/markers.geojson').then(function(r){return r.json();}),
+          fetch(assetPrefix + 'data/corridors.geojson').then(function(r){return r.json();})
         ]);
 
     Promise.all([dataPromise, renderIconsOnce()]).then(function(results){
@@ -307,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function(){
         paint: {
           'line-color': ['get', 'color'],
           'line-width': ['get', 'weight'],
-          'line-opacity': ['get', 'opacity'],
+          'line-opacity': isAtlasHero ? 0.42 : ['get', 'opacity'],
           'line-dasharray': [5, 4]
         }
       });
@@ -395,6 +726,27 @@ document.addEventListener('DOMContentLoaded', function(){
       window._allPoints = points;
       window._allStrikePoints = strikePoints;
       window._hiddenCats = {};
+      window._radiusCount = circles.length;
+
+      if (isAtlasHero) {
+        Object.keys(CAT_COLORS).forEach(function(cat) {
+          window._hiddenCats[cat] = true;
+          var categoryLayerId = 'cat-' + cat;
+          if (map.getLayer(categoryLayerId)) map.setLayoutProperty(categoryLayerId, 'visibility', 'none');
+        });
+
+        if (map.getLayer('corridors-line')) {
+          map.setLayoutProperty('corridors-line', 'visibility', 'none');
+        }
+
+        circles.forEach(function(_circle, index) {
+          var layerId = 'radius-fill-' + index;
+          if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', 'none');
+          if (map.getLayer(layerId + '-stroke')) map.setLayoutProperty(layerId + '-stroke', 'visibility', 'none');
+        });
+
+        updateClusterFilter();
+      }
 
       // Start gentle pulse on strike glow
       startStrikePulse();
@@ -570,7 +922,8 @@ document.addEventListener('DOMContentLoaded', function(){
     resetBtn.style.setProperty('--toggle-color', '#666');
     resetBtn.style.borderStyle = 'dashed';
     resetBtn.addEventListener('click', function(){
-      map.flyTo({center: DEFAULT_CENTER, zoom: DEFAULT_ZOOM, speed: 0.8, curve: 1.2});
+      if (window._resetAtlasAreas) window._resetAtlasAreas(true);
+      else map.flyTo({center: DEFAULT_CENTER, zoom: DEFAULT_ZOOM, speed: 0.8, curve: 1.2});
     });
     container.appendChild(resetBtn);
 
@@ -609,7 +962,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
     LAYER_GROUPS.forEach(function(group){
       var btn = document.createElement('button');
-      btn.className = 'layer-toggle-btn active';
+      var groupActive = !group.cats.every(function(cat) { return window._hiddenCats[cat]; });
+      btn.className = 'layer-toggle-btn' + (groupActive ? ' active' : '');
       btn.textContent = group.label;
       btn.style.setProperty('--toggle-color', group.color);
       btn.addEventListener('click', function(){
@@ -619,6 +973,15 @@ document.addEventListener('DOMContentLoaded', function(){
           if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', active ? 'visible' : 'none');
           if (map.getLayer('corridors-line') && (cat === 'missile-corridor' || cat === 'strike-corridor' || cat === 'transit-route'))
             map.setLayoutProperty('corridors-line', 'visibility', active ? 'visible' : 'none');
+          if (cat === 'radius-circle') {
+            for (var radiusIndex = 0; radiusIndex < (window._radiusCount || 0); radiusIndex++) {
+              var radiusLayerId = 'radius-fill-' + radiusIndex;
+              if (map.getLayer(radiusLayerId)) map.setLayoutProperty(radiusLayerId, 'visibility', active ? 'visible' : 'none');
+              if (map.getLayer(radiusLayerId + '-stroke')) {
+                map.setLayoutProperty(radiusLayerId + '-stroke', 'visibility', active ? 'visible' : 'none');
+              }
+            }
+          }
           if (active) { delete window._hiddenCats[cat]; } else { window._hiddenCats[cat] = true; }
         });
         updateClusterFilter();
@@ -878,5 +1241,9 @@ document.addEventListener('DOMContentLoaded', function(){
   window._toggleMeasure = toggleMeasure;
 
   window._reloadMapData = loadMapData;
-  map.once('load', loadMapData);
+  map.once('load', function() {
+    applyAtlasMapTreatment();
+    addAtlasAreaLayers();
+    loadMapData();
+  });
 });

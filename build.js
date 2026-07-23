@@ -125,46 +125,45 @@ const g = (group) => ({ group });
 const n = (num, id, label) => ({ num, id, label });
 
 function page(output, content, meta, sidebarNav) {
-  return { output, meta, sidebarNav, sections: [...HEADER, SIDEBAR, ...content, ...FOOTER] };
+  return { output, content, meta, sidebarNav, sections: [...HEADER, SIDEBAR, ...content, ...FOOTER] };
 }
 
 const BUILDS = [
   page('index.html', [
-    'sections/stats.html', 'sections/last-24h.html', 'sections/confirmed-unconfirmed.html',
-    'sections/theater.html', 'sections/scenarios-teaser.html', 'sections/analysis-teaser.html',
-    'sections/nuclear-teaser.html', 'sections/forces-teaser.html', 'sections/military-teaser.html',
-    'sections/materiel-losses-teaser.html',
+    'sections/stats.html', 'sections/last-24h.html', 'sections/theater.html',
+    'sections/military-teaser.html', 'sections/materiel-losses-teaser.html',
+    'sections/forces-teaser.html', 'sections/nuclear-teaser.html',
     'sections/inside-iran-teaser.html', 'sections/reactions-teaser.html',
-    'sections/background-teaser.html', 'sections/opposition-teaser.html',
+    'sections/analysis-teaser.html', 'sections/scenarios-teaser.html',
+    'sections/opposition-teaser.html', 'sections/background-teaser.html',
   ], {
     pageTitle: 'Iran Crisis Report — {{date}}',
-    pageDescription: 'Live situation report: US\u2013Iran military standoff, nuclear negotiations, protest crackdowns, and economic collapse. Updated multiple times daily.',
-    pageOgDescription: 'Live situation report: US\u2013Iran military standoff, nuclear negotiations, protest crackdowns, and economic collapse. Updated multiple times daily.',
+    pageDescription: 'A whole-situation briefing on the Iran war: the military campaign, Hormuz, nuclear verification, diplomacy, Iranian society, regional positions, and paths ahead.',
+    pageOgDescription: 'Understand the whole Iran crisis across its military, maritime, nuclear, political, humanitarian, and regional dimensions.',
     pageOgType: 'website',
   }, [
     g('Situation'),
-    n('01', 'stats', 'Key Statistics'), n('02', 'last-24h', 'The Last 24 Hours'),
-    n('03', 'confirmed-unconfirmed', 'Fog of War'), n('04', 'theater', 'Theater Map'),
-    g('Analysis'),
-    n('05', 'scenarios', 'Scenarios'), n('06', 'analysis', 'Expert Analysis'),
-    n('07', 'nuclear', 'Nuclear Talks'), n('08', 'strike-forces', 'US Strike Forces'),
-    n('09', 'military', 'Iran Military'), n('10', 'materiel-losses', 'Losses Ledger'), n('11', 'inside-iran', 'Inside Iran'),
-    n('12', 'reactions', 'Reactions'), n('13', 'background', 'Background'),
-    n('14', 'opposition', 'Opposition'),
+    n('01', 'stats', 'Whole Picture'), n('02', 'last-24h', 'Latest'), n('03', 'theater', 'Theater Map'),
+    g('Situation lenses'),
+    n('04', 'military', 'Iran Military'), n('05', 'materiel-losses', 'Losses & Evidence'),
+    n('06', 'strike-forces', 'Regional Forces'), n('07', 'nuclear', 'Diplomacy & Nuclear'),
+    n('08', 'inside-iran', 'Inside Iran'), n('09', 'reactions', 'Regional Positions'),
+    n('10', 'analysis', 'Assessment'), n('11', 'scenarios', 'Paths Ahead'),
+    n('12', 'opposition', 'Opposition'), n('13', 'background', 'Background'),
   ]),
   page('diplomatic.html', ['sections/diplomatic.html'], {
     pageTitle: 'Iran Crisis: Diplomatic Track &amp; Nuclear Negotiations \u2014 {{date}}',
-    pageDescription: 'Diplomatic track suspended: US-Iran Geneva rounds timeline, deal terms, Mojtaba Khamenei succession, NATO Article 4 consultations after Turkish missile strike, IAEA nuclear access blocked, Gulf states joint condemnation, and Israel\u2019s strikes. Updated daily.',
-    pageOgDescription: 'Diplomatic track suspended: US-Iran Geneva rounds timeline, deal terms, Mojtaba Khamenei succession, NATO Article 4 consultations after Turkish missile strike, IAEA nuclear access blocked, and Gulf states joint condemnation.',
+    pageDescription: 'The Iran crisis nuclear and diplomatic track: lost IAEA verification, the June memorandum, July breakdown, bargaining terms, and requirements for a durable off-ramp.',
+    pageOgDescription: 'How nuclear verification, Hormuz, sanctions, blockade relief, and regional security fit into a possible Iran war off-ramp.',
     pageOgType: 'article',
   }, [
     n('01', 'nuclear', 'Diplomatic Track'), n('02', 'nuclear-deal-terms', 'Deal Terms'),
     n('03', 'international-response', 'International Response'),
   ]),
   page('scenarios.html', ['sections/scenarios.html'], {
-    pageTitle: 'Iran Crisis: Scenario Matrix \u2014 {{date}}',
-    pageDescription: 'Five scenarios for how the Iran crisis ends: declared victory, negotiated deal, democratic revolution, managed transition, and regime collapse. Analyst consensus probabilities with interactive treemap.',
-    pageOgDescription: 'Five scenarios for how the Iran war ends — declared victory, negotiated deal, democratic revolution, managed transition, and regime collapse — with analyst consensus probabilities.',
+    pageTitle: 'Iran Crisis: Paths Ahead \u2014 {{date}}',
+    pageDescription: 'Five conditional paths for the Iran crisis: armed pause, negotiated settlement, managed transition, democratic transition, and chaotic fragmentation—with indicators, not invented probabilities.',
+    pageOgDescription: 'Five possible paths out of the Iran war, organized by mechanisms, indicators, and failure conditions.',
     pageOgType: 'article',
   }, [
     n('01', 'scenarios', 'Scenario Matrix'),
@@ -172,13 +171,13 @@ const BUILDS = [
   page('forces.html', [
     'sections/nation-postures.html', 'sections/air-power.html', 'sections/naval.html',
   ], {
-    pageTitle: 'Iran Crisis: US & Coalition Strike Forces \u2014 {{date}}',
-    pageDescription: 'US and coalition strike forces: theater postures, 160+ aircraft, triple carrier strike groups, 25+ warships deployed to the Persian Gulf.',
-    pageOgDescription: 'US and coalition strike forces: theater postures, 160+ aircraft, triple carrier strike groups, and 25+ warships.',
+    pageTitle: 'Iran Crisis: Regional Forces \u2014 {{date}}',
+    pageDescription: 'The Iran crisis regional force balance: U.S. and Israeli conventional advantage, Iranian distributed resistance, Gulf exposure, air power, and maritime limits.',
+    pageOgDescription: 'How conventional dominance, asymmetric resistance, and Gulf exposure shape the Iran war.',
     pageOgType: 'article',
   }, [
-    g('Overview'), n('00', 'nation-postures', 'All Nations'),
-    g('US Strike Assets'), n('01', 'air-power', 'Air Power'), n('02', 'naval', 'Naval Forces'),
+    g('Force balance'), n('00', 'nation-postures', 'Regional System'),
+    g('Operational domains'), n('01', 'air-power', 'Air Power'), n('02', 'naval', 'Maritime Power'),
   ]),
   page('iran-military.html', [
     'sections/military.html', 'sections/materiel-losses.html',
@@ -186,8 +185,8 @@ const BUILDS = [
     'sections/iran-retaliation-executed.html', 'sections/hormuz.html',
   ], {
     pageTitle: 'Iran Crisis: Iran Military Assessment \u2014 {{date}}',
-    pageDescription: 'Iran\'s remaining military capability: battle damage assessment, materiel losses ledger, asymmetric retaliation doctrine, and the Strait of Hormuz threat.',
-    pageOgDescription: 'Iran\'s remaining military capability: missiles, drones, losses ledger, cyber, retaliation doctrine, and the Strait of Hormuz chokepoint.',
+    pageDescription: 'Iran\'s military position after severe conventional damage: what is established, what remains unknown, distributed retaliation, reconstitution, and Hormuz.',
+    pageOgDescription: 'A bounded assessment of Iranian military damage, resilience, retaliation, reconstitution, and Hormuz.',
     pageOgType: 'article',
   }, [
     g('Assessment'), n('01', 'military', 'Military Status'), n('02', 'materiel-losses', 'Losses Ledger'),
@@ -196,61 +195,184 @@ const BUILDS = [
   ]),
   page('inside-iran.html', ['sections/inside-iran.html'], {
     pageTitle: 'Iran Crisis: Inside Iran \u2014 {{date}}',
-    pageDescription: 'Eight converging crises inside Iran: Operation Epic Fury strikes, Khamenei succession crisis, the January Massacre, student uprising, economic freefall, internet blackout, ethnic crackdowns, water catastrophe, and axis of resistance collapse.',
-    pageOgDescription: 'Eight converging crises: Operation Epic Fury direct strikes (Day 2), Khamenei confirmed dead, January Massacre (36,500+ killed), student uprising, economic freefall (rial at 1.7M/USD), digital iron curtain, ethnic crackdowns, water catastrophe, and proxy network collapse.',
+    pageDescription: 'Inside Iran during the war: civilian harm, wartime government, daily economic life, protest and repression, communications controls, water, health, and infrastructure.',
+    pageOgDescription: 'A compound picture of the Iranian state and society under war, repression, economic strain, and damaged public systems.',
     pageOgType: 'article',
   }, [
     n('01', 'inside-iran', 'Inside Iran'),
   ]),
   page('reactions.html', ['sections/reactions-iran.html', 'sections/reactions-gulf.html', 'sections/reactions-israel.html', 'sections/reactions-global.html'], {
-    pageTitle: 'Iran Crisis: Regional Reactions &amp; Damage Assessments \u2014 {{date}}',
-    pageDescription: 'Country-by-country reactions to US-Israel Operation Epic Fury strikes on Iran: Bahrain 5th Fleet hit, Abu Dhabi casualties, Qatar, Saudi Arabia, Israel, and full strike damage assessments.',
-    pageOgDescription: 'Country-by-country reactions to Operation Epic Fury and Iran\u2019s retaliatory strikes: Gulf states hit, damage assessments, diplomatic fallout, and casualty reports.',
+    pageTitle: 'Iran Crisis: Regional &amp; Global Positions \u2014 {{date}}',
+    pageDescription: 'Iranian, Israeli, Gulf, and global positions in the Iran war: war aims, constraints, energy exposure, mediation, and competing definitions of security.',
+    pageOgDescription: 'Compare how Iran, Israel, Gulf states, and outside powers define their interests and acceptable risks.',
     pageOgType: 'article',
   }, [
-    n('01', 'reactions-iran', 'Iran Damage'), n('02', 'reactions-gulf', 'Gulf States Hit'),
-    n('03', 'reactions-israel', 'Israel'), n('04', 'reactions-global', 'Global Response'),
+    n('01', 'reactions-iran', 'Iran'), n('02', 'reactions-gulf', 'Gulf States'),
+    n('03', 'reactions-israel', 'Israel'), n('04', 'reactions-global', 'Wider World'),
   ]),
   page('analysis.html', ['sections/analysis.html'], {
-    pageTitle: 'Iran Crisis: Expert Analysis \u2014 {{date}}',
-    pageDescription: 'Leading think-tank assessments on Operation Epic Fury from CSIS, ISW, Carnegie, Brookings, Atlantic Council, CFR, and RAND — costs, escalation risks, and Week 2 outlook.',
-    pageOgDescription: 'Leading think-tank assessments on Operation Epic Fury — costs, escalation risks, Hormuz endgame, nuclear implications, and regime survival prospects.',
+    pageTitle: 'Iran Crisis: Strategic Assessment \u2014 {{date}}',
+    pageDescription: 'Fresh synthesis across CSIS, RAND, IISS, RUSI, Carnegie, Chatham House, Brookings, CFR, and Atlantic Council on the Iran war\'s unresolved strategic questions.',
+    pageOgDescription: 'Where serious institutional analysis of the Iran war converges—and where it disagrees.',
     pageOgType: 'article',
   }, [
-    n('01', 'analysis', 'Overview'),
-    n('02', 'analysis-military', 'Military Ops'),
-    n('03', 'analysis-succession', 'Succession'),
-    n('04', 'analysis-energy', 'Energy & Maritime'),
-    n('05', 'analysis-civilian', 'Civilian Impact'),
-    n('06', 'analysis-consensus', 'Consensus'),
+    n('01', 'analysis', 'Bottom Line'),
+    n('02', 'analysis-military', 'Military Defeat'),
+    n('03', 'analysis-succession', 'State Power'),
+    n('04', 'analysis-energy', 'Iranian Leverage'),
+    n('05', 'analysis-civilian', 'Political Change'),
+    n('06', 'analysis-consensus', 'Convergence'),
   ]),
   page('opposition.html', ['sections/opposition.html'], {
-    pageTitle: 'Iran Crisis: Reza Pahlavi &amp; the Opposition \u2014 {{date}}',
-    pageDescription: 'Reza Pahlavi timeline, opposition landscape (MEK, monarchists, secularists, ethnic movements), and the question of post-regime Iran leadership.',
-    pageOgDescription: 'Reza Pahlavi timeline, the fractured opposition landscape, and the question of who leads a post-regime Iran.',
+    pageTitle: 'Iran Crisis: Opposition &amp; Transition \u2014 {{date}}',
+    pageDescription: 'Iran\'s opposition landscape: Reza Pahlavi, republicans, civic networks, minority movements, labor, students, the MEK, and the institutional requirements of transition.',
+    pageOgDescription: 'Iran\'s opposition is a political field, not a government-in-waiting. Understand its actors, divisions, and transition challenge.',
     pageOgType: 'article',
   }, [
-    n('01', 'opposition', 'Opposition'), n('02', 'opposition-landscape', 'Opposition Landscape'),
+    n('01', 'opposition', 'Bottom Line'), n('02', 'opposition-landscape', 'Political Field'),
   ]),
   page('background.html', ['sections/background.html'], {
     pageTitle: 'Iran Crisis: Background &amp; History \u2014 {{date}}',
-    pageDescription: 'Historical context for the Iran crisis: US-Iran relations from the 1953 coup to the JCPOA collapse, the January Massacre, and the path to Operation Epic Fury.',
-    pageOgDescription: 'From the 1953 CIA coup through the JCPOA collapse, the January Massacre, and the countdown to Operation Epic Fury \u2014 the full historical context.',
+    pageDescription: 'The causal history of the Iran crisis: U.S.–Iran hostility, the failed nuclear bargain, regional deterrence, domestic repression, and the path to the 2026 war.',
+    pageOgDescription: 'Four histories converged into the 2026 Iran war.',
     pageOgType: 'article',
   }, [
     n('01', 'background', 'Overview'), n('02', 'bg-us-iran', 'US-Iran Relations'),
-    n('03', 'bg-nuclear', 'Nuclear Program'), n('04', 'bg-january', 'January Massacre'),
+    n('03', 'bg-nuclear', 'Nuclear Program'), n('04', 'bg-january', 'Legitimacy Crisis'),
     n('05', 'bg-epic-fury', 'Path to War'),
   ]),
   page('sources.html', ['sections/sources.html'], {
     pageTitle: 'Iran Crisis Report \u2014 Sources &amp; References \u2014 {{date}}',
-    pageDescription: 'Full list of sources and references for the Iran Crisis Report, compiled from 40+ international news outlets, think tanks, and official statements.',
-    pageOgDescription: 'Full list of sources and references for the Iran Crisis Report, compiled from 40+ international news outlets, think tanks, and official statements.',
+    pageDescription: 'The Iran Crisis Report source library and publication method: primary bodies, official claims, independent reporting, specialist analysis, and evidence rules.',
+    pageOgDescription: 'How the Iran Crisis Report matches claims to evidence and handles uncertainty.',
     pageOgType: 'website',
   }, [
-    n('01', 'source-reliability', 'Reliability Guide'), n('02', 'sources', 'All Sources'),
+    n('01', 'source-reliability', 'Evidence Rules'), n('02', 'sources', 'Source Library'),
   ]),
 ];
+
+const ATLAS_GLOBAL_NAV = [
+  { slug: 'index', label: 'Overview', href: 'index.html' },
+  { slug: 'iran-military', label: 'Iran Military', href: 'iran-military.html' },
+  { slug: 'forces', label: 'Regional Forces', href: 'forces.html' },
+  { slug: 'diplomatic', label: 'Diplomacy', href: 'diplomatic.html' },
+  { slug: 'inside-iran', label: 'Inside Iran', href: 'inside-iran.html' },
+  { slug: 'reactions', label: 'Reactions', href: 'reactions.html' },
+  { slug: 'analysis', label: 'Analysis', href: 'analysis.html' },
+  { slug: 'scenarios', label: 'Scenarios', href: 'scenarios.html' },
+  { slug: 'opposition', label: 'Opposition', href: 'opposition.html' },
+  { slug: 'background', label: 'Background', href: 'background.html' },
+  { slug: 'sources', label: 'Sources', href: 'sources.html' },
+];
+
+const ATLAS_BRIEFING_ITEMS = [
+  {
+    label: 'Whole situation',
+    status: 'Overview',
+    tone: 'critical',
+    icon: 'ph-navigation-arrow',
+    href: 'index.html',
+    summary: 'The military, maritime, nuclear, political, and human picture in one place.',
+  },
+  {
+    label: 'Iran military',
+    status: 'Capability',
+    tone: 'critical',
+    icon: 'ph-airplane-tilt',
+    href: 'iran-military.html',
+    summary: 'Damage, resilience, retaliation, and the limits of public evidence.',
+  },
+  {
+    label: 'Regional forces',
+    status: 'System',
+    tone: 'warning',
+    icon: 'ph-globe-hemisphere-east',
+    href: 'forces.html',
+    summary: 'Conventional advantage, distributed threats, and exposed partners.',
+  },
+  {
+    label: 'Diplomacy',
+    status: 'Off-ramp',
+    tone: 'diplomatic',
+    icon: 'ph-handshake',
+    href: 'diplomatic.html',
+    summary: 'Verification, Hormuz, sanctions, sequencing, and war termination.',
+  },
+  {
+    label: 'Inside Iran',
+    status: 'State & society',
+    tone: 'warning',
+    icon: 'ph-users-three',
+    href: 'inside-iran.html',
+    summary: 'Civilian harm, government, daily life, repression, and public systems.',
+  },
+  {
+    label: 'Paths ahead',
+    status: 'Indicators',
+    tone: 'neutral',
+    icon: 'ph-binoculars',
+    href: 'scenarios.html',
+    summary: 'Five conditional pathways and the evidence that would move them.',
+  },
+];
+
+const ATLAS_PAGE_DETAILS = {
+  'index.html': {
+    atlasTitle: 'The Whole Situation',
+    atlasKicker: 'Cross-domain briefing',
+    atlasSummary: 'Conventional military dominance has not produced political resolution. Iran still imposes costs through distributed systems and Hormuz while nuclear verification, regional security, and life inside Iran remain unsettled.',
+  },
+  'iran-military.html': {
+    atlasTitle: 'Iran’s Military Position',
+    atlasKicker: 'Capability and response',
+    atlasSummary: 'What severe conventional damage has established, what the public evidence cannot count, how Iran still retaliates, and why Hormuz remains strategically central.',
+  },
+  'forces.html': {
+    atlasTitle: 'Regional Forces',
+    atlasKicker: 'Theater posture',
+    atlasSummary: 'How U.S. and Israeli conventional advantage, Iranian distributed resistance, and the exposure of Gulf partners shape the regional system.',
+  },
+  'diplomatic.html': {
+    atlasTitle: 'Diplomacy & Nuclear Track',
+    atlasKicker: 'Negotiation and leverage',
+    atlasSummary: 'The loss of nuclear verification, the bargaining tracks a durable agreement must connect, and why the June memorandum did not survive July.',
+  },
+  'inside-iran.html': {
+    atlasTitle: 'Inside Iran',
+    atlasKicker: 'State and society',
+    atlasSummary: 'Civilian harm, wartime government, daily economic life, protest and repression, communications controls, water, health, and infrastructure.',
+  },
+  'reactions.html': {
+    atlasTitle: 'Regional & Global Positions',
+    atlasKicker: 'Interests and constraints',
+    atlasSummary: 'How Iran, Israel, Gulf states, and outside powers define security, victory, leverage, and acceptable risk differently.',
+  },
+  'analysis.html': {
+    atlasTitle: 'Strategic Assessment',
+    atlasKicker: 'Synthesis and disagreement',
+    atlasSummary: 'Where the strongest institutional analysis converges on operational facts—and where it diverges over leverage, success, and war termination.',
+  },
+  'scenarios.html': {
+    atlasTitle: 'Paths Ahead',
+    atlasKicker: 'Conditional scenarios',
+    atlasSummary: 'Five pathways organized by mechanism, indicators, and failure conditions rather than unsupported probability.',
+  },
+  'opposition.html': {
+    atlasTitle: 'Opposition & Transition',
+    atlasKicker: 'Political alternatives',
+    atlasSummary: 'Reza Pahlavi’s real but bounded role, competing political currents, and the institutional work required for a legitimate transition.',
+  },
+  'background.html': {
+    atlasTitle: 'How We Got Here',
+    atlasKicker: 'Historical context',
+    atlasSummary: 'How U.S.–Iran hostility, a failed nuclear bargain, regional deterrence, and domestic repression converged into the 2026 war.',
+  },
+  'sources.html': {
+    atlasTitle: 'Sources & Method',
+    atlasKicker: 'Evidence base',
+    atlasSummary: 'The primary bodies, independent reporting, specialist institutions, and publication rules behind the situation picture.',
+  },
+};
 
 // ===== VALIDATION FUNCTIONS =====
 
@@ -297,6 +419,18 @@ function validateNavigation(output) {
   for (const target of sidebarTargets) {
     if (!sectionIds.has(target)) {
       warnings.push(`Navigation: Sidebar links to #${target} but no matching section ID found`);
+    }
+  }
+  return warnings;
+}
+
+function validateAtlasNavigation(output) {
+  const warnings = [];
+  const sectionIds = extractHtmlMatches(output, /\bid=["']([^"']+)["']/g);
+  const localTargets = extractHtmlMatches(output, /class="atlas-local-link"[^>]*href=["']#([^"']+)["']/g);
+  for (const target of localTargets) {
+    if (!sectionIds.has(target)) {
+      warnings.push(`Atlas navigation: Link to #${target} has no matching section ID`);
     }
   }
   return warnings;
@@ -376,6 +510,54 @@ for (const build of BUILDS) {
 
   fs.writeFileSync(path.join(BASE_DIR, build.output), output);
   console.log(`Built ${build.output} from ${build.sections.length} sections.`);
+}
+
+const atlasDir = path.join(BASE_DIR, 'atlas');
+fs.mkdirSync(atlasDir, { recursive: true });
+
+for (const build of BUILDS) {
+  const details = ATLAS_PAGE_DETAILS[build.output];
+  if (!details) {
+    allWarnings.push(`Atlas build: Missing page details for ${build.output}`);
+    continue;
+  }
+
+  const atlasSlug = path.basename(build.output, '.html');
+  const navIndex = ATLAS_GLOBAL_NAV.findIndex(item => item.slug === atlasSlug);
+  const ctx = Object.assign({}, DATA, details, {
+    atlasSlug,
+    atlasGlobalNav: ATLAS_GLOBAL_NAV,
+    atlasBriefingItems: ATLAS_BRIEFING_ITEMS,
+    atlasPrevious: navIndex > 0 ? ATLAS_GLOBAL_NAV[navIndex - 1] : null,
+    atlasNext: navIndex >= 0 && navIndex < ATLAS_GLOBAL_NAV.length - 1
+      ? ATLAS_GLOBAL_NAV[navIndex + 1]
+      : null,
+    originalHref: `../${build.output}`,
+    sidebarNav: build.sidebarNav || [],
+  });
+
+  const atlasSections = [
+    'sections/atlas-head.html',
+    'sections/atlas-header.html',
+    ...build.content,
+    'sections/atlas-footer.html',
+  ];
+  const template = atlasSections.map(file => `{% include "${file}" %}`).join('\n');
+  const output = nunjucks.renderString(template, ctx);
+  const atlasOutput = `atlas/${build.output}`;
+  const outputHash = computeHash(output);
+
+  newHashes[atlasOutput] = outputHash;
+  allWarnings.push(...validateAtlasNavigation(output));
+  allWarnings.push(...checkDuplicateIds(output));
+
+  if (INCREMENTAL && prevHashes[atlasOutput] === outputHash) {
+    console.log(`Skipped ${atlasOutput} (unchanged).`);
+    continue;
+  }
+
+  fs.writeFileSync(path.join(BASE_DIR, atlasOutput), output);
+  console.log(`Built ${atlasOutput} from ${atlasSections.length} sections.`);
 }
 
 if (INCREMENTAL) {

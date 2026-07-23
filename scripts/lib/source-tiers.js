@@ -8,7 +8,8 @@ const SOURCE_TIERS = {
   // Tier 1 — Official government / intergovernmental
   'centcom.mil': 1, 'state.gov': 1, 'defense.gov': 1, 'whitehouse.gov': 1,
   'iaea.org': 1, 'un.org': 1, 'who.int': 1, 'unocha.org': 1,
-  'reliefweb.int': 1, 'treasury.gov': 1,
+  'reliefweb.int': 1, 'treasury.gov': 1, 'iea.org': 1, 'eia.gov': 1,
+  'ukmto.org': 1, 'navy.mil': 1, 'war.gov': 1,
   // Tier 2 — Wire services
   'reuters.com': 2, 'apnews.com': 2, 'france24.com': 2, 'afp.com': 2,
   // Tier 3 — Specialist defence / think-tank
@@ -18,6 +19,8 @@ const SOURCE_TIERS = {
   'carnegieendowment.org': 3, 'brookings.edu': 3, 'atlanticcouncil.org': 3,
   'cfr.org': 3, 'rand.org': 3, 'iiss.org': 3, 'foreignaffairs.com': 3,
   'airforcemag.com': 3, 'maritime-executive.com': 3, 'usni.org': 3,
+  'rusi.org': 3, 'chathamhouse.org': 3, 'mei.edu': 3,
+  'washingtoninstitute.org': 3, 'criticalthreats.org': 3,
   // Tier 4 — Quality broadsheets / networks
   'nytimes.com': 4, 'washingtonpost.com': 4, 'bbc.com': 4, 'bbc.co.uk': 4,
   'cnn.com': 4, 'npr.org': 4, 'theguardian.com': 4, 'ft.com': 4,

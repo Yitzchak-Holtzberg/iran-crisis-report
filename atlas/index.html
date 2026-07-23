@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Whole Situation — Iran Crisis Report</title>
+<meta name="description" content="Conventional military dominance has not produced political resolution. Iran still imposes costs through distributed systems and Hormuz while nuclear verification, regional security, and life inside Iran remain unsettled.">
+<meta property="og:title" content="The Whole Situation — Iran Crisis Report">
+<meta property="og:description" content="Conventional military dominance has not produced political resolution. Iran still imposes costs through distributed systems and Hormuz while nuclear verification, regional security, and life inside Iran remain unsettled.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/atlas.css?v=area-map-2">
+<script>
+  document.documentElement.dataset.atlasRuntimeErrors = '[]';
+  function recordAtlasRuntimeError(message) {
+    var errors = JSON.parse(document.documentElement.dataset.atlasRuntimeErrors || '[]');
+    errors.push(message);
+    document.documentElement.dataset.atlasRuntimeErrors = JSON.stringify(errors);
+  }
+  window.addEventListener('error', function (event) {
+    recordAtlasRuntimeError(event.message || 'Unknown page error');
+  });
+  window.addEventListener('unhandledrejection', function (event) {
+    recordAtlasRuntimeError(String(event.reason || 'Unhandled promise rejection'));
+  });
+  try {
+    if (localStorage.getItem('atlas-theme') === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  } catch (_) {}
+  window.IRAN_REPORT_ASSET_PREFIX = '../';
+  window.IRAN_REPORT_MAP_MODE = 'atlas-hero';
+</script>
+</head>
+<body class="atlas-page atlas-page-index" data-page="index">
+<a class="atlas-skip-link" href="#main-content">Skip to the report</a>
+
+<header class="atlas-site-header">
+  <div class="atlas-header-bar">
+    <a class="atlas-brand" href="index.html" aria-label="Iran Crisis Report overview">
+      <span class="atlas-brand-mark" aria-hidden="true">IR</span>
+      <span class="atlas-brand-copy">
+        <strong>Iran Crisis Report</strong>
+        <small>Whole-situation briefing</small>
+      </span>
+    </a>
+
+    <nav class="atlas-global-nav" id="atlasGlobalNav" aria-label="Situation areas">
+      
+      <a href="index.html" class="is-current" aria-current="page">Overview</a>
+      
+      <a href="iran-military.html">Iran Military</a>
+      
+      <a href="forces.html">Regional Forces</a>
+      
+      <a href="diplomatic.html">Diplomacy</a>
+      
+      <a href="inside-iran.html">Inside Iran</a>
+      
+      <a href="reactions.html">Reactions</a>
+      
+      <a href="analysis.html">Analysis</a>
+      
+      <a href="scenarios.html">Scenarios</a>
+      
+      <a href="opposition.html">Opposition</a>
+      
+      <a href="background.html">Background</a>
+      
+      <a href="sources.html">Sources</a>
+      
+    </nav>
+
+    <div class="atlas-header-actions">
+      <a class="atlas-original-link" href="../index.html">Original</a>
+      <button class="atlas-theme-toggle" id="atlasThemeToggle" type="button">
+        <i class="ph ph-sun" aria-hidden="true"></i>
+        <span class="atlas-visually-hidden">Light theme</span>
+      </button>
+      <button class="atlas-menu-toggle" id="atlasMenuToggle" type="button" aria-expanded="false" aria-controls="atlasGlobalNav">Menu</button>
+    </div>
+  </div>
+</header>
+
+<div class="atlas-page-frame">
+  <aside class="atlas-local-nav" aria-label="On this page">
+    <div class="atlas-local-nav-inner">
+      <p>On this page</p>
+      <nav>
+        
+        <span class="atlas-local-group">Situation</span>
+        
+        <a class="atlas-local-link" href="#stats" data-section="stats">
+          <span>01</span>Whole Picture
+        </a>
+        
+        <a class="atlas-local-link" href="#last-24h" data-section="last-24h">
+          <span>02</span>Latest
+        </a>
+        
+        <a class="atlas-local-link" href="#theater" data-section="theater">
+          <span>03</span>Theater Map
+        </a>
+        
+        <span class="atlas-local-group">Situation lenses</span>
+        
+        <a class="atlas-local-link" href="#military" data-section="military">
+          <span>04</span>Iran Military
+        </a>
+        
+        <a class="atlas-local-link" href="#materiel-losses" data-section="materiel-losses">
+          <span>05</span>Losses & Evidence
+        </a>
+        
+        <a class="atlas-local-link" href="#strike-forces" data-section="strike-forces">
+          <span>06</span>Regional Forces
+        </a>
+        
+        <a class="atlas-local-link" href="#nuclear" data-section="nuclear">
+          <span>07</span>Diplomacy & Nuclear
+        </a>
+        
+        <a class="atlas-local-link" href="#inside-iran" data-section="inside-iran">
+          <span>08</span>Inside Iran
+        </a>
+        
+        <a class="atlas-local-link" href="#reactions" data-section="reactions">
+          <span>09</span>Regional Positions
+        </a>
+        
+        <a class="atlas-local-link" href="#analysis" data-section="analysis">
+          <span>10</span>Assessment
+        </a>
+        
+        <a class="atlas-local-link" href="#scenarios" data-section="scenarios">
+          <span>11</span>Paths Ahead
+        </a>
+        
+        <a class="atlas-local-link" href="#opposition" data-section="opposition">
+          <span>12</span>Opposition
+        </a>
+        
+        <a class="atlas-local-link" href="#background" data-section="background">
+          <span>13</span>Background
+        </a>
+        
+      </nav>
+    </div>
+  </aside>
+
+  <main class="atlas-main" id="main-content">
+    
+    <section class="atlas-overview-stage" aria-labelledby="atlas-page-title">
+      <div class="atlas-briefing-rail">
+        <p class="atlas-eyebrow">Cross-domain briefing</p>
+        <h1 id="atlas-page-title">
+          <span>The whole</span>
+          <strong>Situation</strong>
+        </h1>
+        <hr>
+        <p class="atlas-summary">Conventional military dominance has not produced political resolution. Iran still imposes costs through distributed systems and Hormuz while nuclear verification, regional security, and life inside Iran remain unsettled.</p>
+
+        <p class="atlas-lens-label">Situation lenses</p>
+        <nav class="atlas-domain-briefings" aria-label="Situation lenses">
+          
+          <a class="atlas-domain-briefing atlas-domain-briefing-critical" href="index.html">
+            <span class="atlas-domain-index">01</span>
+            <i class="ph ph-navigation-arrow" aria-hidden="true"></i>
+            <span class="atlas-domain-copy">
+              <span class="atlas-domain-heading">
+                <strong>Whole situation</strong>
+                <small>Overview</small>
+              </span>
+              <span>The military, maritime, nuclear, political, and human picture in one place.</span>
+            </span>
+          </a>
+          
+          <a class="atlas-domain-briefing atlas-domain-briefing-critical" href="iran-military.html">
+            <span class="atlas-domain-index">02</span>
+            <i class="ph ph-airplane-tilt" aria-hidden="true"></i>
+            <span class="atlas-domain-copy">
+              <span class="atlas-domain-heading">
+                <strong>Iran military</strong>
+                <small>Capability</small>
+              </span>
+              <span>Damage, resilience, retaliation, and the limits of public evidence.</span>
+            </span>
+          </a>
+          
+          <a class="atlas-domain-briefing atlas-domain-briefing-warning" href="forces.html">
+            <span class="atlas-domain-index">03</span>
+            <i class="ph ph-globe-hemisphere-east" aria-hidden="true"></i>
+            <span class="atlas-domain-copy">
+              <span class="atlas-domain-heading">
+                <strong>Regional forces</strong>
+                <small>System</small>
+              </span>
+              <span>Conventional advantage, distributed threats, and exposed partners.</span>
+            </span>
+          </a>
+          
+          <a class="atlas-domain-briefing atlas-domain-briefing-diplomatic" href="diplomatic.html">
+            <span class="atlas-domain-index">04</span>
+            <i class="ph ph-handshake" aria-hidden="true"></i>
+            <span class="atlas-domain-copy">
+              <span class="atlas-domain-heading">
+                <strong>Diplomacy</strong>
+                <small>Off-ramp</small>
+              </span>
+              <span>Verification, Hormuz, sanctions, sequencing, and war termination.</span>
+            </span>
+          </a>
+          
+          <a class="atlas-domain-briefing atlas-domain-briefing-warning" href="inside-iran.html">
+            <span class="atlas-domain-index">05</span>
+            <i class="ph ph-users-three" aria-hidden="true"></i>
+            <span class="atlas-domain-copy">
+              <span class="atlas-domain-heading">
+                <strong>Inside Iran</strong>
+                <small>State & society</small>
+              </span>
+              <span>Civilian harm, government, daily life, repression, and public systems.</span>
+            </span>
+          </a>
+          
+          <a class="atlas-domain-briefing atlas-domain-briefing-neutral" href="scenarios.html">
+            <span class="atlas-domain-index">06</span>
+            <i class="ph ph-binoculars" aria-hidden="true"></i>
+            <span class="atlas-domain-copy">
+              <span class="atlas-domain-heading">
+                <strong>Paths ahead</strong>
+                <small>Indicators</small>
+              </span>
+              <span>Five conditional pathways and the evidence that would move them.</span>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+
+      <div class="atlas-map-stage">
+        <div class="atlas-map-slot" id="atlasOverviewMapSlot">
+          <p>Loading the theater map…</p>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="atlas-latest" aria-label="Latest development">
+      <strong>Latest</strong>
+      <p>Sustained U.S. strikes and Iranian retaliation continue while mediation remains active</p>
+    </section>
+
+    <div class="container atlas-article">
+
+<!-- ======== WHOLE PICTURE ======== -->
+<!-- @last-updated:2026-07-23 -->
+<div class="section-header" id="stats" style="margin-top:40px;">
+  <div class="icon icon-blue">&#9672;</div>
+  <div>
+    <h2>The Whole Picture</h2>
+    <div class="section-subtitle">Six connected situations—not one stream of strikes</div>
+  </div>
+</div>
+
+<div class="callout blue">
+  <div class="callout-title">The shortest accurate summary</div>
+  <p>The United States and Israel dominate the conventional campaign, but Iran retains enough distributed capability and geographic leverage to sustain retaliation and disrupt commerce. The June pause did not settle Hormuz, the nuclear file, sanctions, regional deterrence, or the internal future of Iran. July's renewed attacks turned those unresolved questions back into active war.</p>
+</div>
+
+<div class="grid-2col" style="margin-bottom:20px;">
+  <a class="card card-red" href="iran-military.html" style="text-decoration:none;">
+    <h3>Military campaign</h3>
+    <p>Iran's conventional forces are heavily damaged. Missiles, drones, coastal systems, mines, small craft, and reconstitution pathways remain consequential.</p>
+  </a>
+  <a class="card card-blue" href="diplomatic.html" style="text-decoration:none;">
+    <h3>Nuclear and diplomacy</h3>
+    <p>The IAEA cannot account for the current enriched stockpile or verify that enrichment-related activity has stopped. Talks must address both immediate hostilities and lost verification.</p>
+  </a>
+  <a class="card card-gold" href="iran-military.html#hormuz" style="text-decoration:none;">
+    <h3>Hormuz and commerce</h3>
+    <p>The waterway is physically passable but commercially abnormal. Security, routes, volume, insurance, crewing, ports, and political rules are recovering at different speeds.</p>
+  </a>
+  <a class="card card-orange" href="inside-iran.html" style="text-decoration:none;">
+    <h3>State and society</h3>
+    <p>The state remains functional and more militarized. Civilian harm, repression, inflation, damaged services, water stress, and restricted communications compound one another.</p>
+  </a>
+  <a class="card card-green" href="reactions.html" style="text-decoration:none;">
+    <h3>Regional order</h3>
+    <p>Gulf states want protection from Iran without permanent entrapment in an open-ended war. Israeli and U.S. thresholds for ending the campaign are not identical.</p>
+  </a>
+  <a class="card" href="scenarios.html" style="text-decoration:none;">
+    <h3>Paths ahead</h3>
+    <p>An armed pause is easier to reach than a durable settlement. Democratic transition, managed elite adaptation, and fragmentation remain conditional paths with very different indicators.</p>
+  </a>
+</div>
+
+<div class="chart-container">
+  <h4>What would materially change the picture</h4>
+  <table class="force-table">
+    <thead><tr><th>Watch for</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td>A monitored cessation of strikes and vessel attacks</td><td>Separates a real pause from temporary operational quiet</td></tr>
+      <tr><td>IAEA access to affected sites, records, personnel, and material</td><td>Begins reconstruction of the nuclear baseline</td></tr>
+      <tr><td>Sustained, independently measured commercial recovery through Hormuz</td><td>Shows that risk and confidence—not only physical passage—are normalizing</td></tr>
+      <tr><td>Verified elite splits, command failures, or repeated security defections inside Iran</td><td>Would move internal political scenarios from speculation toward evidence</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======== LATEST DEVELOPMENTS ======== -->
+<!-- @last-updated:2026-07-23 -->
+<div class="section-header" id="last-24h">
+  <div class="icon icon-red">&#9650;</div>
+  <div><h2>Latest Developments</h2><div class="section-subtitle">Only changes that materially alter the situation picture</div></div>
+</div>
+
+<div class="chart-container">
+  <table class="force-table">
+    <thead><tr><th>Date</th><th>Development</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>20–22 Jul</strong></td>
+        <td>Repeated U.S. strikes and Iranian retaliation continued, with civilian and critical infrastructure increasingly exposed.</td>
+        <td>The conflict has become a self-reinforcing escalation cycle even as mediation remains active. <a href="https://www.csis.org/analysis/iran-war-entering-dangerous-new-phase" target="_blank" rel="noopener noreferrer">CSIS</a></td>
+      </tr>
+      <tr>
+        <td><strong>22 Jul</strong></td>
+        <td>Public reporting confirmed that the deeply buried Pickaxe Mountain complex has not been inspected and its contents are unknown.</td>
+        <td>The nuclear problem is one of missing verified knowledge, not a settled inventory. <a href="https://apnews.com/article/2df2cbdbab7e21ba26e41cacdfa84e7c" target="_blank" rel="noopener noreferrer">AP</a></td>
+      </tr>
+      <tr>
+        <td><strong>23 Jul</strong></td>
+        <td>OCHA's fourth humanitarian update placed the documented civilian toll through 1 May at at least 3,375 dead and 32,314 injured.</td>
+        <td>The figures are time-bounded and partly dependent on Iranian reporting, but establish the scale of early civilian harm. <a href="https://iran.un.org/en/download/213204/319856" target="_blank" rel="noopener noreferrer">OCHA</a></td>
+      </tr>
+      <tr>
+        <td><strong>Jul report</strong></td>
+        <td>IEA put June Gulf oil exports, including bypass routes, at 16.1 mb/d versus a 24 mb/d prewar average.</td>
+        <td>Recovery was substantial but incomplete before renewed July escalation. <a href="https://www.iea.org/reports/oil-market-report-july-2026" target="_blank" rel="noopener noreferrer">IEA</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======== THEATER MAP ======== -->
+<!-- @last-updated:2026-07-23 -->
+<div class="section-header" id="theater">
+  <div class="icon icon-red">&#9673;</div>
+  <div><h2>The Theater</h2><div class="section-subtitle">Select a marked area to understand its role in the military, maritime, nuclear, or regional picture</div></div>
+</div>
+
+<div class="map-container" style="padding:0;overflow:hidden;position:relative;">
+  <div class="map-search-wrap">
+    <input type="text" id="mapSearch" placeholder="Search places, bases, sites…" class="map-search-input" autocomplete="off">
+    <div id="mapSearchResults" class="map-search-results"></div>
+  </div>
+  <div id="theater-map" style="height:580px;width:100%;border-radius:12px;"></div>
+  <div style="padding:8px 20px;">
+    <div class="layer-toggles" id="layerToggles"><!-- Populated by map.js --></div>
+    <div id="mapStats" class="map-stats"></div>
+    <div class="map-legend" id="mapLegend">
+      <div class="map-legend-item"><div class="dot" style="background:#ff3b3b;"></div>Active incident or Iranian force</div>
+      <div class="map-legend-item"><div class="dot" style="background:#4a90d9;"></div>U.S. / partner force</div>
+      <div class="map-legend-item"><div class="dot" style="background:#ffd700;"></div>Israeli force or site</div>
+      <div class="map-legend-item"><div class="dot" style="background:#ff8c42;"></div>Nuclear site</div>
+      <div class="map-legend-item"><div class="dot" style="background:#00c853;"></div>Diplomatic or support node</div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:4px;">Click a marker for its role and current assessment. Use the layer menu to reduce the picture to the question you are asking.</div>
+  </div>
+</div>
+
+<div class="section-header" id="military">
+  <div class="icon icon-orange">&#9670;</div>
+  <div><h2>Iran's Military Position</h2><div class="section-subtitle">Heavily damaged conventionally; still able to impose asymmetric cost</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>Public evidence supports severe damage, not a complete remaining-inventory count. The key question is how quickly destruction reduces operational effect—and how quickly dispersed systems can be repaired or replaced.</p>
+  <a href="iran-military.html" class="teaser-cta teaser-cta-orange">Open the military assessment &#8599;</a>
+</div>
+
+<div class="section-header" id="materiel-losses">
+  <div class="icon icon-red">&#9876;</div>
+  <div><h2>Losses and Evidence</h2><div class="section-subtitle">A bounded ledger, not belligerent totals presented as ground truth</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>The ledger separates what was struck, damaged, or destroyed; who made the claim; what independent evidence exists; and what cannot be inferred about remaining capability.</p>
+  <a href="iran-military.html#materiel-losses" class="teaser-cta teaser-cta-red">Inspect the ledger &#8599;</a>
+</div>
+
+<div class="section-header" id="strike-forces">
+  <div class="icon icon-cyan">&#9992;&#xFE0E;</div>
+  <div><h2>Regional Forces</h2><div class="section-subtitle">Conventional dominance, distributed resistance, and exposed partners</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>The United States and Israel hold the operational initiative. Iran can still impose cost through geography and distributed systems. Gulf states want those attacks stopped without becoming permanent battlefields.</p>
+  <a href="forces.html" class="teaser-cta teaser-cta-cyan">See the regional system &#8599;</a>
+</div>
+
+<div class="section-header" id="nuclear">
+  <div class="icon icon-orange">&#9762;&#xFE0E;</div>
+  <div><h2>Nuclear and Diplomatic Track</h2><div class="section-subtitle">The problem is missing verification, not a known final nuclear state</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>The IAEA cannot account for the current enriched stockpile or verify that enrichment-related activity has stopped. A viable off-ramp must connect inspection access to the sequencing of strikes, blockade relief, sanctions, and maritime restraint.</p>
+  <a href="diplomatic.html" class="teaser-cta teaser-cta-orange">Open the bargaining map &#8599;</a>
+</div>
+
+<div class="section-header" id="inside-iran">
+  <div class="icon icon-red">&#9632;</div>
+  <div><h2>Inside Iran</h2><div class="section-subtitle">State, society, services, and political life under compound pressure</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>The state remains functional and more militarized. Civilian harm, repression, inflation, water and health strain, damaged infrastructure, and restricted communications make both resilience and dissent hard to measure.</p>
+  <a href="inside-iran.html" class="teaser-cta teaser-cta-red">Understand the internal picture &#8599;</a>
+</div>
+
+<div class="section-header" id="reactions">
+  <div class="icon icon-gold">&#9673;</div>
+  <div><h2>Regional and Global Positions</h2><div class="section-subtitle">The parties do not define security, victory, or acceptable risk the same way</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>Iran seeks survival and leverage; Israel seeks durable prevention of reconstitution; Gulf states seek security without entrapment; outside powers seek energy and trade stability without owning the settlement.</p>
+  <a href="reactions.html" class="teaser-cta teaser-cta-gold">Compare the positions &#8599;</a>
+</div>
+
+<div class="section-header" id="analysis">
+  <div class="icon icon-blue">&#9670;</div>
+  <div><h2>Assessment</h2><div class="section-subtitle">Where serious analysis converges—and where policy judgments diverge</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>The operational result is clear: severe Iranian conventional damage. The strategic result is not: distributed retaliation, Hormuz, nuclear uncertainty, and the absence of a durable end state keep the outcome open.</p>
+  <a href="analysis.html" class="teaser-cta teaser-cta-blue">Read the synthesis &#8599;</a>
+</div>
+
+<div class="section-header" id="scenarios">
+  <div class="icon icon-gold">&#8645;</div>
+  <div><h2>Paths Ahead</h2><div class="section-subtitle">Five conditional pathways, without false probability</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p><strong>Central:</strong> an armed pause that defers the hardest questions. <strong>Plausible:</strong> a sequenced settlement or managed elite transition. <strong>Contingent:</strong> democratic transition or chaotic fragmentation.</p>
+  <a href="scenarios.html" class="teaser-cta teaser-cta-gold">Explore the indicators &#8599;</a>
+</div>
+
+<div class="section-header" id="opposition">
+  <div class="icon icon-green">&#9734;</div>
+  <div><h2>Opposition and Transition</h2><div class="section-subtitle">A broad political field with no accepted government-in-waiting</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>Reza Pahlavi is consequential but not representative by default. Monarchists, republicans, civic networks, minority movements, labor, students, and the MEK disagree over leadership, territorial order, intervention, and transition.</p>
+  <a href="opposition.html" class="teaser-cta teaser-cta-gold">Map the opposition field &#8599;</a>
+</div>
+
+<div class="section-header" id="background">
+  <div class="icon icon-cyan">&#9776;</div>
+  <div><h2>How We Got Here</h2><div class="section-subtitle">Four histories converged into the 2026 war</div></div>
+</div>
+<div class="card teaser-bottom">
+  <p>U.S.–Iranian hostility, the failure of the nuclear bargain, regional deterrence through partners, and Iran's domestic legitimacy crisis created the conditions in which each side believed delay was more dangerous than action.</p>
+  <a href="background.html" class="teaser-cta teaser-cta-cyan">Read the causal history &#8599;</a>
+</div>
+
+    </div>
+
+    <nav class="atlas-sequence" aria-label="Continue through the report">
+      
+      <span></span>
+      
+      
+      <a href="iran-military.html" class="atlas-sequence-next">
+        <span>Continue</span>
+        <strong>Iran Military</strong>
+      </a>
+      
+    </nav>
+  </main>
+</div>
+
+<footer class="atlas-footer">
+  <div>
+    <p>Facts, assessments, forecasts, and source material remain separated throughout the report.</p>
+    <nav aria-label="Report utilities">
+      <a href="sources.html">Sources</a>
+      <a href="sources.html#source-reliability">Method</a>
+      <a href="../index.html">Original interface</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="atlas-back-to-top" id="atlasBackToTop" type="button" aria-label="Back to top">Top</button>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>
+<script src="../js/atlas-areas.js?v=area-map-5"></script>
+<script src="../js/map.js?v=area-map-5"></script>
+<script src="../js/atlas.js?v=area-map-5"></script>
+</body>
+</html>

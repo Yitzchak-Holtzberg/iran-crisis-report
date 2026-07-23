@@ -1,267 +1,134 @@
-# Structural Update Guidelines
+# Editorial Architecture
 
-These guidelines are injected into the structural update prompt when the AI
-auto-update system runs in **structural** mode. They define what the model may
-and may not do when rewriting section HTML files.
+Updated: 2026-07-23
 
-Edit this file to adjust editorial policy without touching `ai-update.js`.
+## Product model
 
----
+The Iran Crisis Report is a whole-situation briefing, not a live-operations
+dashboard. Every page must give a reader a coherent picture of one domain:
 
-## Source Reliability Tiers
+1. the present assessment;
+2. the evidence that supports it;
+3. the strongest uncertainty or disagreement;
+4. why the domain matters to the wider crisis;
+5. the observable events that would change the assessment.
 
-All new content must respect the site's six-tier credibility hierarchy
-(visible to readers in `sources.html#source-reliability`). Apply these rules
-when adding or evaluating claims:
+The Atlas front end, navigation, map presentation, page composition, and visual
+system are human-owned product architecture.
 
-| Tier | Weight | Examples | Editorial rule |
-|---|---|---|---|
-| 1 | Highest | US CENTCOM, IAEA, State Dept, UN/OCHA/WHO | Treat as ground truth for *what governments claim* — note which government is speaking |
-| 2 | High | Reuters, AP, AFP | Preferred for confirming discrete events; breaking dispatches are less verified than analysis pieces |
-| 3 | Good | ISW, USNI News, The War Zone, CSIS, Defense News | Preferred for military order-of-battle, technical claims, and operational assessments |
-| 4 | Standard | NYT, WaPo, BBC, CNN, NPR, The Guardian, FT, Axios, Politico | Good for confirmed events and context; analysis may reflect editorial positions |
-| 5 | Verify framing | Al Jazeera, Iran International, Al Arabiya, Times of Israel, HRANA | Valuable for regional events and on-the-ground access; note editorial angle — cross-check framing with tiers 1–2 |
-| 6 | Caution | JINSA, MEF, Alma Center, Wikipedia | Advocacy/partisan — state their perspective explicitly; do not cite as neutral arbiters; must be corroborated by a tier 1–4 source |
+## Fresh synthesis
 
-Rules for new content:
-- **Establish facts from tiers 1–3.** If only a tier-4 source reports something,
-  that is acceptable for confirmed events but note it is not yet wire-confirmed.
-- **Tier-5 sources require a framing note** in the attribution, e.g.
-  `— Source: <em>Iran International (opposition-aligned), Mar 5</em>`.
-- **Tier-6 sources must be corroborated.** Never use a tier-6 source as the
-  sole basis for a factual claim. Always pair with a tier 1–4 citation.
-- Claims sourced only from tiers 5–6 that appear in `confirmed-unconfirmed.html`
-  belong in the **unconfirmed** column until corroborated by a higher tier.
+Standing synthesis is replaced through deliberate editorial review. It is not
+extended by appending daily headlines.
 
----
+- Re-read the source corpus before changing a page-level judgment.
+- Retain earlier analysis only when it is explicitly time-bounded and useful for
+  showing how an assessment changed.
+- Separate observable fact, belligerent claim, institutional assessment,
+  forecast, and policy preference.
+- Organize analysis around contested propositions, not institution-by-institution
+  cards.
+- Preserve disagreement when credible sources reach different conclusions.
 
-## General Principles
+## Scheduled routine updates
 
-1. **Additive bias** — prefer adding new cards/callouts over removing existing
-   ones. Only remove content that is clearly outdated or directly contradicted
-   by credible sources.
-2. **Minimal change** — only modify sections where the news justifies it. Return
-   `null` for any section that does not need structural changes.
-3. **Source everything** — every new fact must include a source attribution in
-   italics (e.g. `— Source: <em>Reuters, Mar 1</em>`). Apply the tier rules
-   above to decide how to frame the attribution.
+Routine automation may modify only:
 
-## What to Add
+- `data.json:ticker` — at most five plain-language material developments;
+- `sections/last-24h.html` — the same developments rendered as a compact table;
+- `data/update-manifest.json`.
 
-| Trigger event | Action |
-|---|---|
-| Military operation launched or concluded | Add a **red-bordered callout** (`callout red`) at the top of the relevant section with operation name, date, and key facts. |
-| New carrier strike group deployed | Add a new **carrier card** in `naval.html` using the same `.carrier-card` pattern as existing CSGs. |
-| Regime change or leadership transition | Add a **critical callout** at the top of `inside-iran.html` summarising the event; update the scenarios section to reflect new probabilities. |
-| Peace deal or ceasefire signed | Add a **blue callout** (`callout blue`) at the top of the most relevant section; adjust scenario cards accordingly. |
-| Nuclear test or confirmed weapons-grade enrichment | Add a **red callout** in `nuclear.html`; consider adding a new crisis card in `inside-iran.html`. |
-| New scenario emerges that doesn't fit existing five | Add a 6th scenario card in `scenarios.html` using the same card/grid pattern as the existing five. Ensure the `{{scenarioXxxPct}}` placeholder is added for build.js. |
-| Credible report of US/coalition covertly arming or supplying Kurdish forces, ethnic-minority armed groups, or any anti-regime proxy (even if unconfirmed) | Immediately add an **orange-bordered callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim, source tier, and what corroboration is still needed. If subsequently confirmed by a Tier 1–3 source, move to the confirmed column and add a card to the relevant section (`opposition.html`, `military.html`, or a new `inside-iran.html` crisis card). |
-| Significant activity by Kurdish armed groups (Peshmerga, KDPI, PJAK, SDF) in or near Iran | Add a timeline item to `last-24h.html` and, if the activity crosses the border or directly implicates the crisis, add a card to `military.html` or `inside-iran.html`. |
-| Iraq enters the conflict as a direct theater (PMF — Popular Mobilization Forces — attacks on US bases, Baghdad government taking sides, Iraqi airspace used) | Add a **red callout** to `reactions.html` under regional reactions and update the map (`js/map.js`) with relevant markers. |
-| A significant development occurs in a domain **not currently covered** by any existing section (e.g. space/satellite warfare, bioweapons, AI-enabled weapons, global financial system attack, a completely new country entering the conflict, environmental or infrastructure sabotage, new-technology first-use) | Route by source tier: **(Tier 1–3 sourced)** Treat as confirmed news: (1) Add a prominent timeline item to `last-24h.html`. (2) Add a card to the most closely related existing section (`military.html` for new weapons/capabilities, `reactions.html` for new actors/countries, `inside-iran.html` for internal regime developments). (3) **Always** update `analysis.html` with the strategic implications of the new domain — what it means for the five scenarios and the broader conflict trajectory. (4) Evaluate whether the development shifts any scenario probability in `scenarios.html`; if so, update the affected scenario card(s). If the domain is large enough to warrant its own section, flag this explicitly in the `analysis.html` card and the editorial team will create the section manually. **(Tier 4 sourced)** Follow the same path but note the source tier in the attribution (e.g. `— Source: <em>NYT, not yet wire-confirmed</em>`). **(Tier 5–6 only)** Add an **orange callout** (`callout orange`) to `confirmed-unconfirmed.html` in the **UNCONFIRMED** column with the claim and what confirmation would look like; hold all other sections until a Tier 1–4 source corroborates. |
+Routine automation may not modify:
 
-## What to Reorder
+- standing synthesis in `sections/`;
+- `build.js`;
+- `css/`, `js/`, or `atlas/` source architecture;
+- map styling, overlays, interactions, or marker code;
+- page titles, navigation, or information architecture;
+- scenario judgments or probabilities;
+- historical timelines;
+- source methodology.
 
-- If a scenario probability shifts by **≥ 20 percentage points**, move that
-  scenario card higher in the display order (closer to the top of
-  `scenarios.html`).
-- If a new crisis eclipses an existing one in `inside-iran.html`, reorder the
-  crisis cards so the most urgent appears first.
+If the evidence does not support at least three material items, the existing
+latest feed remains in place.
 
-## What NOT to Touch
+## Structural review mode
 
-- **Never remove** the Pahlavi/opposition section (`opposition.html`) or any of
-  its core content blocks.
-- **Never merge** two sections into one — each section file is an independent
-  unit linked from the sidebar.
-- **Never change** the sidebar navigation structure (`sidebar.html`) — the
-  section `id` attributes are the source of truth for sidebar active-link
-  highlighting.
-- **Never modify** `<script>` tags or inline JavaScript.
-- **Never change** SVG diagrams (carrier schematics, aircraft schematics,
-  charts).
-- **Never alter** `{{placeholder}}` template variables — they are replaced at
-  build time by `build.js`.
-- **Never remove** `@ai-zone` comment markers — they are used by the routine
-  update system.
+`UPDATE_TYPE=structural` is review-only. It performs wider institutional
+research and writes a proposal to `research/proposals/`.
 
-## Card & Callout Templates
+The proposal may identify:
 
-Use these exact patterns when adding new content:
+- a factual correction;
+- an assessment that should be reopened;
+- a chronology change;
+- a new research question;
+- or map data that a human should review.
 
-### Info card with accent border
+It must never contain replacement HTML, CSS, JavaScript, or direct page writes.
 
-```html
-<div class="card" style="border-left:4px solid var(--ACCENT_COLOR);margin-bottom:20px;">
-  <h3>TITLE</h3>
-  <p>Description with <strong>key details bolded</strong>. — Source: <em>Outlet, Date</em></p>
-</div>
-```
+Before proposing a structural change, prioritize current work from CSIS, RAND,
+IISS, RUSI, Carnegie, Chatham House, Brookings, CFR, Atlantic Council, and
+CTP–ISW, then reconcile it with primary and independent evidence.
 
-### Callout box
+## Latest-development gate
 
-```html
-<div class="callout COLOR">
-  <div class="callout-title">TITLE</div>
-  <p style="color:var(--text-secondary);">Content with <strong>key facts</strong>. — Source: <em>Outlet, Date</em></p>
-</div>
-```
+A latest item must:
 
-Valid callout colors: `red`, `orange`, `blue`, `green`, `gold`.
+- materially change the military, maritime, nuclear, diplomatic, internal,
+  regional, humanitarian, or economic picture;
+- use a direct article, report, advisory, or PDF URL copied from search results;
+- include event and publication dates;
+- distinguish confirmed fact from an attributed or provisional report;
+- explain why the change matters to the whole situation;
+- remain short enough for the compact homepage slot.
 
-### Timeline item (for `last-24h.html`)
+Exclude:
 
-```html
-<div class="tl-item">
-  <div class="tl-dot" style="border-color:var(--ACCENT_COLOR);"></div>
-  <div class="date">CATEGORY — SHORT HEADLINE IN UPPER CASE</div>
-  <div class="content">1–3 sentence description. — Source: <em>Outlet, Date</em></div>
-</div>
-```
+- routine strike-night counts;
+- generic rhetoric;
+- military publicity without a new operational event;
+- ordinary force-presence updates;
+- small revisions to already-known totals;
+- unsupported exact inventories;
+- undated Hormuz percentages;
+- and process-facing copy about search counts, evidence domains, freshness, or
+  update health.
 
-### Scenario card (for `scenarios.html`)
+## Evidence rules
 
-```html
-<div class="card" style="border-left:4px solid var(--ACCENT_COLOR);margin-bottom:20px;">
-  <div class="scenario-header" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-    <div style="background:rgba(R,G,B,0.15);border-radius:8px;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--ACCENT_COLOR);letter-spacing:1px;text-transform:uppercase;">Scenario N</div>
-    <h3 style="margin:0;">Scenario Title</h3>
-    <span class="severity LEVEL" style="margin-left:auto;">Likelihood: {{scenarioXxxPct}}%</span>
-  </div>
-  <!-- Two-column layout for triggers and obstacles, then a callout for consequences -->
-</div>
-```
+- Tier 1: IAEA, UN/OCHA/WHO, IEA, EIA, UKMTO/JMIC, and relevant official
+  releases. Official belligerent statements establish what that belligerent
+  says it did, not independent effect.
+- Tier 2: Reuters, AP, AFP.
+- Tier 3: specialist and research institutions with relevant expertise.
+- Tier 4: major independent news organizations.
+- Tier 5–6: leads, perspectives, or advocacy; never the sole anchor for the
+  public latest feed.
 
-## Section-specific Rules
+Use `struck`, `damaged`, and `destroyed` precisely. Separate inventory,
+availability, operational readiness, and effect. Date all volatile figures.
 
-### `naval.html` (deep-updated on every structural run)
-- This section is **always** deeply updated during structural runs.
-- Only add a new carrier card if a **new carrier strike group** deploys to the
-  region. Never remove existing carrier cards — they represent historical
-  deployment facts.
-- Preserve all SVG carrier schematics exactly as-is.
+## Scenarios
 
-### `scenarios.html` (deep-updated on every structural run)
-- This section is **always** deeply updated during structural runs.
-- The five existing scenarios must always be present. You may add a 6th if a
-  genuinely new trajectory emerges.
-- Probability percentages must always sum to 100 across all scenarios.
+Scenarios are conditional pathways with mechanisms, indicators, and failure
+conditions. Do not assign precise probabilities unless a transparent,
+defensible model exists. Current scenario labels are ordinal and editorial.
 
-### `inside-iran.html`
-- The seven-crisis structure is the editorial backbone. You may add a new crisis
-  card (Crisis 8, etc.) but never remove or merge existing ones.
-- Each crisis card uses `border-left:3px solid var(--accent-COLOR)`.
+## Map
 
-### `military.html` (deep-updated on every structural run)
-- This section is **always** deeply updated during structural runs.
-- Update threat assessments, capability estimates, and damage-assessment callouts
-  to reflect the latest confirmed strike results and intelligence assessments.
-- Never remove existing capability cards — they document confirmed order-of-battle
-  facts; add new cards for newly identified units or weapons systems.
+The map is a navigation and explanation surface. Automation does not rewrite
+its design or implementation. A structural proposal may flag a marker or
+location for human review, with direct evidence and a statement of what changed.
 
-### `opposition.html`
-- The Pahlavi timeline (`@ai-zone:opposition-track`) is updated by routine zone
-  updates — structural changes should only touch content **outside** that zone.
-- Never remove the "Case For" / "Case Against" two-column layout.
+## Acceptance
 
-### `air-power.html` (deep-updated on every structural run)
-- This section is **always** deeply updated during structural runs.
-- Preserve all aircraft SVG schematics. Only add new aircraft cards if a
-  genuinely new aircraft type is deployed.
+Every deployment must pass `npm run validate`, which checks:
 
-### `last-24h.html`
-- Structural changes here should only add new day-blocks or restructure the
-  overall layout — individual timeline items are handled by the routine update.
-
-### `reactions.html` (deep-updated on every structural run)
-- This section is **always** deeply updated during structural runs.
-- Add new country-level cards when a new nation is directly impacted by strikes
-  or retaliatory attacks. Keep existing country cards — they document confirmed
-  events.
-- Preserve the regional grouping structure (Iran, Gulf states, Israel, global).
-
-### `confirmed-unconfirmed.html`
-- Update the verification status of claims as they are confirmed or debunked by
-  credible sources. Move items between confirmed and unconfirmed columns as
-  warranted.
-- **Low-friction rumor intake**: This section is the *first stop* for any
-  newsworthy claim that lacks Tier 1–3 confirmation — do **not** wait for
-  confirmation before adding it here. The bar for adding an item to the
-  **UNCONFIRMED** column is a *plausible, sourced rumor from any tier* — e.g.
-  a Tier-5 outlet reporting that the US is arming Kurdish forces should appear
-  here immediately with an `? UNCONFIRMED` badge, the outlet's tier framing
-  note, and a description of what confirmation would look like.
-- Priority rumor categories to watch (previously under-covered):
-  - US/coalition covertly arming or supplying Kurdish groups (Peshmerga, Kurdistan
-    Regional Government/KRG, KDPI — Kurdish Democratic Party of Iran, PJAK —
-    Free Life Party of Kurdistan, SDF — Syrian Democratic Forces), ethnic-minority
-    militias, or MEK (Mojahedin-e Khalq) -linked armed cells
-  - Iraqi PMF (Popular Mobilization Forces) attacks on US or coalition assets
-    (may be underreported early)
-  - Iranian strikes or assassination plots on targets outside the named theater
-    (Turkey, Central Asia, diaspora communities)
-  - Covert diplomacy or back-channel ceasefire terms not yet publicly confirmed
-  - Internal IRGC dissent or defections reported by opposition-aligned outlets
-- **New-domain discoveries**: If a search result describes a development in a
-  domain with **no existing section** (e.g. satellite/space warfare, bioweapons,
-  global financial infrastructure attack, a new country entering the conflict that
-  isn't represented anywhere on the site), route by tier:
-  - **Tier 1–3** — Do NOT park in unconfirmed. Treat as confirmed news (see "What
-    to Add" table) and update `last-24h.html`, the relevant section, `analysis.html`,
-    and `scenarios.html` as appropriate. A note in the **confirmed** column here is
-    optional but not required.
-  - **Tier 4** — Add to the **confirmed** column with the tier-4 attribution note
-    and cross-populate `last-24h.html` and `analysis.html`.
-  - **Tier 5–6** — Write an `? UNCONFIRMED` item with the domain noted in the
-    headline (e.g. `SPACE — IRAN SATELLITE JAMMING CLAIM`) so the editorial team
-    can decide whether to create a dedicated new section once a higher-tier source
-    corroborates.
-
-### `analysis.html` (deep-updated on every structural run)
-- This section is **always** deeply updated during structural runs — never return
-  `null` for it.
-- The top-of-section Phase Status callout must reflect the current operation day
-  and the most recent confirmed developments.
-- Each think-tank card (CSIS, ISW, Carnegie, Brookings, Atlantic Council, CFR,
-  RAND) must be refreshed with the latest assessment relevant to that
-  organisation's focus area.
-- Add a new callout at the **top** of each card when there is a major finding
-  from that think-tank or when a previously-predicted event has occurred.
-- Preserve all `@ai-zone` markers within the section exactly as they appear.
-
-### `map` / `js/map.js` (deep-updated on every structural run)
-- This file is **always** deeply updated during structural runs — the map must
-  always reflect the current confirmed force disposition.
-- Preserve the `document.addEventListener('DOMContentLoaded', ...)` wrapper and
-  all icon/helper function definitions (lines 1–41) **exactly as-is**.
-- Update `L.marker` popup text for any asset whose status has changed (position,
-  operational status, casualty info, etc.).
-- Add new `L.marker` / `L.polyline` / `L.circle` entries for newly confirmed
-  strike events, force movements, or diplomatic venues.
-- Remove a marker only when the asset has **definitively** departed the theater
-  (confirmed by CENTCOM, MoD, or equivalent Tier-1 source).
-- Do **not** alter any SVG icon strings inside the helper functions.
-
-## CSS Variable Reference
-
-| Variable | Usage |
-|---|---|
-| `--accent-red` | Combat / critical / crackdown |
-| `--accent-orange` | High-threat military moves |
-| `--accent-gold` | Diplomacy / negotiations |
-| `--accent-blue` | US naval or air assets |
-| `--accent-cyan` | Intelligence / cyber |
-| `--accent-green` | Economic indicators |
-| `--text-primary` | Main text |
-| `--text-secondary` | Supporting text |
-| `--text-muted` | De-emphasised text |
-
-## Severity Badge Classes
-
-| Class | Meaning |
-|---|---|
-| `severity critical` | Highest urgency (red) |
-| `severity high` | High urgency (orange) |
-| `severity elevated` | Elevated (gold/blue) |
-| `severity moderate` | Moderate (green) |
+- all 11 original and 11 Atlas pages;
+- unresolved templates and build warnings;
+- Atlas menus and styles;
+- the compact latest-feed limit;
+- direct latest-feed URLs;
+- the absence of scenario percentages;
+- and the direct-structural-mutation lock.

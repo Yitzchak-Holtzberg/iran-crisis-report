@@ -1,37 +1,26 @@
 <!-- ======== THEATER MAP ======== -->
-<!-- @last-updated:2026-03-15 -->
+<!-- @last-updated:2026-07-23 -->
 <div class="section-header" id="theater">
-  <div class="icon" style="background:rgba(255,59,59,0.15);">&#9673;</div>
-  <div><h2>Theater of Operations</h2><div style="font-size:13px;color:var(--text-muted);margin-top:2px;"><b style="color:var(--accent-red);">OPERATION EPIC FURY — DAY 16 ACTIVE — Mar 15, 2026</b> &bull; Interactive force deployment &amp; strike map — Persian Gulf &amp; Eastern Mediterranean &bull; <strong style="color:var(--accent-red);">NEW:</strong> Kharg Island struck; additional US amphibious forces deployed</div></div>
-  <span class="severity critical" style="margin-left:auto;">ACTIVE</span>
+  <div class="icon icon-red">&#9673;</div>
+  <div><h2>The Theater</h2><div class="section-subtitle">Select a marked area to understand its role in the military, maritime, nuclear, or regional picture</div></div>
 </div>
 
 <div class="map-container" style="padding:0;overflow:hidden;position:relative;">
-<div class="map-search-wrap">
-  <input type="text" id="mapSearch" placeholder="Search ships, bases, sites..." class="map-search-input" autocomplete="off">
-  <div id="mapSearchResults" class="map-search-results"></div>
-</div>
-<div id="theater-map" style="height:580px;width:100%;border-radius:12px;"></div>
-<div style="padding:8px 20px;">
-<div class="layer-toggles" id="layerToggles">
-  <!-- Populated dynamically by map.js -->
-</div>
-<div id="mapStats" class="map-stats"></div>
-<div class="map-legend" id="mapLegend">
-  <div class="map-legend-item"><div class="dot" style="background:#4a90d9;"></div>US Carriers (CVN)</div>
-  <div class="map-legend-item"><div class="dot" style="background:#0055a4;"></div>French Carrier (PA)</div>
-  <div class="map-legend-item"><div class="dot" style="background:#4a90d9;border:2px solid #6ab0ff;width:8px;height:8px;"></div>US Destroyers/Cruisers</div>
-  <div class="map-legend-item"><div class="dot" style="background:#6ab0ff;width:7px;height:7px;"></div>US LCS (Gulf)</div>
-  <div class="map-legend-item"><div class="dot" style="background:#7a5af0;"></div>US Submarine</div>
-  <div class="map-legend-item"><div class="dot" style="background:#00d4ff;"></div>US/UK Air Bases</div>
-  <div class="map-legend-item"><div class="dot" style="background:#ffd700;"></div>Israeli Forces</div>
-  <div class="map-legend-item"><div class="dot" style="background:#ff3b3b;"></div>Iranian Protests / Forces</div>
-  <div class="map-legend-item"><div class="dot" style="background:#ff8c42;"></div>Nuclear Facilities</div>
-  <div class="map-legend-item"><div class="dot" style="background:#00c853;"></div>Saudi Assistance</div>
-  <div class="map-legend-item"><div class="dot" style="background:#ff3b3b;box-shadow:0 0 6px #ff3b3b;"></div>Strike / Incident (Confirmed)</div>
-  <div class="map-legend-item"><div class="dot" style="background:transparent;border:1px dashed #ff3b3b;"></div>Access Denied (UK)</div>
-  <div class="map-legend-item"><div class="dot" style="background:transparent;border:1px dashed #4a90d9;"></div>Carrier Deploying</div>
-</div>
-<div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:4px;">Click any marker for details &bull; Scroll to zoom disabled — use +/- buttons &bull; Dashed red lines = Iranian missile corridors &bull; Dashed blue = US strike corridors</div>
-</div>
+  <div class="map-search-wrap">
+    <input type="text" id="mapSearch" placeholder="Search places, bases, sites…" class="map-search-input" autocomplete="off">
+    <div id="mapSearchResults" class="map-search-results"></div>
+  </div>
+  <div id="theater-map" style="height:580px;width:100%;border-radius:12px;"></div>
+  <div style="padding:8px 20px;">
+    <div class="layer-toggles" id="layerToggles"><!-- Populated by map.js --></div>
+    <div id="mapStats" class="map-stats"></div>
+    <div class="map-legend" id="mapLegend">
+      <div class="map-legend-item"><div class="dot" style="background:#ff3b3b;"></div>Active incident or Iranian force</div>
+      <div class="map-legend-item"><div class="dot" style="background:#4a90d9;"></div>U.S. / partner force</div>
+      <div class="map-legend-item"><div class="dot" style="background:#ffd700;"></div>Israeli force or site</div>
+      <div class="map-legend-item"><div class="dot" style="background:#ff8c42;"></div>Nuclear site</div>
+      <div class="map-legend-item"><div class="dot" style="background:#00c853;"></div>Diplomatic or support node</div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:4px;">Click a marker for its role and current assessment. Use the layer menu to reduce the picture to the question you are asking.</div>
+  </div>
 </div>

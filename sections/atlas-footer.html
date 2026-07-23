@@ -1,0 +1,39 @@
+    </div>
+
+    <nav class="atlas-sequence" aria-label="Continue through the report">
+      {% if atlasPrevious %}
+      <a href="{{atlasPrevious.href}}" class="atlas-sequence-previous">
+        <span>Previous</span>
+        <strong>{{atlasPrevious.label}}</strong>
+      </a>
+      {% else %}
+      <span></span>
+      {% endif %}
+      {% if atlasNext %}
+      <a href="{{atlasNext.href}}" class="atlas-sequence-next">
+        <span>Continue</span>
+        <strong>{{atlasNext.label}}</strong>
+      </a>
+      {% endif %}
+    </nav>
+  </main>
+</div>
+
+<footer class="atlas-footer">
+  <div>
+    <p>Facts, assessments, forecasts, and source material remain separated throughout the report.</p>
+    <nav aria-label="Report utilities">
+      <a href="sources.html">Sources</a>
+      <a href="sources.html#source-reliability">Method</a>
+      <a href="{{originalHref}}">Original interface</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="atlas-back-to-top" id="atlasBackToTop" type="button" aria-label="Back to top">Top</button>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" crossorigin="anonymous"></script>
+<script src="../js/atlas-areas.js?v=area-map-5"></script>
+<script src="../js/map.js?v=area-map-5"></script>
+<script src="../js/atlas.js?v=area-map-5"></script>
+</body>
+</html>

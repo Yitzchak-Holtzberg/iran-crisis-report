@@ -19,6 +19,12 @@ function sanitizeMarkdown(html) {
 const ZONE_RE = /<!-- @ai-zone:([\w-]+) -->([\s\S]{0,10000}?)<!-- @\/ai-zone:\1 -->/g;
 const VALID_ZONE_ID = /^[\w-]+$/;
 
+// All current zones contain standing synthesis or reader-facing architecture.
+// Routine automation is intentionally locked out. Add a zone here only after
+// it has been redesigned as a narrowly time-bounded status field with its own
+// source and expiry validation.
+const ROUTINE_ZONE_ALLOWLIST = new Set();
+
 /**
  * Scan all sections/*.html files and return a map of:
  *   { zoneId → [{ filePath, outerMatch, innerContent }, ...] }
@@ -133,9 +139,12 @@ You MUST preserve these markers and follow these rules:
  */
 async function updateZones(searchContext, { baseDir, callGPT }) {
   const zones = discoverZones(baseDir);
+  for (const zoneId of Object.keys(zones)) {
+    if (!ROUTINE_ZONE_ALLOWLIST.has(zoneId)) delete zones[zoneId];
+  }
   const zoneCount = Object.keys(zones).length;
   if (zoneCount === 0) {
-    console.log('No @ai-zone markers found in sections/ — skipping zone updates.');
+    console.log('No routine-safe @ai-zone markers are allowlisted — standing synthesis is locked.');
     return { zonesUpdated: [], filesUpdated: [] };
   }
 
@@ -245,4 +254,4 @@ async function updateZones(searchContext, { baseDir, callGPT }) {
   return { zonesUpdated, filesUpdated };
 }
 
-module.exports = { sanitizeMarkdown, updateZones, ZONE_RE };
+module.exports = { sanitizeMarkdown, updateZones, ZONE_RE, ROUTINE_ZONE_ALLOWLIST };
