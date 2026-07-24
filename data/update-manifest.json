@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-04T12:09:40.931Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 64,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 48
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Unexpected end of JSON input"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 11
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 46,
-          "linesRemoved": 0,
-          "sizeChange": 6207
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-05T12:11:10.893Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2683,6 +2638,62 @@
           "linesAdded": 41,
           "linesRemoved": 0,
           "sizeChange": 5807
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-24T11:41:23.829Z",
+      "type": "auto",
+      "effectiveType": "routine",
+      "phases": {
+        "search": {
+          "queries": 15,
+          "gapQueries": 3,
+          "uniqueResults": 58,
+          "tierDropped": 0,
+          "status": "ok",
+          "evidenceDomains": 43
+        },
+        "dataJson": {
+          "status": "ok"
+        },
+        "timeline": {
+          "status": "ok",
+          "added": 7,
+          "fullRebuild": true
+        },
+        "zones": {
+          "status": "ok",
+          "zonesUpdated": [
+            "hormuz-wti-price",
+            "carrier-lincoln-position",
+            "reactions-global-energy",
+            "reactions-gulf-callouts"
+          ],
+          "filesUpdated": [
+            "hormuz.html",
+            "naval.html",
+            "reactions-global.html",
+            "reactions-gulf.html"
+          ]
+        },
+        "structural": {
+          "status": "skipped",
+          "reason": "routine update"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -44
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 36,
+          "linesRemoved": 0,
+          "sizeChange": 5274
         }
       ]
     }
