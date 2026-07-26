@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function(){
   var ATLAS_STYLE = 'https://api.maptiler.com/maps/streets-v2/style.json?key=' + MAPTILER_KEY;
   var isLight = document.documentElement.getAttribute('data-theme') === 'light';
   var isAtlasHero = window.IRAN_REPORT_MAP_MODE === 'atlas-hero';
+  var usesCooperativeGestures = isAtlasHero &&
+    window.matchMedia('(max-width: 760px), (pointer: coarse)').matches;
   var initialCenter = isAtlasHero ? [50.8, 30.4] : [46, 30];
   var initialZoom = isAtlasHero ? 4.35 : 3.5;
 
@@ -17,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function(){
     center: initialCenter,
     zoom: initialZoom,
     attributionControl: false,
-    scrollZoom: false
+    scrollZoom: false,
+    cooperativeGestures: usesCooperativeGestures
   });
   map.addControl(new maplibregl.NavigationControl({showCompass:false}), 'top-right');
   map.addControl(new maplibregl.FullscreenControl(), 'top-right');

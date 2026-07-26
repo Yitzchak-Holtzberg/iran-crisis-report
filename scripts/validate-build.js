@@ -63,6 +63,18 @@ if (!classicHome.includes('class="masthead"') || !classicHome.includes('href="cl
   fail('classic.html does not preserve the previous interface and its home navigation');
 }
 
+const atlasIndexHtml = read(path.join('atlas', 'index.html'));
+const situationLinkCount = (atlasIndexHtml.match(/class="card [^"]*atlas-situation-link"/g) || []).length;
+const situationActionCount = (atlasIndexHtml.match(/class="atlas-situation-link-action"/g) || []).length;
+if (situationLinkCount !== 6 || situationActionCount !== 6) {
+  fail(`Atlas Whole Picture has ${situationLinkCount} situation links and ${situationActionCount} visible actions, expected 6 of each`);
+}
+
+const mapScript = read(path.join('js', 'map.js'));
+if (!mapScript.includes('cooperativeGestures: usesCooperativeGestures')) {
+  fail('Atlas map is missing cooperative mobile gestures');
+}
+
 for (const page of PAGE_NAMES) {
   const atlasPath = path.join('atlas', page);
   const html = read(atlasPath);
@@ -130,4 +142,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`\n✓ Validated ${EXPECTED_OUTPUTS.length} generated pages, Atlas evidence desks, entry routing, compact latest feed, menus, and editorial update safeguards`);
+console.log(`\n✓ Validated ${EXPECTED_OUTPUTS.length} generated pages, Atlas evidence desks, mobile map gestures, situation links, entry routing, compact latest feed, menus, and editorial update safeguards`);
