@@ -69,6 +69,16 @@ for (const page of PAGE_NAMES) {
   if (!html.includes('class="atlas-site-header"')) fail(`${atlasPath} is missing the Atlas header`);
   if (!html.includes('../css/atlas.css')) fail(`${atlasPath} is missing Atlas styles`);
   if (!html.includes('class="atlas-global-nav"')) fail(`${atlasPath} is missing the global page menu`);
+  if (!html.includes('id="by-the-numbers"')) fail(`${atlasPath} is missing its evidence desk`);
+  const evidenceMetricCount = (html.match(/class="atlas-evidence-metric /g) || []).length;
+  if (evidenceMetricCount !== 4) fail(`${atlasPath} has ${evidenceMetricCount} evidence metrics, expected 4`);
+  if (!html.includes('class="atlas-expert-grid"')) fail(`${atlasPath} is missing expert consensus and disagreement`);
+}
+
+const evidenceData = JSON.parse(read(path.join('data', 'atlas-evidence.json')));
+const expectedEvidenceSlugs = PAGE_NAMES.map((page) => path.basename(page, '.html'));
+for (const slug of expectedEvidenceSlugs) {
+  if (!evidenceData.pages?.[slug]) fail(`data/atlas-evidence.json is missing "${slug}"`);
 }
 
 const latest = read(path.join('sections', 'last-24h.html'));
@@ -104,6 +114,10 @@ const updateConfig = spawnSync(process.execPath, ['scripts/ai-update.js', '--val
 if (updateConfig.status !== 0) {
   fail(`editorial update configuration is invalid: ${updateConfig.stderr || updateConfig.stdout}`);
 }
+const updateScript = read(path.join('scripts', 'ai-update.js'));
+if (!updateScript.includes('protectedEvidenceDesks') || !updateScript.includes('data/atlas-evidence.json')) {
+  fail('editorial updater does not explicitly protect the human-reviewed evidence desks');
+}
 
 const structuralModule = read(path.join('scripts', 'lib', 'structural-updates.js'));
 if (!structuralModule.includes('Direct structural updates are disabled')) {
@@ -116,4 +130,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`\n✓ Validated ${EXPECTED_OUTPUTS.length} generated pages, Atlas entry routing, compact latest feed, menus, and editorial update safeguards`);
+console.log(`\n✓ Validated ${EXPECTED_OUTPUTS.length} generated pages, Atlas evidence desks, entry routing, compact latest feed, menus, and editorial update safeguards`);

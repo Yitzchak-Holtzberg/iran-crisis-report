@@ -44,7 +44,7 @@
     <div class="atlas-local-nav-inner">
       <p>On this page</p>
       <nav>
-        {% for item in sidebarNav %}{% if item.group %}
+        {% for item in atlasLocalNav %}{% if item.group %}
         <span class="atlas-local-group">{{item.group}}</span>
         {% else %}
         <a class="atlas-local-link" href="#{{item.id}}" data-section="{{item.id}}">

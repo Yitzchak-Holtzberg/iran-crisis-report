@@ -30,6 +30,8 @@ nunjucks.configure(BASE_DIR, {
 
 // Load the central data file used for template substitutions.
 const DATA = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'data.json'), 'utf8'));
+const ATLAS_EVIDENCE_PATH = path.join(BASE_DIR, 'data', 'atlas-evidence.json');
+const ATLAS_EVIDENCE = JSON.parse(fs.readFileSync(ATLAS_EVIDENCE_PATH, 'utf8'));
 
 // Load and validate data.json against the schema.
 const SCHEMA = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'data.schema.json'), 'utf8'));
@@ -376,6 +378,37 @@ const ATLAS_PAGE_DETAILS = {
 
 // ===== VALIDATION FUNCTIONS =====
 
+function validateAtlasEvidence(data) {
+  const warnings = [];
+  const pages = data?.pages;
+  if (!pages || typeof pages !== 'object' || Array.isArray(pages)) {
+    return ['data/atlas-evidence.json: missing pages object'];
+  }
+
+  for (const { slug } of ATLAS_GLOBAL_NAV) {
+    const desk = pages[slug];
+    if (!desk) {
+      warnings.push(`data/atlas-evidence.json: missing evidence desk for "${slug}"`);
+      continue;
+    }
+    if (!Array.isArray(desk.metrics) || desk.metrics.length !== 4) {
+      warnings.push(`data/atlas-evidence.json: "${slug}" must contain exactly four metrics`);
+    }
+    for (const [index, metric] of (desk.metrics || []).entries()) {
+      for (const key of ['value', 'label', 'detail', 'context', 'sourceLabel', 'sourceUrl', 'sourceDate', 'confidence', 'tone']) {
+        if (!metric[key]) warnings.push(`data/atlas-evidence.json: "${slug}" metric ${index + 1} is missing "${key}"`);
+      }
+    }
+    for (const section of ['consensus', 'disagreement']) {
+      if (!desk[section]?.title || !desk[section]?.copy || !Array.isArray(desk[section]?.sources)) {
+        warnings.push(`data/atlas-evidence.json: "${slug}" has an incomplete ${section} section`);
+      }
+    }
+  }
+
+  return warnings;
+}
+
 function validateAIZones(content, filename) {
   const warnings = [];
   const openMarkers = content.match(/<!-- @ai-zone:([\w-]+) -->/g) || [];
@@ -436,6 +469,21 @@ function validateAtlasNavigation(output) {
   return warnings;
 }
 
+function validateAtlasEvidenceDesk(output, slug) {
+  const warnings = [];
+  if (!output.includes('id="by-the-numbers"')) {
+    warnings.push(`Atlas evidence: ${slug} is missing #by-the-numbers`);
+  }
+  const metricCount = (output.match(/class="atlas-evidence-metric /g) || []).length;
+  if (metricCount !== 4) {
+    warnings.push(`Atlas evidence: ${slug} rendered ${metricCount} metrics, expected 4`);
+  }
+  if (!output.includes('class="atlas-expert-grid"')) {
+    warnings.push(`Atlas evidence: ${slug} is missing the expert interpretation`);
+  }
+  return warnings;
+}
+
 function checkDuplicateIds(output) {
   const seen = new Set();
   const dupes = new Set();
@@ -458,12 +506,16 @@ function computeHash(content) {
   return crypto.createHash('md5').update(content).digest('hex');
 }
 
+function cleanGeneratedHtml(content) {
+  return content.replace(/[ \t]+$/gm, '');
+}
+
 let prevHashes = {};
 if (INCREMENTAL) {
   try { prevHashes = JSON.parse(fs.readFileSync(BUILD_HASH_PATH, 'utf8')); } catch { /* first run */ }
 }
 const newHashes = {};
-const allWarnings = [];
+const allWarnings = validateAtlasEvidence(ATLAS_EVIDENCE);
 
 for (const build of BUILDS) {
   // Inject per-page meta into a copy of DATA, pre-resolving {{key}} references.
@@ -478,7 +530,7 @@ for (const build of BUILDS) {
   const template = build.sections.map(f => `{% include "${f}" %}`).join('\n');
 
   // Render through Nunjucks.
-  const output = nunjucks.renderString(template, ctx);
+  const output = cleanGeneratedHtml(nunjucks.renderString(template, ctx));
 
   // Run validations on individual section files.
   // Skip tag-balance checks on shared infrastructure files (HEADER/FOOTER/SIDEBAR)
@@ -526,8 +578,15 @@ for (const build of BUILDS) {
 
   const atlasSlug = path.basename(build.output, '.html');
   const navIndex = ATLAS_GLOBAL_NAV.findIndex(item => item.slug === atlasSlug);
+  const atlasEvidence = ATLAS_EVIDENCE.pages[atlasSlug];
+  const atlasLocalNav = [
+    ...(build.sidebarNav || []),
+    g('Evidence'),
+    n('99', 'by-the-numbers', atlasSlug === 'sources' ? 'Method rules' : 'By the numbers'),
+  ];
   const ctx = Object.assign({}, DATA, details, {
     atlasSlug,
+    atlasEvidence,
     atlasGlobalNav: ATLAS_GLOBAL_NAV,
     atlasBriefingItems: ATLAS_BRIEFING_ITEMS,
     atlasPrevious: navIndex > 0 ? ATLAS_GLOBAL_NAV[navIndex - 1] : null,
@@ -535,22 +594,24 @@ for (const build of BUILDS) {
       ? ATLAS_GLOBAL_NAV[navIndex + 1]
       : null,
     originalHref: build.output === 'index.html' ? '../classic.html' : `../${build.output}`,
-    sidebarNav: build.sidebarNav || [],
+    atlasLocalNav,
   });
 
   const atlasSections = [
     'sections/atlas-head.html',
     'sections/atlas-header.html',
     ...build.content,
+    'sections/atlas-evidence-desk.html',
     'sections/atlas-footer.html',
   ];
   const template = atlasSections.map(file => `{% include "${file}" %}`).join('\n');
-  const output = nunjucks.renderString(template, ctx);
+  const output = cleanGeneratedHtml(nunjucks.renderString(template, ctx));
   const atlasOutput = `atlas/${build.output}`;
   const outputHash = computeHash(output);
 
   newHashes[atlasOutput] = outputHash;
   allWarnings.push(...validateAtlasNavigation(output));
+  allWarnings.push(...validateAtlasEvidenceDesk(output, atlasSlug));
   allWarnings.push(...checkDuplicateIds(output));
 
   if (INCREMENTAL && prevHashes[atlasOutput] === outputHash) {

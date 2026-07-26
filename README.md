@@ -29,7 +29,9 @@ See:
 - `STRUCTURAL_GUIDELINES.md` for the editorial architecture;
 - `AI-ZONES.md` for automation boundaries;
 - `research/2026-07-23/` for the current re-foundation corpus, baseline, and
-  conflict registers.
+  conflict registers;
+- `research/2026-07-26/by-the-numbers-register.md` for the reviewed quantitative
+  evidence and its caveats.
 
 ## Build and validation
 
@@ -51,6 +53,7 @@ npm run validate
 - unresolved template directives;
 - build warnings and structural balance;
 - Atlas global menus and styles;
+- one four-measure evidence desk plus expert interpretation on every Atlas page;
 - the five-item limit for Latest Developments;
 - direct article/report URLs in the latest feed;
 - the scenario-probability prohibition;
@@ -61,7 +64,9 @@ npm run validate
 ```text
 build.js                    page composition and metadata
 data.json                   date plus legacy/shared data and the five-item ticker
+data/atlas-evidence.json    human-reviewed evidence desks for all Atlas pages
 sections/                   human-owned source sections
+sections/atlas-evidence-desk.html  shared evidence-desk presentation
 sections/last-24h.html      compact automated Latest Developments table
 css/                        original and Atlas styling
 js/                         map and interface behavior
@@ -88,9 +93,10 @@ The routine pipeline:
 4. rejects homepage URLs, unsupported confidence, low-tier anchors, duplicates,
    missing dates, and oversized copy;
 5. updates only `data.json:ticker` and `sections/last-24h.html`;
-6. builds and validates all 23 pages;
-7. commits expected data and generated outputs;
-8. deploys to GitHub Pages.
+6. rebuilds the reviewed evidence desks into all Atlas pages;
+7. builds and validates all 23 pages;
+8. commits expected data and generated outputs;
+9. deploys to GitHub Pages.
 
 If fewer than three developments pass the gate, the existing feed is preserved.
 
@@ -99,6 +105,7 @@ If fewer than three developments pass the gate, the existing feed is preserved.
 Routine runs cannot modify:
 
 - standing synthesis;
+- `data/atlas-evidence.json` and its human-reviewed measurements;
 - scenarios;
 - historical timelines;
 - `build.js`;

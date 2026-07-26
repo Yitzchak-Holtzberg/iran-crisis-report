@@ -1,0 +1,59 @@
+<section class="atlas-evidence-desk atlas-evidence-desk--{{atlasEvidence.kind}}" id="by-the-numbers" aria-labelledby="atlas-evidence-title">
+  <header class="atlas-evidence-header">
+    <div class="atlas-evidence-index" aria-hidden="true">{{atlasEvidence.index}}</div>
+    <div>
+      <p class="atlas-evidence-kicker">{{atlasEvidence.kicker}}</p>
+      <h2 id="atlas-evidence-title">{{atlasEvidence.title}}</h2>
+    </div>
+    <p class="atlas-evidence-summary">{{atlasEvidence.summary}}</p>
+  </header>
+
+  <div class="atlas-metric-ledger">
+    {% for metric in atlasEvidence.metrics %}
+    <article class="atlas-evidence-metric atlas-evidence-metric--{{metric.tone}}">
+      <div class="atlas-metric-meta">
+        <span>{{metric.confidence}}</span>
+        <span>{{metric.sourceDate}}</span>
+      </div>
+      <strong class="atlas-metric-value">{{metric.value}}</strong>
+      <h3>{{metric.label}}</h3>
+      <p>{{metric.detail}}</p>
+      <p class="atlas-metric-context">{{metric.context}}</p>
+      <a href="{{metric.sourceUrl}}"{% if metric.sourceUrl[0] != "#" %} target="_blank" rel="noopener noreferrer"{% endif %}>
+        {{metric.sourceLabel}} <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+
+  <div class="atlas-expert-grid">
+    <article class="atlas-expert-read atlas-expert-read--consensus">
+      <p>{{atlasEvidence.consensus.label}}</p>
+      <h3>{{atlasEvidence.consensus.title}}</h3>
+      <div class="atlas-expert-rule" aria-hidden="true"></div>
+      <p>{{atlasEvidence.consensus.copy}}</p>
+      <div class="atlas-expert-sources" aria-label="Consensus sources">
+        {% for source in atlasEvidence.consensus.sources %}
+        <a href="{{source.url}}" target="_blank" rel="noopener noreferrer">{{source.label}}</a>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="atlas-expert-read atlas-expert-read--disagreement">
+      <p>{{atlasEvidence.disagreement.label}}</p>
+      <h3>{{atlasEvidence.disagreement.title}}</h3>
+      <div class="atlas-expert-rule" aria-hidden="true"></div>
+      <p>{{atlasEvidence.disagreement.copy}}</p>
+      <div class="atlas-expert-sources" aria-label="Disagreement sources">
+        {% for source in atlasEvidence.disagreement.sources %}
+        <a href="{{source.url}}" target="_blank" rel="noopener noreferrer">{{source.label}}</a>
+        {% endfor %}
+      </div>
+    </article>
+  </div>
+
+  <p class="atlas-evidence-note">
+    <i class="ph ph-info" aria-hidden="true"></i>
+    {{atlasEvidence.note}}
+  </p>
+</section>

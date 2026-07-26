@@ -1,0 +1,939 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-07-26",
+  "editorialPolicy": "Human-reviewed, time-bounded measurements. Routine automation may flag these entries for review but may not rewrite them.",
+  "pages": {
+    "index": {
+      "kind": "situation",
+      "index": "E01",
+      "kicker": "Whole-picture evidence desk",
+      "title": "By the numbers",
+      "summary": "Four measurements locate the crisis at the military, maritime, and human levels. They are reference points, not a live scorecard.",
+      "metrics": [
+        {
+          "value": "6,770",
+          "label": "Missile and drone launches",
+          "detail": "Iranian missile and drone launches reported through 1 April.",
+          "context": "This measures campaign expenditure, not the size of the surviving inventory.",
+          "sourceLabel": "CSIS",
+          "sourceUrl": "https://www.csis.org/analysis/preventing-irans-military-reconstitution",
+          "sourceDate": "As of 1 Apr",
+          "confidence": "Institutional estimate",
+          "tone": "red"
+        },
+        {
+          "value": "16.1 mb/d",
+          "label": "Gulf oil exports in June",
+          "detail": "Exports including bypass routes, against a 24 mb/d prewar average.",
+          "context": "A large recovery still left a material gap before renewed July escalation.",
+          "sourceLabel": "IEA",
+          "sourceUrl": "https://www.iea.org/reports/oil-market-report-july-2026",
+          "sourceDate": "Jun average",
+          "confidence": "Documented",
+          "tone": "amber"
+        },
+        {
+          "value": "3,375",
+          "label": "Civilian deaths documented",
+          "detail": "At least 3,375 deaths and 32,314 injuries in OCHA's fourth update.",
+          "context": "The cutoff is early May and the compilation partly relies on Iranian authorities.",
+          "sourceLabel": "UN OCHA",
+          "sourceUrl": "https://iran.un.org/en/download/213204/319856",
+          "sourceDate": "Cutoff 1 May",
+          "confidence": "Time-bounded",
+          "tone": "red"
+        },
+        {
+          "value": "No current accounting",
+          "label": "Enriched uranium stockpile",
+          "detail": "The IAEA cannot verify the present size, composition, or location of the stockpile.",
+          "context": "Physical damage cannot substitute for inspection access, records, and material accounting.",
+          "sourceLabel": "AP / IAEA",
+          "sourceUrl": "https://apnews.com/article/ccf574a324504b985f4b158f9d3d6941",
+          "sourceDate": "Jul 2026",
+          "confidence": "Verified uncertainty",
+          "tone": "cyan"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "Iran has been badly damaged; the political problem remains open.",
+        "copy": "CSIS and RAND describe severe conventional degradation. Chatham House and RUSI agree that military access and physical passage do not by themselves settle war aims, nuclear verification, or commercial confidence.",
+        "sources": [
+          {
+            "label": "CSIS",
+            "url": "https://www.csis.org/analysis/preventing-irans-military-reconstitution"
+          },
+          {
+            "label": "RAND",
+            "url": "https://www.rand.org/pubs/commentary/2026/04/trumps-iran-war-is-a-dilemma-not-a-debacle.html"
+          },
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "How much operational success can be converted into a durable outcome.",
+        "copy": "The central dispute is not whether Iran lost major capabilities. It is whether recurring strikes can prevent reconstitution and compel terms, or instead produce a long cycle of attrition, temporary pauses, and renewed escalation.",
+        "sources": [
+          {
+            "label": "RUSI",
+            "url": "https://www.rusi.org/explore-our-research/publications/commentary/strait-hormuz-problem-what-securing-waterway-actually-requires"
+          },
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          }
+        ]
+      },
+      "note": "Figures are dated to their source cutoff. Missing current access or inventory data is shown as uncertainty, never converted into a zero."
+    },
+    "iran-military": {
+      "kind": "situation",
+      "index": "E02",
+      "kicker": "Capability evidence desk",
+      "title": "By the numbers",
+      "summary": "The strongest public evidence shows catastrophic damage to conventional forces alongside a large, poorly measured residual strike and littoral threat.",
+      "metrics": [
+        {
+          "value": "Nearly all",
+          "label": "Conventional surface fleet lost",
+          "detail": "Satellite imagery reviewed by CSIS indicates the loss of nearly all conventional gray-hull surface combatants.",
+          "context": "This does not include every small craft, mine, coastal missile, drone, or undersea capability.",
+          "sourceLabel": "CSIS imagery review",
+          "sourceUrl": "https://www.csis.org/analysis/preventing-irans-military-reconstitution",
+          "sourceDate": "Jun 2026",
+          "confidence": "High, bounded",
+          "tone": "red"
+        },
+        {
+          "value": "6,770",
+          "label": "Missile and drone launches",
+          "detail": "Combined launches reported through 1 April.",
+          "context": "Expenditure reveals sustained output; it does not reveal the remaining stockpile by subtraction.",
+          "sourceLabel": "CSIS",
+          "sourceUrl": "https://www.csis.org/analysis/preventing-irans-military-reconstitution",
+          "sourceDate": "As of 1 Apr",
+          "confidence": "Institutional estimate",
+          "tone": "amber"
+        },
+        {
+          "value": "70% / 40%",
+          "label": "Reported stocks retained",
+          "detail": "U.S. estimates cited by CSIS put retained missile stocks at 70% and drone stocks at 40%.",
+          "context": "These are attributed government estimates, not independently verified inventory counts.",
+          "sourceLabel": "CSIS citing U.S. estimates",
+          "sourceUrl": "https://www.csis.org/analysis/preventing-irans-military-reconstitution",
+          "sourceDate": "Jun 2026",
+          "confidence": "Attributed",
+          "tone": "amber"
+        },
+        {
+          "value": "40%",
+          "label": "Bushehr harbor basin destroyed",
+          "detail": "CSIS estimates that roughly two-fifths of the naval base's harbor basin was destroyed.",
+          "context": "Port damage constrains operations and repair, but does not measure every surviving coastal system.",
+          "sourceLabel": "CSIS",
+          "sourceUrl": "https://www.csis.org/analysis/preventing-irans-military-reconstitution",
+          "sourceDate": "Jun 2026",
+          "confidence": "Imagery-based estimate",
+          "tone": "red"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "Severe conventional degradation is real; complete disarmament is not established.",
+        "copy": "CSIS and RAND converge on a badly damaged navy and sharply reduced launch tempo. Both also warn that dispersed missile, drone, mine, small-craft, and production knowledge can survive or be rebuilt.",
+        "sources": [
+          {
+            "label": "CSIS",
+            "url": "https://www.csis.org/analysis/preventing-irans-military-reconstitution"
+          },
+          {
+            "label": "RAND",
+            "url": "https://www.rand.org/pubs/commentary/2026/04/trumps-iran-war-is-a-dilemma-not-a-debacle.html"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "The residual inventory and the speed of reconstitution.",
+        "copy": "Public estimates of launchers, stocks, and production damage vary widely. The hardened and underground portions of the force remain the least observable, making precise remaining-capability percentages especially fragile.",
+        "sources": [
+          {
+            "label": "CSIS",
+            "url": "https://www.csis.org/analysis/preventing-irans-military-reconstitution"
+          },
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          }
+        ]
+      },
+      "note": "Fleet language refers to conventional gray-hull surface vessels. It must not be generalized to Iran's entire maritime threat."
+    },
+    "forces": {
+      "kind": "situation",
+      "index": "E03",
+      "kicker": "Regional-system evidence desk",
+      "title": "By the numbers",
+      "summary": "The force balance is conventionally lopsided, but the exposure is region-wide and measured as much in disrupted trade and civilian systems as in platforms.",
+      "metrics": [
+        {
+          "value": ">4,000",
+          "label": "Projectiles fired at Gulf states",
+          "detail": "Iranian missiles and drones directed at all six GCC states by 19 March.",
+          "context": "The count establishes theater-wide exposure, not a uniform level of damage in every state.",
+          "sourceLabel": "IISS",
+          "sourceUrl": "https://www.iiss.org/online-analysis/online-analysis/2026/03/mapping-the-damage-iranian-strikes-on-the-gcc/",
+          "sourceDate": "As of 19 Mar",
+          "confidence": "Institutional estimate",
+          "tone": "red"
+        },
+        {
+          "value": "6",
+          "label": "GCC states attacked",
+          "detail": "Every Gulf Cooperation Council member was exposed to Iranian attack.",
+          "context": "Geographic reach complicates basing, interception, logistics, and regional diplomacy.",
+          "sourceLabel": "IISS",
+          "sourceUrl": "https://www.iiss.org/online-analysis/online-analysis/2026/03/mapping-the-damage-iranian-strikes-on-the-gcc/",
+          "sourceDate": "Mar 2026",
+          "confidence": "Documented",
+          "tone": "amber"
+        },
+        {
+          "value": "16.1 mb/d",
+          "label": "Gulf oil exports in June",
+          "detail": "Exports including bypass routes recovered from the shock but remained below the 24 mb/d prewar average.",
+          "context": "Commercial recovery depends on shipping, insurance, ports, crews, and political restraint—not naval access alone.",
+          "sourceLabel": "IEA",
+          "sourceUrl": "https://www.iea.org/reports/oil-market-report-july-2026",
+          "sourceDate": "Jun average",
+          "confidence": "Documented",
+          "tone": "cyan"
+        },
+        {
+          "value": ">70%",
+          "label": "Food-import exposure",
+          "detail": "The share of Gulf food imports reported as moving through the Strait of Hormuz.",
+          "context": "This is a vulnerability measure cited by Carnegie from Reuters reporting, not a measured loss rate.",
+          "sourceLabel": "Carnegie / Reuters",
+          "sourceUrl": "https://carnegieendowment.org/emissary/2026/04/iran-war-stress-test-gulf-states",
+          "sourceDate": "Apr 2026",
+          "confidence": "Attributed",
+          "tone": "amber"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "U.S. and Israeli high-end dominance coexists with persistent regional vulnerability.",
+        "copy": "Air and naval superiority can suppress major formations and protect selected nodes. It cannot eliminate every cheap projectile, coastal system, logistics disruption, or political cost imposed across six exposed Gulf states.",
+        "sources": [
+          {
+            "label": "IISS",
+            "url": "https://www.iiss.org/online-analysis/online-analysis/2026/03/mapping-the-damage-iranian-strikes-on-the-gcc/"
+          },
+          {
+            "label": "Carnegie",
+            "url": "https://carnegieendowment.org/emissary/2026/04/iran-war-stress-test-gulf-states"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "Whether deeper U.S.-led integration or greater Gulf autonomy is the safer long-term answer.",
+        "copy": "Some analysis emphasizes integrated defenses and sustained U.S. presence. Gulf policy also reflects fear of entrapment, pressure to diversify security relationships, and a preference for negotiated restraint.",
+        "sources": [
+          {
+            "label": "Carnegie",
+            "url": "https://carnegieendowment.org/emissary/2026/04/iran-war-stress-test-gulf-states"
+          },
+          {
+            "label": "RUSI",
+            "url": "https://www.rusi.org/explore-our-research/publications/commentary/strait-hormuz-problem-what-securing-waterway-actually-requires"
+          }
+        ]
+      },
+      "note": "Projectile totals measure attempts across the theater; they are not interchangeable with impact, interception, or damage counts."
+    },
+    "diplomatic": {
+      "kind": "situation",
+      "index": "E04",
+      "kicker": "Nuclear and bargaining evidence desk",
+      "title": "By the numbers",
+      "summary": "The most consequential numbers on the nuclear file are dated baselines. The present inventory and activity cannot be responsibly reduced to a current total.",
+      "metrics": [
+        {
+          "value": "440.9 kg",
+          "label": "Last-accounted 60% stockpile",
+          "detail": "The IAEA's last public accounting of uranium enriched up to 60%.",
+          "context": "This is a pre-loss-of-access snapshot, not a current verified quantity.",
+          "sourceLabel": "AP / IAEA",
+          "sourceUrl": "https://apnews.com/article/d66a8ab6147e43bc7f544c76e063db80",
+          "sourceDate": "Last accounting",
+          "confidence": "Dated baseline",
+          "tone": "amber"
+        },
+        {
+          "value": "4",
+          "label": "Declared enrichment facilities",
+          "detail": "Declared facilities whose present status cannot be fully verified.",
+          "context": "Declarations and visible damage do not answer where all material, records, equipment, and personnel are now.",
+          "sourceLabel": "AP / IAEA",
+          "sourceUrl": "https://apnews.com/article/ccf574a324504b985f4b158f9d3d6941",
+          "sourceDate": "Jul 2026",
+          "confidence": "Documented",
+          "tone": "cyan"
+        },
+        {
+          "value": "Up to 10",
+          "label": "Theoretical bomb equivalents",
+          "detail": "A rough weapons-equivalent calculation if the last-accounted stock were further enriched and weaponized.",
+          "context": "It does not mean Iran possesses ten weapons, warheads, or a demonstrated weaponization chain.",
+          "sourceLabel": "AP / IAEA estimate",
+          "sourceUrl": "https://apnews.com/article/d66a8ab6147e43bc7f544c76e063db80",
+          "sourceDate": "Analytical conversion",
+          "confidence": "Conditional estimate",
+          "tone": "red"
+        },
+        {
+          "value": "Never inspected",
+          "label": "Pickaxe Mountain",
+          "detail": "The deeply buried complex has not been inspected by the IAEA and its contents remain unknown.",
+          "context": "Continued excavation is observable; nuclear material or activity at the site is not established.",
+          "sourceLabel": "AP",
+          "sourceUrl": "https://apnews.com/article/iran-us-war-pickaxe-mountain-nuclear-underground-what-to-know-2df2cbdbab7e21ba26e41cacdfa84e7c",
+          "sourceDate": "Jul 2026",
+          "confidence": "Verified uncertainty",
+          "tone": "cyan"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "Bombing cannot recreate safeguards knowledge.",
+        "copy": "Specialists broadly agree that physical damage may delay activity but cannot establish where material is, what equipment survived, or whether expertise has dispersed. Any durable bargain needs inspection access and an accounting process.",
+        "sources": [
+          {
+            "label": "IAEA via AP",
+            "url": "https://apnews.com/article/ccf574a324504b985f4b158f9d3d6941"
+          },
+          {
+            "label": "UN Security Council",
+            "url": "https://main.un.org/securitycouncil/en/content/2231/background"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "Whether only zero enrichment is stable—or whether bounded enrichment can be verified.",
+        "copy": "The argument turns on acceptable residual capability, the sequence of sanctions and strike relief, and whether inspections can become credible before each side gives up its principal leverage.",
+        "sources": [
+          {
+            "label": "JCPOA terms",
+            "url": "https://www.eeas.europa.eu/eeas/nuclear-agreement-%E2%80%93-jcpoa_en"
+          },
+          {
+            "label": "UN Resolution 2231",
+            "url": "https://main.un.org/securitycouncil/en/content/2231/background"
+          }
+        ]
+      },
+      "note": "Nuclear quantities are deliberately labeled by accounting date. The report does not treat theoretical weapon equivalents as actual bombs."
+    },
+    "inside-iran": {
+      "kind": "situation",
+      "index": "E05",
+      "kicker": "State-and-society evidence desk",
+      "title": "By the numbers",
+      "summary": "The humanitarian picture is severe and still incomplete. The best public figures are dated snapshots assembled under restricted access.",
+      "metrics": [
+        {
+          "value": "3,375",
+          "label": "Civilian deaths documented",
+          "detail": "At least 3,375 deaths and 32,314 injuries in OCHA's fourth humanitarian update.",
+          "context": "The cutoff is early May; the total should not be presented as a current cumulative count.",
+          "sourceLabel": "UN OCHA",
+          "sourceUrl": "https://iran.un.org/en/download/213204/319856",
+          "sourceDate": "Cutoff 1 May",
+          "confidence": "Time-bounded",
+          "tone": "red"
+        },
+        {
+          "value": "115,000+",
+          "label": "Civilian units damaged",
+          "detail": "Homes and other civilian units reported damaged by 1 April.",
+          "context": "OCHA also reported 763 damaged schools in the same early-war snapshot.",
+          "sourceLabel": "UN OCHA",
+          "sourceUrl": "https://iran.un.org/en/313395-islamic-republic-iran-humanitarian-update-no-02-3-april-2026",
+          "sourceDate": "As of 1 Apr",
+          "confidence": "Time-bounded",
+          "tone": "amber"
+        },
+        {
+          "value": "88 days",
+          "label": "National internet blackout",
+          "detail": "The shutdown cut roughly 90 million people off from normal access for most of 2026.",
+          "context": "Connectivity controls obscure civilian conditions, political attitudes, and the scale of dissent.",
+          "sourceLabel": "AP",
+          "sourceUrl": "https://apnews.com/article/iran-war-internet-shutdown-restored-a9a473245d9c6a6fc41822d844847c17",
+          "sourceDate": "2026 shutdown",
+          "confidence": "Documented",
+          "tone": "cyan"
+        },
+        {
+          "value": "229 / 49",
+          "label": "Health centers / hospitals damaged",
+          "detail": "Estimated health centers and hospitals damaged, alongside pharmaceutical and emergency-service losses.",
+          "context": "Facility damage compounds staff, supply, access, power, and communications failures.",
+          "sourceLabel": "WHO / UN Iran",
+          "sourceUrl": "https://iran.un.org/en",
+          "sourceDate": "May 2026",
+          "confidence": "UN estimate",
+          "tone": "red"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "The state remains functional, but the civilian burden and information darkness are profound.",
+        "copy": "Humanitarian reporting supports large-scale harm to people, housing, schools, and health systems. Political analysis also cautions that repression and communications controls make both regime resilience and public opposition difficult to measure.",
+        "sources": [
+          {
+            "label": "UN OCHA",
+            "url": "https://iran.un.org/en/313395-islamic-republic-iran-humanitarian-update-no-02-3-april-2026"
+          },
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "Whether wartime centralization signals durable resilience or accumulating brittleness.",
+        "copy": "Order can coexist with hollowed services, fear, elite distrust, and latent dissent. Public evidence does not yet establish which pressures are approaching a political threshold.",
+        "sources": [
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          },
+          {
+            "label": "AP internet reporting",
+            "url": "https://apnews.com/article/iran-war-internet-shutdown-restored-a9a473245d9c6a6fc41822d844847c17"
+          }
+        ]
+      },
+      "note": "Humanitarian totals are source-cutoff snapshots. Restricted access and damaged communications make later nationwide totals especially uncertain."
+    },
+    "reactions": {
+      "kind": "situation",
+      "index": "E06",
+      "kicker": "Regional-positions evidence desk",
+      "title": "By the numbers",
+      "summary": "Regional reactions are best understood through exposure: attacks reached every Gulf state, while trade and food systems remained dependent on a commercially trusted Hormuz.",
+      "metrics": [
+        {
+          "value": ">4,000",
+          "label": "Projectiles directed at the GCC",
+          "detail": "Missiles and drones fired toward all six GCC states by 19 March.",
+          "context": "The geographic spread helps explain why Gulf governments seek both protection and de-escalation.",
+          "sourceLabel": "IISS",
+          "sourceUrl": "https://www.iiss.org/online-analysis/online-analysis/2026/03/mapping-the-damage-iranian-strikes-on-the-gcc/",
+          "sourceDate": "As of 19 Mar",
+          "confidence": "Institutional estimate",
+          "tone": "red"
+        },
+        {
+          "value": "6 / 6",
+          "label": "GCC members exposed",
+          "detail": "The conflict reached every member of the Gulf Cooperation Council.",
+          "context": "Shared exposure has not produced identical preferences on basing, retaliation, or diplomacy.",
+          "sourceLabel": "IISS",
+          "sourceUrl": "https://www.iiss.org/online-analysis/online-analysis/2026/03/mapping-the-damage-iranian-strikes-on-the-gcc/",
+          "sourceDate": "Mar 2026",
+          "confidence": "Documented",
+          "tone": "amber"
+        },
+        {
+          "value": "16.1 / 24",
+          "label": "June / prewar Gulf exports",
+          "detail": "Million barrels per day exported in June versus the prewar average.",
+          "context": "The gap captures only oil volume, not all shipping, insurance, product, and food-system effects.",
+          "sourceLabel": "IEA",
+          "sourceUrl": "https://www.iea.org/reports/oil-market-report-july-2026",
+          "sourceDate": "Jun average",
+          "confidence": "Documented",
+          "tone": "cyan"
+        },
+        {
+          "value": ">70%",
+          "label": "Food imports routed through Hormuz",
+          "detail": "Reported share of Gulf food imports exposed to the waterway.",
+          "context": "This structural dependence shapes restraint even where military protection is strong.",
+          "sourceLabel": "Carnegie / Reuters",
+          "sourceUrl": "https://carnegieendowment.org/emissary/2026/04/iran-war-stress-test-gulf-states",
+          "sourceDate": "Apr 2026",
+          "confidence": "Attributed",
+          "tone": "amber"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "Gulf states want defense without permanent entrapment.",
+        "copy": "Their exposure to projectiles and shipping disruption makes U.S. protection important. The same exposure raises the cost of open-ended escalation and gives Gulf governments strong incentives to preserve mediation channels.",
+        "sources": [
+          {
+            "label": "Carnegie",
+            "url": "https://carnegieendowment.org/emissary/2026/04/iran-war-stress-test-gulf-states"
+          },
+          {
+            "label": "IISS",
+            "url": "https://www.iiss.org/online-analysis/online-analysis/2026/03/mapping-the-damage-iranian-strikes-on-the-gcc/"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "What security architecture should follow the war.",
+        "copy": "Positions diverge over deeper U.S. integration, regional self-reliance, relations with China, and whether accommodation with Iran is a stabilizing necessity or a source of renewed risk.",
+        "sources": [
+          {
+            "label": "Carnegie",
+            "url": "https://carnegieendowment.org/emissary/2026/04/iran-war-stress-test-gulf-states"
+          },
+          {
+            "label": "RUSI",
+            "url": "https://www.rusi.org/explore-our-research/publications/commentary/strait-hormuz-problem-what-securing-waterway-actually-requires"
+          }
+        ]
+      },
+      "note": "Regional positions are inferred from stated policy and observable exposure, not from treating the GCC as a single political actor."
+    },
+    "analysis": {
+      "kind": "situation",
+      "index": "E07",
+      "kicker": "Strategic synthesis evidence desk",
+      "title": "By the numbers",
+      "summary": "The core evidence supports a paradox: overwhelming operational access, persistent Iranian capacity to impose cost, and no demonstrated mechanism for political closure.",
+      "metrics": [
+        {
+          "value": "−90%",
+          "label": "First-week launch-tempo change",
+          "detail": "RAND reports a fall from more than 400 launches on day one to roughly 20–40 per day.",
+          "context": "A reduced tempo demonstrates suppression; it does not establish exhausted stocks or political capitulation.",
+          "sourceLabel": "RAND",
+          "sourceUrl": "https://www.rand.org/pubs/commentary/2026/04/trumps-iran-war-is-a-dilemma-not-a-debacle.html",
+          "sourceDate": "First week",
+          "confidence": "Institutional estimate",
+          "tone": "red"
+        },
+        {
+          "value": "Nearly all",
+          "label": "Conventional surface fleet lost",
+          "detail": "CSIS imagery analysis finds catastrophic losses among conventional surface combatants.",
+          "context": "The residual littoral threat still includes systems outside the gray-hull fleet.",
+          "sourceLabel": "CSIS",
+          "sourceUrl": "https://www.csis.org/analysis/preventing-irans-military-reconstitution",
+          "sourceDate": "Jun 2026",
+          "confidence": "High, bounded",
+          "tone": "red"
+        },
+        {
+          "value": "67%",
+          "label": "June export recovery",
+          "detail": "Gulf oil exports reached about two-thirds of the 24 mb/d prewar average.",
+          "context": "Recovery remained incomplete and depended on more than physical navigation.",
+          "sourceLabel": "IEA",
+          "sourceUrl": "https://www.iea.org/reports/oil-market-report-july-2026",
+          "sourceDate": "Jun average",
+          "confidence": "Calculated from IEA",
+          "tone": "cyan"
+        },
+        {
+          "value": "3,375 / 32,314",
+          "label": "Deaths / injuries documented",
+          "detail": "OCHA's fourth update records the minimum civilian toll through its early-May cutoff.",
+          "context": "The political result cannot be assessed without the human cost and the limits of wartime reporting.",
+          "sourceLabel": "UN OCHA",
+          "sourceUrl": "https://iran.un.org/en/download/213204/319856",
+          "sourceDate": "Cutoff 1 May",
+          "confidence": "Time-bounded",
+          "tone": "amber"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "Operational dominance and strategic success are different questions.",
+        "copy": "CSIS and RAND see substantial military effects. Chatham House and RUSI stress that war termination, commercial normalization, nuclear verification, and political legitimacy require mechanisms that strike access alone does not supply.",
+        "sources": [
+          {
+            "label": "RAND",
+            "url": "https://www.rand.org/pubs/commentary/2026/04/trumps-iran-war-is-a-dilemma-not-a-debacle.html"
+          },
+          {
+            "label": "CSIS",
+            "url": "https://www.csis.org/analysis/preventing-irans-military-reconstitution"
+          },
+          {
+            "label": "RUSI",
+            "url": "https://www.rusi.org/explore-our-research/publications/commentary/strait-hormuz-problem-what-securing-waterway-actually-requires"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "Whether continued pressure improves bargaining leverage or locks in attrition.",
+        "copy": "One view treats repeated degradation and reconstitution denial as a path to better terms. The other expects temporary ceasefires, adaptive rebuilding, and recurring escalation unless the political objectives are narrowed.",
+        "sources": [
+          {
+            "label": "CSIS",
+            "url": "https://www.csis.org/analysis/preventing-irans-military-reconstitution"
+          },
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          }
+        ]
+      },
+      "note": "This section maps analytical convergence and divergence. Belligerent estimates remain attributed even when cited by a research institution."
+    },
+    "scenarios": {
+      "kind": "method",
+      "index": "E08",
+      "kicker": "Scenario discipline",
+      "title": "How the outlook is measured",
+      "summary": "The scenario set is an indicator system, not a prediction market. It shows what evidence would move the picture and what remains unknowable.",
+      "metrics": [
+        {
+          "value": "5",
+          "label": "Conditional pathways",
+          "detail": "Armed pause, negotiated settlement, managed transition, democratic transition, and chaotic fragmentation.",
+          "context": "The pathways are mechanisms, not mutually precise forecast buckets.",
+          "sourceLabel": "Report method",
+          "sourceUrl": "sources.html#source-reliability",
+          "sourceDate": "Current framework",
+          "confidence": "Editorial structure",
+          "tone": "cyan"
+        },
+        {
+          "value": "4",
+          "label": "Discriminating systems",
+          "detail": "Strike tempo, commercial shipping, nuclear access, and elite cohesion.",
+          "context": "Movement in these systems matters more than rhetoric or single-day noise.",
+          "sourceLabel": "Report method",
+          "sourceUrl": "sources.html#source-reliability",
+          "sourceDate": "Current framework",
+          "confidence": "Editorial structure",
+          "tone": "amber"
+        },
+        {
+          "value": "90 days",
+          "label": "Primary review horizon",
+          "detail": "A bounded window for watching mechanisms and leading indicators.",
+          "context": "Longer-term outcomes remain path-dependent and should not inherit short-term confidence.",
+          "sourceLabel": "Report method",
+          "sourceUrl": "sources.html#source-reliability",
+          "sourceDate": "Current framework",
+          "confidence": "Editorial horizon",
+          "tone": "cyan"
+        },
+        {
+          "value": "No %",
+          "label": "Unsupported probabilities",
+          "detail": "The report does not assign precise likelihoods without a defensible model and calibrated dataset.",
+          "context": "Qualitative ordering is kept separate from numerical probability.",
+          "sourceLabel": "Report method",
+          "sourceUrl": "sources.html#source-reliability",
+          "sourceDate": "Standing rule",
+          "confidence": "Method safeguard",
+          "tone": "red"
+        }
+      ],
+      "consensus": {
+        "label": "Shared analytical baseline",
+        "title": "An armed pause is easier to reach than a durable settlement.",
+        "copy": "The hardest issues—verification, sanctions, maritime restraint, security guarantees, reconstitution, and Iran's internal order—can be deferred by a pause but not resolved by one.",
+        "sources": [
+          {
+            "label": "RAND",
+            "url": "https://www.rand.org/pubs/commentary/2026/04/trumps-iran-war-is-a-dilemma-not-a-debacle.html"
+          },
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Key forecast dispute",
+        "title": "Whether pressure produces negotiation, adaptation, or political fracture.",
+        "copy": "Analysts differ on which mechanism dominates. The report therefore follows indicators for each pathway rather than forcing uncertainty into a single percentage.",
+        "sources": [
+          {
+            "label": "CSIS",
+            "url": "https://www.csis.org/analysis/preventing-irans-military-reconstitution"
+          },
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          }
+        ]
+      },
+      "note": "Scenario labels describe conditional mechanisms. They should change only when the underlying mechanism or evidence changes."
+    },
+    "opposition": {
+      "kind": "situation",
+      "index": "E09",
+      "kicker": "Political-alternatives evidence desk",
+      "title": "By the numbers",
+      "summary": "The measurable opposition picture is mostly diaspora mobilization, organizational formation, and information restriction—not representative support inside Iran.",
+      "metrics": [
+        {
+          "value": "250,000",
+          "label": "Munich rally estimate",
+          "detail": "Police estimate for a large diaspora opposition rally associated with Reza Pahlavi.",
+          "context": "Large diaspora turnout demonstrates mobilization abroad, not a representative mandate inside Iran.",
+          "sourceLabel": "AP",
+          "sourceUrl": "https://apnews.com/article/iran-munich-protests-reza-pahlavi-53d2448dd26d28a1206ecefdfde168f2",
+          "sourceDate": "2026 rally",
+          "confidence": "Police estimate",
+          "tone": "cyan"
+        },
+        {
+          "value": "350,000",
+          "label": "Toronto rally estimate",
+          "detail": "Police estimate for a second very large diaspora gathering.",
+          "context": "The figure is evidence of diaspora reach and organization, not internal electoral support.",
+          "sourceLabel": "AP",
+          "sourceUrl": "https://apnews.com/article/iran-munich-protests-reza-pahlavi-53d2448dd26d28a1206ecefdfde168f2",
+          "sourceDate": "2026 rally",
+          "confidence": "Police estimate",
+          "tone": "cyan"
+        },
+        {
+          "value": "5",
+          "label": "Kurdish groups in coalition",
+          "detail": "Five Iranian Kurdish organizations announced a coalition amid wider opposition tensions.",
+          "context": "Coordination within one political field does not resolve disputes over leadership or territorial order.",
+          "sourceLabel": "AP",
+          "sourceUrl": "https://apnews.com/article/6beae57e9fdc3546a61ec8f1432eef4b",
+          "sourceDate": "2026",
+          "confidence": "Documented",
+          "tone": "amber"
+        },
+        {
+          "value": "No representative poll",
+          "label": "Current support inside Iran",
+          "detail": "There is no reliable, representative current measure of support for Pahlavi or any opposition bloc inside Iran.",
+          "context": "Repression, war, displacement, and the 88-day blackout make confident ranking especially hazardous.",
+          "sourceLabel": "Report evidence rule",
+          "sourceUrl": "sources.html#source-reliability",
+          "sourceDate": "Current",
+          "confidence": "Known data gap",
+          "tone": "red"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "Visibility is not legitimacy, and opposition is not institutional readiness.",
+        "copy": "Reza Pahlavi is consequential and capable of mobilizing large diaspora audiences. Iran's opposition nevertheless remains plural, divided over leadership and intervention, and without a demonstrated nationwide mandate or transition apparatus.",
+        "sources": [
+          {
+            "label": "AP rally reporting",
+            "url": "https://apnews.com/article/iran-munich-protests-reza-pahlavi-53d2448dd26d28a1206ecefdfde168f2"
+          },
+          {
+            "label": "AP coalition reporting",
+            "url": "https://apnews.com/article/6beae57e9fdc3546a61ec8f1432eef4b"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "Pahlavi's internal support and the effect of foreign military pressure.",
+        "copy": "Supporters see a focal point for transition; critics see an externally amplified figure whose reach inside Iran is unproven. Analysts also disagree on whether war weakens the state politically or strengthens coercive nationalism.",
+        "sources": [
+          {
+            "label": "AP",
+            "url": "https://apnews.com/article/iran-munich-protests-reza-pahlavi-53d2448dd26d28a1206ecefdfde168f2"
+          },
+          {
+            "label": "Chatham House",
+            "url": "https://www.chathamhouse.org/2026/07/wishful-thinking-behind-war-iran"
+          }
+        ]
+      },
+      "note": "Diaspora attendance and coalition counts are observable. Internal popularity, organizational depth, and transition legitimacy remain separate questions."
+    },
+    "background": {
+      "kind": "history",
+      "index": "E10",
+      "kicker": "Historical baseline",
+      "title": "The numbers that shaped the bargain",
+      "summary": "The 2015 agreement's core logic was measurable constraint plus verification. Its collapse removed both the limits and the shared baseline.",
+      "metrics": [
+        {
+          "value": "300 kg",
+          "label": "JCPOA enriched-stock limit",
+          "detail": "The cap on Iran's enriched-uranium stockpile under the 2015 agreement.",
+          "context": "The limit worked with monitoring and other restrictions; it was not a standalone guarantee.",
+          "sourceLabel": "EEAS / JCPOA",
+          "sourceUrl": "https://www.eeas.europa.eu/eeas/nuclear-agreement-%E2%80%93-jcpoa_en",
+          "sourceDate": "2015 agreement",
+          "confidence": "Treaty baseline",
+          "tone": "cyan"
+        },
+        {
+          "value": "3.67%",
+          "label": "JCPOA enrichment ceiling",
+          "detail": "The permitted enrichment level under the deal.",
+          "context": "The ceiling was designed to lengthen the time needed to produce weapons-grade material.",
+          "sourceLabel": "EEAS / JCPOA",
+          "sourceUrl": "https://www.eeas.europa.eu/eeas/nuclear-agreement-%E2%80%93-jcpoa_en",
+          "sourceDate": "2015 agreement",
+          "confidence": "Treaty baseline",
+          "tone": "cyan"
+        },
+        {
+          "value": "−75%",
+          "label": "Enrichment-capacity reduction",
+          "detail": "Approximate reduction required under the agreement.",
+          "context": "Constraint was paired with verification and sanctions relief in a reciprocal structure.",
+          "sourceLabel": "EEAS / JCPOA",
+          "sourceUrl": "https://www.eeas.europa.eu/eeas/nuclear-agreement-%E2%80%93-jcpoa_en",
+          "sourceDate": "2015 agreement",
+          "confidence": "Treaty baseline",
+          "tone": "amber"
+        },
+        {
+          "value": "≥1 year",
+          "label": "Target breakout time",
+          "detail": "The agreement's intended minimum period for producing enough weapons-grade material for one device.",
+          "context": "Breakout time is a material-production estimate, not the time to build and deploy a weapon.",
+          "sourceLabel": "EEAS / JCPOA",
+          "sourceUrl": "https://www.eeas.europa.eu/eeas/nuclear-agreement-%E2%80%93-jcpoa_en",
+          "sourceDate": "2015 agreement",
+          "confidence": "Policy target",
+          "tone": "amber"
+        }
+      ],
+      "consensus": {
+        "label": "Expert consensus",
+        "title": "The JCPOA bought time and visibility; it did not settle the wider conflict.",
+        "copy": "Its numerical limits and inspections constrained the nuclear program. It did not resolve missiles, regional deterrence, domestic repression, or the durability of sanctions relief.",
+        "sources": [
+          {
+            "label": "EEAS / JCPOA",
+            "url": "https://www.eeas.europa.eu/eeas/nuclear-agreement-%E2%80%93-jcpoa_en"
+          },
+          {
+            "label": "UN Resolution 2231",
+            "url": "https://main.un.org/securitycouncil/en/content/2231/background"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Where they disagree",
+        "title": "Whether a narrow nuclear bargain can still be insulated from the regional war.",
+        "copy": "One view treats nuclear constraint as a separable, urgent transaction. Another argues that sanctions, missiles, maritime security, and regional guarantees must now be negotiated together.",
+        "sources": [
+          {
+            "label": "UN Resolution 2231",
+            "url": "https://main.un.org/securitycouncil/en/content/2231/background"
+          },
+          {
+            "label": "RAND",
+            "url": "https://www.rand.org/pubs/commentary/2026/04/trumps-iran-war-is-a-dilemma-not-a-debacle.html"
+          }
+        ]
+      },
+      "note": "Historical baselines are retained because they show what was once measurable. They are not descriptions of Iran's present nuclear position."
+    },
+    "sources": {
+      "kind": "method",
+      "index": "M01",
+      "kicker": "Publication method",
+      "title": "Four rules for reading the report",
+      "summary": "The source page keeps methodology visible without turning the reader experience into an update dashboard.",
+      "metrics": [
+        {
+          "value": "1 claim",
+          "label": "One evidentiary burden",
+          "detail": "Each consequential factual claim must point to the source that actually supports it.",
+          "context": "A nearby link does not count if it supports only the general topic.",
+          "sourceLabel": "Source method",
+          "sourceUrl": "#source-reliability",
+          "sourceDate": "Standing rule",
+          "confidence": "Method",
+          "tone": "cyan"
+        },
+        {
+          "value": "3 modes",
+          "label": "Fact, assessment, forecast",
+          "detail": "Observable claims, analytical judgments, and conditional futures are kept visibly distinct.",
+          "context": "Confidence language must match the mode.",
+          "sourceLabel": "Source method",
+          "sourceUrl": "#source-reliability",
+          "sourceDate": "Standing rule",
+          "confidence": "Method",
+          "tone": "amber"
+        },
+        {
+          "value": "No subtraction",
+          "label": "Unknown remaining inventory",
+          "detail": "Launches and known losses are not subtracted from an uncertain starting stock to invent a current total.",
+          "context": "Dated institutional estimates remain attributed.",
+          "sourceLabel": "Source method",
+          "sourceUrl": "#source-reliability",
+          "sourceDate": "Standing rule",
+          "confidence": "Method",
+          "tone": "red"
+        },
+        {
+          "value": "Dated",
+          "label": "Every fragile number",
+          "detail": "Casualties, traffic, prices, deployments, and inventories retain their source cutoff.",
+          "context": "A stale but well-labeled baseline is safer than false current precision.",
+          "sourceLabel": "Source method",
+          "sourceUrl": "#source-reliability",
+          "sourceDate": "Standing rule",
+          "confidence": "Method",
+          "tone": "cyan"
+        }
+      ],
+      "consensus": {
+        "label": "Editorial standard",
+        "title": "The reader should be able to tell what is known, inferred, and still contested.",
+        "copy": "Primary records establish baselines; independent reporting verifies events; specialist institutions supply analysis. None of those roles is interchangeable.",
+        "sources": [
+          {
+            "label": "IAEA",
+            "url": "https://www.iaea.org/"
+          },
+          {
+            "label": "UN OCHA",
+            "url": "https://www.unocha.org/"
+          }
+        ]
+      },
+      "disagreement": {
+        "label": "Required disclosure",
+        "title": "Serious sources often disagree because they answer different questions.",
+        "copy": "The report maps those disagreements instead of averaging them away. Belligerent claims, imagery estimates, humanitarian compilations, and policy arguments keep their provenance and limits.",
+        "sources": [
+          {
+            "label": "CSIS",
+            "url": "https://www.csis.org/"
+          },
+          {
+            "label": "RAND",
+            "url": "https://www.rand.org/"
+          }
+        ]
+      },
+      "note": "Routine automation may update the compact latest feed. Standing synthesis and this evidence desk require human review."
+    }
+  }
+}

@@ -56,7 +56,8 @@ jobs:
         run: node scripts/update-date.js
 
       # Refresh only the five-item material-change feed. Standing synthesis,
-      # page architecture, Atlas design, and map presentation are protected.
+      # the reviewed evidence desks, page architecture, Atlas design, and map
+      # presentation are protected.
       - name: Editorial latest-feed update
         id: ai_update
         continue-on-error: true
@@ -71,8 +72,8 @@ jobs:
         run: npm run build
 
       # Cross-platform validation covers all 11 original and 11 Atlas outputs,
-      # the compact latest feed, navigation, unresolved templates, and the
-      # editorial automation locks.
+      # all page-specific evidence desks, the compact latest feed, navigation,
+      # unresolved templates, and the editorial automation locks.
       - name: Validate build output
         run: npm run validate
 
@@ -95,7 +96,8 @@ jobs:
 
           # Stage only expected editorial data and generated outputs. The
           # updater cannot stage or mutate CSS, JavaScript, build composition,
-          # the Atlas shell, map presentation, or standing synthesis.
+          # the Atlas shell, map presentation, evidence desks, or standing
+          # synthesis. Generated Atlas pages still rebuild from reviewed data.
           git add data.json data/update-manifest.json \
                  index.html classic.html diplomatic.html scenarios.html forces.html \
                  iran-military.html inside-iran.html reactions.html sources.html \

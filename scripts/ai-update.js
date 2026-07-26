@@ -7,10 +7,10 @@
  *   - sections/last-24h.html (the compact Latest Developments table)
  *   - data/update-manifest.json
  *
- * Standing synthesis, page architecture, CSS, JavaScript, map presentation,
- * scenario judgments, and historical sections are review-only. A manually
- * requested structural run writes a research proposal under research/proposals/
- * instead of editing reader-facing pages.
+ * Standing synthesis, human-reviewed evidence desks, page architecture, CSS,
+ * JavaScript, map presentation, scenario judgments, and historical sections
+ * are review-only. A manually requested structural run writes a research
+ * proposal under research/proposals/ instead of editing reader-facing pages.
  */
 
 'use strict';
@@ -27,6 +27,7 @@ const { safeParseJSON, callGPT } = openai;
 
 const BASE_DIR = path.join(__dirname, '..');
 const DATA_PATH = path.join(BASE_DIR, 'data.json');
+const EVIDENCE_PATH = path.join(BASE_DIR, 'data', 'atlas-evidence.json');
 const LATEST_PATH = path.join(BASE_DIR, 'sections', 'last-24h.html');
 const MANIFEST_PATH = path.join(BASE_DIR, 'data', 'update-manifest.json');
 const GPT_LOG_PATH = path.join(BASE_DIR, 'logs', 'gpt-calls.jsonl');
@@ -71,6 +72,23 @@ function validateConfiguration() {
   if (MAX_DEVELOPMENTS > 5) errors.push('MAX_DEVELOPMENTS must remain at or below five');
   if (MIN_REPLACEMENT_DEVELOPMENTS < 2) errors.push('Latest feed replacement threshold is too low');
   if (!fs.existsSync(DATA_PATH)) errors.push('data.json is missing');
+  if (!fs.existsSync(EVIDENCE_PATH)) {
+    errors.push('data/atlas-evidence.json is missing');
+  } else {
+    try {
+      const evidence = JSON.parse(fs.readFileSync(EVIDENCE_PATH, 'utf8'));
+      if (!evidence.pages || Object.keys(evidence.pages).length !== 11) {
+        errors.push('data/atlas-evidence.json must contain all 11 page desks');
+      }
+      for (const [slug, desk] of Object.entries(evidence.pages || {})) {
+        if (!Array.isArray(desk.metrics) || desk.metrics.length !== 4) {
+          errors.push(`data/atlas-evidence.json page "${slug}" must contain four reviewed metrics`);
+        }
+      }
+    } catch (error) {
+      errors.push(`data/atlas-evidence.json is invalid JSON: ${error.message}`);
+    }
+  }
   if (!fs.existsSync(LATEST_PATH)) errors.push('sections/last-24h.html is missing');
   return errors;
 }
@@ -287,15 +305,16 @@ async function generateStructuralProposal(searchContext, allowedUrls) {
   }
   const systemPrompt = `You are preparing an editorial review proposal for the Iran Crisis Report.
 You may NOT write HTML, CSS, JavaScript, map presentation code, scenario percentages,
-or replacement page copy. Identify only structural or analytical changes that a human
-editor should consider after reviewing the evidence.
+replacement page copy, or replacement evidence-desk values. Identify only structural,
+analytical, or quantitative-evidence changes that a human editor should consider after
+reviewing the evidence.
 
 Return JSON:
 {
   "reason": "short overall reason",
   "pages": [{
     "page": "one allowed page id",
-    "changeType": "new synthesis | factual correction | chronology change | map-data review",
+    "changeType": "new synthesis | factual correction | chronology change | evidence-desk review | map-data review",
     "rationale": "what changed and why the standing argument must be reconsidered",
     "evidenceUrls": ["exact URLs copied from the evidence"],
     "researchQuestions": ["questions still requiring resolution"]
@@ -355,6 +374,7 @@ async function main() {
     requestedType: UPDATE_TYPE_INPUT,
     effectiveType: UPDATE_TYPE_INPUT === 'structural' ? 'review-proposal' : 'routine',
     protectedArchitecture: true,
+    protectedEvidenceDesks: true,
     phases: {},
   };
 
@@ -430,7 +450,7 @@ Rules:
       fs.writeFileSync(proposalPath, JSON.stringify({
         generatedAt: new Date().toISOString(),
         mode: 'review-only',
-        protectedPaths: ['build.js', 'css/', 'js/', 'atlas/', 'sections/'],
+        protectedPaths: ['build.js', 'css/', 'js/', 'atlas/', 'sections/', 'data/atlas-evidence.json'],
         ...proposalResult,
       }, null, 2) + '\n');
       manifest.phases.structuralReview = {
