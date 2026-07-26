@@ -1,62 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-06T11:40:07.450Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 58,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 47
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-consensus",
-            "naval-subtitle",
-            "reactions-global-mediation",
-            "reactions-gulf-callouts"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 13
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 3595
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-07T11:43:00.841Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2703,6 +2647,38 @@
           "sizeChange": 4995
         }
       ]
+    },
+    {
+      "timestamp": "2026-07-26T21:10:11.374Z",
+      "requestedType": "routine",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 27,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "U.S. pauses airstrikes on Iran to give diplomatic talks space: invalid category",
+            "Reporting says the June ceasefire deal has largely collapsed: invalid category",
+            "Conflict spreads as Houthi attacks target Saudi oil facilities: invalid category, source tier 5 cannot anchor the public latest feed",
+            "Iranian government and state broadcaster clash amid mediation push: invalid category, source tier 5 cannot anchor the public latest feed"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
     }
   ]
 }
