@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "July 24, 2026",
-  "lastUpdated": "11:41 UTC",
+  "date": "July 26, 2026",
+  "lastUpdated": "11:35 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -18,12 +18,16 @@
   "statIranAircraftSource": "ISW/CENTCOM, Mar 22",
   "statCoalitionCostBn": "~$4-6B",
   "statCoalitionCostSource": "CSIS estimate, Mar 2026",
-  "scenarioDeclaredVictoryPct": 32,
-  "scenarioNegotiatedDealPct": 10,
+  "scenarioDeclaredVictoryPct": 28,
+  "scenarioNegotiatedDealPct": 14,
   "scenarioDemocraticRevolutionPct": 4,
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "MILITARY/STRIKES PAUSED: U.S. pauses nightly strikes on Iran, pulling back from planned major escalation amid munitions and escalation concerns (NYTimes/CNN, Jul 25, 2026)",
+    "MARITIME/HOTHIS CLAIM REFINERY STRIKE: Yemen's Houthi rebels claim missile and drone strike on Saudi oil refinery; Saudi intercepts ballistic missiles, officials say (Washington Post/AP, Jul 25, 2026)",
+    "MILITARY/SAUDI RETALIATION: Saudi military strikes multiple Houthi targets in Yemen after Red Sea attacks, coalition says (CNBC/Reuters, Jul 25, 2026)",
+    "MARITIME/US INTERCEPTIONS: U.S. intercepts 16 commercial vessels attempting to breach Iran's naval blockade, CENTCOM says (Firstpost/CENTCOM, Jul 25, 2026)",
     "MILITARY/THIRTEENTH NIGHT: U.S. conducts 13th consecutive night of strikes on Iran, CENTCOM says (CENTCOM/AP, Jul 23, 2026)",
     "ECONOMY/OIL $100: Brent and WTI top $100 a barrel as Red Sea and Hormuz attacks escalate (CNN/NYTimes, Jul 23, 2026)",
     "POLICY/MASSIVE ATTACK WARNING: Trump says he is 'close' to decision on a 'massive attack' on Iran (Axios, Jul 23, 2026)",
@@ -43,10 +47,6 @@
     "MILITARY/NINTH NIGHT: U.S. launches ninth consecutive night of strikes on Iran, CENTCOM says (Times of Israel/Al Jazeera, Jul 19, 2026)",
     "NUCLEAR/IAEA INVESTIGATION: IAEA probing reported attack on Iran's Darkhovin nuclear construction site; agency says no nuclear material present (Outlook India/IAEA, Jul 19, 2026)",
     "ECONOMY/OIL SPIKE: Brent crude tops $90 a barrel as U.S.-Iran conflict widens (NYTimes/Bloomberg, Jul 19, 2026)",
-    "MARITIME/VESSEL ON FIRE: Ship set ablaze in Strait of Hormuz after attack; crew rescued, reports say (Indian Express/Times of Israel, Jul 19, 2026)",
-    "MILITARY/US TROOPS KILLED: Two U.S. service members killed, one missing after Iranian attack in Jordan (CENTCOM/CNN, Jul 18, 2026)",
-    "MILITARY/US STRIKES: U.S. launches fresh strikes on Iran after deaths of U.S. troops; CENTCOM says strikes targeted infrastructure (NYTimes/Bloomberg, Jul 18, 2026)",
-    "CASUALTIES/US TOTAL: U.S. military reports 16 service members killed and 430+ wounded since conflict began (PBS, Jul 18, 2026)",
-    "POLICY/IRAN WARNING: Iran's Supreme Leader warns of 'unforgettable lessons' if U.S. continues attacks (Al-Monitor/BBC, Jul 18, 2026)"
+    "MARITIME/VESSEL ON FIRE: Ship set ablaze in Strait of Hormuz after attack; crew rescued, reports say (Indian Express/Times of Israel, Jul 19, 2026)"
   ]
 }
