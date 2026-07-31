@@ -1,61 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-11T12:27:22.370Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 61,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 51
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-consensus",
-            "hormuz-wti-price",
-            "nuclear-subtitle"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "hormuz.html",
-            "nuclear-teaser.html",
-            "nuclear.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 35
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 4463
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-12T12:13:17.496Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2590,6 +2535,48 @@
         }
       },
       "changelog": []
+    },
+    {
+      "timestamp": "2026-07-31T11:48:27.393Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 26,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 3,
+          "rejected": [
+            "Saudi Arabia says 14 countries back proposed maritime defence alliance to protect regional shipping: invalid category"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 2,
+          "sizeChange": -196
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 5,
+          "sizeChange": 283
+        }
+      ]
     }
   ]
 }
