@@ -1,60 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-12T12:13:17.496Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 66,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 52
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-consensus",
-            "reactions-global-mediation",
-            "reactions-gulf-shipping"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 191
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 6076
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-13T11:44:14.621Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2577,6 +2523,36 @@
           "sizeChange": 283
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-01T11:34:13.623Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 26,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 2,
+          "rejected": [
+            "IRGC claims it struck two tankers transiting the Strait of Hormuz: source tier 5 cannot anchor the public latest feed",
+            "Iraq denies prior knowledge of U.S.–Saudi strikes, signaling diplomatic friction: invalid category, duplicate source URL"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
     }
   ]
 }
