@@ -1,64 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-16T12:44:10.337Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 67,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 46
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "analysis-consensus",
-            "bg-nuclear-timeline",
-            "hormuz-wti-price",
-            "military-parchin",
-            "naval-subtitle"
-          ],
-          "filesUpdated": [
-            "analysis.html",
-            "background.html",
-            "hormuz.html",
-            "military.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 1,
-          "sizeChange": -148
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 6367
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-17T12:31:26.193Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2487,6 +2429,38 @@
             "U.S. and Iran resume direct strikes and missile exchanges, raising risk of wider confrontation: why-it-matters length",
             "U.S. president says ceasefire/negotiations are imminent while Tehran denies direct talks: invalid category",
             "Iran and Oman reported to be discussing an alternative Hormuz shipping arrangement as U.S. claims talks to reopen the Strait: headline length, why-it-matters length"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-07T11:53:02.687Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 30,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "Iran says it is in 'final stage' of an Iran–Oman framework to reopen the Strait of Hormuz: why-it-matters length",
+            "Iran’s parliament is reported to be considering barring U.S. and Israeli ships from transiting the Strait of Hormuz: why-it-matters length, invalid category",
+            "Marine-traffic reports show only limited commercial transits while talks progress: why-it-matters length",
+            "U.S. administration rejects conditions that would block U.S. and allied ships from Hormuz: why-it-matters length, invalid category"
           ],
           "replacementThreshold": 3
         },
