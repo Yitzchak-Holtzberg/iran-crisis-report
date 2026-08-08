@@ -1,62 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-17T12:31:26.193Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 50,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 38
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "bg-january-protests",
-            "hormuz-wti-price",
-            "naval-subtitle",
-            "reactions-iran-casualties"
-          ],
-          "filesUpdated": [
-            "background.html",
-            "hormuz.html",
-            "naval.html",
-            "reactions-iran.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 2,
-          "sizeChange": -239
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 46,
-          "linesRemoved": 0,
-          "sizeChange": 5689
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-18T12:14:44.159Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2461,6 +2405,38 @@
             "Iran’s parliament is reported to be considering barring U.S. and Israeli ships from transiting the Strait of Hormuz: why-it-matters length, invalid category",
             "Marine-traffic reports show only limited commercial transits while talks progress: why-it-matters length",
             "U.S. administration rejects conditions that would block U.S. and allied ships from Hormuz: why-it-matters length, invalid category"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-08T11:37:42.355Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 28,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "Iran says Hormuz framework with Oman (and U.S. reported to be involved) is awaiting top council approval: summary length, why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed",
+            "Vessel traffic through the Strait of Hormuz has dwindled as markets watch Iran–Oman talks: why-it-matters length, invalid category",
+            "Houthi attacks escalate toward Saudi Arabia, wounding civilians and raising regional escalation risks: why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed",
+            "Islamic Resistance in Iraq postpones a planned response to recent strikes, ISW reports: why-it-matters length, invalid category"
           ],
           "replacementThreshold": 3
         },
