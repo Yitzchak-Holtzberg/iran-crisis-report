@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-22T13:05:04.639Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 51,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 42
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Request timeout after 180000 ms"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -107
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5101
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-23T12:10:39.300Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2340,6 +2295,37 @@
           "rejected": [
             "Pakistan says U.S. and Iran are close to a deal: why-it-matters length, invalid category",
             "U.S. shifts back toward sanctions as a central tool against Iran: why-it-matters length"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-13T11:55:27.068Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 25,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "Strait of Hormuz ship traffic at near-standstill, deepening maritime disruption: why-it-matters length",
+            "Iran holds firm on Hormuz conditions as Pakistan official visits Tehran: why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed",
+            "Iran says there are no talks to extend interim ceasefire with the United States: why-it-matters length, invalid category"
           ],
           "replacementThreshold": 3
         },
