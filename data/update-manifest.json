@@ -1,65 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-23T12:10:39.300Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 52,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 44
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 5,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "bg-nuclear-timeline",
-            "nuclear-subtitle",
-            "reactions-global-callouts",
-            "reactions-global-energy",
-            "reactions-global-mediation",
-            "reactions-iran-callouts"
-          ],
-          "filesUpdated": [
-            "background.html",
-            "nuclear-teaser.html",
-            "nuclear.html",
-            "reactions-global.html",
-            "reactions-iran.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 4,
-          "sizeChange": -683
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 26,
-          "linesRemoved": 0,
-          "sizeChange": 3929
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-24T12:02:01.202Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2326,6 +2267,36 @@
             "Strait of Hormuz ship traffic at near-standstill, deepening maritime disruption: why-it-matters length",
             "Iran holds firm on Hormuz conditions as Pakistan official visits Tehran: why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed",
             "Iran says there are no talks to extend interim ceasefire with the United States: why-it-matters length, invalid category"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-14T11:52:33.791Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 31,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 2,
+          "rejected": [
+            "UN: Humanitarian situation across the region is worsening as hostilities expand: why-it-matters length",
+            "Competing claims over control of the Strait of Hormuz escalate: Iran asserts authority, creates fee‑collecting authority; U.S. signals ability to sustain blockade: headline length, why-it-matters length"
           ],
           "replacementThreshold": 3
         },
