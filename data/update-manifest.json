@@ -1,60 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-24T12:02:01.202Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 44,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 35
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "bg-nuclear-timeline",
-            "military-parchin",
-            "carrier-lincoln-position"
-          ],
-          "filesUpdated": [
-            "background.html",
-            "military.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 4,
-          "linesRemoved": 0,
-          "sizeChange": 551
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 4882
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-25T11:59:17.659Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2297,6 +2243,37 @@
           "rejected": [
             "UN: Humanitarian situation across the region is worsening as hostilities expand: why-it-matters length",
             "Competing claims over control of the Strait of Hormuz escalate: Iran asserts authority, creates fee‑collecting authority; U.S. signals ability to sustain blockade: headline length, why-it-matters length"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-15T11:30:03.392Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 29,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "Two UAE-operated tankers struck in Strait of Hormuz; UAE blames Iran: why-it-matters length",
+            "U.S.–Iran ceasefire set to expire as negotiations remain deadlocked: why-it-matters length, invalid category",
+            "Iraqi authorities planning possible operation to retake Kataib Hezbollah stronghold, ISW reports: why-it-matters length"
           ],
           "replacementThreshold": 3
         },
