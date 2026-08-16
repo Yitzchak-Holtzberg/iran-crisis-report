@@ -1,64 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-25T11:59:17.659Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 12,
-          "gapQueries": 0,
-          "uniqueResults": 44,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 37
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 5,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "hormuz-wti-price",
-            "iran-crisis3-economic",
-            "naval-subtitle",
-            "carrier-ford-position",
-            "nuclear-subtitle"
-          ],
-          "filesUpdated": [
-            "hormuz.html",
-            "inside-iran.html",
-            "naval.html",
-            "nuclear-teaser.html",
-            "nuclear.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 4,
-          "sizeChange": -588
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 26,
-          "linesRemoved": 0,
-          "sizeChange": 3874
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-26T11:57:42.153Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2274,6 +2216,36 @@
             "Two UAE-operated tankers struck in Strait of Hormuz; UAE blames Iran: why-it-matters length",
             "U.S.–Iran ceasefire set to expire as negotiations remain deadlocked: why-it-matters length, invalid category",
             "Iraqi authorities planning possible operation to retake Kataib Hezbollah stronghold, ISW reports: why-it-matters length"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-16T11:30:17.863Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 26,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 2,
+          "rejected": [
+            "US and Iran resume direct strikes and missile exchanges: why-it-matters length",
+            "Houthi attacks force suspension of a strategic Yemeni port amid wider regional tensions: URL not copied from search results, source tier 5 cannot anchor the public latest feed"
           ],
           "replacementThreshold": 3
         },
