@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-06-29T12:40:04.861Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 53,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 36
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 5,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Unexpected end of JSON input"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 217
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 26,
-          "linesRemoved": 0,
-          "sizeChange": 4016
-        }
-      ]
-    },
-    {
       "timestamp": "2026-06-30T11:57:25.513Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2181,6 +2136,37 @@
           "sizeChange": 99
         }
       ]
+    },
+    {
+      "timestamp": "2026-08-20T11:36:23.031Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 29,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 1,
+          "rejected": [
+            "UAE suspends all trade and financial transactions with Iran after reported missile strikes: why-it-matters length, invalid category",
+            "Commercial traffic through the Strait of Hormuz has been sharply curtailed: why-it-matters length, URL not copied from search results",
+            "Iran’s hardline parliament advances measures to restrict foreign contacts in universities and media: why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
     }
   ]
 }
