@@ -1,58 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-01T12:10:44.122Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 63,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 47
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "hormuz-wti-price",
-            "carrier-lincoln-position"
-          ],
-          "filesUpdated": [
-            "hormuz.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -7
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5633
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-02T11:54:31.077Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2132,6 +2080,38 @@
             "Shipping traffic through the Strait of Hormuz falls sharply: why-it-matters length, invalid category",
             "UAE publicly accuses Iran of missile activity and announces suspension of trade: invalid category",
             "Gulf states weigh deeper economic and political adjustments as Iran resists U.S. pressure: invalid category"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-22T11:30:23.991Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 25,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "U.S. officials say administration will impose 'toughest' economic sanctions; Iran vows 'devastating' response: why-it-matters length",
+            "UAE reportedly accuses Iran of ballistic missile launches and moves to suspend trade ties: why-it-matters length",
+            "Data and reporting show commercial traffic through the Strait of Hormuz has been sharply curtailed: URL not copied from search results",
+            "Institute for the Study of War: economic pressure has not changed hardline Iranian leaders' anti-concession stance: why-it-matters length, invalid category"
           ],
           "replacementThreshold": 3
         },
