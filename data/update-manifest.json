@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-03T11:52:56.136Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 66,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 48
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 10,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Unexpected end of JSON input"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 18
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 51,
-          "linesRemoved": 0,
-          "sizeChange": 6961
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-04T11:39:57.968Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2088,6 +2043,37 @@
             "U.S. prepares to ramp up economic sanctions on Iran: why-it-matters length, invalid category",
             "Iran warns neighbouring states not to join U.S. economic pressure, threatens retaliation: why-it-matters length, invalid category",
             "Commercial traffic through the Strait of Hormuz sharply curtailed; 'dark' tanker practices rise: summary length, why-it-matters length, invalid category"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-24T11:38:24.831Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 27,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "Iran official says foreign support for new U.S. sanctions would be 'an act of war': why-it-matters length, invalid category",
+            "Iran threatens Gulf states: security chief vows to prevent 'a single drop of oil' if countries join U.S. economic campaign: headline length, why-it-matters length",
+            "Commercial traffic through the Strait of Hormuz remains sharply reduced as Iran selectively authorizes passage: why-it-matters length"
           ],
           "replacementThreshold": 3
         },
