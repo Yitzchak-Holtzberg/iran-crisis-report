@@ -1,59 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-06T12:25:12.815Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 58,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 41
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "carrier-lincoln-position",
-            "reactions-iran-callouts",
-            "reactions-iran-casualties"
-          ],
-          "filesUpdated": [
-            "naval.html",
-            "reactions-iran.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 72
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 4929
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-07T12:07:10.323Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2032,6 +1979,38 @@
             "U.S. shifts to target Iran's sanctions‑evasion networks as part of wider economic campaign: why-it-matters length",
             "Oil tanker struck by projectile off Oman in the Strait of Hormuz: why-it-matters length",
             "Pakistan says it made 'significant progress' in talks with Iran aimed at de‑escalation: why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-27T20:59:29.944Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 26,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "Qatar prime minister to visit Tehran as diplomatic push around the Strait of Hormuz intensifies: why-it-matters length, invalid category",
+            "Iran and Oman announce temporary shipping corridor in the Strait of Hormuz: why-it-matters length, source tier 5 cannot anchor the public latest feed",
+            "Tanker struck and caught fire in the Strait of Hormuz, UKMTO warns: why-it-matters length",
+            "U.S. shifts toward a sanctions-focused strategy while claiming maritime clearance progress: why-it-matters length"
           ],
           "replacementThreshold": 3
         },
