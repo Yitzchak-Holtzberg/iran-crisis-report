@@ -1,61 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-07T12:07:10.323Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 67,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 51
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 5,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "naval-subtitle",
-            "reactions-global-energy",
-            "reactions-gulf-callouts",
-            "reactions-gulf-shipping"
-          ],
-          "filesUpdated": [
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 41
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 26,
-          "linesRemoved": 0,
-          "sizeChange": 4343
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-08T11:42:54.176Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -2011,6 +1956,36 @@
             "Iran and Oman announce temporary shipping corridor in the Strait of Hormuz: why-it-matters length, source tier 5 cannot anchor the public latest feed",
             "Tanker struck and caught fire in the Strait of Hormuz, UKMTO warns: why-it-matters length",
             "U.S. shifts toward a sanctions-focused strategy while claiming maritime clearance progress: why-it-matters length"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-28T21:20:50.832Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 29,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 1,
+          "rejected": [
+            "Qatar’s prime minister visits Tehran for talks aimed at de‑escalation and reopening the Strait of Hormuz: invalid category, source tier 5 cannot anchor the public latest feed",
+            "Iranian officials maintain anti‑concession stance amid a worsening domestic fuel crisis: why-it-matters length, invalid category"
           ],
           "replacementThreshold": 3
         },
