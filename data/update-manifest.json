@@ -1,67 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-08T11:42:54.176Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 62,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 43
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "hormuz-wti-price",
-            "iran-crisis1-epicfury",
-            "iran-crisis6-regional",
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "reactions-global-energy",
-            "reactions-gulf-callouts",
-            "reactions-gulf-shipping"
-          ],
-          "filesUpdated": [
-            "hormuz.html",
-            "inside-iran.html",
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 20
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5910
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-09T12:10:36.183Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -1986,6 +1925,35 @@
           "rejected": [
             "Qatar’s prime minister visits Tehran for talks aimed at de‑escalation and reopening the Strait of Hormuz: invalid category, source tier 5 cannot anchor the public latest feed",
             "Iranian officials maintain anti‑concession stance amid a worsening domestic fuel crisis: why-it-matters length, invalid category"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-29T15:35:04.327Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 31,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 2,
+          "rejected": [
+            "Six months on, Iran regime remains intact as conflict settles into attrition: why-it-matters length, invalid category"
           ],
           "replacementThreshold": 3
         },
