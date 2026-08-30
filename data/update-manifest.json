@@ -1,59 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-09T12:10:36.183Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 64,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 32
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "hormuz-wti-price",
-            "carrier-lincoln-position",
-            "carrier-ford-position"
-          ],
-          "filesUpdated": [
-            "hormuz.html",
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -129
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 4672
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-10T12:07:03.119Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -1954,6 +1901,38 @@
           "accepted": 2,
           "rejected": [
             "Six months on, Iran regime remains intact as conflict settles into attrition: why-it-matters length, invalid category"
+          ],
+          "replacementThreshold": 3
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": []
+    },
+    {
+      "timestamp": "2026-08-30T15:18:35.488Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "queries": 10,
+          "failed": 0,
+          "uniqueUrls": 27,
+          "lowTierDropped": 0
+        },
+        "latest": {
+          "status": "skipped",
+          "accepted": 0,
+          "rejected": [
+            "IRGC asserts control of the Strait of Hormuz while U.S. enforces a blockade: why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed",
+            "Commercial traffic through the Strait of Hormuz remains well below normal: invalid category",
+            "Iran’s leadership publicly acknowledges sharp economic damage and plunging trade: why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed",
+            "Analysts say Iran’s internal power struggle could decide duration and direction of the war: invalid category"
           ],
           "replacementThreshold": 3
         },
