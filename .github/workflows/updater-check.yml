@@ -1,5 +1,9 @@
 name: Updater verification
 on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/updater-check.yml'
   pull_request:
     paths:
       - 'scripts/**'
@@ -22,9 +26,9 @@ jobs:
       - run: npm run build && npm run validate
 
   # The existing github-pages environment permits only approved branches.
-  # Run manually after merge; never bypass its branch or secret protections.
+  # Run on approved master workflow changes or manually; preserve environment protections.
   live:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     needs: verify
     runs-on: ubuntu-latest
     timeout-minutes: 15
