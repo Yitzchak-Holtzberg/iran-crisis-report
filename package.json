@@ -1,11 +1,12 @@
 {
   "name": "iran-crisis-report",
   "version": "1.0.0",
-  "description": "Iran Crisis Report — whole-situation briefing",
+  "description": "Iran Crisis Report \u2014 whole-situation briefing",
   "scripts": {
     "build": "node build.js",
     "validate": "node scripts/validate-build.js",
-    "validate:update": "node scripts/ai-update.js --validate-config"
+    "validate:update": "node scripts/ai-update.js --validate-config",
+    "test": "node --test scripts/tests/*.test.js"
   },
   "private": true,
   "dependencies": {

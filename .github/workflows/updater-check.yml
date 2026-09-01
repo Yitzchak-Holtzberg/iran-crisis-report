@@ -1,0 +1,42 @@
+name: Updater verification
+on:
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'package*.json'
+      - '.github/workflows/updater-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm test
+      - run: npm run build && npm run validate
+      # Same-repository PR only; fork PRs never receive credentials.
+      - name: Live research and local build (no commit or deployment)
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          UPDATE_TYPE: routine
+        run: |
+          node scripts/ai-update.js
+          npm run build
+          npm run validate
+      - name: Upload evidence and proposed feed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: updater-verification-${{ github.run_id }}
+          retention-days: 14
+          path: |
+            logs/
+            sections/last-24h.html
+            data.json
