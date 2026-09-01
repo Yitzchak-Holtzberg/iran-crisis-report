@@ -170,4 +170,4 @@ function safeParseJSON(raw) {
   throw new SyntaxError(`Cannot parse GPT JSON (${s.length} chars): ${s.slice(0, 100)}…`);
 }
 
-module.exports = { init, callGPT, safeParseJSON, GPT_TIMEOUT_MS, STRUCTURAL_GPT_TIMEOUT_MS };
+module.exports = { httpsPost, init, callGPT, safeParseJSON, GPT_TIMEOUT_MS, STRUCTURAL_GPT_TIMEOUT_MS };

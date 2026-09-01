@@ -51,34 +51,45 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Update data.json → date and lastUpdated to today's UTC date/time.
-      - name: Update date in data.json
-        run: node scripts/update-date.js
-
       # Refresh only the five-item material-change feed. Standing synthesis,
       # the reviewed evidence desks, page architecture, Atlas design, and map
       # presentation are protected.
       - name: Editorial latest-feed update
         id: ai_update
-        continue-on-error: true
         env:
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_ROUTINE_MODEL: gpt-5.6-luna
           UPDATE_TYPE: ${{ github.event.inputs.update_type || 'auto' }}
         run: node scripts/ai-update.js
 
+      - name: Save research and editorial diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: updater-diagnostics-${{ github.run_id }}
+          path: logs/
+          retention-days: 14
+
+      - name: Update date after editorial changes
+        if: steps.ai_update.outputs.changed == 'true'
+        run: node scripts/update-date.js
+
       # Regenerate index.html from the updated data.json and section files.
       - name: Build index.html
+        if: steps.ai_update.outputs.changed == 'true'
         run: npm run build
 
       # Cross-platform validation covers all 11 original and 11 Atlas outputs,
       # all page-specific evidence desks, the compact latest feed, navigation,
       # unresolved templates, and the editorial automation locks.
       - name: Validate build output
+        if: steps.ai_update.outputs.changed == 'true'
         run: npm run validate
 
       # Fix #10: Tag the pre-update state for easy rollback.
       - name: Tag pre-update state for rollback
+        if: steps.ai_update.outputs.changed == 'true'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -90,6 +101,7 @@ jobs:
       # Commit the refreshed files back to the branch so the repo always
       # reflects the latest auto-generated output.
       - name: Commit and push updated files
+        if: steps.ai_update.outputs.changed == 'true' || github.event.inputs.update_type == 'structural'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -116,16 +128,23 @@ jobs:
 
           # Push commit and rollback tag
           git push
-          git push origin last-good-deploy
+          if [ '${{ steps.ai_update.outputs.changed }}' = 'true' ]; then git push origin last-good-deploy; fi
 
-      # Upload the entire repo root as the Pages artifact (index.html, css/, js/).
+      # Diagnostics belong in run artifacts, not on the public website.
+      - name: Remove diagnostics from Pages payload
+        if: steps.ai_update.outputs.changed == 'true'
+        run: rm -rf logs
+
+      # Upload generated website assets.
       - name: Upload Pages artifact
+        if: steps.ai_update.outputs.changed == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
       # Deploy the artifact to GitHub Pages.
       - name: Deploy to GitHub Pages
+        if: steps.ai_update.outputs.changed == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
 
@@ -155,7 +174,7 @@ jobs:
               failures.push('The **build-and-deploy** job failed (a required step exited with an error).');
             }
             if (aiUpdateFailed) {
-              failures.push('The **editorial latest-feed update** failed (Brave Search/OpenAI quota, network, or evidence-gate issue).');
+              failures.push('The **editorial latest-feed update** failed (OpenAI search/model quota, network, or evidence-gate issue).');
             }
 
             const body = [

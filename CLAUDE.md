@@ -43,7 +43,14 @@ Sections of HTML wrapped in `<!-- @ai-zone:id -->...<!-- @/ai-zone:id -->` marke
 
 ### Automated Updates (`.github/workflows/daily-build.yml`)
 
-Runs every 6 hours. Steps: update date → AI content update (Tavily search + OpenAI) → build → commit → deploy to GitHub Pages. Requires `TAVILY_API_KEY` and `OPENAI_API_KEY` secrets. AI update failures are non-fatal; the build continues with a date-only update.
+Runs once daily. Routine research uses Luna and OpenAI built-in web search,
+then merges 1–5 validated developments while retaining earlier feed entries.
+Only real public content changes trigger a date update, build, commit and Pages
+deployment. Requires OPENAI_API_KEY; optional structural research also uses
+BRAVE_API_KEY. See README.md and AI-ZONES.md for current automation boundaries.
+`npm test` runs updater regressions. The verification workflow checks PRs
+offline; a manual run after merge performs a live API check using the protected
+github-pages environment without publishing its output.
 
 ### Client-Side Code
 

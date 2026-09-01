@@ -85,20 +85,24 @@ opens Atlas and `classic.html` preserves the previous home page.
 `.github/workflows/daily-build.yml` runs once daily at 11:05 UTC and can also be
 triggered manually.
 
-The routine pipeline:
+The routine pipeline uses `gpt-5.6-luna` through the OpenAI Responses API:
 
-1. updates the date;
-2. searches current primary, wire, institutional, and specialist sources;
-3. asks the model for a complete feed of three to five material developments;
-4. rejects homepage URLs, unsupported confidence, low-tier anchors, duplicates,
-   missing dates, and oversized copy;
-5. updates only `data.json:ticker` and `sections/last-24h.html`;
-6. rebuilds the reviewed evidence desks into all Atlas pages;
-7. builds and validates all 23 pages;
-8. commits expected data and generated outputs;
-9. deploys to GitHub Pages.
+1. searches the last seven days, prioritizing the last 72 hours;
+2. follows relevant leads with built-in `web_search` (at most ten tool calls);
+3. drafts zero to five new developments in a separate JSON response;
+4. validates dates, lengths, source tiers, confidence, and URLs against search provenance;
+5. merges even one accepted item into the existing feed, keeping at most five rows;
+6. refreshes the date, builds, validates and deploys only when public content changes.
 
-If fewer than three developments pass the gate, the existing feed is preserved.
+Empty or duplicate results preserve the feed and its timestamps. Failed searches,
+incomplete responses, and wholly rejected candidate sets fail the run without
+publishing. Research responses, source metadata, candidates, rejection reasons,
+and no-change manifests are saved in the run's diagnostics artifact (14 days),
+not in the public Pages payload. The API exposes consulted sources and tool
+output, not every internal search-engine result.
+
+The model is configurable through `OPENAI_ROUTINE_MODEL`. Routine mode needs only
+`OPENAI_API_KEY`; the optional structural research path still uses Brave.
 
 ### Protected from routine automation
 
@@ -133,7 +137,6 @@ Brookings, CFR, Atlantic Council, and CTP–ISW—and writes a proposal under
 Run locally:
 
 ```bash
-set BRAVE_API_KEY=...
 set OPENAI_API_KEY=...
 node scripts/ai-update.js
 ```
@@ -155,11 +158,15 @@ npm run validate:update
 
 ### Required GitHub secrets
 
-- `BRAVE_API_KEY`
 - `OPENAI_API_KEY`
+- `BRAVE_API_KEY` (only for structural review proposals)
 
-The workflow keeps the editorial update step non-blocking so a search or model
-failure cannot prevent a clean date refresh and rebuild.
+The updater verification workflow runs regression tests and build validation on
+PRs. After merge, manually run **Updater verification** on an approved branch
+for a real routine API pass. The live job uses the existing `github-pages`
+environment and respects its branch protections; PR branches cannot access it.
+The live check uploads diagnostics and proposed content, never commits or
+deploys the test output. Use `npm test` for local regression tests.
 
 ## Editing a page
 

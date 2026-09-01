@@ -94,7 +94,7 @@ for (const slug of expectedEvidenceSlugs) {
 }
 
 const latest = read(path.join('sections', 'last-24h.html'));
-const latestRows = (latest.match(/<tr>/g) || []).length - 1;
+const latestRows = (latest.match(/<tr\b/g) || []).length - 1;
 if (latestRows < 1 || latestRows > 5) {
   fail(`Latest Developments must contain 1–5 body rows (found ${latestRows})`);
 }
