@@ -76,10 +76,10 @@ async function researchLatest({ apiKey, model, currentLatest, today, logDir }) {
   return { text: result.text, allowedUrls, calls: calls.length, usage: result.response.usage };
 }
 
-async function draftLatest({ apiKey, model, prompt, input, logDir }) {
+async function draftLatest({ apiKey, model, prompt, input, logDir, post }) {
   const result = await request({ model, reasoning: { effort: 'low' }, max_output_tokens: 8000,
-    instructions: prompt, input, text: { format: { type: 'json_object' } },
-  }, { apiKey, logDir, name: 'editorial-response' });
+    instructions: prompt, input: `Return the requested JSON object.\n\n${input}`, text: { format: { type: 'json_object' } },
+  }, { apiKey, logDir, name: 'editorial-response', post });
   // Never repair a truncated response into publishable claims.
   const parsed = JSON.parse(result.text);
   if (!Array.isArray(parsed.developments)) throw new Error('Editorial response lacks a developments array');

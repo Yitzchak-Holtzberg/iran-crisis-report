@@ -6,7 +6,7 @@ const os = require('os');
 const path = require('path');
 const { validateDevelopments, renderLatestDevelopments } = require('../ai-update');
 const { mergeLatest, readRows } = require('../lib/latest-feed');
-const { responseText, sourceUrls, request } = require('../lib/openai-research');
+const { responseText, sourceUrls, request, draftLatest } = require('../lib/openai-research');
 
 const make = (n, date = '2026-09-01') => ({ headline: `Development ${n}`, summary: `Event ${n} occurred.`, whyItMatters: 'Changes the situation.', eventDate: date, publishedDate: date, category: 'military', confidence: 'attributed', sourceUrl: `https://www.reuters.com/world/middle-east/event-${n}/`, sourceName: 'Reuters' });
 const old = [make(1, '2026-08-29'), make(2, '2026-08-28'), make(3, '2026-08-27')];
@@ -71,5 +71,20 @@ test('Responses transport records output, retries 429 and does not retry 400', a
     count = 0;
     await assert.rejects(request({}, { apiKey: 'test', logDir, name: 'bad', post: async () => { count++; return { ok: false, status: 400, text: async () => 'bad request' }; } }));
     assert.equal(count, 1);
+  } finally { fs.rmSync(logDir, { recursive: true, force: true }); }
+});
+
+
+test('editorial JSON mode names JSON in input, not just instructions', async () => {
+  const logDir = fs.mkdtempSync(path.join(os.tmpdir(), 'iran-json-test-'));
+  try {
+    const parsed = await draftLatest({ apiKey: 'test', model: 'test', prompt: 'Return JSON', input: 'Current evidence', logDir,
+      post: async (url, headers, body) => {
+        const payload = JSON.parse(body);
+        assert.equal(payload.text.format.type, 'json_object');
+        assert.match(payload.input, /json/i);
+        return { ok: true, json: async () => ({ status: 'completed', output: [{ type: 'message', content: [{ type: 'output_text', text: '{"developments":[]}' }] }] }) };
+      } });
+    assert.deepEqual(parsed, { developments: [] });
   } finally { fs.rmSync(logDir, { recursive: true, force: true }); }
 });

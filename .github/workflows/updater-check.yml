@@ -3,6 +3,8 @@ on:
   push:
     branches: [master]
     paths:
+      - 'scripts/**'
+      - 'package*.json'
       - '.github/workflows/updater-check.yml'
   pull_request:
     paths:
