@@ -48,8 +48,9 @@ then merges 1–5 validated developments while retaining earlier feed entries.
 Only real public content changes trigger a date update, build, commit and Pages
 deployment. Requires OPENAI_API_KEY; optional structural research also uses
 BRAVE_API_KEY. See README.md and AI-ZONES.md for current automation boundaries.
-`npm test` runs updater regressions; the PR verification workflow also runs a
-live API check without deploying its output.
+`npm test` runs updater regressions. The verification workflow checks PRs
+offline; a manual run after merge performs a live API check using the protected
+github-pages environment without publishing its output.
 
 ### Client-Side Code
 

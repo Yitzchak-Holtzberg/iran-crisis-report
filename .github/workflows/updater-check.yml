@@ -11,8 +11,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    environment: github-pages
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -21,9 +20,22 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build && npm run validate
-      # Same-repository PR only; fork PRs never receive credentials.
+
+  # The existing github-pages environment permits only approved branches.
+  # Run manually after merge; never bypass its branch or secret protections.
+  live:
+    if: github.event_name == 'workflow_dispatch'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
       - name: Live research and local build (no commit or deployment)
-        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           UPDATE_TYPE: routine

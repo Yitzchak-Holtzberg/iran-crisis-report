@@ -161,10 +161,12 @@ npm run validate:update
 - `OPENAI_API_KEY`
 - `BRAVE_API_KEY` (only for structural review proposals)
 
-The updater verification workflow runs regression tests and a real routine API
-pass for same-repository PRs. It builds and validates the proposed output locally
-on the runner, uploads diagnostics, and never commits or deploys the test output.
-Fork PRs run only offline checks. Use `npm test` for local regression tests.
+The updater verification workflow runs regression tests and build validation on
+PRs. After merge, manually run **Updater verification** on an approved branch
+for a real routine API pass. The live job uses the existing `github-pages`
+environment and respects its branch protections; PR branches cannot access it.
+The live check uploads diagnostics and proposed content, never commits or
+deploys the test output. Use `npm test` for local regression tests.
 
 ## Editing a page
 
