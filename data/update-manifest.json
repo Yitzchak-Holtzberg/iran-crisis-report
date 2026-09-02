@@ -1,51 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-12T11:32:37.138Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 57,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 46
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "error",
-          "error": "Unexpected end of JSON input"
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 225
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5748
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-13T12:11:35.777Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -1905,6 +1860,59 @@
         }
       },
       "changelog": []
+    },
+    {
+      "timestamp": "2026-09-02T15:03:39.948Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 42,
+          "usage": {
+            "input_tokens": 21704,
+            "input_tokens_details": {
+              "cache_write_tokens": 5010,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2154,
+            "output_tokens_details": {
+              "reasoning_tokens": 294
+            },
+            "total_tokens": 23858
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 4,
+          "rejected": [
+            "Iranian retaliation reaches U.S. positions and commercial shipping routes: URL not copied from search results"
+          ]
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 2,
+          "linesRemoved": 0,
+          "sizeChange": 73
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 10,
+          "linesRemoved": 0,
+          "sizeChange": 1407
+        }
+      ]
     }
   ]
 }

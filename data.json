@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "September 1, 2026",
-  "lastUpdated": "15:26 UTC",
+  "date": "September 2, 2026",
+  "lastUpdated": "15:04 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,8 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
-    "UAE accuses Iran of ballistic missile strikes and announces suspension of trade with Tehran",
-    "Analysts say Iran has lost significant control of the Strait of Hormuz; ship traffic near standstill",
-    "UN warns aid workers increasingly at risk as drones reshape battlefield threats"
+    "Iran retaliates against Gulf states after U.S. strikes",
+    "CENTCOM says new U.S. strikes targeted IRGC maritime capabilities",
+    "UAE reports interception of Iranian drone after fighting resumes",
+    "U.S. strike near Hormuz ends month-long military lull",
+    "UAE accuses Iran of ballistic missile strikes and announces suspension of trade with Tehran"
   ]
 }
