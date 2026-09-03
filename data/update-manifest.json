@@ -1,65 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-13T12:11:35.777Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 60,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 37
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 7,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "iran-crisis6-regional",
-            "naval-subtitle",
-            "carrier-lincoln-position",
-            "carrier-ford-position",
-            "reactions-global-energy",
-            "reactions-gulf-callouts",
-            "reactions-gulf-shipping"
-          ],
-          "filesUpdated": [
-            "inside-iran.html",
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -42
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 36,
-          "linesRemoved": 0,
-          "sizeChange": 5213
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-14T11:39:18.900Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -1911,6 +1852,60 @@
           "linesAdded": 10,
           "linesRemoved": 0,
           "sizeChange": 1407
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-09-03T14:57:38.740Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 57,
+          "usage": {
+            "input_tokens": 22073,
+            "input_tokens_details": {
+              "cache_write_tokens": 5377,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1722,
+            "output_tokens_details": {
+              "reasoning_tokens": 314
+            },
+            "total_tokens": 23795
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 3,
+          "rejected": [
+            "Two seafarers confirmed dead after tanker incident near Hormuz: homepage or invalid URL",
+            "U.S.–Iran diplomatic efforts reported stalled amid renewed fighting: duplicate source URL"
+          ]
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -17
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 29
         }
       ]
     }
