@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "September 4, 2026",
-  "lastUpdated": "14:55 UTC",
+  "date": "September 5, 2026",
+  "lastUpdated": "13:50 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Iran alleges U.S. missile strike on tanker near Kharg Island",
+    "U.S. and European allies seek IAEA referral of Iran to Security Council",
     "Commercial traffic through the Strait of Hormuz remains depressed",
     "Kuwait says it intercepted a new Iranian missile-and-drone attack",
-    "CENTCOM is reviewing the reported Kuhestak wedding-site strike",
-    "Reported civilian casualties from U.S. strike in southern Iran",
-    "Iran retaliates against Gulf states after U.S. strikes"
+    "Tanker incident in Strait of Hormuz caused two casualties"
   ]
 }
