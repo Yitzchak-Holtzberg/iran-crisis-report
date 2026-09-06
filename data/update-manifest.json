@@ -1,56 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-16T11:41:03.822Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 61,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 41
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 9,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "carrier-lincoln-position"
-          ],
-          "filesUpdated": [
-            "naval.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 4,
-          "sizeChange": -507
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 46,
-          "linesRemoved": 0,
-          "sizeChange": 6606
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-17T11:37:27.012Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -1894,6 +1844,60 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 78
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-09-06T14:07:25.562Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 52,
+          "usage": {
+            "input_tokens": 22189,
+            "input_tokens_details": {
+              "cache_write_tokens": 5408,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1512,
+            "output_tokens_details": {
+              "reasoning_tokens": 297
+            },
+            "total_tokens": 23701
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 1,
+          "rejected": [
+            "U.S. says it struck three Iranian oil tankers after missile attack: why-it-matters length",
+            "Several merchant vessels reportedly subjected to disabling fire: homepage or invalid URL"
+          ]
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -3
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 51
         }
       ]
     }
