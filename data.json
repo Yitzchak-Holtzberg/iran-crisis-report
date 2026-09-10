@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "September 9, 2026",
-  "lastUpdated": "15:05 UTC",
+  "date": "September 10, 2026",
+  "lastUpdated": "14:57 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Houthis reportedly seize Yemen’s Red Sea port of Mokha",
     "Iran claims missile attack on Jordan base and attacks on 10 vessels",
     "U.S. says it destroyed five Iranian oil tankers after attacks on Navy ships",
     "Houthi attacks wound 73 and disrupt Saudi energy operations",
-    "Iran threatens to establish a restricted zone near Hormuz",
-    "Iran claims improved missile capability and signals preemptive posture"
+    "Iran threatens to establish a restricted zone near Hormuz"
   ]
 }
