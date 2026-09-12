@@ -1,64 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-21T11:42:43.783Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 59,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 36
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 6,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "iran-crisis1-epicfury",
-            "losses-us-personnel",
-            "carrier-lincoln-position",
-            "reactions-global-energy",
-            "reactions-gulf-callouts"
-          ],
-          "filesUpdated": [
-            "inside-iran.html",
-            "materiel-losses.html",
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 1,
-          "linesRemoved": 0,
-          "sizeChange": 115
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 31,
-          "linesRemoved": 0,
-          "sizeChange": 4654
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-22T11:42:42.703Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -1884,6 +1826,60 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -79
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-09-12T14:02:44.086Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 53,
+          "usage": {
+            "input_tokens": 22201,
+            "input_tokens_details": {
+              "cache_write_tokens": 5481,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2110,
+            "output_tokens_details": {
+              "reasoning_tokens": 308
+            },
+            "total_tokens": 24311
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 2,
+          "rejected": [
+            "UKMTO reports multiple merchant-vessel incidents in Gulf waters: homepage or invalid URL",
+            "Tanker reportedly lists after suspected projectile attack near UAE: homepage or invalid URL"
+          ]
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 2
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -111
         }
       ]
     }
