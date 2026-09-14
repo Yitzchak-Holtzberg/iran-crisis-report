@@ -1,67 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-23T11:43:40.789Z",
-      "type": "auto",
-      "effectiveType": "routine",
-      "phases": {
-        "search": {
-          "queries": 15,
-          "gapQueries": 3,
-          "uniqueResults": 64,
-          "tierDropped": 0,
-          "status": "ok",
-          "evidenceDomains": 42
-        },
-        "dataJson": {
-          "status": "ok"
-        },
-        "timeline": {
-          "status": "ok",
-          "added": 8,
-          "fullRebuild": true
-        },
-        "zones": {
-          "status": "ok",
-          "zonesUpdated": [
-            "hormuz-wti-price",
-            "iran-crisis1-epicfury",
-            "losses-us-cost",
-            "carrier-lincoln-position",
-            "reactions-global-energy",
-            "reactions-gulf-callouts",
-            "reactions-gulf-shipping"
-          ],
-          "filesUpdated": [
-            "hormuz.html",
-            "inside-iran.html",
-            "materiel-losses.html",
-            "naval.html",
-            "reactions-global.html",
-            "reactions-gulf.html"
-          ]
-        },
-        "structural": {
-          "status": "skipped",
-          "reason": "routine update"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 3,
-          "linesRemoved": 0,
-          "sizeChange": 456
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 41,
-          "linesRemoved": 0,
-          "sizeChange": 5807
-        }
-      ]
-    },
-    {
       "timestamp": "2026-07-24T11:41:23.829Z",
       "type": "auto",
       "effectiveType": "routine",
@@ -1886,6 +1825,60 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -21
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-09-14T16:56:29.114Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 51,
+          "usage": {
+            "input_tokens": 22274,
+            "input_tokens_details": {
+              "cache_write_tokens": 5421,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1524,
+            "output_tokens_details": {
+              "reasoning_tokens": 321
+            },
+            "total_tokens": 23798
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 2,
+          "rejected": [
+            "More than 80,000 displaced in Yemen since start of September: URL not copied from search results",
+            "Saudi reportedly seeks postponement of planned Hormuz meeting: duplicate source URL"
+          ]
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -3
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 13
         }
       ]
     }

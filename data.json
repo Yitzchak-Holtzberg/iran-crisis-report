@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "September 13, 2026",
-  "lastUpdated": "14:54 UTC",
+  "date": "September 14, 2026",
+  "lastUpdated": "16:56 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Houthis claim capture of Hanish islands near Bab el-Mandeb",
+    "Saudi pipeline repairs may keep most of line offline for weeks",
     "Cargo vessel struck inside Strait of Hormuz, with reported casualties",
     "Iraq says attack from its territory shut key Saudi pipeline",
-    "BRICS leaders condemn attacks on civilian and peaceful nuclear infrastructure",
-    "Houthis reportedly seize Yemen’s Red Sea port of Mokha",
-    "IAEA Board refers Iran’s nuclear noncompliance to UN Security Council"
+    "BRICS leaders condemn attacks on civilian and peaceful nuclear infrastructure"
   ]
 }
