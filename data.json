@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "September 15, 2026",
-  "lastUpdated": "15:32 UTC",
+  "date": "September 16, 2026",
+  "lastUpdated": "15:24 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Saudi Arabia alleges attempted Houthi attack on Mecca",
+    "U.S. says it destroyed two Iranian boats after attempted seizure of unmanned vessel",
+    "Saudi crown prince seeks Egyptian backing as Houthi pressure expands",
     "Houthis renew attacks on Saudi Arabia, reporting 13 civilian injuries",
-    "Houthis claim capture of Hanish islands near Bab el-Mandeb",
-    "Saudi pipeline repairs may keep most of line offline for weeks",
-    "Cargo vessel struck inside Strait of Hormuz, with reported casualties",
-    "Iraq says attack from its territory shut key Saudi pipeline"
+    "Houthis claim capture of Hanish islands near Bab el-Mandeb"
   ]
 }
