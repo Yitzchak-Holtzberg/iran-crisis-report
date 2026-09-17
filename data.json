@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "September 16, 2026",
-  "lastUpdated": "15:24 UTC",
+  "date": "September 17, 2026",
+  "lastUpdated": "15:31 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Drone-interception debris kills one in Saudi Taif",
+    "Yemen displacement surpasses 125,000 amid Red Sea advance",
+    "U.N. experts cite reasonable grounds for possible U.S. war crimes in Iran",
     "Saudi Arabia alleges attempted Houthi attack on Mecca",
-    "U.S. says it destroyed two Iranian boats after attempted seizure of unmanned vessel",
-    "Saudi crown prince seeks Egyptian backing as Houthi pressure expands",
-    "Houthis renew attacks on Saudi Arabia, reporting 13 civilian injuries",
-    "Houthis claim capture of Hanish islands near Bab el-Mandeb"
+    "U.S. says it destroyed two Iranian boats after attempted seizure of unmanned vessel"
   ]
 }
