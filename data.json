@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "September 18, 2026",
-  "lastUpdated": "14:56 UTC",
+  "date": "September 19, 2026",
+  "lastUpdated": "14:20 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "South Korea signals possible role in restoring Strait of Hormuz passage",
     "Iran claims strike on tanker transiting Strait of Hormuz",
     "Large government-organized rally signals intensified mobilization in Iran",
     "Russia and China veto renewal of Iran sanctions-monitoring mandate",
-    "Drone-interception debris kills one in Saudi Taif",
-    "Yemen displacement surpasses 125,000 amid Red Sea advance"
+    "Drone-interception debris kills one in Saudi Taif"
   ]
 }
