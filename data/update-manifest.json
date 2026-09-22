@@ -1,37 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-07-30T11:43:36.571Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "queries": 10,
-          "failed": 0,
-          "uniqueUrls": 29,
-          "lowTierDropped": 0
-        },
-        "latest": {
-          "status": "skipped",
-          "accepted": 0,
-          "rejected": [
-            "U.S. carries out heavy strikes on IRGC targets in Iran: why-it-matters length",
-            "U.S. sanctions firms accused of charging ships for 'safe passage' through the Strait of Hormuz: summary length, why-it-matters length, invalid category",
-            "Iran publicly rejects Omani proposal for shared management of the Strait of Hormuz as regional attacks intensify: why-it-matters length, invalid category, source tier 5 cannot anchor the public latest feed"
-          ],
-          "replacementThreshold": 3
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": []
-    },
-    {
       "timestamp": "2026-07-31T11:48:27.393Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -1949,6 +1918,57 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -27
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-09-22T15:29:13.855Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 68,
+          "usage": {
+            "input_tokens": 22215,
+            "input_tokens_details": {
+              "cache_write_tokens": 5435,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1515,
+            "output_tokens_details": {
+              "reasoning_tokens": 359
+            },
+            "total_tokens": 23730
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 3,
+          "rejected": []
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -36
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -89
         }
       ]
     }
