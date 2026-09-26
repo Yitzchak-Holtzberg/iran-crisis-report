@@ -1,38 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-08-03T12:13:15.382Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "queries": 10,
-          "failed": 0,
-          "uniqueUrls": 23,
-          "lowTierDropped": 0
-        },
-        "latest": {
-          "status": "skipped",
-          "accepted": 0,
-          "rejected": [
-            "President Trump says planned strikes on Iran are on hold and a deal is 'imminent': why-it-matters length, invalid category",
-            "Tehran denies US claim that bilateral talks with Washington will begin: why-it-matters length, invalid category",
-            "Institute for the Study of War: Iranian negotiators may accept limited compromises: why-it-matters length, invalid category",
-            "Explosion near tanker and talks with Oman underscore continued hazard in the Strait of Hormuz: why-it-matters length"
-          ],
-          "replacementThreshold": 3
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": []
-    },
-    {
       "timestamp": "2026-08-04T11:48:33.388Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2021,6 +1989,59 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 120
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-09-26T14:57:17.496Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 53,
+          "usage": {
+            "input_tokens": 22348,
+            "input_tokens_details": {
+              "cache_write_tokens": 5474,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2331,
+            "output_tokens_details": {
+              "reasoning_tokens": 308
+            },
+            "total_tokens": 24679
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 2,
+          "rejected": [
+            "Cargo vessel struck, caught fire and drifted in Strait of Hormuz: homepage or invalid URL"
+          ]
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 2
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 93
         }
       ]
     }
