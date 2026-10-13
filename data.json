@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "October 12, 2026",
-  "lastUpdated": "20:14 UTC",
+  "date": "October 13, 2026",
+  "lastUpdated": "18:10 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Saudi Arabia strikes Sanaa after deadly Houthi attacks",
+    "Hormuz commercial traffic nearly stops after tanker attacks",
+    "Three more vessels attacked during Hormuz transits",
     "Hormuz reopening talks remain stalled over competing conditions",
-    "Additional tankers struck in and near Strait of Hormuz",
-    "Deadly Riyadh airport attack marks major escalation in Yemen spillover",
-    "Trump says U.S. will not resume strikes on Iran before midterms",
-    "Houthis claimed attacks on Saudi military sites and airports"
+    "Additional tankers struck in and near Strait of Hormuz"
   ]
 }
