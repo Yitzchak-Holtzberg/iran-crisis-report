@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "October 22, 2026",
-  "lastUpdated": "15:51 UTC",
+  "date": "October 23, 2026",
+  "lastUpdated": "15:43 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Aramco orders evacuation of Dhahran headquarters",
     "Iran reports seven tankers damaged or burning near Strait of Hormuz",
     "Attack on Saudi Arabia's King Fahd airport kills two",
     "U.S. orders some diplomats and families to leave Saudi Arabia",
-    "Britain to deploy Typhoons over Saudi Arabia for defensive operations",
-    "Houthi missile strike on Shabwa camp reportedly kills 73 recruits"
+    "Britain to deploy Typhoons over Saudi Arabia for defensive operations"
   ]
 }
