@@ -1,36 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-08-28T21:20:50.832Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "queries": 10,
-          "failed": 0,
-          "uniqueUrls": 29,
-          "lowTierDropped": 0
-        },
-        "latest": {
-          "status": "skipped",
-          "accepted": 1,
-          "rejected": [
-            "Qatar’s prime minister visits Tehran for talks aimed at de‑escalation and reopening the Strait of Hormuz: invalid category, source tier 5 cannot anchor the public latest feed",
-            "Iranian officials maintain anti‑concession stance amid a worsening domestic fuel crisis: why-it-matters length, invalid category"
-          ],
-          "replacementThreshold": 3
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": []
-    },
-    {
       "timestamp": "2026-08-29T15:35:04.327Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2494,6 +2464,57 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 3
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-26T17:17:23.915Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 3,
+          "uniqueUrls": 101,
+          "usage": {
+            "input_tokens": 30856,
+            "input_tokens_details": {
+              "cache_write_tokens": 5522,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1902,
+            "output_tokens_details": {
+              "reasoning_tokens": 470
+            },
+            "total_tokens": 32758
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 3,
+          "rejected": []
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 6
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -91
         }
       ]
     }
