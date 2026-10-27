@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "October 26, 2026",
-  "lastUpdated": "17:18 UTC",
+  "date": "October 27, 2026",
+  "lastUpdated": "16:28 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Fighting intensifies around Taiz as Houthis report deadly attack",
+    "Houthis claim attacks on Riyadh airport and Saudi oil infrastructure",
     "Saudi, Pakistan and Turkey send delegations to Tehran for talks",
     "Egypt authorizes possible military support for Saudi Arabia",
-    "Saudi Arabia reports another Houthi missile attack attempt",
-    "Iran signals it remains open to U.S. talks through Pakistan mediation",
-    "U.S. reduces staffing at four Middle East embassies over Iran threats"
+    "Saudi Arabia reports another Houthi missile attack attempt"
   ]
 }
