@@ -1,59 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-02T15:03:39.948Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 42,
-          "usage": {
-            "input_tokens": 21704,
-            "input_tokens_details": {
-              "cache_write_tokens": 5010,
-              "cached_tokens": 0
-            },
-            "output_tokens": 2154,
-            "output_tokens_details": {
-              "reasoning_tokens": 294
-            },
-            "total_tokens": 23858
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 4,
-          "rejected": [
-            "Iranian retaliation reaches U.S. positions and commercial shipping routes: URL not copied from search results"
-          ]
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 2,
-          "linesRemoved": 0,
-          "sizeChange": 73
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 10,
-          "linesRemoved": 0,
-          "sizeChange": 1407
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-03T14:57:38.740Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2602,6 +2549,57 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 203
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-01T17:05:01.291Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 66,
+          "usage": {
+            "input_tokens": 22382,
+            "input_tokens_details": {
+              "cache_write_tokens": 5503,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1788,
+            "output_tokens_details": {
+              "reasoning_tokens": 356
+            },
+            "total_tokens": 24170
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 1,
+          "rejected": []
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -18
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -19
         }
       ]
     }
