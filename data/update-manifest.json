@@ -1,60 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-03T14:57:38.740Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 57,
-          "usage": {
-            "input_tokens": 22073,
-            "input_tokens_details": {
-              "cache_write_tokens": 5377,
-              "cached_tokens": 0
-            },
-            "output_tokens": 1722,
-            "output_tokens_details": {
-              "reasoning_tokens": 314
-            },
-            "total_tokens": 23795
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 3,
-          "rejected": [
-            "Two seafarers confirmed dead after tanker incident near Hormuz: homepage or invalid URL",
-            "U.S.–Iran diplomatic efforts reported stalled amid renewed fighting: duplicate source URL"
-          ]
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -17
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 29
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-04T14:54:41.339Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2600,6 +2546,59 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -19
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-03T18:21:54.442Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 72,
+          "usage": {
+            "input_tokens": 22414,
+            "input_tokens_details": {
+              "cache_write_tokens": 5511,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1937,
+            "output_tokens_details": {
+              "reasoning_tokens": 316
+            },
+            "total_tokens": 24351
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 1,
+          "rejected": [
+            "Tanker struck by two projectiles east of Saudi Arabia: URL not copied from search results"
+          ]
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 9
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 47
         }
       ]
     }
