@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "November 3, 2026",
-  "lastUpdated": "18:22 UTC",
+  "date": "November 5, 2026",
+  "lastUpdated": "18:41 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Tanker struck by two projectiles north of Qatar",
     "U.S. forces reportedly strike Iranian targets near Strait of Hormuz",
     "Iran designates UK military and MI6 as hostile entities",
     "Iranian negotiators hold Doha talks as military-readiness warnings continue",
-    "Tanker reportedly disabled by limpet mines in Strait of Hormuz",
-    "Iran reports three tankers hit mines while leaving Strait of Hormuz"
+    "Tanker reportedly disabled by limpet mines in Strait of Hormuz"
   ]
 }
