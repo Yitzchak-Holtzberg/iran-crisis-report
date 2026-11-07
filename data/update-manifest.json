@@ -1,57 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-05T13:50:23.286Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 51,
-          "usage": {
-            "input_tokens": 22103,
-            "input_tokens_details": {
-              "cache_write_tokens": 5383,
-              "cached_tokens": 0
-            },
-            "output_tokens": 1923,
-            "output_tokens_details": {
-              "reasoning_tokens": 287
-            },
-            "total_tokens": 24026
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 3,
-          "rejected": []
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 10
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 78
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-06T14:07:25.562Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2599,6 +2548,59 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -14
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-07T16:48:25.561Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 47,
+          "usage": {
+            "input_tokens": 22049,
+            "input_tokens_details": {
+              "cache_write_tokens": 5529,
+              "cached_tokens": 0
+            },
+            "output_tokens": 1477,
+            "output_tokens_details": {
+              "reasoning_tokens": 307
+            },
+            "total_tokens": 23526
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 2,
+          "rejected": [
+            "U.S. offers up to $20 million for information on Iran’s nuclear program: why-it-matters length, duplicate source URL"
+          ]
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -17
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -62
         }
       ]
     }
