@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { validateDevelopments, renderLatestDevelopments } = require('../ai-update');
+const { validateDevelopments, evaluateLatestCandidates, renderLatestDevelopments } = require('../ai-update');
 const { mergeLatest, readRows } = require('../lib/latest-feed');
 const { responseText, sourceUrls, request, draftLatest } = require('../lib/openai-research');
 
@@ -41,6 +41,27 @@ test('unobserved URLs, impossible/future dates and low-tier anchors fail validat
   const { valid, rejected } = validateDevelopments(bad, new Set(bad.slice(1).map(i => i.sourceUrl)), '2026-09-01');
   assert.equal(valid.length, 0); assert.equal(rejected.length, 4);
 });
+test('long but reasonable why-it-matters descriptions pass without truncating nuance', () => {
+  const candidate = { ...make(7), whyItMatters: 'A'.repeat(300) };
+  const allowedUrls = new Set([candidate.sourceUrl]);
+  const accepted = validateDevelopments([candidate], allowedUrls, '2026-09-01');
+  assert.equal(accepted.valid.length, 1);
+  assert.equal(accepted.valid[0].whyItMatters.length, 300);
+  const tooLong = validateDevelopments([{ ...candidate, whyItMatters: 'A'.repeat(361) }], allowedUrls, '2026-09-01');
+  assert.equal(tooLong.valid.length, 0);
+  assert.match(tooLong.rejected[0], /why-it-matters length/);
+});
+
+test('unverifiable editorial batch safely preserves the last published feed', () => {
+  const candidate = make(8);
+  const result = evaluateLatestCandidates([candidate], new Set(), '2026-09-01');
+  assert.equal(result.skipReason, 'all-candidates-rejected');
+  assert.equal(result.valid.length, 0);
+  assert.match(result.rejected[0], /URL not copied from search results/);
+  assert.deepEqual(mergeLatest(html, ticker, result.valid, '2026-09-01', renderLatestDevelopments), { html, ticker });
+  assert.equal(evaluateLatestCandidates([], new Set(), '2026-09-01').skipReason, 'no-new-candidates');
+});
+
 test('existing legacy rows migrate without losing content, including year boundaries', () => {
   const legacy = html.replace(/ data-event-date="[^"]+"/g, '');
   assert.equal(readRows(legacy, ticker)[0].date, '2026-08-29');
