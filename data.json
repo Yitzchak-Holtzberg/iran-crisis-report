@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "November 9, 2026",
-  "lastUpdated": "21:24 UTC",
+  "date": "November 10, 2026",
+  "lastUpdated": "18:38 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
+    "Tanker struck by unknown projectile near Oman",
+    "Rubio seeks international help to protect Hormuz shipping",
     "Washington says Iran talks are not near a breakthrough",
-    "U.S. says it disabled commercial vessel after alleged blockade violation",
-    "U.S. reports new strike on Iranian air defense on Qeshm Island",
-    "Tanker suffers waterline explosion inside Strait of Hormuz",
-    "Tanker struck by two projectiles north of Qatar"
+    "Tanker reportedly struck inside the Strait of Hormuz",
+    "Military encounter reported near Khor Fakkan"
   ]
 }
