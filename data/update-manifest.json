@@ -1,57 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-09T15:04:55.434Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 64,
-          "usage": {
-            "input_tokens": 22119,
-            "input_tokens_details": {
-              "cache_write_tokens": 5454,
-              "cached_tokens": 0
-            },
-            "output_tokens": 1814,
-            "output_tokens_details": {
-              "reasoning_tokens": 278
-            },
-            "total_tokens": 23933
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 2,
-          "rejected": []
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 11
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 89
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-10T14:57:21.739Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2600,6 +2549,60 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -263
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-11T18:37:20.863Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 65,
+          "usage": {
+            "input_tokens": 22410,
+            "input_tokens_details": {
+              "cache_write_tokens": 5507,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2282,
+            "output_tokens_details": {
+              "reasoning_tokens": 427
+            },
+            "total_tokens": 24692
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 1,
+          "rejected": [
+            "Tanker fire near Khasab forces crew evacuation: duplicate source URL"
+          ],
+          "skipReason": null
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 20
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 123
         }
       ]
     }
