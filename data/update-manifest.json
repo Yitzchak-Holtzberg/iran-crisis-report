@@ -1,59 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-10T14:57:21.739Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 61,
-          "usage": {
-            "input_tokens": 22245,
-            "input_tokens_details": {
-              "cache_write_tokens": 5492,
-              "cached_tokens": 0
-            },
-            "output_tokens": 2018,
-            "output_tokens_details": {
-              "reasoning_tokens": 295
-            },
-            "total_tokens": 24263
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 1,
-          "rejected": [
-            "UKMTO reports merchant-vessel interaction in Strait of Hormuz: homepage or invalid URL"
-          ]
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -16
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -46
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-11T14:58:07.538Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2603,6 +2550,58 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 123
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-12T18:50:15.644Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 76,
+          "usage": {
+            "input_tokens": 22231,
+            "input_tokens_details": {
+              "cache_write_tokens": 5528,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2012,
+            "output_tokens_details": {
+              "reasoning_tokens": 486
+            },
+            "total_tokens": 24243
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 3,
+          "rejected": [],
+          "skipReason": null
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 21
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 204
         }
       ]
     }
