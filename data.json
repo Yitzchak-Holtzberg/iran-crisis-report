@@ -1,7 +1,7 @@
 {
   "gaTrackingId": "G-4S1QZPSNZD",
-  "date": "November 12, 2026",
-  "lastUpdated": "18:50 UTC",
+  "date": "November 13, 2026",
+  "lastUpdated": "18:29 UTC",
   "statUsTroops": "50,000+",
   "statUsTroopsSource": "CENTCOM/Cooper video, Mar 4",
   "statMissilesFired": "2,500+",
@@ -24,10 +24,10 @@
   "scenarioManagedTransitionPct": 10,
   "scenarioRegimeCollapsePct": 44,
   "ticker": [
-    "Tanker previously flagged near Hormuz was reported struck by a projectile",
+    "U.S. intercepts Iranian drones headed toward Bahrain as Iran claims radar strike",
+    "IAEA still cannot verify Iran’s nuclear material or inspect affected sites",
     "UKMTO reports suspicious tanker activity inside Strait of Hormuz",
-    "Tanker struck by unknown projectile near Oman",
-    "Rubio seeks international help to protect Hormuz shipping",
-    "Washington says Iran talks are not near a breakthrough"
+    "JMIC reports casualties in separate Nov. 10 tanker strike",
+    "Tanker struck by unknown projectile near Oman"
   ]
 }
