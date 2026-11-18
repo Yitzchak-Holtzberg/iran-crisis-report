@@ -1,57 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-16T15:23:51.042Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 48,
-          "usage": {
-            "input_tokens": 22272,
-            "input_tokens_details": {
-              "cache_write_tokens": 5454,
-              "cached_tokens": 0
-            },
-            "output_tokens": 1432,
-            "output_tokens_details": {
-              "reasoning_tokens": 323
-            },
-            "total_tokens": 23704
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 3,
-          "rejected": []
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 14
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 72
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-17T15:30:59.888Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2623,6 +2572,65 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -208
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-18T19:22:00.359Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 3,
+          "uniqueUrls": 46,
+          "usage": {
+            "input_tokens": 30327,
+            "input_tokens_details": {
+              "cache_write_tokens": 5546,
+              "cache_write_tokens_details": {
+                "ttl_12h_tokens": 0,
+                "ttl_30m_tokens": 5546
+              },
+              "cached_tokens": 0
+            },
+            "output_tokens": 1901,
+            "output_tokens_details": {
+              "reasoning_tokens": 391
+            },
+            "total_tokens": 32228
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 1,
+          "rejected": [
+            "U.S. official account corroborates reported strike on Qeshm: duplicate source URL",
+            "Tanker attack in Strait of Hormuz leaves one missing and 11 injured: duplicate source URL"
+          ],
+          "skipReason": null
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 11
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -34
         }
       ]
     }
