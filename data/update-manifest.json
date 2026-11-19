@@ -1,57 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-17T15:30:59.888Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 60,
-          "usage": {
-            "input_tokens": 22362,
-            "input_tokens_details": {
-              "cache_write_tokens": 5475,
-              "cached_tokens": 0
-            },
-            "output_tokens": 2061,
-            "output_tokens_details": {
-              "reasoning_tokens": 304
-            },
-            "total_tokens": 24423
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 3,
-          "rejected": []
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -16
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 9
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-18T14:56:01.486Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2631,6 +2580,65 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -34
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-19T19:27:20.120Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 4,
+          "uniqueUrls": 81,
+          "usage": {
+            "input_tokens": 39295,
+            "input_tokens_details": {
+              "cache_write_tokens": 5550,
+              "cache_write_tokens_details": {
+                "ttl_12h_tokens": 0,
+                "ttl_30m_tokens": 5550
+              },
+              "cached_tokens": 0
+            },
+            "output_tokens": 1820,
+            "output_tokens_details": {
+              "reasoning_tokens": 544
+            },
+            "total_tokens": 41115
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 2,
+          "rejected": [
+            "Tanker attack near Khasab leaves one crew member missing: homepage or invalid URL",
+            "Second tanker attack reported near Khasab in the Strait: homepage or invalid URL"
+          ],
+          "skipReason": null
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -2
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -19
         }
       ]
     }
