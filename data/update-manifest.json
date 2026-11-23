@@ -1,59 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-21T16:59:08.261Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 51,
-          "usage": {
-            "input_tokens": 22221,
-            "input_tokens_details": {
-              "cache_write_tokens": 5430,
-              "cached_tokens": 0
-            },
-            "output_tokens": 1771,
-            "output_tokens_details": {
-              "reasoning_tokens": 277
-            },
-            "total_tokens": 23992
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 2,
-          "rejected": [
-            "Tanker struck by unknown projectile in Strait of Hormuz, injuring two: confirmed requires tier 1–3 source"
-          ]
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 14
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -27
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-22T15:29:13.855Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2649,6 +2596,62 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 31
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-23T22:33:32.376Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 73,
+          "usage": {
+            "input_tokens": 22719,
+            "input_tokens_details": {
+              "cache_write_tokens": 5567,
+              "cache_write_tokens_details": {
+                "ttl_12h_tokens": 0,
+                "ttl_30m_tokens": 5567
+              },
+              "cached_tokens": 0
+            },
+            "output_tokens": 2108,
+            "output_tokens_details": {
+              "reasoning_tokens": 394
+            },
+            "total_tokens": 24827
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 2,
+          "rejected": [],
+          "skipReason": null
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 14
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 266
         }
       ]
     }
