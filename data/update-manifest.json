@@ -1,57 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-24T15:47:40.348Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 2,
-          "uniqueUrls": 63,
-          "usage": {
-            "input_tokens": 22354,
-            "input_tokens_details": {
-              "cache_write_tokens": 5433,
-              "cached_tokens": 0
-            },
-            "output_tokens": 1696,
-            "output_tokens_details": {
-              "reasoning_tokens": 306
-            },
-            "total_tokens": 24050
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 2,
-          "rejected": []
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": -13
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 178
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-25T15:47:40.716Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2664,6 +2613,62 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": 187
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-26T20:05:45.982Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 64,
+          "usage": {
+            "input_tokens": 22530,
+            "input_tokens_details": {
+              "cache_write_tokens": 5737,
+              "cache_write_tokens_details": {
+                "ttl_12h_tokens": 0,
+                "ttl_30m_tokens": 5737
+              },
+              "cached_tokens": 0
+            },
+            "output_tokens": 1659,
+            "output_tokens_details": {
+              "reasoning_tokens": 404
+            },
+            "total_tokens": 24189
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 3,
+          "rejected": [],
+          "skipReason": null
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 7
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -100
         }
       ]
     }
