@@ -1,59 +1,6 @@
 {
   "updates": [
     {
-      "timestamp": "2026-09-25T15:47:40.716Z",
-      "requestedType": "auto",
-      "effectiveType": "routine",
-      "protectedArchitecture": true,
-      "protectedEvidenceDesks": true,
-      "phases": {
-        "search": {
-          "status": "ok",
-          "provider": "openai-web-search",
-          "model": "gpt-5.6-luna",
-          "calls": 3,
-          "uniqueUrls": 47,
-          "usage": {
-            "input_tokens": 30891,
-            "input_tokens_details": {
-              "cache_write_tokens": 5458,
-              "cached_tokens": 0
-            },
-            "output_tokens": 1826,
-            "output_tokens_details": {
-              "reasoning_tokens": 395
-            },
-            "total_tokens": 32717
-          }
-        },
-        "latest": {
-          "status": "ok",
-          "accepted": 1,
-          "rejected": [
-            "Commercial vessel struck in Strait of Hormuz; one crew member killed: homepage or invalid URL"
-          ]
-        },
-        "structuralReview": {
-          "status": "skipped",
-          "reason": "routine runs never rewrite standing synthesis"
-        }
-      },
-      "changelog": [
-        {
-          "file": "data.json",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 12
-        },
-        {
-          "file": "sections/last-24h.html",
-          "linesAdded": 0,
-          "linesRemoved": 0,
-          "sizeChange": 120
-        }
-      ]
-    },
-    {
       "timestamp": "2026-09-26T14:57:17.496Z",
       "requestedType": "auto",
       "effectiveType": "routine",
@@ -2669,6 +2616,62 @@
           "linesAdded": 0,
           "linesRemoved": 0,
           "sizeChange": -100
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-11-27T19:53:25.093Z",
+      "requestedType": "auto",
+      "effectiveType": "routine",
+      "protectedArchitecture": true,
+      "protectedEvidenceDesks": true,
+      "phases": {
+        "search": {
+          "status": "ok",
+          "provider": "openai-web-search",
+          "model": "gpt-5.6-luna",
+          "calls": 2,
+          "uniqueUrls": 74,
+          "usage": {
+            "input_tokens": 22815,
+            "input_tokens_details": {
+              "cache_write_tokens": 5723,
+              "cache_write_tokens_details": {
+                "ttl_12h_tokens": 0,
+                "ttl_30m_tokens": 5723
+              },
+              "cached_tokens": 0
+            },
+            "output_tokens": 1416,
+            "output_tokens_details": {
+              "reasoning_tokens": 349
+            },
+            "total_tokens": 24231
+          }
+        },
+        "latest": {
+          "status": "ok",
+          "accepted": 1,
+          "rejected": [],
+          "skipReason": null
+        },
+        "structuralReview": {
+          "status": "skipped",
+          "reason": "routine runs never rewrite standing synthesis"
+        }
+      },
+      "changelog": [
+        {
+          "file": "data.json",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": 11
+        },
+        {
+          "file": "sections/last-24h.html",
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "sizeChange": -24
         }
       ]
     }
